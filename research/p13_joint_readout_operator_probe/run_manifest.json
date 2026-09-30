@@ -1,0 +1,489 @@
+{
+  "artifact_table_rows": {
+    "channel_usage_summary.csv": 120,
+    "edge_sample.csv": 900,
+    "joint_operator_utility_summary.csv": 90,
+    "joint_probe_performance.csv": 9,
+    "joint_sign_transition.csv": 60,
+    "modality_preference_disagreement.csv": 240,
+    "operator_modality_sign_disagreement.csv": 45,
+    "p12_vs_p13_transition_comparison.csv": 165,
+    "preference_margin_summary.csv": 30,
+    "preferred_channel_summary.csv": 30,
+    "whole_channel_ablation.csv": 90,
+    "within_node_function_diversity.csv": 29772
+  },
+  "branch": "exp/p13_joint_readout_operator_probe",
+  "campaign_checks": {
+    "all_p0_p12_edge_rows_order_degree_aligned": true,
+    "all_runs_completed": true,
+    "completed_dataset_seed_runs": 9,
+    "link_prediction": false,
+    "max_fast_vs_brute_logit_abs_error": 1.5987211554602254e-14,
+    "max_semantic_metric_reproduction_abs_diff": 2.220446049250313e-16,
+    "pytest": "17 passed; 1 upstream PyG deprecation warning",
+    "test_evaluation": false
+  },
+  "commands": [
+    "conda run --no-capture-output -n yhf_env python scripts/run_p13_joint_readout_operator_probe.py --smoke --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/run_p13_joint_readout_operator_probe.py --datasets Movies Grocery ele-fashion --seeds 42 43 44 --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/analyze_p13_joint_readout_operator_probe.py",
+    "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_p13_joint_readout_operator_probe.py tests/test_p11_p12_operator_rescue.py"
+  ],
+  "completed_dataset_seed_runs": 9,
+  "completed_runs": [
+    {
+      "best_epoch": 56,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/Movies/seed_42_joint_linear_head.pt",
+      "dataset": "Movies",
+      "edge_alignment": {
+        "current_row_count": 31601,
+        "dataset": "Movies",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 31601,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 31601,
+        "seed": 42
+      },
+      "epochs_run": 86,
+      "fast_vs_brute_max_abs_logit_error": 4.440892098500626e-15,
+      "seed": 42,
+      "semantic_max_abs_metric_difference": 2.220446049250313e-16,
+      "status": "completed",
+      "val_acc": 0.538992166519165,
+      "val_ce": 1.360461950302124,
+      "val_macro_f1": 0.4598718840785893,
+      "validation_target_messages": 31601
+    },
+    {
+      "best_epoch": 61,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/Movies/seed_43_joint_linear_head.pt",
+      "dataset": "Movies",
+      "edge_alignment": {
+        "current_row_count": 31265,
+        "dataset": "Movies",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 31265,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 31265,
+        "seed": 43
+      },
+      "epochs_run": 91,
+      "fast_vs_brute_max_abs_logit_error": 5.329070518200751e-15,
+      "seed": 43,
+      "semantic_max_abs_metric_difference": 0.0,
+      "status": "completed",
+      "val_acc": 0.5410917401313782,
+      "val_ce": 1.351365566253662,
+      "val_macro_f1": 0.4644230648798223,
+      "validation_target_messages": 31265
+    },
+    {
+      "best_epoch": 111,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/Movies/seed_44_joint_linear_head.pt",
+      "dataset": "Movies",
+      "edge_alignment": {
+        "current_row_count": 33039,
+        "dataset": "Movies",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 33039,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 33039,
+        "seed": 44
+      },
+      "epochs_run": 141,
+      "fast_vs_brute_max_abs_logit_error": 7.105427357601002e-15,
+      "seed": 44,
+      "semantic_max_abs_metric_difference": 2.220446049250313e-16,
+      "status": "completed",
+      "val_acc": 0.5575884580612183,
+      "val_ce": 1.352683663368225,
+      "val_macro_f1": 0.4800091553341798,
+      "validation_target_messages": 33039
+    },
+    {
+      "best_epoch": 46,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/Grocery/seed_42_joint_linear_head.pt",
+      "dataset": "Grocery",
+      "edge_alignment": {
+        "current_row_count": 27524,
+        "dataset": "Grocery",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 27524,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 27524,
+        "seed": 42
+      },
+      "epochs_run": 76,
+      "fast_vs_brute_max_abs_logit_error": 1.0658141036401503e-14,
+      "seed": 42,
+      "semantic_max_abs_metric_difference": 0.0,
+      "status": "completed",
+      "val_acc": 0.8199121952056885,
+      "val_ce": 0.6660762429237366,
+      "val_macro_f1": 0.75260906069085,
+      "validation_target_messages": 27524
+    },
+    {
+      "best_epoch": 77,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/Grocery/seed_43_joint_linear_head.pt",
+      "dataset": "Grocery",
+      "edge_alignment": {
+        "current_row_count": 28356,
+        "dataset": "Grocery",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 28356,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 28356,
+        "seed": 43
+      },
+      "epochs_run": 107,
+      "fast_vs_brute_max_abs_logit_error": 7.105427357601002e-15,
+      "seed": 43,
+      "semantic_max_abs_metric_difference": 0.0,
+      "status": "completed",
+      "val_acc": 0.8093704581260681,
+      "val_ce": 0.6702154278755188,
+      "val_macro_f1": 0.7328567811049432,
+      "validation_target_messages": 28356
+    },
+    {
+      "best_epoch": 57,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/Grocery/seed_44_joint_linear_head.pt",
+      "dataset": "Grocery",
+      "edge_alignment": {
+        "current_row_count": 27398,
+        "dataset": "Grocery",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 27398,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 27398,
+        "seed": 44
+      },
+      "epochs_run": 87,
+      "fast_vs_brute_max_abs_logit_error": 8.881784197001252e-15,
+      "seed": 44,
+      "semantic_max_abs_metric_difference": 0.0,
+      "status": "completed",
+      "val_acc": 0.8199121952056885,
+      "val_ce": 0.669723629951477,
+      "val_macro_f1": 0.7311923894278849,
+      "validation_target_messages": 27398
+    },
+    {
+      "best_epoch": 169,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/ele-fashion/seed_42_joint_linear_head.pt",
+      "dataset": "ele-fashion",
+      "edge_alignment": {
+        "current_row_count": 40181,
+        "dataset": "ele-fashion",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 40181,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 40181,
+        "seed": 42
+      },
+      "epochs_run": 199,
+      "fast_vs_brute_max_abs_logit_error": 1.1546319456101628e-14,
+      "seed": 42,
+      "semantic_max_abs_metric_difference": 5.551115123125783e-17,
+      "status": "completed",
+      "val_acc": 0.8689782023429871,
+      "val_ce": 0.4018276333808899,
+      "val_macro_f1": 0.6790750234290877,
+      "validation_target_messages": 40181
+    },
+    {
+      "best_epoch": 77,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/ele-fashion/seed_43_joint_linear_head.pt",
+      "dataset": "ele-fashion",
+      "edge_alignment": {
+        "current_row_count": 40181,
+        "dataset": "ele-fashion",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 40181,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 40181,
+        "seed": 43
+      },
+      "epochs_run": 107,
+      "fast_vs_brute_max_abs_logit_error": 1.5987211554602254e-14,
+      "seed": 43,
+      "semantic_max_abs_metric_difference": 5.551115123125783e-17,
+      "status": "completed",
+      "val_acc": 0.8649892807006836,
+      "val_ce": 0.4067857563495636,
+      "val_macro_f1": 0.6614068865001209,
+      "validation_target_messages": 40181
+    },
+    {
+      "best_epoch": 82,
+      "checkpoint": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/ele-fashion/seed_44_joint_linear_head.pt",
+      "dataset": "ele-fashion",
+      "edge_alignment": {
+        "current_row_count": 40181,
+        "dataset": "ele-fashion",
+        "edge_order_match": true,
+        "edge_set_match": true,
+        "p0_ordered_src_dst_degree_match": true,
+        "p0_row_count": 40181,
+        "p12_ordered_src_dst_degree_match": true,
+        "p12_row_count": 40181,
+        "seed": 44
+      },
+      "epochs_run": 112,
+      "fast_vs_brute_max_abs_logit_error": 1.2434497875801753e-14,
+      "seed": 44,
+      "semantic_max_abs_metric_difference": 0.0,
+      "status": "completed",
+      "val_acc": 0.8664212226867676,
+      "val_ce": 0.41305506229400635,
+      "val_macro_f1": 0.6682581297259365,
+      "validation_target_messages": 40181
+    }
+  ],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "environment": {
+    "cuda_available": true,
+    "cuda_runtime": "12.1",
+    "devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3090",
+        "total_memory_bytes": 25431048192
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3090",
+        "total_memory_bytes": 25438126080
+      }
+    ],
+    "pyg": "2.7.0",
+    "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+    "pytorch": "2.4.0+cu121",
+    "selected_device": "cuda:0"
+  },
+  "figure_qa": {
+    "figures": [
+      {
+        "alignment_tolerance_pt": 1.5,
+        "collision_fails": 0,
+        "collision_verdict": "PASS",
+        "collision_warnings": 0,
+        "name": "p13_sign_transition",
+        "panel_alignment_verdict": "PASS",
+        "pdf_text_below_5pt": 0,
+        "pdf_text_min_pt": 7.0,
+        "png": "research/p13_joint_readout_operator_probe/figures/p13_sign_transition.png"
+      },
+      {
+        "alignment_tolerance_pt": 1.5,
+        "collision_fails": 0,
+        "collision_verdict": "PASS",
+        "collision_warnings": 0,
+        "name": "p13_preferred_channel",
+        "panel_alignment_verdict": "PASS",
+        "pdf_text_below_5pt": 0,
+        "pdf_text_min_pt": 7.0,
+        "png": "research/p13_joint_readout_operator_probe/figures/p13_preferred_channel.png"
+      },
+      {
+        "alignment_tolerance_pt": 1.5,
+        "collision_fails": 0,
+        "collision_verdict": "PASS",
+        "collision_warnings": 0,
+        "name": "p13_modality_preference_matrix",
+        "panel_alignment_verdict": "PASS",
+        "pdf_text_below_5pt": 0,
+        "pdf_text_min_pt": 8.0,
+        "png": "research/p13_joint_readout_operator_probe/figures/p13_modality_preference_matrix.png"
+      },
+      {
+        "alignment_tolerance_pt": 1.5,
+        "collision_fails": 0,
+        "collision_verdict": "PASS",
+        "collision_warnings": 0,
+        "name": "p13_p12_vs_p13",
+        "panel_alignment_verdict": "PASS",
+        "pdf_text_below_5pt": 0,
+        "pdf_text_min_pt": 7.5,
+        "png": "research/p13_joint_readout_operator_probe/figures/p13_p12_vs_p13.png"
+      }
+    ],
+    "full_edge_analysis_excluded_rows": 0,
+    "sample_rows_per_run": 100,
+    "sample_source": "Observed P1.3 edge rows; selected with a fixed seed and not used for statistics or figures.",
+    "source_preflight_counts": {
+      "FAIL": 0,
+      "PASS": 18,
+      "WARN": 3
+    },
+    "source_preflight_ready": true,
+    "source_preflight_review": [
+      {
+        "disposition": "Generic 228.6 mm output width; no target journal width was specified.",
+        "finding": "FINAL-WIDTH"
+      },
+      {
+        "disposition": "Aggregation checks finite seed metrics; all summarized seed values were finite, so no seed observations were omitted.",
+        "finding": "DATA-EXCLUSION"
+      },
+      {
+        "disposition": "A seeded sample selects existing aligned edge rows for the committed 100-per-run sample only; all analyses use full edge tables.",
+        "finding": "DEMO-DATA"
+      }
+    ]
+  },
+  "files": [
+    "joint_probe_performance.csv",
+    "joint_operator_utility_summary.csv",
+    "joint_sign_transition.csv",
+    "preferred_channel_summary.csv",
+    "within_node_function_diversity.csv",
+    "modality_preference_disagreement.csv",
+    "operator_modality_sign_disagreement.csv",
+    "preference_margin_summary.csv",
+    "channel_usage_summary.csv",
+    "whole_channel_ablation.csv",
+    "p12_vs_p13_transition_comparison.csv",
+    "edge_sample.csv"
+  ],
+  "full_edge_tables_committed": false,
+  "git_provenance": {
+    "fetch_command": "git fetch origin",
+    "new_branch": "exp/p13_joint_readout_operator_probe",
+    "no_main_merge": true,
+    "source_branch": "exp/p11_p12_operator_rescue",
+    "source_branch_sha": "17ca9420b614998f0192dac558c1a31d4c28a32e",
+    "source_remote_ref": "origin/exp/p11_p12_operator_rescue",
+    "source_remote_ref_sha": "17ca9420b614998f0192dac558c1a31d4c28a32e",
+    "source_worktree_status_before_new_branch": "clean"
+  },
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "ignored_full_artifacts_dir": "outputs/p13_joint_readout_operator_probe",
+  "link_prediction": false,
+  "per_target_fields": [
+    "dataset",
+    "seed",
+    "modality",
+    "target",
+    "dst_degree",
+    "positive_preferred_edge_count",
+    "distinct_positive_functions",
+    "positive_functions",
+    "multi_function_neighborhood",
+    "no_positive_preference"
+  ],
+  "protocol": {
+    "denominator": "original graph in-degree",
+    "feature_dim": 1024,
+    "feature_order": [
+      "H_T",
+      "H_V",
+      "S_T",
+      "D_T",
+      "P_T",
+      "S_V",
+      "D_V",
+      "P_V"
+    ],
+    "gradient_clip": 1.0,
+    "hidden_dim": 128,
+    "learning_rate": 0.001,
+    "link_prediction": false,
+    "max_epochs": 300,
+    "min_epoch": 30,
+    "operators": {
+      "absdiff": "abs(h_src-h_dst)",
+      "product": "h_src*h_dst",
+      "smooth": "h_src"
+    },
+    "optimizer": "AdamW",
+    "patience": 30,
+    "primary_utility": "CE_removed - CE_full",
+    "selection": "best validation accuracy",
+    "test_evaluation": false,
+    "trainable_heads_per_run": 1,
+    "validation_labels_used_for_selection_and_utility": true,
+    "weight_decay": 0.0001
+  },
+  "pyg": "2.7.0",
+  "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+  "run_records": [
+    "Movies/seed_42",
+    "Movies/seed_43",
+    "Movies/seed_44",
+    "Grocery/seed_42",
+    "Grocery/seed_43",
+    "Grocery/seed_44",
+    "ele-fashion/seed_42",
+    "ele-fashion/seed_43",
+    "ele-fashion/seed_44"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "smoke": {
+    "checks": {
+      "all_six_fast_vs_brute": "passed",
+      "edge_alignment_p0_p12": "passed",
+      "fixed_original_degree_denominator": {
+        "absdiff": 2.0,
+        "product": 30.0,
+        "smooth": 3.0
+      },
+      "frozen_h0": true,
+      "joint_feature_dim": 1024,
+      "preferred_channel_none_logic": "passed",
+      "split_accessor_no_test_access": "passed",
+      "within_node_diversity": "passed"
+    },
+    "dataset": "Movies",
+    "fast_vs_brute_logit_max_abs": {
+      "absdiff_text_logit_max_abs": 1.7763568394002505e-15,
+      "absdiff_visual_logit_max_abs": 1.7763568394002505e-15,
+      "product_text_logit_max_abs": 2.220446049250313e-15,
+      "product_visual_logit_max_abs": 1.7763568394002505e-15,
+      "smooth_text_logit_max_abs": 2.220446049250313e-15,
+      "smooth_visual_logit_max_abs": 1.7763568394002505e-15
+    },
+    "seed": 42,
+    "status": "smoke_passed"
+  },
+  "source_branch": "exp/p11_p12_operator_rescue",
+  "source_sha": "17ca9420b614998f0192dac558c1a31d4c28a32e",
+  "stage": "P1.3 \u2014 Joint-Readout Operator Counterfactual",
+  "test_evaluation": false,
+  "torch": "2.4.0+cu121",
+  "tracked_report_dir": "research/p13_joint_readout_operator_probe",
+  "trained_checkpoints_committed": false,
+  "validation_only": true,
+  "within_node_csv_levels": {
+    "dataset_mean_rows": 6,
+    "dataset_seed_sd_rows": 6,
+    "seed_group_rows": 18,
+    "target_rows": 29742
+  }
+}
