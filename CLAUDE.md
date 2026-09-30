@@ -40,7 +40,7 @@ python scripts/make_magb_splits.py
 
 **Models** (`src/models/`):
 - `factory.py`: Dynamic import by name — each model module must export `class Model(cfg, data_info)`.
-- 6 models: `mlp`, `gcn`, `sage`, `mmgcn`, `mgat`, `unigraph2` (each has a config in `configs/model/`).
+- Model modules live in `src/models/`; each selectable model has a matching config in `configs/model/` and is loaded by `factory.py`.
 - All encoders implement `forward()` → `(z, None, None, aux_loss, aux_info)` and `inference(x, edge_index, device, batch_size)` for full-graph eval.
 - `predictor.py`: `LinkPredictor` MLP — scores (src, dst) via element-wise product.
 - `common.py`: Shared `make_norm()` (defaults to BatchNorm1d), `get_activation()`.
@@ -59,6 +59,17 @@ python scripts/make_magb_splits.py
 - Training losses: `aux_loss = reconstruction_loss + lambda_spd * spd_loss`.
 - SPD loss uses BFS from random source nodes (CPU), bounded by `spd_k`, `spd_num_sources`, `spd_max_pairs`.
 - `mask_token` is a learnable parameter replacing dropped features during training.
+
+**RoleMAG specifics** (`src/models/rolemag.py`):
+- Uses the baseline `[text, visual]` feature layout and adapts it to RoleMAG's separate modality pathways.
+- Preserves the shared GCN backbone, role router, shared/complementary/heterophily experts, and scheduled residual fusion.
+- Keeps baseline's full-graph NC and three-hop sampled LP protocols. Exact layerwise inference falls back to a full-graph pass because RoleMAG routes using graph structural features and per-destination top-k edges.
+- Model-specific auxiliary role losses default to zero so the frozen baseline task objective remains common; see `docs/rolemag_migration.md`.
+
+**CoSI-MAG Final specifics** (src/models/cosi_mag_final.py):
+- Uses separate text/visual projections, learned diagonal-cosine relation weights, anchored multi-hop diffusion, relation-conditioned cross-order attention and node-wise order filters, then residual MLP fusion.
+- Its max_order=3 / num_layers=3 setting matches baseline's default three-hop LP sampler. The model declares requires_full_lp_sampler_depth and no_weight_decay_parameter_names; both are supported by the common LP sampler and optimizer.
+- It retains baseline's unified full-graph NC and sampled LP task protocols; source task settings and experiment launchers are not imported.
 
 **Task runners** (`src/tasks/`):
 - `nc.py`: Model + linear classifier. Metrics: Accuracy, Macro-F1. Early stopping on val accuracy. Gradient clipping `max_norm=1.0`.

@@ -18,6 +18,8 @@ Implemented models:
 - `mgat`
 - `unigraph2`
 - `dip`
+- `rolemag`
+- `cosi_mag_final`
 
 ## Datasets
 
@@ -57,6 +59,18 @@ Run one LP experiment:
 python -m src.main dataset=sports-copurchase task=lp model=sage num_runs=3
 ```
 
+Run RoleMAG:
+
+```bash
+python -m src.main dataset=Movies task=nc model=rolemag num_runs=3
+python -m src.main dataset=Movies task=lp model=rolemag num_runs=3
+```
+
+Run CoSI-MAG Final:
+
+    python -m src.main dataset=Movies task=nc model=cosi_mag_final num_runs=3
+    python -m src.main dataset=Movies task=lp model=cosi_mag_final num_runs=3
+
 Run DiP:
 
 ```bash
@@ -71,6 +85,10 @@ python -m src.main dataset=Movies task=nc model=mlp num_runs=1 task.epochs=1 tas
 ```
 
 ## Notes
+
+- RoleMAG keeps the same unified NC and LP protocols as the other models; see [the migration notes](docs/rolemag_migration.md) for its modality adapter, graph-wide inference behavior, and auxiliary-loss defaults.
+- CoSI-MAG Final uses the same NC/LP task protocols; see [its migration notes](docs/cosi_mag_final_migration.md) for its LP depth and full-graph inference behavior.
+- The generic run_all_nc.py and run_all_lp.py launchers include RoleMAG and CoSI-MAG Final. The curated `scripts/run_nc_baselines.py` campaign keeps its previously frozen model matrix.
 
 - MAGB `*Graph.pt` files are DGL graphs, so the loader converts DGL graphs to PyG `edge_index`.
 - MAGB NC/LP splits are generated once under `../data/MAGB_split` when missing.

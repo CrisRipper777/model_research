@@ -1,0 +1,52 @@
+name: rolemag
+
+# RoleMAG encoder dimensions.
+hidden_dim: 256
+dropout: 0.2
+backbone_num_layers: 3
+shared_num_layers: 3
+shared_edge_floor: 1.0
+shared_fusion_weight: 1.0
+role_residual_init: 0.1
+
+# Factorized role router and expert settings.
+router_hidden_dim: 64
+topk_complementary: 16
+num_queries: 4
+lambda_bias: 1.0
+eps: 1.0e-8
+polyh2_init: [1.0, -0.5, 0.5]
+beta_temperature: 1.5
+confidence_scale: 1.25
+role_prior_strength: 0.2
+beta_floor: 0.5
+beta_cap: 12.0
+
+# Keep the baseline's common supervised objective by default. Optional
+# RoleMAG-specific routing/QCA regularizers can be enabled explicitly.
+lambda_evi: 0.0
+out_edge_ratio: 0.0
+eta_kl: 1.0
+lambda_bal: 0.0
+lambda_qca: 0.0
+tau: 0.07
+lambda_role_entropy: 0.0
+lambda_gate_entropy: 0.0
+lambda_u_center: 0.0
+u_center_target: 0.35
+
+# Role expert switches and schedule, matching RoleMAG's source defaults.
+disable_router: false
+disable_complementary: false
+disable_directionality: false
+disable_topk: false
+disable_attention_bias: false
+disable_heterophily: false
+disable_gating: false
+mix_hetero_into_shared: false
+comp_warmup_epochs: 2
+comp_ramp_epochs: 3
+hetero_warmup_epochs: 4
+hetero_ramp_epochs: 3
+comp_schedule_scale: 1.0
+hetero_schedule_scale: 0.75
