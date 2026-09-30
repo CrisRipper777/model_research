@@ -1,0 +1,11 @@
+name: adaptive_prop_m01
+variant: extent_wide # extent_wide | single_basis_static | single_basis_target
+
+hidden_dim: 128
+dropout: 0.2
+relation_dim: 32
+relation_state_dim: 64
+modality_embed_dim: 8
+edge_chunk_size: 100000
+eps: 1.0e-8
+wide_gate_hidden_dim: 126

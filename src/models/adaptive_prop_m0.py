@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-VARIANTS = {"semantic", "uniform", "extent", "single_basis", "multi_basis"}
+VARIANTS = {"semantic", "uniform", "extent", "single_basis", "multi_basis", "extent_wide", "single_basis_static", "single_basis_target"}
 
 
 def remove_self_messages(edge_index: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
@@ -67,6 +67,26 @@ def neighborhood_shuffle_indices(dst: torch.Tensor, seed: int) -> torch.Tensor:
             result[group] = group[torch.randperm(group.numel(), generator=generator)]
         cursor = stop
     return result
+
+
+def target_mean_control(values: torch.Tensor, dst: torch.Tensor, num_nodes: int) -> torch.Tensor:
+    """Replace each edge value with the mean over its destination neighborhood."""
+    if values.size(0) != dst.numel():
+        raise ValueError("control rows and destination indices must have equal length")
+    if dst.numel() == 0:
+        return values.clone()
+    sums = values.new_zeros((num_nodes, *values.shape[1:]))
+    sums.index_add_(0, dst, values)
+    degree = incoming_degree(dst, num_nodes).clamp_min(1)
+    means = sums / degree.reshape((num_nodes,) + (1,) * (values.ndim - 1)).to(values.dtype)
+    return means[dst]
+
+
+def global_mean_control(values: torch.Tensor) -> torch.Tensor:
+    """Replace every edge value with its global mean; preserve an empty input."""
+    if values.size(0) == 0:
+        return values.clone()
+    return values.mean(dim=0, keepdim=True).expand_as(values).clone()
 
 
 def tie_modality_controls(controls: dict[str, tuple[torch.Tensor, torch.Tensor]]) -> dict[str, tuple[torch.Tensor, torch.Tensor]]:
@@ -188,7 +208,7 @@ class Model(nn.Module):
         self.proj_t = _Projector(self.text_dim, self.hidden_dim, dropout)
         self.proj_v = _Projector(self.visual_dim, self.hidden_dim, dropout)
 
-        self.relation_enabled = self.variant in {"extent", "single_basis", "multi_basis"}
+        self.relation_enabled = self.variant in {"extent", "single_basis", "multi_basis", "extent_wide", "single_basis_static", "single_basis_target"}
         if self.relation_enabled:
             self.rel_proj_t = nn.Sequential(
                 nn.Linear(self.hidden_dim, self.relation_dim, bias=False),
@@ -225,18 +245,44 @@ class Model(nn.Module):
         self.gate_heads: nn.ModuleList | None = None
         self.correction_heads: nn.ModuleList | None = None
         self.basis_heads: nn.ModuleList | None = None
+        self.static_c_logits: nn.Parameter | None = None
         self.basis_u: nn.Parameter | None = None
         self.basis_v: nn.Parameter | None = None
         if self.relation_enabled:
-            self.gate_heads = nn.ModuleList([nn.Linear(64, 1) for _ in range(2)])
-            for head in self.gate_heads:
-                nn.init.normal_(head.weight, mean=0.0, std=1e-3)
-                nn.init.constant_(head.bias, 2.0)
-            if self.variant in {"single_basis", "multi_basis"}:
+            if self.variant == "extent_wide":
+                gate_hidden = int(model_cfg.get("wide_gate_hidden_dim", 126))
+                if gate_hidden != 126:
+                    raise ValueError("M0.1 A-wide fixes wide_gate_hidden_dim at 126")
+                self.gate_heads = nn.ModuleList([
+                    nn.Sequential(nn.Linear(64, gate_hidden), nn.GELU(), nn.Linear(gate_hidden, 1))
+                    for _ in range(2)
+                ])
+                for head in self.gate_heads:
+                    nn.init.normal_(head[0].weight, mean=0.0, std=1e-3)
+                    nn.init.zeros_(head[0].bias)
+                    nn.init.normal_(head[2].weight, mean=0.0, std=1e-3)
+                    nn.init.constant_(head[2].bias, 2.0)
+            else:
+                self.gate_heads = nn.ModuleList([nn.Linear(64, 1) for _ in range(2)])
+                for head in self.gate_heads:
+                    nn.init.normal_(head.weight, mean=0.0, std=1e-3)
+                    nn.init.constant_(head.bias, 2.0)
+            if self.variant in {"single_basis", "multi_basis", "single_basis_target"}:
                 self.correction_heads = nn.ModuleList([nn.Linear(64, 1) for _ in range(2)])
                 for head in self.correction_heads:
                     nn.init.normal_(head.weight, mean=0.0, std=1e-3)
                     nn.init.constant_(head.bias, -2.0)
+            elif self.variant == "single_basis_static":
+                # Consume the same seeded draws as B's two correction heads so
+                # the subsequently initialized rank-32 bases match B exactly.
+                transient_heads = [nn.Linear(64, 1) for _ in range(2)]
+                for head in transient_heads:
+                    nn.init.normal_(head.weight, mean=0.0, std=1e-3)
+                    nn.init.constant_(head.bias, -2.0)
+                del transient_heads
+                self.static_c_logits = nn.Parameter(torch.full((2,), -2.0))
+
+            if self.variant in {"single_basis", "multi_basis", "single_basis_static", "single_basis_target"}:
                 if self.variant == "multi_basis":
                     self.num_bases = 4
                     self.basis_rank = 8
@@ -309,8 +355,10 @@ class Model(nn.Module):
         assert self.gate_heads is not None
         g = torch.sigmoid(self.gate_heads[modality](u))
         c, pi = None, None
-        if self.correction_heads is not None:
+        if self.correction_heads is not None and self.variant != "single_basis_target":
             c = torch.sigmoid(self.correction_heads[modality](u))
+        elif self.static_c_logits is not None:
+            c = torch.sigmoid(self.static_c_logits[modality]).expand(u.size(0), 1)
         if self.basis_heads is not None:
             pi = torch.softmax(self.basis_heads[modality](u), dim=-1)
         return g, c, pi
@@ -322,7 +370,7 @@ class Model(nn.Module):
             low = F.linear(h_source, self.basis_v[modality, k])
             basis_outputs.append(F.linear(low, self.basis_u[modality, k]))
         stacked = torch.stack(basis_outputs, dim=1)
-        if self.variant == "single_basis":
+        if self.variant in {"single_basis", "single_basis_static", "single_basis_target"}:
             return stacked[:, 0, :]
         assert pi is not None
         return (stacked * pi.unsqueeze(-1)).sum(dim=1)
@@ -349,6 +397,26 @@ class Model(nn.Module):
         diagnostic_lists: dict[str, list[list[torch.Tensor]]] = {
             name: [[], []] for name in ("g", "c", "pi", "correction_ratio")
         }
+        target_correction = None
+        if self.variant == "single_basis_target":
+            # Two-pass chunking: first form the differentiable target mean of
+            # relation-functional states, then recompute edge states for g.
+            assert p is not None and contexts is not None and self.correction_heads is not None
+            u_sums = [h0[0].new_zeros((num_nodes, 64)), h0[1].new_zeros((num_nodes, 64))]
+            for begin in range(0, num_edges, self.edge_chunk_size):
+                end = min(begin + self.edge_chunk_size, num_edges)
+                u_pass = self._functional_states(
+                    p,
+                    [contexts[0][begin:end], contexts[1][begin:end]],
+                    deg_z,
+                    src[begin:end],
+                    dst[begin:end],
+                )
+                for m in range(2):
+                    u_sums[m] = u_sums[m].index_add(0, dst[begin:end], u_pass[m])
+            degree_den = degree.clamp_min(1).to(h0[0].dtype).unsqueeze(-1)
+            u_bar = [u_sums[m] / degree_den for m in range(2)]
+            target_correction = [torch.sigmoid(self.correction_heads[m](u_bar[m])) for m in range(2)]
 
         if self.variant == "semantic":
             pass
@@ -376,6 +444,8 @@ class Model(nn.Module):
                 g_pair, c_pair, pi_pair = [], [], []
                 for m in range(2):
                     g, c, pi = self._controls(u[m], m)
+                    if target_correction is not None:
+                        c = target_correction[m][cd]
                     g = self._overridden(g, control_overrides, "g", m, begin, end, x.device, x.dtype)
                     if c is not None:
                         c = self._overridden(c, control_overrides, "c", m, begin, end, x.device, x.dtype)
@@ -394,7 +464,7 @@ class Model(nn.Module):
                 for m in range(2):
                     hs = h0[m][cs]
                     base = self.w0[m](hs)
-                    if self.correction_heads is None:
+                    if self.correction_heads is None and self.static_c_logits is None:
                         message = compose_message(base, g_pair[m])
                         ratio = None
                     else:
@@ -453,21 +523,24 @@ def common_parameter_names(model: Model) -> tuple[str, ...]:
 
 
 def parameter_counts(model: Model) -> dict[str, int]:
-    groups = {
+    prefixes = {
         "semantic_backbone": ("proj_t.", "proj_v.", "fusion.", "residual_norms."),
         "relation_encoder": ("rel_proj_t.", "rel_proj_v.", "phi_pair.", "phi_rel.", "modality_embeddings", "phi_mod."),
         "default_transform": ("w0.",),
-        "gate_and_correction_heads": ("gate_heads.", "correction_heads.", "basis_heads."),
-        "correction_basis": ("basis_u", "basis_v"),
+        "gate_params": ("gate_heads.",),
+        "correction_control_params": ("correction_heads.", "static_c_logits", "basis_heads."),
+        "correction_basis_params": ("basis_u", "basis_v"),
     }
-    counts = {key: 0 for key in groups}
+    counts = {key: 0 for key in prefixes}
     for name, parameter in model.named_parameters():
         if not parameter.requires_grad:
             continue
-        for key, prefixes in groups.items():
-            if name.startswith(prefixes):
+        for key, starts in prefixes.items():
+            if name.startswith(starts):
                 counts[key] += parameter.numel()
                 break
+    counts["gate_and_correction_heads"] = counts["gate_params"] + counts["correction_control_params"]
+    counts["correction_basis"] = counts["correction_basis_params"]
     counts["common_params_abc"] = counts["semantic_backbone"] + counts["relation_encoder"] + counts["default_transform"]
     counts["variant_specific_params"] = counts["gate_and_correction_heads"] + counts["correction_basis"]
     counts["model_total"] = sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)

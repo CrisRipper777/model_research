@@ -1,0 +1,198 @@
+{
+  "experiment": "M0.1 — Adaptive Correction Attribution Closure",
+  "source_branch": "exp/m0_adaptive_propagation_screen",
+  "source_sha": "802f5f3a32b1534d222278f5da7bada0bce8aed0",
+  "new_branch": "exp/m01_adaptive_correction_attribution",
+  "branch_created_from_source_sha": true,
+  "starting_worktree_status": "clean",
+  "environment": {
+    "conda_environment": "yhf_env",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "pyg": "2.7.0",
+    "cuda_build": "12.1"
+  },
+  "hardware": {
+    "selected_device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_1_used": false,
+    "gpu_0_other_process_at_start": false,
+    "max_recorded_training_memory_gib": 9.79
+  },
+  "formal_campaign": {
+    "datasets": [
+      "Movies",
+      "Grocery",
+      "ele-fashion"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "new_variants": [
+      "extent_wide",
+      "single_basis_static",
+      "single_basis_target"
+    ],
+    "requested_new_runs": 27,
+    "completed_new_runs": 27,
+    "failed_new_runs": 0,
+    "sum_recorded_training_time_seconds": 551.6,
+    "sum_new_variant_intervention_time_seconds": 566.0,
+    "average_training_seconds_per_run": 20.43,
+    "max_peak_gpu_memory_gib": 9.79,
+    "training_reruns": 0,
+    "missing_m0_b_checkpoint_reruns": 0
+  },
+  "reused_m0": {
+    "performance_source": "research/m0_adaptive_propagation_screen/data/performance_by_run.csv",
+    "performance_variants": [
+      "semantic",
+      "uniform",
+      "extent",
+      "single_basis"
+    ],
+    "b_checkpoint_count_expected": 9,
+    "b_checkpoint_count_found_and_loaded": 9,
+    "b_checkpoint_variant": "single_basis",
+    "b_checkpoint_protocol": "strict state_dict loading; same validation graph/classifier; no training",
+    "legacy_intervention_reproduction_rows": 189,
+    "legacy_intervention_max_abs_difference": 3.5762786865234375e-07
+  },
+  "training_protocol": {
+    "task": "node classification",
+    "evaluation": "validation only",
+    "test_indices_attached": false,
+    "test_labels_exposed_to_model_or_metrics": false,
+    "link_prediction": false,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "max_epochs": 300,
+    "patience": 30,
+    "min_epoch": 30,
+    "gradient_clip": 1.0,
+    "checkpoint_selection": "best validation accuracy",
+    "per_dataset_tuning": false
+  },
+  "variant_definitions": {
+    "extent_wide": {
+      "gate": "per-modality Linear(64,126)-GELU-Linear(126,1)",
+      "gate_hidden": 126,
+      "extent_only": true,
+      "variant_specific_parameters": 16634,
+      "initialization": "small std 1e-3 weights; first bias 0; final bias +2"
+    },
+    "single_basis_static": {
+      "gate": "original edge-specific M0 gate",
+      "correction": "one learnable scalar logit per modality, initialized -2; c=sigmoid(logit), constant over every edge",
+      "basis": "same rank-32 basis, bitwise same initial values as B",
+      "parameter_delta_vs_b": -128,
+      "trainable_dummy_parameters": 0
+    },
+    "single_basis_target": {
+      "gate": "original edge-specific M0 gate",
+      "correction": "mean edge functional state by original non-self target indegree, CorrectionHead then broadcast to incoming edges; isolated-node u_bar=0",
+      "implementation": "two edge-chunked differentiable passes; no detach",
+      "parameter_delta_vs_b": 0
+    },
+    "single_basis": {
+      "formula_or_protocol_changed": false,
+      "original_m0_checkpoints_retrained": false
+    }
+  },
+  "parameter_checks": {
+    "a_wide_b_model_parameter_difference": 10,
+    "a_wide_b_total_trainable_difference": 10,
+    "b_target_b_parameter_difference": 0,
+    "b_static_b_parameter_difference": -128,
+    "common_initialization_pairs": 9,
+    "common_initialization_all_bitwise_equal": true,
+    "b_target_correction_head_equal_to_b": true,
+    "b_static_and_b_target_basis_equal_to_b": true,
+    "b_target_within_target_c_max_abs_deviation": 0.0
+  },
+  "interventions_on_old_b": {
+    "single_checkpoint_conditions": [
+      "same M0-B checkpoint",
+      "same H0",
+      "same classifier",
+      "validation only",
+      "no retraining"
+    ],
+    "fixed_interventions": [
+      "function_off",
+      "c_target_mean",
+      "c_global_mean"
+    ],
+    "shuffle_interventions": [
+      "g_shuffle_only",
+      "c_shuffle_only",
+      "historical tuple edge_control_shuffle"
+    ],
+    "shuffle_seeds": [
+      1001,
+      1002,
+      1003,
+      1004,
+      1005
+    ],
+    "modalities_shuffled_independently": true,
+    "within_target_multisets_preserved": true
+  },
+  "commands": [
+    "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_m0_adaptive_propagation.py tests/test_m01_adaptive_correction_attribution.py",
+    "conda run --no-capture-output -n yhf_env python scripts/run_m01_adaptive_correction_attribution.py --smoke --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/run_m01_adaptive_correction_attribution.py --campaign --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/run_m01_adaptive_correction_attribution.py --refresh-diagnostics --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/analyze_m01_adaptive_correction_attribution.py",
+    "(from the installed nature-figure skill scripts directory) python validate_figure.py <project-relative plotting source>",
+    "(from the installed nature-figure skill scripts directory) python audit_pdf_text.py <each final figure PDF> --min-pt 5 --json",
+    "(from the installed nature-figure skill scripts directory) python audit_figure_collisions.py <each final figure PDF> --json-out <QA JSON> --overlay-pdf <QA overlay>"
+  ],
+  "smoke": {
+    "status": "passed",
+    "dataset_seed": "Movies/42",
+    "new_variants": [
+      "extent_wide",
+      "single_basis_static",
+      "single_basis_target"
+    ],
+    "old_b_checkpoint_loaded_strictly": true,
+    "b_normal_validation_metrics_reproduced": true,
+    "forward_backward_finite_gradient_checks": true,
+    "target_mean_prediction_identity": true,
+    "chunk_equivalence": true,
+    "test_access": false
+  },
+  "correctness_tests": {
+    "status": "passed",
+    "passed": 32,
+    "failed": 0,
+    "includes_full_59_key_m0_b_state_schema": true
+  },
+  "analysis": {
+    "selected_frozen_decision": "CAPACITY_EXPLANATION_REMAINS",
+    "manual_m0_reproduction_check": "189 normal/function-off/tuple-shuffle metric values match within 1e-6",
+    "figure_source_preflight": "21 pass, 0 warn, 0 fail",
+    "pdf_text_audit": "all four PDFs auditable; minimum glyph size 6.2 pt",
+    "panel_alignment": "three comparable 1x3 layouts PASS at 1.5 pt; single panel NOT APPLICABLE",
+    "collision_audit": "all four PDFs 0 fail, 0 warn",
+    "deviations": [
+      "One initial post-hoc diagnostic refresh stopped on a missing JSON-reader helper before writing a run record; the helper was fixed and all 27 selected checkpoints were refreshed without training.",
+      "The first figure source preflight and collision review identified export-detection and in-axes legend overlaps; figure source/layout was corrected, rerendered, and the final audit passed."
+    ]
+  },
+  "output_paths": {
+    "research_artifacts": "research/m01_adaptive_correction_attribution",
+    "ignored_large_runs_checkpoints": "outputs/m01_adaptive_correction_attribution",
+    "m0_historical_research_tree_modified": false
+  },
+  "git_delivery": {
+    "commit_required": true,
+    "push_required": true,
+    "local_remote_head_sync_required": true,
+    "clean_worktree_required": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "new_runs": 27,
+  "old_comparison_runs": 36,
+  "b_attribution_checkpoints": 9,
+  "legacy_b_intervention_rows_verified": 189,
+  "legacy_b_intervention_max_abs_diff": 3.5762786865234375e-07,
+  "all_parameter_audits_pass": true,
+  "parameter_summary": {
+    "A": {
+      "mean": 659011.3333333334,
+      "std": 66052.0
+    },
+    "A-wide": {
+      "mean": 675515.3333333334,
+      "std": 66052.0
+    },
+    "B": {
+      "mean": 675525.3333333334,
+      "std": 66052.0
+    },
+    "B-static": {
+      "mean": 675397.3333333334,
+      "std": 66052.0
+    },
+    "B-target": {
+      "mean": 675525.3333333334,
+      "std": 66052.0
+    }
+  },
+  "output_dir": "research/m01_adaptive_correction_attribution"
+}
