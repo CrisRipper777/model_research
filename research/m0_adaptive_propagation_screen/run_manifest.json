@@ -1,0 +1,1079 @@
+{
+  "stage": "M0 \u2014 Adaptive Propagation Mechanism Screen",
+  "source_branch": "exp/p13_joint_readout_operator_probe",
+  "source_sha": "83487eada5ca4909a83140a3de498514f2d6d7d8",
+  "source_remote_ref": "origin/exp/p13_joint_readout_operator_probe",
+  "source_remote_sha": "83487eada5ca4909a83140a3de498514f2d6d7d8",
+  "final_branch": "exp/m0_adaptive_propagation_screen",
+  "git_status_at_start": "clean",
+  "environment": {
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "cuda_runtime": "12.1",
+    "pyg": "2.7.0",
+    "cuda_available": true,
+    "devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3090",
+        "total_memory_bytes": 25431048192
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA GeForce RTX 3090",
+        "total_memory_bytes": 25438126080
+      }
+    ],
+    "selected_device": "cuda:0 for the first 40 unique completed runs; cuda:1 for the final 5 after user-authorized device switch"
+  },
+  "data_paths": {
+    "data_root": "/hdd1/DataInHere/YHF/data",
+    "Movies_text": "/hdd1/DataInHere/YHF/data/Movies/TextFeature/Movies_roberta_base_512_mean.npy",
+    "Movies_visual": "/hdd1/DataInHere/YHF/data/Movies/ImageFeature/Movies_openai_clip-vit-large-patch14.npy",
+    "Grocery_text": "/hdd1/DataInHere/YHF/data/Grocery/TextFeature/Grocery_roberta_base_256_mean.npy",
+    "Grocery_visual": "/hdd1/DataInHere/YHF/data/Grocery/ImageFeature/Grocery_openai_clip-vit-large-patch14.npy",
+    "ele-fashion_joint": "/hdd1/DataInHere/YHF/data/ele-fashion/clip_feat.pt",
+    "split_root": "/hdd1/DataInHere/YHF/data/MAGB_split plus official ele-fashion split.pt"
+  },
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "semantic",
+    "uniform",
+    "extent",
+    "single_basis",
+    "multi_basis"
+  ],
+  "protocol": {
+    "name": "unified_full_graph_nc_v1",
+    "full_graph_training": true,
+    "train_labels_only": true,
+    "selection": "best validation accuracy",
+    "evaluate_test": false,
+    "test_split_field_read": false,
+    "test_indices_attached_to_data": false,
+    "test_labels_exposed_to_runner": false,
+    "link_prediction": false,
+    "per_dataset_tuning": false,
+    "split_modified": false
+  },
+  "model_hyperparameters": {
+    "hidden_dim": 128,
+    "projection": [
+      "Linear(input,256)",
+      "GELU",
+      "Dropout(0.2)",
+      "Linear(256,128)",
+      "LayerNorm(128)"
+    ],
+    "relation_dim": 32,
+    "pair_hidden_dim": 64,
+    "pair_output_dim": 32,
+    "relation_state_dim": 64,
+    "modality_embed_dim": 8,
+    "fusion": [
+      "Linear(512,256)",
+      "GELU",
+      "Dropout(0.2)",
+      "Linear(256,128)",
+      "LayerNorm(128)"
+    ],
+    "edge_chunk_size": 100000,
+    "basis_K": 4,
+    "single_basis_rank": 32,
+    "multi_basis_rank_each": 8,
+    "correction_basis_params_B": 16384,
+    "correction_basis_params_C": 16384,
+    "aggregation": "sum messages divided by original non-self incoming physical degree",
+    "structure": "one propagation step; no self-loop messages; preserve every other directed physical message",
+    "auxiliary_losses": 0.0
+  },
+  "initialization": {
+    "gate_bias": 2.0,
+    "correction_bias": -2.0,
+    "basis_logits_bias": 0.0,
+    "basis_logits_weight_std": 0.001,
+    "basis_u_xavier_scale": 0.05,
+    "basis_v": "Xavier uniform",
+    "common_abc_modules": "fixed order, exact tensor equality audited"
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "max_epochs": 300,
+    "patience": 30,
+    "minimum_epoch": 30,
+    "gradient_clip_norm": 1.0,
+    "validation_frequency": 1
+  },
+  "commands": [
+    "conda run --no-capture-output -n yhf_env python scripts/run_m0_adaptive_propagation.py --smoke --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/run_m0_adaptive_propagation.py --campaign --device cuda:0",
+    "conda run --no-capture-output -n yhf_env python scripts/run_m0_adaptive_propagation.py --campaign --device cuda:1",
+    "conda run --no-capture-output -n yhf_env python scripts/analyze_m0_adaptive_propagation.py",
+    "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_m0_adaptive_propagation.py"
+  ],
+  "device_usage": {
+    "cuda:0": {
+      "completed_unique_runs": 40,
+      "note": "GPU 0 was shared with an unrelated process during part of the campaign."
+    },
+    "cuda:1": {
+      "completed_unique_runs": 5,
+      "note": "The campaign resumed here after the user authorized switching when GPU 0 was occupied."
+    }
+  },
+  "output_paths": {
+    "checkpoints": "outputs/m0_adaptive_propagation_screen/checkpoints",
+    "raw_runs": "outputs/m0_adaptive_propagation_screen/runs",
+    "tracked_research": "research/m0_adaptive_propagation_screen"
+  },
+  "completed_runs": [
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "extent",
+      "best_epoch": 96,
+      "epochs_run": 126,
+      "val_accuracy": 0.8187408447265625,
+      "val_macro_f1": 0.7524967266180742,
+      "val_ce": 0.7108490467071533,
+      "training_time_sec": 13.934536115033552,
+      "peak_gpu_memory_bytes": 2022760448,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_42_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "multi_basis",
+      "best_epoch": 94,
+      "epochs_run": 124,
+      "val_accuracy": 0.8207906484603882,
+      "val_macro_f1": 0.7506534359762658,
+      "val_ce": 0.7203041911125183,
+      "training_time_sec": 19.796967511065304,
+      "peak_gpu_memory_bytes": 2861747200,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_42_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "semantic",
+      "best_epoch": 93,
+      "epochs_run": 123,
+      "val_accuracy": 0.7803806662559509,
+      "val_macro_f1": 0.697304392519244,
+      "val_ce": 0.8886776566505432,
+      "training_time_sec": 3.082878782879561,
+      "peak_gpu_memory_bytes": 396764160,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_42_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "single_basis",
+      "best_epoch": 101,
+      "epochs_run": 131,
+      "val_accuracy": 0.8216691017150879,
+      "val_macro_f1": 0.7513430089606545,
+      "val_ce": 0.7314524054527283,
+      "training_time_sec": 16.592729207128286,
+      "peak_gpu_memory_bytes": 2251638784,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_42_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "uniform",
+      "best_epoch": 104,
+      "epochs_run": 134,
+      "val_accuracy": 0.8193265199661255,
+      "val_macro_f1": 0.744138918854832,
+      "val_ce": 0.7243948578834534,
+      "training_time_sec": 4.668731539975852,
+      "peak_gpu_memory_bytes": 697389056,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_42_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "extent",
+      "best_epoch": 75,
+      "epochs_run": 105,
+      "val_accuracy": 0.8222547769546509,
+      "val_macro_f1": 0.7294505278071567,
+      "val_ce": 0.6681298613548279,
+      "training_time_sec": 11.619806281058118,
+      "peak_gpu_memory_bytes": 2022760448,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_43_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "multi_basis",
+      "best_epoch": 80,
+      "epochs_run": 110,
+      "val_accuracy": 0.8231332302093506,
+      "val_macro_f1": 0.7335972577201642,
+      "val_ce": 0.6696887016296387,
+      "training_time_sec": 17.47995583084412,
+      "peak_gpu_memory_bytes": 2861747200,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_43_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "semantic",
+      "best_epoch": 85,
+      "epochs_run": 115,
+      "val_accuracy": 0.7827233076095581,
+      "val_macro_f1": 0.6922958075382077,
+      "val_ce": 0.8422994613647461,
+      "training_time_sec": 2.974387567024678,
+      "peak_gpu_memory_bytes": 396764160,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_43_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "single_basis",
+      "best_epoch": 79,
+      "epochs_run": 109,
+      "val_accuracy": 0.8228404521942139,
+      "val_macro_f1": 0.7400141609542257,
+      "val_ce": 0.6807973384857178,
+      "training_time_sec": 13.772312904940918,
+      "peak_gpu_memory_bytes": 2251638784,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_43_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "uniform",
+      "best_epoch": 76,
+      "epochs_run": 106,
+      "val_accuracy": 0.8245973587036133,
+      "val_macro_f1": 0.719203300636887,
+      "val_ce": 0.6674184799194336,
+      "training_time_sec": 3.8154586099553853,
+      "peak_gpu_memory_bytes": 697389056,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_43_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "extent",
+      "best_epoch": 95,
+      "epochs_run": 125,
+      "val_accuracy": 0.8207906484603882,
+      "val_macro_f1": 0.7241776293594333,
+      "val_ce": 0.7199355363845825,
+      "training_time_sec": 13.790982685983181,
+      "peak_gpu_memory_bytes": 2022760448,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_44_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "multi_basis",
+      "best_epoch": 116,
+      "epochs_run": 146,
+      "val_accuracy": 0.8234260678291321,
+      "val_macro_f1": 0.7356492993372107,
+      "val_ce": 0.7890496253967285,
+      "training_time_sec": 23.149953850079328,
+      "peak_gpu_memory_bytes": 2861747200,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_44_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "semantic",
+      "best_epoch": 78,
+      "epochs_run": 108,
+      "val_accuracy": 0.7841874361038208,
+      "val_macro_f1": 0.6872762425233503,
+      "val_ce": 0.8473798036575317,
+      "training_time_sec": 2.767741597024724,
+      "peak_gpu_memory_bytes": 396764160,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_44_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "single_basis",
+      "best_epoch": 98,
+      "epochs_run": 128,
+      "val_accuracy": 0.8228404521942139,
+      "val_macro_f1": 0.732510326706098,
+      "val_ce": 0.7396948933601379,
+      "training_time_sec": 16.257127532968298,
+      "peak_gpu_memory_bytes": 2251638784,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_44_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "uniform",
+      "best_epoch": 98,
+      "epochs_run": 128,
+      "val_accuracy": 0.8237189054489136,
+      "val_macro_f1": 0.738813684015609,
+      "val_ce": 0.7335636019706726,
+      "training_time_sec": 4.559413396986201,
+      "peak_gpu_memory_bytes": 697389056,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Grocery/seed_44_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "extent",
+      "best_epoch": 100,
+      "epochs_run": 130,
+      "val_accuracy": 0.5527894496917725,
+      "val_macro_f1": 0.45495041430735483,
+      "val_ce": 1.521531105041504,
+      "training_time_sec": 15.59333430416882,
+      "peak_gpu_memory_bytes": 2222742528,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_42_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "multi_basis",
+      "best_epoch": 69,
+      "epochs_run": 99,
+      "val_accuracy": 0.5530893802642822,
+      "val_macro_f1": 0.44803318332434117,
+      "val_ce": 1.3886398077011108,
+      "training_time_sec": 17.12418072205037,
+      "peak_gpu_memory_bytes": 3259153920,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_42_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "semantic",
+      "best_epoch": 67,
+      "epochs_run": 97,
+      "val_accuracy": 0.5197960138320923,
+      "val_macro_f1": 0.3750578862376417,
+      "val_ce": 1.5175951719284058,
+      "training_time_sec": 3.2533574369736016,
+      "peak_gpu_memory_bytes": 388792320,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_42_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "single_basis",
+      "best_epoch": 87,
+      "epochs_run": 117,
+      "val_accuracy": 0.5545890927314758,
+      "val_macro_f1": 0.44257985095448155,
+      "val_ce": 1.4531129598617554,
+      "training_time_sec": 15.987061453983188,
+      "peak_gpu_memory_bytes": 2495087616,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_42_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "uniform",
+      "best_epoch": 74,
+      "epochs_run": 104,
+      "val_accuracy": 0.5557888150215149,
+      "val_macro_f1": 0.4521737650064753,
+      "val_ce": 1.3953957557678223,
+      "training_time_sec": 3.6127884350717068,
+      "peak_gpu_memory_bytes": 728837120,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_42_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "extent",
+      "best_epoch": 68,
+      "epochs_run": 98,
+      "val_accuracy": 0.5515896677970886,
+      "val_macro_f1": 0.4279014484204109,
+      "val_ce": 1.3886052370071411,
+      "training_time_sec": 8.948852891102433,
+      "peak_gpu_memory_bytes": 2222742528,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_43_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "multi_basis",
+      "best_epoch": 51,
+      "epochs_run": 81,
+      "val_accuracy": 0.5521895289421082,
+      "val_macro_f1": 0.41833082861669924,
+      "val_ce": 1.3652921915054321,
+      "training_time_sec": 14.000929673900828,
+      "peak_gpu_memory_bytes": 3259153920,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_43_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "semantic",
+      "best_epoch": 42,
+      "epochs_run": 72,
+      "val_accuracy": 0.5242951512336731,
+      "val_macro_f1": 0.3397116612310529,
+      "val_ce": 1.4822263717651367,
+      "training_time_sec": 0.9483781270682812,
+      "peak_gpu_memory_bytes": 389144576,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_43_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "single_basis",
+      "best_epoch": 77,
+      "epochs_run": 107,
+      "val_accuracy": 0.5524894595146179,
+      "val_macro_f1": 0.43839205156035393,
+      "val_ce": 1.4084619283676147,
+      "training_time_sec": 14.831478676991537,
+      "peak_gpu_memory_bytes": 2495087616,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_43_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "uniform",
+      "best_epoch": 68,
+      "epochs_run": 98,
+      "val_accuracy": 0.5494900941848755,
+      "val_macro_f1": 0.453863344761404,
+      "val_ce": 1.4049088954925537,
+      "training_time_sec": 1.9893805300816894,
+      "peak_gpu_memory_bytes": 728837120,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_43_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "extent",
+      "best_epoch": 75,
+      "epochs_run": 105,
+      "val_accuracy": 0.5551889538764954,
+      "val_macro_f1": 0.4676233311854169,
+      "val_ce": 1.3958808183670044,
+      "training_time_sec": 12.439706047996879,
+      "peak_gpu_memory_bytes": 2222742528,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_44_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "multi_basis",
+      "best_epoch": 71,
+      "epochs_run": 101,
+      "val_accuracy": 0.5563886761665344,
+      "val_macro_f1": 0.456691370634831,
+      "val_ce": 1.3809081315994263,
+      "training_time_sec": 17.48457472003065,
+      "peak_gpu_memory_bytes": 3259153920,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_44_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "semantic",
+      "best_epoch": 67,
+      "epochs_run": 97,
+      "val_accuracy": 0.526694655418396,
+      "val_macro_f1": 0.4245946672718565,
+      "val_ce": 1.4806660413742065,
+      "training_time_sec": 2.490036363946274,
+      "peak_gpu_memory_bytes": 389144576,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_44_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "single_basis",
+      "best_epoch": 73,
+      "epochs_run": 103,
+      "val_accuracy": 0.5596880316734314,
+      "val_macro_f1": 0.47890805644297585,
+      "val_ce": 1.3796021938323975,
+      "training_time_sec": 14.285712398122996,
+      "peak_gpu_memory_bytes": 2495087616,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_44_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "uniform",
+      "best_epoch": 94,
+      "epochs_run": 124,
+      "val_accuracy": 0.5572885274887085,
+      "val_macro_f1": 0.4699757273415909,
+      "val_ce": 1.457565426826477,
+      "training_time_sec": 4.293063899036497,
+      "peak_gpu_memory_bytes": 728837120,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/Movies/seed_44_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "extent",
+      "best_epoch": 171,
+      "epochs_run": 201,
+      "val_accuracy": 0.8737854361534119,
+      "val_macro_f1": 0.6870874438605258,
+      "val_ce": 0.4261799454689026,
+      "training_time_sec": 58.86176196485758,
+      "peak_gpu_memory_bytes": 6508100096,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_42_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "multi_basis",
+      "best_epoch": 165,
+      "epochs_run": 195,
+      "val_accuracy": 0.8731717467308044,
+      "val_macro_f1": 0.6864900050819777,
+      "val_ce": 0.422941654920578,
+      "training_time_sec": 87.23989139404148,
+      "peak_gpu_memory_bytes": 8778273792,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_42_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "semantic",
+      "best_epoch": 157,
+      "epochs_run": 187,
+      "val_accuracy": 0.8690804839134216,
+      "val_macro_f1": 0.6665519285802997,
+      "val_ce": 0.4222635328769684,
+      "training_time_sec": 13.631037033861503,
+      "peak_gpu_memory_bytes": 1933582336,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_42_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "single_basis",
+      "best_epoch": 123,
+      "epochs_run": 153,
+      "val_accuracy": 0.871842086315155,
+      "val_macro_f1": 0.6764249994485362,
+      "val_ce": 0.40511882305145264,
+      "training_time_sec": 55.874622555915266,
+      "peak_gpu_memory_bytes": 7124476416,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_42_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "uniform",
+      "best_epoch": 150,
+      "epochs_run": 180,
+      "val_accuracy": 0.8730694651603699,
+      "val_macro_f1": 0.6761287538732028,
+      "val_ce": 0.42029625177383423,
+      "training_time_sec": 12.813520627096295,
+      "peak_gpu_memory_bytes": 2802593792,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_42_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "extent",
+      "best_epoch": 166,
+      "epochs_run": 196,
+      "val_accuracy": 0.8751150965690613,
+      "val_macro_f1": 0.6824550973131668,
+      "val_ce": 0.41959771513938904,
+      "training_time_sec": 61.59476051386446,
+      "peak_gpu_memory_bytes": 6508100096,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_43_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "multi_basis",
+      "best_epoch": 162,
+      "epochs_run": 192,
+      "val_accuracy": 0.8757287859916687,
+      "val_macro_f1": 0.6932698033724093,
+      "val_ce": 0.4240051209926605,
+      "training_time_sec": 75.31154093611985,
+      "peak_gpu_memory_bytes": 8778273792,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_43_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "semantic",
+      "best_epoch": 147,
+      "epochs_run": 177,
+      "val_accuracy": 0.8708192706108093,
+      "val_macro_f1": 0.668454920123267,
+      "val_ce": 0.41794371604919434,
+      "training_time_sec": 12.923995234072208,
+      "peak_gpu_memory_bytes": 1933582336,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_43_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "single_basis",
+      "best_epoch": 144,
+      "epochs_run": 174,
+      "val_accuracy": 0.8746036887168884,
+      "val_macro_f1": 0.6872660754884284,
+      "val_ce": 0.4101490080356598,
+      "training_time_sec": 63.38059056084603,
+      "peak_gpu_memory_bytes": 7124476416,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_43_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "uniform",
+      "best_epoch": 157,
+      "epochs_run": 187,
+      "val_accuracy": 0.8741945624351501,
+      "val_macro_f1": 0.6954715883597848,
+      "val_ce": 0.41242676973342896,
+      "training_time_sec": 19.839092790149152,
+      "peak_gpu_memory_bytes": 2802593792,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_43_uniform.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "extent",
+      "best_epoch": 158,
+      "epochs_run": 188,
+      "val_accuracy": 0.8736831545829773,
+      "val_macro_f1": 0.690042849213393,
+      "val_ce": 0.41869524121284485,
+      "training_time_sec": 33.87339327507652,
+      "peak_gpu_memory_bytes": 6508030976,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_44_extent.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "multi_basis",
+      "best_epoch": 157,
+      "epochs_run": 187,
+      "val_accuracy": 0.8741945624351501,
+      "val_macro_f1": 0.6891347659257453,
+      "val_ce": 0.4154437184333801,
+      "training_time_sec": 47.93236411595717,
+      "peak_gpu_memory_bytes": 8778201088,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_44_multi_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "semantic",
+      "best_epoch": 120,
+      "epochs_run": 150,
+      "val_accuracy": 0.8681599497795105,
+      "val_macro_f1": 0.6667457858686365,
+      "val_ce": 0.4159858226776123,
+      "training_time_sec": 6.53409026702866,
+      "peak_gpu_memory_bytes": 1933857792,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_44_semantic.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "single_basis",
+      "best_epoch": 199,
+      "epochs_run": 229,
+      "val_accuracy": 0.8737854361534119,
+      "val_macro_f1": 0.6968567763777275,
+      "val_ce": 0.4731994569301605,
+      "training_time_sec": 47.67706798296422,
+      "peak_gpu_memory_bytes": 7124407296,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_44_single_basis.pt",
+      "status": "completed"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "uniform",
+      "best_epoch": 163,
+      "epochs_run": 193,
+      "val_accuracy": 0.8751150965690613,
+      "val_macro_f1": 0.688187361970409,
+      "val_ce": 0.41580894589424133,
+      "training_time_sec": 11.296881420072168,
+      "peak_gpu_memory_bytes": 2802456064,
+      "checkpoint": "outputs/m0_adaptive_propagation_screen/checkpoints/ele-fashion/seed_44_uniform.pt",
+      "status": "completed"
+    }
+  ],
+  "completed_run_count": 45,
+  "failed_runs": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "semantic",
+      "error": "IndexError('index 7 is out of bounds for dimension 0 with size 0')",
+      "timestamp_unix": 1790770219.1866753
+    }
+  ],
+  "failed_run_count": 1,
+  "retry_resolution": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "semantic",
+      "failed_attempt_error": "IndexError('index 7 is out of bounds for dimension 0 with size 0')",
+      "final_status": "completed",
+      "resolution": "Fixed the SEM empty-control diagnostic edge case and reran the resumable campaign."
+    }
+  ],
+  "implementation_deviations": [
+    "M0 uses an isolated NC loader that retrieves only train_idx and val_idx split fields; test_idx is never attached to the data object.",
+    "CUDA forward/inference equivalence uses 1e-5 tolerance after observed CUDA index_add roundoff of 1.43e-6; CPU chunk equivalence is checked at 1e-6."
+  ],
+  "smoke": {
+    "status": "smoke_passed",
+    "dataset": "Movies",
+    "seed": 42,
+    "variants": [
+      {
+        "variant": "semantic",
+        "forward_shape": [
+          16672,
+          128
+        ],
+        "gradients": {
+          "gate": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "correction": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis_head": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          }
+        },
+        "inference_forward_max_abs": 0.0,
+        "parameter_counts": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 0,
+          "default_transform": 0,
+          "gate_and_correction_heads": 0,
+          "correction_basis": 0,
+          "common_params_abc": 625024,
+          "variant_specific_params": 0,
+          "model_total": 625024
+        },
+        "peak_gpu_memory_bytes": 389848064
+      },
+      {
+        "variant": "uniform",
+        "forward_shape": [
+          16672,
+          128
+        ],
+        "gradients": {
+          "gate": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "correction": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis_head": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          }
+        },
+        "inference_forward_max_abs": 1.6689300537109375e-06,
+        "parameter_counts": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 0,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 0,
+          "correction_basis": 0,
+          "common_params_abc": 657792,
+          "variant_specific_params": 0,
+          "model_total": 657792
+        },
+        "peak_gpu_memory_bytes": 731710464
+      },
+      {
+        "variant": "extent",
+        "forward_shape": [
+          16672,
+          128
+        ],
+        "gradients": {
+          "gate": {
+            "finite": true,
+            "norm": 0.05513777211308479,
+            "parameter_tensors_with_grad": 4
+          },
+          "correction": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis_head": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          }
+        },
+        "inference_forward_max_abs": 1.430511474609375e-06,
+        "parameter_counts": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 42544,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 130,
+          "correction_basis": 0,
+          "common_params_abc": 700336,
+          "variant_specific_params": 130,
+          "model_total": 700466
+        },
+        "peak_gpu_memory_bytes": 2225755136
+      },
+      {
+        "variant": "single_basis",
+        "forward_shape": [
+          16672,
+          128
+        ],
+        "gradients": {
+          "gate": {
+            "finite": true,
+            "norm": 0.05538409203290939,
+            "parameter_tensors_with_grad": 4
+          },
+          "correction": {
+            "finite": true,
+            "norm": 0.004652891308069229,
+            "parameter_tensors_with_grad": 4
+          },
+          "basis_head": {
+            "finite": true,
+            "norm": 0.0,
+            "parameter_tensors_with_grad": 0
+          },
+          "basis": {
+            "finite": true,
+            "norm": 0.0598151721060276,
+            "parameter_tensors_with_grad": 2
+          }
+        },
+        "inference_forward_max_abs": 1.430511474609375e-06,
+        "parameter_counts": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 42544,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 260,
+          "correction_basis": 16384,
+          "common_params_abc": 700336,
+          "variant_specific_params": 16644,
+          "model_total": 716980
+        },
+        "peak_gpu_memory_bytes": 2497114112
+      },
+      {
+        "variant": "multi_basis",
+        "forward_shape": [
+          16672,
+          128
+        ],
+        "gradients": {
+          "gate": {
+            "finite": true,
+            "norm": 0.05510776862502098,
+            "parameter_tensors_with_grad": 4
+          },
+          "correction": {
+            "finite": true,
+            "norm": 0.0007329735672101378,
+            "parameter_tensors_with_grad": 4
+          },
+          "basis_head": {
+            "finite": true,
+            "norm": 0.0008415235206484795,
+            "parameter_tensors_with_grad": 4
+          },
+          "basis": {
+            "finite": true,
+            "norm": 0.013449875637888908,
+            "parameter_tensors_with_grad": 2
+          }
+        },
+        "inference_forward_max_abs": 1.430511474609375e-06,
+        "parameter_counts": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 42544,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 780,
+          "correction_basis": 16384,
+          "common_params_abc": 700336,
+          "variant_specific_params": 17164,
+          "model_total": 717500
+        },
+        "peak_gpu_memory_bytes": 3257530880
+      }
+    ],
+    "common_initialization_audit": {
+      "dataset": "Movies",
+      "seed": 42,
+      "common_hashes": {
+        "extent": "f51e00faaed494fa4e4c8d06836344e19d78e883643bd02e5b555e92a07a0a95",
+        "single_basis": "f51e00faaed494fa4e4c8d06836344e19d78e883643bd02e5b555e92a07a0a95",
+        "multi_basis": "f51e00faaed494fa4e4c8d06836344e19d78e883643bd02e5b555e92a07a0a95"
+      },
+      "common_pairwise_equal": {
+        "extent__single_basis": true,
+        "extent__multi_basis": true,
+        "single_basis__multi_basis": true
+      },
+      "common_all_equal": true,
+      "basis_params_single": 16384,
+      "basis_params_multi": 16384,
+      "basis_params_equal": true,
+      "parameter_counts": {
+        "extent": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 42544,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 130,
+          "correction_basis": 0,
+          "common_params_abc": 700336,
+          "variant_specific_params": 130,
+          "model_total": 700466
+        },
+        "single_basis": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 42544,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 260,
+          "correction_basis": 16384,
+          "common_params_abc": 700336,
+          "variant_specific_params": 16644,
+          "model_total": 716980
+        },
+        "multi_basis": {
+          "semantic_backbone": 625024,
+          "relation_encoder": 42544,
+          "default_transform": 32768,
+          "gate_and_correction_heads": 780,
+          "correction_basis": 16384,
+          "common_params_abc": 700336,
+          "variant_specific_params": 17164,
+          "model_total": 717500
+        }
+      }
+    },
+    "initial_correction_default_ratio": {
+      "single_basis": {
+        "mean": 0.004283478483557701,
+        "median": 0.004339116159826517
+      },
+      "multi_basis": {
+        "mean": 0.0011603885795921087,
+        "median": 0.0011224574409425259
+      }
+    },
+    "bc_basis_parameter_match": true,
+    "fixed_degree_mean_check": 1.0,
+    "modality_slices": {
+      "text_dim": 768,
+      "visual_dim": 768,
+      "order": "Text then Visual"
+    },
+    "test_idx_loaded": false,
+    "test_labels_exposed": false,
+    "test_evaluation": false
+  }
+}
