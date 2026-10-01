@@ -1,0 +1,6 @@
+name: adaptive_prop_n1
+variant: smooth_only # smooth_only | static_strength | same_state_strength | cross_state_strength
+
+hidden_dim: 128
+dropout: 0.2
+edge_chunk_size: 100000
