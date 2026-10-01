@@ -1,0 +1,3551 @@
+{
+  "branch": "exp/l01_shared_slot_function_identifiability",
+  "source_branch": "exp/l0_relation_function_learnability_audit",
+  "source_sha": "9ce5f723fda0bf17264671a1e20e78f043727498",
+  "source_remote_verified": true,
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "device": "cuda:1",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "environment": {
+    "conda_env": "yhf_env",
+    "torch": "2.4.0+cu121",
+    "cuda_runtime": "12.1",
+    "python": "3.12"
+  },
+  "smoke": {
+    "status": "passed",
+    "dataset": "Movies",
+    "seed": 42,
+    "source_head": "exp/l0_relation_function_learnability_audit",
+    "source_sha": "9ce5f723fda0bf17264671a1e20e78f043727498",
+    "device": "cuda:1",
+    "synthetic_checks": {
+      "synthetic_context_max_abs_error": {
+        "smooth": 0.0,
+        "absdiff": 0.0,
+        "product": 0.0
+      },
+      "synthetic_fast_vs_brute_max_abs_error": {
+        "text": 4.440892098500626e-16,
+        "visual": 4.440892098500626e-16
+      },
+      "js_identical_max_abs": 0.0,
+      "head_split_audit": {
+        "split_mode": "stratified",
+        "split_seed": 17,
+        "original_train_count": 40,
+        "head_train_count": 32,
+        "head_select_count": 8,
+        "class_counts_original": {
+          "0": 10,
+          "1": 10,
+          "2": 10,
+          "3": 10
+        },
+        "classes_missing_head_train": [],
+        "classes_missing_head_select": [],
+        "head_train_is_subset_train_idx": true,
+        "head_select_is_subset_train_idx": true,
+        "validation_nodes_excluded": true,
+        "fallback_reason": null
+      },
+      "tuple_shuffle_audit": {
+        "eligible_groups": 1,
+        "changed_groups": 1,
+        "multiset_preserved": true
+      },
+      "self_loop_removed": true,
+      "original_degree_fixed": true
+    },
+    "h0_checkpoint_regression": {
+      "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_42_semantic_only.pt",
+      "checkpoint_seed": 42,
+      "checkpoint_best_epoch": 40,
+      "reproduced_metrics": {
+        "val_acc": 0.5119975805282593,
+        "val_macro_f1": 0.3756683990531885,
+        "val_ce": 1.4482221603393555
+      },
+      "checkpoint_metric_differences": {
+        "val_acc": 0.0,
+        "val_macro_f1": 0.0,
+        "val_ce": 0.0
+      },
+      "p0_csv_metric_differences": {
+        "val_acc": 0.0,
+        "val_macro_f1": 0.0,
+        "val_ce": -2.220446049250313e-16
+      },
+      "max_abs_metric_difference": 2.220446049250313e-16,
+      "all_parameters_frozen": true
+    },
+    "p13_edge_alignment": {
+      "rows": 31601,
+      "edge_order_match": true,
+      "src_dst_degree_match": true,
+      "self_loops": false
+    },
+    "shared_head": {
+      "dataset": "Movies",
+      "seed": 42,
+      "repeat": 0,
+      "best_epoch": 145,
+      "epochs_run": 175,
+      "head_select_mean_ce_9": 1.2138829231262207,
+      "head_select_smooth_smooth_ce": 1.1970739364624023,
+      "head_select_smooth_smooth_accuracy": 0.5922039151191711,
+      "head_select_smooth_smooth_macro_f1": 0.5387997080226762,
+      "head_select_mean_accuracy_9_descriptive": 0.5865956081284417,
+      "operator_combination_count": 9,
+      "feature_dim": 512,
+      "trainable_linear_count": 1,
+      "validation_labels_used_for_head": false,
+      "head_train_count": 8002,
+      "head_select_count": 2001,
+      "weight_norm_H0_T": 2.5434675216674805,
+      "weight_norm_H0_V": 3.3050291538238525,
+      "weight_norm_struct_T": 1.8318090438842773,
+      "weight_norm_struct_V": 1.858621597290039,
+      "fast_vs_brute_max_abs_errors": {
+        "absdiff_text_logit_max_abs": 1.9539925233402755e-14,
+        "product_text_logit_max_abs": 1.5987211554602254e-14,
+        "absdiff_visual_logit_max_abs": 2.1316282072803006e-14,
+        "product_visual_logit_max_abs": 1.9539925233402755e-14
+      },
+      "fast_brute_rtol": 1e-07,
+      "fast_brute_atol": 1e-08
+    },
+    "head_split_audit": {
+      "dataset": "Movies",
+      "seed": 42,
+      "repeat": 0,
+      "split_mode": "stratified",
+      "split_seed": 17725,
+      "original_train_count": 10003,
+      "head_train_count": 8002,
+      "head_select_count": 2001,
+      "class_counts_original": {
+        "0": 1066,
+        "1": 3294,
+        "2": 1090,
+        "3": 832,
+        "4": 71,
+        "5": 248,
+        "6": 366,
+        "7": 631,
+        "8": 89,
+        "9": 112,
+        "10": 807,
+        "11": 264,
+        "12": 67,
+        "13": 128,
+        "14": 151,
+        "15": 142,
+        "16": 113,
+        "17": 424,
+        "18": 68,
+        "19": 40
+      },
+      "classes_missing_head_train": [],
+      "classes_missing_head_select": [],
+      "head_train_is_subset_train_idx": true,
+      "head_select_is_subset_train_idx": true,
+      "validation_nodes_excluded": true,
+      "fallback_reason": null
+    },
+    "validation_labels_not_used_for_head_fit": true,
+    "utility_rows": 31601,
+    "utility_targets": [
+      "G_D_text",
+      "G_P_text",
+      "G_D_visual",
+      "G_P_visual"
+    ],
+    "probe_smoke": {
+      "evidence_fit_count": 4,
+      "strict_shuffle_fit_count": 1,
+      "ridge_fit_count": 1,
+      "direct_state_fit_count": 1,
+      "frozen_u_readout_fit_count": 1,
+      "fold_count": 1,
+      "split_audits": [
+        {
+          "fold": 0,
+          "outer_train_edges": 21068,
+          "outer_test_edges": 10533,
+          "inner_train_edges": 18983,
+          "inner_val_edges": 2085,
+          "outer_dst_disjoint": true,
+          "inner_dst_disjoint": true,
+          "fold_assignment_reused_from_L0": true,
+          "outer_test_utility_untouched_during_fit": true
+        }
+      ],
+      "frozen_checkpoint_alignment": {
+        "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Movies/seed_42_keep_edge.pt",
+        "checkpoint_frozen": true,
+        "aligned_ordered_src_dst_degree": true,
+        "representation_dimensions": {
+          "Q_PAIR_text": 64,
+          "Q_PAIR_visual": 64,
+          "R_SHARED_text": 64,
+          "R_SHARED_visual": 64,
+          "U_MODAL_text": 64,
+          "U_MODAL_visual": 64
+        },
+        "no_test_access": true
+      },
+      "all_required_fits_present": true
+    },
+    "no_test_labels_or_metrics_accessed": true,
+    "elapsed_seconds": 84.21163058280945
+  },
+  "campaign": {
+    "run_audits": [
+      {
+        "dataset": "Movies",
+        "seed": 42,
+        "p13_edge_alignment": {
+          "rows": 31601,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_42_semantic_only.pt",
+          "checkpoint_seed": 42,
+          "checkpoint_best_epoch": 40,
+          "reproduced_metrics": {
+            "val_acc": 0.5119975805282593,
+            "val_macro_f1": 0.3756683990531885,
+            "val_ce": 1.4482221603393555
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": -2.220446049250313e-16
+          },
+          "max_abs_metric_difference": 2.220446049250313e-16,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "Movies",
+            "seed": 42,
+            "repeat": 0,
+            "best_epoch": 145,
+            "epochs_run": 175,
+            "head_select_mean_ce_9": 1.2138828039169312,
+            "head_select_smooth_smooth_ce": 1.1970739364624023,
+            "head_select_smooth_smooth_accuracy": 0.5922039151191711,
+            "head_select_smooth_smooth_macro_f1": 0.5387997080226762,
+            "head_select_mean_accuracy_9_descriptive": 0.5865956081284417,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.5434675216674805,
+            "weight_norm_H0_V": 3.3050291538238525,
+            "weight_norm_struct_T": 1.8318090438842773,
+            "weight_norm_struct_V": 1.858621597290039,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 1.5987211554602254e-14,
+              "product_text_logit_max_abs": 1.5987211554602254e-14,
+              "absdiff_visual_logit_max_abs": 1.865174681370263e-14,
+              "product_visual_logit_max_abs": 2.3092638912203256e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Movies",
+            "seed": 42,
+            "repeat": 1,
+            "best_epoch": 134,
+            "epochs_run": 164,
+            "head_select_mean_ce_9": 1.218994140625,
+            "head_select_smooth_smooth_ce": 1.196471095085144,
+            "head_select_smooth_smooth_accuracy": 0.5947026610374451,
+            "head_select_smooth_smooth_macro_f1": 0.5147996043790071,
+            "head_select_mean_accuracy_9_descriptive": 0.5875395735104879,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.6322896480560303,
+            "weight_norm_H0_V": 3.2338733673095703,
+            "weight_norm_struct_T": 1.9116597175598145,
+            "weight_norm_struct_V": 1.8568676710128784,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 2.1316282072803006e-14,
+              "product_text_logit_max_abs": 2.4868995751603507e-14,
+              "absdiff_visual_logit_max_abs": 2.4868995751603507e-14,
+              "product_visual_logit_max_abs": 2.4868995751603507e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Movies",
+            "seed": 42,
+            "repeat": 2,
+            "best_epoch": 159,
+            "epochs_run": 189,
+            "head_select_mean_ce_9": 1.1986355781555176,
+            "head_select_smooth_smooth_ce": 1.1810352802276611,
+            "head_select_smooth_smooth_accuracy": 0.5892053842544556,
+            "head_select_smooth_smooth_macro_f1": 0.5359455175262647,
+            "head_select_mean_accuracy_9_descriptive": 0.5836526354153951,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.7067418098449707,
+            "weight_norm_H0_V": 3.443059206008911,
+            "weight_norm_struct_T": 1.859480857849121,
+            "weight_norm_struct_V": 1.8653773069381714,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 1.9539925233402755e-14,
+              "product_text_logit_max_abs": 1.9539925233402755e-14,
+              "absdiff_visual_logit_max_abs": 2.6645352591003757e-14,
+              "product_visual_logit_max_abs": 2.6645352591003757e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "Movies",
+            "seed": 42,
+            "repeat": 0,
+            "split_mode": "stratified",
+            "split_seed": 17725,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Movies",
+            "seed": 42,
+            "repeat": 1,
+            "split_mode": "stratified",
+            "split_seed": 17726,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Movies",
+            "seed": 42,
+            "repeat": 2,
+            "split_mode": "stratified",
+            "split_seed": 17727,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 21068,
+            "outer_test_edges": 10533,
+            "inner_train_edges": 18983,
+            "inner_val_edges": 2085,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 21067,
+            "outer_test_edges": 10534,
+            "inner_train_edges": 18998,
+            "inner_val_edges": 2069,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 21067,
+            "outer_test_edges": 10534,
+            "inner_train_edges": 18932,
+            "inner_val_edges": 2135,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Movies/seed_42_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 509.92597460746765,
+        "peak_cuda_memory_bytes": 632912384
+      },
+      {
+        "dataset": "Movies",
+        "seed": 43,
+        "p13_edge_alignment": {
+          "rows": 31265,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_43_semantic_only.pt",
+          "checkpoint_seed": 43,
+          "checkpoint_best_epoch": 36,
+          "reproduced_metrics": {
+            "val_acc": 0.5224955081939697,
+            "val_macro_f1": 0.393971251052799,
+            "val_ce": 1.4545625448226929
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "max_abs_metric_difference": 0.0,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "Movies",
+            "seed": 43,
+            "repeat": 0,
+            "best_epoch": 182,
+            "epochs_run": 212,
+            "head_select_mean_ce_9": 1.191202998161316,
+            "head_select_smooth_smooth_ce": 1.1792248487472534,
+            "head_select_smooth_smooth_accuracy": 0.6031984090805054,
+            "head_select_smooth_smooth_macro_f1": 0.5617325559490144,
+            "head_select_mean_accuracy_9_descriptive": 0.5943139725261264,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.8521978855133057,
+            "weight_norm_H0_V": 3.6408612728118896,
+            "weight_norm_struct_T": 2.0291805267333984,
+            "weight_norm_struct_V": 2.051257848739624,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 1.865174681370263e-14,
+              "product_text_logit_max_abs": 1.7763568394002505e-14,
+              "absdiff_visual_logit_max_abs": 2.042810365310288e-14,
+              "product_visual_logit_max_abs": 2.4868995751603507e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Movies",
+            "seed": 43,
+            "repeat": 1,
+            "best_epoch": 166,
+            "epochs_run": 196,
+            "head_select_mean_ce_9": 1.1942453384399414,
+            "head_select_smooth_smooth_ce": 1.1850885152816772,
+            "head_select_smooth_smooth_accuracy": 0.5837081670761108,
+            "head_select_smooth_smooth_macro_f1": 0.535456641142319,
+            "head_select_mean_accuracy_9_descriptive": 0.579154888788859,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.8717055320739746,
+            "weight_norm_H0_V": 3.6054556369781494,
+            "weight_norm_struct_T": 2.0698046684265137,
+            "weight_norm_struct_V": 2.0453081130981445,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 2.398081733190338e-14,
+              "product_text_logit_max_abs": 2.1316282072803006e-14,
+              "absdiff_visual_logit_max_abs": 2.6645352591003757e-14,
+              "product_visual_logit_max_abs": 2.842170943040401e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Movies",
+            "seed": 43,
+            "repeat": 2,
+            "best_epoch": 176,
+            "epochs_run": 206,
+            "head_select_mean_ce_9": 1.1885743141174316,
+            "head_select_smooth_smooth_ce": 1.1698360443115234,
+            "head_select_smooth_smooth_accuracy": 0.5947026610374451,
+            "head_select_smooth_smooth_macro_f1": 0.5439353965206298,
+            "head_select_mean_accuracy_9_descriptive": 0.5900938510894775,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.906665086746216,
+            "weight_norm_H0_V": 3.647996187210083,
+            "weight_norm_struct_T": 2.115887403488159,
+            "weight_norm_struct_V": 2.0657918453216553,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 1.9539925233402755e-14,
+              "product_text_logit_max_abs": 2.1316282072803006e-14,
+              "absdiff_visual_logit_max_abs": 2.842170943040401e-14,
+              "product_visual_logit_max_abs": 2.4868995751603507e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "Movies",
+            "seed": 43,
+            "repeat": 0,
+            "split_mode": "stratified",
+            "split_seed": 17742,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Movies",
+            "seed": 43,
+            "repeat": 1,
+            "split_mode": "stratified",
+            "split_seed": 17743,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Movies",
+            "seed": 43,
+            "repeat": 2,
+            "split_mode": "stratified",
+            "split_seed": 17744,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 20844,
+            "outer_test_edges": 10421,
+            "inner_train_edges": 18907,
+            "inner_val_edges": 1937,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 20843,
+            "outer_test_edges": 10422,
+            "inner_train_edges": 18590,
+            "inner_val_edges": 2253,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 20843,
+            "outer_test_edges": 10422,
+            "inner_train_edges": 18891,
+            "inner_val_edges": 1952,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Movies/seed_43_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 506.58840560913086,
+        "peak_cuda_memory_bytes": 632912384
+      },
+      {
+        "dataset": "Movies",
+        "seed": 44,
+        "p13_edge_alignment": {
+          "rows": 33039,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_44_semantic_only.pt",
+          "checkpoint_seed": 44,
+          "checkpoint_best_epoch": 38,
+          "reproduced_metrics": {
+            "val_acc": 0.5203958749771118,
+            "val_macro_f1": 0.39683918424287074,
+            "val_ce": 1.4512196779251099
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 5.551115123125783e-17,
+            "val_ce": -2.220446049250313e-16
+          },
+          "max_abs_metric_difference": 2.220446049250313e-16,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "Movies",
+            "seed": 44,
+            "repeat": 0,
+            "best_epoch": 162,
+            "epochs_run": 192,
+            "head_select_mean_ce_9": 1.193520188331604,
+            "head_select_smooth_smooth_ce": 1.1692227125167847,
+            "head_select_smooth_smooth_accuracy": 0.5957021713256836,
+            "head_select_smooth_smooth_macro_f1": 0.5114829489557257,
+            "head_select_mean_accuracy_9_descriptive": 0.5915375749270121,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.6542415618896484,
+            "weight_norm_H0_V": 3.4453718662261963,
+            "weight_norm_struct_T": 1.886826515197754,
+            "weight_norm_struct_V": 1.9130616188049316,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 2.042810365310288e-14,
+              "product_text_logit_max_abs": 1.9539925233402755e-14,
+              "absdiff_visual_logit_max_abs": 1.9539925233402755e-14,
+              "product_visual_logit_max_abs": 1.7763568394002505e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Movies",
+            "seed": 44,
+            "repeat": 1,
+            "best_epoch": 144,
+            "epochs_run": 174,
+            "head_select_mean_ce_9": 1.2295864820480347,
+            "head_select_smooth_smooth_ce": 1.2118278741836548,
+            "head_select_smooth_smooth_accuracy": 0.5797101855278015,
+            "head_select_smooth_smooth_macro_f1": 0.5145489772504555,
+            "head_select_mean_accuracy_9_descriptive": 0.5760453210936652,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.6055328845977783,
+            "weight_norm_H0_V": 3.2874252796173096,
+            "weight_norm_struct_T": 1.9400392770767212,
+            "weight_norm_struct_V": 1.9378148317337036,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 1.865174681370263e-14,
+              "product_text_logit_max_abs": 1.7763568394002505e-14,
+              "absdiff_visual_logit_max_abs": 2.1316282072803006e-14,
+              "product_visual_logit_max_abs": 2.1316282072803006e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Movies",
+            "seed": 44,
+            "repeat": 2,
+            "best_epoch": 159,
+            "epochs_run": 189,
+            "head_select_mean_ce_9": 1.1818270683288574,
+            "head_select_smooth_smooth_ce": 1.1641368865966797,
+            "head_select_smooth_smooth_accuracy": 0.6006996631622314,
+            "head_select_smooth_smooth_macro_f1": 0.5635668108008085,
+            "head_select_mean_accuracy_9_descriptive": 0.5892609357833862,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "weight_norm_H0_T": 2.6646008491516113,
+            "weight_norm_H0_V": 3.3670544624328613,
+            "weight_norm_struct_T": 1.896908164024353,
+            "weight_norm_struct_V": 1.9439200162887573,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 1.9539925233402755e-14,
+              "product_text_logit_max_abs": 1.7763568394002505e-14,
+              "absdiff_visual_logit_max_abs": 2.4868995751603507e-14,
+              "product_visual_logit_max_abs": 2.1316282072803006e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "Movies",
+            "seed": 44,
+            "repeat": 0,
+            "split_mode": "stratified",
+            "split_seed": 17759,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Movies",
+            "seed": 44,
+            "repeat": 1,
+            "split_mode": "stratified",
+            "split_seed": 17760,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Movies",
+            "seed": 44,
+            "repeat": 2,
+            "split_mode": "stratified",
+            "split_seed": 17761,
+            "original_train_count": 10003,
+            "head_train_count": 8002,
+            "head_select_count": 2001,
+            "class_counts_original": {
+              "0": 1066,
+              "1": 3294,
+              "2": 1090,
+              "3": 832,
+              "4": 71,
+              "5": 248,
+              "6": 366,
+              "7": 631,
+              "8": 89,
+              "9": 112,
+              "10": 807,
+              "11": 264,
+              "12": 67,
+              "13": 128,
+              "14": 151,
+              "15": 142,
+              "16": 113,
+              "17": 424,
+              "18": 68,
+              "19": 40
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 22026,
+            "outer_test_edges": 11013,
+            "inner_train_edges": 19868,
+            "inner_val_edges": 2158,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 22026,
+            "outer_test_edges": 11013,
+            "inner_train_edges": 19942,
+            "inner_val_edges": 2084,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 22026,
+            "outer_test_edges": 11013,
+            "inner_train_edges": 19573,
+            "inner_val_edges": 2453,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Movies/seed_44_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 529.1807677745819,
+        "peak_cuda_memory_bytes": 659308544
+      },
+      {
+        "dataset": "Grocery",
+        "seed": 42,
+        "p13_edge_alignment": {
+          "rows": 27524,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Grocery/seed_42_semantic_only.pt",
+          "checkpoint_seed": 42,
+          "checkpoint_best_epoch": 69,
+          "reproduced_metrics": {
+            "val_acc": 0.7756955027580261,
+            "val_macro_f1": 0.7089973382046428,
+            "val_ce": 0.8304881453514099
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "max_abs_metric_difference": 0.0,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "Grocery",
+            "seed": 42,
+            "repeat": 0,
+            "best_epoch": 171,
+            "epochs_run": 201,
+            "head_select_mean_ce_9": 0.403251975774765,
+            "head_select_smooth_smooth_ce": 0.3774063289165497,
+            "head_select_smooth_smooth_accuracy": 0.8926305770874023,
+            "head_select_smooth_smooth_macro_f1": 0.8485898193500873,
+            "head_select_mean_accuracy_9_descriptive": 0.8853641615973579,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.3958632946014404,
+            "weight_norm_H0_V": 3.3885626792907715,
+            "weight_norm_struct_T": 2.1003198623657227,
+            "weight_norm_struct_V": 2.0305168628692627,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.197442310920451e-14,
+              "product_text_logit_max_abs": 3.197442310920451e-14,
+              "absdiff_visual_logit_max_abs": 3.019806626980426e-14,
+              "product_visual_logit_max_abs": 3.730349362740526e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 42,
+            "repeat": 1,
+            "best_epoch": 165,
+            "epochs_run": 195,
+            "head_select_mean_ce_9": 0.4291646480560303,
+            "head_select_smooth_smooth_ce": 0.4071108400821686,
+            "head_select_smooth_smooth_accuracy": 0.8862860202789307,
+            "head_select_smooth_smooth_macro_f1": 0.8446197256690471,
+            "head_select_mean_accuracy_9_descriptive": 0.8781519532203674,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.335404396057129,
+            "weight_norm_H0_V": 3.3285470008850098,
+            "weight_norm_struct_T": 2.0210158824920654,
+            "weight_norm_struct_V": 2.01527738571167,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.375077994860476e-14,
+              "product_text_logit_max_abs": 3.197442310920451e-14,
+              "absdiff_visual_logit_max_abs": 3.019806626980426e-14,
+              "product_visual_logit_max_abs": 2.6645352591003757e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 42,
+            "repeat": 2,
+            "best_epoch": 191,
+            "epochs_run": 221,
+            "head_select_mean_ce_9": 0.38155460357666016,
+            "head_select_smooth_smooth_ce": 0.36336275935173035,
+            "head_select_smooth_smooth_accuracy": 0.8984870910644531,
+            "head_select_smooth_smooth_macro_f1": 0.8580594075422839,
+            "head_select_mean_accuracy_9_descriptive": 0.8953961531321207,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.5277280807495117,
+            "weight_norm_H0_V": 3.4788217544555664,
+            "weight_norm_struct_T": 2.151204824447632,
+            "weight_norm_struct_V": 2.103527069091797,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.552713678800501e-14,
+              "product_text_logit_max_abs": 3.019806626980426e-14,
+              "absdiff_visual_logit_max_abs": 4.085620730620576e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "Grocery",
+            "seed": 42,
+            "repeat": 0,
+            "split_mode": "stratified",
+            "split_seed": 18725,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 42,
+            "repeat": 1,
+            "split_mode": "stratified",
+            "split_seed": 18726,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 42,
+            "repeat": 2,
+            "split_mode": "stratified",
+            "split_seed": 18727,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 18349,
+            "outer_test_edges": 9175,
+            "inner_train_edges": 16668,
+            "inner_val_edges": 1681,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 18349,
+            "outer_test_edges": 9175,
+            "inner_train_edges": 16442,
+            "inner_val_edges": 1907,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 18350,
+            "outer_test_edges": 9174,
+            "inner_train_edges": 16381,
+            "inner_val_edges": 1969,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Grocery/seed_42_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 430.8915560245514,
+        "peak_cuda_memory_bytes": 659308544
+      },
+      {
+        "dataset": "Grocery",
+        "seed": 43,
+        "p13_edge_alignment": {
+          "rows": 28356,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Grocery/seed_43_semantic_only.pt",
+          "checkpoint_seed": 43,
+          "checkpoint_best_epoch": 51,
+          "reproduced_metrics": {
+            "val_acc": 0.7677891850471497,
+            "val_macro_f1": 0.6851397034154952,
+            "val_ce": 0.8126043677330017
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "max_abs_metric_difference": 0.0,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "Grocery",
+            "seed": 43,
+            "repeat": 0,
+            "best_epoch": 155,
+            "epochs_run": 185,
+            "head_select_mean_ce_9": 0.5104856491088867,
+            "head_select_smooth_smooth_ce": 0.485629141330719,
+            "head_select_smooth_smooth_accuracy": 0.8491947054862976,
+            "head_select_smooth_smooth_macro_f1": 0.7931015234100236,
+            "head_select_mean_accuracy_9_descriptive": 0.8430670566029019,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.095207691192627,
+            "weight_norm_H0_V": 3.043179750442505,
+            "weight_norm_struct_T": 2.074157476425171,
+            "weight_norm_struct_V": 1.9885519742965698,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.375077994860476e-14,
+              "product_text_logit_max_abs": 3.019806626980426e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.197442310920451e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 43,
+            "repeat": 1,
+            "best_epoch": 153,
+            "epochs_run": 183,
+            "head_select_mean_ce_9": 0.4920564889907837,
+            "head_select_smooth_smooth_ce": 0.46360325813293457,
+            "head_select_smooth_smooth_accuracy": 0.8574914336204529,
+            "head_select_smooth_smooth_macro_f1": 0.8051049480099712,
+            "head_select_mean_accuracy_9_descriptive": 0.847079853216807,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.080934762954712,
+            "weight_norm_H0_V": 3.0233278274536133,
+            "weight_norm_struct_T": 2.1224210262298584,
+            "weight_norm_struct_V": 1.9980546236038208,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.019806626980426e-14,
+              "product_text_logit_max_abs": 2.6645352591003757e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.197442310920451e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 43,
+            "repeat": 2,
+            "best_epoch": 162,
+            "epochs_run": 192,
+            "head_select_mean_ce_9": 0.4853504002094269,
+            "head_select_smooth_smooth_ce": 0.4641903340816498,
+            "head_select_smooth_smooth_accuracy": 0.8594436049461365,
+            "head_select_smooth_smooth_macro_f1": 0.8118332225130575,
+            "head_select_mean_accuracy_9_descriptive": 0.8525567783249749,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.1397597789764404,
+            "weight_norm_H0_V": 3.129826307296753,
+            "weight_norm_struct_T": 2.14072585105896,
+            "weight_norm_struct_V": 2.014580249786377,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.375077994860476e-14,
+              "product_text_logit_max_abs": 3.019806626980426e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.197442310920451e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "Grocery",
+            "seed": 43,
+            "repeat": 0,
+            "split_mode": "stratified",
+            "split_seed": 18742,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 43,
+            "repeat": 1,
+            "split_mode": "stratified",
+            "split_seed": 18743,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 43,
+            "repeat": 2,
+            "split_mode": "stratified",
+            "split_seed": 18744,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 18904,
+            "outer_test_edges": 9452,
+            "inner_train_edges": 16653,
+            "inner_val_edges": 2251,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 18904,
+            "outer_test_edges": 9452,
+            "inner_train_edges": 17349,
+            "inner_val_edges": 1555,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 18904,
+            "outer_test_edges": 9452,
+            "inner_train_edges": 17299,
+            "inner_val_edges": 1605,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Grocery/seed_43_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 437.6136531829834,
+        "peak_cuda_memory_bytes": 659308544
+      },
+      {
+        "dataset": "Grocery",
+        "seed": 44,
+        "p13_edge_alignment": {
+          "rows": 27398,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Grocery/seed_44_semantic_only.pt",
+          "checkpoint_seed": 44,
+          "checkpoint_best_epoch": 75,
+          "reproduced_metrics": {
+            "val_acc": 0.7727672457695007,
+            "val_macro_f1": 0.6805076214739765,
+            "val_ce": 0.8362290859222412
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "max_abs_metric_difference": 0.0,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "Grocery",
+            "seed": 44,
+            "repeat": 0,
+            "best_epoch": 158,
+            "epochs_run": 188,
+            "head_select_mean_ce_9": 0.40816858410835266,
+            "head_select_smooth_smooth_ce": 0.3911817669868469,
+            "head_select_smooth_smooth_accuracy": 0.8926305770874023,
+            "head_select_smooth_smooth_macro_f1": 0.8386258143802292,
+            "head_select_mean_accuracy_9_descriptive": 0.8835746645927429,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.2875726222991943,
+            "weight_norm_H0_V": 3.3043928146362305,
+            "weight_norm_struct_T": 2.076364278793335,
+            "weight_norm_struct_V": 2.026409864425659,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.197442310920451e-14,
+              "product_text_logit_max_abs": 3.019806626980426e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.552713678800501e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 44,
+            "repeat": 1,
+            "best_epoch": 185,
+            "epochs_run": 215,
+            "head_select_mean_ce_9": 0.36032575368881226,
+            "head_select_smooth_smooth_ce": 0.33539077639579773,
+            "head_select_smooth_smooth_accuracy": 0.9023914337158203,
+            "head_select_smooth_smooth_macro_f1": 0.8661324737050359,
+            "head_select_mean_accuracy_9_descriptive": 0.8904614912139045,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.4434595108032227,
+            "weight_norm_H0_V": 3.4516053199768066,
+            "weight_norm_struct_T": 2.174821138381958,
+            "weight_norm_struct_V": 2.0511226654052734,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.019806626980426e-14,
+              "product_text_logit_max_abs": 3.552713678800501e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 44,
+            "repeat": 2,
+            "best_epoch": 175,
+            "epochs_run": 205,
+            "head_select_mean_ce_9": 0.3874600827693939,
+            "head_select_smooth_smooth_ce": 0.3607795536518097,
+            "head_select_smooth_smooth_accuracy": 0.8887262344360352,
+            "head_select_smooth_smooth_macro_f1": 0.8476435346331114,
+            "head_select_mean_accuracy_9_descriptive": 0.8858522044287788,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "weight_norm_H0_T": 3.4083101749420166,
+            "weight_norm_H0_V": 3.382506847381592,
+            "weight_norm_struct_T": 2.1341283321380615,
+            "weight_norm_struct_V": 2.0264902114868164,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.019806626980426e-14,
+              "product_text_logit_max_abs": 3.019806626980426e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "Grocery",
+            "seed": 44,
+            "repeat": 0,
+            "split_mode": "stratified",
+            "split_seed": 18759,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 44,
+            "repeat": 1,
+            "split_mode": "stratified",
+            "split_seed": 18760,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "Grocery",
+            "seed": 44,
+            "repeat": 2,
+            "split_mode": "stratified",
+            "split_seed": 18761,
+            "original_train_count": 10244,
+            "head_train_count": 8195,
+            "head_select_count": 2049,
+            "class_counts_original": {
+              "0": 135,
+              "1": 962,
+              "2": 78,
+              "3": 431,
+              "4": 161,
+              "5": 503,
+              "6": 43,
+              "7": 710,
+              "8": 771,
+              "9": 679,
+              "10": 253,
+              "11": 270,
+              "12": 1450,
+              "13": 853,
+              "14": 526,
+              "15": 548,
+              "16": 643,
+              "17": 810,
+              "18": 140,
+              "19": 278
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 18265,
+            "outer_test_edges": 9133,
+            "inner_train_edges": 16472,
+            "inner_val_edges": 1793,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 18266,
+            "outer_test_edges": 9132,
+            "inner_train_edges": 16521,
+            "inner_val_edges": 1745,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 18265,
+            "outer_test_edges": 9133,
+            "inner_train_edges": 16469,
+            "inner_val_edges": 1796,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/Grocery/seed_44_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 425.18513083457947,
+        "peak_cuda_memory_bytes": 659308544
+      },
+      {
+        "dataset": "ele-fashion",
+        "seed": 42,
+        "p13_edge_alignment": {
+          "rows": 40181,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/ele-fashion/seed_42_semantic_only.pt",
+          "checkpoint_seed": 42,
+          "checkpoint_best_epoch": 136,
+          "reproduced_metrics": {
+            "val_acc": 0.8647847175598145,
+            "val_macro_f1": 0.6623624562672247,
+            "val_ce": 0.42041149735450745
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 5.551115123125783e-17
+          },
+          "max_abs_metric_difference": 5.551115123125783e-17,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "ele-fashion",
+            "seed": 42,
+            "repeat": 0,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.35843342542648315,
+            "head_select_smooth_smooth_ce": 0.35488012433052063,
+            "head_select_smooth_smooth_accuracy": 0.8768325448036194,
+            "head_select_smooth_smooth_macro_f1": 0.7074146196950252,
+            "head_select_mean_accuracy_9_descriptive": 0.8766526182492574,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.560901165008545,
+            "weight_norm_H0_V": 2.17018985748291,
+            "weight_norm_struct_T": 1.14041268825531,
+            "weight_norm_struct_V": 1.1086498498916626,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.019806626980426e-14,
+              "product_text_logit_max_abs": 3.552713678800501e-14,
+              "absdiff_visual_logit_max_abs": 3.552713678800501e-14,
+              "product_visual_logit_max_abs": 3.197442310920451e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 42,
+            "repeat": 1,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.3730410039424896,
+            "head_select_smooth_smooth_ce": 0.370294451713562,
+            "head_select_smooth_smooth_accuracy": 0.8729969263076782,
+            "head_select_smooth_smooth_macro_f1": 0.7117181049543788,
+            "head_select_mean_accuracy_9_descriptive": 0.8716615107324388,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.5204215049743652,
+            "weight_norm_H0_V": 2.115459680557251,
+            "weight_norm_struct_T": 1.132445216178894,
+            "weight_norm_struct_V": 1.1339733600616455,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.730349362740526e-14,
+              "product_text_logit_max_abs": 3.375077994860476e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 42,
+            "repeat": 2,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.37782350182533264,
+            "head_select_smooth_smooth_ce": 0.3765968978404999,
+            "head_select_smooth_smooth_accuracy": 0.869757890701294,
+            "head_select_smooth_smooth_macro_f1": 0.6878989714760784,
+            "head_select_mean_accuracy_9_descriptive": 0.8689528769916959,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.5325653553009033,
+            "weight_norm_H0_V": 2.0843465328216553,
+            "weight_norm_struct_T": 1.1753721237182617,
+            "weight_norm_struct_V": 1.1446632146835327,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.730349362740526e-14,
+              "product_text_logit_max_abs": 3.730349362740526e-14,
+              "absdiff_visual_logit_max_abs": 3.197442310920451e-14,
+              "product_visual_logit_max_abs": 3.019806626980426e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "ele-fashion",
+            "seed": 42,
+            "repeat": 0,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19725,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 42,
+            "repeat": 1,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19726,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 42,
+            "repeat": 2,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19727,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 26788,
+            "outer_test_edges": 13393,
+            "inner_train_edges": 24575,
+            "inner_val_edges": 2213,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 26787,
+            "outer_test_edges": 13394,
+            "inner_train_edges": 23895,
+            "inner_val_edges": 2892,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 26787,
+            "outer_test_edges": 13394,
+            "inner_train_edges": 24270,
+            "inner_val_edges": 2517,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/ele-fashion/seed_42_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 645.3895177841187,
+        "peak_cuda_memory_bytes": 1265676800
+      },
+      {
+        "dataset": "ele-fashion",
+        "seed": 43,
+        "p13_edge_alignment": {
+          "rows": 40181,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/ele-fashion/seed_43_semantic_only.pt",
+          "checkpoint_seed": 43,
+          "checkpoint_best_epoch": 118,
+          "reproduced_metrics": {
+            "val_acc": 0.8629436492919922,
+            "val_macro_f1": 0.6459887252174608,
+            "val_ce": 0.43397119641304016
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 5.551115123125783e-17
+          },
+          "max_abs_metric_difference": 5.551115123125783e-17,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "ele-fashion",
+            "seed": 43,
+            "repeat": 0,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.36432451009750366,
+            "head_select_smooth_smooth_ce": 0.3624406158924103,
+            "head_select_smooth_smooth_accuracy": 0.8749573230743408,
+            "head_select_smooth_smooth_macro_f1": 0.7007919170443794,
+            "head_select_mean_accuracy_9_descriptive": 0.8756392531924777,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.4680581092834473,
+            "weight_norm_H0_V": 2.1114182472229004,
+            "weight_norm_struct_T": 1.1128159761428833,
+            "weight_norm_struct_V": 1.0903687477111816,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.108624468950438e-14,
+              "product_text_logit_max_abs": 3.375077994860476e-14,
+              "absdiff_visual_logit_max_abs": 3.375077994860476e-14,
+              "product_visual_logit_max_abs": 3.730349362740526e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 43,
+            "repeat": 1,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.3639287054538727,
+            "head_select_smooth_smooth_ce": 0.3600170612335205,
+            "head_select_smooth_smooth_accuracy": 0.8742754459381104,
+            "head_select_smooth_smooth_macro_f1": 0.6931208924592767,
+            "head_select_mean_accuracy_9_descriptive": 0.8738019201490614,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.476212978363037,
+            "weight_norm_H0_V": 2.0802571773529053,
+            "weight_norm_struct_T": 1.1054586172103882,
+            "weight_norm_struct_V": 1.0780497789382935,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 2.842170943040401e-14,
+              "product_text_logit_max_abs": 3.197442310920451e-14,
+              "absdiff_visual_logit_max_abs": 3.019806626980426e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 43,
+            "repeat": 2,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.37742748856544495,
+            "head_select_smooth_smooth_ce": 0.3746938109397888,
+            "head_select_smooth_smooth_accuracy": 0.8711217045783997,
+            "head_select_smooth_smooth_macro_f1": 0.6960089548068239,
+            "head_select_mean_accuracy_9_descriptive": 0.8708565168910556,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.5372097492218018,
+            "weight_norm_H0_V": 2.115868330001831,
+            "weight_norm_struct_T": 1.1591768264770508,
+            "weight_norm_struct_V": 1.1561181545257568,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.552713678800501e-14,
+              "product_text_logit_max_abs": 2.842170943040401e-14,
+              "absdiff_visual_logit_max_abs": 3.552713678800501e-14,
+              "product_visual_logit_max_abs": 2.842170943040401e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "ele-fashion",
+            "seed": 43,
+            "repeat": 0,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19742,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 43,
+            "repeat": 1,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19743,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 43,
+            "repeat": 2,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19744,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 26788,
+            "outer_test_edges": 13393,
+            "inner_train_edges": 23766,
+            "inner_val_edges": 3022,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 26787,
+            "outer_test_edges": 13394,
+            "inner_train_edges": 23684,
+            "inner_val_edges": 3103,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 26787,
+            "outer_test_edges": 13394,
+            "inner_train_edges": 24028,
+            "inner_val_edges": 2759,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/ele-fashion/seed_43_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 648.7861521244049,
+        "peak_cuda_memory_bytes": 1597663232
+      },
+      {
+        "dataset": "ele-fashion",
+        "seed": 44,
+        "p13_edge_alignment": {
+          "rows": 40181,
+          "edge_order_match": true,
+          "src_dst_degree_match": true,
+          "self_loops": false
+        },
+        "h0_regression": {
+          "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/ele-fashion/seed_44_semantic_only.pt",
+          "checkpoint_seed": 44,
+          "checkpoint_best_epoch": 110,
+          "reproduced_metrics": {
+            "val_acc": 0.8642733097076416,
+            "val_macro_f1": 0.6489578208463586,
+            "val_ce": 0.4326471984386444
+          },
+          "checkpoint_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "p0_csv_metric_differences": {
+            "val_acc": 0.0,
+            "val_macro_f1": 0.0,
+            "val_ce": 0.0
+          },
+          "max_abs_metric_difference": 0.0,
+          "all_parameters_frozen": true
+        },
+        "head_repeats": [
+          {
+            "dataset": "ele-fashion",
+            "seed": 44,
+            "repeat": 0,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.3763945996761322,
+            "head_select_smooth_smooth_ce": 0.37265533208847046,
+            "head_select_smooth_smooth_accuracy": 0.876576840877533,
+            "head_select_smooth_smooth_macro_f1": 0.7041651643258687,
+            "head_select_mean_accuracy_9_descriptive": 0.8752509421772428,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.506906509399414,
+            "weight_norm_H0_V": 2.059635639190674,
+            "weight_norm_struct_T": 1.1399976015090942,
+            "weight_norm_struct_V": 1.1535472869873047,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 2.842170943040401e-14,
+              "product_text_logit_max_abs": 3.019806626980426e-14,
+              "absdiff_visual_logit_max_abs": 3.019806626980426e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 44,
+            "repeat": 1,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.3891439437866211,
+            "head_select_smooth_smooth_ce": 0.3845919072628021,
+            "head_select_smooth_smooth_accuracy": 0.8678826689720154,
+            "head_select_smooth_smooth_macro_f1": 0.7020923852001789,
+            "head_select_mean_accuracy_9_descriptive": 0.8663010663456387,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.48321533203125,
+            "weight_norm_H0_V": 2.0720176696777344,
+            "weight_norm_struct_T": 1.155399203300476,
+            "weight_norm_struct_V": 1.150452733039856,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.375077994860476e-14,
+              "product_text_logit_max_abs": 2.6645352591003757e-14,
+              "absdiff_visual_logit_max_abs": 3.019806626980426e-14,
+              "product_visual_logit_max_abs": 2.842170943040401e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 44,
+            "repeat": 2,
+            "best_epoch": 300,
+            "epochs_run": 300,
+            "head_select_mean_ce_9": 0.3864843547344208,
+            "head_select_smooth_smooth_ce": 0.3844006061553955,
+            "head_select_smooth_smooth_accuracy": 0.8683088421821594,
+            "head_select_smooth_smooth_macro_f1": 0.6936106296066845,
+            "head_select_mean_accuracy_9_descriptive": 0.8681099812189738,
+            "operator_combination_count": 9,
+            "feature_dim": 512,
+            "trainable_linear_count": 1,
+            "validation_labels_used_for_head": false,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "weight_norm_H0_T": 2.4249703884124756,
+            "weight_norm_H0_V": 2.008761405944824,
+            "weight_norm_struct_T": 1.1539125442504883,
+            "weight_norm_struct_V": 1.1453604698181152,
+            "fast_vs_brute_max_abs_errors": {
+              "absdiff_text_logit_max_abs": 3.375077994860476e-14,
+              "product_text_logit_max_abs": 2.842170943040401e-14,
+              "absdiff_visual_logit_max_abs": 3.019806626980426e-14,
+              "product_visual_logit_max_abs": 3.375077994860476e-14
+            },
+            "fast_brute_rtol": 1e-07,
+            "fast_brute_atol": 1e-08
+          }
+        ],
+        "head_split_audits": [
+          {
+            "dataset": "ele-fashion",
+            "seed": 44,
+            "repeat": 0,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19759,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 44,
+            "repeat": 1,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19760,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          },
+          {
+            "dataset": "ele-fashion",
+            "seed": 44,
+            "repeat": 2,
+            "split_mode": "deterministic_unstratified_fallback",
+            "split_seed": 19761,
+            "original_train_count": 58659,
+            "head_train_count": 46927,
+            "head_select_count": 11732,
+            "class_counts_original": {
+              "0": 12738,
+              "1": 5369,
+              "2": 16206,
+              "3": 308,
+              "4": 1814,
+              "6": 12295,
+              "7": 520,
+              "8": 3323,
+              "9": 1346,
+              "10": 2622,
+              "11": 2118
+            },
+            "classes_missing_head_train": [],
+            "classes_missing_head_select": [],
+            "head_train_is_subset_train_idx": true,
+            "head_select_is_subset_train_idx": true,
+            "validation_nodes_excluded": true
+          }
+        ],
+        "probe_folds": [
+          {
+            "fold": 0,
+            "outer_train_edges": 26787,
+            "outer_test_edges": 13394,
+            "inner_train_edges": 24351,
+            "inner_val_edges": 2436,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 1,
+            "outer_train_edges": 26788,
+            "outer_test_edges": 13393,
+            "inner_train_edges": 23428,
+            "inner_val_edges": 3360,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          },
+          {
+            "fold": 2,
+            "outer_train_edges": 26787,
+            "outer_test_edges": 13394,
+            "inner_train_edges": 23818,
+            "inner_val_edges": 2969,
+            "outer_dst_disjoint": true,
+            "inner_dst_disjoint": true,
+            "fold_assignment_reused_from_L0": true,
+            "outer_test_utility_untouched_during_fit": true
+          }
+        ],
+        "frozen_checkpoint_alignment": {
+          "checkpoint": "outputs/e01_function_provenance_preservation/checkpoints/ele-fashion/seed_44_keep_edge.pt",
+          "checkpoint_frozen": true,
+          "aligned_ordered_src_dst_degree": true,
+          "representation_dimensions": {
+            "Q_PAIR_text": 64,
+            "Q_PAIR_visual": 64,
+            "R_SHARED_text": 64,
+            "R_SHARED_visual": 64,
+            "U_MODAL_text": 64,
+            "U_MODAL_visual": 64
+          },
+          "no_test_access": true
+        },
+        "elapsed_seconds": 647.6684279441833,
+        "peak_cuda_memory_bytes": 1597663232
+      }
+    ],
+    "fold_audits": [
+      {
+        "fold": 0,
+        "outer_train_edges": 21068,
+        "outer_test_edges": 10533,
+        "inner_train_edges": 18983,
+        "inner_val_edges": 2085,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 21067,
+        "outer_test_edges": 10534,
+        "inner_train_edges": 18998,
+        "inner_val_edges": 2069,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 21067,
+        "outer_test_edges": 10534,
+        "inner_train_edges": 18932,
+        "inner_val_edges": 2135,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 20844,
+        "outer_test_edges": 10421,
+        "inner_train_edges": 18907,
+        "inner_val_edges": 1937,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 20843,
+        "outer_test_edges": 10422,
+        "inner_train_edges": 18590,
+        "inner_val_edges": 2253,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 20843,
+        "outer_test_edges": 10422,
+        "inner_train_edges": 18891,
+        "inner_val_edges": 1952,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 22026,
+        "outer_test_edges": 11013,
+        "inner_train_edges": 19868,
+        "inner_val_edges": 2158,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 22026,
+        "outer_test_edges": 11013,
+        "inner_train_edges": 19942,
+        "inner_val_edges": 2084,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 22026,
+        "outer_test_edges": 11013,
+        "inner_train_edges": 19573,
+        "inner_val_edges": 2453,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 18349,
+        "outer_test_edges": 9175,
+        "inner_train_edges": 16668,
+        "inner_val_edges": 1681,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 18349,
+        "outer_test_edges": 9175,
+        "inner_train_edges": 16442,
+        "inner_val_edges": 1907,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 18350,
+        "outer_test_edges": 9174,
+        "inner_train_edges": 16381,
+        "inner_val_edges": 1969,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 18904,
+        "outer_test_edges": 9452,
+        "inner_train_edges": 16653,
+        "inner_val_edges": 2251,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 18904,
+        "outer_test_edges": 9452,
+        "inner_train_edges": 17349,
+        "inner_val_edges": 1555,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 18904,
+        "outer_test_edges": 9452,
+        "inner_train_edges": 17299,
+        "inner_val_edges": 1605,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 18265,
+        "outer_test_edges": 9133,
+        "inner_train_edges": 16472,
+        "inner_val_edges": 1793,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 18266,
+        "outer_test_edges": 9132,
+        "inner_train_edges": 16521,
+        "inner_val_edges": 1745,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 18265,
+        "outer_test_edges": 9133,
+        "inner_train_edges": 16469,
+        "inner_val_edges": 1796,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 26788,
+        "outer_test_edges": 13393,
+        "inner_train_edges": 24575,
+        "inner_val_edges": 2213,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 26787,
+        "outer_test_edges": 13394,
+        "inner_train_edges": 23895,
+        "inner_val_edges": 2892,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 26787,
+        "outer_test_edges": 13394,
+        "inner_train_edges": 24270,
+        "inner_val_edges": 2517,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 26788,
+        "outer_test_edges": 13393,
+        "inner_train_edges": 23766,
+        "inner_val_edges": 3022,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 26787,
+        "outer_test_edges": 13394,
+        "inner_train_edges": 23684,
+        "inner_val_edges": 3103,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 26787,
+        "outer_test_edges": 13394,
+        "inner_train_edges": 24028,
+        "inner_val_edges": 2759,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 0,
+        "outer_train_edges": 26787,
+        "outer_test_edges": 13394,
+        "inner_train_edges": 24351,
+        "inner_val_edges": 2436,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 1,
+        "outer_train_edges": 26788,
+        "outer_test_edges": 13393,
+        "inner_train_edges": 23428,
+        "inner_val_edges": 3360,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      },
+      {
+        "fold": 2,
+        "outer_train_edges": 26787,
+        "outer_test_edges": 13394,
+        "inner_train_edges": 23818,
+        "inner_val_edges": 2969,
+        "outer_dst_disjoint": true,
+        "inner_dst_disjoint": true,
+        "fold_assignment_reused_from_L0": true,
+        "outer_test_utility_untouched_during_fit": true
+      }
+    ],
+    "elapsed_seconds": 4957.093933343887,
+    "fit_counts": {
+      "shared_heads": 27,
+      "evidence_mlp_real": 108,
+      "strict_shuffle": 81,
+      "evidence_mlp_total": 189,
+      "ridge": 81,
+      "direct_state": 27,
+      "frozen_readouts": 162
+    }
+  },
+  "fit_counts": {
+    "shared_heads": 27,
+    "evidence_mlp_real": 108,
+    "strict_shuffle_null": 81,
+    "evidence_mlp_including_null": 189,
+    "ridge_alpha_1": 81,
+    "direct_state": 27,
+    "frozen_q_r_u_readouts": 162
+  },
+  "data_tables": {
+    "direct_state_probe_summary.csv": {
+      "rows": 12
+    },
+    "evidence_probe_by_fold.csv": {
+      "rows": 432
+    },
+    "evidence_probe_summary.csv": {
+      "rows": 48
+    },
+    "frozen_state_readout_summary.csv": {
+      "rows": 36
+    },
+    "function_preference_summary.csv": {
+      "rows": 18
+    },
+    "head_stable_subset.csv": {
+      "rows": 1512
+    },
+    "high_effect_summary.csv": {
+      "rows": 1512
+    },
+    "modality_disagreement.csv": {
+      "rows": 18
+    },
+    "output_separability.csv": {
+      "rows": 108
+    },
+    "p13_vs_shared_slot.csv": {
+      "rows": 36
+    },
+    "ridge_probe_summary.csv": {
+      "rows": 36
+    },
+    "shared_head_performance.csv": {
+      "rows": 27
+    },
+    "shared_head_split_audit.csv": {
+      "rows": 27
+    },
+    "shuffled_null_summary.csv": {
+      "rows": 36
+    },
+    "substitution_heterogeneity.csv": {
+      "rows": 36
+    },
+    "substitution_utility_by_repeat_summary.csv": {
+      "rows": 299726
+    },
+    "utility_cross_seed_reliability.csv": {
+      "rows": 36
+    },
+    "utility_head_repeat_reliability.csv": {
+      "rows": 108
+    }
+  },
+  "correctness": {
+    "pytest": "105 passed; 2 dependency warnings (PyG deprecation; sklearn single-class metric notice)",
+    "frozen_h0_regression": true,
+    "operator_context_matches_p13": true,
+    "fast_vs_brute_tolerance": {
+      "rtol": 1e-07,
+      "atol": 1e-08
+    },
+    "head_train_validation_label_leakage": false,
+    "test_labels_or_metrics_accessed": false,
+    "inner_train_only_feature_scaler": true,
+    "inner_train_only_target_scaler": true,
+    "strict_shuffle_inner_train_and_validation": true,
+    "outer_test_tuple_shuffle": false,
+    "all_frozen_e01_representations_aligned": true,
+    "regression_test_files": [
+      "tests/test_l01_shared_slot_function_identifiability.py",
+      "tests/test_l0_relation_function_learnability.py",
+      "tests/test_e01_function_provenance.py",
+      "tests/test_p13_joint_readout_operator_probe.py",
+      "tests/test_p11_p12_operator_rescue.py",
+      "tests/test_p0p1_propagation_probe.py"
+    ],
+    "py_compile": true,
+    "figure_source_preflight": {
+      "ready": true,
+      "strict": false,
+      "counts": {
+        "PASS": 20,
+        "WARN": 1,
+        "FAIL": 0
+      }
+    }
+  },
+  "interpretation": {
+    "js_is_empirical_output_separability_only": true,
+    "utility_is_ground_truth_function_label": false,
+    "stochastic_latent_function_process_inferred": false,
+    "manenti_theorem_reproduced": false,
+    "final_outcome_label": "DATASET_DEPENDENT_MIXED",
+    "edgewise_router_supported": "NO",
+    "stochastic_latent_function_distribution_supported": "NO",
+    "output_identifiability": "PARTIAL: logits shift under substitutions, while JS/probability changes and prediction flips are usually small"
+  },
+  "figure_qa": {
+    "figures": [
+      "l01_edge_predictability.png",
+      "l01_output_separability.png",
+      "l01_p13_vs_shared_slot.png",
+      "l01_state_capacity.png",
+      "l01_utility_reliability.png",
+      "l01_within_target_predictability.png"
+    ],
+    "qa_directory": "/hdd1/DataInHere/YHF/model_research/outputs/l01_shared_slot_function_identifiability/figure_qa",
+    "backend": "python/matplotlib",
+    "exports_per_figure": [
+      "png",
+      "svg",
+      "pdf",
+      "tiff"
+    ],
+    "panel_alignment_tolerance_pt": 1.5,
+    "data_exclusion_audit": [
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_D_text",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_D_text",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_P_text",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_P_text",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_D_visual",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_D_visual",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_P_visual",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Movies",
+        "target": "G_P_visual",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_D_text",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_D_text",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_P_text",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_P_text",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_D_visual",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_D_visual",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_P_visual",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "Grocery",
+        "target": "G_P_visual",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_D_text",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_D_text",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_P_text",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_P_text",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_D_visual",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_D_visual",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_P_visual",
+        "source": "head_repeat_spearman",
+        "before": 9,
+        "after": 9,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      },
+      {
+        "figure": "l01_utility_reliability",
+        "dataset": "ele-fashion",
+        "target": "G_P_visual",
+        "source": "cross_seed_spearman",
+        "before": 3,
+        "after": 3,
+        "excluded": 0,
+        "reason": "undefined Spearman for constant utility vectors"
+      }
+    ],
+    "source_preflight": {
+      "ready": true,
+      "counts": {
+        "PASS": 20,
+        "WARN": 1,
+        "FAIL": 0
+      },
+      "reviewed_warning": "DATA-EXCLUSION: .dropna() used for undefined correlation values; explicit before/after audit shows 24 groups and 0 exclusions."
+    },
+    "panel_alignment": [
+      {
+        "figure": "l01_edge_predictability.pdf",
+        "fail": 0,
+        "warn": 0,
+        "comparisons": 2,
+        "exemptions": 0
+      },
+      {
+        "figure": "l01_output_separability.pdf",
+        "fail": 0,
+        "warn": 0,
+        "comparisons": 2,
+        "exemptions": 0
+      },
+      {
+        "figure": "l01_p13_vs_shared_slot.pdf",
+        "fail": 0,
+        "warn": 0,
+        "comparisons": 2,
+        "exemptions": 0
+      },
+      {
+        "figure": "l01_state_capacity.pdf",
+        "fail": 0,
+        "warn": 0,
+        "comparisons": 2,
+        "exemptions": 0
+      },
+      {
+        "figure": "l01_utility_reliability.pdf",
+        "fail": 0,
+        "warn": 0,
+        "comparisons": 2,
+        "exemptions": 0
+      },
+      {
+        "figure": "l01_within_target_predictability.pdf",
+        "fail": 0,
+        "warn": 0,
+        "comparisons": 2,
+        "exemptions": 0
+      }
+    ],
+    "pdf_text_audit": [
+      {
+        "figure": "l01_edge_predictability.pdf",
+        "auditable": true,
+        "minimum_required_pt": 5.0,
+        "minimum_found_pt": 5.5,
+        "below_minimum_count": 0,
+        "warnings": []
+      },
+      {
+        "figure": "l01_output_separability.pdf",
+        "auditable": true,
+        "minimum_required_pt": 5.0,
+        "minimum_found_pt": 6.0,
+        "below_minimum_count": 0,
+        "warnings": []
+      },
+      {
+        "figure": "l01_p13_vs_shared_slot.pdf",
+        "auditable": true,
+        "minimum_required_pt": 5.0,
+        "minimum_found_pt": 6.0,
+        "below_minimum_count": 0,
+        "warnings": []
+      },
+      {
+        "figure": "l01_state_capacity.pdf",
+        "auditable": true,
+        "minimum_required_pt": 5.0,
+        "minimum_found_pt": 5.5,
+        "below_minimum_count": 0,
+        "warnings": []
+      },
+      {
+        "figure": "l01_utility_reliability.pdf",
+        "auditable": true,
+        "minimum_required_pt": 5.0,
+        "minimum_found_pt": 6.0,
+        "below_minimum_count": 0,
+        "warnings": []
+      },
+      {
+        "figure": "l01_within_target_predictability.pdf",
+        "auditable": true,
+        "minimum_required_pt": 5.0,
+        "minimum_found_pt": 5.5,
+        "below_minimum_count": 0,
+        "warnings": []
+      }
+    ],
+    "collision_audit": [
+      {
+        "figure": "l01_edge_predictability.pdf",
+        "finding_count": 0,
+        "exit_code": 0
+      },
+      {
+        "figure": "l01_output_separability.pdf",
+        "finding_count": 0,
+        "exit_code": 0
+      },
+      {
+        "figure": "l01_p13_vs_shared_slot.pdf",
+        "finding_count": 0,
+        "exit_code": 0
+      },
+      {
+        "figure": "l01_state_capacity.pdf",
+        "finding_count": 0,
+        "exit_code": 0
+      },
+      {
+        "figure": "l01_utility_reliability.pdf",
+        "finding_count": 0,
+        "exit_code": 0
+      },
+      {
+        "figure": "l01_within_target_predictability.pdf",
+        "finding_count": 0,
+        "exit_code": 0
+      }
+    ],
+    "final_size_visual_review": {
+      "status": "passed",
+      "notes": "Reviewed all six final PNGs. Reliability legend is clear of panel headings; abbreviated x-axis model codes have a decoding note and do not collide with plotted values."
+    }
+  },
+  "ridge_numeric_note": "Fixed alpha=1 Ridge fits completed and returned finite values; sklearn emitted ill-conditioned-matrix warnings on high-dimensional correlated master features. No alpha tuning, retry, or fallback was applied.",
+  "protocol_deviations": [],
+  "retries": [],
+  "historical_artifacts_modified": false,
+  "elapsed_seconds": 4957.093933343887,
+  "final_report": "research/l01_shared_slot_function_identifiability/report.md"
+}
