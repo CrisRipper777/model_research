@@ -1,0 +1,22 @@
+name: provenance_executor_e01
+variant: keep_edge # premix_edge_control | keep_static | keep_target | keep_edge
+
+hidden_dim: 128
+dropout: 0.2
+relation_dim: 32
+relation_state_dim: 64
+modality_embed_dim: 8
+edge_chunk_size: 100000
+eps: 1.0e-8
+
+# E0 frozen function bank, calibration and competitive router.
+function_names: ["null", smooth, relational, cross_modal]
+router_hidden_dim: 64
+relational_hidden_layers: 1
+cross_modal_hidden_layers: 1
+expert_output_calibration: smooth_rms_stop_gradient_reference
+
+# Matched-capacity E0.1 composer.
+composer_input_dim: 384
+composer_hidden_dim: 128
+composer_final_weight_std: 1.0e-3

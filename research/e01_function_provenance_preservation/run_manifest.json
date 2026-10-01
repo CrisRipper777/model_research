@@ -1,0 +1,324 @@
+{
+  "experiment": "E0.1 — Function-Provenance Preservation Screen",
+  "date": "2026-10-01",
+  "status": "completed_pending_human_review",
+  "git": {
+    "source_branch": "exp/e0_structured_relation_function_executor",
+    "source_sha": "4905962df8c548c457b0d663ac7f473279f9f0e9",
+    "experiment_branch": "exp/e01_function_provenance_preservation",
+    "experiment_parent_sha": "4905962df8c548c457b0d663ac7f473279f9f0e9",
+    "merge_main": false,
+    "historical_e0_m0_m01_artifacts_modified": false
+  },
+  "campaign": {
+    "datasets": [
+      "Movies",
+      "Grocery",
+      "ele-fashion"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "variants": [
+      "premix_edge_control",
+      "keep_static",
+      "keep_target",
+      "keep_edge"
+    ],
+    "expected_formal_runs": 36,
+    "completed_formal_runs": 36,
+    "failed_formal_runs": 1,
+    "formal_retries": 1,
+    "device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "edge_chunk_size": 100000,
+    "max_epochs": 300,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 30,
+    "minimum_epoch": 30,
+    "gradient_clip_norm": 1.0,
+    "checkpoint_selection": "best validation accuracy",
+    "evaluate_test": false,
+    "test_indices_attached": false,
+    "test_labels_exposed": false,
+    "link_prediction": false,
+    "per_dataset_tuning": false,
+    "gpu_execution": "authorized execution context; sandbox shell cannot enumerate device nodes, but CUDA allocation verified true on cuda:0",
+    "formal_attempts_started": 37,
+    "training_time_seconds_sum": 1467.8762844302692,
+    "keep_edge_intervention_time_seconds_sum": 133.39789214194752,
+    "max_peak_gpu_memory_bytes": 19148442624,
+    "max_peak_gpu_memory_gib": 17.833,
+    "campaign_result_file": "outputs/e01_function_provenance_preservation/campaign_result.json",
+    "failed_attempt_duration_captured": false
+  },
+  "model": {
+    "frozen_common_implementation": "src/models/structured_executor_e0.py, reused by subclassing without modifying E0",
+    "frozen_components": [
+      "H0",
+      "P/q/r/u",
+      "physical directed non-self graph",
+      "LOO context",
+      "original incoming-degree denominator",
+      "Null/Smooth/Relational/Cross-Modal functions",
+      "Smooth RMS stop-gradient calibration",
+      "softmax router and smooth-default initialization",
+      "residual LayerNorms",
+      "four-way Text/Visual fusion"
+    ],
+    "composer": "per-modality Linear(384,128) -> GELU -> Linear(128,128); first layer Xavier uniform with zero bias; final layer Normal(0,1e-3) with zero bias; no dropout, attention, gate, or internal LayerNorm",
+    "premix_input": "repeat(Cmix/3, three active 128D blocks)",
+    "keep_input": "concat(CS,CR,CX)",
+    "residual_correction": "delta=Cmix+composer(input)",
+    "variant_routing": {
+      "premix_edge_control": "E0 EdgeMix",
+      "keep_static": "E0 StaticMix",
+      "keep_target": "E0 TargetMix",
+      "keep_edge": "E0 EdgeMix"
+    },
+    "common_initialization_order": "Construct all E0 modules first; initialize the two composers afterward.",
+    "parameter_fairness": "Every E0.1 variant owns both identical composer modules and the same model/head initialization; per-dataset-seed parameter summary is uniqueness-asserted."
+  },
+  "interventions": {
+    "checkpoint": "trained KeepEdge only; no retraining",
+    "provenance": [
+      "collapse to repeat(Cmix/3,3)",
+      "five non-identity channel permutations",
+      "composer off so delta=Cmix"
+    ],
+    "routing": [
+      "pi-shuffle-within-target repeats 1001-1005",
+      "pi-target-mean",
+      "pi-global-mean",
+      "modality-tied-pi",
+      "smooth-only with composer retained and input [CS,0,0]"
+    ],
+    "intervention_labels": "validation only"
+  },
+  "commands": {
+    "tests": "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_m0_adaptive_propagation.py tests/test_m01_adaptive_correction_attribution.py tests/test_e0_structured_executor.py tests/test_e01_function_provenance.py",
+    "smoke": "conda run --no-capture-output -n yhf_env python scripts/run_e01_function_provenance.py --smoke --device cuda:0",
+    "campaign": "conda run --no-capture-output -n yhf_env python scripts/run_e01_function_provenance.py --campaign --device cuda:0",
+    "analysis": "conda run --no-capture-output -n yhf_env python scripts/analyze_e01_function_provenance.py",
+    "calibration_audit": "conda run --no-capture-output -n yhf_env python scripts/run_e01_function_provenance.py --audit-calibration --device cuda:0",
+    "strict_figure_preflight": "python /home/m3/.codex/skills/nature-figure/scripts/validate_figure.py scripts/analyze_e01_function_provenance.py --backend python --strict --json"
+  },
+  "preformal_validation": {
+    "status": "passed",
+    "compile_check": true,
+    "test_command": "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_m0_adaptive_propagation.py tests/test_m01_adaptive_correction_attribution.py tests/test_e0_structured_executor.py tests/test_e01_function_provenance.py",
+    "result": "65 passed, 1 upstream PyG distributed deprecation warning",
+    "warning": "one upstream PyG distributed deprecation warning",
+    "post_implementation_test_result": "65 passed, 1 upstream PyG distributed deprecation warning, rerun on 2026-10-01 after calibration diagnostics and report/figure updates"
+  },
+  "smoke": {
+    "status": "passed",
+    "attempts": 4,
+    "failed_harness_attempts": 3,
+    "failed_attempts_were_model_or_protocol_deviations": false,
+    "dataset": "Movies",
+    "seed": 42,
+    "device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "variants": [
+      "premix_edge_control",
+      "keep_static",
+      "keep_target",
+      "keep_edge"
+    ],
+    "e0_relation_state_expert_router_regression": "all checks passed; q/r/u/router transforms compared on shared LOO context; P/LOO independently within tolerance",
+    "common_initialization_bitwise_equal": true,
+    "exact_parameter_match": true,
+    "initial_composer_to_base_ratio": [
+      {
+        "modality": "text",
+        "median": 0.005398761248216033,
+        "q90": 0.005566018912941217
+      },
+      {
+        "modality": "visual",
+        "median": 0.003798065707087517,
+        "q90": 0.0038812735816463827
+      }
+    ],
+    "channel_sum_identity_max_abs": 0.0,
+    "routing_identities": [
+      "KeepStatic global mean max abs 3.5762786865234375e-07",
+      "KeepTarget target mean max abs 1.6689300537109375e-06",
+      "Premix collapse output max abs 1.430511474609375e-06"
+    ],
+    "composer_off_and_smooth_only_identities": true,
+    "all_gradient_groups_finite_nonzero": true,
+    "chunk_equivalence_unit_test": "passed for all four variants",
+    "max_allocated_gpu_memory_gib": 6.691,
+    "test_access": false
+  },
+  "formal": {
+    "status": "completed",
+    "unique_runs_completed": 36,
+    "attempts_started": 37,
+    "failed_attempts": 1,
+    "retries": 1,
+    "failed_run": "Grocery/42/keep_target",
+    "failure_classification": "GPU target-mean numerical audit tolerance only. Target pi rows were identical; GPU reduction max abs error 3.04e-6, mean 5.79e-8, q99 8.34e-7. Tolerance was widened to 1e-5 for the GPU audit; CPU test remains at 1e-6. No architecture, model, or protocol change.",
+    "retry_status": "completed successfully",
+    "device": "cuda:0",
+    "evaluate_test": false,
+    "link_prediction": false,
+    "training_time_seconds_sum": 1467.8762844302692,
+    "keep_edge_intervention_time_seconds_sum": 133.39789214194752,
+    "max_peak_gpu_memory_bytes": 19148442624,
+    "raw_result": "outputs/e01_function_provenance_preservation/campaign_result.json",
+    "failed_attempt_duration_captured": false
+  },
+  "historical_references": [
+    "research/e0_structured_relation_function_executor/data/performance_by_run.csv: EdgeMix",
+    "research/m0_adaptive_propagation_screen/data/performance_by_run.csv: UNI"
+  ],
+  "deviations": [],
+  "artifacts": {
+    "performance_by_run": "data/performance_by_run.csv",
+    "performance_summary": "data/performance_summary.csv",
+    "paired_delta_summary": "data/paired_delta_summary.csv",
+    "parameter_summary": "data/parameter_summary.csv",
+    "common_initialization_audit": "data/common_initialization_audit.csv",
+    "e0_common_init_regression": "data/e0_common_init_regression.csv",
+    "node_channel_norms": "data/node_channel_norms.csv",
+    "node_channel_distinctness": "data/node_channel_distinctness.csv",
+    "channel_mass_summary": "data/channel_mass_summary.csv",
+    "composer_diagnostics": "data/composer_diagnostics.csv",
+    "intervention_by_run": "data/intervention_by_run.csv",
+    "intervention_summary": "data/intervention_summary.csv",
+    "figures": [
+      "figures/e01_performance.png",
+      "figures/e01_provenance_comparison.png",
+      "figures/e01_channel_mass.png",
+      "figures/e01_channel_distinctness.png",
+      "figures/e01_composer_usage.png",
+      "figures/e01_interventions.png"
+    ],
+    "large_runs_and_checkpoints": "outputs/e01_function_provenance_preservation/ (ignored)",
+    "expert_scale_diagnostics": "data/expert_scale_diagnostics.csv",
+    "figure_qa_summary": "figures/qa/figure_qa_summary.json",
+    "figure_collision_audits": "figures/qa/e01_*.collision.json",
+    "figure_font_audits": "figures/qa/e01_*.font.json",
+    "figure_alignment_audits": "figures/qa/e01_*.alignment.json",
+    "figure_formats": [
+      "PNG",
+      "PDF",
+      "SVG",
+      "600-dpi TIFF"
+    ],
+    "readme": "README.md",
+    "report": "report.md",
+    "paired_delta_by_run": "data/paired_delta_by_run.csv",
+    "figure_qa_source_preflight": "figures/qa/source_preflight.json"
+  },
+  "preformal_smoke_harness_fixes": [
+    "E0 q/r/u/router regression now reuses one shared computed P/LOO context when checking function transforms; separate CUDA index_add contexts are still checked independently within rtol=1e-6, atol=1e-7.",
+    "Premix collapse output identity uses the E0-style numerical output tolerance (2e-6); the composer input itself is identical by construction.",
+    "Smoke-only run JSONs/checkpoints are isolated under outputs/e01_function_provenance_preservation/smoke_runs so they cannot be mistaken for formal runs.",
+    "Smoke result summary now carries dataset/seed identity for the post-checkpoint intervention audit.",
+    "Formal KeepTarget target-mean identity audit allows 1e-5 max CUDA reduction error after Grocery/42 showed max 3.04e-6 with exactly identical target pi rows; CPU unit identity remains 1e-6."
+  ],
+  "calibration_audit": {
+    "status": "complete",
+    "completed_selected_checkpoints": 36,
+    "diagnostic_rows": 504,
+    "expected_rows": 504,
+    "device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "scope": "validation-target non-self edges; selected checkpoints; forward only",
+    "all_finite": true,
+    "clamping_applied": false,
+    "retraining": false,
+    "test_evaluation": false,
+    "link_prediction": false,
+    "peak_allocated_gpu_memory_bytes": 3110961664,
+    "maximum_validation_target_edge_q99_relational_or_cross_modal_calibration_scale": 14.984583473205559,
+    "raw_result": "outputs/e01_function_provenance_preservation/calibration_audit_result.json"
+  },
+  "figure_qa": {
+    "source_preflight": {
+      "ready": true,
+      "strict": true,
+      "counts": {
+        "PASS": 21,
+        "WARN": 0,
+        "FAIL": 0
+      }
+    },
+    "strict_alignment_tolerance_pt": 1.5,
+    "pdf_minimum_font_floor_pt": 5.0,
+    "minimum_found_font_pt": 5.3,
+    "figures": [
+      {
+        "figure": "e01_performance",
+        "alignment": "PASS",
+        "alignment_failures": 0,
+        "collision": "PASS",
+        "collision_failures": 0,
+        "collision_warnings": 0,
+        "minimum_font_pt": 5.5,
+        "below_font_floor": 0
+      },
+      {
+        "figure": "e01_provenance_comparison",
+        "alignment": "PASS",
+        "alignment_failures": 0,
+        "collision": "PASS",
+        "collision_failures": 0,
+        "collision_warnings": 0,
+        "minimum_font_pt": 5.5,
+        "below_font_floor": 0
+      },
+      {
+        "figure": "e01_channel_mass",
+        "alignment": "PASS",
+        "alignment_failures": 0,
+        "collision": "PASS",
+        "collision_failures": 0,
+        "collision_warnings": 0,
+        "minimum_font_pt": 5.5,
+        "below_font_floor": 0
+      },
+      {
+        "figure": "e01_channel_distinctness",
+        "alignment": "PASS",
+        "alignment_failures": 0,
+        "collision": "PASS",
+        "collision_failures": 0,
+        "collision_warnings": 0,
+        "minimum_font_pt": 5.3,
+        "below_font_floor": 0
+      },
+      {
+        "figure": "e01_composer_usage",
+        "alignment": "PASS",
+        "alignment_failures": 0,
+        "collision": "PASS",
+        "collision_failures": 0,
+        "collision_warnings": 0,
+        "minimum_font_pt": 5.4,
+        "below_font_floor": 0
+      },
+      {
+        "figure": "e01_interventions",
+        "alignment": "PASS",
+        "alignment_failures": 0,
+        "collision": "PASS",
+        "collision_failures": 0,
+        "collision_warnings": 0,
+        "minimum_font_pt": 5.4,
+        "below_font_floor": 0
+      }
+    ],
+    "visual_inspection": "completed for all six final PNGs",
+    "summary": "figures/qa/figure_qa_summary.json",
+    "note": "Initial figure QA caught crowded tick labels on provenance comparisons and interventions; compact labels were adjusted and all final-render audits passed."
+  }
+}

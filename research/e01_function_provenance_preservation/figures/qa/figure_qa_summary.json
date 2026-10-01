@@ -1,0 +1,77 @@
+{
+  "source_preflight": {
+    "ready": true,
+    "strict": true,
+    "counts": {
+      "PASS": 21,
+      "WARN": 0,
+      "FAIL": 0
+    }
+  },
+  "strict_alignment_pt": 1.5,
+  "pdf_font_floor_pt": 5.0,
+  "minimum_pdf_font_pt": 5.3,
+  "figures": [
+    {
+      "figure": "e01_performance",
+      "alignment": "PASS",
+      "alignment_failures": 0,
+      "collision": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "minimum_font_pt": 5.5,
+      "below_font_floor": 0
+    },
+    {
+      "figure": "e01_provenance_comparison",
+      "alignment": "PASS",
+      "alignment_failures": 0,
+      "collision": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "minimum_font_pt": 5.5,
+      "below_font_floor": 0
+    },
+    {
+      "figure": "e01_channel_mass",
+      "alignment": "PASS",
+      "alignment_failures": 0,
+      "collision": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "minimum_font_pt": 5.5,
+      "below_font_floor": 0
+    },
+    {
+      "figure": "e01_channel_distinctness",
+      "alignment": "PASS",
+      "alignment_failures": 0,
+      "collision": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "minimum_font_pt": 5.3,
+      "below_font_floor": 0
+    },
+    {
+      "figure": "e01_composer_usage",
+      "alignment": "PASS",
+      "alignment_failures": 0,
+      "collision": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "minimum_font_pt": 5.4,
+      "below_font_floor": 0
+    },
+    {
+      "figure": "e01_interventions",
+      "alignment": "PASS",
+      "alignment_failures": 0,
+      "collision": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "minimum_font_pt": 5.4,
+      "below_font_floor": 0
+    }
+  ],
+  "visual_inspection": "completed for all six final PNGs"
+}
