@@ -1,0 +1,2195 @@
+{
+  "status": "completed",
+  "branch": "exp/n0_recipient_state_function_context",
+  "source_branch": "exp/l01_shared_slot_function_identifiability",
+  "source_sha": "1ca0c98e4e989317b1485fe1c2d7c63daf1ff6fa",
+  "source_remote_verified": true,
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "backgrounds": [
+    "SS",
+    "SD",
+    "SP",
+    "DS",
+    "DD",
+    "DP",
+    "PS",
+    "PD",
+    "PP"
+  ],
+  "operators": [
+    "smooth",
+    "absdiff",
+    "product"
+  ],
+  "modalities": [
+    "text",
+    "visual"
+  ],
+  "head_repeats": [
+    0,
+    1,
+    2
+  ],
+  "partial_seeds": [
+    4101,
+    4102,
+    4103
+  ],
+  "partial_fraction": 0.25,
+  "device": "cuda:1",
+  "gpu_name": "NVIDIA GeForce RTX 3090",
+  "heads_reused": 27,
+  "heads_retrained_missing": 0,
+  "run_audits": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 31601,
+      "degree_ge_5_validation_edge_count": 28333,
+      "degree_ge_5_validation_target_count": 1706,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_42_semantic_only.pt",
+        "checkpoint_seed": 42,
+        "checkpoint_best_epoch": 40,
+        "reproduced_metrics": {
+          "val_acc": 0.5119975805282593,
+          "val_macro_f1": 0.3756683990531885,
+          "val_ce": 1.4482221603393555
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": -2.220446049250313e-16
+        },
+        "max_abs_metric_difference": 2.220446049250313e-16,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 31601,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 1.0347792080978024e-06,
+        "text_absdiff": 6.835907697677612e-07,
+        "text_product": 3.870328267652212e-06,
+        "visual_smooth": 9.057509839927036e-07,
+        "visual_absdiff": 1.2159048012883034e-06,
+        "visual_product": 1.968564213861157e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_42_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.2138828039169312,
+          "recomputed_head_select_mean_ce_9": 1.2138829231262207,
+          "absolute_ce_difference": 1.1920928955078125e-07,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_42_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.218994140625,
+          "recomputed_head_select_mean_ce_9": 1.218994140625,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_42_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.1986355781555176,
+          "recomputed_head_select_mean_ce_9": 1.1986356973648071,
+          "absolute_ce_difference": 1.1920928955078125e-07,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "repeat": 0,
+          "rows": 31601,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.5021115866431511e-07,
+            "G_P_text": 1.1614866129994184e-07,
+            "G_D_visual": 1.8740652247759004e-07,
+            "G_P_visual": 1.4417480626027768e-07
+          }
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "repeat": 1,
+          "rows": 31601,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.8573201865379474e-09,
+            "G_P_text": 2.28833961501973e-09,
+            "G_D_visual": 3.174983442821855e-09,
+            "G_P_visual": 2.591625664072339e-09
+          }
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "repeat": 2,
+          "rows": 31601,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.230551084641096e-09,
+            "G_P_text": 1.2549359190705545e-09,
+            "G_D_visual": 2.346456664387153e-09,
+            "G_P_visual": 2.557744710474097e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1706,
+          "eligible_edge_count": 28333,
+          "selected_edge_count": 6441,
+          "realized_fraction": 0.22733208625983836
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1706,
+          "eligible_edge_count": 28333,
+          "selected_edge_count": 6441,
+          "realized_fraction": 0.22733208625983836
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1706,
+          "eligible_edge_count": 28333,
+          "selected_edge_count": 6441,
+          "realized_fraction": 0.22733208625983836
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1706,
+          "eligible_edge_count": 28333,
+          "selected_edge_count": 6441,
+          "realized_fraction": 0.22733208625983836
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1706,
+          "eligible_edge_count": 28333,
+          "selected_edge_count": 6441,
+          "realized_fraction": 0.22733208625983836
+        },
+        {
+          "dataset": "Movies",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1706,
+          "eligible_edge_count": 28333,
+          "selected_edge_count": 6441,
+          "realized_fraction": 0.22733208625983836
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/Movies/seed_42_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/Movies/seed_42_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 84.72574591636658,
+      "peak_cuda_memory_bytes": 754352640
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 31265,
+      "degree_ge_5_validation_edge_count": 28140,
+      "degree_ge_5_validation_target_count": 1775,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_43_semantic_only.pt",
+        "checkpoint_seed": 43,
+        "checkpoint_best_epoch": 36,
+        "reproduced_metrics": {
+          "val_acc": 0.5224955081939697,
+          "val_macro_f1": 0.393971251052799,
+          "val_ce": 1.4545625448226929
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "max_abs_metric_difference": 0.0,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 31265,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 1.206431748723702e-06,
+        "text_absdiff": 8.327781029215942e-07,
+        "text_product": 6.3315132603491975e-06,
+        "visual_smooth": 1.1153781234174431e-06,
+        "visual_absdiff": 8.71605609464865e-07,
+        "visual_product": 2.263498700472155e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_43_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.191202998161316,
+          "recomputed_head_select_mean_ce_9": 1.191202998161316,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_43_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.1942453384399414,
+          "recomputed_head_select_mean_ce_9": 1.1942453384399414,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_43_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.1885743141174316,
+          "recomputed_head_select_mean_ce_9": 1.1885743141174316,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "repeat": 0,
+          "rows": 31265,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.7188032525039532e-09,
+            "G_P_text": 2.320988595760909e-09,
+            "G_D_visual": 3.473117626828781e-09,
+            "G_P_visual": 3.7924960949453634e-09
+          }
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "repeat": 1,
+          "rows": 31265,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.503385887475673e-09,
+            "G_P_text": 1.5711359296899374e-09,
+            "G_D_visual": 3.5644609486240597e-09,
+            "G_P_visual": 6.526715112809001e-09
+          }
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "repeat": 2,
+          "rows": 31265,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.1203045430517875e-09,
+            "G_P_text": 1.9128725088288223e-09,
+            "G_D_visual": 4.19658151284974e-09,
+            "G_P_visual": 3.2553439804905437e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1775,
+          "eligible_edge_count": 28140,
+          "selected_edge_count": 6358,
+          "realized_fraction": 0.22594171997157073
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1775,
+          "eligible_edge_count": 28140,
+          "selected_edge_count": 6358,
+          "realized_fraction": 0.22594171997157073
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1775,
+          "eligible_edge_count": 28140,
+          "selected_edge_count": 6358,
+          "realized_fraction": 0.22594171997157073
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1775,
+          "eligible_edge_count": 28140,
+          "selected_edge_count": 6358,
+          "realized_fraction": 0.22594171997157073
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1775,
+          "eligible_edge_count": 28140,
+          "selected_edge_count": 6358,
+          "realized_fraction": 0.22594171997157073
+        },
+        {
+          "dataset": "Movies",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1775,
+          "eligible_edge_count": 28140,
+          "selected_edge_count": 6358,
+          "realized_fraction": 0.22594171997157073
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/Movies/seed_43_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/Movies/seed_43_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 85.52453231811523,
+      "peak_cuda_memory_bytes": 746464768
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 33039,
+      "degree_ge_5_validation_edge_count": 29842,
+      "degree_ge_5_validation_target_count": 1739,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Movies/seed_44_semantic_only.pt",
+        "checkpoint_seed": 44,
+        "checkpoint_best_epoch": 38,
+        "reproduced_metrics": {
+          "val_acc": 0.5203958749771118,
+          "val_macro_f1": 0.39683918424287074,
+          "val_ce": 1.4512196779251099
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 5.551115123125783e-17,
+          "val_ce": -2.220446049250313e-16
+        },
+        "max_abs_metric_difference": 2.220446049250313e-16,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 33039,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 1.6155180992960538e-06,
+        "text_absdiff": 9.185300684499964e-07,
+        "text_product": 2.8305865349409487e-06,
+        "visual_smooth": 1.4251711739632356e-06,
+        "visual_absdiff": 1.443725711869348e-06,
+        "visual_product": 2.3671558917470747e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_44_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.193520188331604,
+          "recomputed_head_select_mean_ce_9": 1.193520188331604,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_44_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.229586482048035,
+          "recomputed_head_select_mean_ce_9": 1.2295864820480347,
+          "absolute_ce_difference": 2.220446049250313e-16,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Movies/seed_44_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8002,
+          "head_select_count": 2001,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 1.1818270683288574,
+          "recomputed_head_select_mean_ce_9": 1.1818270683288574,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "repeat": 0,
+          "rows": 33039,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.8359420372870972e-09,
+            "G_P_text": 1.8122494060968108e-09,
+            "G_D_visual": 2.9372967946805772e-09,
+            "G_P_visual": 4.322648794463646e-09
+          }
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "repeat": 1,
+          "rows": 33039,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.5264746550114339e-09,
+            "G_P_text": 1.4806177534021359e-09,
+            "G_D_visual": 2.121252426316722e-09,
+            "G_P_visual": 2.636488305451934e-09
+          }
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "repeat": 2,
+          "rows": 33039,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.7777724015122232e-09,
+            "G_P_text": 1.9657088595748107e-09,
+            "G_D_visual": 2.4411361265741505e-09,
+            "G_P_visual": 3.2682741235579016e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1739,
+          "eligible_edge_count": 29842,
+          "selected_edge_count": 6785,
+          "realized_fraction": 0.22736411768648213
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1739,
+          "eligible_edge_count": 29842,
+          "selected_edge_count": 6785,
+          "realized_fraction": 0.22736411768648213
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1739,
+          "eligible_edge_count": 29842,
+          "selected_edge_count": 6785,
+          "realized_fraction": 0.22736411768648213
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1739,
+          "eligible_edge_count": 29842,
+          "selected_edge_count": 6785,
+          "realized_fraction": 0.22736411768648213
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1739,
+          "eligible_edge_count": 29842,
+          "selected_edge_count": 6785,
+          "realized_fraction": 0.22736411768648213
+        },
+        {
+          "dataset": "Movies",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1739,
+          "eligible_edge_count": 29842,
+          "selected_edge_count": 6785,
+          "realized_fraction": 0.22736411768648213
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/Movies/seed_44_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/Movies/seed_44_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 87.82323789596558,
+      "peak_cuda_memory_bytes": 774264320
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 27524,
+      "degree_ge_5_validation_edge_count": 23575,
+      "degree_ge_5_validation_target_count": 1454,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Grocery/seed_42_semantic_only.pt",
+        "checkpoint_seed": 42,
+        "checkpoint_best_epoch": 69,
+        "reproduced_metrics": {
+          "val_acc": 0.7756955027580261,
+          "val_macro_f1": 0.7089973382046428,
+          "val_ce": 0.8304881453514099
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "max_abs_metric_difference": 0.0,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 27524,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 7.439172438061803e-07,
+        "text_absdiff": 1.4704698956258255e-06,
+        "text_product": 1.8782090305258237e-06,
+        "visual_smooth": 1.0115999571347345e-06,
+        "visual_absdiff": 1.662638452248899e-06,
+        "visual_product": 2.893038315576746e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_42_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.403251975774765,
+          "recomputed_head_select_mean_ce_9": 0.403251975774765,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_42_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.4291646480560303,
+          "recomputed_head_select_mean_ce_9": 0.4291646480560303,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_42_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3815546035766601,
+          "recomputed_head_select_mean_ce_9": 0.38155457377433777,
+          "absolute_ce_difference": 2.980232233218416e-08,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "repeat": 0,
+          "rows": 27524,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 9.029075265232223e-09,
+            "G_P_text": 5.224135846138012e-09,
+            "G_D_visual": 6.749317549292755e-09,
+            "G_P_visual": 5.493902111020077e-09
+          }
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "repeat": 1,
+          "rows": 27524,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 3.7980571604423474e-09,
+            "G_P_text": 4.3937127824911215e-09,
+            "G_D_visual": 5.386828316744641e-09,
+            "G_P_visual": 7.909831012398172e-09
+          }
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "repeat": 2,
+          "rows": 27524,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 8.720603794643011e-09,
+            "G_P_text": 5.778403283640543e-09,
+            "G_D_visual": 5.874533609562249e-09,
+            "G_P_visual": 3.888728200562852e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1454,
+          "eligible_edge_count": 23575,
+          "selected_edge_count": 5327,
+          "realized_fraction": 0.22595970307529162
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1454,
+          "eligible_edge_count": 23575,
+          "selected_edge_count": 5327,
+          "realized_fraction": 0.22595970307529162
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1454,
+          "eligible_edge_count": 23575,
+          "selected_edge_count": 5327,
+          "realized_fraction": 0.22595970307529162
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1454,
+          "eligible_edge_count": 23575,
+          "selected_edge_count": 5327,
+          "realized_fraction": 0.22595970307529162
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1454,
+          "eligible_edge_count": 23575,
+          "selected_edge_count": 5327,
+          "realized_fraction": 0.22595970307529162
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1454,
+          "eligible_edge_count": 23575,
+          "selected_edge_count": 5327,
+          "realized_fraction": 0.22595970307529162
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/Grocery/seed_42_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/Grocery/seed_42_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 69.42824959754944,
+      "peak_cuda_memory_bytes": 670616064
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 28356,
+      "degree_ge_5_validation_edge_count": 24532,
+      "degree_ge_5_validation_target_count": 1468,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Grocery/seed_43_semantic_only.pt",
+        "checkpoint_seed": 43,
+        "checkpoint_best_epoch": 51,
+        "reproduced_metrics": {
+          "val_acc": 0.7677891850471497,
+          "val_macro_f1": 0.6851397034154952,
+          "val_ce": 0.8126043677330017
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "max_abs_metric_difference": 0.0,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 28356,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 1.0541304438227428e-06,
+        "text_absdiff": 1.7195466965880257e-06,
+        "text_product": 2.411695627202448e-06,
+        "visual_smooth": 1.1725926105654594e-06,
+        "visual_absdiff": 1.5136268403104225e-06,
+        "visual_product": 2.8384308663476077e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_43_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.5104856491088867,
+          "recomputed_head_select_mean_ce_9": 0.5104856491088867,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_43_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.4920564889907837,
+          "recomputed_head_select_mean_ce_9": 0.4920564889907837,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_43_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.4853504002094269,
+          "recomputed_head_select_mean_ce_9": 0.4853504002094269,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "repeat": 0,
+          "rows": 28356,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.8587764377974167e-09,
+            "G_P_text": 3.0294424885335403e-09,
+            "G_D_visual": 3.426207262346992e-09,
+            "G_P_visual": 3.0475951519337574e-09
+          }
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "repeat": 1,
+          "rows": 28356,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 5.178002859818065e-09,
+            "G_P_text": 6.1870653045303925e-09,
+            "G_D_visual": 6.58598775515884e-09,
+            "G_P_visual": 3.041004115189594e-09
+          }
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "repeat": 2,
+          "rows": 28356,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 3.4116773295345126e-09,
+            "G_P_text": 4.151015309261652e-09,
+            "G_D_visual": 5.223609933491247e-09,
+            "G_P_visual": 3.874552359506289e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1468,
+          "eligible_edge_count": 24532,
+          "selected_edge_count": 5586,
+          "realized_fraction": 0.22770259253220285
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1468,
+          "eligible_edge_count": 24532,
+          "selected_edge_count": 5586,
+          "realized_fraction": 0.22770259253220285
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1468,
+          "eligible_edge_count": 24532,
+          "selected_edge_count": 5586,
+          "realized_fraction": 0.22770259253220285
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1468,
+          "eligible_edge_count": 24532,
+          "selected_edge_count": 5586,
+          "realized_fraction": 0.22770259253220285
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1468,
+          "eligible_edge_count": 24532,
+          "selected_edge_count": 5586,
+          "realized_fraction": 0.22770259253220285
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1468,
+          "eligible_edge_count": 24532,
+          "selected_edge_count": 5586,
+          "realized_fraction": 0.22770259253220285
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/Grocery/seed_43_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/Grocery/seed_43_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 71.42246079444885,
+      "peak_cuda_memory_bytes": 690851328
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 27398,
+      "degree_ge_5_validation_edge_count": 23533,
+      "degree_ge_5_validation_target_count": 1455,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/Grocery/seed_44_semantic_only.pt",
+        "checkpoint_seed": 44,
+        "checkpoint_best_epoch": 75,
+        "reproduced_metrics": {
+          "val_acc": 0.7727672457695007,
+          "val_macro_f1": 0.6805076214739765,
+          "val_ce": 0.8362290859222412
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "max_abs_metric_difference": 0.0,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 27398,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 9.027394383132048e-07,
+        "text_absdiff": 1.5775955732877378e-06,
+        "text_product": 2.4941232465991447e-06,
+        "visual_smooth": 9.074608853243404e-07,
+        "visual_absdiff": 1.651710934247319e-06,
+        "visual_product": 2.4652282224479904e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_44_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.4081685841083526,
+          "recomputed_head_select_mean_ce_9": 0.40816858410835266,
+          "absolute_ce_difference": 5.551115123125783e-17,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_44_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3603257536888122,
+          "recomputed_head_select_mean_ce_9": 0.36032575368881226,
+          "absolute_ce_difference": 5.551115123125783e-17,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/Grocery/seed_44_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 8195,
+          "head_select_count": 2049,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3874600827693939,
+          "recomputed_head_select_mean_ce_9": 0.3874600827693939,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "repeat": 0,
+          "rows": 27398,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 8.415996288757555e-09,
+            "G_P_text": 1.2946714755823763e-08,
+            "G_D_visual": 7.695997561452117e-09,
+            "G_P_visual": 5.7918969065262615e-09
+          }
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "repeat": 1,
+          "rows": 27398,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 5.866397811971069e-09,
+            "G_P_text": 6.154281029235875e-09,
+            "G_D_visual": 5.6303612466779285e-09,
+            "G_P_visual": 7.64665991637159e-09
+          }
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "repeat": 2,
+          "rows": 27398,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 8.320219596624767e-09,
+            "G_P_text": 9.564802616601753e-09,
+            "G_D_visual": 7.393002238176294e-09,
+            "G_P_visual": 6.991962814284491e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1455,
+          "eligible_edge_count": 23533,
+          "selected_edge_count": 5331,
+          "realized_fraction": 0.226532953724557
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1455,
+          "eligible_edge_count": 23533,
+          "selected_edge_count": 5331,
+          "realized_fraction": 0.226532953724557
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1455,
+          "eligible_edge_count": 23533,
+          "selected_edge_count": 5331,
+          "realized_fraction": 0.226532953724557
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1455,
+          "eligible_edge_count": 23533,
+          "selected_edge_count": 5331,
+          "realized_fraction": 0.226532953724557
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1455,
+          "eligible_edge_count": 23533,
+          "selected_edge_count": 5331,
+          "realized_fraction": 0.226532953724557
+        },
+        {
+          "dataset": "Grocery",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1455,
+          "eligible_edge_count": 23533,
+          "selected_edge_count": 5331,
+          "realized_fraction": 0.226532953724557
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/Grocery/seed_44_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/Grocery/seed_44_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 69.39902138710022,
+      "peak_cuda_memory_bytes": 668784128
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 40181,
+      "degree_ge_5_validation_edge_count": 26589,
+      "degree_ge_5_validation_target_count": 1758,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/ele-fashion/seed_42_semantic_only.pt",
+        "checkpoint_seed": 42,
+        "checkpoint_best_epoch": 136,
+        "reproduced_metrics": {
+          "val_acc": 0.8647847175598145,
+          "val_macro_f1": 0.6623624562672247,
+          "val_ce": 0.42041149735450745
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 5.551115123125783e-17
+        },
+        "max_abs_metric_difference": 5.551115123125783e-17,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 40181,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 5.652746522422092e-06,
+        "text_absdiff": 4.7420269875253496e-06,
+        "text_product": 1.2120360848300038e-05,
+        "visual_smooth": 3.75480190406563e-06,
+        "visual_absdiff": 4.9916420192808175e-06,
+        "visual_product": 9.356371617030845e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_42_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3584334254264831,
+          "recomputed_head_select_mean_ce_9": 0.35843342542648315,
+          "absolute_ce_difference": 5.551115123125783e-17,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_42_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3730410039424896,
+          "recomputed_head_select_mean_ce_9": 0.3730410039424896,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_42_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3778235018253326,
+          "recomputed_head_select_mean_ce_9": 0.37782347202301025,
+          "absolute_ce_difference": 2.980232233218416e-08,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "repeat": 0,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.9848274135370048e-09,
+            "G_P_text": 2.3963441925234363e-09,
+            "G_D_visual": 1.0974376546402098e-09,
+            "G_P_visual": 1.1857198556342041e-09
+          }
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "repeat": 1,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.834708052150802e-09,
+            "G_P_text": 2.242562857635022e-09,
+            "G_D_visual": 1.4988501698467993e-09,
+            "G_P_visual": 2.1858695964382946e-09
+          }
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "repeat": 2,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.861137476771857e-09,
+            "G_P_text": 2.7962577392459664e-09,
+            "G_D_visual": 1.5491575344576958e-09,
+            "G_P_visual": 1.4504905887502417e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 42,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/ele-fashion/seed_42_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/ele-fashion/seed_42_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 99.71960878372192,
+      "peak_cuda_memory_bytes": 2049795072
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 40181,
+      "degree_ge_5_validation_edge_count": 26589,
+      "degree_ge_5_validation_target_count": 1758,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/ele-fashion/seed_43_semantic_only.pt",
+        "checkpoint_seed": 43,
+        "checkpoint_best_epoch": 118,
+        "reproduced_metrics": {
+          "val_acc": 0.8629436492919922,
+          "val_macro_f1": 0.6459887252174608,
+          "val_ce": 0.43397119641304016
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 5.551115123125783e-17
+        },
+        "max_abs_metric_difference": 5.551115123125783e-17,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 40181,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 7.407150813154573e-06,
+        "text_absdiff": 6.159036857855682e-06,
+        "text_product": 1.1862985763499978e-05,
+        "visual_smooth": 3.829970392388304e-06,
+        "visual_absdiff": 3.22194389212882e-06,
+        "visual_product": 8.815672339679281e-06
+      },
+      "head_audits": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_43_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3643245100975036,
+          "recomputed_head_select_mean_ce_9": 0.36432451009750366,
+          "absolute_ce_difference": 5.551115123125783e-17,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_43_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3639287054538727,
+          "recomputed_head_select_mean_ce_9": 0.3639286458492279,
+          "absolute_ce_difference": 5.960464477539063e-08,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_43_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3774274885654449,
+          "recomputed_head_select_mean_ce_9": 0.37742745876312256,
+          "absolute_ce_difference": 2.980232233218416e-08,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "repeat": 0,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.191960224440237e-09,
+            "G_P_text": 2.2640412877805716e-09,
+            "G_D_visual": 2.3723283892884695e-09,
+            "G_P_visual": 2.3226087164651688e-09
+          }
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "repeat": 1,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.611455551804198e-09,
+            "G_P_text": 2.0846793319373447e-09,
+            "G_D_visual": 1.6900493712834752e-09,
+            "G_P_visual": 2.1934959681946253e-09
+          }
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "repeat": 2,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.2965130491714447e-09,
+            "G_P_text": 1.7532030271993904e-09,
+            "G_D_visual": 1.8398070567027247e-09,
+            "G_P_visual": 1.353405970627719e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 43,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/ele-fashion/seed_43_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/ele-fashion/seed_43_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 99.62578845024109,
+      "peak_cuda_memory_bytes": 2049795072
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "device": "cuda:1",
+      "smoke": false,
+      "validation_edge_count": 40181,
+      "degree_ge_5_validation_edge_count": 26589,
+      "degree_ge_5_validation_target_count": 1758,
+      "h0_regression": {
+        "checkpoint": "outputs/p0p1_propagation_heterogeneity/checkpoints/runs/ele-fashion/seed_44_semantic_only.pt",
+        "checkpoint_seed": 44,
+        "checkpoint_best_epoch": 110,
+        "reproduced_metrics": {
+          "val_acc": 0.8642733097076416,
+          "val_macro_f1": 0.6489578208463586,
+          "val_ce": 0.4326471984386444
+        },
+        "checkpoint_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "p0_csv_metric_differences": {
+          "val_acc": 0.0,
+          "val_macro_f1": 0.0,
+          "val_ce": 0.0
+        },
+        "max_abs_metric_difference": 0.0,
+        "all_parameters_frozen": true
+      },
+      "p13_edge_alignment": {
+        "rows": 40181,
+        "edge_order_match": true,
+        "src_dst_degree_match": true,
+        "self_loops": false
+      },
+      "whole_context_max_abs_error": {
+        "text_smooth": 4.743192210332481e-06,
+        "text_absdiff": 5.698994378189326e-06,
+        "text_product": 2.0258102683357038e-05,
+        "visual_smooth": 4.30179423993593e-06,
+        "visual_absdiff": 3.7801199854747836e-06,
+        "visual_product": 9.047240018489333e-06
+      },
+      "whole_context_tolerance": {
+        "rtol": 1e-05,
+        "atol": 1e-05
+      },
+      "head_audits": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "repeat": 0,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_44_repeat_0.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3763945996761322,
+          "recomputed_head_select_mean_ce_9": 0.3763945996761322,
+          "absolute_ce_difference": 0.0,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "repeat": 1,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_44_repeat_1.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3891439437866211,
+          "recomputed_head_select_mean_ce_9": 0.3891438841819763,
+          "absolute_ce_difference": 5.960464477539063e-08,
+          "all_head_parameters_frozen": true
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "repeat": 2,
+          "checkpoint": "outputs/l01_shared_slot_function_identifiability/checkpoints/shared_heads/ele-fashion/seed_44_repeat_2.pt",
+          "retrained_missing_checkpoint": false,
+          "checkpoint_metadata_valid": true,
+          "head_train_count": 46927,
+          "head_select_count": 11732,
+          "validation_excluded": true,
+          "historical_head_select_mean_ce_9": 0.3864843547344208,
+          "recomputed_head_select_mean_ce_9": 0.386484295129776,
+          "absolute_ce_difference": 5.960464477539063e-08,
+          "all_head_parameters_frozen": true
+        }
+      ],
+      "ss_raw_regression": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "repeat": 0,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.290447720376676e-09,
+            "G_P_text": 1.820011502617902e-09,
+            "G_D_visual": 1.751827231888381e-09,
+            "G_P_visual": 1.6263663679683127e-09
+          }
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "repeat": 1,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 2.1227737762030685e-09,
+            "G_P_text": 2.537253351864166e-09,
+            "G_D_visual": 2.092278739151965e-09,
+            "G_P_visual": 1.5492650773385463e-09
+          }
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "repeat": 2,
+          "rows": 40181,
+          "edge_order_matches": true,
+          "max_abs_gain_error": {
+            "G_D_text": 1.9183833410707507e-09,
+            "G_P_text": 1.8484681424402183e-09,
+            "G_D_visual": 1.3443539337298915e-09,
+            "G_P_visual": 1.2606062339826085e-09
+          }
+        }
+      ],
+      "logit_delta_background_invariance_max_abs": {
+        "G_D_text": 0.0,
+        "G_P_text": 0.0,
+        "G_D_visual": 0.0,
+        "G_P_visual": 0.0
+      },
+      "partial_selection_audits": [
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "background_modality": "text",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4101,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4102,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        },
+        {
+          "dataset": "ele-fashion",
+          "seed": 44,
+          "background_modality": "visual",
+          "partial_seed": 4103,
+          "fraction_requested": 0.25,
+          "rounding": "floor with minimum one for degree>=5",
+          "eligible_target_count": 1758,
+          "eligible_edge_count": 26589,
+          "selected_edge_count": 5975,
+          "realized_fraction": 0.22471698822821468
+        }
+      ],
+      "partial_candidate_exclusion_verified_by_formula": true,
+      "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+      "raw_artifacts": {
+        "full_grid": "outputs/n0_recipient_state_function_context/raw/ele-fashion/seed_44_full_grid.csv.gz",
+        "partial25": "outputs/n0_recipient_state_function_context/raw/ele-fashion/seed_44_partial25.csv.gz"
+      },
+      "test_metrics_or_labels_accessed": false,
+      "elapsed_seconds": 100.69396924972534,
+      "peak_cuda_memory_bytes": 2049073152
+    }
+  ],
+  "tables": {
+    "background_gain_summary": {
+      "rows": 324,
+      "path": "data/background_gain_summary.csv"
+    },
+    "contextuality_by_run": {
+      "rows": 36,
+      "path": "data/contextuality_by_run.csv"
+    },
+    "same_modal_context": {
+      "rows": 72,
+      "path": "data/same_modal_context.csv"
+    },
+    "cross_modal_context": {
+      "rows": 72,
+      "path": "data/cross_modal_context.csv"
+    },
+    "sign_switch_summary": {
+      "rows": 72,
+      "path": "data/sign_switch_summary.csv"
+    },
+    "preference_switch_summary": {
+      "rows": 36,
+      "path": "data/preference_switch_summary.csv"
+    },
+    "within_target_rank_stability": {
+      "rows": 324,
+      "path": "data/within_target_rank_stability.csv"
+    },
+    "centered_rank_stability": {
+      "rows": 324,
+      "path": "data/centered_rank_stability.csv"
+    },
+    "head_repeat_rank_stability": {
+      "rows": 108,
+      "path": "data/head_repeat_rank_stability.csv"
+    },
+    "head_uncertainty_vs_context": {
+      "rows": 36,
+      "path": "data/head_uncertainty_vs_context.csv"
+    },
+    "gradient_decomposition": {
+      "rows": 648,
+      "path": "data/gradient_decomposition.csv"
+    },
+    "partial25_context": {
+      "rows": 252,
+      "path": "data/partial25_context.csv"
+    },
+    "pairwise_loss_curvature_sanity": {
+      "rows": 54,
+      "path": "data/pairwise_loss_curvature_sanity.csv"
+    }
+  },
+  "historical_artifacts_modified": false,
+  "test_metrics_or_labels_accessed": false,
+  "forbidden_model_fits": 0,
+  "elapsed_seconds": 768.9294149875641,
+  "protocol_deviations": [],
+  "runtime_environment": {
+    "conda_environment": "yhf_env",
+    "python": "3.12.13",
+    "torch": "2.4.0+cu121",
+    "cuda_runtime": "12.1",
+    "device": "cuda:1",
+    "gpu_name": "NVIDIA GeForce RTX 3090"
+  },
+  "smoke_audit": {
+    "status": "passed",
+    "scope": "Movies/seed42/head_repeat0",
+    "path": "outputs/n0_recipient_state_function_context/smoke/smoke_audit.json"
+  },
+  "correctness_tests": {
+    "status": "passed",
+    "command": "conda run -n yhf_env python -m pytest -q tests/test_n0_recipient_state_function_context.py tests/test_l01_shared_slot_function_identifiability.py",
+    "result": "58 passed; 1 upstream PyG deprecation warning",
+    "output_path": "outputs/n0_recipient_state_function_context/correctness_tests.txt"
+  },
+  "correctness_summary": {
+    "h0_validation_metric_max_abs_difference": 2.220446049250313e-16,
+    "shared_head_select_ce_max_abs_difference": 1.1920928955078125e-07,
+    "whole_context_regression_tolerance": {
+      "rtol": 1e-05,
+      "atol": 1e-05
+    },
+    "whole_context_observed_max_abs_error": 2.0258102683357038e-05,
+    "ss_gain_regression_tolerance": {
+      "rtol": 1e-07,
+      "atol": 2e-07
+    },
+    "ss_gain_observed_max_abs_error": 1.8740652247759004e-07,
+    "logit_delta_background_invariance_max_abs": 0.0,
+    "pairwise_logit_additivity_max_abs": 8.881784197001252e-16,
+    "head_checkpoints_reused": 27,
+    "head_checkpoints_retrained": 0,
+    "max_peak_cuda_memory_bytes": 2049795072,
+    "test_split_labels_or_metrics_accessed": false
+  },
+  "figure_qa": {
+    "status": "passed",
+    "report_path": "research/n0_recipient_state_function_context/figure_qa.md",
+    "source_preflight": {
+      "source": "scripts/plot_n0_recipient_state_function_context_impl.py",
+      "pass": 21,
+      "warn": 0,
+      "fail": 0
+    },
+    "panel_alignment": {
+      "pass": 6,
+      "total": 6,
+      "tolerance_pt": 1.5
+    },
+    "pdf_collision_audit": {
+      "pass": 6,
+      "total": 6,
+      "warnings": 0,
+      "failures": 0
+    },
+    "pdf_text_audit": {
+      "pass": 6,
+      "minimum_found_pt": 6.0,
+      "below_5pt_count": 0,
+      "warnings": 0
+    },
+    "formats": [
+      "png",
+      "svg",
+      "pdf",
+      "tiff"
+    ],
+    "png_dpi": 600,
+    "visual_inspection": "all 18 panels reviewed at final export size"
+  },
+  "final_label": "TARGET_LEVEL_STATE_MODULATION",
+  "final_verdicts": {
+    "context_free_edge_function_label": "PARTIALLY",
+    "recipient_conditioned_multiset_interaction_model": "NO"
+  },
+  "figure_qa_machine_manifest": "outputs/n0_recipient_state_function_context/figure_qa/figure_manifest.json"
+}
