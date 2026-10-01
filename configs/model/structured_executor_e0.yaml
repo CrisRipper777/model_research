@@ -1,0 +1,17 @@
+name: structured_executor_e0
+variant: edge_mix # static_mix | target_mix | edge_mix
+
+hidden_dim: 128
+dropout: 0.2
+relation_dim: 32
+relation_state_dim: 64
+modality_embed_dim: 8
+edge_chunk_size: 100000
+eps: 1.0e-8
+
+# Frozen E0 executor/router contract.
+function_names: ["null", smooth, relational, cross_modal]
+router_hidden_dim: 64
+relational_hidden_layers: 1
+cross_modal_hidden_layers: 1
+expert_output_calibration: smooth_rms_stop_gradient_reference

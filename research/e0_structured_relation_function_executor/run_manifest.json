@@ -1,0 +1,140 @@
+{
+  "experiment": "E0 — Structured Relation-Function Executor Screening",
+  "date": "2026-10-01",
+  "status": "completed",
+  "git": {
+    "source_branch": "exp/m01_adaptive_correction_attribution",
+    "source_sha": "9f0446a982963d962b882d9bdbc18d6669c96f52",
+    "experiment_branch": "exp/e0_structured_relation_function_executor",
+    "experiment_parent_sha": "9f0446a982963d962b882d9bdbc18d6669c96f52",
+    "merge_main": false,
+    "historical_m0_and_m01_artifacts_modified": false
+  },
+  "campaign": {
+    "datasets": ["Movies", "Grocery", "ele-fashion"],
+    "seeds": [42, 43, 44],
+    "variants": ["static_mix", "target_mix", "edge_mix"],
+    "expected_formal_runs": 27,
+    "completed_formal_runs": 27,
+    "failed_formal_runs": 0,
+    "formal_reruns": 0,
+    "device": "cuda:0",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "max_epochs": 300,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 30,
+    "minimum_epoch": 30,
+    "gradient_clip_norm": 1.0,
+    "checkpoint_selection": "best validation accuracy",
+    "training_time_seconds": 1023.2687321170233,
+    "edge_mix_intervention_time_seconds": 115.9608361509163,
+    "max_allocated_gpu_memory_bytes": 17043335168,
+    "max_allocated_gpu_memory_gib": 15.87,
+    "paired_comparisons": ["StaticMix-UNI", "TargetMix-StaticMix", "EdgeMix-TargetMix", "EdgeMix-StaticMix", "EdgeMix-UNI"],
+    "within_target_shuffle_repeat_seeds": [1001, 1002, 1003, 1004, 1005],
+    "within_target_shuffle_modalities_independently_seeded": true,
+    "evaluate_test": false,
+    "test_indices_attached": false,
+    "test_labels_exposed": false,
+    "link_prediction": false,
+    "per_dataset_tuning": false
+  },
+  "smoke": {
+    "status": "passed",
+    "dataset": "Movies",
+    "seed": 42,
+    "device": "cuda:0",
+    "relation_state_regression": {
+      "P": true,
+      "LOO_context": true,
+      "q": true,
+      "r": true,
+      "u": true,
+      "H0": true,
+      "edge_support": true,
+      "incoming_degree": true,
+      "context_tolerance": "rtol=1e-6, atol=1e-7; shared context used for q/r/u comparison to avoid independent CUDA reduction-order noise"
+    },
+    "smooth_identity_max_abs_aggregate_message_error": 7.152557373046875e-07,
+    "smooth_identity_max_abs_fused_output_error": 1.6689300537109375e-06,
+    "max_calibrated_rms_ratio_abs_error": 2.980232238769531e-07,
+    "calibration_scales_finite": true,
+    "router_initialization_prior_mean": [0.0958372950553894, 0.7121626734733582, 0.09608997404575348, 0.09591004252433777],
+    "cross_modal_source_correctness": true,
+    "common_initialization_bitwise_equal": true,
+    "exact_parameter_match": true,
+    "chunk_equivalence_max_abs_error": {
+      "static_mix": 0.0,
+      "target_mix": 0.0,
+      "edge_mix": 0.0
+    },
+    "test_access": false
+  },
+  "validation": {
+    "command": "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_m0_adaptive_propagation.py tests/test_m01_adaptive_correction_attribution.py tests/test_e0_structured_executor.py",
+    "result": "45 passed, 1 upstream PyG deprecation warning"
+  },
+  "commands": {
+    "smoke": "conda run --no-capture-output -n yhf_env python scripts/run_e0_structured_executor.py --smoke --device cuda:0",
+    "campaign": "conda run --no-capture-output -n yhf_env python scripts/run_e0_structured_executor.py --campaign --device cuda:0",
+    "analysis": "conda run --no-capture-output -n yhf_env python scripts/analyze_e0_structured_executor.py"
+  },
+  "environment": {
+    "conda_environment": "yhf_env",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "pytorch_cuda_runtime": "12.1",
+    "torch_geometric": "2.7.0",
+    "hydra": "1.3.2",
+    "omegaconf": "2.3.0",
+    "scikit_learn": "1.8.0",
+    "nvidia_driver": "535.309.01",
+    "system_cuda_reported": "12.2"
+  },
+  "preformal_smoke_harness_fixes": [
+    "The relation-state checker now separately checks LOO context within tolerance and compares q/r/u using one shared context to avoid treating independent CUDA index_add summation order as a definition mismatch.",
+    "Validation metrics now pass labels[val_idx] to the M0 metric helper, matching that helper's expected validation-label shape.",
+    "The added smoke audit imports the E0 RMS helper; no model or formal-run behavior changed due to this audit-only fix."
+  ],
+  "code_sha256": {
+    "src/models/structured_executor_e0.py": "2a1a38e4ba0735f4ba8ba2b9be50ee5a34efce24506f10bcb377f9b8dac92fb9",
+    "configs/model/structured_executor_e0.yaml": "034acb82ab13b868894ec386f87218c6b5832ffae87e222cdb766debdc297733",
+    "scripts/run_e0_structured_executor.py": "49e5ffbda3ce27d95e0ff825e20b3aeb7447a5d7ddc39ffdadf4214ed7a4d7b5",
+    "scripts/analyze_e0_structured_executor.py": "4f84d7f1f1aa82b9a10f777bd16bf6176c0eceb8ae4db456ef75325fb569b4a2",
+    "tests/test_e0_structured_executor.py": "31a7af277656b680628b3a73c3256a3317dd8b38e0e22e3ebe1bc96682613bfe"
+  },
+  "artifacts": {
+    "performance_by_run": "data/performance_by_run.csv",
+    "performance_summary": "data/performance_summary.csv",
+    "paired_delta_summary": "data/paired_delta_summary.csv",
+    "router_diagnostics": "data/router_diagnostics.csv",
+    "within_node_routing_variation": "data/within_node_routing_variation.csv",
+    "modality_routing_disagreement": "data/modality_routing_disagreement.csv",
+    "function_output_distinctness": "data/function_output_distinctness.csv",
+    "expert_scale_diagnostics": "data/expert_scale_diagnostics.csv",
+    "intervention_by_run": "data/intervention_by_run.csv",
+    "intervention_summary": "data/intervention_summary.csv",
+    "parameter_summary": "data/parameter_summary.csv",
+    "common_initialization_audit": "data/common_initialization_audit.csv",
+    "figures": [
+      "figures/e0_performance_screen.png",
+      "figures/e0_routing_usage.png",
+      "figures/e0_within_node_routing.png",
+      "figures/e0_modality_disagreement.png",
+      "figures/e0_function_distinctness.png",
+      "figures/e0_interventions.png"
+    ],
+    "editable_vector_and_600dpi_raster_exports": [".pdf", ".svg", ".tiff"],
+    "figure_quality_assurance": {
+      "source_preflight": "21 pass, 0 warn, 0 fail",
+      "final_width": "182.9 mm; common double-column width",
+      "rendered_pdf_text": "all six PDFs auditable; minimum glyph 5.5 pt; 0 below 5 pt",
+      "panel_alignment": "5 multi-panel figures PASS at 1.5 pt; 1 single-panel figure NOT APPLICABLE",
+      "collision_audit": "6/6 PASS; 0 fail, 0 warn"
+    },
+    "figure_qa_files": "figures/qa/ (source preflight JSON, per-PDF text audits, alignment JSON/SVG, collision audit JSON, figure_qa_notes.md)",
+    "raw_runs_and_checkpoints": "outputs/e0_structured_relation_function_executor/ (ignored; not committed)"
+  }
+}
