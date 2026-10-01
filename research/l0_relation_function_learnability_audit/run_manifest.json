@@ -1,0 +1,234 @@
+{
+  "experiment": "L0 — Relation-to-Function Learnability Audit",
+  "provenance": {
+    "repository": "https://github.com/CrisRipper777/model_research",
+    "source_branch": "exp/e01_function_provenance_preservation",
+    "source_sha": "fc410949350b2827153bd883ce0d11e492b44bd8",
+    "working_branch": "exp/l0_relation_function_learnability_audit",
+    "created_from_source_sha": "fc410949350b2827153bd883ce0d11e492b44bd8",
+    "main_merged": false,
+    "historical_research_directories_modified": false
+  },
+  "environment": {
+    "conda_environment": "yhf_env",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "torch_geometric": "2.7.0",
+    "cuda_available": true,
+    "device": "cuda:1",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "device_selection_note": "GPU 0 was occupied by another workload; the user authorized moving the campaign to GPU 1. No other process was stopped or modified."
+  },
+  "source_artifacts": {
+    "p13_utility_tables": {
+      "expected": 9,
+      "reused": 9,
+      "regenerated": 0,
+      "path_template": "outputs/p13_joint_readout_operator_probe/runs/<dataset>/seed_<seed>/joint_operator_edge_utility.csv.gz",
+      "key_columns": ["src", "dst", "dst_degree"],
+      "validation": "Exact row-order alignment against the frozen P1.3 H0 validation graph support; all six utility targets finite; delta formulas audited."
+    },
+    "p13_joint_head_checkpoints": {
+      "expected": 9,
+      "present_and_audited": 9,
+      "regenerated": 0,
+      "path_template": "outputs/p13_joint_readout_operator_probe/checkpoints/runs/<dataset>/seed_<seed>_joint_linear_head.pt",
+      "use_note": "Audited as source provenance; joint-head outputs, utilities and preferred-channel labels were not probe features."
+    },
+    "p13_h0_regression": {
+      "runs": 9,
+      "all_parameters_frozen": true,
+      "max_abs_validation_metric_difference": 2.220446049250313e-16,
+      "metrics": ["validation accuracy", "validation macro-F1", "validation CE"]
+    },
+    "e01_keep_edge_checkpoints": {
+      "expected": 9,
+      "reused": 9,
+      "path_template": "outputs/e01_function_provenance_preservation/checkpoints/<dataset>/seed_<seed>_keep_edge.pt",
+      "readout_status": "Frozen for Q_PAIR, R_SHARED and U_MODAL extraction; ordered edge alignment checked."
+    }
+  },
+  "design": {
+    "datasets": ["Movies", "Grocery", "ele-fashion"],
+    "seeds": [42, 43, 44],
+    "target_order": [
+      "U_S_text",
+      "Delta_D_text = u_raw_absdiff_text - u_raw_smooth_text",
+      "Delta_P_text = u_raw_product_text - u_raw_smooth_text",
+      "U_S_visual",
+      "Delta_D_visual = u_raw_absdiff_visual - u_raw_smooth_visual",
+      "Delta_P_visual = u_raw_product_visual - u_raw_smooth_visual"
+    ],
+    "target_interpretation": "Validation-derived P1.3 diagnostics, not ground-truth edge roles or final operator labels. P1.3 AbsDiff/Product are not mapped onto E0 Relational/Cross-Modal.",
+    "no_test_evaluation": true,
+    "no_test_labels_or_metrics_accessed": true,
+    "transductive_input_boundary": "The probe reuses the same full transductive graph and frozen P1.3 H0 node representations used by the source utility audit; no original NC test labels or test metrics enter L0.",
+    "feature_leakage_exclusions": [
+      "class labels or target label frequency",
+      "CE or removed-edge CE",
+      "any utility target or preferred-channel value",
+      "P1.3 joint-head logits",
+      "numeric src or dst IDs",
+      "original test information"
+    ],
+    "node_ids_use": "Only for feature indexing, neighborhood construction, grouping and ordered alignment."
+  },
+  "splits_and_normalization": {
+    "outer_folds": {
+      "count": 3,
+      "group": "dst recipient node",
+      "construction": "Deterministic greedy edge-count-balanced assignment over unique dst groups; NumPy RNG seed = experiment seed + 1709.",
+      "shared_across": "All EvidenceMLP variants, DirectState and frozen-state readouts for each dataset×seed.",
+      "same_dst_disjoint": true
+    },
+    "inner_validation": {
+      "group": "dst recipient node",
+      "fraction_of_outer_training_targets": 0.10,
+      "seed": "experiment seed + 9100 + outer fold",
+      "train_validation_dst_disjoint": true
+    },
+    "feature_standardization": "Full 1542D master feature mean/std fit on outer-training edges (outer train plus inner validation) only; standardize full vector before applying masks; std floor 1e-6.",
+    "target_standardization": "Per-fold target mean/std fit on outer-training edges only; std floor 1e-6; predictions inverse-transformed before metrics.",
+    "edge_weights": "1 / dst_degree, normalized to mean weight 1; used for all neural probe families.",
+    "summary_aggregation": "Average three outer-fold metrics within each dataset×seed first; then report three-seed mean and population SD. Edges are not pooled across seeds and no edge-level significance tests are used."
+  },
+  "evidence_master_vector": {
+    "dimension": 1542,
+    "h0_dimension_per_modality": 128,
+    "blocks": {
+      "target_text_visual": 256,
+      "source_text_visual": 256,
+      "endpoint_absolute_difference_text_visual": 256,
+      "endpoint_product_text_visual": 256,
+      "full_recipient_neighbor_mean_text_visual": 256,
+      "leave_one_out_neighbor_mean_text_visual": 256,
+      "scalar_evidence": 6
+    },
+    "masks": {
+      "SIM_ONLY": "Text and visual endpoint cosine only; other dimensions zero.",
+      "TARGET_ONLY": "Target H0, full recipient-neighborhood mean and standardized target log-degree; other dimensions zero.",
+      "ENDPOINT": "Target/source H0, absolute difference, product, endpoint cosines, target/source standardized log-degree; excludes full-neighborhood and LOO context blocks.",
+      "ENDPOINT_LOCAL": "Full master vector including target/source, endpoint pair evidence, full-neighborhood and LOO means, endpoint/LOO cosine and both degrees.",
+      "ENDPOINT_LOCAL_SHUFFLED_TARGET": "Same input and architecture as ENDPOINT_LOCAL; six-target tuples shuffled only across edges within the same dst in actual outer-training groups, seed = 9917 + outer fold. Inner validation and outer test remain unshuffled."
+    },
+    "evidence_mlp": {
+      "architecture": "Linear(1542,128) → GELU → Linear(128,6)",
+      "dropout": false,
+      "layer_norm": false,
+      "parameter_count_each_variant": 198278,
+      "initialization_seed": "811003 + seed*31 + fold",
+      "bitwise_equal_initialization_within_fold": true
+    }
+  },
+  "other_probe_architectures": {
+    "M0StateDirect": {
+      "purpose": "Utility-supervised M0 relation-state capacity probe; not an NC model or router.",
+      "frozen_input": "P1.3 H0 text and visual embeddings; no semantic projector.",
+      "state_dimensions": {"q": 32, "r": 64, "u": 64},
+      "pair_evidence": "Exact M0 pair evidence with projected endpoints, absolute difference/product, endpoint and source-to-LOO cosine, and standardized degrees.",
+      "shared_utility_head": "Linear(64,64) → GELU → Linear(64,3), applied to text and visual U_MODAL.",
+      "parameter_count": 46899,
+      "direct_utility_supervision": true
+    },
+    "FrozenStateReadout": {
+      "representations": ["Q_PAIR", "R_SHARED", "U_MODAL"],
+      "representation_dimension": 64,
+      "readout_per_modality": "Linear(64,64) → GELU → Linear(64,3)",
+      "parameter_count_each_fit": 4355,
+      "checkpoint_updates": false,
+      "checkpoint_source": "E0.1 KeepEdge"
+    }
+  },
+  "training": {
+    "loss": "Target-balanced weighted Huber, delta=1.0, on standardized outputs; six EvidenceMLP/DirectState outputs equally weighted. Frozen readout fits one modality's three outputs at a time.",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "max_epochs": 150,
+    "minimum_epoch": 20,
+    "early_stopping_patience": 15,
+    "gradient_clip_norm": 1.0,
+    "checkpoint_selection": "Minimum inner-validation weighted Huber loss.",
+    "fit_counts": {
+      "EvidenceMLP": 135,
+      "M0StateDirect": 27,
+      "FrozenStateReadout": 162,
+      "total": 324
+    }
+  },
+  "target_reliability": {
+    "seed_pairs": [[42, 43], [42, 44], [43, 44]],
+    "alignment": "Inner join on directed physical edge (src,dst); report common-edge count and fraction of smaller table.",
+    "metrics": ["Spearman", "Pearson", "positive-vs-nonpositive sign agreement", "exact-zero fractions", "within-dst centered Delta Spearman"],
+    "rows": 54,
+    "summary_file": "data/target_reliability_summary.csv"
+  },
+  "high_margin": {
+    "definition": "Within each outer test fold and Delta target, |true Delta| >= that test fold's 75th percentile.",
+    "use": "Evaluation-only secondary diagnostic; no training rows or primary metrics filtered.",
+    "fold_rows": 972,
+    "reconstruction": "Replayed saved trained checkpoints forward-only to reconstruct the fold-level table after an earlier non-idempotent aggregation overwrote it; no model retraining or protocol changes."
+  },
+  "execution": {
+    "formal_campaign": {
+      "status": "completed",
+      "device": "cuda:1",
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "elapsed_seconds": 502.7899057865143,
+      "source_tables_reused": 9,
+      "evidence_fit_rows": 810,
+      "direct_state_fit_rows": 162,
+      "frozen_state_fit_rows": 486,
+      "smoke_passed_first": true
+    },
+    "smoke": {
+      "dataset_seed_fold": "Movies/42/fold0",
+      "fits": 12,
+      "all_losses_and_gradients_finite": true,
+      "output_shapes": "EvidenceMLP and DirectState: [10533,6]; frozen readouts: [10533,3].",
+      "outer_and_inner_dst_disjoint": true,
+      "test_label_masking_audited": true,
+      "peak_cuda_allocated_bytes": 355960832,
+      "peak_cuda_allocated_gib": 0.3315
+    },
+    "direct_state_instrumented_replay": {
+      "purpose": "Separate instrumentation replay; original campaign predictions/checkpoints are unchanged.",
+      "fits": 27,
+      "fit_call_wall_seconds_total": 80.71005805791356,
+      "maximum_cuda_peak_allocated_bytes": 573851136,
+      "maximum_cuda_peak_allocated_gib": 0.5344,
+      "best_epochs_and_inner_validation_losses_match_original_checkpoints": true,
+      "maximum_metric_absolute_difference_from_original": 0.01139772794565154,
+      "all_metrics_within_0_01": false,
+      "metric_difference_note": "Small GPU floating-point changes can perturb tie-sensitive ranking summaries; replay deltas are preserved per fit in data/direct_state_fit_runtime_memory_audit.csv. Original campaign metrics remain authoritative."
+    },
+    "formal_campaign_peak_gpu_memory": "Not instrumented during the original 502.79-second campaign; report the separately instrumented Movies/42 smoke and 27-fit DirectState replay measurements above, not as original-campaign peaks."
+  },
+  "analysis_and_quality": {
+    "high_margin_fold_artifact_recovery": "Recovered by forward-only inference from existing checkpoints; no refit.",
+    "fit_parameter_summary": "324 rows reconstructed from the 324 saved fit checkpoints; runner-only initialization/shuffle audits were preserved from the prior table. Frozen-state modality is retained in the deduplication key.",
+    "figure_count": 5,
+    "figure_qa": "All five figures passed panel alignment, collision and PDF text-size checks; minimum found text was 5.1 pt; no QA warnings. PNGs were visually inspected.",
+    "report": "Answers L0 questions 1–20 and includes A–J epistemic/self-audit.",
+    "tiff_exports": "Lossless LZW compression; pixel arrays were verified identical to the rendered exports and 600 dpi metadata was preserved.",
+    "diagnostic_label": "DATASET_DEPENDENT_MIXED"
+  },
+  "retries_and_deviations": {
+    "protocol_deviations": [],
+    "secondary_unimodal_probes": "Not executed; optional secondary analysis.",
+    "resolved_issues": [
+      "Initial test run exposed float32 target-formula precision failures; target calculation and tolerance were corrected, after which all 40 tests passed.",
+      "Initial smoke harness unpacked a helper return incorrectly before fitting; corrected, then all 12 smoke fits passed.",
+      "Initial report run required the unavailable optional tabulate package; replaced it with an in-repository Markdown table formatter without installing packages.",
+      "An early summary pass aggregated high-margin folds into the summary path; restored the 972 fold-level rows by forward-only checkpoint replay.",
+      "Parameter-summary deduplication initially collapsed frozen visual-readout audit rows; reconstructed all 324 fit rows from checkpoints and corrected the deduplication key."
+    ],
+    "direct_state_replay_observation": "The original checkpoint best epoch and inner validation loss reproduce within 1e-5; output ranking metrics show small floating-point/tie-sensitive differences, recorded per fit and not substituted for campaign metrics."
+  },
+  "outputs": {
+    "report": "research/l0_relation_function_learnability_audit/report.md",
+    "data_directory": "research/l0_relation_function_learnability_audit/data/",
+    "figures_directory": "research/l0_relation_function_learnability_audit/figures/",
+    "large_checkpoints_and_state_caches": "outputs/l0_relation_function_learnability_audit/ (gitignored)"
+  }
+}

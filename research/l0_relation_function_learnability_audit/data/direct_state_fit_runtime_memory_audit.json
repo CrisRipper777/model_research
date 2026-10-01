@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "purpose": "instrumented deterministic replay; original campaign metrics/checkpoints unchanged",
+  "device": "cuda:1",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "replay_fits": 27,
+  "total_fit_call_wall_seconds": 80.71005805791356,
+  "max_cuda_peak_allocated_bytes": 573851136,
+  "max_cuda_peak_allocated_gib": 0.5344405174255371,
+  "max_metric_abs_difference": 0.01139772794565154,
+  "all_best_epochs_and_validation_losses_reproduced": true,
+  "all_fold_metrics_within_tolerance": false,
+  "metric_replay_tolerance": 0.01,
+  "csv": "research/l0_relation_function_learnability_audit/data/direct_state_fit_runtime_memory_audit.csv"
+}

@@ -1,0 +1,13 @@
+family,variant,parameter_count,finite_loss_gradient,shape,status
+EvidenceMLP,SIM_ONLY,198278,True,"(10533, 6)",passed
+EvidenceMLP,TARGET_ONLY,198278,True,"(10533, 6)",passed
+EvidenceMLP,ENDPOINT,198278,True,"(10533, 6)",passed
+EvidenceMLP,ENDPOINT_LOCAL,198278,True,"(10533, 6)",passed
+EvidenceMLP,ENDPOINT_LOCAL_SHUFFLED_TARGET,198278,True,"(10533, 6)",passed
+M0StateDirect,M0StateDirect,46899,True,"(10533, 6)",passed
+FrozenStateReadout,Q_PAIR_text,4355,True,"(10533, 3)",passed
+FrozenStateReadout,R_SHARED_text,4355,True,"(10533, 3)",passed
+FrozenStateReadout,U_MODAL_text,4355,True,"(10533, 3)",passed
+FrozenStateReadout,Q_PAIR_visual,4355,True,"(10533, 3)",passed
+FrozenStateReadout,R_SHARED_visual,4355,True,"(10533, 3)",passed
+FrozenStateReadout,U_MODAL_visual,4355,True,"(10533, 3)",passed
