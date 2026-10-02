@@ -1,0 +1,7 @@
+name: mature_response_r0
+variant: smooth_base # smooth_base | bank_generic | bank_crossmoe_generic | bank_crossmoe_protected
+
+hidden_dim: 128
+dropout: 0.2
+edge_chunk_size: 100000
+orth_weight: 1.0e-3

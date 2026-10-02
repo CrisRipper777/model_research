@@ -1,0 +1,109 @@
+{
+  "source_branch": "exp/n1_recipient_function_strength_mixer",
+  "source_sha": "2fbe1f14cda0d33d72f8c8468ef9068af28f6217",
+  "remote_source_sha": "2fbe1f14cda0d33d72f8c8468ef9068af28f6217",
+  "experiment_branch": "exp/r0_mature_response_expert_prototype",
+  "head_at_start": "2fbe1f14cda0d33d72f8c8468ef9068af28f6217",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "smooth_base",
+    "bank_generic",
+    "bank_crossmoe_generic",
+    "bank_crossmoe_protected"
+  ],
+  "expected_runs": 36,
+  "completed_runs": 36,
+  "failures": [],
+  "retries": [],
+  "retry_failed_requested": false,
+  "runtime_seconds": 345.3844384928234,
+  "device": "cuda:1",
+  "epochs_override": null,
+  "protocol": "unified_full_graph_nc_v1",
+  "evaluate_test": false,
+  "test_labels_exposed": false,
+  "link_prediction": false,
+  "orthogonality_weight": 0.001,
+  "router_tuple_shuffle_seeds": [
+    5101,
+    5102,
+    5103,
+    5104,
+    5105
+  ],
+  "smooth_compatibility_regression": {
+    "dataset": "Movies",
+    "seed": 42,
+    "device": "cuda:1",
+    "status": "passed",
+    "max_abs_error": 2.6226043701171875e-06,
+    "tolerance": {
+      "rtol": 1e-06,
+      "atol": 1e-05
+    },
+    "comparisons_max_abs_error": {
+      "m0_h0_text": 0.0,
+      "m0_h0_visual": 0.0,
+      "m0_neighbor_mean_text": 9.5367431640625e-07,
+      "m0_neighbor_mean_visual": 5.960464477539062e-07,
+      "m0_smooth_context_text": 2.6226043701171875e-06,
+      "m0_smooth_context_visual": 2.6226043701171875e-06,
+      "m0_structural_text": 1.9073486328125e-06,
+      "m0_structural_visual": 1.9073486328125e-06,
+      "m0_final_z": 2.5033950805664062e-06,
+      "n1_h0_text": 0.0,
+      "n1_h0_visual": 0.0,
+      "n1_smooth_context_text": 2.6226043701171875e-06,
+      "n1_smooth_context_visual": 2.6226043701171875e-06,
+      "n1_structural_text": 1.6689300537109375e-06,
+      "n1_structural_visual": 1.9073486328125e-06,
+      "n1_final_z": 2.5033950805664062e-06
+    },
+    "note": "Linear transform and neighbor mean commute mathematically; CUDA scatter order introduces small floating-point differences."
+  },
+  "training_config": {
+    "name": "nc",
+    "protocol_version": "unified_full_graph_nc_v1",
+    "training_mode": "full_graph",
+    "optimizer": "adamw",
+    "epochs": 300,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 1024,
+    "num_neighbors": 15,
+    "inference_mode": "full",
+    "inference_batch_size": 4096,
+    "eval_every": 1,
+    "patience": 30,
+    "early_stop_min_epoch": 30,
+    "early_stop_min_delta": 0.0001,
+    "grad_clip": 1.0,
+    "max_train_batches": null,
+    "save_ckpt_path": null,
+    "run_metrics_path": null,
+    "scheduler": null,
+    "scheduler_warmup_epochs": 10,
+    "scheduler_min_lr": 1e-05,
+    "loss": {
+      "aux_weight": 1.0
+    },
+    "evaluate_test": false,
+    "edge_index_override_path": null
+  },
+  "analysis_run_count": 36,
+  "report_metrics": [
+    "validation Accuracy",
+    "validation Macro-F1",
+    "validation CE"
+  ],
+  "test_evaluation": false
+}

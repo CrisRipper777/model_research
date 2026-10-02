@@ -1,0 +1,49 @@
+contrast,dataset,metric,n_paired_runs,mean,sd_pop,scope
+Bank-Smooth,Movies,accuracy_delta_pp,3,-1.4697055021921794,0.2448995870222487,paired within dataset and seed
+Bank-Smooth,Movies,macro_f1_delta_pp,3,-3.9977925329662782,1.401767773781307,paired within dataset and seed
+Bank-Smooth,Movies,ce_delta,3,0.03837776184082031,0.014446985628463842,paired within dataset and seed
+Bank-Smooth,Grocery,accuracy_delta_pp,3,-0.4587610562642415,0.13168209772938003,paired within dataset and seed
+Bank-Smooth,Grocery,macro_f1_delta_pp,3,-1.7184827315822309,0.6541916852106192,paired within dataset and seed
+Bank-Smooth,Grocery,ce_delta,3,0.007973134517669678,0.017727666672545647,paired within dataset and seed
+Bank-Smooth,ele-fashion,accuracy_delta_pp,3,-0.2113819122314453,0.15429118302868086,paired within dataset and seed
+Bank-Smooth,ele-fashion,macro_f1_delta_pp,3,0.04293122450099718,0.21043343715436555,paired within dataset and seed
+Bank-Smooth,ele-fashion,ce_delta,3,0.0037716726462046304,0.007843518870123502,paired within dataset and seed
+Bank-Smooth,ALL_POOLED_DESCRIPTIVE,accuracy_delta_pp,9,-0.7132828235626221,0.5744512962573761,descriptive; pooled rows are not IID significance evidence
+Bank-Smooth,ALL_POOLED_DESCRIPTIVE,macro_f1_delta_pp,9,-1.8911146800158372,1.8837576640492901,descriptive; pooled rows are not IID significance evidence
+Bank-Smooth,ALL_POOLED_DESCRIPTIVE,ce_delta,9,0.016707523001564875,0.02079848845166526,descriptive; pooled rows are not IID significance evidence
+CrossMoE-Bank,Movies,accuracy_delta_pp,3,0.3399312496185303,0.3676216714514221,paired within dataset and seed
+CrossMoE-Bank,Movies,macro_f1_delta_pp,3,1.7046410243925891,0.6985559568583025,paired within dataset and seed
+CrossMoE-Bank,Movies,ce_delta,3,0.07129029432932536,0.030828311720462114,paired within dataset and seed
+CrossMoE-Bank,Grocery,accuracy_delta_pp,3,-0.4685203234354655,0.041412088523345186,paired within dataset and seed
+CrossMoE-Bank,Grocery,macro_f1_delta_pp,3,-0.8713824968819154,0.7859232028123099,paired within dataset and seed
+CrossMoE-Bank,Grocery,ce_delta,3,-0.006714979807535808,0.02640084666905508,paired within dataset and seed
+CrossMoE-Bank,ele-fashion,accuracy_delta_pp,3,-0.051140785217285156,0.15330866734009493,paired within dataset and seed
+CrossMoE-Bank,ele-fashion,macro_f1_delta_pp,3,-0.9808143331547744,0.8591381397747858,paired within dataset and seed
+CrossMoE-Bank,ele-fashion,ce_delta,3,-0.0021294554074605307,0.014805180287174221,paired within dataset and seed
+CrossMoE-Bank,ALL_POOLED_DESCRIPTIVE,accuracy_delta_pp,9,-0.059909953011406794,0.4030204801746602,descriptive; pooled rows are not IID significance evidence
+CrossMoE-Bank,ALL_POOLED_DESCRIPTIVE,macro_f1_delta_pp,9,-0.049185268548033526,1.4678353348731428,descriptive; pooled rows are not IID significance evidence
+CrossMoE-Bank,ALL_POOLED_DESCRIPTIVE,ce_delta,9,0.020815286371443007,0.043583965060738195,descriptive; pooled rows are not IID significance evidence
+Protected-CrossMoE,Movies,accuracy_delta_pp,3,-0.5098978678385416,0.48795993505998697,paired within dataset and seed
+Protected-CrossMoE,Movies,macro_f1_delta_pp,3,-0.22326602723686806,0.32795737476029824,paired within dataset and seed
+Protected-CrossMoE,Movies,ce_delta,3,-0.07656737168629964,0.06399862718286872,paired within dataset and seed
+Protected-CrossMoE,Grocery,accuracy_delta_pp,3,-0.13665358225504556,0.14411807461511872,paired within dataset and seed
+Protected-CrossMoE,Grocery,macro_f1_delta_pp,3,-0.2193063712957466,0.17449077029413385,paired within dataset and seed
+Protected-CrossMoE,Grocery,ce_delta,3,0.0266834298769633,0.04186255612182094,paired within dataset and seed
+Protected-CrossMoE,ele-fashion,accuracy_delta_pp,3,0.16024112701416016,0.19340564807192281,paired within dataset and seed
+Protected-CrossMoE,ele-fashion,macro_f1_delta_pp,3,0.8205298599739841,0.529106317594995,paired within dataset and seed
+Protected-CrossMoE,ele-fashion,ce_delta,3,0.00748645265897115,0.010593387423493925,paired within dataset and seed
+Protected-CrossMoE,ALL_POOLED_DESCRIPTIVE,accuracy_delta_pp,9,-0.1621034410264757,0.41705129242454875,descriptive; pooled rows are not IID significance evidence
+Protected-CrossMoE,ALL_POOLED_DESCRIPTIVE,macro_f1_delta_pp,9,0.12598582048045648,0.6168607453680311,descriptive; pooled rows are not IID significance evidence
+Protected-CrossMoE,ALL_POOLED_DESCRIPTIVE,ce_delta,9,-0.014132496383455064,0.06322433653724742,descriptive; pooled rows are not IID significance evidence
+Protected-Smooth,Movies,accuracy_delta_pp,3,-1.6396721204121907,0.14349655378160778,paired within dataset and seed
+Protected-Smooth,Movies,macro_f1_delta_pp,3,-2.5164175358105574,2.0709095993124573,paired within dataset and seed
+Protected-Smooth,Movies,ce_delta,3,0.03310068448384603,0.03135722266609694,paired within dataset and seed
+Protected-Smooth,Grocery,accuracy_delta_pp,3,-1.0639349619547527,0.2358829755530501,paired within dataset and seed
+Protected-Smooth,Grocery,macro_f1_delta_pp,3,-2.8091715997598925,0.4619918856121168,paired within dataset and seed
+Protected-Smooth,Grocery,ce_delta,3,0.027941584587097168,0.03571761140463787,paired within dataset and seed
+Protected-Smooth,ele-fashion,accuracy_delta_pp,3,-0.10228157043457031,0.068357970351557,paired within dataset and seed
+Protected-Smooth,ele-fashion,macro_f1_delta_pp,3,-0.11735324867979309,0.4833107267871178,paired within dataset and seed
+Protected-Smooth,ele-fashion,ce_delta,3,0.00912866989771525,0.01048601677375129,paired within dataset and seed
+Protected-Smooth,ALL_POOLED_DESCRIPTIVE,accuracy_delta_pp,9,-0.9352962176005045,0.6551110828496555,descriptive; pooled rows are not IID significance evidence
+Protected-Smooth,ALL_POOLED_DESCRIPTIVE,macro_f1_delta_pp,9,-1.8143141280834145,1.7414609900734028,descriptive; pooled rows are not IID significance evidence
+Protected-Smooth,ALL_POOLED_DESCRIPTIVE,ce_delta,9,0.023390312989552815,0.029929804414964293,descriptive; pooled rows are not IID significance evidence
