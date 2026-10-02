@@ -41,15 +41,44 @@ def _resolve_training_mode(cfg, model=None) -> str:
     return "full_graph" if _uses_graph_encoder(cfg) else "feature_only"
 
 
-def _resolve_nc_eval_labels(data: MAGData) -> list[int]:
+def _development_no_test(cfg) -> bool:
+    enabled = bool(cfg.task.get("development_no_test", False))
+    if enabled and bool(cfg.task.get("evaluate_test", True)):
+        raise ValueError(
+            "task.development_no_test=true requires task.evaluate_test=false"
+        )
+    return enabled
+
+
+def _should_evaluate_test(cfg) -> bool:
+    """Return the test-evaluation gate after validating the development mode."""
+    development_mode = _development_no_test(cfg)
+    return bool(cfg.task.get("evaluate_test", True)) and not development_mode
+
+
+def _training_labels(data: MAGData, device: torch.device, development_no_test: bool):
+    if development_no_test:
+        labels = data.y.clone()
+        labels[data.test_idx] = -1
+    else:
+        labels = data.y
+    return labels.to(device)
+
+
+def _resolve_nc_eval_labels(
+    data: MAGData, development_no_test: bool = False
+) -> list[int]:
     """Use one stable Macro-F1 label set across the supervised task splits."""
     if data.y is None:
         raise ValueError("NC data must contain labels")
     if data.num_classes is None:
         raise ValueError("NC data must define num_classes")
-    split_indices = [
-        idx for idx in (data.train_idx, data.val_idx, data.test_idx) if idx is not None
-    ]
+    allowed_splits = (data.train_idx, data.val_idx) if development_no_test else (
+        data.train_idx,
+        data.val_idx,
+        data.test_idx,
+    )
+    split_indices = [idx for idx in allowed_splits if idx is not None]
     if not split_indices:
         raise ValueError("NC data must contain at least one supervised split")
     all_indices = torch.cat([idx.reshape(-1) for idx in split_indices]).to(data.y.device)
@@ -74,10 +103,16 @@ def _evaluate_split(
     classifier.eval()
     preds: list[torch.Tensor] = []
     targets: list[torch.Tensor] = []
+    ce_sum = 0.0
     for batch_idx in TorchDataLoader(idx.cpu(), batch_size=batch_size, shuffle=False):
         logits = classifier(z[batch_idx].to(device))
         preds.append(logits.argmax(dim=-1).cpu())
         targets.append(labels[batch_idx].cpu())
+        ce_sum += float(
+            nn.functional.cross_entropy(
+                logits, labels[batch_idx].to(device), reduction="sum"
+            ).item()
+        )
     pred = torch.cat(preds, dim=0)
     target = torch.cat(targets, dim=0)
     return {
@@ -91,6 +126,7 @@ def _evaluate_split(
                 zero_division=0,
             )
         ),
+        "ce": ce_sum / max(int(target.numel()), 1),
     }
 
 
@@ -132,7 +168,7 @@ def _run_single_nc(
     # Graph encoders use the entire graph every epoch. Only MLP receives
     # feature-only minibatches.
     x_all = data.x.to(device)
-    y_all = data.y.to(device)
+    y_all = _training_labels(data, device, _development_no_test(cfg))
     edge_index_all = data.edge_index.to(device) if uses_graph else None
     train_idx_all = data.train_idx.to(device)
     train_loader = None
@@ -244,11 +280,12 @@ def _run_single_nc(
             eval_labels,
         )
         logger.info(
-            "Epoch %05d | Train Loss %.4f | Val Acc %.2f | Val Macro-F1 %.2f",
+            "Epoch %05d | Train Loss %.4f | Val Acc %.2f | Val Macro-F1 %.2f | Val CE %.5f",
             epoch,
             train_loss,
             format_pct(val_metrics["acc"]),
             format_pct(val_metrics["macro_f1"]),
+            val_metrics["ce"],
         )
 
         improved = val_metrics["acc"] > best_val + min_delta
@@ -259,6 +296,7 @@ def _run_single_nc(
             best_metrics = {
                 "val_acc": val_metrics["acc"],
                 "val_macro_f1": val_metrics["macro_f1"],
+                "val_ce": val_metrics["ce"],
             }
             best_model_state = clone_state_dict(model)
             best_head_state = clone_state_dict(classifier)
@@ -284,7 +322,7 @@ def _run_single_nc(
     load_state_dict_cpu(model, best_model_state)
     load_state_dict_cpu(classifier, best_head_state)
 
-    if bool(cfg.task.get("evaluate_test", True)):
+    if _should_evaluate_test(cfg):
         z = infer_all_embeddings(
             model, data, device, uses_graph, inference_batch_size, inference_mode
         )
@@ -303,6 +341,7 @@ def _run_single_nc(
 
     run_metadata = {
         "best_epoch": int(best_epoch),
+        "development_no_test": _development_no_test(cfg),
         "model_parameters": count_parameters(model),
         "classifier_parameters": count_parameters(classifier),
         "optimizer": type(optimizer).__name__,
@@ -361,10 +400,13 @@ def run_nc(
     device: torch.device,
     logger: logging.Logger,
 ) -> dict[str, tuple[float, float]]:
+    development_no_test = _development_no_test(cfg)
     if data.y is None or data.train_idx is None or data.val_idx is None or data.test_idx is None:
         raise ValueError("NC data must contain y/train_idx/val_idx/test_idx")
     _resolve_training_mode(cfg)
-    eval_labels = _resolve_nc_eval_labels(data)
+    eval_labels = _resolve_nc_eval_labels(
+        data, development_no_test=development_no_test
+    )
 
     run_results = []
     for run_id in range(int(cfg.num_runs)):
@@ -384,6 +426,7 @@ def run_nc(
             json.dump(
                 {
                     "protocol_version": str(cfg.task.get("protocol_version", "")),
+                    "development_no_test": development_no_test,
                     "base_seed": int(cfg.seed),
                     "run_seeds": [int(cfg.seed) + run_id for run_id in range(int(cfg.num_runs))],
                     "aggregation": "mean ± population std (ddof=0)",
@@ -405,12 +448,13 @@ def run_nc(
                 indent=2,
             )
     output: dict[str, tuple[float, float]] = {}
-    keys = ["val_acc", "val_macro_f1"]
-    if bool(cfg.task.get("evaluate_test", True)):
+    keys = ["val_acc", "val_macro_f1", "val_ce"]
+    if _should_evaluate_test(cfg):
         keys.extend(["test_acc", "test_macro_f1"])
     names = {
         "val_acc": "Val Accuracy",
         "val_macro_f1": "Val Macro-F1",
+        "val_ce": "Val CE",
         "test_acc": "Test Accuracy",
         "test_macro_f1": "Test Macro-F1",
     }

@@ -1,0 +1,14 @@
+name: care_mag_v0
+variant: context_adapter # prior_only | structural_base | static_adapter | context_adapter
+
+hidden_dim: 256
+num_layers: 3
+dropout: 0.2
+norm: layernorm
+state_dim: 64
+adapter_rank: 32
+diffusion_add_self_loops: true
+trust_init: 0.5
+adapter_scale_init: 0.1
+adapter_coeff_radius: 0.5
+eps: 1.0e-8
