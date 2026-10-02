@@ -1,0 +1,12 @@
+name: pigpr_mag_v1
+variant: raw_gpr_direct # raw_uniform_protected | raw_uniform_direct | raw_uniform0_direct | raw_fixed_prior_direct | raw_gpr_direct | anchored_gpr_direct
+
+hidden_dim: 256
+num_layers: 3
+dropout: 0.2
+diffusion_add_self_loops: true
+eps: 1.0e-8
+anchor_alpha: 0.1
+global_prior_restart: 0.15
+global_prior_order: 2
+structural_scale_init: 0.5
