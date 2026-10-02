@@ -1,0 +1,9 @@
+name: spgpr_mag_v0
+filter_mode: signed_shared # uniform | positive_shared | signed_shared | signed_independent | signed_shared_private
+
+hidden_dim: 256
+num_layers: 3
+dropout: 0.2
+diffusion_add_self_loops: true
+eps: 1.0e-8
+structural_scale_init: 0.5
