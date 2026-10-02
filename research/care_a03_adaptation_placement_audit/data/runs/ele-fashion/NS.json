@@ -1,0 +1,88 @@
+{
+  "protocol_version": "unified_full_graph_nc_v1",
+  "development_no_test": true,
+  "base_seed": 42,
+  "run_seeds": [
+    42,
+    43,
+    44
+  ],
+  "aggregation": "mean \u00b1 population std (ddof=0)",
+  "runs": [
+    {
+      "run_id": 0,
+      "seed": 42,
+      "metrics": {
+        "val_acc": 0.8760355710983276,
+        "val_macro_f1": 0.7584085953989272,
+        "val_ce": 0.4889148931824211
+      },
+      "metadata": {
+        "best_epoch": 222,
+        "development_no_test": true,
+        "model_parameters": 1429828,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      }
+    },
+    {
+      "run_id": 1,
+      "seed": 43,
+      "metrics": {
+        "val_acc": 0.8720466494560242,
+        "val_macro_f1": 0.7343501681030813,
+        "val_ce": 0.40795655595362523
+      },
+      "metadata": {
+        "best_epoch": 118,
+        "development_no_test": true,
+        "model_parameters": 1429828,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      }
+    },
+    {
+      "run_id": 2,
+      "seed": 44,
+      "metrics": {
+        "val_acc": 0.8748082518577576,
+        "val_macro_f1": 0.7411612230260342,
+        "val_ce": 0.4248314812905927
+      },
+      "metadata": {
+        "best_epoch": 156,
+        "development_no_test": true,
+        "model_parameters": 1429828,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      }
+    }
+  ]
+}
