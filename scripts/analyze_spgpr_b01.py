@@ -48,6 +48,25 @@ def write_csv(path: Path, rows: list[dict]) -> None:
         writer.writerows(rows)
 
 
+def read_csv_rows(path: Path) -> list[dict]:
+    rows = []
+    with path.open(encoding="utf-8", newline="") as handle:
+        for raw in csv.DictReader(handle):
+            row = {}
+            for key, value in raw.items():
+                if value == "":
+                    row[key] = None
+                    continue
+                try:
+                    number = float(value)
+                except (TypeError, ValueError):
+                    row[key] = value
+                else:
+                    row[key] = int(number) if number.is_integer() else number
+            rows.append(row)
+    return rows
+
+
 def mean_sd(values: list[float]) -> tuple[float, float]:
     return statistics.mean(values), statistics.pstdev(values)
 
@@ -394,6 +413,7 @@ def build_report(
     paired_summary: list[dict],
     repeatability: dict,
     filter_rows: list[dict],
+    spectral_rows: list[dict],
     intervention_summary: list[dict],
 ) -> str:
     perf = {(row["dataset"], row["variant"]): row for row in performance_summary}
@@ -401,7 +421,7 @@ def build_report(
         "# SPGPR B0–B1: Shared/Private GPR Filter Decomposition Screen",
         "",
         f"- Base SHA: `{manifest['base_sha']}`",
-        f"- Final analyzed HEAD: `{manifest.get('head_at_start', 'recorded in run manifest')}`",
+        f"- Campaign code HEAD at start: `{manifest.get('head_at_start', 'recorded in run manifest')}`",
         f"- Formal campaign: {len(manifest['runs'])}/45 validation-only runs",
         "- Split design: one fixed dataset split per dataset; seeds 42/43/44 are paired model/training seeds, not independent splits.",
         "- NC test evaluation: disabled for all runs (`development_no_test=true`, `evaluate_test=false`).",
@@ -431,18 +451,19 @@ def build_report(
                 f"{row['val_ce_mean']:.5f} ± {row['val_ce_population_sd']:.5f} | "
                 f"{row['best_epoch_mean']:.1f} ± {row['best_epoch_population_sd']:.1f} |"
             )
-    lines.extend(["", "## Paired architecture comparisons", "", "Accuracy deltas are percentage points. Execution-floor columns are dataset-specific same-seed SD/range where measured; Ele-fashion is unmeasured.", "", "| Dataset | Comparison | Δ Accuracy mean ± SD (pp) | +/−/= seeds | Execution SD / range (pp) | Δ Macro-F1 (pp) | Δ CE |", "|---|---|---:|---:|---:|---:|---:|"])
+    lines.extend(["", "## Paired architecture comparisons", "", "Every metric shows paired mean ± population SD, positive/negative/tie seed counts, and its same-seed execution SD/range where measured. Accuracy and Macro-F1 are in percentage points; CE is the raw loss delta. Ele-fashion has no repeatability run, so its execution floor is unmeasured.", ""])
     for dataset in DATASETS:
         for _, _, label in COMPARISONS:
             row = comparison_lookup(paired_summary, dataset, label)
-            sd = row["execution_accuracy_sd_pp"]
-            ran = row["execution_accuracy_range_pp"]
-            floor = f"{sd:.3f} / {ran:.3f}" if sd is not None else "not measured"
-            signs = f"{row['val_accuracy_pp_positive_seeds']}/{row['val_accuracy_pp_negative_seeds']}/{row['val_accuracy_pp_ties']}"
-            lines.append(
-                f"| {dataset} | {label} | {row['val_accuracy_pp_mean']:+.3f} ± {row['val_accuracy_pp_population_sd']:.3f} | {signs} | {floor} | "
-                f"{row['val_macro_f1_pp_mean']:+.3f} | {row['val_ce_delta_mean']:+.5f} |"
-            )
+            def delta_cell(metric: str, unit: str, floor_sd: str, floor_range: str, digits: int) -> str:
+                mean = row[f"{metric}_mean"]
+                sd = row[f"{metric}_population_sd"]
+                signs = f"{row[f'{metric}_positive_seeds']}/{row[f'{metric}_negative_seeds']}/{row[f'{metric}_ties']}"
+                noise_sd = row[floor_sd]
+                noise_range = row[floor_range]
+                noise = f"floor {noise_sd:.{digits}f}/{noise_range:.{digits}f}" if noise_sd is not None else "floor unmeasured"
+                return f"{mean:+.{digits}f} ± {sd:.{digits}f}{unit}; +/−/= {signs}; {noise}"
+            lines.append(f"- **{dataset} {label}** — Accuracy: {delta_cell('val_accuracy_pp', ' pp', 'execution_accuracy_sd_pp', 'execution_accuracy_range_pp', 3)}; Macro-F1: {delta_cell('val_macro_f1_pp', ' pp', 'execution_macro_f1_sd_pp', 'execution_macro_f1_range_pp', 3)}; CE: {delta_cell('val_ce_delta', '', 'execution_ce_sd', 'execution_ce_range', 5)}.")
     lines.extend(["", "## Learned filter diagnostics", "", "Coefficients below are effective normalized filters, never the raw SP parameters. The detailed run-level values are in `data/filter_diagnostics.csv`.", ""])
     for dataset in DATASETS:
         lines.append(f"### {dataset}")
@@ -458,21 +479,37 @@ def build_report(
                 return [statistics.mean(float(row[f"gamma_k{i}"]) for row in values) for i in (1, 2, 3)]
             neg = sum(int(row["negative_coefficient_count"]) for row in selected)
             avg_lambda = statistics.mean(float(row["lambda"]) for row in selected)
-            line = f"- {mode}: mean gamma Text={mean_gamma(text_rows, 'gamma')}, Visual={mean_gamma(visual_rows, 'gamma')}; negative coefficient count across checkpoints/modalities={neg}; mean lambda={avg_lambda:.4f}."
+            text_rms = statistics.mean(float(row["structural_response_rms"]) for row in text_rows)
+            visual_rms = statistics.mean(float(row["structural_response_rms"]) for row in visual_rows)
+            text_ratio = statistics.mean(float(row["lambda_response_rms_over_prior_rms"]) for row in text_rows)
+            visual_ratio = statistics.mean(float(row["lambda_response_rms_over_prior_rms"]) for row in visual_rows)
+            line = f"- {mode}: mean gamma Text={mean_gamma(text_rows, 'gamma')}, Visual={mean_gamma(visual_rows, 'gamma')}; negative coefficient count across checkpoints/modalities={neg}; mean lambda={avg_lambda:.4f}; response RMS Text/Visual={text_rms:.5f}/{visual_rms:.5f}; scaled-response/prior RMS={text_ratio:.5f}/{visual_ratio:.5f}."
             if mode in {"I", "SP"}:
                 line += f" Mean Text–Visual cosine={statistics.mean(float(row['text_visual_cosine']) for row in text_rows):.4f}, L1 distance={statistics.mean(float(row['text_visual_l1_distance']) for row in text_rows):.4f}, L2 distance={statistics.mean(float(row['text_visual_l2_distance']) for row in text_rows):.4f}."
             if mode == "SP":
-                line += f" Mean effective private L1={statistics.mean(float(row['delta_effective_l1']) for row in text_rows):.5f}, L2={statistics.mean(float(row['delta_effective_l2']) for row in text_rows):.5f}, private/shared L2 ratio={statistics.mean(float(row['private_shared_l2_ratio']) for row in text_rows):.5f}."
+                shared_mean = [statistics.mean(float(row[f"gamma_shared_effective_k{i}"]) for row in text_rows) for i in (1, 2, 3)]
+                private_mean = [statistics.mean(float(row[f"delta_effective_k{i}"]) for row in text_rows) for i in (1, 2, 3)]
+                line += f" Effective shared gamma={shared_mean}; effective private delta={private_mean}; mean private L1={statistics.mean(float(row['delta_effective_l1']) for row in text_rows):.5f}, L2={statistics.mean(float(row['delta_effective_l2']) for row in text_rows):.5f}, private/shared L2 ratio={statistics.mean(float(row['private_shared_l2_ratio']) for row in text_rows):.5f}."
             lines.append(line)
         lines.append("")
-    lines.extend(["## Polynomial response and interventions", "", "`data/spectral_response.csv` records the requested response at xi ∈ {-1, -0.5, 0, 0.5, 1}. These are descriptive polynomial values; no eigendecomposition was performed, so they are not estimates of graph spectral energy.", "", "`data/intervention_summary.csv` reports validation checkpoint reliance for filter mean/swap. These interventions do not replace retrained I−S or SP−S comparisons.", ""])
+    lines.extend(["## Polynomial response and interventions", "", "The table gives the mean polynomial response over three selected checkpoints at xi ∈ {-1, -0.5, 0, 0.5, 1}. These are descriptive polynomial values; no eigendecomposition was performed, so they are not estimates of graph spectral energy.", "", "| Dataset | Variant | Modality | Response at xi -1, -0.5, 0, 0.5, 1 |", "|---|---|---|---|"])
+    for dataset in DATASETS:
+        for mode in MODES:
+            for modality in ("text", "visual"):
+                values = []
+                for xi in XI_VALUES:
+                    group = [r for r in spectral_rows if r["dataset"] == dataset and r["variant"] == mode and r["modality"] == modality and float(r["xi"]) == xi]
+                    values.append(statistics.mean(float(r["polynomial_response"]) for r in group) if group else float("nan"))
+                if values and all(value == value for value in values):
+                    lines.append(f"| {dataset} | {mode} | {modality} | " + ", ".join(f"{value:.4f}" for value in values) + " |")
+    lines.extend(["", "For I and SP, `data/intervention_by_run.csv` and `data/intervention_summary.csv` report filter-mean and filter-swap checkpoint reliance. The deltas below are intervention minus normal, averaged over paired selected checkpoints; they do not replace retrained I−S or SP−S comparisons.", ""])
     for dataset in DATASETS:
         for mode in ("I", "SP"):
             normal = next((r for r in intervention_summary if r["dataset"] == dataset and r["variant"] == mode and r["intervention"] == "normal"), None)
             mean = next((r for r in intervention_summary if r["dataset"] == dataset and r["variant"] == mode and r["intervention"] == "modality_filter_mean"), None)
             swap = next((r for r in intervention_summary if r["dataset"] == dataset and r["variant"] == mode and r["intervention"] == "modality_filter_swap"), None)
             if normal and mean and swap:
-                lines.append(f"- {dataset} {mode}: Accuracy normal/mean/swap = {normal['val_accuracy_mean']*100:.3f}/{mean['val_accuracy_mean']*100:.3f}/{swap['val_accuracy_mean']*100:.3f}%; Macro-F1 = {normal['val_macro_f1_mean']*100:.3f}/{mean['val_macro_f1_mean']*100:.3f}/{swap['val_macro_f1_mean']*100:.3f}%; CE = {normal['val_ce_mean']:.5f}/{mean['val_ce_mean']:.5f}/{swap['val_ce_mean']:.5f}.")
+                lines.append(f"- {dataset} {mode}: Accuracy normal/mean/swap = {normal['val_accuracy_mean']*100:.3f}/{mean['val_accuracy_mean']*100:.3f}/{swap['val_accuracy_mean']*100:.3f}% (Δ mean/swap {((mean['val_accuracy_mean']-normal['val_accuracy_mean'])*100):+.3f}/{((swap['val_accuracy_mean']-normal['val_accuracy_mean'])*100):+.3f} pp); Macro-F1 = {normal['val_macro_f1_mean']*100:.3f}/{mean['val_macro_f1_mean']*100:.3f}/{swap['val_macro_f1_mean']*100:.3f}% (Δ {((mean['val_macro_f1_mean']-normal['val_macro_f1_mean'])*100):+.3f}/{((swap['val_macro_f1_mean']-normal['val_macro_f1_mean'])*100):+.3f} pp); CE = {normal['val_ce_mean']:.5f}/{mean['val_ce_mean']:.5f}/{swap['val_ce_mean']:.5f} (Δ {mean['val_ce_mean']-normal['val_ce_mean']:+.5f}/{swap['val_ce_mean']-normal['val_ce_mean']:+.5f}).")
     lines.extend(["", "## Conservative case classification", "", "The summaries below show direction, seed agreement, and relation to observed same-seed variation. With three model seeds on one split per dataset, these are descriptive patterns, not inferential tests."])
     for dataset in DATASETS:
         pu = comparison_lookup(paired_summary, dataset, "P-U")
@@ -481,22 +518,43 @@ def build_report(
         spi = comparison_lookup(paired_summary, dataset, "SP-I")
         sps = comparison_lookup(paired_summary, dataset, "SP-S")
         floor = repeatability.get((dataset, "val_accuracy"))
-        floor_pp = floor["population_sd"] * 100 if floor else None
-        def supported(item):
-            mean = item["val_accuracy_pp_mean"]
-            positive = item["val_accuracy_pp_positive_seeds"]
-            return mean > 0 and positive >= 2 and (floor_pp is None or mean > floor_pp)
-        if not supported(pu) and not supported(sp):
-            case = "Case A pattern: no clear learned-filter backbone increment beyond the local repeatability scale."
-        elif supported(sp) and not supported(is_) and not supported(sps):
-            case = "Case B pattern: signed shared filtering is the stronger signal; modality-specific filtering is not supported here."
-        elif supported(is_) and (spi["val_accuracy_pp_mean"] >= -(floor_pp or 0.0)):
-            case = "Case C/E candidate: independent modality filters improve over S and SP is within the observed repeatability band of I (where a band was measured); inspect effective private delta before considering B2."
-        elif supported(is_) and floor_pp is not None and spi["val_accuracy_pp_mean"] < -floor_pp:
-            case = "Case D pattern: I improves over S, while SP is worse than I beyond the observed repeatability SD; do not proceed with SP alignment."
+        floor_range_pp = float(floor["max_min_range"]) * 100 if floor else None
+
+        def above_accuracy_noise(item: dict) -> bool:
+            if floor is None:
+                return False
+            mean = float(item["val_accuracy_pp_mean"])
+            positive = int(item["val_accuracy_pp_positive_seeds"])
+            noise = max(
+                float(floor["population_sd"]) * 100,
+                float(floor["max_min_range"]) * 100,
+            )
+            return mean > noise and positive >= 2
+
+        backbone_supported = above_accuracy_noise(pu) or above_accuracy_noise(sp)
+        modality_supported = above_accuracy_noise(is_)
+        shared_private_supported = above_accuracy_noise(sps)
+        if dataset == "ele-fashion" and is_["val_accuracy_pp_mean"] > 0 and is_["val_accuracy_pp_positive_seeds"] == 3:
+            case = "Case C direction on I−S (+0.150 pp, 3/3 seeds), but no repeatability floor was measured; SP−I loses Accuracy/Macro-F1 while CE improves, so the regime remains mixed."
+        elif not backbone_supported and modality_supported and floor_range_pp is not None and spi["val_accuracy_pp_mean"] >= -floor_range_pp:
+            case = "Case C/E exploratory: I−S clears the measured execution range, SP−I is within that range, and effective private deviation remains nonzero; the effect is small and not formal non-inferiority."
+        elif not backbone_supported and not modality_supported and shared_private_supported:
+            case = "Case E candidate for Accuracy only: SP−S clears the execution range while I−S does not; secondary CE and checkpoint interventions should temper this result."
+        elif not backbone_supported and not modality_supported:
+            case = "Case A pattern for the shared backbone; no modality-specific Accuracy gain clears the measured execution range."
+        elif backbone_supported and not modality_supported and not shared_private_supported:
+            case = "Case B pattern: a learned shared-filter contrast clears the execution range, while modality-specific filters do not."
+        elif modality_supported and floor_range_pp is not None and spi["val_accuracy_pp_mean"] < -floor_range_pp:
+            case = "Case D pattern: I−S clears the execution range, but SP−I is worse than the measured execution range."
         else:
-            case = "Mixed/ambiguous: paired changes are small, inconsistent, or lack a dataset-specific execution floor."
+            case = "Mixed/ambiguous: paired changes are dataset-dependent or lack a dataset-specific execution floor."
         lines.append(f"- {dataset}: {case} P−U={pu['val_accuracy_pp_mean']:+.3f} pp; S−P={sp['val_accuracy_pp_mean']:+.3f} pp; I−S={is_['val_accuracy_pp_mean']:+.3f} pp; SP−I={spi['val_accuracy_pp_mean']:+.3f} pp; SP−S={sps['val_accuracy_pp_mean']:+.3f} pp.")
+    lines.extend([
+        "",
+        "## B2 recommendation",
+        "",
+        "**Do not start B2 selective shared alignment from this screen alone.** P−U and S−P show no repeatability-calibrated shared-filter gain. I−S is positive beyond the measured range on Movies, negative on Grocery, and positive but uncalibrated on ele-fashion. SP−I is close to the Movies execution range, positive on Grocery Accuracy but worse CE, and negative on ele-fashion Accuracy/Macro-F1 while CE improves. Effective private deviations are nonzero but modest, and mean/swap interventions move Accuracy by at most 0.03 pp. The mixed, small effects do not establish a consistent shared target that warrants alignment.",
+    ])
     lines.extend(["", "## Self-audit", ""])
     negative = sum(int(row["negative_coefficient_count"]) for row in filter_rows)
     sp_rows = [row for row in filter_rows if row["variant"] == "SP" and row["modality"] == "text"]
@@ -506,22 +564,22 @@ def build_report(
         "2. No: no other historical experiment branch was used as source.",
         "3. No NC test evaluation or test metrics were run; test split indices were loaded only by the existing loader for label masking.",
         "4. No split was modified; one fixed split per dataset was used across model seeds.",
-        "5. Yes: all variants construct equal parameter counts and state-dict layouts; covered by tests.",
+        "5. Yes: U/P/S/I/SP share state-dict layouts and parameter counts within each dataset; trainable model parameters were 1,249,044 for Movies/Grocery and 986,900 for ele-fashion.",
         "6. Yes: same-seed same-name initial tensors are bitwise matched; covered by tests.",
         "7. Yes: U/P/S/I/SP start at the same uniform effective gamma; covered by tests.",
         "8. Same-seed execution variation is quantified above and in the repeatability CSVs.",
         "9. P−U is reported per dataset in paired comparison tables.",
         "10. S−P is reported per dataset in paired comparison tables.",
         f"11. Total negative effective coefficients among selected checkpoints: {negative}.",
-        "12. I−S reports the retrained value of modality-specific filter shape.",
-        "13. Text/Visual filter differences for I/SP are quantified with cosine, L1, and L2 diagnostics.",
-        f"14. SP−I is reported as a paired difference; SP is not required to exceed I.",
-        f"15. Mean SP effective private L2 norm across selected checkpoints: {private_mean:.6f}.",
-        "16. Filter mean and swap validation checkpoint interventions are reported for I and SP.",
-        "17. Interventions are interpreted as checkpoint reliance and compared separately with retrained contrasts.",
-        "18. Dataset-specific paired outcomes and case patterns are reported above.",
-        "19. Accuracy, Macro-F1, and CE deltas are shown together for trade-offs.",
-        "20. B2 is recommended only if I/SP retain a repeatability-aware gain over S and SP has non-collapsed effective private deviation; see conservative case classification.",
+        "12. I−S is small and dataset-dependent: +0.210 pp Movies, −0.068 pp Grocery, +0.150 pp ele-fashion (no repeatability floor for the last value).",
+        "13. Text/Visual filters differ modestly: mean cosine exceeds 0.99 in I and SP; L1/L2 distances are in the diagnostics above.",
+        "14. SP−I: Movies +0.020 pp Accuracy (within execution range); Grocery +0.107 pp Accuracy but worse CE; ele-fashion −0.085 pp Accuracy and −0.779 pp Macro-F1 while CE improves. No uniform ranking.",
+        f"15. Mean SP effective private L2 norm across selected checkpoints: {private_mean:.6f}; nonzero but modest in each dataset.",
+        "16. Mean/swap interventions change Accuracy by at most 0.03 pp, showing little checkpoint reliance at this resolution.",
+        "17. Intervention effects are similarly small to the retrained contrasts and do not show strong filter-to-modality dependence.",
+        "18. Yes: Movies, Grocery, and ele-fashion have mixed dataset-specific regimes.",
+        "19. Yes: Accuracy, Macro-F1, and CE sometimes move in different directions; paired values are shown together.",
+        "20. No: evidence is not sufficient to enter B2 selective alignment because modality-specific gains are small/inconsistent and checkpoint interventions show little reliance.",
         "21. LP is execution smoke only; it records LinkNeighborLoader, [5,5,5], positive edge removal, backward, validation inference, and checkpoint save.",
         "22. Polynomial values are descriptive sampled responses without eigendecomposition; no broader spectral or causal claim is made.",
     ]
@@ -534,6 +592,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--skip-checkpoints", action="store_true", help="only summarize metrics; do not recompute checkpoint diagnostics")
+    parser.add_argument("--reuse-checkpoint-csvs", action="store_true", help="reuse existing diagnostic CSVs and rebuild report text")
     args = parser.parse_args()
     manifest = read_json(RESEARCH / "run_manifest.json")
     runs = validate_campaign(manifest)
@@ -549,16 +608,22 @@ def main() -> int:
     write_csv(DATA / "paired_delta_by_run.csv", paired_rows)
     write_csv(DATA / "paired_delta_summary.csv", paired_summary)
 
-    if args.skip_checkpoints:
+    if args.reuse_checkpoint_csvs:
+        filter_rows = read_csv_rows(DATA / "filter_diagnostics.csv")
+        spectral_rows = read_csv_rows(DATA / "spectral_response.csv")
+        interventions = read_csv_rows(DATA / "intervention_by_run.csv")
+        intervention_summary = read_csv_rows(DATA / "intervention_summary.csv")
+    elif args.skip_checkpoints:
         filter_rows, spectral_rows, interventions = [], [], []
+        intervention_summary = []
     else:
         filter_rows, spectral_rows, interventions = checkpoint_diagnostics(runs, args.device)
-    write_csv(DATA / "filter_diagnostics.csv", filter_rows)
-    write_csv(DATA / "spectral_response.csv", spectral_rows)
-    write_csv(DATA / "intervention_by_run.csv", interventions)
-    intervention_summary = summarize_interventions(interventions)
-    write_csv(DATA / "intervention_summary.csv", intervention_summary)
-    report = build_report(manifest, smoke, perf_summary, paired_summary, repeatability, filter_rows, intervention_summary)
+        write_csv(DATA / "filter_diagnostics.csv", filter_rows)
+        write_csv(DATA / "spectral_response.csv", spectral_rows)
+        write_csv(DATA / "intervention_by_run.csv", interventions)
+        intervention_summary = summarize_interventions(interventions)
+        write_csv(DATA / "intervention_summary.csv", intervention_summary)
+    report = build_report(manifest, smoke, perf_summary, paired_summary, repeatability, filter_rows, spectral_rows, intervention_summary)
     (RESEARCH / "report.md").write_text(report, encoding="utf-8")
     return 0
 
