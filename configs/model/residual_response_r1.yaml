@@ -1,0 +1,7 @@
+name: residual_response_r1
+variant: smooth_base # smooth_base | residual_generic | residual_protected
+
+hidden_dim: 128
+dropout: 0.2
+edge_chunk_size: 100000
+orth_weight: 1.0e-3

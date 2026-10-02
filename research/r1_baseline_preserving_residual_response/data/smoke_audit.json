@@ -1,0 +1,674 @@
+{
+  "status": "passed",
+  "source_sha": "d60db509e15e830a09a691665dcbe72435137477",
+  "dataset": "Movies",
+  "seed": 42,
+  "device": "cuda:1",
+  "initialization_audit": {
+    "dataset": "Movies",
+    "seed": 42,
+    "variant_hashes": {
+      "smooth_base": "55ec9fd677a36bb6631cd8256eccedff6166ef1b9f42325ed2299afb0784c175",
+      "residual_generic": "55ec9fd677a36bb6631cd8256eccedff6166ef1b9f42325ed2299afb0784c175",
+      "residual_protected": "55ec9fd677a36bb6631cd8256eccedff6166ef1b9f42325ed2299afb0784c175"
+    },
+    "classifier_hashes": {
+      "smooth_base": "cae723d690e2e06d4b2d8840c11ab8cb12210b7a0dd8d17748b0d8bb785c90fc",
+      "residual_generic": "cae723d690e2e06d4b2d8840c11ab8cb12210b7a0dd8d17748b0d8bb785c90fc",
+      "residual_protected": "cae723d690e2e06d4b2d8840c11ab8cb12210b7a0dd8d17748b0d8bb785c90fc"
+    },
+    "pairwise_bitwise_equal": {
+      "smooth_base__residual_generic": true,
+      "smooth_base__residual_protected": true,
+      "residual_generic__residual_protected": true
+    },
+    "all_bitwise_equal": true,
+    "exact_model_parameter_match": true,
+    "exact_classifier_parameter_match": true,
+    "exact_total_parameter_match": true,
+    "parameter_counts": {
+      "smooth_base": {
+        "model_total": 1706004,
+        "model_trainable": 1706004,
+        "smooth_transforms": 32768,
+        "bank_low_transforms": 32768,
+        "bank_high_transforms": 32768,
+        "correction_transforms": 32768,
+        "generic_first_stage_both_modalities": 132302,
+        "protected_mha_both_modalities": 132096,
+        "classifier_params": 2580,
+        "total_trainable_params": 1708584
+      },
+      "residual_generic": {
+        "model_total": 1706004,
+        "model_trainable": 1706004,
+        "smooth_transforms": 32768,
+        "bank_low_transforms": 32768,
+        "bank_high_transforms": 32768,
+        "correction_transforms": 32768,
+        "generic_first_stage_both_modalities": 132302,
+        "protected_mha_both_modalities": 132096,
+        "classifier_params": 2580,
+        "total_trainable_params": 1708584
+      },
+      "residual_protected": {
+        "model_total": 1706004,
+        "model_trainable": 1706004,
+        "smooth_transforms": 32768,
+        "bank_low_transforms": 32768,
+        "bank_high_transforms": 32768,
+        "correction_transforms": 32768,
+        "generic_first_stage_both_modalities": 132302,
+        "protected_mha_both_modalities": 132096,
+        "classifier_params": 2580,
+        "total_trainable_params": 1708584
+      }
+    }
+  },
+  "smooth_compatibility_regression": {
+    "dataset": "Movies",
+    "seed": 42,
+    "device": "cuda:1",
+    "status": "passed",
+    "max_abs_error": 2.6226043701171875e-06,
+    "tolerance": {
+      "rtol": 1e-06,
+      "atol": 1e-05
+    },
+    "comparisons_max_abs_error": {
+      "m0_projector_text": 0.0,
+      "m0_neighbor_mean_text": 9.5367431640625e-07,
+      "m0_smooth_delta_text": 2.6226043701171875e-06,
+      "m0_smooth_state_text": 1.9073486328125e-06,
+      "n1_projector_text": 0.0,
+      "n1_neighbor_mean_text": 9.5367431640625e-07,
+      "n1_smooth_delta_text": 2.6226043701171875e-06,
+      "n1_smooth_state_text": 1.6689300537109375e-06,
+      "r0_projector_text": 0.0,
+      "r0_neighbor_mean_text": 9.5367431640625e-07,
+      "r0_smooth_delta_text": 8.344650268554688e-07,
+      "r0_smooth_state_text": 7.152557373046875e-07,
+      "m0_projector_visual": 0.0,
+      "m0_neighbor_mean_visual": 4.76837158203125e-07,
+      "m0_smooth_delta_visual": 2.6226043701171875e-06,
+      "m0_smooth_state_visual": 1.9073486328125e-06,
+      "n1_projector_visual": 0.0,
+      "n1_neighbor_mean_visual": 4.76837158203125e-07,
+      "n1_smooth_delta_visual": 2.6226043701171875e-06,
+      "n1_smooth_state_visual": 1.9073486328125e-06,
+      "r0_projector_visual": 0.0,
+      "r0_neighbor_mean_visual": 4.76837158203125e-07,
+      "r0_smooth_delta_visual": 8.344650268554688e-07,
+      "r0_smooth_state_visual": 9.5367431640625e-07,
+      "m0_final_z": 2.5033950805664062e-06,
+      "n1_final_z": 2.5033950805664062e-06,
+      "r0_final_z": 2.384185791015625e-06
+    },
+    "note": "Mapped Smooth paths agree within tolerance; CUDA scatter reductions may differ at floating-point roundoff."
+  },
+  "r0_response_branch_regression": {
+    "dataset": "Movies",
+    "seed": 42,
+    "device": "cuda:1",
+    "status": "passed",
+    "max_abs_error": 1.2159347534179688e-05,
+    "tolerance": 2e-05,
+    "comparisons_max_abs_error": {
+      "generic_low_raw_text": 7.152557373046875e-07,
+      "generic_high_raw_text": 7.152557373046875e-07,
+      "generic_low_text": 7.152557373046875e-07,
+      "generic_high_text": 1.2159347534179688e-05,
+      "generic_cross_text": 5.364418029785156e-07,
+      "generic_composition_response_text": 1.2814998626708984e-06,
+      "generic_branch_structural_text": 1.2814998626708984e-06,
+      "generic_low_raw_visual": 4.76837158203125e-07,
+      "generic_high_raw_visual": 4.76837158203125e-07,
+      "generic_low_visual": 9.5367431640625e-07,
+      "generic_high_visual": 5.304813385009766e-06,
+      "generic_cross_visual": 1.2740492820739746e-06,
+      "generic_composition_response_visual": 5.364418029785156e-07,
+      "generic_branch_structural_visual": 9.5367431640625e-07,
+      "protected_low_raw_text": 9.5367431640625e-07,
+      "protected_high_raw_text": 9.5367431640625e-07,
+      "protected_low_text": 8.344650268554688e-07,
+      "protected_high_text": 8.940696716308594e-06,
+      "protected_cross_text": 4.172325134277344e-07,
+      "protected_composition_response_text": 1.6093254089355469e-06,
+      "protected_branch_structural_text": 1.7881393432617188e-06,
+      "protected_low_raw_visual": 4.76837158203125e-07,
+      "protected_high_raw_visual": 4.76837158203125e-07,
+      "protected_low_visual": 1.1920928955078125e-06,
+      "protected_high_visual": 4.589557647705078e-06,
+      "protected_cross_visual": 7.972121238708496e-07,
+      "protected_composition_response_visual": 8.940696716308594e-07,
+      "protected_branch_structural_visual": 9.834766387939453e-07,
+      "protected_attention_text": 4.76837158203125e-07,
+      "protected_attention_visual": 4.76837158203125e-07
+    }
+  },
+  "initial_output_identity": {
+    "dataset": "Movies",
+    "seed": 42,
+    "status": "passed",
+    "max_abs_error": 0.0,
+    "exact_zero_error": true,
+    "comparisons_max_abs_error": {
+      "eval_residual_generic_final_z": 0.0,
+      "eval_residual_generic_text_smooth_state": 0.0,
+      "eval_residual_generic_text_structural": 0.0,
+      "eval_residual_generic_visual_smooth_state": 0.0,
+      "eval_residual_generic_visual_structural": 0.0,
+      "eval_residual_protected_final_z": 0.0,
+      "eval_residual_protected_text_smooth_state": 0.0,
+      "eval_residual_protected_text_structural": 0.0,
+      "eval_residual_protected_visual_smooth_state": 0.0,
+      "eval_residual_protected_visual_structural": 0.0,
+      "train_residual_generic_final_z": 0.0,
+      "train_residual_generic_text_smooth_state": 0.0,
+      "train_residual_generic_text_structural": 0.0,
+      "train_residual_generic_visual_smooth_state": 0.0,
+      "train_residual_generic_visual_structural": 0.0,
+      "train_residual_protected_final_z": 0.0,
+      "train_residual_protected_text_smooth_state": 0.0,
+      "train_residual_protected_text_structural": 0.0,
+      "train_residual_protected_visual_smooth_state": 0.0,
+      "train_residual_protected_visual_structural": 0.0
+    }
+  },
+  "transform_ownership": {
+    "smooth_vs_low_distinct": true,
+    "smooth_vs_high_distinct": true,
+    "low_vs_high_distinct": true,
+    "all_transforms_have_no_bias": true
+  },
+  "gradient_bootstrap_audit": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "residual_generic",
+      "step1_correction_weight_norm_before": 0.0,
+      "step1_task_loss": 3.1508278846740723,
+      "step1_task_gradients": {
+        "correction_projection": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.35345232381013597
+        },
+        "smooth_transforms": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.9003434241246175
+        },
+        "bank_low_high": {
+          "parameter_tensors": 12,
+          "gradient_tensors": 12,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "cross_prompts": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "cross_experts": {
+          "parameter_tensors": 24,
+          "gradient_tensors": 24,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "routers": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "generic_composer": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "protected_attention": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "post_composer": {
+          "parameter_tensors": 16,
+          "gradient_tensors": 16,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "fusion": {
+          "parameter_tensors": 6,
+          "gradient_tensors": 6,
+          "parameters_with_gradient": 6,
+          "finite": true,
+          "norm": 8.138089372219111
+        }
+      },
+      "orth_loss_raw": 2.179577350616455,
+      "orth_only_gradients": {
+        "correction_projection": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "smooth_transforms": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "bank_low_high": {
+          "parameter_tensors": 12,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "cross_prompts": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 12.198323300319242
+        },
+        "cross_experts": {
+          "parameter_tensors": 24,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "routers": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "generic_composer": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "protected_attention": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "post_composer": {
+          "parameter_tensors": 16,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "fusion": {
+          "parameter_tensors": 6,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        }
+      },
+      "post_step_correction_weight_norm": 0.18080156094326408,
+      "step2_task_loss": 2.698601722717285,
+      "step2_task_gradients": {
+        "correction_projection": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.1986501376718053
+        },
+        "smooth_transforms": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.5080632397701074
+        },
+        "bank_low_high": {
+          "parameter_tensors": 12,
+          "gradient_tensors": 12,
+          "parameters_with_gradient": 12,
+          "finite": true,
+          "norm": 0.001939875748099496
+        },
+        "cross_prompts": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 5.869782712843077e-06
+        },
+        "cross_experts": {
+          "parameter_tensors": 24,
+          "gradient_tensors": 24,
+          "parameters_with_gradient": 24,
+          "finite": true,
+          "norm": 0.0006447096956588987
+        },
+        "routers": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 8,
+          "finite": true,
+          "norm": 1.5092521423789736e-05
+        },
+        "generic_composer": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 8,
+          "finite": true,
+          "norm": 0.009832511539691387
+        },
+        "protected_attention": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "post_composer": {
+          "parameter_tensors": 16,
+          "gradient_tensors": 16,
+          "parameters_with_gradient": 16,
+          "finite": true,
+          "norm": 0.009353217430737372
+        },
+        "fusion": {
+          "parameter_tensors": 6,
+          "gradient_tensors": 6,
+          "parameters_with_gradient": 6,
+          "finite": true,
+          "norm": 5.557120668160299
+        }
+      },
+      "active_composer": "generic_composer",
+      "inactive_composer": "protected_attention",
+      "checks_passed": true
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "residual_protected",
+      "step1_correction_weight_norm_before": 0.0,
+      "step1_task_loss": 3.1508278846740723,
+      "step1_task_gradients": {
+        "correction_projection": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.31657787660344533
+        },
+        "smooth_transforms": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.9003434241246175
+        },
+        "bank_low_high": {
+          "parameter_tensors": 12,
+          "gradient_tensors": 12,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "cross_prompts": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "cross_experts": {
+          "parameter_tensors": 24,
+          "gradient_tensors": 24,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "routers": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "generic_composer": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "protected_attention": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "post_composer": {
+          "parameter_tensors": 16,
+          "gradient_tensors": 16,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "fusion": {
+          "parameter_tensors": 6,
+          "gradient_tensors": 6,
+          "parameters_with_gradient": 6,
+          "finite": true,
+          "norm": 8.138089372219111
+        }
+      },
+      "orth_loss_raw": 2.179577350616455,
+      "orth_only_gradients": {
+        "correction_projection": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "smooth_transforms": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "bank_low_high": {
+          "parameter_tensors": 12,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "cross_prompts": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 12.198323300319242
+        },
+        "cross_experts": {
+          "parameter_tensors": 24,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "routers": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "generic_composer": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "protected_attention": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "post_composer": {
+          "parameter_tensors": 16,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "fusion": {
+          "parameter_tensors": 6,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        }
+      },
+      "post_step_correction_weight_norm": 0.18082450753053542,
+      "step2_task_loss": 2.6981847286224365,
+      "step2_task_gradients": {
+        "correction_projection": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.1798477598450876
+        },
+        "smooth_transforms": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 0.5083609040657804
+        },
+        "bank_low_high": {
+          "parameter_tensors": 12,
+          "gradient_tensors": 12,
+          "parameters_with_gradient": 12,
+          "finite": true,
+          "norm": 0.002417163755298228
+        },
+        "cross_prompts": {
+          "parameter_tensors": 2,
+          "gradient_tensors": 2,
+          "parameters_with_gradient": 2,
+          "finite": true,
+          "norm": 5.726343920445357e-06
+        },
+        "cross_experts": {
+          "parameter_tensors": 24,
+          "gradient_tensors": 24,
+          "parameters_with_gradient": 24,
+          "finite": true,
+          "norm": 0.0006971467018596749
+        },
+        "routers": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 8,
+          "finite": true,
+          "norm": 3.5003888415111494e-05
+        },
+        "generic_composer": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 0,
+          "parameters_with_gradient": 0,
+          "finite": true,
+          "norm": 0.0
+        },
+        "protected_attention": {
+          "parameter_tensors": 8,
+          "gradient_tensors": 8,
+          "parameters_with_gradient": 8,
+          "finite": true,
+          "norm": 0.004796329834008591
+        },
+        "post_composer": {
+          "parameter_tensors": 16,
+          "gradient_tensors": 16,
+          "parameters_with_gradient": 16,
+          "finite": true,
+          "norm": 0.008997454489251558
+        },
+        "fusion": {
+          "parameter_tensors": 6,
+          "gradient_tensors": 6,
+          "parameters_with_gradient": 6,
+          "finite": true,
+          "norm": 5.557114129767043
+        }
+      },
+      "active_composer": "protected_attention",
+      "inactive_composer": "generic_composer",
+      "checks_passed": true
+    }
+  ],
+  "short_gpu_runs": [
+    {
+      "variant": "smooth_base",
+      "status": "completed",
+      "best_epoch": 1,
+      "val_accuracy": 0.3293341100215912,
+      "val_macro_f1": 0.02477436823104693,
+      "val_ce": 2.82196044921875
+    },
+    {
+      "variant": "residual_generic",
+      "status": "completed",
+      "best_epoch": 1,
+      "val_accuracy": 0.3293341100215912,
+      "val_macro_f1": 0.02477436823104693,
+      "val_ce": 2.8238418102264404
+    },
+    {
+      "variant": "residual_protected",
+      "status": "completed",
+      "best_epoch": 1,
+      "val_accuracy": 0.3293341100215912,
+      "val_macro_f1": 0.02477436823104693,
+      "val_ce": 2.8234660625457764
+    }
+  ],
+  "evaluate_test": false,
+  "test_idx_attached": false,
+  "test_labels_exposed": false,
+  "link_prediction": false
+}
