@@ -1,0 +1,2966 @@
+{
+  "experiment": "ORCI-D0 Order-Resolved Cross-modal Interaction + Selective Alignment Synergy Screen",
+  "base_sha": "cd9d440aa43454215e1a512b5426a5372e47a41a",
+  "branch": "exp/orci_d0_interaction_alignment_synergy",
+  "head_at_branch_creation": "cd9d440aa43454215e1a512b5426a5372e47a41a",
+  "head_at_last_run": "cd9d440aa43454215e1a512b5426a5372e47a41a",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "fixed_dataset_splits": {
+    "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+    "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+    "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
+  },
+  "variants": {
+    "B": "base",
+    "I": "interaction",
+    "A": "alignment",
+    "IA": "joint"
+  },
+  "model_training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "alignment_calibration_weights": [
+    0.02,
+    0.05,
+    0.1
+  ],
+  "expected_calibration_runs": 8,
+  "expected_formal_runs": 36,
+  "expected_smoke_runs": 6,
+  "evaluate_test": false,
+  "development_no_test": true,
+  "formal_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_B_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_B_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_B_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_B_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_B_seed42.log",
+      "started_at": "2026-10-03T11:40:42+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5659868121147156,
+        "val_macro_f1": 0.4796031031510445,
+        "val_ce": 1.4026507198560287
+      },
+      "metadata": {
+        "best_epoch": 105,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 105,
+      "finished_at": "2026-10-03T11:41:18+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_B_seed43",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_B_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_B_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_B_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_B_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_B_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_B_seed43.log",
+      "started_at": "2026-10-03T11:41:18+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.564487099647522,
+        "val_macro_f1": 0.5020443926398249,
+        "val_ce": 1.3906569272083082
+      },
+      "metadata": {
+        "best_epoch": 117,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 117,
+      "finished_at": "2026-10-03T11:41:57+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_B_seed44",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_B_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_B_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_B_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_B_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_B_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_B_seed44.log",
+      "started_at": "2026-10-03T11:41:57+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5650869607925415,
+        "val_macro_f1": 0.47832569296875027,
+        "val_ce": 1.3899718103254348
+      },
+      "metadata": {
+        "best_epoch": 124,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 124,
+      "finished_at": "2026-10-03T11:42:40+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_I_seed42",
+      "dataset": "Movies",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_I_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_I_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_I_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_I_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_I_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_I_seed42.log",
+      "started_at": "2026-10-03T11:42:40+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5560888051986694,
+        "val_macro_f1": 0.4921856997612316,
+        "val_ce": 1.4398236563624776
+      },
+      "metadata": {
+        "best_epoch": 63,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 63,
+      "finished_at": "2026-10-03T11:43:14+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_I_seed43",
+      "dataset": "Movies",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_I_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_I_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_I_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_I_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_I_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_I_seed43.log",
+      "started_at": "2026-10-03T11:43:14+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5461907386779785,
+        "val_macro_f1": 0.4635296692698585,
+        "val_ce": 1.4257730485152968
+      },
+      "metadata": {
+        "best_epoch": 57,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 57,
+      "finished_at": "2026-10-03T11:43:50+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_I_seed44",
+      "dataset": "Movies",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_I_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_I_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_I_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_I_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_I_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_I_seed44.log",
+      "started_at": "2026-10-03T11:43:50+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5386922359466553,
+        "val_macro_f1": 0.47172692108085323,
+        "val_ce": 1.4148016588088632
+      },
+      "metadata": {
+        "best_epoch": 55,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 55,
+      "finished_at": "2026-10-03T11:44:21+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_A_seed42",
+      "dataset": "Movies",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_A_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_A_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_A_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_A_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_A_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_A_seed42.log",
+      "started_at": "2026-10-03T11:44:21+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5650869607925415,
+        "val_macro_f1": 0.4916493215358462,
+        "val_ce": 1.376281921350105
+      },
+      "metadata": {
+        "best_epoch": 113,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 113,
+      "finished_at": "2026-10-03T11:45:06+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_A_seed43",
+      "dataset": "Movies",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_A_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_A_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_A_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_A_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_A_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_A_seed43.log",
+      "started_at": "2026-10-03T11:45:06+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5683863162994385,
+        "val_macro_f1": 0.5045611012508775,
+        "val_ce": 1.3682393404131674
+      },
+      "metadata": {
+        "best_epoch": 106,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 106,
+      "finished_at": "2026-10-03T11:45:45+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_A_seed44",
+      "dataset": "Movies",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_A_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_A_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_A_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_A_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_A_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_A_seed44.log",
+      "started_at": "2026-10-03T11:45:45+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5665866732597351,
+        "val_macro_f1": 0.4779456158867438,
+        "val_ce": 1.4000527531212508
+      },
+      "metadata": {
+        "best_epoch": 121,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 121,
+      "finished_at": "2026-10-03T11:46:31+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_IA_seed42",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_IA_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_IA_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_IA_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_IA_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_IA_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_IA_seed42.log",
+      "started_at": "2026-10-03T11:46:31+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5623875260353088,
+        "val_macro_f1": 0.49678453406758594,
+        "val_ce": 1.3321960119694811
+      },
+      "metadata": {
+        "best_epoch": 68,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 68,
+      "finished_at": "2026-10-03T11:47:10+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_IA_seed43",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_IA_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_IA_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_IA_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_IA_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_IA_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_IA_seed43.log",
+      "started_at": "2026-10-03T11:47:10+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.553389310836792,
+        "val_macro_f1": 0.47985671715788947,
+        "val_ce": 1.3433241086157768
+      },
+      "metadata": {
+        "best_epoch": 66,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 66,
+      "finished_at": "2026-10-03T11:47:46+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Movies_IA_seed44",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_IA_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Movies_IA_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_IA_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Movies/Movies_IA_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Movies_IA_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Movies_IA_seed44.log",
+      "started_at": "2026-10-03T11:47:46+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5596880912780762,
+        "val_macro_f1": 0.4837690586592921,
+        "val_ce": 1.3775828818611278
+      },
+      "metadata": {
+        "best_epoch": 85,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 85,
+      "finished_at": "2026-10-03T11:48:31+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_B_seed42",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_B_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_B_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_B_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_B_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_B_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_B_seed42.log",
+      "started_at": "2026-10-03T11:48:31+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8325036764144897,
+        "val_macro_f1": 0.775646198827915,
+        "val_ce": 0.6722843555545388
+      },
+      "metadata": {
+        "best_epoch": 129,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 129,
+      "finished_at": "2026-10-03T11:49:15+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_B_seed43",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_B_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_B_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_B_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_B_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_B_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_B_seed43.log",
+      "started_at": "2026-10-03T11:49:15+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7563111349069208,
+        "val_ce": 0.6518200808702416
+      },
+      "metadata": {
+        "best_epoch": 85,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 85,
+      "finished_at": "2026-10-03T11:49:56+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_B_seed44",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_B_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_B_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_B_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_B_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_B_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_B_seed44.log",
+      "started_at": "2026-10-03T11:49:56+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8254758715629578,
+        "val_macro_f1": 0.7584361728210578,
+        "val_ce": 0.6698307958912885
+      },
+      "metadata": {
+        "best_epoch": 94,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 94,
+      "finished_at": "2026-10-03T11:50:33+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_I_seed42",
+      "dataset": "Grocery",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_I_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_I_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_I_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_I_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_I_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_I_seed42.log",
+      "started_at": "2026-10-03T11:50:33+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8172767162322998,
+        "val_macro_f1": 0.743123494653861,
+        "val_ce": 0.6814704772144948
+      },
+      "metadata": {
+        "best_epoch": 73,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 73,
+      "finished_at": "2026-10-03T11:51:10+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_I_seed43",
+      "dataset": "Grocery",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_I_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_I_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_I_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_I_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_I_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_I_seed43.log",
+      "started_at": "2026-10-03T11:51:10+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8204978108406067,
+        "val_macro_f1": 0.736825829251538,
+        "val_ce": 0.6806901565931552
+      },
+      "metadata": {
+        "best_epoch": 64,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 64,
+      "finished_at": "2026-10-03T11:51:53+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_I_seed44",
+      "dataset": "Grocery",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_I_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_I_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_I_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_I_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_I_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_I_seed44.log",
+      "started_at": "2026-10-03T11:51:53+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8216691017150879,
+        "val_macro_f1": 0.7476501000967579,
+        "val_ce": 0.6698126372620791
+      },
+      "metadata": {
+        "best_epoch": 61,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 61,
+      "finished_at": "2026-10-03T11:52:33+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_A_seed42",
+      "dataset": "Grocery",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_A_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_A_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_A_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_A_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_A_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_A_seed42.log",
+      "started_at": "2026-10-03T11:52:33+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8298682570457458,
+        "val_macro_f1": 0.7710109889331433,
+        "val_ce": 0.6942690222364568
+      },
+      "metadata": {
+        "best_epoch": 131,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 131,
+      "finished_at": "2026-10-03T11:53:24+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_A_seed43",
+      "dataset": "Grocery",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_A_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_A_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_A_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_A_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_A_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_A_seed43.log",
+      "started_at": "2026-10-03T11:53:24+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.826061487197876,
+        "val_macro_f1": 0.7523136681959655,
+        "val_ce": 0.6367406261438506
+      },
+      "metadata": {
+        "best_epoch": 79,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 79,
+      "finished_at": "2026-10-03T11:54:03+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_A_seed44",
+      "dataset": "Grocery",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_A_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_A_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_A_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_A_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_A_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_A_seed44.log",
+      "started_at": "2026-10-03T11:54:03+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8248901963233948,
+        "val_macro_f1": 0.7501617205517126,
+        "val_ce": 0.6596939198618228
+      },
+      "metadata": {
+        "best_epoch": 88,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 88,
+      "finished_at": "2026-10-03T11:54:44+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_IA_seed42",
+      "dataset": "Grocery",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_IA_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_IA_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_IA_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_IA_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_IA_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_IA_seed42.log",
+      "started_at": "2026-10-03T11:54:44+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8263543248176575,
+        "val_macro_f1": 0.7546648654683744,
+        "val_ce": 0.6458985089906661
+      },
+      "metadata": {
+        "best_epoch": 67,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 67,
+      "finished_at": "2026-10-03T11:55:22+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_IA_seed43",
+      "dataset": "Grocery",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_IA_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_IA_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_IA_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_IA_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_IA_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_IA_seed43.log",
+      "started_at": "2026-10-03T11:55:22+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8281112909317017,
+        "val_macro_f1": 0.7493066537485398,
+        "val_ce": 0.6591320747163251
+      },
+      "metadata": {
+        "best_epoch": 86,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 86,
+      "finished_at": "2026-10-03T11:56:04+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "Grocery_IA_seed44",
+      "dataset": "Grocery",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_IA_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/Grocery_IA_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_IA_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/Grocery/Grocery_IA_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/Grocery_IA_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/Grocery_IA_seed44.log",
+      "started_at": "2026-10-03T11:56:04+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8243045210838318,
+        "val_macro_f1": 0.7475002299360402,
+        "val_ce": 0.6437246208135066
+      },
+      "metadata": {
+        "best_epoch": 67,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 67,
+      "finished_at": "2026-10-03T11:56:43+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "ele-fashion_B_seed42",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_B_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_B_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_B_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_B_seed42.log",
+      "started_at": "2026-10-03T12:15:26+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8748082518577576,
+        "val_macro_f1": 0.7533459301889457,
+        "val_ce": 0.41377967318667214
+      },
+      "metadata": {
+        "best_epoch": 162,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 162,
+      "finished_at": "2026-10-03T12:17:55+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "ele-fashion_B_seed43",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_B_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_B_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_B_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_B_seed43.log",
+      "started_at": "2026-10-03T12:17:55+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8741945624351501,
+        "val_macro_f1": 0.7399342643845433,
+        "val_ce": 0.41247449970274624
+      },
+      "metadata": {
+        "best_epoch": 181,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 181,
+      "finished_at": "2026-10-03T12:20:46+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "ele-fashion_B_seed44",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_B_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_B_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_B_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_B_seed44.log",
+      "started_at": "2026-10-03T12:20:46+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8717398047447205,
+        "val_macro_f1": 0.7350201995156502,
+        "val_ce": 0.4073488200943541
+      },
+      "metadata": {
+        "best_epoch": 122,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 122,
+      "finished_at": "2026-10-03T12:22:56+00:00",
+      "reused_completed_run": true
+    },
+    {
+      "stem": "ele-fashion_I_seed42",
+      "dataset": "ele-fashion",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_I_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_I_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_I_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_I_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_I_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_I_seed42.log",
+      "started_at": "2026-10-03T12:38:30+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8671371340751648,
+        "val_macro_f1": 0.7187620832674411,
+        "val_ce": 0.41824153850594825
+      },
+      "metadata": {
+        "best_epoch": 82,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 82,
+      "finished_at": "2026-10-03T12:43:03+00:00"
+    },
+    {
+      "stem": "ele-fashion_I_seed43",
+      "dataset": "ele-fashion",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_I_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_I_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_I_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_I_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_I_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_I_seed43.log",
+      "started_at": "2026-10-03T12:43:03+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8678531050682068,
+        "val_macro_f1": 0.7227607497074193,
+        "val_ce": 0.42040606726285223
+      },
+      "metadata": {
+        "best_epoch": 81,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 81,
+      "finished_at": "2026-10-03T12:47:32+00:00"
+    },
+    {
+      "stem": "ele-fashion_I_seed44",
+      "dataset": "ele-fashion",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_I_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_I_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_I_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_I_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_I_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_I_seed44.log",
+      "started_at": "2026-10-03T12:47:32+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8661143779754639,
+        "val_macro_f1": 0.7230281281874388,
+        "val_ce": 0.4244868264944992
+      },
+      "metadata": {
+        "best_epoch": 90,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 90,
+      "finished_at": "2026-10-03T12:52:24+00:00"
+    },
+    {
+      "stem": "ele-fashion_A_seed42",
+      "dataset": "ele-fashion",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_A_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_A_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_A_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_A_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_A_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_A_seed42.log",
+      "started_at": "2026-10-03T12:52:24+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8740922808647156,
+        "val_macro_f1": 0.736287186301931,
+        "val_ce": 0.4208691715889332
+      },
+      "metadata": {
+        "best_epoch": 161,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 161,
+      "finished_at": "2026-10-03T12:59:00+00:00"
+    },
+    {
+      "stem": "ele-fashion_A_seed43",
+      "dataset": "ele-fashion",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_A_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_A_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_A_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_A_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_A_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_A_seed43.log",
+      "started_at": "2026-10-03T12:59:00+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8772629499435425,
+        "val_macro_f1": 0.7477673015326535,
+        "val_ce": 0.4236179385751477
+      },
+      "metadata": {
+        "best_epoch": 200,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 200,
+      "finished_at": "2026-10-03T13:07:11+00:00"
+    },
+    {
+      "stem": "ele-fashion_A_seed44",
+      "dataset": "ele-fashion",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_A_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_A_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_A_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_A_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_A_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_A_seed44.log",
+      "started_at": "2026-10-03T13:07:11+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8714329600334167,
+        "val_macro_f1": 0.7332199194103844,
+        "val_ce": 0.4193028585303838
+      },
+      "metadata": {
+        "best_epoch": 132,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 132,
+      "finished_at": "2026-10-03T13:12:28+00:00"
+    },
+    {
+      "stem": "ele-fashion_IA_seed42",
+      "dataset": "ele-fashion",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_IA_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_IA_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_IA_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_IA_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_IA_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_IA_seed42.log",
+      "started_at": "2026-10-03T13:12:28+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.871126115322113,
+        "val_macro_f1": 0.7413416690132002,
+        "val_ce": 0.4046656953980004
+      },
+      "metadata": {
+        "best_epoch": 131,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 131,
+      "finished_at": "2026-10-03T13:18:01+00:00"
+    },
+    {
+      "stem": "ele-fashion_IA_seed43",
+      "dataset": "ele-fashion",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 43,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_IA_seed43.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_IA_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_IA_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_IA_seed43.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_IA_seed43.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_IA_seed43.log",
+      "started_at": "2026-10-03T13:18:01+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8724557757377625,
+        "val_macro_f1": 0.737925692827627,
+        "val_ce": 0.4083735639726846
+      },
+      "metadata": {
+        "best_epoch": 138,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 138,
+      "finished_at": "2026-10-03T13:23:41+00:00"
+    },
+    {
+      "stem": "ele-fashion_IA_seed44",
+      "dataset": "ele-fashion",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 44,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_IA_seed44.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/formal/ele-fashion_IA_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_IA_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/formal/ele-fashion/ele-fashion_IA_seed44.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/formal/ele-fashion_IA_seed44.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/formal/ele-fashion_IA_seed44.log",
+      "started_at": "2026-10-03T13:23:41+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8709215521812439,
+        "val_macro_f1": 0.738078373276471,
+        "val_ce": 0.40712831443934105
+      },
+      "metadata": {
+        "best_epoch": 129,
+        "development_no_test": true,
+        "model_parameters": 1036963,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 129,
+      "finished_at": "2026-10-03T13:29:08+00:00"
+    }
+  ],
+  "calibration_runs": [
+    {
+      "stem": "Movies_B_w0.05_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_B_w0.05_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Movies_B_w0.05_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_B_w0.05_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_B_w0.05_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_B_w0.05_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Movies_B_w0.05_seed42.log",
+      "started_at": "2026-10-03T11:33:03+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.564487099647522,
+        "val_macro_f1": 0.4991032483422293,
+        "val_ce": 1.4259051510010499
+      },
+      "metadata": {
+        "best_epoch": 125,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 125,
+      "finished_at": "2026-10-03T11:33:42+00:00"
+    },
+    {
+      "stem": "Movies_IA_w0.02_seed42",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_IA_w0.02_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Movies_IA_w0.02_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_IA_w0.02_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_IA_w0.02_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_IA_w0.02_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Movies_IA_w0.02_seed42.log",
+      "started_at": "2026-10-03T11:33:42+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5623875260353088,
+        "val_macro_f1": 0.49678453406758594,
+        "val_ce": 1.3322028953584284
+      },
+      "metadata": {
+        "best_epoch": 68,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 68,
+      "finished_at": "2026-10-03T11:34:15+00:00"
+    },
+    {
+      "stem": "Movies_IA_w0.05_seed42",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_IA_w0.05_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Movies_IA_w0.05_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_IA_w0.05_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_IA_w0.05_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_IA_w0.05_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Movies_IA_w0.05_seed42.log",
+      "started_at": "2026-10-03T11:34:15+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5593881011009216,
+        "val_macro_f1": 0.4901107484183984,
+        "val_ce": 1.33794320237515
+      },
+      "metadata": {
+        "best_epoch": 58,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 58,
+      "finished_at": "2026-10-03T11:34:46+00:00"
+    },
+    {
+      "stem": "Movies_IA_w0.10_seed42",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.1,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.10",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_IA_w0.10_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Movies_IA_w0.10_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_IA_w0.10_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Movies/Movies_IA_w0.10_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Movies_IA_w0.10_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Movies_IA_w0.10_seed42.log",
+      "started_at": "2026-10-03T11:34:46+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5581883788108826,
+        "val_macro_f1": 0.48399467477868646,
+        "val_ce": 1.3474847510966557
+      },
+      "metadata": {
+        "best_epoch": 78,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 78,
+      "finished_at": "2026-10-03T11:35:29+00:00"
+    },
+    {
+      "stem": "Grocery_B_w0.05_seed42",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_B_w0.05_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Grocery_B_w0.05_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_B_w0.05_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_B_w0.05_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_B_w0.05_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Grocery_B_w0.05_seed42.log",
+      "started_at": "2026-10-03T11:35:29+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8313323855400085,
+        "val_macro_f1": 0.7674404227974745,
+        "val_ce": 0.6902951420662519
+      },
+      "metadata": {
+        "best_epoch": 133,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 133,
+      "finished_at": "2026-10-03T11:36:15+00:00"
+    },
+    {
+      "stem": "Grocery_IA_w0.02_seed42",
+      "dataset": "Grocery",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.02,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.02",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_IA_w0.02_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Grocery_IA_w0.02_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_IA_w0.02_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_IA_w0.02_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_IA_w0.02_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Grocery_IA_w0.02_seed42.log",
+      "started_at": "2026-10-03T11:36:15+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8289897441864014,
+        "val_macro_f1": 0.7654408667136192,
+        "val_ce": 0.6912035739613837
+      },
+      "metadata": {
+        "best_epoch": 109,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 109,
+      "finished_at": "2026-10-03T11:36:55+00:00"
+    },
+    {
+      "stem": "Grocery_IA_w0.05_seed42",
+      "dataset": "Grocery",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_IA_w0.05_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Grocery_IA_w0.05_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_IA_w0.05_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_IA_w0.05_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_IA_w0.05_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Grocery_IA_w0.05_seed42.log",
+      "started_at": "2026-10-03T11:36:55+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8257686495780945,
+        "val_macro_f1": 0.7563606416547295,
+        "val_ce": 0.6526182741581259
+      },
+      "metadata": {
+        "best_epoch": 74,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 74,
+      "finished_at": "2026-10-03T11:37:31+00:00"
+    },
+    {
+      "stem": "Grocery_IA_w0.10_seed42",
+      "dataset": "Grocery",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.1,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.10",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_IA_w0.10_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/calibration/Grocery_IA_w0.10_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_IA_w0.10_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/calibration/Grocery/Grocery_IA_w0.10_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/calibration/Grocery_IA_w0.10_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/calibration/Grocery_IA_w0.10_seed42.log",
+      "started_at": "2026-10-03T11:37:31+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8248901963233948,
+        "val_macro_f1": 0.7591642080281007,
+        "val_ce": 0.6913337584644949
+      },
+      "metadata": {
+        "best_epoch": 114,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 114,
+      "finished_at": "2026-10-03T11:38:17+00:00"
+    }
+  ],
+  "smoke_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_B_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/smoke/Movies_B_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_B_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_B_seed42.log",
+      "started_at": "2026-10-03T11:23:55+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.6476823775869827
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T11:24:06+00:00"
+    },
+    {
+      "stem": "Movies_I_seed42",
+      "dataset": "Movies",
+      "variant": "I",
+      "model_variant": "interaction",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=interaction",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_I_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/smoke/Movies_I_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_I_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_I_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_I_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_I_seed42.log",
+      "started_at": "2026-10-03T11:24:06+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.6434797024970007
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T11:24:15+00:00"
+    },
+    {
+      "stem": "Movies_A_seed42",
+      "dataset": "Movies",
+      "variant": "A",
+      "model_variant": "alignment",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=alignment",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_A_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/smoke/Movies_A_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_A_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_A_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_A_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_A_seed42.log",
+      "started_at": "2026-10-03T11:24:15+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.641800741414217
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T11:24:28+00:00"
+    },
+    {
+      "stem": "Movies_IA_seed42",
+      "dataset": "Movies",
+      "variant": "IA",
+      "model_variant": "joint",
+      "seed": 42,
+      "alignment_weight": 0.05,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_IA_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/smoke/Movies_IA_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_IA_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/orci_d0_interaction_alignment_synergy/data/runs/smoke/Movies/Movies_IA_seed42.json",
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_IA_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_IA_seed42.log",
+      "started_at": "2026-10-03T11:24:28+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.6367937350029993
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1299107,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T11:24:39+00:00"
+    }
+  ],
+  "created_at": "2026-10-03T11:23:55+00:00",
+  "status": "complete",
+  "updated_at": "2026-10-03T13:29:08+00:00",
+  "selected_alignment_weight": 0.02,
+  "calibration_summary": [
+    {
+      "weight": 0.02,
+      "mean_IA_minus_B_accuracy_pp": -0.22211074829101562,
+      "mean_IA_minus_B_macro_f1_pp": -0.21591351792493163,
+      "mean_dataset_accuracy_delta_pp": -0.22211074829101562,
+      "n_datasets": 2,
+      "test_evaluated": false
+    },
+    {
+      "weight": 0.05,
+      "mean_IA_minus_B_accuracy_pp": -0.5331367254257202,
+      "mean_IA_minus_B_macro_f1_pp": -1.003614053328794,
+      "mean_dataset_accuracy_delta_pp": -0.5331367254257202,
+      "n_datasets": 2,
+      "test_evaluated": false
+    },
+    {
+      "weight": 0.1,
+      "mean_IA_minus_B_accuracy_pp": -0.6370455026626587,
+      "mean_IA_minus_B_macro_f1_pp": -1.1692394166458313,
+      "mean_dataset_accuracy_delta_pp": -0.6370455026626587,
+      "n_datasets": 2,
+      "test_evaluated": false
+    }
+  ],
+  "calibration_status": "complete",
+  "recovered_attempts": [
+    {
+      "stage": "formal",
+      "cell": "ele-fashion/B/seed42",
+      "incident": "CUDA out of memory while an unrelated process occupied most available memory on both GPUs",
+      "resolution": "Use mathematically equivalent chunked propagation, streamed raw-GPR backward, activation-checkpointed order interaction, and CPU-resident features transferred through bounded unchanged projectors; rerun on idle physical GPU1. No graph, parameter, optimizer, split, or training-protocol changes.",
+      "failed_attempts": 3,
+      "rerun_status": "passed",
+      "recorded_at": "2026-10-03T12:02:26+00:00",
+      "retry_started_at": "2026-10-03T12:15:26+00:00",
+      "finished_at": "2026-10-03T13:29:08+00:00"
+    },
+    {
+      "stage": "formal",
+      "cell": "ele-fashion/I/seed42",
+      "incident": "CUDA out of memory while unrelated processes occupied most available memory on both GPUs",
+      "resolution": "Use mathematically equivalent chunked propagation, streamed raw-GPR backward, activation-checkpointed order interaction, and CPU-resident features transferred through bounded unchanged projectors; rerun on idle physical GPU1. No graph, parameter, optimizer, split, or training-protocol changes.",
+      "failed_attempts": 3,
+      "rerun_status": "passed",
+      "recorded_at": "2026-10-03T12:25:02+00:00",
+      "retry_started_at": "2026-10-03T12:38:30+00:00",
+      "finished_at": "2026-10-03T13:29:08+00:00"
+    }
+  ],
+  "formal_status": "complete",
+  "finished_at": "2026-10-03T13:29:08+00:00",
+  "analysis_status": "complete",
+  "analysis_device": "cuda:0",
+  "analysis_test_evaluation": false,
+  "analysis_finished_at": "2026-10-03T13:34:16+00:00",
+  "formal_execution_device": {
+    "physical_gpu": "GPU 1 NVIDIA GeForce RTX 3090",
+    "logical_device": "cuda:0",
+    "visibility": "CUDA_VISIBLE_DEVICES=1"
+  },
+  "completed_at": "2026-10-03T13:34:16+00:00"
+}

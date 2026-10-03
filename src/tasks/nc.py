@@ -167,7 +167,12 @@ def _run_single_nc(
 
     # Graph encoders use the entire graph every epoch. Only MLP receives
     # feature-only minibatches.
-    x_all = data.x.to(device)
+    stage_features_on_cpu = (
+        full_graph_training
+        and bool(getattr(model, "supports_cpu_feature_staging", False))
+        and data.num_nodes >= 50_000
+    )
+    x_all = data.x if stage_features_on_cpu else data.x.to(device)
     y_all = _training_labels(data, device, _development_no_test(cfg))
     edge_index_all = data.edge_index.to(device) if uses_graph else None
     train_idx_all = data.train_idx.to(device)
@@ -190,6 +195,11 @@ def _run_single_nc(
     logger.info("Training mode: %s", training_mode)
     logger.info("Loader: %s", "FullGraph" if uses_graph else "NodeDataLoader")
     logger.info("Inference mode: %s", inference_mode)
+    if stage_features_on_cpu:
+        logger.info(
+            "Feature staging: CPU input with bounded projector transfers (%d nodes)",
+            data.num_nodes,
+        )
     logger.info(
         "Model parameters=%d | Classifier parameters=%d | optimizer=%s | groups=%s | hidden_dim=%s | num_layers=%s",
         count_parameters(model),

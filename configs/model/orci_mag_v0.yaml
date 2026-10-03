@@ -1,0 +1,18 @@
+name: orci_mag_v0
+variant: base # base | interaction | alignment | joint
+
+hidden_dim: 256
+num_layers: 3
+dropout: 0.2
+diffusion_add_self_loops: true
+eps: 1.0e-8
+global_prior_restart: 0.15
+global_prior_order: 2
+
+interaction_dim: 64
+num_heads: 4
+head_dim: 16
+interaction_dropout: 0.1
+interaction_scale_init: 0.1
+relative_order_bias_init: 0.25
+alignment_weight: 0.05

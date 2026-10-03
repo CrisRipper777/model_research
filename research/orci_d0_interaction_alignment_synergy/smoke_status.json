@@ -1,0 +1,213 @@
+{
+  "base_sha": "cd9d440aa43454215e1a512b5426a5372e47a41a",
+  "branch": "exp/orci_d0_interaction_alignment_synergy",
+  "tests": {
+    "status": "passed",
+    "command": "python -m pytest -q",
+    "result": "133 passed, 2 skipped; two CUDA staging tests passed separately on GPU1"
+  },
+  "status": "complete",
+  "device": "cuda:0",
+  "evaluate_test": false,
+  "development_no_test": true,
+  "fixed_nc_splits": {
+    "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+    "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+    "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
+  },
+  "started_at": "2026-10-03T11:23:55+00:00",
+  "nc_runs": [
+    {
+      "dataset": "Movies",
+      "variant": "B",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "aux_loss_finite": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.6476823775869827
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_B_seed42.log",
+      "status": "complete"
+    },
+    {
+      "dataset": "Movies",
+      "variant": "I",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "aux_loss_finite": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.6434797024970007
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_I_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_I_seed42.log",
+      "status": "complete"
+    },
+    {
+      "dataset": "Movies",
+      "variant": "A",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "aux_loss_finite": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.641800741414217
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_A_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_A_seed42.log",
+      "status": "complete"
+    },
+    {
+      "dataset": "Movies",
+      "variant": "IA",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "aux_loss_finite": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.6367937350029993
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/Movies_IA_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/Movies_IA_seed42.log",
+      "status": "complete"
+    }
+  ],
+  "lp_runs": [
+    {
+      "dataset": "sports-copurchase",
+      "variant": "B",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "aux_loss_on_sampled_subgraph": true,
+      "evaluate_test": false,
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/sports-copurchase_B_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/sports-copurchase_B_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=orci_mag_v0",
+        "model.variant=base",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/sports-copurchase_B_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/smoke/sports-copurchase_B_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "return_code": 0,
+      "forward_backward_and_validation": true,
+      "checkpoint_saved": true,
+      "finished_at": "2026-10-03T11:24:52+00:00",
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_logged_batch": [
+        2306,
+        2214
+      ],
+      "sampled_batch_train_loss_finite": true,
+      "aux_loss_code_path": "src/tasks/lp.py calls model(batch.x, batch.edge_index) and adds task.loss.aux_weight * aux_loss before backward"
+    },
+    {
+      "dataset": "sports-copurchase",
+      "variant": "IA",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "aux_loss_on_sampled_subgraph": true,
+      "evaluate_test": false,
+      "checkpoint_path": "/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/sports-copurchase_IA_seed42.pt",
+      "log_path": "/tmp/orci_d0_interaction_alignment_synergy/logs/smoke/sports-copurchase_IA_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=orci_mag_v0",
+        "model.variant=joint",
+        "model.alignment_weight=0.05",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/orci_d0_interaction_alignment_synergy/checkpoints/smoke/sports-copurchase_IA_seed42.pt",
+        "hydra.run.dir=/tmp/orci_d0_interaction_alignment_synergy/hydra/smoke/sports-copurchase_IA_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "return_code": 0,
+      "forward_backward_and_validation": true,
+      "checkpoint_saved": true,
+      "finished_at": "2026-10-03T11:25:05+00:00",
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_logged_batch": [
+        2306,
+        2214
+      ],
+      "sampled_batch_train_loss_finite": true,
+      "aux_loss_code_path": "src/tasks/lp.py calls model(batch.x, batch.edge_index) and adds task.loss.aux_weight * aux_loss before backward"
+    }
+  ],
+  "finished_at": "2026-10-03T11:25:05+00:00",
+  "lp_protocol_checks": {
+    "loader": "LinkNeighborLoader in src/tasks/lp.py",
+    "fanout": [
+      5,
+      5,
+      5
+    ],
+    "positive_supervision_edge_removal": "global_eid protocol; per-batch removal counts stored for B and IA",
+    "auxiliary_loss": "sampled-batch aux scalar enters link loss before backward, as confirmed by code path and successful IA smoke",
+    "test_evaluated": false
+  }
+}

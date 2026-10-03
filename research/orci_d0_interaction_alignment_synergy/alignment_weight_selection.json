@@ -1,0 +1,45 @@
+{
+  "experiment": "ORCI-D0 alignment-weight calibration",
+  "selected_alignment_weight": 0.02,
+  "selection_rule": "selected highest mean validation accuracy delta",
+  "ranked_summary": [
+    {
+      "weight": 0.02,
+      "mean_IA_minus_B_accuracy_pp": -0.22211074829101562,
+      "mean_IA_minus_B_macro_f1_pp": -0.21591351792493163,
+      "mean_dataset_accuracy_delta_pp": -0.22211074829101562,
+      "n_datasets": 2,
+      "test_evaluated": false
+    },
+    {
+      "weight": 0.05,
+      "mean_IA_minus_B_accuracy_pp": -0.5331367254257202,
+      "mean_IA_minus_B_macro_f1_pp": -1.003614053328794,
+      "mean_dataset_accuracy_delta_pp": -0.5331367254257202,
+      "n_datasets": 2,
+      "test_evaluated": false
+    },
+    {
+      "weight": 0.1,
+      "mean_IA_minus_B_accuracy_pp": -0.6370455026626587,
+      "mean_IA_minus_B_macro_f1_pp": -1.1692394166458313,
+      "mean_dataset_accuracy_delta_pp": -0.6370455026626587,
+      "n_datasets": 2,
+      "test_evaluated": false
+    }
+  ],
+  "top_two_accuracy_gap_pp": 0.3110259771347046,
+  "calibration_runs": 8,
+  "IA_runs": 6,
+  "B_reference_runs": 2,
+  "datasets": [
+    "Movies",
+    "Grocery"
+  ],
+  "seed": 42,
+  "evaluate_test": false,
+  "development_no_test": true,
+  "test_data_read_or_evaluated": false,
+  "frozen_for_formal_campaign": true,
+  "selected_at": "2026-10-03T11:38:17+00:00"
+}

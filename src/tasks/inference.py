@@ -37,7 +37,11 @@ def infer_all_embeddings(
 
     if hasattr(model, "_batch_n_id"):
         model._batch_n_id = None
-    x = data.x.to(device)
+    stage_features_on_cpu = (
+        bool(getattr(model, "supports_cpu_feature_staging", False))
+        and data.num_nodes >= 50_000
+    )
+    x = data.x if stage_features_on_cpu else data.x.to(device)
     edge_index = edge_index.to(device) if edge_index is not None else None
     z, _, _, _, _ = model(x, edge_index)
     return z.detach().cpu()
