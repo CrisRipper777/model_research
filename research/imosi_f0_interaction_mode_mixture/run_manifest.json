@@ -1,0 +1,29 @@
+{
+  "experiment": "IMoSI-F0 Interaction-Mode Mixture Prototype",
+  "base_sha": "188b940a88b1852608c9e2e25e6d8bd7013ed8b5",
+  "branch": "exp/imosi_f0_interaction_mode_mixture",
+  "head_at_branch_creation": "188b940a88b1852608c9e2e25e6d8bd7013ed8b5",
+  "source_commit_sha": "PENDING_SOURCE_COMMIT",
+  "datasets": ["Movies", "Grocery", "ele-fashion"],
+  "fixed_dataset_splits": {
+    "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+    "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+    "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
+  },
+  "variants": {"B": "base", "G": "global_mix", "M": "adaptive_mix"},
+  "model_training_seeds": [42, 43, 44],
+  "initial_mode_probs": [0.6, 0.2, 0.2],
+  "response_rank": 64,
+  "router_rank": 64,
+  "mode_chunk_size": 8192,
+  "expected_nc_smoke_runs": 3,
+  "expected_lp_smoke_runs": 2,
+  "expected_formal_runs": 27,
+  "evaluate_test": false,
+  "development_no_test": true,
+  "smoke_nc_runs": [],
+  "smoke_lp_runs": [],
+  "formal_runs": [],
+  "created_at": "2026-10-03T18:54:00+00:00",
+  "status": "pending_source_commit"
+}
