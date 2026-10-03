@@ -4,7 +4,13 @@
   "base_branch": "exp/imosi_f0_interaction_mode_mixture",
   "branch": "exp/sair_g0_anchor_response_readout",
   "head_at_branch_creation": "997b89b8b0e59ca2da9654d07cc184cc1ce14169",
-  "source_commit_sha": "PENDING_SOURCE_COMMIT",
+  "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+  "source_committed_at": "2026-10-04T00:00:00+00:00",
+  "source_test_gate": {
+    "focused": "34 passed",
+    "full_repository": "255 passed, 3 skipped, 4 warnings",
+    "status": "passed"
+  },
   "datasets": ["Movies", "Grocery", "ele-fashion"],
   "fixed_dataset_splits": {
     "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
@@ -30,5 +36,5 @@
   "smoke_lp_runs": [],
   "formal_runs": [],
   "created_at": "2026-10-04T00:00:00+00:00",
-  "status": "pending_source_commit"
+  "status": "source_committed"
 }

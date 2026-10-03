@@ -1,7 +1,7 @@
 {
   "experiment": "SAIR-G0 validation and LP protocol smoke",
   "base_sha": "997b89b8b0e59ca2da9654d07cc184cc1ce14169",
-  "source_commit_sha": "PENDING_SOURCE_COMMIT",
+  "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
   "branch": "exp/sair_g0_anchor_response_readout",
   "evaluate_test": false,
   "development_no_test": true,
@@ -14,5 +14,9 @@
   "expected_lp_runs": ["sports-copurchase/B/seed42", "sports-copurchase/D/seed42"],
   "nc_runs": [],
   "lp_runs": [],
-  "status": "pending_source_commit"
+  "status": "source_committed",
+  "source_test_gate": {
+    "focused": "34 passed",
+    "full_repository": "255 passed, 3 skipped, 4 warnings"
+  }
 }
