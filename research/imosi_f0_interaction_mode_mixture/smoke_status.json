@@ -1,7 +1,7 @@
 {
   "experiment": "IMoSI-F0 Interaction-Mode Mixture Prototype",
   "base_sha": "188b940a88b1852608c9e2e25e6d8bd7013ed8b5",
-  "source_commit_sha": "PENDING_SOURCE_COMMIT",
+  "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
   "branch": "exp/imosi_f0_interaction_mode_mixture",
   "device": null,
   "evaluate_test": false,
@@ -11,8 +11,15 @@
     "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
     "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
   },
-  "expected_nc_runs": ["Movies/B/seed42", "Movies/G/seed42", "Movies/M/seed42"],
-  "expected_lp_runs": ["sports-copurchase/B/seed42", "sports-copurchase/M/seed42"],
+  "expected_nc_runs": [
+    "Movies/B/seed42",
+    "Movies/G/seed42",
+    "Movies/M/seed42"
+  ],
+  "expected_lp_runs": [
+    "sports-copurchase/B/seed42",
+    "sports-copurchase/M/seed42"
+  ],
   "nc_runs": [],
   "lp_runs": [],
   "status": "pending_source_commit"

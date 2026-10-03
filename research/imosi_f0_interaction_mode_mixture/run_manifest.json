@@ -3,16 +3,32 @@
   "base_sha": "188b940a88b1852608c9e2e25e6d8bd7013ed8b5",
   "branch": "exp/imosi_f0_interaction_mode_mixture",
   "head_at_branch_creation": "188b940a88b1852608c9e2e25e6d8bd7013ed8b5",
-  "source_commit_sha": "PENDING_SOURCE_COMMIT",
-  "datasets": ["Movies", "Grocery", "ele-fashion"],
+  "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
   "fixed_dataset_splits": {
     "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
     "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
     "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
   },
-  "variants": {"B": "base", "G": "global_mix", "M": "adaptive_mix"},
-  "model_training_seeds": [42, 43, 44],
-  "initial_mode_probs": [0.6, 0.2, 0.2],
+  "variants": {
+    "B": "base",
+    "G": "global_mix",
+    "M": "adaptive_mix"
+  },
+  "model_training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "initial_mode_probs": [
+    0.6,
+    0.2,
+    0.2
+  ],
   "response_rank": 64,
   "router_rank": 64,
   "mode_chunk_size": 8192,
