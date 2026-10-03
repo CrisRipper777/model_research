@@ -5,25 +5,37 @@
   "branch": "exp/sair_g0_anchor_response_readout",
   "head_at_branch_creation": "997b89b8b0e59ca2da9654d07cc184cc1ce14169",
   "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
-  "source_committed_at": "2026-10-04T00:00:00+00:00",
+  "source_committed_at": "2026-10-04T04:37:25+08:00",
   "source_test_gate": {
     "focused": "34 passed",
     "full_repository": "255 passed, 3 skipped, 4 warnings",
     "status": "passed"
   },
-  "datasets": ["Movies", "Grocery", "ele-fashion"],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
   "fixed_dataset_splits": {
     "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
     "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
     "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
   },
-  "variants": {"B": "base", "C": "generic", "D": "decoupled"},
-  "model_training_seeds": [42, 43, 44],
+  "variants": {
+    "B": "base",
+    "C": "generic",
+    "D": "decoupled"
+  },
+  "model_training_seeds": [
+    42,
+    43,
+    44
+  ],
   "fixed_split_count_per_dataset": 1,
   "hidden_dim": 256,
   "num_layers": 3,
   "dropout": 0.2,
-  "eps": 1e-8,
+  "eps": 1e-08,
   "readout_rank": 64,
   "pair_chunk_size": 8192,
   "expected_nc_smoke_runs": 3,
@@ -32,9 +44,1889 @@
   "evaluate_test": false,
   "development_no_test": true,
   "checkpoint_interventions": false,
-  "smoke_nc_runs": [],
-  "smoke_lp_runs": [],
-  "formal_runs": [],
-  "created_at": "2026-10-04T00:00:00+00:00",
-  "status": "source_committed"
+  "smoke_nc_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": 2,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/smoke/Movies_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/smoke/Movies/Movies_B_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/smoke/Movies_B_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/smoke/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/smoke/Movies_B_seed42.log",
+      "started_at": "2026-10-03T20:37:55+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7616516735715355
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T20:38:04+00:00"
+    },
+    {
+      "stem": "Movies_C_seed42",
+      "dataset": "Movies",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": 2,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/smoke/Movies_C_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/smoke/Movies/Movies_C_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/smoke/Movies_C_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/smoke/Movies/Movies_C_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/smoke/Movies_C_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/smoke/Movies_C_seed42.log",
+      "started_at": "2026-10-03T20:38:06+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7760889228404317
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T20:38:14+00:00"
+    },
+    {
+      "stem": "Movies_D_seed42",
+      "dataset": "Movies",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": 2,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/smoke/Movies_D_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/smoke/Movies/Movies_D_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/smoke/Movies_D_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/smoke/Movies/Movies_D_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/smoke/Movies_D_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/smoke/Movies_D_seed42.log",
+      "started_at": "2026-10-03T20:38:14+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7758906226567186
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T20:38:25+00:00"
+    }
+  ],
+  "smoke_lp_runs": [
+    {
+      "stem": "sports-copurchase_B_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/lp_smoke/sports-copurchase_B_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/lp_smoke/sports-copurchase_B_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/lp_smoke/sports-copurchase_B_seed42.pt",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/lp_smoke/sports-copurchase_B_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "started_at": "2026-10-03T20:38:25+00:00",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_epoch": [
+        2306,
+        2214
+      ],
+      "positive_edge_removal_observed": true,
+      "finite_sampled_batch_train_loss": true,
+      "forward_backward_validation": true,
+      "checkpoint_saved": true,
+      "pair_up_weight_norm": 0.0,
+      "d_response_readout_selected": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T20:38:37+00:00"
+    },
+    {
+      "stem": "sports-copurchase_D_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/lp_smoke/sports-copurchase_D_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/lp_smoke/sports-copurchase_D_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/lp_smoke/sports-copurchase_D_seed42.pt",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/lp_smoke/sports-copurchase_D_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "started_at": "2026-10-03T20:38:37+00:00",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_epoch": [
+        2306,
+        2214
+      ],
+      "positive_edge_removal_observed": true,
+      "finite_sampled_batch_train_loss": true,
+      "forward_backward_validation": true,
+      "checkpoint_saved": true,
+      "pair_up_weight_norm": 0.2713923752307892,
+      "d_response_readout_selected": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T20:38:52+00:00"
+    }
+  ],
+  "formal_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_B_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_B_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_B_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_B_seed42.log",
+      "started_at": "2026-10-03T20:39:16+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5668866038322449,
+        "val_macro_f1": 0.476258572571677,
+        "val_ce": 1.3567366116620425
+      },
+      "metadata": {
+        "best_epoch": 85,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 85,
+      "finished_at": "2026-10-03T20:39:44+00:00"
+    },
+    {
+      "stem": "Movies_B_seed43",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_B_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_B_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_B_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_B_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_B_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_B_seed43.log",
+      "started_at": "2026-10-03T20:39:44+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.565386950969696,
+        "val_macro_f1": 0.49230121551127654,
+        "val_ce": 1.3469274895020995
+      },
+      "metadata": {
+        "best_epoch": 81,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 81,
+      "finished_at": "2026-10-03T20:40:11+00:00"
+    },
+    {
+      "stem": "Movies_B_seed44",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_B_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_B_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_B_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_B_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_B_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_B_seed44.log",
+      "started_at": "2026-10-03T20:40:11+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5668866038322449,
+        "val_macro_f1": 0.48887097102025345,
+        "val_ce": 1.3454390664835782
+      },
+      "metadata": {
+        "best_epoch": 91,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 91,
+      "finished_at": "2026-10-03T20:40:43+00:00"
+    },
+    {
+      "stem": "Movies_C_seed42",
+      "dataset": "Movies",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_C_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_C_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_C_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_C_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_C_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_C_seed42.log",
+      "started_at": "2026-10-03T20:40:43+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5671865344047546,
+        "val_macro_f1": 0.48106335052622445,
+        "val_ce": 1.3926847443011399
+      },
+      "metadata": {
+        "best_epoch": 104,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 104,
+      "finished_at": "2026-10-03T20:41:16+00:00"
+    },
+    {
+      "stem": "Movies_C_seed43",
+      "dataset": "Movies",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_C_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_C_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_C_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_C_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_C_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_C_seed43.log",
+      "started_at": "2026-10-03T20:41:16+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5659868121147156,
+        "val_macro_f1": 0.4780935611830125,
+        "val_ce": 1.3630003491489202
+      },
+      "metadata": {
+        "best_epoch": 87,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 87,
+      "finished_at": "2026-10-03T20:41:50+00:00"
+    },
+    {
+      "stem": "Movies_C_seed44",
+      "dataset": "Movies",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_C_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_C_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_C_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_C_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_C_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_C_seed44.log",
+      "started_at": "2026-10-03T20:41:50+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5671865344047546,
+        "val_macro_f1": 0.49866367511063087,
+        "val_ce": 1.3548719455327685
+      },
+      "metadata": {
+        "best_epoch": 86,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 86,
+      "finished_at": "2026-10-03T20:42:21+00:00"
+    },
+    {
+      "stem": "Movies_D_seed42",
+      "dataset": "Movies",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_D_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_D_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_D_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_D_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_D_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_D_seed42.log",
+      "started_at": "2026-10-03T20:42:21+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5614876747131348,
+        "val_macro_f1": 0.4790368885207167,
+        "val_ce": 1.3174780083045892
+      },
+      "metadata": {
+        "best_epoch": 63,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 63,
+      "finished_at": "2026-10-03T20:42:50+00:00"
+    },
+    {
+      "stem": "Movies_D_seed43",
+      "dataset": "Movies",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_D_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_D_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_D_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_D_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_D_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_D_seed43.log",
+      "started_at": "2026-10-03T20:42:50+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5656868815422058,
+        "val_macro_f1": 0.48667308475121107,
+        "val_ce": 1.3657437457820936
+      },
+      "metadata": {
+        "best_epoch": 75,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 75,
+      "finished_at": "2026-10-03T20:43:18+00:00"
+    },
+    {
+      "stem": "Movies_D_seed44",
+      "dataset": "Movies",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_D_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_D_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Movies_D_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Movies/Movies_D_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Movies_D_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Movies_D_seed44.log",
+      "started_at": "2026-10-03T20:43:18+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5602879524230957,
+        "val_macro_f1": 0.4734498920686357,
+        "val_ce": 1.3251409776638423
+      },
+      "metadata": {
+        "best_epoch": 66,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 66,
+      "finished_at": "2026-10-03T20:43:44+00:00"
+    },
+    {
+      "stem": "Grocery_B_seed42",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_B_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_B_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_B_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_B_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_B_seed42.log",
+      "started_at": "2026-10-03T20:43:44+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8284041285514832,
+        "val_macro_f1": 0.7622210897455506,
+        "val_ce": 0.704750769239568
+      },
+      "metadata": {
+        "best_epoch": 134,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 134,
+      "finished_at": "2026-10-03T20:44:20+00:00"
+    },
+    {
+      "stem": "Grocery_B_seed43",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_B_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_B_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_B_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_B_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_B_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_B_seed43.log",
+      "started_at": "2026-10-03T20:44:20+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7617394909070636,
+        "val_ce": 0.6346410167688507
+      },
+      "metadata": {
+        "best_epoch": 76,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 76,
+      "finished_at": "2026-10-03T20:44:46+00:00"
+    },
+    {
+      "stem": "Grocery_B_seed44",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_B_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_B_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_B_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_B_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_B_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_B_seed44.log",
+      "started_at": "2026-10-03T20:44:46+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8316251635551453,
+        "val_macro_f1": 0.7591408970703167,
+        "val_ce": 0.6397126361182284
+      },
+      "metadata": {
+        "best_epoch": 80,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 80,
+      "finished_at": "2026-10-03T20:45:15+00:00"
+    },
+    {
+      "stem": "Grocery_C_seed42",
+      "dataset": "Grocery",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_C_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_C_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_C_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_C_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_C_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_C_seed42.log",
+      "started_at": "2026-10-03T20:45:15+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8278184533119202,
+        "val_macro_f1": 0.768617496755099,
+        "val_ce": 0.6663268238698755
+      },
+      "metadata": {
+        "best_epoch": 103,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 103,
+      "finished_at": "2026-10-03T20:45:53+00:00"
+    },
+    {
+      "stem": "Grocery_C_seed43",
+      "dataset": "Grocery",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_C_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_C_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_C_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_C_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_C_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_C_seed43.log",
+      "started_at": "2026-10-03T20:45:53+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8278184533119202,
+        "val_macro_f1": 0.7458128095252199,
+        "val_ce": 0.6438051907942899
+      },
+      "metadata": {
+        "best_epoch": 71,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 71,
+      "finished_at": "2026-10-03T20:46:24+00:00"
+    },
+    {
+      "stem": "Grocery_C_seed44",
+      "dataset": "Grocery",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_C_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_C_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_C_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_C_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_C_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_C_seed44.log",
+      "started_at": "2026-10-03T20:46:24+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8292825818061829,
+        "val_macro_f1": 0.7610602798582851,
+        "val_ce": 0.6569877836749634
+      },
+      "metadata": {
+        "best_epoch": 81,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 81,
+      "finished_at": "2026-10-03T20:46:53+00:00"
+    },
+    {
+      "stem": "Grocery_D_seed42",
+      "dataset": "Grocery",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_D_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_D_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_D_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_D_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_D_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_D_seed42.log",
+      "started_at": "2026-10-03T20:46:53+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8251830339431763,
+        "val_macro_f1": 0.7532307273728572,
+        "val_ce": 0.6968247420616764
+      },
+      "metadata": {
+        "best_epoch": 101,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 101,
+      "finished_at": "2026-10-03T20:47:30+00:00"
+    },
+    {
+      "stem": "Grocery_D_seed43",
+      "dataset": "Grocery",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_D_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_D_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_D_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_D_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_D_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_D_seed43.log",
+      "started_at": "2026-10-03T20:47:30+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8289897441864014,
+        "val_macro_f1": 0.7612397960678384,
+        "val_ce": 0.6638201466416545
+      },
+      "metadata": {
+        "best_epoch": 83,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 83,
+      "finished_at": "2026-10-03T20:48:04+00:00"
+    },
+    {
+      "stem": "Grocery_D_seed44",
+      "dataset": "Grocery",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_D_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_D_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/Grocery_D_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/Grocery/Grocery_D_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/Grocery_D_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/Grocery_D_seed44.log",
+      "started_at": "2026-10-03T20:48:04+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8281112909317017,
+        "val_macro_f1": 0.7516920992353786,
+        "val_ce": 0.6513682598599927
+      },
+      "metadata": {
+        "best_epoch": 76,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 76,
+      "finished_at": "2026-10-03T20:48:33+00:00"
+    },
+    {
+      "stem": "ele-fashion_B_seed42",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_B_seed42"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_B_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_B_seed42.log",
+      "started_at": "2026-10-03T20:48:33+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8728649020195007,
+        "val_macro_f1": 0.7412168651896031,
+        "val_ce": 0.40713451346871166
+      },
+      "metadata": {
+        "best_epoch": 147,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 147,
+      "finished_at": "2026-10-03T20:51:59+00:00"
+    },
+    {
+      "stem": "ele-fashion_B_seed43",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_B_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_B_seed43"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_B_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_B_seed43.log",
+      "started_at": "2026-10-03T20:51:59+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.872558057308197,
+        "val_macro_f1": 0.7469690753128995,
+        "val_ce": 0.40066507407172125
+      },
+      "metadata": {
+        "best_epoch": 141,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 141,
+      "finished_at": "2026-10-03T20:55:17+00:00"
+    },
+    {
+      "stem": "ele-fashion_B_seed44",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_B_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_B_seed44"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_B_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_B_seed44.log",
+      "started_at": "2026-10-03T20:55:17+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8751150369644165,
+        "val_macro_f1": 0.747150073384525,
+        "val_ce": 0.4187262301870781
+      },
+      "metadata": {
+        "best_epoch": 182,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 182,
+      "finished_at": "2026-10-03T20:59:14+00:00"
+    },
+    {
+      "stem": "ele-fashion_C_seed42",
+      "dataset": "ele-fashion",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_C_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_C_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_C_seed42"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_C_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_C_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_C_seed42.log",
+      "started_at": "2026-10-03T20:59:14+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.874705970287323,
+        "val_macro_f1": 0.7413350443053541,
+        "val_ce": 0.4113624075676652
+      },
+      "metadata": {
+        "best_epoch": 129,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 129,
+      "finished_at": "2026-10-03T21:02:20+00:00"
+    },
+    {
+      "stem": "ele-fashion_C_seed43",
+      "dataset": "ele-fashion",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_C_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_C_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_C_seed43"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_C_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_C_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_C_seed43.log",
+      "started_at": "2026-10-03T21:02:20+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8743991255760193,
+        "val_macro_f1": 0.7527658452583741,
+        "val_ce": 0.42976603352415105
+      },
+      "metadata": {
+        "best_epoch": 157,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 157,
+      "finished_at": "2026-10-03T21:05:53+00:00"
+    },
+    {
+      "stem": "ele-fashion_C_seed44",
+      "dataset": "ele-fashion",
+      "variant": "C",
+      "model_variant": "generic",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=generic",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_C_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_C_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_C_seed44"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_C_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_C_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_C_seed44.log",
+      "started_at": "2026-10-03T21:05:53+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8756264448165894,
+        "val_macro_f1": 0.7578102951417514,
+        "val_ce": 0.4381911449543572
+      },
+      "metadata": {
+        "best_epoch": 182,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 182,
+      "finished_at": "2026-10-03T21:09:54+00:00"
+    },
+    {
+      "stem": "ele-fashion_D_seed42",
+      "dataset": "ele-fashion",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_D_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_D_seed42.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_D_seed42"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_D_seed42.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_D_seed42.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_D_seed42.log",
+      "started_at": "2026-10-03T21:09:54+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8731717467308044,
+        "val_macro_f1": 0.736342410896065,
+        "val_ce": 0.40540529641074075
+      },
+      "metadata": {
+        "best_epoch": 105,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 105,
+      "finished_at": "2026-10-03T21:12:33+00:00"
+    },
+    {
+      "stem": "ele-fashion_D_seed43",
+      "dataset": "ele-fashion",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_D_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_D_seed43.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_D_seed43"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_D_seed43.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_D_seed43.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_D_seed43.log",
+      "started_at": "2026-10-03T21:12:33+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8735808730125427,
+        "val_macro_f1": 0.7392897212241683,
+        "val_ce": 0.40336996716224943
+      },
+      "metadata": {
+        "best_epoch": 102,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 102,
+      "finished_at": "2026-10-03T21:15:10+00:00"
+    },
+    {
+      "stem": "ele-fashion_D_seed44",
+      "dataset": "ele-fashion",
+      "variant": "D",
+      "model_variant": "decoupled",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "6acbc20808ad0534ae7c0b54a026f1b50c7aabb6",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=sair_mag_v0",
+        "model.variant=decoupled",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_D_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_D_seed44.json",
+        "hydra.run.dir=/tmp/sair_g0_anchor_response_readout/hydra/formal/ele-fashion_D_seed44"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/sair_g0_anchor_response_readout/data/runs/formal/ele-fashion/ele-fashion_D_seed44.json",
+      "checkpoint_path": "/tmp/sair_g0_anchor_response_readout/checkpoints/formal/ele-fashion_D_seed44.pt",
+      "log_path": "/tmp/sair_g0_anchor_response_readout/logs/formal/ele-fashion_D_seed44.log",
+      "started_at": "2026-10-03T21:15:10+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8742968440055847,
+        "val_macro_f1": 0.7409848442481258,
+        "val_ce": 0.42122841564146085
+      },
+      "metadata": {
+        "best_epoch": 134,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 134,
+      "finished_at": "2026-10-03T21:18:21+00:00"
+    }
+  ],
+  "created_at": "2026-10-04T04:37:25+08:00",
+  "status": "formal_complete",
+  "smoke_status": "complete",
+  "formal_status": "complete",
+  "finished_at": "2026-10-03T21:18:21+00:00",
+  "analysis_status": "complete",
+  "analysis_finished_at": "2026-10-03T21:18:53+00:00"
 }
