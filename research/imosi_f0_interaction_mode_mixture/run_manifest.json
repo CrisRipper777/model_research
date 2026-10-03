@@ -37,9 +37,1899 @@
   "expected_formal_runs": 27,
   "evaluate_test": false,
   "development_no_test": true,
-  "smoke_nc_runs": [],
-  "smoke_lp_runs": [],
-  "formal_runs": [],
+  "smoke_nc_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": 2,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/smoke/Movies/Movies_B_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/smoke/Movies_B_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/smoke/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/smoke/Movies_B_seed42.log",
+      "started_at": "2026-10-03T18:57:00+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7590737711832634
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T18:57:10+00:00"
+    },
+    {
+      "stem": "Movies_G_seed42",
+      "dataset": "Movies",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": 2,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_G_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/smoke/Movies/Movies_G_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/smoke/Movies_G_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/smoke/Movies/Movies_G_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_G_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/smoke/Movies_G_seed42.log",
+      "started_at": "2026-10-03T18:57:17+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7648921387597483
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T18:57:26+00:00"
+    },
+    {
+      "stem": "Movies_M_seed42",
+      "dataset": "Movies",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": 2,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_M_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/smoke/Movies/Movies_M_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/smoke/Movies_M_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/smoke/Movies/Movies_M_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/smoke/Movies_M_seed42.log",
+      "started_at": "2026-10-03T18:57:26+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.764892431669916
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T18:57:35+00:00"
+    }
+  ],
+  "smoke_lp_runs": [
+    {
+      "stem": "sports-copurchase_B_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/lp_smoke/sports-copurchase_B_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_B_seed42.pt",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/lp_smoke/sports-copurchase_B_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "started_at": "2026-10-03T18:57:36+00:00",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_epoch": [
+        2306,
+        2214
+      ],
+      "positive_edge_removal_observed": true,
+      "finite_sampled_batch_train_loss": true,
+      "forward_backward_validation": true,
+      "sampled_model_forward_observed": true,
+      "router_on_sampled_nodes": false,
+      "adaptive_router_applied_to_sampled_nodes": false,
+      "router_sampled_forward_path": "src/tasks/lp.py calls model(batch.x, batch.edge_index) for LinkNeighborLoader batches",
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T18:57:47+00:00"
+    },
+    {
+      "stem": "sports-copurchase_M_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/lp_smoke/sports-copurchase_M_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_M_seed42.pt",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/lp_smoke/sports-copurchase_M_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "started_at": "2026-10-03T18:57:47+00:00",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_epoch": [
+        2306,
+        2214
+      ],
+      "positive_edge_removal_observed": true,
+      "finite_sampled_batch_train_loss": true,
+      "forward_backward_validation": true,
+      "sampled_model_forward_observed": true,
+      "router_on_sampled_nodes": true,
+      "adaptive_router_applied_to_sampled_nodes": true,
+      "router_sampled_forward_path": "src/tasks/lp.py calls model(batch.x, batch.edge_index) for LinkNeighborLoader batches",
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T18:57:59+00:00"
+    }
+  ],
+  "formal_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_B_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_B_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_B_seed42.log",
+      "started_at": "2026-10-03T18:58:39+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5674865245819092,
+        "val_macro_f1": 0.5086968168122964,
+        "val_ce": 1.3379584337038841
+      },
+      "metadata": {
+        "best_epoch": 85,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 85,
+      "finished_at": "2026-10-03T18:59:04+00:00"
+    },
+    {
+      "stem": "Movies_B_seed43",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_B_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_B_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_B_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_B_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_B_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_B_seed43.log",
+      "started_at": "2026-10-03T18:59:04+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5665866732597351,
+        "val_macro_f1": 0.4774599633053581,
+        "val_ce": 1.343766695879574
+      },
+      "metadata": {
+        "best_epoch": 86,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 86,
+      "finished_at": "2026-10-03T18:59:30+00:00"
+    },
+    {
+      "stem": "Movies_B_seed44",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_B_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_B_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_B_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_B_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_B_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_B_seed44.log",
+      "started_at": "2026-10-03T18:59:30+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5662867426872253,
+        "val_macro_f1": 0.4814632691643042,
+        "val_ce": 1.4107574481197511
+      },
+      "metadata": {
+        "best_epoch": 127,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 127,
+      "finished_at": "2026-10-03T19:00:03+00:00"
+    },
+    {
+      "stem": "Movies_G_seed42",
+      "dataset": "Movies",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_G_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_G_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_G_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_G_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_G_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_G_seed42.log",
+      "started_at": "2026-10-03T19:00:03+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5665866732597351,
+        "val_macro_f1": 0.49870368568376067,
+        "val_ce": 1.39158281624925
+      },
+      "metadata": {
+        "best_epoch": 112,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 112,
+      "finished_at": "2026-10-03T19:00:39+00:00"
+    },
+    {
+      "stem": "Movies_G_seed43",
+      "dataset": "Movies",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_G_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_G_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_G_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_G_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_G_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_G_seed43.log",
+      "started_at": "2026-10-03T19:00:39+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5656868815422058,
+        "val_macro_f1": 0.4910731026829156,
+        "val_ce": 1.3581624983597032
+      },
+      "metadata": {
+        "best_epoch": 93,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 93,
+      "finished_at": "2026-10-03T19:01:13+00:00"
+    },
+    {
+      "stem": "Movies_G_seed44",
+      "dataset": "Movies",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_G_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_G_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_G_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_G_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_G_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_G_seed44.log",
+      "started_at": "2026-10-03T19:01:13+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5647870302200317,
+        "val_macro_f1": 0.4958531257994311,
+        "val_ce": 1.368103723005399
+      },
+      "metadata": {
+        "best_epoch": 97,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 97,
+      "finished_at": "2026-10-03T19:01:47+00:00"
+    },
+    {
+      "stem": "Movies_M_seed42",
+      "dataset": "Movies",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_M_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_M_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_M_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_M_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_M_seed42.log",
+      "started_at": "2026-10-03T19:01:47+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5692861676216125,
+        "val_macro_f1": 0.5004776530225414,
+        "val_ce": 1.3171789470230955
+      },
+      "metadata": {
+        "best_epoch": 83,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 83,
+      "finished_at": "2026-10-03T19:02:21+00:00"
+    },
+    {
+      "stem": "Movies_M_seed43",
+      "dataset": "Movies",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_M_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_M_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_M_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_M_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_M_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_M_seed43.log",
+      "started_at": "2026-10-03T19:02:21+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5671865344047546,
+        "val_macro_f1": 0.4786129901095597,
+        "val_ce": 1.3203533609684313
+      },
+      "metadata": {
+        "best_epoch": 84,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 84,
+      "finished_at": "2026-10-03T19:02:56+00:00"
+    },
+    {
+      "stem": "Movies_M_seed44",
+      "dataset": "Movies",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_M_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_M_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Movies_M_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Movies/Movies_M_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Movies_M_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Movies_M_seed44.log",
+      "started_at": "2026-10-03T19:02:56+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5641871690750122,
+        "val_macro_f1": 0.48196957650142214,
+        "val_ce": 1.3327315982116077
+      },
+      "metadata": {
+        "best_epoch": 79,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 79,
+      "finished_at": "2026-10-03T19:03:29+00:00"
+    },
+    {
+      "stem": "Grocery_B_seed42",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_B_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_B_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_B_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_B_seed42.log",
+      "started_at": "2026-10-03T19:03:29+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7670583181723156,
+        "val_ce": 0.6578863498581625
+      },
+      "metadata": {
+        "best_epoch": 104,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 104,
+      "finished_at": "2026-10-03T19:03:58+00:00"
+    },
+    {
+      "stem": "Grocery_B_seed43",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_B_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_B_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_B_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_B_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_B_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_B_seed43.log",
+      "started_at": "2026-10-03T19:03:58+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8278184533119202,
+        "val_macro_f1": 0.7607523217540197,
+        "val_ce": 0.6508805505353221
+      },
+      "metadata": {
+        "best_epoch": 82,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 82,
+      "finished_at": "2026-10-03T19:04:23+00:00"
+    },
+    {
+      "stem": "Grocery_B_seed44",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_B_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_B_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_B_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_B_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_B_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_B_seed44.log",
+      "started_at": "2026-10-03T19:04:23+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8322108387947083,
+        "val_macro_f1": 0.7653053764857767,
+        "val_ce": 0.6391844630765008
+      },
+      "metadata": {
+        "best_epoch": 83,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 83,
+      "finished_at": "2026-10-03T19:04:50+00:00"
+    },
+    {
+      "stem": "Grocery_G_seed42",
+      "dataset": "Grocery",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_G_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_G_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_G_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_G_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_G_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_G_seed42.log",
+      "started_at": "2026-10-03T19:04:50+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8269400000572205,
+        "val_macro_f1": 0.7502155859135387,
+        "val_ce": 0.6338205183931186
+      },
+      "metadata": {
+        "best_epoch": 75,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 75,
+      "finished_at": "2026-10-03T19:05:21+00:00"
+    },
+    {
+      "stem": "Grocery_G_seed43",
+      "dataset": "Grocery",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_G_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_G_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_G_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_G_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_G_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_G_seed43.log",
+      "started_at": "2026-10-03T19:05:21+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7637865930524975,
+        "val_ce": 0.6741965878934846
+      },
+      "metadata": {
+        "best_epoch": 98,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 98,
+      "finished_at": "2026-10-03T19:05:55+00:00"
+    },
+    {
+      "stem": "Grocery_G_seed44",
+      "dataset": "Grocery",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_G_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_G_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_G_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_G_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_G_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_G_seed44.log",
+      "started_at": "2026-10-03T19:05:55+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8304538726806641,
+        "val_macro_f1": 0.7556423157587769,
+        "val_ce": 0.6405858231149341
+      },
+      "metadata": {
+        "best_epoch": 81,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 81,
+      "finished_at": "2026-10-03T19:06:28+00:00"
+    },
+    {
+      "stem": "Grocery_M_seed42",
+      "dataset": "Grocery",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_M_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_M_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_M_seed42",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_M_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_M_seed42.log",
+      "started_at": "2026-10-03T19:06:28+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8295754194259644,
+        "val_macro_f1": 0.75105187563298,
+        "val_ce": 0.6567575122392021
+      },
+      "metadata": {
+        "best_epoch": 90,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 90,
+      "finished_at": "2026-10-03T19:07:05+00:00"
+    },
+    {
+      "stem": "Grocery_M_seed43",
+      "dataset": "Grocery",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_M_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_M_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_M_seed43",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_M_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_M_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_M_seed43.log",
+      "started_at": "2026-10-03T19:07:05+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.831039547920227,
+        "val_macro_f1": 0.7620526485989492,
+        "val_ce": 0.6370926461841142
+      },
+      "metadata": {
+        "best_epoch": 79,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 79,
+      "finished_at": "2026-10-03T19:07:41+00:00"
+    },
+    {
+      "stem": "Grocery_M_seed44",
+      "dataset": "Grocery",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_M_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_M_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/Grocery_M_seed44",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/Grocery/Grocery_M_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/Grocery_M_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/Grocery_M_seed44.log",
+      "started_at": "2026-10-03T19:07:41+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8295754194259644,
+        "val_macro_f1": 0.7543180188793094,
+        "val_ce": 0.6454398248764641
+      },
+      "metadata": {
+        "best_epoch": 83,
+        "development_no_test": true,
+        "model_parameters": 1451597,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 83,
+      "finished_at": "2026-10-03T19:08:16+00:00"
+    },
+    {
+      "stem": "ele-fashion_B_seed42",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_B_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_B_seed42"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_B_seed42.log",
+      "started_at": "2026-10-03T19:08:16+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8751150369644165,
+        "val_macro_f1": 0.7465592093735409,
+        "val_ce": 0.41233108550160774
+      },
+      "metadata": {
+        "best_epoch": 174,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 174,
+      "finished_at": "2026-10-03T19:12:05+00:00"
+    },
+    {
+      "stem": "ele-fashion_B_seed43",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_B_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_B_seed43"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_B_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_B_seed43.log",
+      "started_at": "2026-10-03T19:12:05+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8722512125968933,
+        "val_macro_f1": 0.7396359725733067,
+        "val_ce": 0.406041717607331
+      },
+      "metadata": {
+        "best_epoch": 155,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 155,
+      "finished_at": "2026-10-03T19:15:40+00:00"
+    },
+    {
+      "stem": "ele-fashion_B_seed44",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_B_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_B_seed44"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_B_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_B_seed44.log",
+      "started_at": "2026-10-03T19:15:40+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8719443678855896,
+        "val_macro_f1": 0.7307973245589612,
+        "val_ce": 0.40998150354467117
+      },
+      "metadata": {
+        "best_epoch": 125,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 125,
+      "finished_at": "2026-10-03T19:18:56+00:00"
+    },
+    {
+      "stem": "ele-fashion_G_seed42",
+      "dataset": "ele-fashion",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_G_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_G_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_G_seed42"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_G_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_G_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_G_seed42.log",
+      "started_at": "2026-10-03T19:18:56+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8729671835899353,
+        "val_macro_f1": 0.7472457802113438,
+        "val_ce": 0.41752595326963154
+      },
+      "metadata": {
+        "best_epoch": 148,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 148,
+      "finished_at": "2026-10-03T19:23:03+00:00"
+    },
+    {
+      "stem": "ele-fashion_G_seed43",
+      "dataset": "ele-fashion",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_G_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_G_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_G_seed43"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_G_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_G_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_G_seed43.log",
+      "started_at": "2026-10-03T19:23:03+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8748082518577576,
+        "val_macro_f1": 0.7555811002317833,
+        "val_ce": 0.4212655536331281
+      },
+      "metadata": {
+        "best_epoch": 182,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 182,
+      "finished_at": "2026-10-03T19:28:16+00:00"
+    },
+    {
+      "stem": "ele-fashion_G_seed44",
+      "dataset": "ele-fashion",
+      "variant": "G",
+      "model_variant": "global_mix",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=global_mix",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_G_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_G_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_G_seed44"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_G_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_G_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_G_seed44.log",
+      "started_at": "2026-10-03T19:28:16+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8742968440055847,
+        "val_macro_f1": 0.745283649544232,
+        "val_ce": 0.42694625550159176
+      },
+      "metadata": {
+        "best_epoch": 180,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 180,
+      "finished_at": "2026-10-03T19:33:17+00:00"
+    },
+    {
+      "stem": "ele-fashion_M_seed42",
+      "dataset": "ele-fashion",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_M_seed42.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_M_seed42.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_M_seed42"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_M_seed42.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_M_seed42.log",
+      "started_at": "2026-10-03T19:33:18+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8748082518577576,
+        "val_macro_f1": 0.7432846519142781,
+        "val_ce": 0.4050291532922452
+      },
+      "metadata": {
+        "best_epoch": 144,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 144,
+      "finished_at": "2026-10-03T19:37:40+00:00"
+    },
+    {
+      "stem": "ele-fashion_M_seed43",
+      "dataset": "ele-fashion",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_M_seed43.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_M_seed43.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_M_seed43"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_M_seed43.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_M_seed43.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_M_seed43.log",
+      "started_at": "2026-10-03T19:37:40+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8733763098716736,
+        "val_macro_f1": 0.7409330973694401,
+        "val_ce": 0.41623287819348026
+      },
+      "metadata": {
+        "best_epoch": 144,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 144,
+      "finished_at": "2026-10-03T19:42:07+00:00"
+    },
+    {
+      "stem": "ele-fashion_M_seed44",
+      "dataset": "ele-fashion",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "epochs": null,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.development_no_test=true",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_M_seed44.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_M_seed44.json",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/formal/ele-fashion_M_seed44"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/imosi_f0_interaction_mode_mixture/data/runs/formal/ele-fashion/ele-fashion_M_seed44.json",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/formal/ele-fashion_M_seed44.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/formal/ele-fashion_M_seed44.log",
+      "started_at": "2026-10-03T19:42:07+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8769561052322388,
+        "val_macro_f1": 0.750968196413175,
+        "val_ce": 0.4258209412676115
+      },
+      "metadata": {
+        "best_epoch": 156,
+        "development_no_test": true,
+        "model_parameters": 1189453,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 156,
+      "finished_at": "2026-10-03T19:46:47+00:00"
+    }
+  ],
   "created_at": "2026-10-03T18:54:00+00:00",
-  "status": "pending_source_commit"
+  "status": "formal_complete",
+  "smoke_status": "complete",
+  "formal_status": "complete",
+  "finished_at": "2026-10-03T19:46:47+00:00",
+  "analysis_status": "complete",
+  "analysis_updated_at": "2026-10-03T19:47:36+00:00",
+  "analysis_source_performance_rows": 27,
+  "paired_comparisons": [
+    "M-B",
+    "G-B",
+    "M-G"
+  ]
 }

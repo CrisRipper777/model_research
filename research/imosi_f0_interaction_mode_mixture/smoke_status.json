@@ -3,7 +3,7 @@
   "base_sha": "188b940a88b1852608c9e2e25e6d8bd7013ed8b5",
   "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
   "branch": "exp/imosi_f0_interaction_mode_mixture",
-  "device": null,
+  "device": "cuda:0",
   "evaluate_test": false,
   "development_no_test": true,
   "fixed_nc_splits": {
@@ -20,7 +20,271 @@
     "sports-copurchase/B/seed42",
     "sports-copurchase/M/seed42"
   ],
-  "nc_runs": [],
-  "lp_runs": [],
-  "status": "pending_source_commit"
+  "nc_runs": [
+    {
+      "dataset": "Movies",
+      "variant": "B",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "finite_logged_train_loss": true,
+      "mode_head_norms_at_selected_checkpoint": {
+        "self_up": 0.0,
+        "pair_up": 0.0,
+        "router_out": 0.0
+      },
+      "self_and_pair_heads_moved": false,
+      "router_out_moved_at_selected_checkpoint": false,
+      "route_checks": {
+        "text": {
+          "finite": true,
+          "nonnegative": true,
+          "sum_to_one_max_error": 0.0
+        },
+        "visual": {
+          "finite": true,
+          "nonnegative": true,
+          "sum_to_one_max_error": 0.0
+        }
+      },
+      "route_values_finite_and_normalized": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7590737711832634
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/smoke/Movies_B_seed42.log",
+      "status": "complete",
+      "self_pair_heads_remained_zero_in_base": true,
+      "mode_head_update_check_passed": true,
+      "router_out_later_update_gradient_test_passed": true
+    },
+    {
+      "dataset": "Movies",
+      "variant": "G",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "finite_logged_train_loss": true,
+      "mode_head_norms_at_selected_checkpoint": {
+        "self_up": 0.12772123515605927,
+        "pair_up": 0.12769129872322083,
+        "router_out": 0.0
+      },
+      "self_and_pair_heads_moved": true,
+      "router_out_moved_at_selected_checkpoint": false,
+      "route_checks": {
+        "text": {
+          "finite": true,
+          "nonnegative": true,
+          "sum_to_one_max_error": 0.0
+        },
+        "visual": {
+          "finite": true,
+          "nonnegative": true,
+          "sum_to_one_max_error": 0.0
+        }
+      },
+      "route_values_finite_and_normalized": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7648921387597483
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_G_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/smoke/Movies_G_seed42.log",
+      "status": "complete",
+      "self_pair_heads_remained_zero_in_base": false,
+      "mode_head_update_check_passed": true,
+      "router_out_later_update_gradient_test_passed": true
+    },
+    {
+      "dataset": "Movies",
+      "variant": "M",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "finite_logged_train_loss": true,
+      "mode_head_norms_at_selected_checkpoint": {
+        "self_up": 0.12772123515605927,
+        "pair_up": 0.12769129872322083,
+        "router_out": 0.0
+      },
+      "self_and_pair_heads_moved": true,
+      "router_out_moved_at_selected_checkpoint": false,
+      "route_checks": {
+        "text": {
+          "finite": true,
+          "nonnegative": true,
+          "sum_to_one_max_error": 0.0
+        },
+        "visual": {
+          "finite": true,
+          "nonnegative": true,
+          "sum_to_one_max_error": 0.0
+        }
+      },
+      "route_values_finite_and_normalized": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.764892431669916
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/smoke/Movies_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/smoke/Movies_M_seed42.log",
+      "status": "complete",
+      "self_pair_heads_remained_zero_in_base": false,
+      "mode_head_update_check_passed": true,
+      "router_out_later_update_gradient_test_passed": true
+    }
+  ],
+  "lp_runs": [
+    {
+      "stem": "sports-copurchase_B_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_B_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/lp_smoke/sports-copurchase_B_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=imosi_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_B_seed42.pt",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/lp_smoke/sports-copurchase_B_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "started_at": "2026-10-03T18:57:36+00:00",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_epoch": [
+        2306,
+        2214
+      ],
+      "positive_edge_removal_observed": true,
+      "finite_sampled_batch_train_loss": true,
+      "forward_backward_validation": true,
+      "sampled_model_forward_observed": true,
+      "router_on_sampled_nodes": false,
+      "adaptive_router_applied_to_sampled_nodes": false,
+      "router_sampled_forward_path": "src/tasks/lp.py calls model(batch.x, batch.edge_index) for LinkNeighborLoader batches",
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T18:57:47+00:00"
+    },
+    {
+      "stem": "sports-copurchase_M_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "M",
+      "model_variant": "adaptive_mix",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "source_commit_sha": "0187b3c610792166a0393ddb2f031165b96b9278",
+      "checkpoint_path": "/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_M_seed42.pt",
+      "log_path": "/tmp/imosi_f0_interaction_mode_mixture/logs/lp_smoke/sports-copurchase_M_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=imosi_mag_v0",
+        "model.variant=adaptive_mix",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/imosi_f0_interaction_mode_mixture/checkpoints/lp_smoke/sports-copurchase_M_seed42.pt",
+        "hydra.run.dir=/tmp/imosi_f0_interaction_mode_mixture/hydra/lp_smoke/sports-copurchase_M_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "started_at": "2026-10-03T18:57:47+00:00",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_epoch": [
+        2306,
+        2214
+      ],
+      "positive_edge_removal_observed": true,
+      "finite_sampled_batch_train_loss": true,
+      "forward_backward_validation": true,
+      "sampled_model_forward_observed": true,
+      "router_on_sampled_nodes": true,
+      "adaptive_router_applied_to_sampled_nodes": true,
+      "router_sampled_forward_path": "src/tasks/lp.py calls model(batch.x, batch.edge_index) for LinkNeighborLoader batches",
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T18:57:59+00:00"
+    }
+  ],
+  "status": "complete",
+  "started_at": "2026-10-03T18:57:00+00:00",
+  "lp_protocol_checks": {
+    "loader": "LinkNeighborLoader",
+    "fanout": [
+      5,
+      5,
+      5
+    ],
+    "positive_edge_removal": "global_eid positive-message-edge masking was observed per epoch",
+    "validation_inference": "Val MRR logged after sampled training batches",
+    "test_evaluated": false
+  },
+  "finished_at": "2026-10-03T18:57:59+00:00",
+  "router_two_step_update_check": {
+    "variant": "adaptive_mix",
+    "initial_router_out_weight_norm": 0.0,
+    "step_2_router_out_gradient_norm": 3.6884777545928955,
+    "router_out_weight_change_after_two_adamw_steps": 0.010311059653759003,
+    "updated_from_zero": true,
+    "method": "small CPU forward/backward/AdamW check using source-committed model code; experiment smoke itself retained best-epoch checkpoint selection"
+  }
 }
