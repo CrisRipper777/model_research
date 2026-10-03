@@ -1,0 +1,36 @@
+{
+  "protocol_version": "unified_full_graph_nc_v1",
+  "development_no_test": true,
+  "base_seed": 44,
+  "run_seeds": [
+    44
+  ],
+  "aggregation": "mean \u00b1 population std (ddof=0)",
+  "runs": [
+    {
+      "run_id": 0,
+      "seed": 44,
+      "metrics": {
+        "val_acc": 0.8682622313499451,
+        "val_macro_f1": 0.7233385663592299,
+        "val_ce": 0.4198582803250773
+      },
+      "metadata": {
+        "best_epoch": 114,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      }
+    }
+  ]
+}

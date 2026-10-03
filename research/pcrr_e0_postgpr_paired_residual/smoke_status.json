@@ -1,0 +1,209 @@
+{
+  "base_sha": "3ef56df39a2d554aaac9a97ae9f6d4943d345f13",
+  "branch": "exp/pcrr_e0_postgpr_paired_residual",
+  "tests": {
+    "status": "passed",
+    "targeted": "30 passed, 1 skipped (CUDA-specific case run separately on GPU1)",
+    "full_repository": "163 passed, 3 skipped",
+    "full_command": "/home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q",
+    "cuda_staging_command": "CUDA_VISIBLE_DEVICES=1 /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_pcrr_mag_v0.py::test_cpu_feature_staging_checkpoint_preserves_dropout_rng_and_gradients",
+    "cuda_staging_result": "1 passed"
+  },
+  "status": "complete",
+  "device": "cuda:0",
+  "evaluate_test": false,
+  "development_no_test": true,
+  "fixed_nc_splits": {
+    "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+    "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+    "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
+  },
+  "started_at": "2026-10-03T15:32:51+00:00",
+  "nc_runs": [
+    {
+      "dataset": "Movies",
+      "variant": "B",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "finite_logged_train_loss": true,
+      "pair_up_weight_norm_at_selected_checkpoint": 0.0,
+      "pair_up_bias_norm_at_selected_checkpoint": 0.0,
+      "residual_parameters_moved_after_training": false,
+      "residual_parameter_expectation_met": true,
+      "initial_residual_exactly_zero": false,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7616519664817036
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/Movies_B_seed42.log",
+      "status": "complete"
+    },
+    {
+      "dataset": "Movies",
+      "variant": "P",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "finite_logged_train_loss": true,
+      "pair_up_weight_norm_at_selected_checkpoint": 0.1279277354478836,
+      "pair_up_bias_norm_at_selected_checkpoint": 0.015999235212802887,
+      "residual_parameters_moved_after_training": true,
+      "residual_parameter_expectation_met": true,
+      "initial_residual_exactly_zero": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7760760347930415
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/Movies_P_seed42.log",
+      "status": "complete"
+    },
+    {
+      "dataset": "Movies",
+      "variant": "S",
+      "seed": 42,
+      "epochs": 2,
+      "trained_two_epochs": true,
+      "validation_ran": true,
+      "checkpoint_saved": true,
+      "finite_logged_train_loss": true,
+      "pair_up_weight_norm_at_selected_checkpoint": 0.12792246043682098,
+      "pair_up_bias_norm_at_selected_checkpoint": 0.015999235212802887,
+      "residual_parameters_moved_after_training": true,
+      "residual_parameter_expectation_met": true,
+      "initial_residual_exactly_zero": true,
+      "evaluate_test": false,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.776000463969706
+      },
+      "best_epoch": 1,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_S_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/Movies_S_seed42.log",
+      "status": "complete"
+    }
+  ],
+  "lp_runs": [
+    {
+      "stem": "sports-copurchase_B_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "B",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/sports-copurchase_B_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_B_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/sports-copurchase_B_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_logged_batch": [
+        2306,
+        2214
+      ],
+      "sampled_batch_train_loss_finite": true,
+      "forward_backward_and_validation": true,
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T15:33:44+00:00"
+    },
+    {
+      "stem": "sports-copurchase_P_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "P",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/sports-copurchase_P_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_P_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/sports-copurchase_P_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_logged_batch": [
+        2306,
+        2214
+      ],
+      "sampled_batch_train_loss_finite": true,
+      "forward_backward_and_validation": true,
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T15:33:58+00:00"
+    }
+  ],
+  "lp_protocol_checks": {
+    "loader": "LinkNeighborLoader",
+    "fanout": [
+      5,
+      5,
+      5
+    ],
+    "positive_supervision_edge_removal": "global_eid positive-message-edge masking observed per logged batch",
+    "validation_inference": "Val MRR appears after training batches",
+    "evaluate_test": false
+  },
+  "finished_at": "2026-10-03T15:34:49+00:00"
+}

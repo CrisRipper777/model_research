@@ -1,0 +1,1969 @@
+{
+  "experiment": "PCRR-E0 Post-GPR Paired Cross-Modal Residual Refinement Screen",
+  "base_sha": "3ef56df39a2d554aaac9a97ae9f6d4943d345f13",
+  "branch": "exp/pcrr_e0_postgpr_paired_residual",
+  "head_at_branch_creation": "3ef56df39a2d554aaac9a97ae9f6d4943d345f13",
+  "head_at_last_run": "3ef56df39a2d554aaac9a97ae9f6d4943d345f13",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "fixed_dataset_splits": {
+    "Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+    "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+    "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"
+  },
+  "variants": {
+    "B": "base",
+    "P": "paired",
+    "S": "shuffled"
+  },
+  "model_training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "pair_rank": 64,
+  "pair_shuffle_seed_rule": "model_seed + 73000",
+  "expected_smoke_nc_runs": 3,
+  "expected_smoke_lp_runs": 2,
+  "expected_formal_runs": 27,
+  "evaluate_test": false,
+  "development_no_test": true,
+  "formal_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_B_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_B_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_B_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_B_seed42.log",
+      "started_at": "2026-10-03T15:35:02+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5671865344047546,
+        "val_macro_f1": 0.48117744358957515,
+        "val_ce": 1.3797756073785243
+      },
+      "metadata": {
+        "best_epoch": 112,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 112,
+      "finished_at": "2026-10-03T15:35:38+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_B_seed43",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_B_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_B_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_B_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_B_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_B_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_B_seed43.log",
+      "started_at": "2026-10-03T15:35:38+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5659868121147156,
+        "val_macro_f1": 0.47806021853139125,
+        "val_ce": 1.4060537501874626
+      },
+      "metadata": {
+        "best_epoch": 111,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 111,
+      "finished_at": "2026-10-03T15:36:07+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_B_seed44",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_B_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_B_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_B_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_B_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_B_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_B_seed44.log",
+      "started_at": "2026-10-03T15:36:07+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5626874566078186,
+        "val_macro_f1": 0.5003078232675444,
+        "val_ce": 1.339494893989952
+      },
+      "metadata": {
+        "best_epoch": 88,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 88,
+      "finished_at": "2026-10-03T15:36:34+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_P_seed42",
+      "dataset": "Movies",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_P_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_P_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_P_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_P_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_P_seed42.log",
+      "started_at": "2026-10-03T15:36:34+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5698860287666321,
+        "val_macro_f1": 0.4926427212482382,
+        "val_ce": 1.3539836954484104
+      },
+      "metadata": {
+        "best_epoch": 91,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 91,
+      "finished_at": "2026-10-03T15:37:06+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_P_seed43",
+      "dataset": "Movies",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_P_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_P_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_P_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_P_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_P_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_P_seed43.log",
+      "started_at": "2026-10-03T15:37:06+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5683863162994385,
+        "val_macro_f1": 0.4863787747759746,
+        "val_ce": 1.3533548173177865
+      },
+      "metadata": {
+        "best_epoch": 100,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 100,
+      "finished_at": "2026-10-03T15:37:39+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_P_seed44",
+      "dataset": "Movies",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_P_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_P_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_P_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_P_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_P_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_P_seed44.log",
+      "started_at": "2026-10-03T15:37:39+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.568986177444458,
+        "val_macro_f1": 0.522667550785535,
+        "val_ce": 1.3967011285242952
+      },
+      "metadata": {
+        "best_epoch": 111,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 111,
+      "finished_at": "2026-10-03T15:38:13+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_S_seed42",
+      "dataset": "Movies",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_S_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_S_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_S_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_S_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_S_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_S_seed42.log",
+      "started_at": "2026-10-03T15:38:13+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5620875954627991,
+        "val_macro_f1": 0.4803901113699401,
+        "val_ce": 1.342887526010423
+      },
+      "metadata": {
+        "best_epoch": 83,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 83,
+      "finished_at": "2026-10-03T15:38:44+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_S_seed43",
+      "dataset": "Movies",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_S_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_S_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_S_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_S_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_S_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_S_seed43.log",
+      "started_at": "2026-10-03T15:38:44+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5605878829956055,
+        "val_macro_f1": 0.49216969468622906,
+        "val_ce": 1.369411859815537
+      },
+      "metadata": {
+        "best_epoch": 73,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 73,
+      "finished_at": "2026-10-03T15:39:13+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Movies_S_seed44",
+      "dataset": "Movies",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_S_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Movies_S_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_S_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Movies/Movies_S_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Movies_S_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Movies_S_seed44.log",
+      "started_at": "2026-10-03T15:39:13+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.5614876747131348,
+        "val_macro_f1": 0.49539844470396066,
+        "val_ce": 1.3452207019533593
+      },
+      "metadata": {
+        "best_epoch": 88,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 88,
+      "finished_at": "2026-10-03T15:39:45+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_B_seed42",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_B_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_B_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_B_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_B_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_B_seed42.log",
+      "started_at": "2026-10-03T15:39:45+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7721839211034474,
+        "val_ce": 0.6952580241123719
+      },
+      "metadata": {
+        "best_epoch": 139,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 139,
+      "finished_at": "2026-10-03T15:40:22+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_B_seed43",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_B_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_B_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_B_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_B_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_B_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_B_seed43.log",
+      "started_at": "2026-10-03T15:40:22+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7617394909070636,
+        "val_ce": 0.6346403018621889
+      },
+      "metadata": {
+        "best_epoch": 76,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 76,
+      "finished_at": "2026-10-03T15:40:48+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_B_seed44",
+      "dataset": "Grocery",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_B_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_B_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_B_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_B_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_B_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_B_seed44.log",
+      "started_at": "2026-10-03T15:40:48+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.833674967288971,
+        "val_macro_f1": 0.7694114510782046,
+        "val_ce": 0.6419131903138726
+      },
+      "metadata": {
+        "best_epoch": 89,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 89,
+      "finished_at": "2026-10-03T15:41:19+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_P_seed42",
+      "dataset": "Grocery",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_P_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_P_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_P_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_P_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_P_seed42.log",
+      "started_at": "2026-10-03T15:41:19+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8286969065666199,
+        "val_macro_f1": 0.7666864061381478,
+        "val_ce": 0.6452962716187775
+      },
+      "metadata": {
+        "best_epoch": 101,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 101,
+      "finished_at": "2026-10-03T15:41:57+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_P_seed43",
+      "dataset": "Grocery",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_P_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_P_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_P_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_P_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_P_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_P_seed43.log",
+      "started_at": "2026-10-03T15:41:57+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8278184533119202,
+        "val_macro_f1": 0.7623686493621692,
+        "val_ce": 0.6638548911054173
+      },
+      "metadata": {
+        "best_epoch": 103,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 103,
+      "finished_at": "2026-10-03T15:42:31+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_P_seed44",
+      "dataset": "Grocery",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_P_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_P_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_P_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_P_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_P_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_P_seed44.log",
+      "started_at": "2026-10-03T15:42:31+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8327965140342712,
+        "val_macro_f1": 0.7694168855837372,
+        "val_ce": 0.6423046017112006
+      },
+      "metadata": {
+        "best_epoch": 87,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 87,
+      "finished_at": "2026-10-03T15:43:06+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_S_seed42",
+      "dataset": "Grocery",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_S_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_S_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_S_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_S_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_S_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_S_seed42.log",
+      "started_at": "2026-10-03T15:43:06+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8251830339431763,
+        "val_macro_f1": 0.7641334499728233,
+        "val_ce": 0.7034803086109077
+      },
+      "metadata": {
+        "best_epoch": 104,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 104,
+      "finished_at": "2026-10-03T15:43:41+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_S_seed43",
+      "dataset": "Grocery",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_S_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_S_seed43",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_S_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_S_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_S_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_S_seed43.log",
+      "started_at": "2026-10-03T15:43:41+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8240116834640503,
+        "val_macro_f1": 0.7564912145432355,
+        "val_ce": 0.6767727540492313
+      },
+      "metadata": {
+        "best_epoch": 80,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 80,
+      "finished_at": "2026-10-03T15:44:12+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "Grocery_S_seed44",
+      "dataset": "Grocery",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Grocery",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_S_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/Grocery_S_seed44",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_S_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/Grocery/Grocery_S_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/Grocery_S_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/Grocery_S_seed44.log",
+      "started_at": "2026-10-03T15:44:12+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8240116834640503,
+        "val_macro_f1": 0.7554140980593733,
+        "val_ce": 0.6564403796440337
+      },
+      "metadata": {
+        "best_epoch": 79,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 79,
+      "finished_at": "2026-10-03T15:44:45+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_B_seed42",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_B_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_B_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_B_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_B_seed42.log",
+      "started_at": "2026-10-03T15:44:45+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8754218816757202,
+        "val_macro_f1": 0.7405145765020886,
+        "val_ce": 0.438724529917552
+      },
+      "metadata": {
+        "best_epoch": 231,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 231,
+      "finished_at": "2026-10-03T15:49:39+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_B_seed43",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_B_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_B_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_B_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_B_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_B_seed43.log",
+      "started_at": "2026-10-03T15:49:39+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8769561052322388,
+        "val_macro_f1": 0.7435583715306017,
+        "val_ce": 0.43502666843660504
+      },
+      "metadata": {
+        "best_epoch": 238,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 238,
+      "finished_at": "2026-10-03T15:54:31+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_B_seed44",
+      "dataset": "ele-fashion",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_B_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_B_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_B_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_B_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_B_seed44.log",
+      "started_at": "2026-10-03T15:54:31+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8731717467308044,
+        "val_macro_f1": 0.7443680657953556,
+        "val_ce": 0.4021123757547209
+      },
+      "metadata": {
+        "best_epoch": 154,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 154,
+      "finished_at": "2026-10-03T15:58:01+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_P_seed42",
+      "dataset": "ele-fashion",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_P_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_P_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_P_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_P_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_P_seed42.log",
+      "started_at": "2026-10-03T15:58:01+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8715352416038513,
+        "val_macro_f1": 0.7415830824186859,
+        "val_ce": 0.40020214454203745
+      },
+      "metadata": {
+        "best_epoch": 126,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 126,
+      "finished_at": "2026-10-03T16:01:14+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_P_seed43",
+      "dataset": "ele-fashion",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_P_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_P_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_P_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_P_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_P_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_P_seed43.log",
+      "started_at": "2026-10-03T16:01:14+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8727626204490662,
+        "val_macro_f1": 0.7298162030709366,
+        "val_ce": 0.4059256964987183
+      },
+      "metadata": {
+        "best_epoch": 138,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 138,
+      "finished_at": "2026-10-03T16:04:41+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_P_seed44",
+      "dataset": "ele-fashion",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_P_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_P_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_P_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_P_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_P_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_P_seed44.log",
+      "started_at": "2026-10-03T16:04:41+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.873274028301239,
+        "val_macro_f1": 0.7311704036317784,
+        "val_ce": 0.41246525422188235
+      },
+      "metadata": {
+        "best_epoch": 146,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 146,
+      "finished_at": "2026-10-03T16:08:07+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_S_seed42",
+      "dataset": "ele-fashion",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_S_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_S_seed42",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_S_seed42.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_S_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_S_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_S_seed42.log",
+      "started_at": "2026-10-03T16:08:07+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.869694173336029,
+        "val_macro_f1": 0.7181955955896846,
+        "val_ce": 0.43654978805687134
+      },
+      "metadata": {
+        "best_epoch": 125,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 125,
+      "finished_at": "2026-10-03T16:11:14+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_S_seed43",
+      "dataset": "ele-fashion",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 43,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=43",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_S_seed43.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_S_seed43",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_S_seed43.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_S_seed43.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_S_seed43.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_S_seed43.log",
+      "started_at": "2026-10-03T16:11:14+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8673416972160339,
+        "val_macro_f1": 0.7240944747681985,
+        "val_ce": 0.4140017957083589
+      },
+      "metadata": {
+        "best_epoch": 114,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 114,
+      "finished_at": "2026-10-03T16:14:08+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    },
+    {
+      "stem": "ele-fashion_S_seed44",
+      "dataset": "ele-fashion",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 44,
+      "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=ele-fashion",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=44",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_S_seed44.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/formal/ele-fashion_S_seed44",
+        "task.development_no_test=true",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_S_seed44.json"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/formal/ele-fashion/ele-fashion_S_seed44.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/formal/ele-fashion_S_seed44.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/formal/ele-fashion_S_seed44.log",
+      "started_at": "2026-10-03T16:14:08+00:00",
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.8682622313499451,
+        "val_macro_f1": 0.7233385663592299,
+        "val_ce": 0.4198582803250773
+      },
+      "metadata": {
+        "best_epoch": 114,
+        "development_no_test": true,
+        "model_parameters": 1071172,
+        "classifier_parameters": 3084,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 114,
+      "finished_at": "2026-10-03T16:17:02+00:00",
+      "pair_shuffle_fixed_points": 0,
+      "pair_shuffle_fixed_point_rate": 0.0
+    }
+  ],
+  "smoke_nc_runs": [
+    {
+      "stem": "Movies_B_seed42",
+      "dataset": "Movies",
+      "variant": "B",
+      "model_variant": "base",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_B_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/Movies_B_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/smoke/Movies/Movies_B_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/smoke/Movies/Movies_B_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/Movies_B_seed42.log",
+      "started_at": "2026-10-03T15:32:51+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7616519664817036
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T15:33:06+00:00"
+    },
+    {
+      "stem": "Movies_P_seed42",
+      "dataset": "Movies",
+      "variant": "P",
+      "model_variant": "paired",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_P_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/Movies_P_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/smoke/Movies/Movies_P_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/smoke/Movies/Movies_P_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/Movies_P_seed42.log",
+      "started_at": "2026-10-03T15:33:09+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.7760760347930415
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T15:33:19+00:00"
+    },
+    {
+      "stem": "Movies_S_seed42",
+      "dataset": "Movies",
+      "variant": "S",
+      "model_variant": "shuffled",
+      "seed": 42,
+      "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "evaluate_test": false,
+      "development_no_test": true,
+      "status": "complete",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=Movies",
+        "task=nc",
+        "model=pcrr_mag_v0",
+        "model.variant=shuffled",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_S_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/Movies_S_seed42",
+        "task.development_no_test=true",
+        "dataset.nc_split_path=/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+        "task.run_metrics_path=/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/smoke/Movies/Movies_S_seed42.json",
+        "task.epochs=2"
+      ],
+      "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/research/pcrr_e0_postgpr_paired_residual/data/runs/smoke/Movies/Movies_S_seed42.json",
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/Movies_S_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/Movies_S_seed42.log",
+      "started_at": "2026-10-03T15:33:19+00:00",
+      "epochs": 2,
+      "return_code": 0,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693,
+        "val_ce": 3.776000463969706
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "development_no_test": true,
+        "model_parameters": 1333316,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 3,
+        "other_depth_fields": {}
+      },
+      "best_epoch": 1,
+      "finished_at": "2026-10-03T15:33:29+00:00"
+    }
+  ],
+  "smoke_lp_runs": [
+    {
+      "stem": "sports-copurchase_B_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "B",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_B_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/sports-copurchase_B_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=pcrr_mag_v0",
+        "model.variant=base",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_B_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/sports-copurchase_B_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_logged_batch": [
+        2306,
+        2214
+      ],
+      "sampled_batch_train_loss_finite": true,
+      "forward_backward_and_validation": true,
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T15:33:44+00:00"
+    },
+    {
+      "stem": "sports-copurchase_P_seed42",
+      "dataset": "sports-copurchase",
+      "variant": "P",
+      "seed": 42,
+      "epochs": 2,
+      "max_train_batches": 2,
+      "num_neighbors": [
+        5,
+        5,
+        5
+      ],
+      "positive_supervision_edge_removal": "repository global_eid protocol",
+      "evaluate_test": false,
+      "checkpoint_path": "/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_P_seed42.pt",
+      "log_path": "/tmp/pcrr_e0_postgpr_paired_residual/logs/smoke/sports-copurchase_P_seed42.log",
+      "command": [
+        "/home/m3/miniconda3/envs/yhf_env/bin/python",
+        "-m",
+        "src.main",
+        "dataset=sports-copurchase",
+        "task=lp",
+        "model=pcrr_mag_v0",
+        "model.variant=paired",
+        "seed=42",
+        "num_runs=1",
+        "device=cuda:0",
+        "task.evaluate_test=false",
+        "task.save_ckpt_path=/tmp/pcrr_e0_postgpr_paired_residual/checkpoints/smoke/sports-copurchase_P_seed42.pt",
+        "hydra.run.dir=/tmp/pcrr_e0_postgpr_paired_residual/hydra/smoke/sports-copurchase_P_seed42",
+        "task.epochs=2",
+        "task.max_train_batches=2",
+        "task.num_neighbors=[5,5,5]"
+      ],
+      "status": "complete",
+      "return_code": 0,
+      "link_neighbor_loader": true,
+      "sampler_fanouts_observed": true,
+      "positive_message_edges_removed_per_logged_batch": [
+        2306,
+        2214
+      ],
+      "sampled_batch_train_loss_finite": true,
+      "forward_backward_and_validation": true,
+      "checkpoint_saved": true,
+      "test_evaluated": false,
+      "finished_at": "2026-10-03T15:33:58+00:00"
+    }
+  ],
+  "created_at": "2026-10-03T15:32:51+00:00",
+  "status": "formal_complete",
+  "updated_at": "2026-10-03T16:17:02+00:00",
+  "formal_status": "complete",
+  "finished_at": "2026-10-03T16:17:02+00:00",
+  "shuffle_permutation_audit": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "pair_shuffle_seed": 73042,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "pair_shuffle_seed": 73043,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "pair_shuffle_seed": 73044,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "pair_shuffle_seed": 73042,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "pair_shuffle_seed": 73043,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "pair_shuffle_seed": 73044,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "pair_shuffle_seed": 73042,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "pair_shuffle_seed": 73043,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "pair_shuffle_seed": 73044,
+      "fixed_points": 0,
+      "fixed_point_rate": 0.0
+    }
+  ],
+  "analysis_status": "complete",
+  "analysis_updated_at": "2026-10-03T16:22:28+00:00"
+}
