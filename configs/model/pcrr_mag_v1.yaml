@@ -1,0 +1,12 @@
+name: pcrr_mag_v1
+variant: base # base | paired | shuffled | target_only
+
+hidden_dim: 256
+num_layers: 3
+dropout: 0.2
+diffusion_add_self_loops: true
+eps: 1.0e-8
+global_prior_restart: 0.15
+global_prior_order: 2
+
+pair_rank: 64
