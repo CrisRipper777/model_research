@@ -308,7 +308,7 @@ def write_report(perf_summary, paired_summary, residual_rows, combined_residual,
 
 ## Execution and provenance
 
-- Required base: `{manifest['base_sha']}`; branch: `{manifest['branch']}`.
+- Required base: `{manifest['base_sha']}`; branch: `{manifest['branch']}`; exact experiment source snapshot: `{manifest.get('experiment_source_commit', 'not yet recorded')}`. Runs were completed before committing, then the executed source files were committed unchanged at that source snapshot.
 - New training in this phase: **{len(t_metrics)} T runs** (3 datasets × seeds 42/43/44).
 - Frozen parent data reused: **27 E0 B/P/S runs** directly from `research/pcrr_e0_postgpr_paired_residual/data/performance_by_run.csv`. The combined table has 36 rows because it joins those 27 historical rows with 9 new runs; it does not represent 36 new trainings.
 - Fixed splits: `{json.dumps(SPLITS, ensure_ascii=False)}`. All runs use `evaluate_test=false`, `development_no_test=true`; no NC test metrics were used. No split was modified, no LP was run, and no B/P/S formal run was repeated.

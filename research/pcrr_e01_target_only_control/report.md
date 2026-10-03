@@ -2,7 +2,7 @@
 
 ## Execution and provenance
 
-- Required base: `d1c49583e56af20063ed7274630b2df27cc612e7`; branch: `exp/pcrr_e01_target_only_control`.
+- Required base: `d1c49583e56af20063ed7274630b2df27cc612e7`; branch: `exp/pcrr_e01_target_only_control`; exact experiment source snapshot: `5b8f9edbef04146a655be49c1a42663dbfe463f2`. Runs were completed before committing, then the executed source files were committed unchanged at this source snapshot.
 - New training in this phase: **9 T runs** (3 datasets × seeds 42/43/44).
 - Frozen parent data reused: **27 E0 B/P/S runs** directly from `research/pcrr_e0_postgpr_paired_residual/data/performance_by_run.csv`. The combined table has 36 rows because it joins those 27 historical rows with 9 new runs; it does not represent 36 new trainings.
 - Fixed splits: `{"Movies": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt", "Grocery": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt", "ele-fashion": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt"}`. All runs use `evaluate_test=false`, `development_no_test=true`; no NC test metrics were used. No split was modified, no LP was run, and no B/P/S formal run was repeated.
