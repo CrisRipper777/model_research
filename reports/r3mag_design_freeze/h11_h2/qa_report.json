@@ -1,0 +1,4432 @@
+{
+  "all_assertions_pass": true,
+  "per_run": {
+    "Grocery_seed42": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 176000,
+        "near_zero_direction_count_visual": 156855,
+        "normmatch_max_relative_error": 2.3760246392612316e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 3.725290298461914e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 1.1444091796875e-05,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 4.213175543554826e-06,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.557255752184574e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 2,
+          "global": 3,
+          "joint": 1017,
+          "self_map_count": 0,
+          "split_size": 1022
+        },
+        "audit_target_count": 1022,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "1": {
+              "predictor_train": 77,
+              "predictor_val": 19,
+              "response_train": 96
+            },
+            "10": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 116,
+              "predictor_val": 29,
+              "response_train": 145
+            },
+            "13": {
+              "predictor_train": 68,
+              "predictor_val": 17,
+              "response_train": 85
+            },
+            "14": {
+              "predictor_train": 42,
+              "predictor_val": 11,
+              "response_train": 53
+            },
+            "15": {
+              "predictor_train": 44,
+              "predictor_val": 11,
+              "response_train": 55
+            },
+            "16": {
+              "predictor_train": 51,
+              "predictor_val": 13,
+              "response_train": 64
+            },
+            "17": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "18": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "19": {
+              "predictor_train": 22,
+              "predictor_val": 6,
+              "response_train": 28
+            },
+            "2": {
+              "predictor_train": 6,
+              "predictor_val": 2,
+              "response_train": 8
+            },
+            "3": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "4": {
+              "predictor_train": 13,
+              "predictor_val": 3,
+              "response_train": 16
+            },
+            "5": {
+              "predictor_train": 40,
+              "predictor_val": 10,
+              "response_train": 50
+            },
+            "6": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "7": {
+              "predictor_train": 57,
+              "predictor_val": 14,
+              "response_train": 71
+            },
+            "8": {
+              "predictor_train": 62,
+              "predictor_val": 15,
+              "response_train": 77
+            },
+            "9": {
+              "predictor_train": 54,
+              "predictor_val": 14,
+              "response_train": 68
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "dc8e31648b12713ff902f973094af4440d911f69a7ea26c663e44cc473f78207",
+          "val_sha256": "b0abd98b20e02994c954bd7520755a0eb9e3af453abb9b8f27b2194db765eb9d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "degree": 5,
+          "joint": 1019,
+          "self_map_count": 0,
+          "split_size": 1024
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.018150068819522858,
+            -0.020925896242260933,
+            0.003476963844150305,
+            0.005422423128038645,
+            -0.037497133016586304,
+            -0.03864097222685814,
+            0.10559750348329544,
+            0.09670084714889526
+          ],
+          "std": [
+            0.63489830493927,
+            0.5712637901306152,
+            0.831663966178894,
+            0.9443041682243347,
+            0.8375111222267151,
+            0.8264490962028503,
+            0.9730096459388733,
+            1.063318133354187
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 1024
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 2,
+          "global": 3,
+          "joint": 1017,
+          "self_map_count": 0,
+          "split_size": 1022
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "degree": 5,
+          "joint": 1019,
+          "self_map_count": 0,
+          "split_size": 1024
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "1": {
+              "predictor_train": 77,
+              "predictor_val": 19,
+              "response_train": 96
+            },
+            "10": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 116,
+              "predictor_val": 29,
+              "response_train": 145
+            },
+            "13": {
+              "predictor_train": 68,
+              "predictor_val": 17,
+              "response_train": 85
+            },
+            "14": {
+              "predictor_train": 42,
+              "predictor_val": 11,
+              "response_train": 53
+            },
+            "15": {
+              "predictor_train": 44,
+              "predictor_val": 11,
+              "response_train": 55
+            },
+            "16": {
+              "predictor_train": 51,
+              "predictor_val": 13,
+              "response_train": 64
+            },
+            "17": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "18": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "19": {
+              "predictor_train": 22,
+              "predictor_val": 6,
+              "response_train": 28
+            },
+            "2": {
+              "predictor_train": 6,
+              "predictor_val": 2,
+              "response_train": 8
+            },
+            "3": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "4": {
+              "predictor_train": 13,
+              "predictor_val": 3,
+              "response_train": 16
+            },
+            "5": {
+              "predictor_train": 40,
+              "predictor_val": 10,
+              "response_train": 50
+            },
+            "6": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "7": {
+              "predictor_train": 57,
+              "predictor_val": 14,
+              "response_train": 71
+            },
+            "8": {
+              "predictor_train": 62,
+              "predictor_val": 15,
+              "response_train": 77
+            },
+            "9": {
+              "predictor_train": 54,
+              "predictor_val": 14,
+              "response_train": 68
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "dc8e31648b12713ff902f973094af4440d911f69a7ea26c663e44cc473f78207",
+          "val_sha256": "b0abd98b20e02994c954bd7520755a0eb9e3af453abb9b8f27b2194db765eb9d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "Grocery_seed43": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 181865,
+        "near_zero_direction_count_visual": 157226,
+        "normmatch_max_relative_error": 2.4509068907718756e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 5.2154064122955646e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 7.62939453125e-06,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 1.532471833343152e-05,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.29088237549513e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 3,
+          "joint": 1018,
+          "self_map_count": 1,
+          "singleton_self_map": 1,
+          "split_size": 1022
+        },
+        "audit_target_count": 1022,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "1": {
+              "predictor_train": 77,
+              "predictor_val": 19,
+              "response_train": 96
+            },
+            "10": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 116,
+              "predictor_val": 29,
+              "response_train": 145
+            },
+            "13": {
+              "predictor_train": 68,
+              "predictor_val": 17,
+              "response_train": 85
+            },
+            "14": {
+              "predictor_train": 42,
+              "predictor_val": 11,
+              "response_train": 53
+            },
+            "15": {
+              "predictor_train": 44,
+              "predictor_val": 11,
+              "response_train": 55
+            },
+            "16": {
+              "predictor_train": 51,
+              "predictor_val": 13,
+              "response_train": 64
+            },
+            "17": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "18": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "19": {
+              "predictor_train": 22,
+              "predictor_val": 6,
+              "response_train": 28
+            },
+            "2": {
+              "predictor_train": 6,
+              "predictor_val": 2,
+              "response_train": 8
+            },
+            "3": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "4": {
+              "predictor_train": 13,
+              "predictor_val": 3,
+              "response_train": 16
+            },
+            "5": {
+              "predictor_train": 40,
+              "predictor_val": 10,
+              "response_train": 50
+            },
+            "6": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "7": {
+              "predictor_train": 57,
+              "predictor_val": 14,
+              "response_train": 71
+            },
+            "8": {
+              "predictor_train": 62,
+              "predictor_val": 15,
+              "response_train": 77
+            },
+            "9": {
+              "predictor_train": 54,
+              "predictor_val": 14,
+              "response_train": 68
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "dc8e31648b12713ff902f973094af4440d911f69a7ea26c663e44cc473f78207",
+          "val_sha256": "b0abd98b20e02994c954bd7520755a0eb9e3af453abb9b8f27b2194db765eb9d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "degree": 2,
+          "global": 2,
+          "joint": 1020,
+          "self_map_count": 0,
+          "split_size": 1024
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.018641561269760132,
+            -0.02397564798593521,
+            0.005783874075859785,
+            0.0033429597970098257,
+            -0.03083471767604351,
+            -0.02444281429052353,
+            0.0908336415886879,
+            0.08677271753549576
+          ],
+          "std": [
+            0.6197239756584167,
+            0.671768069267273,
+            0.8851921558380127,
+            0.9836655855178833,
+            0.8819167613983154,
+            0.9618545174598694,
+            1.0138415098190308,
+            1.1034941673278809
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 1024
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 3,
+          "joint": 1018,
+          "self_map_count": 1,
+          "singleton_self_map": 1,
+          "split_size": 1022
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "degree": 2,
+          "global": 2,
+          "joint": 1020,
+          "self_map_count": 0,
+          "split_size": 1024
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "1": {
+              "predictor_train": 77,
+              "predictor_val": 19,
+              "response_train": 96
+            },
+            "10": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 116,
+              "predictor_val": 29,
+              "response_train": 145
+            },
+            "13": {
+              "predictor_train": 68,
+              "predictor_val": 17,
+              "response_train": 85
+            },
+            "14": {
+              "predictor_train": 42,
+              "predictor_val": 11,
+              "response_train": 53
+            },
+            "15": {
+              "predictor_train": 44,
+              "predictor_val": 11,
+              "response_train": 55
+            },
+            "16": {
+              "predictor_train": 51,
+              "predictor_val": 13,
+              "response_train": 64
+            },
+            "17": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "18": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "19": {
+              "predictor_train": 22,
+              "predictor_val": 6,
+              "response_train": 28
+            },
+            "2": {
+              "predictor_train": 6,
+              "predictor_val": 2,
+              "response_train": 8
+            },
+            "3": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "4": {
+              "predictor_train": 13,
+              "predictor_val": 3,
+              "response_train": 16
+            },
+            "5": {
+              "predictor_train": 40,
+              "predictor_val": 10,
+              "response_train": 50
+            },
+            "6": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "7": {
+              "predictor_train": 57,
+              "predictor_val": 14,
+              "response_train": 71
+            },
+            "8": {
+              "predictor_train": 62,
+              "predictor_val": 15,
+              "response_train": 77
+            },
+            "9": {
+              "predictor_train": 54,
+              "predictor_val": 14,
+              "response_train": 68
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "dc8e31648b12713ff902f973094af4440d911f69a7ea26c663e44cc473f78207",
+          "val_sha256": "b0abd98b20e02994c954bd7520755a0eb9e3af453abb9b8f27b2194db765eb9d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "Grocery_seed44": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 1022,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 8176,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 182519,
+        "near_zero_direction_count_visual": 156970,
+        "normmatch_max_relative_error": 2.3731574572138925e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 4.4703483415009515e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 7.62939453125e-06,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 1.0647497219906654e-05,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.4822255656763446e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 3,
+          "global": 3,
+          "joint": 1016,
+          "self_map_count": 0,
+          "split_size": 1022
+        },
+        "audit_target_count": 1022,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "1": {
+              "predictor_train": 77,
+              "predictor_val": 19,
+              "response_train": 96
+            },
+            "10": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 116,
+              "predictor_val": 29,
+              "response_train": 145
+            },
+            "13": {
+              "predictor_train": 68,
+              "predictor_val": 17,
+              "response_train": 85
+            },
+            "14": {
+              "predictor_train": 42,
+              "predictor_val": 11,
+              "response_train": 53
+            },
+            "15": {
+              "predictor_train": 44,
+              "predictor_val": 11,
+              "response_train": 55
+            },
+            "16": {
+              "predictor_train": 51,
+              "predictor_val": 13,
+              "response_train": 64
+            },
+            "17": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "18": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "19": {
+              "predictor_train": 22,
+              "predictor_val": 6,
+              "response_train": 28
+            },
+            "2": {
+              "predictor_train": 6,
+              "predictor_val": 2,
+              "response_train": 8
+            },
+            "3": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "4": {
+              "predictor_train": 13,
+              "predictor_val": 3,
+              "response_train": 16
+            },
+            "5": {
+              "predictor_train": 40,
+              "predictor_val": 10,
+              "response_train": 50
+            },
+            "6": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "7": {
+              "predictor_train": 57,
+              "predictor_val": 14,
+              "response_train": 71
+            },
+            "8": {
+              "predictor_train": 62,
+              "predictor_val": 15,
+              "response_train": 77
+            },
+            "9": {
+              "predictor_train": 54,
+              "predictor_val": 14,
+              "response_train": 68
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "dc8e31648b12713ff902f973094af4440d911f69a7ea26c663e44cc473f78207",
+          "val_sha256": "b0abd98b20e02994c954bd7520755a0eb9e3af453abb9b8f27b2194db765eb9d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "global": 2,
+          "joint": 1022,
+          "self_map_count": 0,
+          "split_size": 1024
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.014281758107244968,
+            -0.0013654297217726707,
+            -0.005528462119400501,
+            -0.008396826684474945,
+            -0.03002050146460533,
+            -0.025553183630108833,
+            0.08712518215179443,
+            0.07472994178533554
+          ],
+          "std": [
+            0.6396064162254333,
+            0.651103138923645,
+            0.8472267985343933,
+            0.942307710647583,
+            0.898966372013092,
+            0.8581211566925049,
+            1.009027361869812,
+            1.1108742952346802
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 1024
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 3,
+          "global": 3,
+          "joint": 1016,
+          "self_map_count": 0,
+          "split_size": 1022
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "global": 2,
+          "joint": 1022,
+          "self_map_count": 0,
+          "split_size": 1024
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "1": {
+              "predictor_train": 77,
+              "predictor_val": 19,
+              "response_train": 96
+            },
+            "10": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 116,
+              "predictor_val": 29,
+              "response_train": 145
+            },
+            "13": {
+              "predictor_train": 68,
+              "predictor_val": 17,
+              "response_train": 85
+            },
+            "14": {
+              "predictor_train": 42,
+              "predictor_val": 11,
+              "response_train": 53
+            },
+            "15": {
+              "predictor_train": 44,
+              "predictor_val": 11,
+              "response_train": 55
+            },
+            "16": {
+              "predictor_train": 51,
+              "predictor_val": 13,
+              "response_train": 64
+            },
+            "17": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "18": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "19": {
+              "predictor_train": 22,
+              "predictor_val": 6,
+              "response_train": 28
+            },
+            "2": {
+              "predictor_train": 6,
+              "predictor_val": 2,
+              "response_train": 8
+            },
+            "3": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "4": {
+              "predictor_train": 13,
+              "predictor_val": 3,
+              "response_train": 16
+            },
+            "5": {
+              "predictor_train": 40,
+              "predictor_val": 10,
+              "response_train": 50
+            },
+            "6": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "7": {
+              "predictor_train": 57,
+              "predictor_val": 14,
+              "response_train": 71
+            },
+            "8": {
+              "predictor_train": 62,
+              "predictor_val": 15,
+              "response_train": 77
+            },
+            "9": {
+              "predictor_train": 54,
+              "predictor_val": 14,
+              "response_train": 68
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "dc8e31648b12713ff902f973094af4440d911f69a7ea26c663e44cc473f78207",
+          "val_sha256": "b0abd98b20e02994c954bd7520755a0eb9e3af453abb9b8f27b2194db765eb9d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "Movies_seed42": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 242140,
+        "near_zero_direction_count_visual": 185688,
+        "normmatch_max_relative_error": 2.4059858105829335e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 1.1920928952302567e-08,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 7.62939453125e-06,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 9.891550689644646e-06,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.7530662666540593e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 13,
+          "joint": 985,
+          "self_map_count": 0,
+          "split_size": 998
+        },
+        "audit_target_count": 998,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 86,
+              "predictor_val": 21,
+              "response_train": 107
+            },
+            "1": {
+              "predictor_train": 264,
+              "predictor_val": 66,
+              "response_train": 330
+            },
+            "10": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "13": {
+              "predictor_train": 10,
+              "predictor_val": 3,
+              "response_train": 13
+            },
+            "14": {
+              "predictor_train": 12,
+              "predictor_val": 3,
+              "response_train": 15
+            },
+            "15": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "16": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            },
+            "17": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "18": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "19": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "2": {
+              "predictor_train": 87,
+              "predictor_val": 22,
+              "response_train": 109
+            },
+            "3": {
+              "predictor_train": 66,
+              "predictor_val": 17,
+              "response_train": 83
+            },
+            "4": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "5": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "6": {
+              "predictor_train": 30,
+              "predictor_val": 7,
+              "response_train": 37
+            },
+            "7": {
+              "predictor_train": 50,
+              "predictor_val": 13,
+              "response_train": 63
+            },
+            "8": {
+              "predictor_train": 7,
+              "predictor_val": 2,
+              "response_train": 9
+            },
+            "9": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "c48f3a05af668de82783b31c15fe26e3b7b45eb3fe8bbb717da603bf30a9e3f2",
+          "val_sha256": "0bfd99ef819921f3ae451464dcb5660acc267f593828ebb234979011052e7d9d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "degree": 7,
+          "global": 2,
+          "joint": 994,
+          "self_map_count": 0,
+          "split_size": 1003
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.04052525386214256,
+            -0.10122955590486526,
+            -0.11722806841135025,
+            -0.1382606476545334,
+            -0.11580383032560349,
+            0.11076623201370239,
+            0.18688254058361053,
+            0.19124343991279602
+          ],
+          "std": [
+            0.3383256494998932,
+            0.9694991707801819,
+            0.9920171499252319,
+            1.057136058807373,
+            1.2736562490463257,
+            1.494829773902893,
+            1.5046813488006592,
+            1.6273386478424072
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 1003
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 13,
+          "joint": 985,
+          "self_map_count": 0,
+          "split_size": 998
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "degree": 7,
+          "global": 2,
+          "joint": 994,
+          "self_map_count": 0,
+          "split_size": 1003
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 86,
+              "predictor_val": 21,
+              "response_train": 107
+            },
+            "1": {
+              "predictor_train": 264,
+              "predictor_val": 66,
+              "response_train": 330
+            },
+            "10": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "13": {
+              "predictor_train": 10,
+              "predictor_val": 3,
+              "response_train": 13
+            },
+            "14": {
+              "predictor_train": 12,
+              "predictor_val": 3,
+              "response_train": 15
+            },
+            "15": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "16": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            },
+            "17": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "18": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "19": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "2": {
+              "predictor_train": 87,
+              "predictor_val": 22,
+              "response_train": 109
+            },
+            "3": {
+              "predictor_train": 66,
+              "predictor_val": 17,
+              "response_train": 83
+            },
+            "4": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "5": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "6": {
+              "predictor_train": 30,
+              "predictor_val": 7,
+              "response_train": 37
+            },
+            "7": {
+              "predictor_train": 50,
+              "predictor_val": 13,
+              "response_train": 63
+            },
+            "8": {
+              "predictor_train": 7,
+              "predictor_val": 2,
+              "response_train": 9
+            },
+            "9": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "c48f3a05af668de82783b31c15fe26e3b7b45eb3fe8bbb717da603bf30a9e3f2",
+          "val_sha256": "0bfd99ef819921f3ae451464dcb5660acc267f593828ebb234979011052e7d9d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "Movies_seed43": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 236463,
+        "near_zero_direction_count_visual": 175131,
+        "normmatch_max_relative_error": 2.374946319605442e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 8.195638667718441e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 7.62939453125e-06,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 2.7542406314751133e-05,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.5924415442423197e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 14,
+          "joint": 984,
+          "self_map_count": 0,
+          "split_size": 998
+        },
+        "audit_target_count": 998,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 86,
+              "predictor_val": 21,
+              "response_train": 107
+            },
+            "1": {
+              "predictor_train": 264,
+              "predictor_val": 66,
+              "response_train": 330
+            },
+            "10": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "13": {
+              "predictor_train": 10,
+              "predictor_val": 3,
+              "response_train": 13
+            },
+            "14": {
+              "predictor_train": 12,
+              "predictor_val": 3,
+              "response_train": 15
+            },
+            "15": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "16": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            },
+            "17": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "18": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "19": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "2": {
+              "predictor_train": 87,
+              "predictor_val": 22,
+              "response_train": 109
+            },
+            "3": {
+              "predictor_train": 66,
+              "predictor_val": 17,
+              "response_train": 83
+            },
+            "4": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "5": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "6": {
+              "predictor_train": 30,
+              "predictor_val": 7,
+              "response_train": 37
+            },
+            "7": {
+              "predictor_train": 50,
+              "predictor_val": 13,
+              "response_train": 63
+            },
+            "8": {
+              "predictor_train": 7,
+              "predictor_val": 2,
+              "response_train": 9
+            },
+            "9": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "c48f3a05af668de82783b31c15fe26e3b7b45eb3fe8bbb717da603bf30a9e3f2",
+          "val_sha256": "0bfd99ef819921f3ae451464dcb5660acc267f593828ebb234979011052e7d9d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "degree": 7,
+          "joint": 996,
+          "self_map_count": 0,
+          "split_size": 1003
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.037696704268455505,
+            -0.05995115637779236,
+            -0.06808404624462128,
+            -0.08200366795063019,
+            -0.10494394600391388,
+            0.0690244808793068,
+            0.17508500814437866,
+            0.1903725564479828
+          ],
+          "std": [
+            0.3558137118816376,
+            0.6865697503089905,
+            0.7331400513648987,
+            0.8029658198356628,
+            1.2365003824234009,
+            1.3267158269882202,
+            1.3005050420761108,
+            1.428151249885559
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 1003
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 14,
+          "joint": 984,
+          "self_map_count": 0,
+          "split_size": 998
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "degree": 7,
+          "joint": 996,
+          "self_map_count": 0,
+          "split_size": 1003
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 86,
+              "predictor_val": 21,
+              "response_train": 107
+            },
+            "1": {
+              "predictor_train": 264,
+              "predictor_val": 66,
+              "response_train": 330
+            },
+            "10": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "13": {
+              "predictor_train": 10,
+              "predictor_val": 3,
+              "response_train": 13
+            },
+            "14": {
+              "predictor_train": 12,
+              "predictor_val": 3,
+              "response_train": 15
+            },
+            "15": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "16": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            },
+            "17": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "18": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "19": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "2": {
+              "predictor_train": 87,
+              "predictor_val": 22,
+              "response_train": 109
+            },
+            "3": {
+              "predictor_train": 66,
+              "predictor_val": 17,
+              "response_train": 83
+            },
+            "4": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "5": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "6": {
+              "predictor_train": 30,
+              "predictor_val": 7,
+              "response_train": 37
+            },
+            "7": {
+              "predictor_train": 50,
+              "predictor_val": 13,
+              "response_train": 63
+            },
+            "8": {
+              "predictor_train": 7,
+              "predictor_val": 2,
+              "response_train": 9
+            },
+            "9": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "c48f3a05af668de82783b31c15fe26e3b7b45eb3fe8bbb717da603bf30a9e3f2",
+          "val_sha256": "0bfd99ef819921f3ae451464dcb5660acc267f593828ebb234979011052e7d9d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "Movies_seed44": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 998,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 7984,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 223304,
+        "near_zero_direction_count_visual": 176686,
+        "normmatch_max_relative_error": 2.365543991800223e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 7.264316079225175e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 1.1444091796875e-05,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 2.8435913463908946e-06,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 4.4322334247226536e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 10,
+          "joint": 987,
+          "self_map_count": 1,
+          "singleton_self_map": 1,
+          "split_size": 998
+        },
+        "audit_target_count": 998,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 86,
+              "predictor_val": 21,
+              "response_train": 107
+            },
+            "1": {
+              "predictor_train": 264,
+              "predictor_val": 66,
+              "response_train": 330
+            },
+            "10": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "13": {
+              "predictor_train": 10,
+              "predictor_val": 3,
+              "response_train": 13
+            },
+            "14": {
+              "predictor_train": 12,
+              "predictor_val": 3,
+              "response_train": 15
+            },
+            "15": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "16": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            },
+            "17": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "18": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "19": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "2": {
+              "predictor_train": 87,
+              "predictor_val": 22,
+              "response_train": 109
+            },
+            "3": {
+              "predictor_train": 66,
+              "predictor_val": 17,
+              "response_train": 83
+            },
+            "4": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "5": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "6": {
+              "predictor_train": 30,
+              "predictor_val": 7,
+              "response_train": 37
+            },
+            "7": {
+              "predictor_train": 50,
+              "predictor_val": 13,
+              "response_train": 63
+            },
+            "8": {
+              "predictor_train": 7,
+              "predictor_val": 2,
+              "response_train": 9
+            },
+            "9": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "c48f3a05af668de82783b31c15fe26e3b7b45eb3fe8bbb717da603bf30a9e3f2",
+          "val_sha256": "0bfd99ef819921f3ae451464dcb5660acc267f593828ebb234979011052e7d9d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "degree": 11,
+          "joint": 992,
+          "self_map_count": 0,
+          "split_size": 1003
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.026414962485432625,
+            -0.03783910721540451,
+            -0.035604845732450485,
+            -0.040503740310668945,
+            -0.09525910019874573,
+            0.06479529291391373,
+            0.15568798780441284,
+            0.17324155569076538
+          ],
+          "std": [
+            0.41955679655075073,
+            0.7246100306510925,
+            0.7459513545036316,
+            0.8022735118865967,
+            1.185189127922058,
+            1.1917078495025635,
+            1.1765034198760986,
+            1.293747901916504
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 1003
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 10,
+          "joint": 987,
+          "self_map_count": 1,
+          "singleton_self_map": 1,
+          "split_size": 998
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "degree": 11,
+          "joint": 992,
+          "self_map_count": 0,
+          "split_size": 1003
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 86,
+              "predictor_val": 21,
+              "response_train": 107
+            },
+            "1": {
+              "predictor_train": 264,
+              "predictor_val": 66,
+              "response_train": 330
+            },
+            "10": {
+              "predictor_train": 65,
+              "predictor_val": 16,
+              "response_train": 81
+            },
+            "11": {
+              "predictor_train": 22,
+              "predictor_val": 5,
+              "response_train": 27
+            },
+            "12": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "13": {
+              "predictor_train": 10,
+              "predictor_val": 3,
+              "response_train": 13
+            },
+            "14": {
+              "predictor_train": 12,
+              "predictor_val": 3,
+              "response_train": 15
+            },
+            "15": {
+              "predictor_train": 11,
+              "predictor_val": 3,
+              "response_train": 14
+            },
+            "16": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            },
+            "17": {
+              "predictor_train": 34,
+              "predictor_val": 9,
+              "response_train": 43
+            },
+            "18": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "19": {
+              "predictor_train": 3,
+              "predictor_val": 1,
+              "response_train": 4
+            },
+            "2": {
+              "predictor_train": 87,
+              "predictor_val": 22,
+              "response_train": 109
+            },
+            "3": {
+              "predictor_train": 66,
+              "predictor_val": 17,
+              "response_train": 83
+            },
+            "4": {
+              "predictor_train": 6,
+              "predictor_val": 1,
+              "response_train": 7
+            },
+            "5": {
+              "predictor_train": 20,
+              "predictor_val": 5,
+              "response_train": 25
+            },
+            "6": {
+              "predictor_train": 30,
+              "predictor_val": 7,
+              "response_train": 37
+            },
+            "7": {
+              "predictor_train": 50,
+              "predictor_val": 13,
+              "response_train": 63
+            },
+            "8": {
+              "predictor_train": 7,
+              "predictor_val": 2,
+              "response_train": 9
+            },
+            "9": {
+              "predictor_train": 9,
+              "predictor_val": 2,
+              "response_train": 11
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "c48f3a05af668de82783b31c15fe26e3b7b45eb3fe8bbb717da603bf30a9e3f2",
+          "val_sha256": "0bfd99ef819921f3ae451464dcb5660acc267f593828ebb234979011052e7d9d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "ele-fashion_seed42": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 1314877,
+        "near_zero_direction_count_visual": 1201500,
+        "normmatch_max_relative_error": 2.38725277768026e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 4.470348355378739e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 6.103515625e-05,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 2.1669327907147817e-05,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.388699099104997e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "degree": 2,
+          "joint": 5861,
+          "self_map_count": 1,
+          "singleton_self_map": 1,
+          "split_size": 5864
+        },
+        "audit_target_count": 5864,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 1019,
+              "predictor_val": 255,
+              "response_train": 1274
+            },
+            "1": {
+              "predictor_train": 430,
+              "predictor_val": 107,
+              "response_train": 537
+            },
+            "10": {
+              "predictor_train": 210,
+              "predictor_val": 52,
+              "response_train": 262
+            },
+            "11": {
+              "predictor_train": 170,
+              "predictor_val": 42,
+              "response_train": 212
+            },
+            "2": {
+              "predictor_train": 1297,
+              "predictor_val": 324,
+              "response_train": 1621
+            },
+            "3": {
+              "predictor_train": 25,
+              "predictor_val": 6,
+              "response_train": 31
+            },
+            "4": {
+              "predictor_train": 146,
+              "predictor_val": 36,
+              "response_train": 182
+            },
+            "6": {
+              "predictor_train": 984,
+              "predictor_val": 246,
+              "response_train": 1230
+            },
+            "7": {
+              "predictor_train": 42,
+              "predictor_val": 10,
+              "response_train": 52
+            },
+            "8": {
+              "predictor_train": 266,
+              "predictor_val": 66,
+              "response_train": 332
+            },
+            "9": {
+              "predictor_train": 108,
+              "predictor_val": 27,
+              "response_train": 135
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "17704218db78f8f603efd370d0dcdea2a6915c55ca22ef88a76e625a4cd51b8a",
+          "val_sha256": "34045a279f5a1cdc0e822e6242fb0e60d07afaa1d50e5293b65e5c2696617a2d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "joint": 5868,
+          "self_map_count": 0,
+          "split_size": 5868
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.018258575350046158,
+            -0.008255507797002792,
+            -0.02273569069802761,
+            -0.03643868863582611,
+            0.014242570847272873,
+            -0.006812723819166422,
+            -0.01709531992673874,
+            -0.026543915271759033
+          ],
+          "std": [
+            0.46670985221862793,
+            0.6038775444030762,
+            0.7103926539421082,
+            0.8884673714637756,
+            0.2837725877761841,
+            0.33073705434799194,
+            0.3904303014278412,
+            0.49933990836143494
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 5868
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "degree": 2,
+          "joint": 5861,
+          "self_map_count": 1,
+          "singleton_self_map": 1,
+          "split_size": 5864
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "joint": 5868,
+          "self_map_count": 0,
+          "split_size": 5868
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 1019,
+              "predictor_val": 255,
+              "response_train": 1274
+            },
+            "1": {
+              "predictor_train": 430,
+              "predictor_val": 107,
+              "response_train": 537
+            },
+            "10": {
+              "predictor_train": 210,
+              "predictor_val": 52,
+              "response_train": 262
+            },
+            "11": {
+              "predictor_train": 170,
+              "predictor_val": 42,
+              "response_train": 212
+            },
+            "2": {
+              "predictor_train": 1297,
+              "predictor_val": 324,
+              "response_train": 1621
+            },
+            "3": {
+              "predictor_train": 25,
+              "predictor_val": 6,
+              "response_train": 31
+            },
+            "4": {
+              "predictor_train": 146,
+              "predictor_val": 36,
+              "response_train": 182
+            },
+            "6": {
+              "predictor_train": 984,
+              "predictor_val": 246,
+              "response_train": 1230
+            },
+            "7": {
+              "predictor_train": 42,
+              "predictor_val": 10,
+              "response_train": 52
+            },
+            "8": {
+              "predictor_train": 266,
+              "predictor_val": 66,
+              "response_train": 332
+            },
+            "9": {
+              "predictor_train": 108,
+              "predictor_val": 27,
+              "response_train": 135
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "17704218db78f8f603efd370d0dcdea2a6915c55ca22ef88a76e625a4cd51b8a",
+          "val_sha256": "34045a279f5a1cdc0e822e6242fb0e60d07afaa1d50e5293b65e5c2696617a2d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "ele-fashion_seed43": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 1326552,
+        "near_zero_direction_count_visual": 1215876,
+        "normmatch_max_relative_error": 2.4857598646121914e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 1.6391277307681307e-08,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 3.0517578125e-05,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 0.0002715177834033966,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.737879126219923e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "global": 2,
+          "joint": 5862,
+          "self_map_count": 0,
+          "split_size": 5864
+        },
+        "audit_target_count": 5864,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 1019,
+              "predictor_val": 255,
+              "response_train": 1274
+            },
+            "1": {
+              "predictor_train": 430,
+              "predictor_val": 107,
+              "response_train": 537
+            },
+            "10": {
+              "predictor_train": 210,
+              "predictor_val": 52,
+              "response_train": 262
+            },
+            "11": {
+              "predictor_train": 170,
+              "predictor_val": 42,
+              "response_train": 212
+            },
+            "2": {
+              "predictor_train": 1297,
+              "predictor_val": 324,
+              "response_train": 1621
+            },
+            "3": {
+              "predictor_train": 25,
+              "predictor_val": 6,
+              "response_train": 31
+            },
+            "4": {
+              "predictor_train": 146,
+              "predictor_val": 36,
+              "response_train": 182
+            },
+            "6": {
+              "predictor_train": 984,
+              "predictor_val": 246,
+              "response_train": 1230
+            },
+            "7": {
+              "predictor_train": 42,
+              "predictor_val": 10,
+              "response_train": 52
+            },
+            "8": {
+              "predictor_train": 266,
+              "predictor_val": 66,
+              "response_train": 332
+            },
+            "9": {
+              "predictor_train": 108,
+              "predictor_val": 27,
+              "response_train": 135
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "17704218db78f8f603efd370d0dcdea2a6915c55ca22ef88a76e625a4cd51b8a",
+          "val_sha256": "34045a279f5a1cdc0e822e6242fb0e60d07afaa1d50e5293b65e5c2696617a2d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "joint": 5868,
+          "self_map_count": 0,
+          "split_size": 5868
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.02290920540690422,
+            -0.005911508575081825,
+            -0.04285461828112602,
+            -0.06444442272186279,
+            0.0191945917904377,
+            -0.0027005288284271955,
+            -0.0302780382335186,
+            -0.047896694391965866
+          ],
+          "std": [
+            0.4419356882572174,
+            0.6636205315589905,
+            0.816661536693573,
+            1.029219150543213,
+            0.3195183277130127,
+            0.4043169915676117,
+            0.47548815608024597,
+            0.6250850558280945
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 5868
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "global": 2,
+          "joint": 5862,
+          "self_map_count": 0,
+          "split_size": 5864
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "joint": 5868,
+          "self_map_count": 0,
+          "split_size": 5868
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 1019,
+              "predictor_val": 255,
+              "response_train": 1274
+            },
+            "1": {
+              "predictor_train": 430,
+              "predictor_val": 107,
+              "response_train": 537
+            },
+            "10": {
+              "predictor_train": 210,
+              "predictor_val": 52,
+              "response_train": 262
+            },
+            "11": {
+              "predictor_train": 170,
+              "predictor_val": 42,
+              "response_train": 212
+            },
+            "2": {
+              "predictor_train": 1297,
+              "predictor_val": 324,
+              "response_train": 1621
+            },
+            "3": {
+              "predictor_train": 25,
+              "predictor_val": 6,
+              "response_train": 31
+            },
+            "4": {
+              "predictor_train": 146,
+              "predictor_val": 36,
+              "response_train": 182
+            },
+            "6": {
+              "predictor_train": 984,
+              "predictor_val": 246,
+              "response_train": 1230
+            },
+            "7": {
+              "predictor_train": 42,
+              "predictor_val": 10,
+              "response_train": 52
+            },
+            "8": {
+              "predictor_train": 266,
+              "predictor_val": 66,
+              "response_train": 332
+            },
+            "9": {
+              "predictor_train": 108,
+              "predictor_val": 27,
+              "response_train": 135
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "17704218db78f8f603efd370d0dcdea2a6915c55ca22ef88a76e625a4cd51b8a",
+          "val_sha256": "34045a279f5a1cdc0e822e6242fb0e60d07afaa1d50e5293b65e5c2696617a2d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    },
+    "ele-fashion_seed44": {
+      "audit_target_used_for_training": false,
+      "audit_targets_finite_for_evaluation": true,
+      "b1_b2_b3_equal_parameters": true,
+      "h11": {
+        "action_cardinality_pass": true,
+        "coherent_one_donor_for_all_branches_orders": true,
+        "coherent_self_donor_count": 0,
+        "epsilon_zero_max_abs_error": 0.0,
+        "epsilon_zero_pass": true,
+        "geometry_scramble_matches_own_effective_rank": true,
+        "matching_counts_coherent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 5864,
+            "self_donor_count": 0
+          }
+        ],
+        "matching_counts_independent": [
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          },
+          {
+            "donor_reuse_or_singleton": 0,
+            "joint": 46912,
+            "self_donor_count": 0
+          }
+        ],
+        "near_zero_direction_count_text": 1320388,
+        "near_zero_direction_count_visual": 1195157,
+        "normmatch_max_relative_error": 2.4592958425273537e-07,
+        "normmatch_pass": true,
+        "previous_independent_reference_max_abs_error": 8.56816768923796e-09,
+        "previous_independent_reference_pass": true,
+        "self_donor_pass": true,
+        "signed_permutation_gram_abs_max": 3.0517578125e-05,
+        "signed_permutation_gram_elementwise_rel_max_near_zero_sensitive": 9.900826626108028e-06,
+        "signed_permutation_gram_pass": true,
+        "signed_permutation_gram_rel_max": 3.4791116831911495e-07,
+        "signed_permutation_gram_relative_error_definition": "per sampled node: max absolute Gram-entry error / max absolute original Gram entry; elementwise relative max retained as near-zero-sensitive diagnostic",
+        "signed_permutation_valid": true
+      },
+      "h2a": {
+        "audit_context_shuffle": {
+          "global": 2,
+          "joint": 5862,
+          "self_map_count": 0,
+          "split_size": 5864
+        },
+        "audit_target_count": 5864,
+        "audit_target_used_for_training": false,
+        "audit_targets_finite_for_evaluation": true,
+        "audit_targets_used_for_training": false,
+        "context_shuffle_same_split_only": true,
+        "predictor_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 1019,
+              "predictor_val": 255,
+              "response_train": 1274
+            },
+            "1": {
+              "predictor_train": 430,
+              "predictor_val": 107,
+              "response_train": 537
+            },
+            "10": {
+              "predictor_train": 210,
+              "predictor_val": 52,
+              "response_train": 262
+            },
+            "11": {
+              "predictor_train": 170,
+              "predictor_val": 42,
+              "response_train": 212
+            },
+            "2": {
+              "predictor_train": 1297,
+              "predictor_val": 324,
+              "response_train": 1621
+            },
+            "3": {
+              "predictor_train": 25,
+              "predictor_val": 6,
+              "response_train": 31
+            },
+            "4": {
+              "predictor_train": 146,
+              "predictor_val": 36,
+              "response_train": 182
+            },
+            "6": {
+              "predictor_train": 984,
+              "predictor_val": 246,
+              "response_train": 1230
+            },
+            "7": {
+              "predictor_train": 42,
+              "predictor_val": 10,
+              "response_train": 52
+            },
+            "8": {
+              "predictor_train": 266,
+              "predictor_val": 66,
+              "response_train": 332
+            },
+            "9": {
+              "predictor_train": 108,
+              "predictor_val": 27,
+              "response_train": 135
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "17704218db78f8f603efd370d0dcdea2a6915c55ca22ef88a76e625a4cd51b8a",
+          "val_sha256": "34045a279f5a1cdc0e822e6242fb0e60d07afaa1d50e5293b65e5c2696617a2d"
+        },
+        "predictor_training_used_response_train_only": true,
+        "response_context_shuffle": {
+          "joint": 5868,
+          "self_map_count": 0,
+          "split_size": 5868
+        },
+        "response_target_generated_after_frozen_host": true,
+        "response_target_stats_train_only": {
+          "mean": [
+            0.023364493623375893,
+            -0.005335777997970581,
+            -0.041418660432100296,
+            -0.0617884136736393,
+            0.019956117495894432,
+            -0.012254630215466022,
+            -0.030465392395853996,
+            -0.0466424822807312
+          ],
+          "std": [
+            0.4752720892429352,
+            0.6654700040817261,
+            0.8158557415008545,
+            1.0275747776031494,
+            0.3207103908061981,
+            0.443624883890152,
+            0.489503413438797,
+            0.6348974704742432
+          ]
+        },
+        "response_targets_finite": true,
+        "response_train_target_count": 5868
+      },
+      "h2b": {
+        "adapter_trainable_parameters_only": true,
+        "audit_context_shuffle": {
+          "global": 2,
+          "joint": 5862,
+          "self_map_count": 0,
+          "split_size": 5864
+        },
+        "audit_labels_used_for_training": false,
+        "host_state_unchanged_after_all_adapters": true,
+        "response_context_shuffle": {
+          "joint": 5868,
+          "self_map_count": 0,
+          "split_size": 5868
+        },
+        "response_train_split": {
+          "allocations": {
+            "0": {
+              "predictor_train": 1019,
+              "predictor_val": 255,
+              "response_train": 1274
+            },
+            "1": {
+              "predictor_train": 430,
+              "predictor_val": 107,
+              "response_train": 537
+            },
+            "10": {
+              "predictor_train": 210,
+              "predictor_val": 52,
+              "response_train": 262
+            },
+            "11": {
+              "predictor_train": 170,
+              "predictor_val": 42,
+              "response_train": 212
+            },
+            "2": {
+              "predictor_train": 1297,
+              "predictor_val": 324,
+              "response_train": 1621
+            },
+            "3": {
+              "predictor_train": 25,
+              "predictor_val": 6,
+              "response_train": 31
+            },
+            "4": {
+              "predictor_train": 146,
+              "predictor_val": 36,
+              "response_train": 182
+            },
+            "6": {
+              "predictor_train": 984,
+              "predictor_val": 246,
+              "response_train": 1230
+            },
+            "7": {
+              "predictor_train": 42,
+              "predictor_val": 10,
+              "response_train": 52
+            },
+            "8": {
+              "predictor_train": 266,
+              "predictor_val": 66,
+              "response_train": 332
+            },
+            "9": {
+              "predictor_train": 108,
+              "predictor_val": 27,
+              "response_train": 135
+            }
+          },
+          "method": "class-stratified NumPy permutation; rounded 20% validation with train/val nonempty when class size >=2",
+          "seed": 20261007,
+          "singleton_classes_without_validation": [],
+          "train_sha256": "17704218db78f8f603efd370d0dcdea2a6915c55ca22ef88a76e625a4cd51b8a",
+          "val_sha256": "34045a279f5a1cdc0e822e6242fb0e60d07afaa1d50e5293b65e5c2696617a2d"
+        },
+        "shuffle_split_boundary_pass": true
+      },
+      "host_frozen": true,
+      "internal_splits_disjoint": true,
+      "p1_p2_p3_equal_parameters": true,
+      "relation_context_finite": true,
+      "relation_context_shape_pass": true,
+      "response_targets_finite": true,
+      "reused_checkpoint_validation_match": true,
+      "split_hashes_match_h1": true,
+      "test_labels_read": false
+    }
+  },
+  "phases": [
+    "h11",
+    "h2a",
+    "h2b"
+  ],
+  "run_count": 9,
+  "smoke_only": false,
+  "test_labels_read": false,
+  "test_metrics_computed": false
+}
