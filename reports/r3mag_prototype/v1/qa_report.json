@@ -1,0 +1,172 @@
+{
+  "all_g0_preserve_identity_pass": true,
+  "all_model_invariant_checks_pass": true,
+  "all_split_hashes_match_h1": true,
+  "all_stage2_common_initializations_match": true,
+  "all_test_labels_read": false,
+  "all_test_metrics_computed": false,
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "legacy_h2_movies_seed42_smoke": {
+    "full_h2_rerun": false,
+    "passed": true,
+    "phase": "h2a"
+  },
+  "legacy_h2_qa_initialization_bug_fixed": true,
+  "model_seeds": [
+    42,
+    43,
+    44
+  ],
+  "per_run": {
+    "Grocery_seed42": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "Grocery_seed43": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "Grocery_seed44": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "Movies_seed42": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "Movies_seed43": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "Movies_seed44": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "ele-fashion_seed42": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "ele-fashion_seed43": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    },
+    "ele-fashion_seed44": {
+      "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+      "dev_train_union_audit_equals_original_train": true,
+      "g0_preserve_identity_max_metric_abs_error": 0.0,
+      "g0_preserve_identity_metric_tolerance": 1e-06,
+      "model_invariants_pass": true,
+      "optimizer_group_coverage_pass": true,
+      "split_hashes_match_h1": true,
+      "splits_disjoint": true,
+      "stage1_train_count_per_dataset_seed": 1,
+      "test_labels_read": false,
+      "test_metrics_computed": false
+    }
+  },
+  "protocol_deviations": [
+    {
+      "dataset": "ele-fashion",
+      "deviations": [
+        "Ele-Fashion seed42 G1/G2 used CUDA with pinned-CPU saved-activation offload. Seed42 G3/G4 and all missing seed43/44 stages were completed on CPU after repeated CUDA OOM under concurrent GPU memory pressure; seed42 G0/G0-FT checkpoints were reused from the initial CUDA run. Optimizer, precision, epoch caps, loss, data, and selection were unchanged."
+      ],
+      "seed": 42
+    },
+    {
+      "dataset": "ele-fashion",
+      "deviations": [
+        "Ele-Fashion seed42 G1/G2 used CUDA with pinned-CPU saved-activation offload. Seed42 G3/G4 and all missing seed43/44 stages were completed on CPU after repeated CUDA OOM under concurrent GPU memory pressure; seed42 G0/G0-FT checkpoints were reused from the initial CUDA run. Optimizer, precision, epoch caps, loss, data, and selection were unchanged."
+      ],
+      "seed": 43
+    },
+    {
+      "dataset": "ele-fashion",
+      "deviations": [
+        "Ele-Fashion seed42 G1/G2 used CUDA with pinned-CPU saved-activation offload. Seed42 G3/G4 and all missing seed43/44 stages were completed on CPU after repeated CUDA OOM under concurrent GPU memory pressure; seed42 G0/G0-FT checkpoints were reused from the initial CUDA run. Optimizer, precision, epoch caps, loss, data, and selection were unchanged."
+      ],
+      "seed": 44
+    }
+  ],
+  "router_task_context_stop_gradient_test_pass": true,
+  "run_count": 9,
+  "stage1_best_checkpoint_reused_by_all_variants": true,
+  "stage1_train_count_per_dataset_seed": 1,
+  "stage2_optimizer_group_coverage_pass": true,
+  "test_split_untouched": true
+}

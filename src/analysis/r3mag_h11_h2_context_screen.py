@@ -79,6 +79,19 @@ def _index_hashes(data, partitions: dict[str, torch.Tensor]) -> dict[str, str]:
     }
 
 
+def _initial_run_qa() -> dict[str, Any]:
+    """Create the run QA payload before checkpoint validation writes into it."""
+    return {
+        "internal_splits_disjoint": True,
+        "split_hashes_match_h1": True,
+        "test_labels_read": False,
+        "host_frozen": False,
+        "relation_context_finite": False,
+        "relation_context_shape_pass": False,
+        "audit_target_used_for_training": False,
+    }
+
+
 def _verify_previous_split(dataset: str, host_seed: int, hashes: dict[str, str]) -> dict[str, Any]:
     path = REPORT_DIR.parent / "h1" / "per_run" / f"{dataset}_seed{host_seed}.json"
     old = json.loads(path.read_text(encoding="utf-8"))
@@ -727,6 +740,7 @@ def _run_one(dataset: str, host_seed: int, *, phases: set[str], repeats: int,
             "Gram QA reports a scale-normalized max relative error; elementwise near-zero-sensitive relative error is retained separately.",
         ],
         "test_labels_read": False, "test_metrics_computed": False,
+        "qa": _initial_run_qa(),
         "context": context_meta,
         "receiver_feature_dim": int(receiver.size(-1)), "context_dim": int(context.size(-1)),
     }
@@ -746,11 +760,11 @@ def _run_one(dataset: str, host_seed: int, *, phases: set[str], repeats: int,
     run["qa"]["reused_checkpoint_validation_match"] = bool(val_match)
     if not val_match:
         raise AssertionError("reused checkpoint validation metrics differ from H1 report")
-    run["qa"] = {"internal_splits_disjoint": True, "split_hashes_match_h1": True,
+    run["qa"].update({"internal_splits_disjoint": True, "split_hashes_match_h1": True,
         "test_labels_read": False, "host_frozen": all(not p.requires_grad for p in host.parameters()),
         "relation_context_finite": bool(torch.isfinite(context).all()),
         "relation_context_shape_pass": context.shape == (int(data.num_nodes), CONTEXT_DIM),
-        "audit_target_used_for_training": False}
+        "audit_target_used_for_training": False})
 
     if "h11" in phases:
         audit_labels = labels[audit_idx].long().to(device)

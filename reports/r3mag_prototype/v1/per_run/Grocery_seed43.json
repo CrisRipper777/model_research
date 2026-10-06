@@ -1,0 +1,1336 @@
+{
+  "data_seed": 42,
+  "dataset": "Grocery",
+  "model_seed": 43,
+  "partition_method": "per-class deterministic NumPy Generator permutation + Hamilton largest remainder (80/10/10); host count at least one",
+  "partition_seed": 20261006,
+  "protocol": {
+    "absolute_values_comparable_to_h1_h2_host": false,
+    "audit_labels_used_only_after_checkpoint_selection": true,
+    "checkpoint_selection": "original val accuracy; exact ties use lower val CE",
+    "comparison_boundary_note": "H1/H2 host used 80% HostTrain; this prototype trains on 90% DevTrain.",
+    "dev_train": "HostTrain union ResponseTrain (90% of original train labels)",
+    "test_labels_read": false,
+    "test_metrics_computed": false,
+    "test_split_untouched": true
+  },
+  "protocol_deviations": [],
+  "qa": {
+    "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+    "dev_train_union_audit_equals_original_train": true,
+    "g0_preserve_identity_max_metric_abs_error": 0.0,
+    "g0_preserve_identity_metric_tolerance": 1e-06,
+    "model_invariants_pass": true,
+    "optimizer_group_coverage_pass": true,
+    "split_hashes_match_h1": true,
+    "splits_disjoint": true,
+    "stage1_train_count_per_dataset_seed": 1,
+    "test_labels_read": false,
+    "test_metrics_computed": false
+  },
+  "report_reconstruction_device": "cpu",
+  "split_counts": {
+    "Audit": 1022,
+    "DevTrain": 9222,
+    "HostTrain": 8198,
+    "OriginalTrain": 10244,
+    "ResponseTrain": 1024,
+    "Test": 3415,
+    "Val": 3415
+  },
+  "split_hashes": {
+    "Audit": "7e68165b18ac6b0d4890d0a24ca54a3875dfbd612df39593c78b1b4694125168",
+    "DevTrain": "82a2efd9a81a49da8b94b1faf907080817bb1e28df32a9176ac8c049e05a0dbf",
+    "HostTrain": "c9abbe28358ad882096356f8307e6681796bbfa288d5b283f10a1478bd71d38a",
+    "OriginalTrain": "78a7ffae928464c7ea90fc9e25f97c5ab26bab855121a5cbf5aedd47cb7bda78",
+    "ResponseTrain": "8b9dd91fa1d345416cbde7ce41d1b4b032589d19094df564f9df3f7f7115b71b",
+    "Test": "f5f08ee0f35624bda3533f53ef6950707b7c3208ef2c0dc236bf11859a4f80cb",
+    "Val": "cb95fb79d273739e1e38037edddc536481294c23c471ae26987851ae38966d22"
+  },
+  "split_matches_previous_h1": {
+    "matches_previous_h1": true,
+    "path": "/hdd1/DataInHere/YHF/model_research/reports/r3mag_design_freeze/h1/per_run/Grocery_seed43.json"
+  },
+  "split_source": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+  "stage1": {
+    "best_epoch": 181,
+    "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/stage1_best.pt",
+    "checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee",
+    "epochs_ran": 231,
+    "optimizer_groups": [
+      {
+        "lr": 0.001,
+        "name": "base",
+        "parameter_count": 235952,
+        "weight_decay": 0.0005
+      },
+      {
+        "lr": 0.001,
+        "name": "classifier",
+        "parameter_count": 2580,
+        "weight_decay": 0.0005
+      }
+    ],
+    "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+    "trained_once": true,
+    "trained_this_invocation": false,
+    "val_metrics": {
+      "accuracy": 0.838067352771759,
+      "ce": 0.7264789938926697,
+      "macro_f1": 0.7752553977575447
+    }
+  },
+  "stage1_checkpoint_initialization": {
+    "G0": {
+      "stage1_best_checkpoint_reused": true
+    },
+    "G0-FT": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "c7033660ec4625dfd0599cf359aab5a0e98feb5db3c58cca50301d91df71d554",
+      "stage1_checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee"
+    },
+    "G1": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "c7033660ec4625dfd0599cf359aab5a0e98feb5db3c58cca50301d91df71d554",
+      "stage1_checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee"
+    },
+    "G2": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "c7033660ec4625dfd0599cf359aab5a0e98feb5db3c58cca50301d91df71d554",
+      "stage1_checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee"
+    },
+    "G3": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "c7033660ec4625dfd0599cf359aab5a0e98feb5db3c58cca50301d91df71d554",
+      "stage1_checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee"
+    },
+    "G4": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "c7033660ec4625dfd0599cf359aab5a0e98feb5db3c58cca50301d91df71d554",
+      "stage1_checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee"
+    }
+  },
+  "variants": {
+    "G0": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0,
+            "ce": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.835616409778595,
+            "ce": 0.7128604054450989,
+            "macro_f1": 0.7422594494280615
+          },
+          "preserve": {
+            "accuracy": 0.835616409778595,
+            "ce": 0.7128604054450989,
+            "macro_f1": 0.7422594494280615
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 0.0,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.0,
+          "mean": 0.0,
+          "positive_fraction": 0.0,
+          "zero_fraction": 1.0
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 181,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/stage1_best.pt",
+      "checkpoint_sha256": "cba359084936b12d3aea42288fb6a160211748b5fdfe703a2a64a66c23bedfee",
+      "epochs_ran": 231,
+      "mechanism": {
+        "atoms": {},
+        "routing": {},
+        "shared_private": {}
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "name": "base",
+          "parameter_count": 235952,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "classifier",
+          "parameter_count": 2580,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.838067352771759,
+        "ce": 0.7264789938926697,
+        "macro_f1": 0.7752553977575447
+      }
+    },
+    "G0-FT": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0,
+            "ce": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8317025303840637,
+            "ce": 0.7134621143341064,
+            "macro_f1": 0.7453282633370615
+          },
+          "preserve": {
+            "accuracy": 0.8317025303840637,
+            "ce": 0.7134621143341064,
+            "macro_f1": 0.7453282633370615
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 0.0,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.0,
+          "mean": 0.0,
+          "positive_fraction": 0.0,
+          "zero_fraction": 1.0
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 4,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/G0_FT_best.pt",
+      "checkpoint_sha256": "cda94b17cf551232087c9b428964ad195a411b25ff017bb1cc6828115f606252",
+      "epochs_ran": 79,
+      "mechanism": {
+        "atoms": {},
+        "routing": {},
+        "shared_private": {}
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 235952,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 2580,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8366032242774963,
+        "ce": 0.7483670711517334,
+        "macro_f1": 0.7769762530591863
+      }
+    },
+    "G1": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0,
+            "ce": 6.9141387939453125e-06,
+            "macro_f1": -0.00042852828457384806
+          },
+          "uniform_route": {
+            "accuracy": 0.0009784698486328125,
+            "ce": 0.0004712343215942383,
+            "macro_f1": 0.000803748177961694
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8405088186264038,
+            "ce": 0.7318008542060852,
+            "macro_f1": 0.7535305659432419
+          },
+          "preserve": {
+            "accuracy": 0.8405088186264038,
+            "ce": 0.7318077683448792,
+            "macro_f1": 0.753102037658668
+          },
+          "uniform_route": {
+            "accuracy": 0.8414872884750366,
+            "ce": 0.7322720885276794,
+            "macro_f1": 0.7543343141212036
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 5.960464477539063e-08,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6761252284049988,
+          "mean": 6.964353815419599e-06,
+          "positive_fraction": 0.31702545285224915,
+          "zero_fraction": 0.006849315017461777
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 19,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/G1_best.pt",
+      "checkpoint_sha256": "a1e5d4b2bb6e4da23c1e23f76c560de82bbeba146f2b8d5e3c449aea4c17d62f",
+      "epochs_ran": 79,
+      "mechanism": {
+        "atoms": {
+          "flat": {
+            "coefficient_vectors": [
+              [
+                0.5720142126083374,
+                0.5907874703407288,
+                0.5690078139305115
+              ],
+              [
+                0.6873210668563843,
+                -0.01935659535229206,
+                -0.7260957360267639
+              ],
+              [
+                0.3896242678165436,
+                -0.8349034786224365,
+                0.3887532353401184
+              ]
+            ],
+            "norms": [
+              0.9999999403953552,
+              0.9999999403953552,
+              0.9999999403953552
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.03143236041069031
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.04917627573013306
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": 0.0016857683658599854
+              }
+            ]
+          }
+        },
+        "routing": {
+          "flat_text": {
+            "effective_usage_exp_mean_entropy": 1.7690856456756592,
+            "entropy_mean": 0.5704628229141235,
+            "entropy_std": 0.01932736113667488,
+            "mean_probability_per_atom": [
+              0.03192133828997612,
+              0.8108530044555664,
+              0.1572256237268448
+            ],
+            "num_atoms": 3
+          },
+          "flat_visual": {
+            "effective_usage_exp_mean_entropy": 2.229194164276123,
+            "entropy_mean": 0.8016402125358582,
+            "entropy_std": 0.015832001343369484,
+            "mean_probability_per_atom": [
+              0.05593716725707054,
+              0.2957337498664856,
+              0.6483290195465088
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_flat_routing_js_mean": 0.14469704031944275
+        },
+        "shared_private": {}
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 235952,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 44817,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 2580,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8363103866577148,
+        "ce": 0.7505295276641846,
+        "macro_f1": 0.7783373753318561
+      }
+    },
+    "G2": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0019569993019104004,
+            "ce": -0.00025600194931030273,
+            "macro_f1": 0.0013821252546231122
+          },
+          "private_off": {
+            "accuracy": -0.0009784698486328125,
+            "ce": -0.0002111196517944336,
+            "macro_f1": -0.0016823993830474837
+          },
+          "shared_off": {
+            "accuracy": 0.0009785294532775879,
+            "ce": 0.00010991096496582031,
+            "macro_f1": 0.0006896367133051307
+          },
+          "uniform_route": {
+            "accuracy": 0.003913938999176025,
+            "ce": 0.0008283257484436035,
+            "macro_f1": 0.0034136723744873088
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.835616409778595,
+            "ce": 0.7216020822525024,
+            "macro_f1": 0.755495682805462
+          },
+          "preserve": {
+            "accuracy": 0.8375734090805054,
+            "ce": 0.7213460803031921,
+            "macro_f1": 0.7568778080600851
+          },
+          "private_off": {
+            "accuracy": 0.8346379399299622,
+            "ce": 0.721390962600708,
+            "macro_f1": 0.7538132834224145
+          },
+          "shared_off": {
+            "accuracy": 0.8365949392318726,
+            "ce": 0.7217119932174683,
+            "macro_f1": 0.7561853195187671
+          },
+          "uniform_route": {
+            "accuracy": 0.839530348777771,
+            "ce": 0.722430408000946,
+            "macro_f1": 0.7589093551799493
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 1.1920928955078125e-07,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6105675101280212,
+          "mean": -0.0002560325083322823,
+          "positive_fraction": 0.38747555017471313,
+          "zero_fraction": 0.001956947147846222
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 7,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/G2_best.pt",
+      "checkpoint_sha256": "0d1b648a95b4c1b233886964625aeea218827732dd3e1787d3f239f2da2315b5",
+      "epochs_ran": 79,
+      "mechanism": {
+        "atoms": {
+          "private_text": {
+            "coefficient_vectors": [
+              [
+                0.5852083563804626,
+                0.5746662616729736,
+                0.572092592716217
+              ],
+              [
+                0.700165867805481,
+                -0.006973130162805319,
+                -0.7139462232589722
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0027076303958892822
+              }
+            ]
+          },
+          "private_visual": {
+            "coefficient_vectors": [
+              [
+                0.5841243267059326,
+                0.5765799283981323,
+                0.5712743997573853
+              ],
+              [
+                0.7001621127128601,
+                -0.00687693664804101,
+                -0.7139509320259094
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0000001192092896
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.002845287322998047
+              }
+            ]
+          },
+          "shared": {
+            "coefficient_vectors": [
+              [
+                0.584710955619812,
+                0.575080931186676,
+                0.5721844434738159
+              ],
+              [
+                0.7001948952674866,
+                -0.00694184610620141,
+                -0.7139179706573486
+              ],
+              [
+                0.40485039353370667,
+                -0.8218751549720764,
+                0.40077105164527893
+              ]
+            ],
+            "norms": [
+              1.0,
+              0.9999999403953552,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0030732154846191406
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.006609290838241577
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": 0.0030618607997894287
+              }
+            ]
+          }
+        },
+        "routing": {
+          "private_text": {
+            "effective_usage_exp_mean_entropy": 1.7543513774871826,
+            "entropy_mean": 0.5620992183685303,
+            "entropy_std": 0.016209019348025322,
+            "mean_probability_per_atom": [
+              0.250315397977829,
+              0.7496846318244934
+            ],
+            "num_atoms": 2
+          },
+          "private_visual": {
+            "effective_usage_exp_mean_entropy": 1.7782673835754395,
+            "entropy_mean": 0.5756394863128662,
+            "entropy_std": 0.014797803945839405,
+            "mean_probability_per_atom": [
+              0.2630079686641693,
+              0.7369921207427979
+            ],
+            "num_atoms": 2
+          },
+          "shared_text": {
+            "effective_usage_exp_mean_entropy": 1.6164315938949585,
+            "entropy_mean": 0.4802209734916687,
+            "entropy_std": 0.039189305156469345,
+            "mean_probability_per_atom": [
+              0.043916307389736176,
+              0.8647633790969849,
+              0.09132035821676254
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_private_routing_js_mean": 0.0003661277878563851
+        },
+        "shared_private": {
+          "cos_shared_private_text": 0.9573704600334167,
+          "cos_shared_private_visual": 0.9515570998191833,
+          "mean_norm_private_text": 0.7899488210678101,
+          "mean_norm_private_visual": 0.7820309400558472,
+          "mean_norm_shared": 0.8709186315536499
+        }
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 235952,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 63966,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 2580,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8351390957832336,
+        "ce": 0.7320815324783325,
+        "macro_f1": 0.7698529908814746
+      }
+    },
+    "G3": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0019569993019104004,
+            "ce": -0.00024968385696411133,
+            "macro_f1": 0.0013821252546231122
+          },
+          "private_off": {
+            "accuracy": -0.0009784698486328125,
+            "ce": -0.00020647048950195312,
+            "macro_f1": -0.0016823993830474837
+          },
+          "shared_off": {
+            "accuracy": 0.0009785294532775879,
+            "ce": 0.00010794401168823242,
+            "macro_f1": 0.0006896367133051307
+          },
+          "uniform_route": {
+            "accuracy": 0.003913938999176025,
+            "ce": 0.0008063316345214844,
+            "macro_f1": 0.0034136723744873088
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.835616409778595,
+            "ce": 0.721611499786377,
+            "macro_f1": 0.755495682805462
+          },
+          "preserve": {
+            "accuracy": 0.8375734090805054,
+            "ce": 0.7213618159294128,
+            "macro_f1": 0.7568778080600851
+          },
+          "private_off": {
+            "accuracy": 0.8346379399299622,
+            "ce": 0.721405029296875,
+            "macro_f1": 0.7538132834224145
+          },
+          "shared_off": {
+            "accuracy": 0.8365949392318726,
+            "ce": 0.7217194437980652,
+            "macro_f1": 0.7561853195187671
+          },
+          "uniform_route": {
+            "accuracy": 0.839530348777771,
+            "ce": 0.7224178314208984,
+            "macro_f1": 0.7589093551799493
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 5.960464477539063e-08,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {
+          "rho_mean": 0.11595097184181213,
+          "rho_quartiles": {
+            "Q1": {
+              "accuracy": 0.875,
+              "harmful_fraction": 0.59765625,
+              "mean_adaptation_utility": -0.00041431194404140115,
+              "mean_ce": 0.5771757960319519,
+              "node_count": 256,
+              "rho_mean": 0.11561620235443115,
+              "rho_std": 0.00012916333798784763
+            },
+            "Q2": {
+              "accuracy": 0.81640625,
+              "harmful_fraction": 0.60546875,
+              "mean_adaptation_utility": -0.0004878707986790687,
+              "mean_ce": 0.7971512675285339,
+              "node_count": 256,
+              "rho_mean": 0.11586763709783554,
+              "rho_std": 5.306633829604834e-05
+            },
+            "Q3": {
+              "accuracy": 0.8156862854957581,
+              "harmful_fraction": 0.6196078431372549,
+              "mean_adaptation_utility": -0.00028050062246620655,
+              "mean_ce": 0.7726895213127136,
+              "node_count": 255,
+              "rho_mean": 0.11603766679763794,
+              "rho_std": 5.329713530954905e-05
+            },
+            "Q4": {
+              "accuracy": 0.8352941274642944,
+              "harmful_fraction": 0.6196078431372549,
+              "mean_adaptation_utility": 0.00018523662583902478,
+              "mean_ce": 0.73969966173172,
+              "node_count": 255,
+              "rho_mean": 0.11628404259681702,
+              "rho_std": 0.00012193990551168099
+            }
+          },
+          "rho_std": 0.000262052082689479,
+          "rho_text_mean": 0.11593064665794373,
+          "rho_text_std": 0.0003993230639025569,
+          "rho_visual_mean": 0.11597131192684174,
+          "rho_visual_std": 0.00034782857983373106,
+          "spearman_rho_vs_adaptation_utility": -0.02797078097737398
+        },
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6105675101280212,
+          "mean": -0.0002497564710211009,
+          "positive_fraction": 0.38649705052375793,
+          "zero_fraction": 0.002935420721769333
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 7,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/G3_best.pt",
+      "checkpoint_sha256": "ffd28c191aa89d4ebfc9ccafb038975fd7f20940b8de0aa3dc5036d431589a72",
+      "epochs_ran": 79,
+      "mechanism": {
+        "atoms": {
+          "private_text": {
+            "coefficient_vectors": [
+              [
+                0.5852043032646179,
+                0.5746623873710632,
+                0.5721005797386169
+              ],
+              [
+                0.7001643776893616,
+                -0.006973480340093374,
+                -0.7139477133750916
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0027180910110473633
+              }
+            ]
+          },
+          "private_visual": {
+            "coefficient_vectors": [
+              [
+                0.5841253399848938,
+                0.5765629410743713,
+                0.5712904334068298
+              ],
+              [
+                0.7001610398292542,
+                -0.006876076105982065,
+                -0.7139518857002258
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0028565526008605957
+              }
+            ]
+          },
+          "shared": {
+            "coefficient_vectors": [
+              [
+                0.5847079753875732,
+                0.5750728845596313,
+                0.5721955895423889
+              ],
+              [
+                0.7001927495002747,
+                -0.00694271270185709,
+                -0.7139200568199158
+              ],
+              [
+                0.40485483407974243,
+                -0.8218712210655212,
+                0.40077459812164307
+              ]
+            ],
+            "norms": [
+              1.0,
+              0.9999999403953552,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.003086179494857788
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.006592556834220886
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": 0.0030614137649536133
+              }
+            ]
+          }
+        },
+        "routing": {
+          "private_text": {
+            "effective_usage_exp_mean_entropy": 1.7543789148330688,
+            "entropy_mean": 0.5621148943901062,
+            "entropy_std": 0.016205372288823128,
+            "mean_probability_per_atom": [
+              0.2503293752670288,
+              0.7496706247329712
+            ],
+            "num_atoms": 2
+          },
+          "private_visual": {
+            "effective_usage_exp_mean_entropy": 1.778971791267395,
+            "entropy_mean": 0.5760355591773987,
+            "entropy_std": 0.014769570901989937,
+            "mean_probability_per_atom": [
+              0.2633924186229706,
+              0.7366076111793518
+            ],
+            "num_atoms": 2
+          },
+          "shared_text": {
+            "effective_usage_exp_mean_entropy": 1.6161822080612183,
+            "entropy_mean": 0.4800667464733124,
+            "entropy_std": 0.03931920975446701,
+            "mean_probability_per_atom": [
+              0.04390759766101837,
+              0.8648257851600647,
+              0.09126665443181992
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_private_routing_js_mean": 0.0003720103413797915
+        },
+        "shared_private": {
+          "cos_shared_private_text": 0.9573665857315063,
+          "cos_shared_private_visual": 0.9513779282569885,
+          "mean_norm_private_text": 0.7899374961853027,
+          "mean_norm_private_visual": 0.7817947268486023,
+          "mean_norm_shared": 0.8709746599197388
+        }
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 235952,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 66269,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 2580,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {
+        "rho_mean": 0.11595097184181213,
+        "rho_quartiles": {
+          "Q1": {
+            "accuracy": 0.875,
+            "harmful_fraction": 0.59765625,
+            "mean_adaptation_utility": -0.00041431194404140115,
+            "mean_ce": 0.5771757960319519,
+            "node_count": 256,
+            "rho_mean": 0.11561620235443115,
+            "rho_std": 0.00012916333798784763
+          },
+          "Q2": {
+            "accuracy": 0.81640625,
+            "harmful_fraction": 0.60546875,
+            "mean_adaptation_utility": -0.0004878707986790687,
+            "mean_ce": 0.7971512675285339,
+            "node_count": 256,
+            "rho_mean": 0.11586763709783554,
+            "rho_std": 5.306633829604834e-05
+          },
+          "Q3": {
+            "accuracy": 0.8156862854957581,
+            "harmful_fraction": 0.6196078431372549,
+            "mean_adaptation_utility": -0.00028050062246620655,
+            "mean_ce": 0.7726895213127136,
+            "node_count": 255,
+            "rho_mean": 0.11603766679763794,
+            "rho_std": 5.329713530954905e-05
+          },
+          "Q4": {
+            "accuracy": 0.8352941274642944,
+            "harmful_fraction": 0.6196078431372549,
+            "mean_adaptation_utility": 0.00018523662583902478,
+            "mean_ce": 0.73969966173172,
+            "node_count": 255,
+            "rho_mean": 0.11628404259681702,
+            "rho_std": 0.00012193990551168099
+          }
+        },
+        "rho_std": 0.000262052082689479,
+        "rho_text_mean": 0.11593064665794373,
+        "rho_text_std": 0.0003993230639025569,
+        "rho_visual_mean": 0.11597131192684174,
+        "rho_visual_std": 0.00034782857983373106,
+        "spearman_rho_vs_adaptation_utility": -0.02797078097737398
+      },
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8351390957832336,
+        "ce": 0.7320770025253296,
+        "macro_f1": 0.7698529908814746
+      }
+    },
+    "G4": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0019569993019104004,
+            "ce": -0.0002492666244506836,
+            "macro_f1": 0.0013821252546231122
+          },
+          "private_off": {
+            "accuracy": -0.0009784698486328125,
+            "ce": -0.00020629167556762695,
+            "macro_f1": -0.0016823993830474837
+          },
+          "shared_off": {
+            "accuracy": 0.0009785294532775879,
+            "ce": 0.00010770559310913086,
+            "macro_f1": 0.0006896367133051307
+          },
+          "uniform_route": {
+            "accuracy": 0.003913938999176025,
+            "ce": 0.000804603099822998,
+            "macro_f1": 0.0034136723744873088
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.835616409778595,
+            "ce": 0.7216122150421143,
+            "macro_f1": 0.755495682805462
+          },
+          "preserve": {
+            "accuracy": 0.8375734090805054,
+            "ce": 0.7213629484176636,
+            "macro_f1": 0.7568778080600851
+          },
+          "private_off": {
+            "accuracy": 0.8346379399299622,
+            "ce": 0.7214059233665466,
+            "macro_f1": 0.7538132834224145
+          },
+          "shared_off": {
+            "accuracy": 0.8365949392318726,
+            "ce": 0.7217199206352234,
+            "macro_f1": 0.7561853195187671
+          },
+          "uniform_route": {
+            "accuracy": 0.839530348777771,
+            "ce": 0.7224168181419373,
+            "macro_f1": 0.7589093551799493
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 5.960464477539063e-08,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {
+          "rho_mean": 0.11572292447090149,
+          "rho_quartiles": {
+            "Q1": {
+              "accuracy": 0.875,
+              "harmful_fraction": 0.59375,
+              "mean_adaptation_utility": -0.00020558774122036994,
+              "mean_ce": 0.5795549750328064,
+              "node_count": 256,
+              "rho_mean": 0.11537127196788788,
+              "rho_std": 0.0001363476039841771
+            },
+            "Q2": {
+              "accuracy": 0.828125,
+              "harmful_fraction": 0.6171875,
+              "mean_adaptation_utility": -0.0007732128142379224,
+              "mean_ce": 0.7407774925231934,
+              "node_count": 256,
+              "rho_mean": 0.11563516408205032,
+              "rho_std": 5.5808035540394485e-05
+            },
+            "Q3": {
+              "accuracy": 0.8117647171020508,
+              "harmful_fraction": 0.6196078431372549,
+              "mean_adaptation_utility": -0.00012236587645020336,
+              "mean_ce": 0.8111263513565063,
+              "node_count": 255,
+              "rho_mean": 0.11581363528966904,
+              "rho_std": 5.6555447372375056e-05
+            },
+            "Q4": {
+              "accuracy": 0.8274509906768799,
+              "harmful_fraction": 0.611764705882353,
+              "mean_adaptation_utility": 0.00010604308772599325,
+              "mean_ce": 0.7554717659950256,
+              "node_count": 255,
+              "rho_mean": 0.1160733550786972,
+              "rho_std": 0.0001292456145165488
+            }
+          },
+          "rho_std": 0.0002756848407443613,
+          "rho_text_mean": 0.1157052293419838,
+          "rho_text_std": 0.00041900391806848347,
+          "rho_visual_mean": 0.11574061959981918,
+          "rho_visual_std": 0.0003662699891719967,
+          "spearman_rho_vs_adaptation_utility": -0.03010854947045509
+        },
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6105675101280212,
+          "mean": -0.00024925157777033746,
+          "positive_fraction": 0.38747555017471313,
+          "zero_fraction": 0.001956947147846222
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 7,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/Grocery/seed43/G4_best.pt",
+      "checkpoint_sha256": "04d5a92db528a56a8266661f2490b3b72ffc836a717d53ed23c51e676991cbf4",
+      "epochs_ran": 79,
+      "mechanism": {
+        "atoms": {
+          "private_text": {
+            "coefficient_vectors": [
+              [
+                0.5852038860321045,
+                0.5746626853942871,
+                0.5721006989479065
+              ],
+              [
+                0.7001643180847168,
+                -0.006973408628255129,
+                -0.7139477729797363
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.002718508243560791
+              }
+            ]
+          },
+          "private_visual": {
+            "coefficient_vectors": [
+              [
+                0.584125280380249,
+                0.5765625238418579,
+                0.5712908506393433
+              ],
+              [
+                0.7001610994338989,
+                -0.006875982042402029,
+                -0.7139518857002258
+              ]
+            ],
+            "norms": [
+              0.9999999403953552,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0028567910194396973
+              }
+            ]
+          },
+          "shared": {
+            "coefficient_vectors": [
+              [
+                0.5847081542015076,
+                0.5750718712806702,
+                0.572196364402771
+              ],
+              [
+                0.7001927495002747,
+                -0.006942701525986195,
+                -0.7139201760292053
+              ],
+              [
+                0.40485498309135437,
+                -0.8218709230422974,
+                0.4007749557495117
+              ]
+            ],
+            "norms": [
+              0.9999999403953552,
+              1.0,
+              0.9999999403953552
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.003086656332015991
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.0065908730030059814
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": 0.0030612051486968994
+              }
+            ]
+          }
+        },
+        "routing": {
+          "private_text": {
+            "effective_usage_exp_mean_entropy": 1.754479169845581,
+            "entropy_mean": 0.5621720552444458,
+            "entropy_std": 0.016206542029976845,
+            "mean_probability_per_atom": [
+              0.25038185715675354,
+              0.7496181130409241
+            ],
+            "num_atoms": 2
+          },
+          "private_visual": {
+            "effective_usage_exp_mean_entropy": 1.7792999744415283,
+            "entropy_mean": 0.5762199759483337,
+            "entropy_std": 0.014759846031665802,
+            "mean_probability_per_atom": [
+              0.2635718286037445,
+              0.7364281415939331
+            ],
+            "num_atoms": 2
+          },
+          "shared_text": {
+            "effective_usage_exp_mean_entropy": 1.6157854795455933,
+            "entropy_mean": 0.47982117533683777,
+            "entropy_std": 0.0393826924264431,
+            "mean_probability_per_atom": [
+              0.043902795761823654,
+              0.8649318218231201,
+              0.09116533398628235
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_private_routing_js_mean": 0.0003742344561032951
+        },
+        "shared_private": {
+          "cos_shared_private_text": 0.9573535323143005,
+          "cos_shared_private_visual": 0.9513025283813477,
+          "mean_norm_private_text": 0.7899042367935181,
+          "mean_norm_private_visual": 0.7816859483718872,
+          "mean_norm_shared": 0.8710692524909973
+        }
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 235952,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 66269,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 2580,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {
+        "rho_mean": 0.11572292447090149,
+        "rho_quartiles": {
+          "Q1": {
+            "accuracy": 0.875,
+            "harmful_fraction": 0.59375,
+            "mean_adaptation_utility": -0.00020558774122036994,
+            "mean_ce": 0.5795549750328064,
+            "node_count": 256,
+            "rho_mean": 0.11537127196788788,
+            "rho_std": 0.0001363476039841771
+          },
+          "Q2": {
+            "accuracy": 0.828125,
+            "harmful_fraction": 0.6171875,
+            "mean_adaptation_utility": -0.0007732128142379224,
+            "mean_ce": 0.7407774925231934,
+            "node_count": 256,
+            "rho_mean": 0.11563516408205032,
+            "rho_std": 5.5808035540394485e-05
+          },
+          "Q3": {
+            "accuracy": 0.8117647171020508,
+            "harmful_fraction": 0.6196078431372549,
+            "mean_adaptation_utility": -0.00012236587645020336,
+            "mean_ce": 0.8111263513565063,
+            "node_count": 255,
+            "rho_mean": 0.11581363528966904,
+            "rho_std": 5.6555447372375056e-05
+          },
+          "Q4": {
+            "accuracy": 0.8274509906768799,
+            "harmful_fraction": 0.611764705882353,
+            "mean_adaptation_utility": 0.00010604308772599325,
+            "mean_ce": 0.7554717659950256,
+            "node_count": 255,
+            "rho_mean": 0.1160733550786972,
+            "rho_std": 0.0001292456145165488
+          }
+        },
+        "rho_std": 0.0002756848407443613,
+        "rho_text_mean": 0.1157052293419838,
+        "rho_text_std": 0.00041900391806848347,
+        "rho_visual_mean": 0.11574061959981918,
+        "rho_visual_std": 0.0003662699891719967,
+        "spearman_rho_vs_adaptation_utility": -0.03010854947045509
+      },
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8351390957832336,
+        "ce": 0.7320778369903564,
+        "macro_f1": 0.7698529908814746
+      }
+    }
+  }
+}

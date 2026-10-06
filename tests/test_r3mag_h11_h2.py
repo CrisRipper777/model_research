@@ -15,8 +15,14 @@ from src.analysis.r3mag_context_utils import (
     make_signed_permutation,
     matched_context_shuffle,
 )
-from src.analysis.r3mag_h11_h2_context_screen import _stratified_response_split
+from src.analysis.r3mag_h11_h2_context_screen import _initial_run_qa, _stratified_response_split
 from src.analysis.r3mag_h1_response_audit import _degree_and_prediction_buckets
+
+
+def test_h2_run_qa_exists_before_reused_checkpoint_validation_is_recorded():
+    run = {"qa": _initial_run_qa()}
+    run["qa"]["reused_checkpoint_validation_match"] = True
+    assert run["qa"]["reused_checkpoint_validation_match"] is True
 
 
 def test_coherent_donor_is_one_nonself_node_shared_by_all_branches_and_orders():

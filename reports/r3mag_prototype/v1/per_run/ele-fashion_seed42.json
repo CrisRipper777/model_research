@@ -1,0 +1,1338 @@
+{
+  "data_seed": 42,
+  "dataset": "ele-fashion",
+  "model_seed": 42,
+  "partition_method": "per-class deterministic NumPy Generator permutation + Hamilton largest remainder (80/10/10); host count at least one",
+  "partition_seed": 20261006,
+  "protocol": {
+    "absolute_values_comparable_to_h1_h2_host": false,
+    "audit_labels_used_only_after_checkpoint_selection": true,
+    "checkpoint_selection": "original val accuracy; exact ties use lower val CE",
+    "comparison_boundary_note": "H1/H2 host used 80% HostTrain; this prototype trains on 90% DevTrain.",
+    "dev_train": "HostTrain union ResponseTrain (90% of original train labels)",
+    "test_labels_read": false,
+    "test_metrics_computed": false,
+    "test_split_untouched": true
+  },
+  "protocol_deviations": [
+    "Ele-Fashion seed42 G1/G2 used CUDA with pinned-CPU saved-activation offload. Seed42 G3/G4 and all missing seed43/44 stages were completed on CPU after repeated CUDA OOM under concurrent GPU memory pressure; seed42 G0/G0-FT checkpoints were reused from the initial CUDA run. Optimizer, precision, epoch caps, loss, data, and selection were unchanged."
+  ],
+  "qa": {
+    "all_stage2_variants_initialized_from_same_stage1_checkpoint": true,
+    "dev_train_union_audit_equals_original_train": true,
+    "g0_preserve_identity_max_metric_abs_error": 0.0,
+    "g0_preserve_identity_metric_tolerance": 1e-06,
+    "model_invariants_pass": true,
+    "optimizer_group_coverage_pass": true,
+    "split_hashes_match_h1": true,
+    "splits_disjoint": true,
+    "stage1_train_count_per_dataset_seed": 1,
+    "test_labels_read": false,
+    "test_metrics_computed": false
+  },
+  "report_reconstruction_device": "cpu",
+  "split_counts": {
+    "Audit": 5864,
+    "DevTrain": 52795,
+    "HostTrain": 46927,
+    "OriginalTrain": 58659,
+    "ResponseTrain": 5868,
+    "Test": 29330,
+    "Val": 9777
+  },
+  "split_hashes": {
+    "Audit": "139cb0697042065c105e08cd5682227b9c52c0279785684530944bc3b81c0010",
+    "DevTrain": "70c9c731c352e16e1b1e67f7da7e8a59e13105858c298d7ef6fe58a56023dd59",
+    "HostTrain": "cc33dc46c3cb46410bf9a0d1095e31a4f2d15f2fb7434a2422c94c425901a2c0",
+    "OriginalTrain": "bc06e13e693cd7d16dd55525414382892ba765024d325351a51c185e972aa203",
+    "ResponseTrain": "eff6751a16eea9428d6d4f859a2b1829d4f70db4913be84ab0548e2ee55e1f4c",
+    "Test": "0688cc9d334662725abc0f12b4309c8561978304103dc7298b4794aad9024b48",
+    "Val": "7c9bfbddeae578e645f237fbcbe2ed3510fc06754dcff2519e233f38e60a1a35"
+  },
+  "split_matches_previous_h1": {
+    "matches_previous_h1": true,
+    "path": "/hdd1/DataInHere/YHF/model_research/reports/r3mag_design_freeze/h1/per_run/ele-fashion_seed42.json"
+  },
+  "split_source": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+  "stage1": {
+    "best_epoch": 177,
+    "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/stage1_best.pt",
+    "checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b",
+    "epochs_ran": 227,
+    "optimizer_groups": [
+      {
+        "lr": 0.001,
+        "name": "base",
+        "parameter_count": 168352,
+        "weight_decay": 0.0005
+      },
+      {
+        "lr": 0.001,
+        "name": "classifier",
+        "parameter_count": 1548,
+        "weight_decay": 0.0005
+      }
+    ],
+    "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+    "trained_once": true,
+    "trained_this_invocation": false,
+    "val_metrics": {
+      "accuracy": 0.8774675130844116,
+      "ce": 0.40653637051582336,
+      "macro_f1": 0.6970316576407769
+    }
+  },
+  "stage1_checkpoint_initialization": {
+    "G0": {
+      "stage1_best_checkpoint_reused": true
+    },
+    "G0-FT": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "b6b4870a7ce1f7592f4e483924dcff7ec4fc188b9a21a9f503c1d0c2f6bb8c2b",
+      "stage1_checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b"
+    },
+    "G1": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "b6b4870a7ce1f7592f4e483924dcff7ec4fc188b9a21a9f503c1d0c2f6bb8c2b",
+      "stage1_checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b"
+    },
+    "G2": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "b6b4870a7ce1f7592f4e483924dcff7ec4fc188b9a21a9f503c1d0c2f6bb8c2b",
+      "stage1_checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b"
+    },
+    "G3": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "b6b4870a7ce1f7592f4e483924dcff7ec4fc188b9a21a9f503c1d0c2f6bb8c2b",
+      "stage1_checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b"
+    },
+    "G4": {
+      "all_model_parameters_match_stage1": true,
+      "classifier_matches_stage1": true,
+      "common_model_parameters_match_stage1": true,
+      "common_parameter_sha256": "b6b4870a7ce1f7592f4e483924dcff7ec4fc188b9a21a9f503c1d0c2f6bb8c2b",
+      "stage1_checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b"
+    }
+  },
+  "variants": {
+    "G0": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0,
+            "ce": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8782401084899902,
+            "ce": 0.3973948359489441,
+            "macro_f1": 0.702477496967365
+          },
+          "preserve": {
+            "accuracy": 0.8782401084899902,
+            "ce": 0.3973948359489441,
+            "macro_f1": 0.702477496967365
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 0.0,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.0,
+          "mean": 0.0,
+          "positive_fraction": 0.0,
+          "zero_fraction": 1.0
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 177,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/stage1_best.pt",
+      "checkpoint_sha256": "d4ad2d1b361ac6282e4482bc2987d4c3309c3ac68dbe1f450e8078d8a6ad4e9b",
+      "epochs_ran": 227,
+      "mechanism": {
+        "atoms": {},
+        "routing": {},
+        "shared_private": {}
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "name": "base",
+          "parameter_count": 168352,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "classifier",
+          "parameter_count": 1548,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8774675130844116,
+        "ce": 0.40653637051582336,
+        "macro_f1": 0.6970316576407769
+      }
+    },
+    "G0-FT": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0,
+            "ce": 0.0,
+            "macro_f1": 0.0
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8761937022209167,
+            "ce": 0.3960975408554077,
+            "macro_f1": 0.7012416004808442
+          },
+          "preserve": {
+            "accuracy": 0.8761937022209167,
+            "ce": 0.3960975408554077,
+            "macro_f1": 0.7012416004808442
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 0.0,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.0,
+          "mean": 0.0,
+          "positive_fraction": 0.0,
+          "zero_fraction": 1.0
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 30,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/G0_FT_best.pt",
+      "checkpoint_sha256": "5aef8816f1347e57abb7fd8fe2be6d11329dcd812d730d2891df6b7972cdeab6",
+      "epochs_ran": 80,
+      "mechanism": {
+        "atoms": {},
+        "routing": {},
+        "shared_private": {}
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 168352,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 1548,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8772629499435425,
+        "ce": 0.4056168496608734,
+        "macro_f1": 0.699789218087813
+      }
+    },
+    "G1": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.00017052888870239258,
+            "ce": 6.774067878723145e-05,
+            "macro_f1": -8.34811014926995e-05
+          },
+          "uniform_route": {
+            "accuracy": -0.00017052888870239258,
+            "ce": 0.0002834498882293701,
+            "macro_f1": -6.566850538491931e-05
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8756821155548096,
+            "ce": 0.396022766828537,
+            "macro_f1": 0.7015393258821806
+          },
+          "preserve": {
+            "accuracy": 0.875852644443512,
+            "ce": 0.3960905075073242,
+            "macro_f1": 0.7014558447806879
+          },
+          "uniform_route": {
+            "accuracy": 0.8755115866661072,
+            "ce": 0.39630621671676636,
+            "macro_f1": 0.7014736573767957
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 0.0,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6717258095741272,
+          "mean": 6.780686089769006e-05,
+          "positive_fraction": 0.3228171765804291,
+          "zero_fraction": 0.005457025952637196
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 30,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/G1_best.pt",
+      "checkpoint_sha256": "df5a7c95577917b7ee2c9c020167af540e0d22c54f6ccc89efd2a690b62d422d",
+      "epochs_ran": 80,
+      "mechanism": {
+        "atoms": {
+          "flat": {
+            "coefficient_vectors": [
+              [
+                0.5773350596427917,
+                0.5840780138969421,
+                0.5705586671829224
+              ],
+              [
+                0.6871694326400757,
+                -0.010309059172868729,
+                -0.7264240384101868
+              ],
+              [
+                0.3851121962070465,
+                -0.8328012228012085,
+                0.3976565897464752
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.023761838674545288
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.03719569742679596
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": -0.015644580125808716
+              }
+            ]
+          }
+        },
+        "routing": {
+          "flat_text": {
+            "effective_usage_exp_mean_entropy": 2.421304702758789,
+            "entropy_mean": 0.8843064904212952,
+            "entropy_std": 0.061269573867321014,
+            "mean_probability_per_atom": [
+              0.09788660705089569,
+              0.6064651012420654,
+              0.2956483066082001
+            ],
+            "num_atoms": 3
+          },
+          "flat_visual": {
+            "effective_usage_exp_mean_entropy": 2.207792282104492,
+            "entropy_mean": 0.7919930815696716,
+            "entropy_std": 0.03766053169965744,
+            "mean_probability_per_atom": [
+              0.03820864111185074,
+              0.5837995409965515,
+              0.37799179553985596
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_flat_routing_js_mean": 0.013207517564296722
+        },
+        "shared_private": {}
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 168352,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 43793,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 1548,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8776720762252808,
+        "ce": 0.4057612717151642,
+        "macro_f1": 0.6998368922570183
+      }
+    },
+    "G2": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": 0.0006821155548095703,
+            "ce": 0.00010228157043457031,
+            "macro_f1": -4.7996418316431644e-05
+          },
+          "private_off": {
+            "accuracy": 0.00017052888870239258,
+            "ce": -9.781122207641602e-05,
+            "macro_f1": 0.00018113606417036188
+          },
+          "shared_off": {
+            "accuracy": -0.00017052888870239258,
+            "ce": 0.00012749433517456055,
+            "macro_f1": -6.135533116413683e-05
+          },
+          "uniform_route": {
+            "accuracy": 0.00017052888870239258,
+            "ce": 0.00062522292137146,
+            "macro_f1": -0.0008303780209081291
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8756821155548096,
+            "ce": 0.39676952362060547,
+            "macro_f1": 0.7016188093475747
+          },
+          "preserve": {
+            "accuracy": 0.8763642311096191,
+            "ce": 0.39687180519104004,
+            "macro_f1": 0.7015708129292583
+          },
+          "private_off": {
+            "accuracy": 0.875852644443512,
+            "ce": 0.39667171239852905,
+            "macro_f1": 0.7017999454117451
+          },
+          "shared_off": {
+            "accuracy": 0.8755115866661072,
+            "ce": 0.39689701795578003,
+            "macro_f1": 0.7015574540164106
+          },
+          "uniform_route": {
+            "accuracy": 0.875852644443512,
+            "ce": 0.39739474654197693,
+            "macro_f1": 0.7007884313266666
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 5.960464477539063e-08,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {},
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6698499321937561,
+          "mean": 0.00010228850442217663,
+          "positive_fraction": 0.3257162272930145,
+          "zero_fraction": 0.0044338335283100605
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 24,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/G2_best.pt",
+      "checkpoint_sha256": "b1c0bc910b65317644acfaff13c78830b24ee2e36d10af07da88690672e364e4",
+      "epochs_ran": 79,
+      "mechanism": {
+        "atoms": {
+          "private_text": {
+            "coefficient_vectors": [
+              [
+                0.5843566656112671,
+                0.580223560333252,
+                0.567333996295929
+              ],
+              [
+                0.6956002712249756,
+                -0.005198844242841005,
+                -0.7184102535247803
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.004116415977478027
+              }
+            ]
+          },
+          "private_visual": {
+            "coefficient_vectors": [
+              [
+                0.5915753245353699,
+                0.5734362006187439,
+                0.5667535662651062
+              ],
+              [
+                0.6879377961158752,
+                -0.015322820283472538,
+                -0.7256078124046326
+              ]
+            ],
+            "norms": [
+              1.0,
+              0.9999999403953552
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.013060450553894043
+              }
+            ]
+          },
+          "shared": {
+            "coefficient_vectors": [
+              [
+                0.5866576433181763,
+                0.5761045813560486,
+                0.5691540837287903
+              ],
+              [
+                0.6924518346786499,
+                -0.007929351180791855,
+                -0.7214205265045166
+              ],
+              [
+                0.4052271842956543,
+                -0.8226495981216431,
+                0.39879631996154785
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0,
+              0.9999999403953552
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.008935421705245972
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.009226024150848389
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": -0.0005764663219451904
+              }
+            ]
+          }
+        },
+        "routing": {
+          "private_text": {
+            "effective_usage_exp_mean_entropy": 1.8457591533660889,
+            "entropy_mean": 0.6128906607627869,
+            "entropy_std": 0.023687174543738365,
+            "mean_probability_per_atom": [
+              0.3047181963920593,
+              0.6952818036079407
+            ],
+            "num_atoms": 2
+          },
+          "private_visual": {
+            "effective_usage_exp_mean_entropy": 1.4684675931930542,
+            "entropy_mean": 0.3842194378376007,
+            "entropy_std": 0.01530186366289854,
+            "mean_probability_per_atom": [
+              0.1290121227502823,
+              0.8709878921508789
+            ],
+            "num_atoms": 2
+          },
+          "shared_text": {
+            "effective_usage_exp_mean_entropy": 1.0951554775238037,
+            "entropy_mean": 0.090896375477314,
+            "entropy_std": 0.021704958751797676,
+            "mean_probability_per_atom": [
+              0.008030904456973076,
+              0.9843223094940186,
+              0.007646753918379545
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_private_routing_js_mean": 0.023781567811965942
+        },
+        "shared_private": {
+          "cos_shared_private_text": 0.9153445959091187,
+          "cos_shared_private_visual": 0.9914872050285339,
+          "mean_norm_private_text": 0.7589048147201538,
+          "mean_norm_private_visual": 0.8788694739341736,
+          "mean_norm_shared": 0.9843137264251709
+        }
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 168352,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 61918,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 1548,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {},
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8778766393661499,
+        "ce": 0.4055224061012268,
+        "macro_f1": 0.6999906320238516
+      }
+    },
+    "G3": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": -0.00034105777740478516,
+            "ce": 8.359551429748535e-05,
+            "macro_f1": -0.00047971696745485737
+          },
+          "private_off": {
+            "accuracy": -0.00017052888870239258,
+            "ce": -3.4809112548828125e-05,
+            "macro_f1": -8.20440694782043e-05
+          },
+          "shared_off": {
+            "accuracy": -0.00017052888870239258,
+            "ce": 5.352497100830078e-05,
+            "macro_f1": -0.0003144923090705465
+          },
+          "uniform_route": {
+            "accuracy": -0.0006821155548095703,
+            "ce": 0.0003268420696258545,
+            "macro_f1": -0.001084897599065826
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8761937022209167,
+            "ce": 0.39574405550956726,
+            "macro_f1": 0.7030526122463122
+          },
+          "preserve": {
+            "accuracy": 0.875852644443512,
+            "ce": 0.39582765102386475,
+            "macro_f1": 0.7025728952788574
+          },
+          "private_off": {
+            "accuracy": 0.8760231733322144,
+            "ce": 0.39570924639701843,
+            "macro_f1": 0.702970568176834
+          },
+          "shared_off": {
+            "accuracy": 0.8760231733322144,
+            "ce": 0.39579758048057556,
+            "macro_f1": 0.7027381199372417
+          },
+          "uniform_route": {
+            "accuracy": 0.8755115866661072,
+            "ce": 0.3960708975791931,
+            "macro_f1": 0.7019677146472464
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 0.0,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {
+          "rho_mean": 0.06909224390983582,
+          "rho_quartiles": {
+            "Q1": {
+              "accuracy": 0.8833560943603516,
+              "harmful_fraction": 0.6391541609822646,
+              "mean_adaptation_utility": 0.00024170837423298508,
+              "mean_ce": 0.4295661747455597,
+              "node_count": 1466,
+              "rho_mean": 0.06589572131633759,
+              "rho_std": 0.0007463794900104403
+            },
+            "Q2": {
+              "accuracy": 0.8772169351577759,
+              "harmful_fraction": 0.6937244201909959,
+              "mean_adaptation_utility": -0.00036103324964642525,
+              "mean_ce": 0.40305107831954956,
+              "node_count": 1466,
+              "rho_mean": 0.06834503263235092,
+              "rho_std": 0.0006776194786652923
+            },
+            "Q3": {
+              "accuracy": 0.8840382099151611,
+              "harmful_fraction": 0.6875852660300137,
+              "mean_adaptation_utility": 0.00035211886279284954,
+              "mean_ce": 0.37241628766059875,
+              "node_count": 1466,
+              "rho_mean": 0.0702078565955162,
+              "rho_std": 0.0004207728197798133
+            },
+            "Q4": {
+              "accuracy": 0.860163688659668,
+              "harmful_fraction": 0.699181446111869,
+              "mean_adaptation_utility": 0.00010177232616115361,
+              "mean_ce": 0.3779425621032715,
+              "node_count": 1466,
+              "rho_mean": 0.07192037254571915,
+              "rho_std": 0.0007917123730294406
+            }
+          },
+          "rho_std": 0.002336616860702634,
+          "rho_text_mean": 0.06591564416885376,
+          "rho_text_std": 0.004171777982264757,
+          "rho_visual_mean": 0.07226884365081787,
+          "rho_visual_std": 0.002069446723908186,
+          "spearman_rho_vs_adaptation_utility": -0.016650427656558362
+        },
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6799113154411316,
+          "mean": 8.364160021301359e-05,
+          "positive_fraction": 0.3127557933330536,
+          "zero_fraction": 0.007332878652960062
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 32,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/G3_best.pt",
+      "checkpoint_sha256": "c9f21c7be78a96e2a9ae966ee231321e47c392ec3b33d3ee924e11f1662528fc",
+      "epochs_ran": 82,
+      "mechanism": {
+        "atoms": {
+          "private_text": {
+            "coefficient_vectors": [
+              [
+                0.5844280123710632,
+                0.5812923908233643,
+                0.5661652088165283
+              ],
+              [
+                0.6926015019416809,
+                -0.005919472314417362,
+                -0.7212961912155151
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.00703805685043335
+              }
+            ]
+          },
+          "private_visual": {
+            "coefficient_vectors": [
+              [
+                0.5923144221305847,
+                0.5738140940666199,
+                0.5655979514122009
+              ],
+              [
+                0.6818685531616211,
+                -0.019367942586541176,
+                -0.7312183380126953
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.02080860733985901
+              }
+            ]
+          },
+          "shared": {
+            "coefficient_vectors": [
+              [
+                0.5871807932853699,
+                0.5763363838195801,
+                0.5683793425559998
+              ],
+              [
+                0.6878527402877808,
+                -0.009823745116591454,
+                -0.7257838845252991
+              ],
+              [
+                0.4045370817184448,
+                -0.8232614994049072,
+                0.39823397994041443
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.01428842544555664
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.010591194033622742
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": -0.0026823580265045166
+              }
+            ]
+          }
+        },
+        "routing": {
+          "private_text": {
+            "effective_usage_exp_mean_entropy": 1.7460229396820068,
+            "entropy_mean": 0.5573406219482422,
+            "entropy_std": 0.05000277981162071,
+            "mean_probability_per_atom": [
+              0.25027143955230713,
+              0.7497285604476929
+            ],
+            "num_atoms": 2
+          },
+          "private_visual": {
+            "effective_usage_exp_mean_entropy": 1.2921391725540161,
+            "entropy_mean": 0.25629907846450806,
+            "entropy_std": 0.010974188335239887,
+            "mean_probability_per_atom": [
+              0.07108530402183533,
+              0.9289147853851318
+            ],
+            "num_atoms": 2
+          },
+          "shared_text": {
+            "effective_usage_exp_mean_entropy": 1.0537045001983643,
+            "entropy_mean": 0.05231209471821785,
+            "entropy_std": 0.014302347786724567,
+            "mean_probability_per_atom": [
+              0.004365831147879362,
+              0.9918860793113708,
+              0.003748031100258231
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_private_routing_js_mean": 0.03214764595031738
+        },
+        "shared_private": {
+          "cos_shared_private_text": 0.9441707134246826,
+          "cos_shared_private_visual": 0.9981846213340759,
+          "mean_norm_private_text": 0.7907100319862366,
+          "mean_norm_private_visual": 0.9301659464836121,
+          "mean_norm_shared": 0.9918320178985596
+        }
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 168352,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 64221,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 1548,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {
+        "rho_mean": 0.06909224390983582,
+        "rho_quartiles": {
+          "Q1": {
+            "accuracy": 0.8833560943603516,
+            "harmful_fraction": 0.6391541609822646,
+            "mean_adaptation_utility": 0.00024170837423298508,
+            "mean_ce": 0.4295661747455597,
+            "node_count": 1466,
+            "rho_mean": 0.06589572131633759,
+            "rho_std": 0.0007463794900104403
+          },
+          "Q2": {
+            "accuracy": 0.8772169351577759,
+            "harmful_fraction": 0.6937244201909959,
+            "mean_adaptation_utility": -0.00036103324964642525,
+            "mean_ce": 0.40305107831954956,
+            "node_count": 1466,
+            "rho_mean": 0.06834503263235092,
+            "rho_std": 0.0006776194786652923
+          },
+          "Q3": {
+            "accuracy": 0.8840382099151611,
+            "harmful_fraction": 0.6875852660300137,
+            "mean_adaptation_utility": 0.00035211886279284954,
+            "mean_ce": 0.37241628766059875,
+            "node_count": 1466,
+            "rho_mean": 0.0702078565955162,
+            "rho_std": 0.0004207728197798133
+          },
+          "Q4": {
+            "accuracy": 0.860163688659668,
+            "harmful_fraction": 0.699181446111869,
+            "mean_adaptation_utility": 0.00010177232616115361,
+            "mean_ce": 0.3779425621032715,
+            "node_count": 1466,
+            "rho_mean": 0.07192037254571915,
+            "rho_std": 0.0007917123730294406
+          }
+        },
+        "rho_std": 0.002336616860702634,
+        "rho_text_mean": 0.06591564416885376,
+        "rho_text_std": 0.004171777982264757,
+        "rho_visual_mean": 0.07226884365081787,
+        "rho_visual_std": 0.002069446723908186,
+        "spearman_rho_vs_adaptation_utility": -0.016650427656558362
+      },
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8778766393661499,
+        "ce": 0.40555739402770996,
+        "macro_f1": 0.7028058799561766
+      }
+    },
+    "G4": {
+      "audit": {
+        "intervention_delta_from_normal": {
+          "preserve": {
+            "accuracy": -0.00034105777740478516,
+            "ce": 5.1915645599365234e-05,
+            "macro_f1": -0.00034181112624120935
+          },
+          "private_off": {
+            "accuracy": -0.00017052888870239258,
+            "ce": -2.2977590560913086e-05,
+            "macro_f1": -8.390761745580289e-05
+          },
+          "shared_off": {
+            "accuracy": 0.0,
+            "ce": 3.5196542739868164e-05,
+            "macro_f1": 0.0
+          },
+          "uniform_route": {
+            "accuracy": -0.00034105777740478516,
+            "ce": 0.00019934773445129395,
+            "macro_f1": -0.00022259804293200958
+          }
+        },
+        "metrics": {
+          "normal": {
+            "accuracy": 0.8761937022209167,
+            "ce": 0.39564406871795654,
+            "macro_f1": 0.7029147064050986
+          },
+          "preserve": {
+            "accuracy": 0.875852644443512,
+            "ce": 0.3956959843635559,
+            "macro_f1": 0.7025728952788574
+          },
+          "private_off": {
+            "accuracy": 0.8760231733322144,
+            "ce": 0.39562109112739563,
+            "macro_f1": 0.7028307987876428
+          },
+          "shared_off": {
+            "accuracy": 0.8761937022209167,
+            "ce": 0.3956792652606964,
+            "macro_f1": 0.7029147064050986
+          },
+          "uniform_route": {
+            "accuracy": 0.875852644443512,
+            "ce": 0.39584341645240784,
+            "macro_f1": 0.7026921083621666
+          }
+        },
+        "qa": {
+          "adapted_gamma_order0_exactly_global": true,
+          "all_intervention_logits_finite": true,
+          "atom_norm_max_abs_error": 5.960464477539063e-08,
+          "atom_norms_unit": true,
+          "delta_gamma_order0_exact_zero": true,
+          "preserve_recovers_global_response": true,
+          "preserve_response_max_abs_error": 0.0,
+          "rho_finite": true,
+          "route_weights_finite": true,
+          "shared_route_tensor_same_object": true
+        },
+        "reliability": {
+          "rho_mean": 0.043178439140319824,
+          "rho_quartiles": {
+            "Q1": {
+              "accuracy": 0.937244176864624,
+              "harmful_fraction": 0.6623465211459755,
+              "mean_adaptation_utility": -8.270610851468518e-05,
+              "mean_ce": 0.22768603265285492,
+              "node_count": 1466,
+              "rho_mean": 0.04175203666090965,
+              "rho_std": 0.0003347088932059705
+            },
+            "Q2": {
+              "accuracy": 0.9058663249015808,
+              "harmful_fraction": 0.6609822646657572,
+              "mean_adaptation_utility": -4.248990990163293e-06,
+              "mean_ce": 0.32214218378067017,
+              "node_count": 1466,
+              "rho_mean": 0.04251621291041374,
+              "rho_std": 0.00020427284471224993
+            },
+            "Q3": {
+              "accuracy": 0.851296067237854,
+              "harmful_fraction": 0.6916780354706685,
+              "mean_adaptation_utility": 0.000297202670481056,
+              "mean_ce": 0.4903329312801361,
+              "node_count": 1466,
+              "rho_mean": 0.04342960566282272,
+              "rho_std": 0.00036218060995452106
+            },
+            "Q4": {
+              "accuracy": 0.8103683590888977,
+              "harmful_fraction": 0.6971350613915416,
+              "mean_adaptation_utility": -2.6224556677334476e-06,
+              "mean_ce": 0.542415201663971,
+              "node_count": 1466,
+              "rho_mean": 0.04501589387655258,
+              "rho_std": 0.0006408349727280438
+            }
+          },
+          "rho_std": 0.0012853116495534778,
+          "rho_text_mean": 0.04365302622318268,
+          "rho_text_std": 0.001785470056347549,
+          "rho_visual_mean": 0.04270385205745697,
+          "rho_visual_std": 0.0012907976051792502,
+          "spearman_rho_vs_adaptation_utility": -0.1780262335198098
+        },
+        "same_checkpoint_adaptation_utility": {
+          "definition": "per-node CE_preserve - CE_normal; positive means normal adaptation helped",
+          "harmful_fraction": 0.6780354976654053,
+          "mean": 5.190628507989459e-05,
+          "positive_fraction": 0.3130968511104584,
+          "zero_fraction": 0.008867667056620121
+        },
+        "shared_route_tensor_same_object": true
+      },
+      "best_epoch": 32,
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/r3mag_prototype/v1/formal/ele-fashion/seed42/G4_best.pt",
+      "checkpoint_sha256": "bb0eed2fd626d77acf72a68526e84a47161f1990bc96db6047d55ad311799013",
+      "epochs_ran": 82,
+      "mechanism": {
+        "atoms": {
+          "private_text": {
+            "coefficient_vectors": [
+              [
+                0.5845509171485901,
+                0.5809711217880249,
+                0.566368043422699
+              ],
+              [
+                0.6929746270179749,
+                -0.005936982575803995,
+                -0.7209375500679016
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0066862404346466064
+              }
+            ]
+          },
+          "private_visual": {
+            "coefficient_vectors": [
+              [
+                0.5923643708229065,
+                0.5735824704170227,
+                0.5657805800437927
+              ],
+              [
+                0.6825584769248962,
+                -0.019025631248950958,
+                -0.7305833697319031
+              ]
+            ],
+            "norms": [
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.0199393630027771
+              }
+            ]
+          },
+          "shared": {
+            "coefficient_vectors": [
+              [
+                0.5871816277503967,
+                0.5762996673583984,
+                0.5684157013893127
+              ],
+              [
+                0.688315212726593,
+                -0.009779522195458412,
+                -0.7253457903862
+              ],
+              [
+                0.4046056568622589,
+                -0.8232196569442749,
+                0.3982507884502411
+              ]
+            ],
+            "norms": [
+              0.9999999403953552,
+              1.0,
+              1.0
+            ],
+            "pairwise_cosines": [
+              {
+                "atom_i": 1,
+                "atom_j": 2,
+                "cosine": -0.013767838478088379
+              },
+              {
+                "atom_i": 1,
+                "atom_j": 3,
+                "cosine": -0.010472193360328674
+              },
+              {
+                "atom_i": 2,
+                "atom_j": 3,
+                "cosine": -0.002322584390640259
+              }
+            ]
+          }
+        },
+        "routing": {
+          "private_text": {
+            "effective_usage_exp_mean_entropy": 1.740928292274475,
+            "entropy_mean": 0.5544185042381287,
+            "entropy_std": 0.04462369158864021,
+            "mean_probability_per_atom": [
+              0.24664312601089478,
+              0.7533568739891052
+            ],
+            "num_atoms": 2
+          },
+          "private_visual": {
+            "effective_usage_exp_mean_entropy": 1.3187073469161987,
+            "entropy_mean": 0.27665194869041443,
+            "entropy_std": 0.010789257474243641,
+            "mean_probability_per_atom": [
+              0.07918918877840042,
+              0.9208108186721802
+            ],
+            "num_atoms": 2
+          },
+          "shared_text": {
+            "effective_usage_exp_mean_entropy": 1.058470368385315,
+            "entropy_mean": 0.056824762374162674,
+            "entropy_std": 0.013757333159446716,
+            "mean_probability_per_atom": [
+              0.004451329819858074,
+              0.9910722970962524,
+              0.004476387519389391
+            ],
+            "num_atoms": 3
+          },
+          "text_visual_private_routing_js_mean": 0.0275135301053524
+        },
+        "shared_private": {
+          "cos_shared_private_text": 0.9467576146125793,
+          "cos_shared_private_visual": 0.9975481629371643,
+          "mean_norm_private_text": 0.7926945686340332,
+          "mean_norm_private_visual": 0.9226474761962891,
+          "mean_norm_shared": 0.9910222291946411
+        }
+      },
+      "optimizer_groups": [
+        {
+          "lr": 0.0003,
+          "name": "base",
+          "parameter_count": 168352,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.001,
+          "name": "new",
+          "parameter_count": 64221,
+          "weight_decay": 0.0005
+        },
+        {
+          "lr": 0.0003,
+          "name": "classifier",
+          "parameter_count": 1548,
+          "weight_decay": 0.0005
+        }
+      ],
+      "reliability": {
+        "rho_mean": 0.043178439140319824,
+        "rho_quartiles": {
+          "Q1": {
+            "accuracy": 0.937244176864624,
+            "harmful_fraction": 0.6623465211459755,
+            "mean_adaptation_utility": -8.270610851468518e-05,
+            "mean_ce": 0.22768603265285492,
+            "node_count": 1466,
+            "rho_mean": 0.04175203666090965,
+            "rho_std": 0.0003347088932059705
+          },
+          "Q2": {
+            "accuracy": 0.9058663249015808,
+            "harmful_fraction": 0.6609822646657572,
+            "mean_adaptation_utility": -4.248990990163293e-06,
+            "mean_ce": 0.32214218378067017,
+            "node_count": 1466,
+            "rho_mean": 0.04251621291041374,
+            "rho_std": 0.00020427284471224993
+          },
+          "Q3": {
+            "accuracy": 0.851296067237854,
+            "harmful_fraction": 0.6916780354706685,
+            "mean_adaptation_utility": 0.000297202670481056,
+            "mean_ce": 0.4903329312801361,
+            "node_count": 1466,
+            "rho_mean": 0.04342960566282272,
+            "rho_std": 0.00036218060995452106
+          },
+          "Q4": {
+            "accuracy": 0.8103683590888977,
+            "harmful_fraction": 0.6971350613915416,
+            "mean_adaptation_utility": -2.6224556677334476e-06,
+            "mean_ce": 0.542415201663971,
+            "node_count": 1466,
+            "rho_mean": 0.04501589387655258,
+            "rho_std": 0.0006408349727280438
+          }
+        },
+        "rho_std": 0.0012853116495534778,
+        "rho_text_mean": 0.04365302622318268,
+        "rho_text_std": 0.001785470056347549,
+        "rho_visual_mean": 0.04270385205745697,
+        "rho_visual_std": 0.0012907976051792502,
+        "spearman_rho_vs_adaptation_utility": -0.1780262335198098
+      },
+      "selection": "best original-val accuracy; exact accuracy ties select lower val CE",
+      "val_metrics": {
+        "accuracy": 0.8778766393661499,
+        "ce": 0.40544018149375916,
+        "macro_f1": 0.7028058799561766
+      }
+    }
+  }
+}
