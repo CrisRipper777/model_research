@@ -77,15 +77,33 @@ def test_common_initialization_is_variant_invariant():
     for variant in ("independent", "shared_static", "mvcge_style", "v1"):
         torch.manual_seed(123)
         model = Model(_cfg(variant), _data_info())
+        classifier = torch.nn.Linear(model.out_dim, _data_info()["num_classes"])
+        common_prefixes = (
+            "projectors.",
+            "fusion_linear1.",
+            "fusion_linear2.",
+            "fusion_skip.",
+            "fusion_norm.",
+        )
         snapshots[variant] = {
-            "projector": model.projectors["text"].linear1.weight.detach().clone(),
-            "fusion": model.fusion_skip.weight.detach().clone(),
+            "common": {
+                name: value.detach().clone()
+                for name, value in model.state_dict().items()
+                if name.startswith(common_prefixes)
+            },
+            "classifier": {
+                name: value.detach().clone()
+                for name, value in classifier.state_dict().items()
+            },
         }
 
     reference = snapshots["v1"]
     for variant, state in snapshots.items():
-        assert torch.equal(state["projector"], reference["projector"]), variant
-        assert torch.equal(state["fusion"], reference["fusion"]), variant
+        assert state["common"].keys() == reference["common"].keys(), variant
+        for name, value in state["common"].items():
+            assert torch.equal(value, reference["common"][name]), (variant, name)
+        for name, value in state["classifier"].items():
+            assert torch.equal(value, reference["classifier"][name]), (variant, name)
 
 
 def test_v1_initial_composer_is_balanced_and_prior_first():
