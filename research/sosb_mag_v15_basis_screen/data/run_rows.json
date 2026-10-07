@@ -1,16 +1,16 @@
 [
   {
-    "status": "reused",
+    "status": "completed",
     "dataset": "Movies",
     "seed": 42,
     "label": "A0_legacy_lg",
     "variant": "A0_legacy_lg",
     "metrics": {
-      "val_acc": 0.3293341398239136,
-      "val_macro_f1": 0.02477436823104693
+      "val_acc": 0.5248950123786926,
+      "val_macro_f1": 0.3966328860047498
     },
     "metadata": {
-      "best_epoch": 1,
+      "best_epoch": 37,
       "model_parameters": 1314563,
       "classifier_parameters": 5140,
       "optimizer": "AdamW",
@@ -24,102 +24,22 @@
       "num_layers": 4,
       "other_depth_fields": {}
     },
-    "train_loss": 3.0177,
-    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A0_legacy_lg/run_metrics.json",
-    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A0_legacy_lg/best.pt",
-    "audit": {
-      "dataset": "Movies",
-      "seed": 42,
-      "variant_label": "A0_legacy_lg",
-      "embedding_finite": true,
-      "parameter_count_model": 1314563,
-      "parameter_count_classifier": 5140,
-      "modalities": {
-        "text": {
-          "gram_diag_min": 0.23347581923007965,
-          "gram_diag_max": 0.3932715058326721,
-          "gram_diag_mean": 0.3133736550807953,
-          "gram_offdiag_abs_mean": 0.04976772144436836,
-          "gram_offdiag_abs_max": 0.04976772144436836,
-          "gram_condition_number": 1.8586777448654175,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.500499963760376,
-            0.499500036239624
-          ],
-          "gate": 0.1190980076789856,
-          "prior_rms": 1.0006648302078247,
-          "structural_response_rms": 0.7068639397621155,
-          "scaled_structural_rms": 0.08418608456850052,
-          "scaled_structural_to_prior_rms_ratio": 0.08413015230186134,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": null
-        },
-        "visual": {
-          "gram_diag_min": 0.2734513580799103,
-          "gram_diag_max": 0.3831090033054352,
-          "gram_diag_mean": 0.32828018069267273,
-          "gram_offdiag_abs_mean": 0.05775821954011917,
-          "gram_offdiag_abs_max": 0.05775821954011917,
-          "gram_condition_number": 1.6405807733535767,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.500499963760376,
-            0.499500036239624
-          ],
-          "gate": 0.1190980076789856,
-          "prior_rms": 0.9986863136291504,
-          "structural_response_rms": 0.7020010948181152,
-          "scaled_structural_rms": 0.08360692858695984,
-          "scaled_structural_to_prior_rms_ratio": 0.08371690634583606,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": null
-        }
-      },
-      "test_metrics_present": false,
-      "train_loss": 3.0177,
-      "metrics": {
-        "val_acc": 0.3293341398239136,
-        "val_macro_f1": 0.02477436823104693
-      },
-      "metadata": {
-        "best_epoch": 1,
-        "model_parameters": 1314563,
-        "classifier_parameters": 5140,
-        "optimizer": "AdamW",
-        "optimizer_groups": [
-          {
-            "lr": 0.001,
-            "weight_decay": 0.0001
-          }
-        ],
-        "hidden_dim": 256,
-        "num_layers": 4,
-        "other_depth_fields": {}
-      },
-      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A0_legacy_lg/best.pt"
-    }
+    "train_loss": 0.7837,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A0_legacy_lg/best.pt"
   },
   {
-    "status": "reused",
+    "status": "completed",
     "dataset": "Movies",
     "seed": 42,
     "label": "A1_rawpoly_shared",
     "variant": "A1_rawpoly_shared",
     "metrics": {
-      "val_acc": 0.3293341398239136,
-      "val_macro_f1": 0.02477436823104693
+      "val_acc": 0.5395920872688293,
+      "val_macro_f1": 0.4443752999092161
     },
     "metadata": {
-      "best_epoch": 1,
+      "best_epoch": 70,
       "model_parameters": 1249029,
       "classifier_parameters": 5140,
       "optimizer": "AdamW",
@@ -133,110 +53,22 @@
       "num_layers": 4,
       "other_depth_fields": {}
     },
-    "train_loss": 2.9838,
-    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A1_rawpoly_shared/run_metrics.json",
-    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A1_rawpoly_shared/best.pt",
-    "audit": {
-      "dataset": "Movies",
-      "seed": 42,
-      "variant_label": "A1_rawpoly_shared",
-      "embedding_finite": true,
-      "parameter_count_model": 1249029,
-      "parameter_count_classifier": 5140,
-      "modalities": {
-        "text": {
-          "gram_diag_min": 0.9999996423721313,
-          "gram_diag_max": 1.0000003576278687,
-          "gram_diag_mean": 0.9999998807907104,
-          "gram_offdiag_abs_mean": 0.9684276580810547,
-          "gram_offdiag_abs_max": 0.9947844743728638,
-          "gram_condition_number": 924.41552734375,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.49850136041641235,
-            0.5004976391792297,
-            0.5004989504814148,
-            0.5004990100860596
-          ],
-          "gate": 0.1193079799413681,
-          "prior_rms": 1.0005781650543213,
-          "structural_response_rms": 1.9761910438537598,
-          "scaled_structural_rms": 0.23577536642551422,
-          "scaled_structural_to_prior_rms_ratio": 0.2356391281162067,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": null
-        },
-        "visual": {
-          "gram_diag_min": 0.9999997615814209,
-          "gram_diag_max": 1.0000003576278687,
-          "gram_diag_mean": 1.0,
-          "gram_offdiag_abs_mean": 0.9564325014750162,
-          "gram_offdiag_abs_max": 0.9930826425552368,
-          "gram_condition_number": 695.448974609375,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.49850136041641235,
-            0.5004976391792297,
-            0.5004989504814148,
-            0.5004990100860596
-          ],
-          "gate": 0.1193079799413681,
-          "prior_rms": 0.9985600709915161,
-          "structural_response_rms": 1.9670687913894653,
-          "scaled_structural_rms": 0.23468701541423798,
-          "scaled_structural_to_prior_rms_ratio": 0.23502543535633913,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": null
-        }
-      },
-      "test_metrics_present": false,
-      "train_loss": 2.9838,
-      "metrics": {
-        "val_acc": 0.3293341398239136,
-        "val_macro_f1": 0.02477436823104693
-      },
-      "metadata": {
-        "best_epoch": 1,
-        "model_parameters": 1249029,
-        "classifier_parameters": 5140,
-        "optimizer": "AdamW",
-        "optimizer_groups": [
-          {
-            "lr": 0.001,
-            "weight_decay": 0.0001
-          }
-        ],
-        "hidden_dim": 256,
-        "num_layers": 4,
-        "other_depth_fields": {}
-      },
-      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A1_rawpoly_shared/best.pt"
-    }
+    "train_loss": 0.6319,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A1_rawpoly_shared/best.pt"
   },
   {
-    "status": "reused",
+    "status": "completed",
     "dataset": "Movies",
     "seed": 42,
     "label": "A2_sosb_shared",
     "variant": "A2_sosb_shared",
     "metrics": {
-      "val_acc": 0.3293341398239136,
-      "val_macro_f1": 0.02477436823104693
+      "val_acc": 0.5176964402198792,
+      "val_macro_f1": 0.40714228542215525
     },
     "metadata": {
-      "best_epoch": 1,
+      "best_epoch": 67,
       "model_parameters": 1249029,
       "classifier_parameters": 5140,
       "optimizer": "AdamW",
@@ -250,110 +82,22 @@
       "num_layers": 4,
       "other_depth_fields": {}
     },
-    "train_loss": 3.0025,
-    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A2_sosb_shared/run_metrics.json",
-    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A2_sosb_shared/best.pt",
-    "audit": {
-      "dataset": "Movies",
-      "seed": 42,
-      "variant_label": "A2_sosb_shared",
-      "embedding_finite": true,
-      "parameter_count_model": 1249029,
-      "parameter_count_classifier": 5140,
-      "modalities": {
-        "text": {
-          "gram_diag_min": 0.9999996423721313,
-          "gram_diag_max": 0.9999998807907104,
-          "gram_diag_mean": 0.9999997615814209,
-          "gram_offdiag_abs_mean": 1.1184213555281985e-09,
-          "gram_offdiag_abs_max": 2.6241486761335864e-09,
-          "gram_condition_number": 1.0000004768371582,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.5009990334510803,
-            0.500998854637146,
-            0.49899911880493164,
-            0.49899905920028687
-          ],
-          "gate": 0.11930796504020691,
-          "prior_rms": 1.0006086826324463,
-          "structural_response_rms": 1.0,
-          "scaled_structural_rms": 0.11930796504020691,
-          "scaled_structural_to_prior_rms_ratio": 0.1192353885300357,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": 256
-        },
-        "visual": {
-          "gram_diag_min": 0.9999995231628418,
-          "gram_diag_max": 0.9999998807907104,
-          "gram_diag_mean": 0.9999997615814209,
-          "gram_offdiag_abs_mean": 1.208693367615865e-09,
-          "gram_offdiag_abs_max": 2.2165833613030372e-09,
-          "gram_condition_number": 1.0000005960464478,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.5009990334510803,
-            0.500998854637146,
-            0.49899911880493164,
-            0.49899905920028687
-          ],
-          "gate": 0.11930796504020691,
-          "prior_rms": 0.9986340999603271,
-          "structural_response_rms": 1.0,
-          "scaled_structural_rms": 0.11930796504020691,
-          "scaled_structural_to_prior_rms_ratio": 0.11947115068967369,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": 256
-        }
-      },
-      "test_metrics_present": false,
-      "train_loss": 3.0025,
-      "metrics": {
-        "val_acc": 0.3293341398239136,
-        "val_macro_f1": 0.02477436823104693
-      },
-      "metadata": {
-        "best_epoch": 1,
-        "model_parameters": 1249029,
-        "classifier_parameters": 5140,
-        "optimizer": "AdamW",
-        "optimizer_groups": [
-          {
-            "lr": 0.001,
-            "weight_decay": 0.0001
-          }
-        ],
-        "hidden_dim": 256,
-        "num_layers": 4,
-        "other_depth_fields": {}
-      },
-      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A2_sosb_shared/best.pt"
-    }
+    "train_loss": 0.6633,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A2_sosb_shared/best.pt"
   },
   {
-    "status": "reused",
+    "status": "completed",
     "dataset": "Movies",
     "seed": 42,
     "label": "A3_sosb_modality",
     "variant": "A3_sosb_modality",
     "metrics": {
-      "val_acc": 0.3293341398239136,
-      "val_macro_f1": 0.02477436823104693
+      "val_acc": 0.5191961526870728,
+      "val_macro_f1": 0.4047392232957889
     },
     "metadata": {
-      "best_epoch": 1,
+      "best_epoch": 66,
       "model_parameters": 1249034,
       "classifier_parameters": 5140,
       "optimizer": "AdamW",
@@ -367,96 +111,936 @@
       "num_layers": 4,
       "other_depth_fields": {}
     },
-    "train_loss": 3.0025,
-    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A3_sosb_modality/run_metrics.json",
-    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A3_sosb_modality/best.pt",
-    "audit": {
-      "dataset": "Movies",
-      "seed": 42,
-      "variant_label": "A3_sosb_modality",
-      "embedding_finite": true,
-      "parameter_count_model": 1249034,
-      "parameter_count_classifier": 5140,
-      "modalities": {
-        "text": {
-          "gram_diag_min": 0.9999995231628418,
-          "gram_diag_max": 0.9999998807907104,
-          "gram_diag_mean": 0.9999997615814209,
-          "gram_offdiag_abs_mean": 1.1336155717837453e-09,
-          "gram_offdiag_abs_max": 2.8904962867670747e-09,
-          "gram_condition_number": 1.0000005960464478,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.5009989738464355,
-            0.500998854637146,
-            0.4989992082118988,
-            0.4989990293979645
-          ],
-          "gate": 0.11930796504020691,
-          "prior_rms": 1.0006086826324463,
-          "structural_response_rms": 1.0,
-          "scaled_structural_rms": 0.11930796504020691,
-          "scaled_structural_to_prior_rms_ratio": 0.1192353885300357,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": 256
-        },
-        "visual": {
-          "gram_diag_min": 0.9999996423721313,
-          "gram_diag_max": 1.0,
-          "gram_diag_mean": 0.9999997615814209,
-          "gram_offdiag_abs_mean": 1.1255715618811262e-09,
-          "gram_offdiag_abs_max": 2.0020753943583713e-09,
-          "gram_condition_number": 1.0000003576278687,
-          "gram_condition_jitter": 1e-06,
-          "basis_finite": true,
-          "effective_beta": [
-            0.5015006065368652,
-            0.4994988739490509,
-            0.49949875473976135,
-            0.4994986951351166
-          ],
-          "gate": 0.11930796504020691,
-          "prior_rms": 0.9986340403556824,
-          "structural_response_rms": 1.0,
-          "scaled_structural_rms": 0.11930795758962631,
-          "scaled_structural_to_prior_rms_ratio": 0.11947115035967784,
-          "breakdown_fraction_by_order": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "stable_channel_count": 256
+    "train_loss": 0.5973,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_42/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 43,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.5320935845375061,
+      "val_macro_f1": 0.4155399319678169
+    },
+    "metadata": {
+      "best_epoch": 47,
+      "model_parameters": 1314563,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
         }
-      },
-      "test_metrics_present": false,
-      "train_loss": 3.0025,
-      "metrics": {
-        "val_acc": 0.3293341398239136,
-        "val_macro_f1": 0.02477436823104693
-      },
-      "metadata": {
-        "best_epoch": 1,
-        "model_parameters": 1249034,
-        "classifier_parameters": 5140,
-        "optimizer": "AdamW",
-        "optimizer_groups": [
-          {
-            "lr": 0.001,
-            "weight_decay": 0.0001
-          }
-        ],
-        "hidden_dim": 256,
-        "num_layers": 4,
-        "other_depth_fields": {}
-      },
-      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A3_sosb_modality/best.pt"
-    }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.7307,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 43,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.5416916608810425,
+      "val_macro_f1": 0.45873978260944365
+    },
+    "metadata": {
+      "best_epoch": 61,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.7368,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 43,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.5308938026428223,
+      "val_macro_f1": 0.3958309235285793
+    },
+    "metadata": {
+      "best_epoch": 80,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.5866,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 43,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.5269945859909058,
+      "val_macro_f1": 0.3877492922143418
+    },
+    "metadata": {
+      "best_epoch": 43,
+      "model_parameters": 1249034,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.8331,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_43/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 44,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.534493088722229,
+      "val_macro_f1": 0.4357708672178962
+    },
+    "metadata": {
+      "best_epoch": 48,
+      "model_parameters": 1314563,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.64,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 44,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.5446910858154297,
+      "val_macro_f1": 0.4500365299247801
+    },
+    "metadata": {
+      "best_epoch": 60,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.6449,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 44,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.5218956470489502,
+      "val_macro_f1": 0.42413703841953776
+    },
+    "metadata": {
+      "best_epoch": 57,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.6642,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Movies",
+    "seed": 44,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.5212957262992859,
+      "val_macro_f1": 0.4166989843318312
+    },
+    "metadata": {
+      "best_epoch": 65,
+      "model_parameters": 1249034,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.5959,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Movies/seed_44/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 42,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.8014641404151917,
+      "val_macro_f1": 0.7232421651385968
+    },
+    "metadata": {
+      "best_epoch": 66,
+      "model_parameters": 1314563,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1513,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 42,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.8199121356010437,
+      "val_macro_f1": 0.7607043568082885
+    },
+    "metadata": {
+      "best_epoch": 90,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1648,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 42,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.7944363355636597,
+      "val_macro_f1": 0.7198272186308786
+    },
+    "metadata": {
+      "best_epoch": 81,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1543,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 42,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.7950219511985779,
+      "val_macro_f1": 0.721888178547909
+    },
+    "metadata": {
+      "best_epoch": 84,
+      "model_parameters": 1249034,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1433,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_42/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 43,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.792972207069397,
+      "val_macro_f1": 0.7070287930955136
+    },
+    "metadata": {
+      "best_epoch": 67,
+      "model_parameters": 1314563,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1519,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 43,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.8166910409927368,
+      "val_macro_f1": 0.7355557788495446
+    },
+    "metadata": {
+      "best_epoch": 90,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2179,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 43,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.7906295657157898,
+      "val_macro_f1": 0.7168063352949234
+    },
+    "metadata": {
+      "best_epoch": 94,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1178,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 43,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.7862371802330017,
+      "val_macro_f1": 0.70147756302977
+    },
+    "metadata": {
+      "best_epoch": 95,
+      "model_parameters": 1249034,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1142,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_43/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 44,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.7932649850845337,
+      "val_macro_f1": 0.6978787408581685
+    },
+    "metadata": {
+      "best_epoch": 55,
+      "model_parameters": 1314563,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.176,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 44,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.8149341344833374,
+      "val_macro_f1": 0.7240419787336361
+    },
+    "metadata": {
+      "best_epoch": 73,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1966,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 44,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.7879941463470459,
+      "val_macro_f1": 0.6954398502586951
+    },
+    "metadata": {
+      "best_epoch": 68,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2358,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "Grocery",
+    "seed": 44,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.7894582748413086,
+      "val_macro_f1": 0.6974737943492351
+    },
+    "metadata": {
+      "best_epoch": 83,
+      "model_parameters": 1249034,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1857,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/Grocery/seed_44/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.871126115322113,
+      "val_macro_f1": 0.7412687101799694
+    },
+    "metadata": {
+      "best_epoch": 149,
+      "model_parameters": 1052419,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2106,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.8777743577957153,
+      "val_macro_f1": 0.7654278690846247
+    },
+    "metadata": {
+      "best_epoch": 228,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1534,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.873989999294281,
+      "val_macro_f1": 0.7419887731850386
+    },
+    "metadata": {
+      "best_epoch": 142,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2428,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.8731717467308044,
+      "val_macro_f1": 0.7489267937280059
+    },
+    "metadata": {
+      "best_epoch": 175,
+      "model_parameters": 986890,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2032,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_42/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.8755241632461548,
+      "val_macro_f1": 0.751354232536644
+    },
+    "metadata": {
+      "best_epoch": 215,
+      "model_parameters": 1052419,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1397,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.8745014071464539,
+      "val_macro_f1": 0.7496022852505365
+    },
+    "metadata": {
+      "best_epoch": 163,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.204,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.8730694651603699,
+      "val_macro_f1": 0.7402594689983157
+    },
+    "metadata": {
+      "best_epoch": 139,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2449,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.8720466494560242,
+      "val_macro_f1": 0.7319244492401388
+    },
+    "metadata": {
+      "best_epoch": 121,
+      "model_parameters": 986890,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2781,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_43/A3_sosb_modality/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.8701032996177673,
+      "val_macro_f1": 0.7280143501812908
+    },
+    "metadata": {
+      "best_epoch": 107,
+      "model_parameters": 1052419,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2793,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A0_legacy_lg/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.8752173185348511,
+      "val_macro_f1": 0.7462853165840454
+    },
+    "metadata": {
+      "best_epoch": 180,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1926,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A1_rawpoly_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.8741945624351501,
+      "val_macro_f1": 0.7407511646988286
+    },
+    "metadata": {
+      "best_epoch": 183,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.2033,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A2_sosb_shared/best.pt"
+  },
+  {
+    "status": "completed",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.8717398047447205,
+      "val_macro_f1": 0.7392680248797308
+    },
+    "metadata": {
+      "best_epoch": 172,
+      "model_parameters": 986890,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 0.1972,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/campaign/runs/ele-fashion/seed_44/A3_sosb_modality/best.pt"
   }
 ]

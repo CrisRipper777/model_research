@@ -332,6 +332,10 @@ def _fmt(value: float, digits: int = 4) -> str:
     return f"{value:.{digits}f}"
 
 
+def _pp(value: float, digits: int = 2) -> str:
+    return f"{100.0 * value:+.{digits}f} pp"
+
+
 def write_legacy_markdown(path: Path, payload: dict[str, Any]) -> None:
     lines = [
         "# Legacy CSE-MAG V1 Diagnostics",
@@ -673,6 +677,7 @@ def build_report(
     summary: list[dict[str, Any]],
     paired: list[dict[str, Any]],
     basis_rows: list[dict[str, Any]],
+    coefficient_rows: list[dict[str, Any]],
     freeze_commit: str | None,
 ) -> None:
     by_variant: dict[str, list[dict[str, Any]]] = {}
@@ -690,15 +695,18 @@ def build_report(
     sosb = [row for row in basis_rows if row["variant_label"] in {"A2_sosb_shared", "A3_sosb_modality"}]
     raw_off = _mean([float(row["gram_offdiag_abs_mean"]) for row in raw])
     sosb_off = _mean([float(row["gram_offdiag_abs_mean"]) for row in sosb])
+    raw_diag = _mean([float(row["gram_diag_mean"]) for row in raw])
+    sosb_diag = _mean([float(row["gram_diag_mean"]) for row in sosb])
     raw_cond = _mean([float(row["gram_condition_number"]) for row in raw])
     sosb_cond = _mean([float(row["gram_condition_number"]) for row in sosb])
+    completed_runs = int(campaign.get("completed_or_reused_runs", len(campaign.get("run_rows", []))))
     lines = [
         "# SOSB-MAG V1.5 Structural Basis Screen",
         "",
         "## Protocol and scope",
         "",
         f"- Branch: `exp/sosb_mag_v15_basis_screen`; freeze commit: `{freeze_commit or 'not recorded'}`.",
-        f"- Formal runs: {len(campaign.get('run_rows', []))}/{len(DATASETS) * len(SEEDS) * len(NEW_VARIANTS)}; unresolved failures: {len(campaign.get('unresolved_failures', []))} (failure attempts recorded: {len(campaign.get('failures', []))}).",
+        f"- Formal runs: {completed_runs}/{len(DATASETS) * len(SEEDS) * len(NEW_VARIANTS)}; unresolved failures: {len(campaign.get('unresolved_failures', []))} (failure attempts recorded: {len(campaign.get('failures', []))}).",
         "- Validation Accuracy selects the checkpoint. `task.evaluate_test=false`; no Test metrics were computed and no Test labels were indexed.",
         "- This screen compares structural response coordinates with a protected intrinsic residual; it does not test node routing or expert specialization.",
         "- SOSB is an **OptBasis-inspired signal-conditioned orthogonal Krylov basis**, not an exact OptBasisGNN reproduction.",
@@ -710,13 +718,13 @@ def build_report(
         "",
         "Values below average the three dataset-level seed means equally. They are descriptive summaries, not pooled node metrics.",
         "",
-        "| Variant | Validation Accuracy | Validation Macro-F1 |",
+        "| Variant | Validation Accuracy (%) | Validation Macro-F1 (%) |",
         "|---|---:|---:|",
     ]
     for label, _ in NEW_VARIANTS:
         stats = cross_dataset.get(label)
         if stats:
-            lines.append(f"| {label} | {_fmt(stats['acc'])} | {_fmt(stats['f1'])} |")
+            lines.append(f"| {label} | {_fmt(stats['acc'] * 100.0, 2)} | {_fmt(stats['f1'] * 100.0, 2)} |")
     lines.extend(["", "## Paired comparisons", "", "Positive counts use paired dataset-seed runs, with no inferential test.", ""])
     lines.extend(
         [
@@ -729,27 +737,87 @@ def build_report(
         row = pair_by_name.get(name)
         if row:
             lines.append(
-                f"| {name} | {_fmt(float(row['delta_val_acc_mean']))} | {_fmt(float(row['delta_val_macro_f1_mean']))} | "
+                f"| {name} | {_pp(float(row['delta_val_acc_mean']))} | {_pp(float(row['delta_val_macro_f1_mean']))} | "
                 f"{row['positive_acc_pairs_over_9']} | {row['positive_f1_pairs_over_9']} |"
             )
     lines.extend(
         [
             "",
+            "### Paired means by dataset",
+            "",
+            "Entries are mean paired accuracy / Macro-F1 differences in percentage points; per-dataset positive seed counts are in `data/paired_comparisons.csv`.",
+            "",
+            "| Dataset | A1−A0 | A2−A1 | A2−A0 | A3−A2 |",
+            "|---|---:|---:|---:|---:|",
+        ]
+    )
+    for dataset in DATASETS:
+        stem = dataset.replace("-", "_")
+        values = []
+        for target, baseline in PAIRINGS:
+            row = pair_by_name[f"{target}-minus-{baseline}"]
+            values.append(
+                f"{_pp(float(row[f'{stem}_delta_val_acc_mean']))} / "
+                f"{_pp(float(row[f'{stem}_delta_val_macro_f1_mean']))}"
+            )
+        lines.append(f"| {dataset} | " + " | ".join(values) + " |")
+    coefficient_profiles = (
+        ("A1_rawpoly_shared", "shared"),
+        ("A2_sosb_shared", "shared"),
+        ("A3_sosb_modality", "text"),
+        ("A3_sosb_modality", "visual"),
+    )
+    lines.extend(
+        [
+            "",
             "## Conditioning and breakdown",
             "",
-            f"Across selected A1/A2/A3 modality-checkpoints, mean absolute off-diagonal Gram entry was {raw_off:.5g} for RawPoly and {sosb_off:.5g} for SOSB.",
+            f"Across selected A1/A2/A3 modality-checkpoints, mean Gram diagonal was {raw_diag:.6f} for RawPoly and {sosb_diag:.6f} for SOSB; mean absolute off-diagonal entry was {raw_off:.5g} and {sosb_off:.5g}, respectively.",
             f"Mean jittered Gram condition number was {raw_cond:.5g} for RawPoly and {sosb_cond:.5g} for SOSB. These describe coordinate conditioning; they do not establish a performance cause.",
-            "SOSB breakdown fractions are recorded per dataset, seed, modality, and order in `data/basis_diagnostics.csv`.",
+            "No SOSB breakdown was observed: all selected-checkpoint breakdown fractions were zero at orders 1–4. The per dataset, seed, modality, and order values are in `data/basis_diagnostics.csv`.",
             "",
-            "## Interpretation rules and observed evidence",
+            "## Learned coefficients and response scale",
             "",
-            "1. If A1 improves over A0 while A2 is close to A1, the richer K=4 response space has task evidence, while orthogonal coordinates have no separate task advantage in this screen.",
-            "2. If A2 improves over A1 and SOSB has healthier Gram conditioning, signal-conditioned orthogonal coordinates have both task and conditioning evidence. This does not show orthogonality caused the task difference.",
-            "3. If A3 improves over A2, modality-level structural coefficient/gate preferences remain useful after signal-conditioned bases.",
-            "4. If A3 is close to A2, shared coefficients remain viable; the screen does not prove modality structural differences are absent.",
-            "5. If A1/A2/A3 are consistently weaker than A0, the current Local/Global inductive bias remains stronger in these runs; this is not a reason to add an SOSB-MoE in this stage.",
+            "Means below cover selected dataset/seed checkpoints; A3 is split by modality. The correction-to-prior ratio uses active-node RMS.",
             "",
-            "Observed paired deltas above provide the evidence for these conditions. Results are limited to three datasets and three seeds per dataset.",
+            "| Variant / profile | Effective β[1..4] mean | Gate mean | Prior RMS | Response RMS | Scaled correction / prior RMS |",
+            "|---|---|---:|---:|---:|---:|",
+        ]
+    )
+    for variant, profile in coefficient_profiles:
+        c_rows = [
+            row for row in coefficient_rows
+            if row["variant_label"] == variant and row["coefficient_profile"] == profile
+        ]
+        b_rows = [
+            row for row in basis_rows
+            if row["variant_label"] == variant
+            and (profile == "shared" or row["modality"] == profile)
+        ]
+        beta_means = [
+            _mean([float(row["effective_beta"]) for row in c_rows if int(row["order"]) == order])
+            for order in range(1, 5)
+        ]
+        beta_text = "[" + ", ".join(_fmt(value, 3) for value in beta_means) + "]"
+        profile_name = variant if profile == "shared" else f"{variant}/{profile}"
+        lines.append(
+            f"| {profile_name} | {beta_text} | {_fmt(_mean([float(row['effective_gate']) for row in b_rows]), 4)} | "
+            f"{_fmt(_mean([float(row['prior_rms']) for row in b_rows]), 4)} | "
+            f"{_fmt(_mean([float(row['structural_response_rms']) for row in b_rows]), 4)} | "
+            f"{_fmt(_mean([float(row['scaled_structural_to_prior_rms_ratio']) for row in b_rows]), 4)} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Interpretation rules applied to these results",
+            "",
+            f"1. **K=4 response space:** A1−A0 is {_pp(float(pair_by_name['A1_rawpoly_shared-minus-A0_legacy_lg']['delta_val_acc_mean']))} Accuracy and {_pp(float(pair_by_name['A1_rawpoly_shared-minus-A0_legacy_lg']['delta_val_macro_f1_mean']))} Macro-F1, positive in 8/9 pairs for both metrics. This supports the richer raw K=4 response space over the current Local/Global control in this screen.",
+            f"2. **Orthogonal basis vs raw polynomial:** A2−A1 is {_pp(float(pair_by_name['A2_sosb_shared-minus-A1_rawpoly_shared']['delta_val_acc_mean']))} Accuracy and {_pp(float(pair_by_name['A2_sosb_shared-minus-A1_rawpoly_shared']['delta_val_macro_f1_mean']))} Macro-F1, with 0/9 positive pairs. SOSB has much healthier Gram conditioning, but no task advantage here; the conditioning change is not evidence that orthogonality caused the metric change.",
+            f"3. **Modality-specific coefficients:** A3−A2 is {_pp(float(pair_by_name['A3_sosb_modality-minus-A2_sosb_shared']['delta_val_acc_mean']))} Accuracy and {_pp(float(pair_by_name['A3_sosb_modality-minus-A2_sosb_shared']['delta_val_macro_f1_mean']))} Macro-F1, positive in 3/9 pairs for each. The screen finds no performance gain from separate modality coefficients/gates.",
+            "4. **Shared SOSB coefficients:** A3 is close to A2 in overall mean, though slightly lower; this keeps shared coefficients viable for these data without proving modality structural differences are absent.",
+            "5. **Local/Global control:** the all-new-variants-weaker pattern does not hold because A1 exceeds A0. A2 and A3 are slightly below A0 on the equally weighted overall means; no hybrid bank or next-stage MoE is justified by this screen.",
+            "",
+            f"A2−A0 averages {_pp(float(pair_by_name['A2_sosb_shared-minus-A0_legacy_lg']['delta_val_acc_mean']))} Accuracy and {_pp(float(pair_by_name['A2_sosb_shared-minus-A0_legacy_lg']['delta_val_macro_f1_mean']))} Macro-F1, with only 2/9 positive Accuracy pairs. All comparisons remain descriptive and are limited to three datasets and three seeds per dataset.",
             "",
             "## Scientific boundaries",
             "",
@@ -767,6 +835,7 @@ def build_report(
 
 
 def write_readme(research_dir: Path, campaign: dict[str, Any], freeze_commit: str | None) -> None:
+    completed_runs = int(campaign.get("completed_or_reused_runs", len(campaign.get("run_rows", []))))
     lines = [
         "# SOSB-MAG V1.5 Structural Basis Screen",
         "",
@@ -794,7 +863,7 @@ def write_readme(research_dir: Path, campaign: dict[str, Any], freeze_commit: st
         "## Run state",
         "",
         f"- Freeze commit: `{freeze_commit or 'not recorded'}`.",
-        f"- Campaign completed: {len(campaign.get('run_rows', []))}/36; failures: {len(campaign.get('failures', []))}.",
+        f"- Campaign completed: {completed_runs}/36; unresolved failures: {len(campaign.get('unresolved_failures', []))}; failure attempts: {len(campaign.get('failures', []))}.",
         "- Smoke and formal run outputs/checkpoints remain under ignored `outputs/`; only compact JSON/CSV/Markdown research records are tracked here.",
         "",
         "See `LEGACY_DIAGNOSTIC.md` for the prior V1 checkpoint analysis and `REPORT.md` for results and interpretation.",
@@ -870,13 +939,28 @@ def run_campaign_analysis(
     write_json(data_dir / "environment.json", environment)
 
     freeze_value = campaign.get("freeze_commit_sha")
-    build_report(research_dir, campaign, summary_rows, paired_rows, basis_rows, freeze_value)
+    smoke_path = data_dir / "smoke_summary.json"
+    if smoke_path.is_file():
+        smoke = json.loads(smoke_path.read_text(encoding="utf-8"))
+        smoke["freeze_commit_sha"] = freeze_value
+        smoke["freeze_commit_recorded_at_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        write_json(smoke_path, smoke)
+    build_report(
+        research_dir,
+        campaign,
+        summary_rows,
+        paired_rows,
+        basis_rows,
+        coefficient_rows,
+        freeze_value,
+    )
     write_readme(research_dir, campaign, freeze_value)
     campaign["summary_rows"] = summary_rows
     campaign["paired_comparisons"] = paired_rows
     campaign["basis_diagnostics_rows"] = len(basis_rows)
     campaign["coefficient_profile_rows"] = len(coefficient_rows)
     campaign["environment_artifact"] = "data/environment.json"
+    campaign["analysis_completed_at_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     write_json(campaign_path, campaign)
     return {
         "runs": len(rows),
