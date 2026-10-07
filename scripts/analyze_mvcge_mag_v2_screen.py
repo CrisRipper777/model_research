@@ -50,7 +50,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         return
     keys = list(dict.fromkeys(key for row in rows for key in row))
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=keys, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=keys, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -440,18 +440,34 @@ def make_report(rows, summary, paired, audits, manifest) -> str:
     m3m2 = pair_map["M3_collaborative_moe - M2_anchored_moe"]
     mean_a = [a for a in audits if a["variant"] in {"M1_direct_moe", "M2_anchored_moe", "M3_collaborative_moe"}]
     mean_functional = statistics.fmean(a["functional_cosine_summary"]["mean_node_mean"] for a in mean_a)
+    mean_functional_flat = statistics.fmean(a["functional_cosine_summary"]["flattened_mean"] for a in mean_a)
+    min_functional_node = min(a["functional_cosine_summary"]["mean_node_min"] for a in mean_a)
+    max_functional_node = max(a["functional_cosine_summary"]["mean_node_max"] for a in mean_a)
+    min_functional_flat = min(a["functional_cosine_summary"]["flattened_min"] for a in mean_a)
+    max_functional_flat = max(a["functional_cosine_summary"]["flattened_max"] for a in mean_a)
     mean_alpha_cos = statistics.fmean(p["cosine"] for a in mean_a for p in a["alpha_pairwise"])
     moes = [a for a in audits if a["variant"] != "M0_anchor"]
     experts_all_used = sum(
         1 for a in moes for m in a["modalities"].values() if m["num_experts_positive_share"] == 4
     )
     load_count = sum(len(a["modalities"]) for a in moes)
+    load_ratios = [
+        a["modalities"][m]["max_min_load_ratio"]
+        for a in moes for m in ("text", "visual")
+        if a["modalities"][m]["max_min_load_ratio"] is not None
+    ]
     m2m3 = [a for a in audits if a["variant"] in {"M2_anchored_moe", "M3_collaborative_moe"}]
     entropy_avg = statistics.fmean(
         a["modalities"][m]["routing_entropy"]["mean"] for a in moes for m in ("text", "visual")
     )
+    entropy_std_avg = statistics.fmean(
+        a["modalities"][m]["routing_entropy"]["std"] for a in moes for m in ("text", "visual")
+    )
     margin_avg = statistics.fmean(
         a["modalities"][m]["top1_top2_logit_margin"]["mean"] for a in moes for m in ("text", "visual")
+    )
+    margin_std_avg = statistics.fmean(
+        a["modalities"][m]["top1_top2_logit_margin"]["std"] for a in moes for m in ("text", "visual")
     )
     rho_fractions = [
         a["modalities"][m]["rho_saturation_fraction"]
@@ -531,9 +547,9 @@ No inferential or significance testing was performed.
 ## Selected-checkpoint mechanism diagnostics
 
 - Expert profiles were analyzed for M1/M2/M3: learned alpha pairwise cosine mean `{mean_alpha_cos:.4f}`. Hadamard is only the initialization.
-- Across {load_count} MoE modality/checkpoint records, all four experts had positive selection share in `{experts_all_used}/{load_count}` records. These are Top-2 selections; the recorded max/min ratio uses positive loads.
-- Mean functional expert output mean-node cosine: `{mean_functional:.4f}`; mean flattened cosine range `{min(a['functional_cosine_summary']['flattened_min'] for a in mean_a):.4f}` to `{max(a['functional_cosine_summary']['flattened_max'] for a in mean_a):.4f}`.
-- Dense routing entropy mean: `{entropy_avg:.4f}` nats (maximum for four experts is `{math.log(4):.4f}`); mean Top1−Top2 logit margin: `{margin_avg:.4f}`.
+- Across {load_count} MoE modality/checkpoint records, all four experts had positive selection share in `{experts_all_used}/{load_count}` records; `{load_count-experts_all_used}` records had at least one zero-load expert. The median max/min ratio across positive loads was `{statistics.median(load_ratios):.3f}`.
+- Functional expert output cosine: mean-node mean `{mean_functional:.4f}`, pairwise range `{min_functional_node:.4f}` to `{max_functional_node:.4f}`; flattened mean `{mean_functional_flat:.4f}`, range `{min_functional_flat:.4f}` to `{max_functional_flat:.4f}`.
+- Dense routing entropy mean ± mean within-checkpoint std: `{entropy_avg:.4f} ± {entropy_std_avg:.4f}` nats (maximum for four experts is `{math.log(4):.4f}`); Top1−Top2 logit margin mean ± mean within-checkpoint std: `{margin_avg:.4f} ± {margin_std_avg:.4f}`.
 - Mean fraction with `rho > 0.9*rho_max` across M2/M3 modality-checkpoints: `{rho_avg:.4f}`.
 - Mean scaled expert residual/base correction RMS ratio across M2/M3: `{ratio_avg:.4f}`.
 - M2/M3 text-vs-visual sparse routing JS mean across selected checkpoints: `{m2m3_mean_js:.4f}` nats.

@@ -1,0 +1,1010 @@
+[
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 42,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.5398920178413391,
+      "val_macro_f1": 0.44652571838526933
+    },
+    "metadata": {
+      "best_epoch": 58,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 42,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.5584883093833923,
+      "val_macro_f1": 0.49157040310290323
+    },
+    "metadata": {
+      "best_epoch": 79,
+      "model_parameters": 1448885,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 42,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.5536892414093018,
+      "val_macro_f1": 0.4759625492640094
+    },
+    "metadata": {
+      "best_epoch": 67,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 42,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.5554888844490051,
+      "val_macro_f1": 0.49559418389975407
+    },
+    "metadata": {
+      "best_epoch": 72,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_42/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 43,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.5425914525985718,
+      "val_macro_f1": 0.44463719865107354
+    },
+    "metadata": {
+      "best_epoch": 54,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 43,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.5548890233039856,
+      "val_macro_f1": 0.46905324050849123
+    },
+    "metadata": {
+      "best_epoch": 82,
+      "model_parameters": 1448885,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 43,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.5485903024673462,
+      "val_macro_f1": 0.44557310768565933
+    },
+    "metadata": {
+      "best_epoch": 49,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 43,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.5536892414093018,
+      "val_macro_f1": 0.4693680057602583
+    },
+    "metadata": {
+      "best_epoch": 47,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_43/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 44,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.5428914427757263,
+      "val_macro_f1": 0.44359485834747747
+    },
+    "metadata": {
+      "best_epoch": 58,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 44,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.5572885274887085,
+      "val_macro_f1": 0.4975019990764752
+    },
+    "metadata": {
+      "best_epoch": 81,
+      "model_parameters": 1448885,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 44,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.5542891621589661,
+      "val_macro_f1": 0.4695908743275088
+    },
+    "metadata": {
+      "best_epoch": 46,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Movies",
+    "seed": 44,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.5563887357711792,
+      "val_macro_f1": 0.48523369353441126
+    },
+    "metadata": {
+      "best_epoch": 65,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Movies/seed_44/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 42,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.8172767162322998,
+      "val_macro_f1": 0.7594212557541168
+    },
+    "metadata": {
+      "best_epoch": 99,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 42,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.833674967288971,
+      "val_macro_f1": 0.7635942415044848
+    },
+    "metadata": {
+      "best_epoch": 64,
+      "model_parameters": 1448885,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 42,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.8263543248176575,
+      "val_macro_f1": 0.7604496634628044
+    },
+    "metadata": {
+      "best_epoch": 77,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 42,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.8281112909317017,
+      "val_macro_f1": 0.7668288022560252
+    },
+    "metadata": {
+      "best_epoch": 73,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_42/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 43,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.8231332302093506,
+      "val_macro_f1": 0.7426433839868412
+    },
+    "metadata": {
+      "best_epoch": 79,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 43,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.8368960618972778,
+      "val_macro_f1": 0.772217883919361
+    },
+    "metadata": {
+      "best_epoch": 68,
+      "model_parameters": 1448885,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 43,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.8333821296691895,
+      "val_macro_f1": 0.7559779188243235
+    },
+    "metadata": {
+      "best_epoch": 83,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 43,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.8357247710227966,
+      "val_macro_f1": 0.758840016189852
+    },
+    "metadata": {
+      "best_epoch": 80,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_43/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 44,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.8163982629776001,
+      "val_macro_f1": 0.7323633581768415
+    },
+    "metadata": {
+      "best_epoch": 92,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 44,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.8301610350608826,
+      "val_macro_f1": 0.7450680903887308
+    },
+    "metadata": {
+      "best_epoch": 79,
+      "model_parameters": 1448885,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 44,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.826061487197876,
+      "val_macro_f1": 0.7410544333511966
+    },
+    "metadata": {
+      "best_epoch": 74,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "Grocery",
+    "seed": 44,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.8281112909317017,
+      "val_macro_f1": 0.7489919759953864
+    },
+    "metadata": {
+      "best_epoch": 91,
+      "model_parameters": 1448890,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/Grocery/seed_44/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.8733763098716736,
+      "val_macro_f1": 0.7457395959015636
+    },
+    "metadata": {
+      "best_epoch": 149,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.8733763098716736,
+      "val_macro_f1": 0.7510462627680702
+    },
+    "metadata": {
+      "best_epoch": 138,
+      "model_parameters": 1186741,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.8758310079574585,
+      "val_macro_f1": 0.757943037909616
+    },
+    "metadata": {
+      "best_epoch": 167,
+      "model_parameters": 1186746,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.8755241632461548,
+      "val_macro_f1": 0.7576049017699209
+    },
+    "metadata": {
+      "best_epoch": 162,
+      "model_parameters": 1186746,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_42/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.8767515420913696,
+      "val_macro_f1": 0.7537216249264628
+    },
+    "metadata": {
+      "best_epoch": 169,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.8754218816757202,
+      "val_macro_f1": 0.7444596417774403
+    },
+    "metadata": {
+      "best_epoch": 162,
+      "model_parameters": 1186741,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.8752173185348511,
+      "val_macro_f1": 0.7490373881878952
+    },
+    "metadata": {
+      "best_epoch": 156,
+      "model_parameters": 1186746,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 43,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.8742968440055847,
+      "val_macro_f1": 0.7465710078453364
+    },
+    "metadata": {
+      "best_epoch": 142,
+      "model_parameters": 1186746,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_43/M3_collaborative_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "variant": "M0_anchor",
+    "metrics": {
+      "val_acc": 0.8705124258995056,
+      "val_macro_f1": 0.7363771177087994
+    },
+    "metadata": {
+      "best_epoch": 110,
+      "model_parameters": 986885,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M0_anchor/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M0_anchor/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "variant": "M1_direct_moe",
+    "metrics": {
+      "val_acc": 0.8714329600334167,
+      "val_macro_f1": 0.7369880539324879
+    },
+    "metadata": {
+      "best_epoch": 101,
+      "model_parameters": 1186741,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M1_direct_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M1_direct_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "variant": "M2_anchored_moe",
+    "metrics": {
+      "val_acc": 0.8722512125968933,
+      "val_macro_f1": 0.7342211588914173
+    },
+    "metadata": {
+      "best_epoch": 118,
+      "model_parameters": 1186746,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M2_anchored_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M2_anchored_moe/best.pt"
+  },
+  {
+    "status": "completed",
+    "mode": "formal",
+    "dataset": "ele-fashion",
+    "seed": 44,
+    "variant": "M3_collaborative_moe",
+    "metrics": {
+      "val_acc": 0.8733763098716736,
+      "val_macro_f1": 0.7424945192191366
+    },
+    "metadata": {
+      "best_epoch": 126,
+      "model_parameters": 1186746,
+      "classifier_parameters": 3084,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "metrics_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M3_collaborative_moe/run_metrics.json",
+    "checkpoint_path": "outputs/mvcge_mag_v2_anchored_experts/formal/runs/ele-fashion/seed_44/M3_collaborative_moe/best.pt"
+  }
+]

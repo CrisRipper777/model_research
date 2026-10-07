@@ -1,0 +1,37 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "expected_runs": 36,
+  "completed_runs": 36,
+  "device": "cuda:0",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "M0_anchor",
+    "M1_direct_moe",
+    "M2_anchored_moe",
+    "M3_collaborative_moe"
+  ],
+  "failures": [],
+  "provenance": {
+    "branch": "exp/mvcge_mag_v2_anchored_experts",
+    "parent_commit_sha": "412e69221a30fa3779e57e22fa42073697bdf4f8",
+    "head_at_start": "7c76bc11b56c53439db005b5fb106c5526e0f6d5",
+    "freeze_commit_sha": "7c76bc11b56c53439db005b5fb106c5526e0f6d5",
+    "worktree_clean_at_start": true,
+    "started_at_utc": "2026-10-07T16:28:18+00:00"
+  },
+  "updated_at_utc": "2026-10-07T16:54:21+00:00",
+  "selected_checkpoint_audits": 36,
+  "test_evaluation_verified_false": true,
+  "test_metrics_absent": true,
+  "diagnostic_device": "cuda:0"
+}
