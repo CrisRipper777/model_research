@@ -1,0 +1,191 @@
+{
+  "mode": "smoke",
+  "status": "passed",
+  "branch": "exp/cse_mag_v1_local_global_screen",
+  "freeze_commit_sha": "dc0e50c621f60ce802e3e27493ff6b8f45be911d",
+  "execution_provenance": {
+    "head_at_smoke_start": "3dfeadc3b974d1064660b5238e030fdca35414d1",
+    "worktree_clean_at_smoke_start": false,
+    "dirty_change": "test-only initialization fairness coverage; committed as freeze_commit_sha after smoke passed",
+    "model_and_config_files_changed": false
+  },
+  "dataset": "Movies",
+  "seed": 42,
+  "epochs_per_variant": 1,
+  "device": "cuda:1",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "expected_runs": 4,
+  "completed_runs": 4,
+  "failures": [],
+  "evaluate_test": false,
+  "selection": "best_validation_accuracy",
+  "protocol": "unified_full_graph_nc_v1",
+  "finite_checks": {
+    "train_loss": true,
+    "embeddings": true,
+    "validation_metrics": true,
+    "auxiliary_loss": true
+  },
+  "saved_artifacts": {
+    "checkpoints": 4,
+    "run_metrics": 4,
+    "test_metric_keys_present": false
+  },
+  "feature_layout": {
+    "text_dim": 768,
+    "visual_dim": 768,
+    "input_dim": 1536,
+    "order": "[text, visual]"
+  },
+  "operator_audits": {
+    "self_loops_added": false,
+    "self_loops_removed_in_model_operator": true,
+    "isolated_node_local_delta_zero": true,
+    "isolated_node_global_delta_zero": true,
+    "isolated_node_v1_output_equals_prior": true,
+    "isolated_node_evidence": "tests/test_cse_mag_v1.py"
+  },
+  "initialization_audits": {
+    "v1_local_global_prior": [
+      0.5,
+      0.5
+    ],
+    "v1_gate_bias": -2.0,
+    "v1_gate_value": 0.11920292202211755,
+    "same_seed_projectors_fusion_classifier_equal": true,
+    "evidence": "tests/test_cse_mag_v1.py"
+  },
+  "parameter_counts": {
+    "model_total_parameters_including_frozen_modules": 1976240,
+    "classifier_parameters": 5140,
+    "variants": {
+      "B0_independent": {
+        "model_trainable_parameters": 1577734,
+        "total_trainable_parameters": 1582874
+      },
+      "B1_shared_static": {
+        "model_trainable_parameters": 1314563,
+        "total_trainable_parameters": 1319703
+      },
+      "B2_mvcge_style": {
+        "model_trainable_parameters": 1481124,
+        "total_trainable_parameters": 1486264
+      },
+      "B3_v1": {
+        "model_trainable_parameters": 1415459,
+        "total_trainable_parameters": 1420599
+      }
+    }
+  },
+  "b2_routing": {
+    "expert_count": 4,
+    "top_k": 2,
+    "topk_forward_and_auxiliary_loss_finite": true,
+    "balance_loss_finite": true,
+    "expert_selection_coverage": "Top-K path verified in code review; post-checkpoint coverage audit is included in the final report."
+  },
+  "runs": [
+    {
+      "variant_label": "B0_independent",
+      "variant": "independent",
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693,
+      "best_epoch": 1,
+      "model_trainable_parameters": 1577734,
+      "classifier_parameters": 5140
+    },
+    {
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693,
+      "best_epoch": 1,
+      "model_trainable_parameters": 1314563,
+      "classifier_parameters": 5140
+    },
+    {
+      "variant_label": "B2_mvcge_style",
+      "variant": "mvcge_style",
+      "val_acc": 0.3290341794490814,
+      "val_macro_f1": 0.024768570783472568,
+      "best_epoch": 1,
+      "model_trainable_parameters": 1481124,
+      "classifier_parameters": 5140
+    },
+    {
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693,
+      "best_epoch": 1,
+      "model_trainable_parameters": 1415459,
+      "classifier_parameters": 5140
+    }
+  ],
+  "campaign_b2_routing_audit": {
+    "evidence_source": "formal Movies seed 42 B2 best checkpoint, full graph, train-mode forward/backward",
+    "test_metrics_computed": false,
+    "finite_embedding_and_aux_loss": true,
+    "expert_count": 4,
+    "top_k": 2,
+    "selected_assignments_by_expert_across_both_modalities": [
+      15823,
+      11195,
+      17286,
+      22384
+    ],
+    "expert_gradient_l2_norms": [
+      0.011736514046788216,
+      0.005531336646527052,
+      0.005914690438657999,
+      0.006836520973592997
+    ],
+    "all_experts_selected": true,
+    "all_experts_have_nonzero_gradient": true,
+    "balance_loss_finite": true,
+    "parameter_counts_by_variant": {
+      "B0_independent": {
+        "model_total_parameters_including_frozen_modules": 1976240,
+        "model_trainable_parameters": 1577734,
+        "classifier_parameters": 5140
+      },
+      "B1_shared_static": {
+        "model_total_parameters_including_frozen_modules": 1976240,
+        "model_trainable_parameters": 1314563,
+        "classifier_parameters": 5140
+      },
+      "B2_mvcge_style": {
+        "model_total_parameters_including_frozen_modules": 1976240,
+        "model_trainable_parameters": 1481124,
+        "classifier_parameters": 5140
+      },
+      "B3_v1": {
+        "model_total_parameters_including_frozen_modules": 1976240,
+        "model_trainable_parameters": 1415459,
+        "classifier_parameters": 5140
+      }
+    }
+  },
+  "verified_parameter_counts": {
+    "B0_independent": {
+      "model_total_parameters_including_frozen_modules": 1976240,
+      "model_trainable_parameters": 1577734,
+      "classifier_parameters": 5140
+    },
+    "B1_shared_static": {
+      "model_total_parameters_including_frozen_modules": 1976240,
+      "model_trainable_parameters": 1314563,
+      "classifier_parameters": 5140
+    },
+    "B2_mvcge_style": {
+      "model_total_parameters_including_frozen_modules": 1976240,
+      "model_trainable_parameters": 1481124,
+      "classifier_parameters": 5140
+    },
+    "B3_v1": {
+      "model_total_parameters_including_frozen_modules": 1976240,
+      "model_trainable_parameters": 1415459,
+      "classifier_parameters": 5140
+    }
+  }
+}

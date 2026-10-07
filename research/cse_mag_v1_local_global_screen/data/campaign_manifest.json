@@ -1,0 +1,249 @@
+{
+  "branch": "exp/cse_mag_v1_local_global_screen",
+  "head": "dc0e50c621f60ce802e3e27493ff6b8f45be911d",
+  "base_sha": "579d8dcde6d9bf6d39efb4f9d88bf70a78acc38e",
+  "worktree_clean": true,
+  "started_at_utc": "2026-10-07T09:54:31+00:00",
+  "finished_at_utc": "2026-10-07T10:17:18+00:00",
+  "mode": "campaign",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    {
+      "label": "B0_independent",
+      "variant": "independent"
+    },
+    {
+      "label": "B1_shared_static",
+      "variant": "shared_static"
+    },
+    {
+      "label": "B2_mvcge_style",
+      "variant": "mvcge_style"
+    },
+    {
+      "label": "B3_v1",
+      "variant": "v1"
+    }
+  ],
+  "expected_runs": 36,
+  "completed_or_reused_runs": 36,
+  "failures": [],
+  "device": "cuda:1",
+  "epochs_override": null,
+  "task_protocol": "unified_full_graph_nc_v1",
+  "evaluate_test": false,
+  "selection": "best_validation_accuracy",
+  "summary": {
+    "cells": [
+      {
+        "dataset": "Movies",
+        "label": "B0_independent",
+        "variant": "independent",
+        "n": 3,
+        "val_acc_mean": 0.5263947248458862,
+        "val_acc_std": 0.0025801973468607083,
+        "val_macro_f1_mean": 0.40120139245090475,
+        "val_macro_f1_std": 0.010197686790376843,
+        "total_trainable_parameters_mean": 1582874.0
+      },
+      {
+        "dataset": "Movies",
+        "label": "B1_shared_static",
+        "variant": "shared_static",
+        "n": 3,
+        "val_acc_mean": 0.5294940869013468,
+        "val_acc_std": 0.006201986043699373,
+        "val_macro_f1_mean": 0.42006199239421976,
+        "val_macro_f1_std": 0.006547226778017912,
+        "total_trainable_parameters_mean": 1319703.0
+      },
+      {
+        "dataset": "Movies",
+        "label": "B2_mvcge_style",
+        "variant": "mvcge_style",
+        "n": 3,
+        "val_acc_mean": 0.5158968170483907,
+        "val_acc_std": 0.004916334717248117,
+        "val_macro_f1_mean": 0.40488652924058904,
+        "val_macro_f1_std": 0.018974070862674122,
+        "total_trainable_parameters_mean": 1486264.0
+      },
+      {
+        "dataset": "Movies",
+        "label": "B3_v1",
+        "variant": "v1",
+        "n": 3,
+        "val_acc_mean": 0.52219557762146,
+        "val_acc_std": 0.0071357975975853945,
+        "val_macro_f1_mean": 0.3987183955488404,
+        "val_macro_f1_std": 0.02061128175787106,
+        "total_trainable_parameters_mean": 1420599.0
+      },
+      {
+        "dataset": "Grocery",
+        "label": "B0_independent",
+        "variant": "independent",
+        "n": 3,
+        "val_acc_mean": 0.7992191314697266,
+        "val_acc_std": 0.005897043969141981,
+        "val_macro_f1_mean": 0.7140311377140617,
+        "val_macro_f1_std": 0.01251856545408231,
+        "total_trainable_parameters_mean": 1582874.0
+      },
+      {
+        "dataset": "Grocery",
+        "label": "B1_shared_static",
+        "variant": "shared_static",
+        "n": 3,
+        "val_acc_mean": 0.7966813047726949,
+        "val_acc_std": 0.001591964837916688,
+        "val_macro_f1_mean": 0.709043090433155,
+        "val_macro_f1_std": 0.009035996026422237,
+        "total_trainable_parameters_mean": 1319703.0
+      },
+      {
+        "dataset": "Grocery",
+        "label": "B2_mvcge_style",
+        "variant": "mvcge_style",
+        "n": 3,
+        "val_acc_mean": 0.7543191909790039,
+        "val_acc_std": 0.005324807330074662,
+        "val_macro_f1_mean": 0.6526871855030419,
+        "val_macro_f1_std": 0.005430837837127951,
+        "total_trainable_parameters_mean": 1486264.0
+      },
+      {
+        "dataset": "Grocery",
+        "label": "B3_v1",
+        "variant": "v1",
+        "n": 3,
+        "val_acc_mean": 0.8044899900754293,
+        "val_acc_std": 0.0044495051041783295,
+        "val_macro_f1_mean": 0.7224270793239013,
+        "val_macro_f1_std": 0.013310554273559533,
+        "total_trainable_parameters_mean": 1420599.0
+      },
+      {
+        "dataset": "ele-fashion",
+        "label": "B0_independent",
+        "variant": "independent",
+        "n": 3,
+        "val_acc_mean": 0.8699669241905212,
+        "val_acc_std": 0.0007102659539718511,
+        "val_macro_f1_mean": 0.739717236046454,
+        "val_macro_f1_std": 0.006404767620721419,
+        "total_trainable_parameters_mean": 1318674.0
+      },
+      {
+        "dataset": "ele-fashion",
+        "label": "B1_shared_static",
+        "variant": "shared_static",
+        "n": 3,
+        "val_acc_mean": 0.8722512125968933,
+        "val_acc_std": 0.001129736870854696,
+        "val_macro_f1_mean": 0.7393545234045752,
+        "val_macro_f1_std": 0.004658971083235394,
+        "total_trainable_parameters_mean": 1055503.0
+      },
+      {
+        "dataset": "ele-fashion",
+        "label": "B2_mvcge_style",
+        "variant": "mvcge_style",
+        "n": 3,
+        "val_acc_mean": 0.8606593608856201,
+        "val_acc_std": 0.0012311612235037298,
+        "val_macro_f1_mean": 0.7096406095099655,
+        "val_macro_f1_std": 0.006851569872063311,
+        "total_trainable_parameters_mean": 1222064.0
+      },
+      {
+        "dataset": "ele-fashion",
+        "label": "B3_v1",
+        "variant": "v1",
+        "n": 3,
+        "val_acc_mean": 0.8707851767539978,
+        "val_acc_std": 0.0006155806117518649,
+        "val_macro_f1_mean": 0.7421747204593151,
+        "val_macro_f1_std": 0.004349602996326465,
+        "total_trainable_parameters_mean": 1156399.0
+      }
+    ],
+    "paired_v1_comparisons": [
+      {
+        "comparison": "B3_v1-minus-B0_independent",
+        "paired_runs": 9,
+        "delta_val_acc_mean": 0.0006299879815843371,
+        "delta_val_macro_f1_mean": 0.002790143040212165,
+        "positive_acc_pairs": 7,
+        "positive_f1_pairs": 7,
+        "dataset_means": {
+          "Movies": {
+            "delta_val_acc": -0.0041991472244262695,
+            "delta_val_macro_f1": -0.002482996902064327
+          },
+          "Grocery": {
+            "delta_val_acc": 0.005270858605702718,
+            "delta_val_macro_f1": 0.00839594160983966
+          },
+          "ele-fashion": {
+            "delta_val_acc": 0.0008182525634765625,
+            "delta_val_macro_f1": 0.0024574844128611626
+          }
+        }
+      },
+      {
+        "comparison": "B3_v1-minus-B1_shared_static",
+        "paired_runs": 9,
+        "delta_val_acc_mean": -0.0003186199400160048,
+        "delta_val_macro_f1_mean": -0.0017131369666310754,
+        "positive_acc_pairs": 4,
+        "positive_f1_pairs": 5,
+        "dataset_means": {
+          "Movies": {
+            "delta_val_acc": -0.007298509279886882,
+            "delta_val_macro_f1": -0.02134359684537938
+          },
+          "Grocery": {
+            "delta_val_acc": 0.007808685302734375,
+            "delta_val_macro_f1": 0.013383988890746249
+          },
+          "ele-fashion": {
+            "delta_val_acc": -0.0014660358428955078,
+            "delta_val_macro_f1": 0.0028201970547399036
+          }
+        }
+      },
+      {
+        "comparison": "B3_v1-minus-B2_mvcge_style",
+        "paired_runs": 9,
+        "delta_val_acc_mean": 0.022198458512624104,
+        "delta_val_macro_f1_mean": 0.032035290359486705,
+        "positive_acc_pairs": 8,
+        "positive_f1_pairs": 6,
+        "dataset_means": {
+          "Movies": {
+            "delta_val_acc": 0.006298760573069255,
+            "delta_val_macro_f1": -0.006168133691748678
+          },
+          "Grocery": {
+            "delta_val_acc": 0.05017079909642538,
+            "delta_val_macro_f1": 0.06973989382085932
+          },
+          "ele-fashion": {
+            "delta_val_acc": 0.010125815868377686,
+            "delta_val_macro_f1": 0.03253411094934947
+          }
+        }
+      }
+    ]
+  }
+}
