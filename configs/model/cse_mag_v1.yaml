@@ -1,0 +1,21 @@
+name: cse_mag_v1
+variant: v1 # independent | shared_static | mvcge_style | v1
+
+hidden_dim: 256
+num_layers: \${model.global_order}
+dropout: 0.2
+
+# Functional Local/Global structural response experts.
+expert_bottleneck: 64
+router_hidden_dim: 128
+modality_embed_dim: 16
+global_order: 3
+global_t: 1.0
+gate_init_bias: -2.0
+
+# Direct MvCGE-style transfer control.
+naive_num_experts: 4
+naive_top_k: 2
+mvcge_balance_weight: 0.01
+
+eps: 1.0e-8
