@@ -1,0 +1,219 @@
+{
+  "branch": "exp/sosb_mag_v15_basis_screen",
+  "head": "69a894b7f05f11dcf05ea1fa82ab6957b3d6e04f",
+  "freeze_commit_sha": null,
+  "worktree_clean": false,
+  "started_at_utc": "2026-10-07T12:18:39+00:00",
+  "updated_at_utc": "2026-10-07T12:18:41+00:00",
+  "mode": "smoke",
+  "datasets": [
+    "Movies"
+  ],
+  "seeds": [
+    42
+  ],
+  "variants": [
+    "A0_legacy_lg",
+    "A1_rawpoly_shared",
+    "A2_sosb_shared",
+    "A3_sosb_modality"
+  ],
+  "expected_runs": 4,
+  "completed_or_reused_runs": 4,
+  "failures": [],
+  "device": "cuda:1",
+  "epochs_override": 1,
+  "task_protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "selection": "best_validation_accuracy",
+  "test_evaluation_attempted": false,
+  "audit_passed": true,
+  "checkpoint_count": 4,
+  "gram_audits": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "A0_legacy_lg",
+      "modalities": {
+        "text": {
+          "gram_diag_mean": 0.3133736550807953,
+          "gram_diag_min": 0.23347581923007965,
+          "gram_diag_max": 0.3932715058326721,
+          "gram_offdiag_abs_max": 0.04976772144436836,
+          "gram_condition_number": 1.8586777448654175
+        },
+        "visual": {
+          "gram_diag_mean": 0.32828018069267273,
+          "gram_diag_min": 0.2734513580799103,
+          "gram_diag_max": 0.3831090033054352,
+          "gram_offdiag_abs_max": 0.05775821954011917,
+          "gram_condition_number": 1.6405807733535767
+        }
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "A1_rawpoly_shared",
+      "modalities": {
+        "text": {
+          "gram_diag_mean": 0.9999998807907104,
+          "gram_diag_min": 0.9999996423721313,
+          "gram_diag_max": 1.0000003576278687,
+          "gram_offdiag_abs_max": 0.9947844743728638,
+          "gram_condition_number": 924.41552734375
+        },
+        "visual": {
+          "gram_diag_mean": 1.0,
+          "gram_diag_min": 0.9999997615814209,
+          "gram_diag_max": 1.0000003576278687,
+          "gram_offdiag_abs_max": 0.9930826425552368,
+          "gram_condition_number": 695.448974609375
+        }
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "A2_sosb_shared",
+      "modalities": {
+        "text": {
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_diag_min": 0.9999996423721313,
+          "gram_diag_max": 0.9999998807907104,
+          "gram_offdiag_abs_max": 2.6241486761335864e-09,
+          "gram_condition_number": 1.0000004768371582
+        },
+        "visual": {
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_diag_min": 0.9999995231628418,
+          "gram_diag_max": 0.9999998807907104,
+          "gram_offdiag_abs_max": 2.2165833613030372e-09,
+          "gram_condition_number": 1.0000005960464478
+        }
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "A3_sosb_modality",
+      "modalities": {
+        "text": {
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_diag_min": 0.9999995231628418,
+          "gram_diag_max": 0.9999998807907104,
+          "gram_offdiag_abs_max": 2.8904962867670747e-09,
+          "gram_condition_number": 1.0000005960464478
+        },
+        "visual": {
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_diag_min": 0.9999996423721313,
+          "gram_diag_max": 1.0,
+          "gram_offdiag_abs_max": 2.0020753943583713e-09,
+          "gram_condition_number": 1.0000003576278687
+        }
+      }
+    }
+  ],
+  "breakdown_statistics": [
+    {
+      "variant": "A0_legacy_lg",
+      "modality": "text",
+      "by_order": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A0_legacy_lg",
+      "modality": "visual",
+      "by_order": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A1_rawpoly_shared",
+      "modality": "text",
+      "by_order": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A1_rawpoly_shared",
+      "modality": "visual",
+      "by_order": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A2_sosb_shared",
+      "modality": "text",
+      "by_order": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A2_sosb_shared",
+      "modality": "visual",
+      "by_order": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A3_sosb_modality",
+      "modality": "text",
+      "by_order": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "variant": "A3_sosb_modality",
+      "modality": "visual",
+      "by_order": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "parameter_counts": [
+    {
+      "variant": "A0_legacy_lg",
+      "model_trainable_params": 1314563,
+      "classifier_params": 5140
+    },
+    {
+      "variant": "A1_rawpoly_shared",
+      "model_trainable_params": 1249029,
+      "classifier_params": 5140
+    },
+    {
+      "variant": "A2_sosb_shared",
+      "model_trainable_params": 1249029,
+      "classifier_params": 5140
+    },
+    {
+      "variant": "A3_sosb_modality",
+      "model_trainable_params": 1249034,
+      "classifier_params": 5140
+    }
+  ],
+  "test_metrics_absent": true
+}

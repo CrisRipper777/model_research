@@ -41,15 +41,15 @@ def _resolve_training_mode(cfg, model=None) -> str:
     return "full_graph" if _uses_graph_encoder(cfg) else "feature_only"
 
 
-def _resolve_nc_eval_labels(data: MAGData) -> list[int]:
+def _resolve_nc_eval_labels(data: MAGData, *, include_test: bool = True) -> list[int]:
     """Use one stable Macro-F1 label set across the supervised task splits."""
     if data.y is None:
         raise ValueError("NC data must contain labels")
     if data.num_classes is None:
         raise ValueError("NC data must define num_classes")
-    split_indices = [
-        idx for idx in (data.train_idx, data.val_idx, data.test_idx) if idx is not None
-    ]
+    split_indices = [idx for idx in (data.train_idx, data.val_idx) if idx is not None]
+    if include_test and data.test_idx is not None:
+        split_indices.append(data.test_idx)
     if not split_indices:
         raise ValueError("NC data must contain at least one supervised split")
     all_indices = torch.cat([idx.reshape(-1) for idx in split_indices]).to(data.y.device)
@@ -364,7 +364,9 @@ def run_nc(
     if data.y is None or data.train_idx is None or data.val_idx is None or data.test_idx is None:
         raise ValueError("NC data must contain y/train_idx/val_idx/test_idx")
     _resolve_training_mode(cfg)
-    eval_labels = _resolve_nc_eval_labels(data)
+    eval_labels = _resolve_nc_eval_labels(
+        data, include_test=bool(cfg.task.get("evaluate_test", True))
+    )
 
     run_results = []
     for run_id in range(int(cfg.num_runs)):

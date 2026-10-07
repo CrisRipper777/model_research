@@ -1,0 +1,2203 @@
+{
+  "created_at_utc": "2026-10-07T12:17:28+00:00",
+  "status": "available",
+  "expected_checkpoints": 18,
+  "available_checkpoints": 18,
+  "missing_checkpoints": [],
+  "device": "cuda:1",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "B1_shared_static",
+    "B3_v1"
+  ],
+  "label_policy": "Only feature arrays, edge indices, checkpoint weights, and model metadata were consulted. No label fields were read/indexed and no split indices or Test metrics were used. MAGB graph deserialization may materialize node fields internally, but this script accesses only graph edges and node count.",
+  "diagnostics": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Movies/seed_42/B1_shared_static/best.pt",
+      "num_nodes": 16672,
+      "active_nodes": 16672,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "local_weight": 0.5168017745018005,
+        "global_weight": 0.4831981658935547,
+        "structural_gate": 0.12178996205329895
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.5168017745018005,
+            "std": 0.0,
+            "p10": 0.5168017745018005,
+            "p50": 0.5168017745018005,
+            "p90": 0.5168017745018005
+          },
+          "routing_global_probability": {
+            "mean": 0.4831981658935547,
+            "std": 0.0,
+            "p10": 0.4831981658935547,
+            "p50": 0.4831981658935547,
+            "p90": 0.4831981658935547
+          },
+          "structural_gate": {
+            "mean": 0.12178993970155716,
+            "std": 0.0,
+            "p10": 0.12178996205329895,
+            "p50": 0.12178996205329895,
+            "p90": 0.12178996205329895
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.12547098100185394,
+            "flattened_cosine": -0.1964295506477356,
+            "rms_a": 0.5695960521697998,
+            "rms_b": 0.6073551177978516,
+            "node_cosine_std": 0.5529278516769409,
+            "node_cosine_p50": 0.2179073989391327,
+            "node_cosine_p90": 0.8010982871055603
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.0478200763463974,
+            "flattened_cosine": 0.04786587506532669,
+            "rms_a": 0.9990121722221375,
+            "rms_b": 0.9971738457679749,
+            "node_cosine_std": 0.0798632800579071,
+            "node_cosine_p50": 0.05418047308921814,
+            "node_cosine_p90": 0.14756859838962555
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.5168017745018005,
+            "std": 0.0,
+            "p10": 0.5168017745018005,
+            "p50": 0.5168017745018005,
+            "p90": 0.5168017745018005
+          },
+          "routing_global_probability": {
+            "mean": 0.4831981658935547,
+            "std": 0.0,
+            "p10": 0.4831981658935547,
+            "p50": 0.4831981658935547,
+            "p90": 0.4831981658935547
+          },
+          "structural_gate": {
+            "mean": 0.12178993970155716,
+            "std": 0.0,
+            "p10": 0.12178996205329895,
+            "p50": 0.12178996205329895,
+            "p90": 0.12178996205329895
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.05616949498653412,
+            "flattened_cosine": -0.24541111290454865,
+            "rms_a": 0.7191595435142517,
+            "rms_b": 0.5720134973526001,
+            "node_cosine_std": 0.40294528007507324,
+            "node_cosine_p50": -0.03108193911612034,
+            "node_cosine_p90": 0.46297481656074524
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.0034509841352701187,
+            "flattened_cosine": -0.003392659593373537,
+            "rms_a": 0.9996289014816284,
+            "rms_b": 0.9984868168830872,
+            "node_cosine_std": 0.28788748383522034,
+            "node_cosine_p50": -0.0026565068401396275,
+            "node_cosine_p90": 0.39167216420173645
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Movies/seed_42/B3_v1/best.pt",
+      "num_nodes": 16672,
+      "active_nodes": 16672,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.8055984377861023,
+          "std": 0.05420856550335884,
+          "p10": 0.7367925047874451,
+          "p50": 0.804676353931427,
+          "p90": 0.8733940124511719
+        },
+        "visual_local_weight": {
+          "mean": 0.6157572269439697,
+          "std": 0.22992156445980072,
+          "p10": 0.2641977369785309,
+          "p50": 0.6612635850906372,
+          "p90": 0.8846429586410522
+        },
+        "text_structural_gate": {
+          "mean": 0.20359379053115845,
+          "std": 0.05867308750748634,
+          "p10": 0.15862885117530823,
+          "p50": 0.18793584406375885,
+          "p90": 0.2615954577922821
+        },
+        "visual_structural_gate": {
+          "mean": 0.501409649848938,
+          "std": 0.14444462954998016,
+          "p10": 0.324052631855011,
+          "p50": 0.48801976442337036,
+          "p90": 0.6990211606025696
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.05080405995249748,
+          "std": 0.07125987857580185,
+          "p10": 0.0005547410110011697,
+          "p50": 0.01795203424990177,
+          "p90": 0.1556665450334549
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.8055984377861023,
+            "std": 0.05420856550335884,
+            "p10": 0.7367925047874451,
+            "p50": 0.804676353931427,
+            "p90": 0.8733940124511719
+          },
+          "routing_global_probability": {
+            "mean": 0.1944015771150589,
+            "std": 0.05420856550335884,
+            "p10": 0.12660592794418335,
+            "p50": 0.19532367587089539,
+            "p90": 0.26320749521255493
+          },
+          "structural_gate": {
+            "mean": 0.20359379053115845,
+            "std": 0.05867308750748634,
+            "p10": 0.15862885117530823,
+            "p50": 0.18793584406375885,
+            "p90": 0.2615954577922821
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.15748314559459686,
+            "flattened_cosine": -0.1885461062192917,
+            "rms_a": 0.5511748194694519,
+            "rms_b": 0.6113253831863403,
+            "node_cosine_std": 0.5792596340179443,
+            "node_cosine_p50": 0.28060346841812134,
+            "node_cosine_p90": 0.8420111536979675
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.02768525294959545,
+            "flattened_cosine": 0.02772480994462967,
+            "rms_a": 0.998721182346344,
+            "rms_b": 0.9969095587730408,
+            "node_cosine_std": 0.05309682711958885,
+            "node_cosine_p50": 0.03422826528549194,
+            "node_cosine_p90": 0.08898691833019257
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.6157572269439697,
+            "std": 0.22992156445980072,
+            "p10": 0.2641977369785309,
+            "p50": 0.6612635850906372,
+            "p90": 0.8846429586410522
+          },
+          "routing_global_probability": {
+            "mean": 0.38424283266067505,
+            "std": 0.22992156445980072,
+            "p10": 0.11535708606243134,
+            "p50": 0.3387364447116852,
+            "p90": 0.7358022332191467
+          },
+          "structural_gate": {
+            "mean": 0.501409649848938,
+            "std": 0.14444462954998016,
+            "p10": 0.324052631855011,
+            "p50": 0.48801976442337036,
+            "p90": 0.6990211606025696
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.046438585966825485,
+            "flattened_cosine": -0.241582453250885,
+            "rms_a": 0.7164018154144287,
+            "rms_b": 0.5730376839637756,
+            "node_cosine_std": 0.4148348271846771,
+            "node_cosine_p50": -0.024912144988775253,
+            "node_cosine_p90": 0.4978163540363312
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.008010420016944408,
+            "flattened_cosine": -0.00796397402882576,
+            "rms_a": 0.9995882511138916,
+            "rms_b": 0.9983139038085938,
+            "node_cosine_std": 0.14031721651554108,
+            "node_cosine_p50": -0.005184931214898825,
+            "node_cosine_p90": 0.17671078443527222
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Movies/seed_43/B1_shared_static/best.pt",
+      "num_nodes": 16672,
+      "active_nodes": 16672,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "local_weight": 0.5156058073043823,
+        "global_weight": 0.48439422249794006,
+        "structural_gate": 0.12326247245073318
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.5156058669090271,
+            "std": 0.0,
+            "p10": 0.5156058073043823,
+            "p50": 0.5156058073043823,
+            "p90": 0.5156058073043823
+          },
+          "routing_global_probability": {
+            "mean": 0.48439422249794006,
+            "std": 0.0,
+            "p10": 0.48439422249794006,
+            "p50": 0.48439422249794006,
+            "p90": 0.48439422249794006
+          },
+          "structural_gate": {
+            "mean": 0.12326248735189438,
+            "std": 0.0,
+            "p10": 0.12326247245073318,
+            "p50": 0.12326247245073318,
+            "p90": 0.12326247245073318
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.09173886477947235,
+            "flattened_cosine": -0.2066284418106079,
+            "rms_a": 0.5926207900047302,
+            "rms_b": 0.603425145149231,
+            "node_cosine_std": 0.5278050899505615,
+            "node_cosine_p50": 0.15622523427009583,
+            "node_cosine_p90": 0.7541173696517944
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.029672034084796906,
+            "flattened_cosine": 0.029683344066143036,
+            "rms_a": 0.9992192387580872,
+            "rms_b": 0.9973145723342896,
+            "node_cosine_std": 0.0919112116098404,
+            "node_cosine_p50": 0.034537285566329956,
+            "node_cosine_p90": 0.14637628197669983
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.5156058669090271,
+            "std": 0.0,
+            "p10": 0.5156058073043823,
+            "p50": 0.5156058073043823,
+            "p90": 0.5156058073043823
+          },
+          "routing_global_probability": {
+            "mean": 0.48439422249794006,
+            "std": 0.0,
+            "p10": 0.48439422249794006,
+            "p50": 0.48439422249794006,
+            "p90": 0.48439422249794006
+          },
+          "structural_gate": {
+            "mean": 0.12326248735189438,
+            "std": 0.0,
+            "p10": 0.12326247245073318,
+            "p50": 0.12326247245073318,
+            "p90": 0.12326247245073318
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.07259534299373627,
+            "flattened_cosine": -0.2525510787963867,
+            "rms_a": 0.7332177758216858,
+            "rms_b": 0.5678552985191345,
+            "node_cosine_std": 0.39222845435142517,
+            "node_cosine_p50": -0.0491190031170845,
+            "node_cosine_p90": 0.43444132804870605
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.01356362272053957,
+            "flattened_cosine": 0.013659896329045296,
+            "rms_a": 0.9996644258499146,
+            "rms_b": 0.9986645579338074,
+            "node_cosine_std": 0.35624581575393677,
+            "node_cosine_p50": 0.013747100718319416,
+            "node_cosine_p90": 0.5035895705223083
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Movies/seed_43/B3_v1/best.pt",
+      "num_nodes": 16672,
+      "active_nodes": 16672,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.8538655042648315,
+          "std": 0.03138318285346031,
+          "p10": 0.8151751756668091,
+          "p50": 0.8553768396377563,
+          "p90": 0.890218198299408
+        },
+        "visual_local_weight": {
+          "mean": 0.6895222067832947,
+          "std": 0.12927456200122833,
+          "p10": 0.5118474960327148,
+          "p50": 0.7047629356384277,
+          "p90": 0.8451822400093079
+        },
+        "text_structural_gate": {
+          "mean": 0.23399867117404938,
+          "std": 0.06304630637168884,
+          "p10": 0.18759171664714813,
+          "p50": 0.22249923646450043,
+          "p90": 0.2802494764328003
+        },
+        "visual_structural_gate": {
+          "mean": 0.5188248753547668,
+          "std": 0.16425661742687225,
+          "p10": 0.29529762268066406,
+          "p50": 0.5183082222938538,
+          "p90": 0.7348011136054993
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.028502868488430977,
+          "std": 0.03227129578590393,
+          "p10": 0.0007579530356451869,
+          "p50": 0.017300093546509743,
+          "p90": 0.07119646668434143
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.8538655042648315,
+            "std": 0.03138318285346031,
+            "p10": 0.8151751756668091,
+            "p50": 0.8553768396377563,
+            "p90": 0.890218198299408
+          },
+          "routing_global_probability": {
+            "mean": 0.14613445103168488,
+            "std": 0.03138318285346031,
+            "p10": 0.10978180915117264,
+            "p50": 0.14462314546108246,
+            "p90": 0.1848248541355133
+          },
+          "structural_gate": {
+            "mean": 0.23399867117404938,
+            "std": 0.06304630637168884,
+            "p10": 0.18759171664714813,
+            "p50": 0.22249923646450043,
+            "p90": 0.2802494764328003
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.14484107494354248,
+            "flattened_cosine": -0.19256803393363953,
+            "rms_a": 0.5599660277366638,
+            "rms_b": 0.610512912273407,
+            "node_cosine_std": 0.570635199546814,
+            "node_cosine_p50": 0.2490554004907608,
+            "node_cosine_p90": 0.8292539119720459
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.03557595983147621,
+            "flattened_cosine": 0.035522688180208206,
+            "rms_a": 0.9989424347877502,
+            "rms_b": 0.9971240162849426,
+            "node_cosine_std": 0.07628440856933594,
+            "node_cosine_p50": 0.04013132303953171,
+            "node_cosine_p90": 0.13050290942192078
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.6895222067832947,
+            "std": 0.12927456200122833,
+            "p10": 0.5118474960327148,
+            "p50": 0.7047629356384277,
+            "p90": 0.8451822400093079
+          },
+          "routing_global_probability": {
+            "mean": 0.31047776341438293,
+            "std": 0.12927456200122833,
+            "p10": 0.15481773018836975,
+            "p50": 0.29523712396621704,
+            "p90": 0.4881524443626404
+          },
+          "structural_gate": {
+            "mean": 0.5188248753547668,
+            "std": 0.16425661742687225,
+            "p10": 0.29529762268066406,
+            "p50": 0.5183082222938538,
+            "p90": 0.7348011136054993
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.05762467533349991,
+            "flattened_cosine": -0.24577295780181885,
+            "rms_a": 0.7271998524665833,
+            "rms_b": 0.5701172947883606,
+            "node_cosine_std": 0.40618979930877686,
+            "node_cosine_p50": -0.036695972084999084,
+            "node_cosine_p90": 0.4738512337207794
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.002254275605082512,
+            "flattened_cosine": 0.002307235263288021,
+            "rms_a": 0.9996010065078735,
+            "rms_b": 0.9985510110855103,
+            "node_cosine_std": 0.13640102744102478,
+            "node_cosine_p50": 0.004483047407120466,
+            "node_cosine_p90": 0.18054498732089996
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Movies/seed_44/B1_shared_static/best.pt",
+      "num_nodes": 16672,
+      "active_nodes": 16672,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "local_weight": 0.5211860537528992,
+        "global_weight": 0.47881394624710083,
+        "structural_gate": 0.12318550795316696
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.521186113357544,
+            "std": 0.0,
+            "p10": 0.5211860537528992,
+            "p50": 0.5211860537528992,
+            "p90": 0.5211860537528992
+          },
+          "routing_global_probability": {
+            "mean": 0.47881388664245605,
+            "std": 0.0,
+            "p10": 0.47881394624710083,
+            "p50": 0.47881394624710083,
+            "p90": 0.47881394624710083
+          },
+          "structural_gate": {
+            "mean": 0.12318551540374756,
+            "std": 0.0,
+            "p10": 0.12318550795316696,
+            "p50": 0.12318550795316696,
+            "p90": 0.12318550795316696
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.08259919285774231,
+            "flattened_cosine": -0.20804186165332794,
+            "rms_a": 0.5987991094589233,
+            "rms_b": 0.601353108882904,
+            "node_cosine_std": 0.5213006138801575,
+            "node_cosine_p50": 0.14582237601280212,
+            "node_cosine_p90": 0.7406424880027771
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.018888674676418304,
+            "flattened_cosine": 0.018885068595409393,
+            "rms_a": 0.9992527961730957,
+            "rms_b": 0.9975875616073608,
+            "node_cosine_std": 0.11065766215324402,
+            "node_cosine_p50": 0.017533423379063606,
+            "node_cosine_p90": 0.1657055765390396
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.521186113357544,
+            "std": 0.0,
+            "p10": 0.5211860537528992,
+            "p50": 0.5211860537528992,
+            "p90": 0.5211860537528992
+          },
+          "routing_global_probability": {
+            "mean": 0.47881388664245605,
+            "std": 0.0,
+            "p10": 0.47881394624710083,
+            "p50": 0.47881394624710083,
+            "p90": 0.47881394624710083
+          },
+          "structural_gate": {
+            "mean": 0.12318551540374756,
+            "std": 0.0,
+            "p10": 0.12318550795316696,
+            "p50": 0.12318550795316696,
+            "p90": 0.12318550795316696
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.0758780837059021,
+            "flattened_cosine": -0.2542684078216553,
+            "rms_a": 0.7339508533477783,
+            "rms_b": 0.5675082802772522,
+            "node_cosine_std": 0.3865123391151428,
+            "node_cosine_p50": -0.050325244665145874,
+            "node_cosine_p90": 0.4191516637802124
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.003993109334260225,
+            "flattened_cosine": 0.004072306677699089,
+            "rms_a": 0.9996582269668579,
+            "rms_b": 0.9986274838447571,
+            "node_cosine_std": 0.3471475839614868,
+            "node_cosine_p50": 0.004930346272885799,
+            "node_cosine_p90": 0.48511695861816406
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Movies/seed_44/B3_v1/best.pt",
+      "num_nodes": 16672,
+      "active_nodes": 16672,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.9949119091033936,
+          "std": 0.004466786980628967,
+          "p10": 0.9900542497634888,
+          "p50": 0.9961845874786377,
+          "p90": 0.9984501600265503
+        },
+        "visual_local_weight": {
+          "mean": 0.6000458598136902,
+          "std": 0.28945061564445496,
+          "p10": 0.16855214536190033,
+          "p50": 0.6477679014205933,
+          "p90": 0.9526652693748474
+        },
+        "text_structural_gate": {
+          "mean": 0.46220582723617554,
+          "std": 0.08205283433198929,
+          "p10": 0.36071544885635376,
+          "p50": 0.45929500460624695,
+          "p90": 0.5650272369384766
+        },
+        "visual_structural_gate": {
+          "mean": 0.6439371705055237,
+          "std": 0.15362513065338135,
+          "p10": 0.4332117438316345,
+          "p50": 0.6515887975692749,
+          "p90": 0.8428869843482971
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.1799183189868927,
+          "std": 0.16058380901813507,
+          "p10": 0.011288739740848541,
+          "p50": 0.13000768423080444,
+          "p90": 0.4338165819644928
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.9949119091033936,
+            "std": 0.004466786980628967,
+            "p10": 0.9900542497634888,
+            "p50": 0.9961845874786377,
+            "p90": 0.9984501600265503
+          },
+          "routing_global_probability": {
+            "mean": 0.005088012665510178,
+            "std": 0.004466786980628967,
+            "p10": 0.0015498363645747304,
+            "p50": 0.0038154381327331066,
+            "p90": 0.009945718571543694
+          },
+          "structural_gate": {
+            "mean": 0.46220582723617554,
+            "std": 0.08205283433198929,
+            "p10": 0.36071544885635376,
+            "p50": 0.45929500460624695,
+            "p90": 0.5650272369384766
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.06994237750768661,
+            "flattened_cosine": -0.21216747164726257,
+            "rms_a": 0.6109700202941895,
+            "rms_b": 0.599481999874115,
+            "node_cosine_std": 0.5161451697349548,
+            "node_cosine_p50": 0.12042450159788132,
+            "node_cosine_p90": 0.7322708964347839
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.004553647246211767,
+            "flattened_cosine": 0.0045196134597063065,
+            "rms_a": 0.9993460774421692,
+            "rms_b": 0.9977424144744873,
+            "node_cosine_std": 0.05459820106625557,
+            "node_cosine_p50": 0.0058759599924087524,
+            "node_cosine_p90": 0.07292983680963516
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.6000458598136902,
+            "std": 0.28945061564445496,
+            "p10": 0.16855214536190033,
+            "p50": 0.6477679014205933,
+            "p90": 0.9526652693748474
+          },
+          "routing_global_probability": {
+            "mean": 0.3999541699886322,
+            "std": 0.28945061564445496,
+            "p10": 0.04733467102050781,
+            "p50": 0.35223209857940674,
+            "p90": 0.8314478397369385
+          },
+          "structural_gate": {
+            "mean": 0.6439371705055237,
+            "std": 0.15362513065338135,
+            "p10": 0.4332117438316345,
+            "p50": 0.6515887975692749,
+            "p90": 0.8428869843482971
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.08094655722379684,
+            "flattened_cosine": -0.2563735246658325,
+            "rms_a": 0.7439472079277039,
+            "rms_b": 0.5655001401901245,
+            "node_cosine_std": 0.386488676071167,
+            "node_cosine_p50": -0.059882692992687225,
+            "node_cosine_p90": 0.42112231254577637
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.00014301299233920872,
+            "flattened_cosine": -0.00010824475612025708,
+            "rms_a": 0.9996113777160645,
+            "rms_b": 0.9983863234519958,
+            "node_cosine_std": 0.0988292247056961,
+            "node_cosine_p50": -0.00019881222397089005,
+            "node_cosine_p90": 0.12817101180553436
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Grocery/seed_42/B1_shared_static/best.pt",
+      "num_nodes": 17074,
+      "active_nodes": 17074,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "local_weight": 0.47919607162475586,
+        "global_weight": 0.5208039283752441,
+        "structural_gate": 0.12636251747608185
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.47919613122940063,
+            "std": 0.0,
+            "p10": 0.47919607162475586,
+            "p50": 0.47919607162475586,
+            "p90": 0.47919607162475586
+          },
+          "routing_global_probability": {
+            "mean": 0.5208039283752441,
+            "std": 0.0,
+            "p10": 0.5208039283752441,
+            "p50": 0.5208039283752441,
+            "p90": 0.5208039283752441
+          },
+          "structural_gate": {
+            "mean": 0.12636251747608185,
+            "std": 0.0,
+            "p10": 0.12636251747608185,
+            "p50": 0.12636251747608185,
+            "p90": 0.12636251747608185
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.06311018764972687,
+            "flattened_cosine": -0.29997026920318604,
+            "rms_a": 0.6761999726295471,
+            "rms_b": 0.6094663143157959,
+            "node_cosine_std": 0.545430600643158,
+            "node_cosine_p50": 0.17517736554145813,
+            "node_cosine_p90": 0.7116307616233826
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.014397197403013706,
+            "flattened_cosine": -0.014329895377159119,
+            "rms_a": 0.9994918704032898,
+            "rms_b": 0.9951651096343994,
+            "node_cosine_std": 0.2118949294090271,
+            "node_cosine_p50": -0.011518623679876328,
+            "node_cosine_p90": 0.26839765906333923
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.47919613122940063,
+            "std": 0.0,
+            "p10": 0.47919607162475586,
+            "p50": 0.47919607162475586,
+            "p90": 0.47919607162475586
+          },
+          "routing_global_probability": {
+            "mean": 0.5208039283752441,
+            "std": 0.0,
+            "p10": 0.5208039283752441,
+            "p50": 0.5208039283752441,
+            "p90": 0.5208039283752441
+          },
+          "structural_gate": {
+            "mean": 0.12636251747608185,
+            "std": 0.0,
+            "p10": 0.12636251747608185,
+            "p50": 0.12636251747608185,
+            "p90": 0.12636251747608185
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.027250172570347786,
+            "flattened_cosine": -0.3120473027229309,
+            "rms_a": 0.6973736882209778,
+            "rms_b": 0.6093513369560242,
+            "node_cosine_std": 0.5284851789474487,
+            "node_cosine_p50": 0.10378245264291763,
+            "node_cosine_p90": 0.6808674931526184
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.031426556408405304,
+            "flattened_cosine": 0.031732700765132904,
+            "rms_a": 0.9986624121665955,
+            "rms_b": 0.9964698553085327,
+            "node_cosine_std": 0.278810977935791,
+            "node_cosine_p50": 0.04758148640394211,
+            "node_cosine_p90": 0.3910207748413086
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Grocery/seed_42/B3_v1/best.pt",
+      "num_nodes": 17074,
+      "active_nodes": 17074,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.09930188208818436,
+          "std": 0.10731454938650131,
+          "p10": 0.019145118072628975,
+          "p50": 0.06285899877548218,
+          "p90": 0.2214326709508896
+        },
+        "visual_local_weight": {
+          "mean": 0.10677266120910645,
+          "std": 0.18137332797050476,
+          "p10": 0.0012531629763543606,
+          "p50": 0.024393998086452484,
+          "p90": 0.3535439670085907
+        },
+        "text_structural_gate": {
+          "mean": 0.512522280216217,
+          "std": 0.17295359075069427,
+          "p10": 0.27545639872550964,
+          "p50": 0.5232207179069519,
+          "p90": 0.73511803150177
+        },
+        "visual_structural_gate": {
+          "mean": 0.641365110874176,
+          "std": 0.28087732195854187,
+          "p10": 0.19519971311092377,
+          "p50": 0.7119558453559875,
+          "p90": 0.9603391289710999
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.0445484034717083,
+          "std": 0.07405620813369751,
+          "p10": 0.0007255314267240465,
+          "p50": 0.01577865518629551,
+          "p90": 0.12321802973747253
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.09930188208818436,
+            "std": 0.10731454938650131,
+            "p10": 0.019145118072628975,
+            "p50": 0.06285899877548218,
+            "p90": 0.2214326709508896
+          },
+          "routing_global_probability": {
+            "mean": 0.9006981253623962,
+            "std": 0.10731454938650131,
+            "p10": 0.7785673141479492,
+            "p50": 0.9371410608291626,
+            "p90": 0.980854868888855
+          },
+          "structural_gate": {
+            "mean": 0.512522280216217,
+            "std": 0.17295359075069427,
+            "p10": 0.27545639872550964,
+            "p50": 0.5232207179069519,
+            "p90": 0.73511803150177
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.035300202667713165,
+            "flattened_cosine": -0.27804386615753174,
+            "rms_a": 0.7517504692077637,
+            "rms_b": 0.5702405571937561,
+            "node_cosine_std": 0.4533759355545044,
+            "node_cosine_p50": -0.011358287185430527,
+            "node_cosine_p90": 0.5499445796012878
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.0005020140088163316,
+            "flattened_cosine": 0.0004947400884702802,
+            "rms_a": 0.9996408820152283,
+            "rms_b": 0.9971219301223755,
+            "node_cosine_std": 0.08086270093917847,
+            "node_cosine_p50": 0.0017925705760717392,
+            "node_cosine_p90": 0.1037936881184578
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.10677266120910645,
+            "std": 0.18137332797050476,
+            "p10": 0.0012531629763543606,
+            "p50": 0.024393998086452484,
+            "p90": 0.3535439670085907
+          },
+          "routing_global_probability": {
+            "mean": 0.8932273387908936,
+            "std": 0.18137334287166595,
+            "p10": 0.6464560031890869,
+            "p50": 0.9756060242652893,
+            "p90": 0.9987468123435974
+          },
+          "structural_gate": {
+            "mean": 0.641365110874176,
+            "std": 0.28087732195854187,
+            "p10": 0.19519971311092377,
+            "p50": 0.7119558453559875,
+            "p90": 0.9603391289710999
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.08721814304590225,
+            "flattened_cosine": -0.3023625612258911,
+            "rms_a": 0.7923240065574646,
+            "rms_b": 0.5626326203346252,
+            "node_cosine_std": 0.4320451617240906,
+            "node_cosine_p50": -0.0912216454744339,
+            "node_cosine_p90": 0.48883557319641113
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.004150806460529566,
+            "flattened_cosine": -0.004125661216676235,
+            "rms_a": 0.9988672137260437,
+            "rms_b": 0.9974388480186462,
+            "node_cosine_std": 0.09958906471729279,
+            "node_cosine_p50": -0.0009073019027709961,
+            "node_cosine_p90": 0.12169327586889267
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Grocery/seed_43/B1_shared_static/best.pt",
+      "num_nodes": 17074,
+      "active_nodes": 17074,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "local_weight": 0.4761416018009186,
+        "global_weight": 0.5238584280014038,
+        "structural_gate": 0.12725496292114258
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.47614166140556335,
+            "std": 0.0,
+            "p10": 0.4761416018009186,
+            "p50": 0.4761416018009186,
+            "p90": 0.4761416018009186
+          },
+          "routing_global_probability": {
+            "mean": 0.5238584876060486,
+            "std": 0.0,
+            "p10": 0.5238584280014038,
+            "p50": 0.5238584280014038,
+            "p90": 0.5238584280014038
+          },
+          "structural_gate": {
+            "mean": 0.12725497782230377,
+            "std": 0.0,
+            "p10": 0.12725496292114258,
+            "p50": 0.12725496292114258,
+            "p90": 0.12725496292114258
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.08181624114513397,
+            "flattened_cosine": -0.303835391998291,
+            "rms_a": 0.666171669960022,
+            "rms_b": 0.6151068210601807,
+            "node_cosine_std": 0.5643965005874634,
+            "node_cosine_p50": 0.21225441992282867,
+            "node_cosine_p90": 0.7409195303916931
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.01035410724580288,
+            "flattened_cosine": -0.010198061354458332,
+            "rms_a": 0.9993767142295837,
+            "rms_b": 0.9945806860923767,
+            "node_cosine_std": 0.1979866921901703,
+            "node_cosine_p50": -0.013446800410747528,
+            "node_cosine_p90": 0.25609803199768066
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.47614166140556335,
+            "std": 0.0,
+            "p10": 0.4761416018009186,
+            "p50": 0.4761416018009186,
+            "p90": 0.4761416018009186
+          },
+          "routing_global_probability": {
+            "mean": 0.5238584876060486,
+            "std": 0.0,
+            "p10": 0.5238584280014038,
+            "p50": 0.5238584280014038,
+            "p90": 0.5238584280014038
+          },
+          "structural_gate": {
+            "mean": 0.12725497782230377,
+            "std": 0.0,
+            "p10": 0.12725496292114258,
+            "p50": 0.12725496292114258,
+            "p90": 0.12725496292114258
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.028720494359731674,
+            "flattened_cosine": -0.31418371200561523,
+            "rms_a": 0.6962170600891113,
+            "rms_b": 0.6103917360305786,
+            "node_cosine_std": 0.5312829613685608,
+            "node_cosine_p50": 0.10984396934509277,
+            "node_cosine_p90": 0.6838936805725098
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.03939592465758324,
+            "flattened_cosine": 0.039742108434438705,
+            "rms_a": 0.9986850023269653,
+            "rms_b": 0.9958551526069641,
+            "node_cosine_std": 0.2712935209274292,
+            "node_cosine_p50": 0.058620139956474304,
+            "node_cosine_p90": 0.38643962144851685
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Grocery/seed_43/B3_v1/best.pt",
+      "num_nodes": 17074,
+      "active_nodes": 17074,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.3590530753135681,
+          "std": 0.22580444812774658,
+          "p10": 0.12954173982143402,
+          "p50": 0.2927360534667969,
+          "p90": 0.7113813757896423
+        },
+        "visual_local_weight": {
+          "mean": 0.21732547879219055,
+          "std": 0.2016494870185852,
+          "p10": 0.025134390220046043,
+          "p50": 0.14797241985797882,
+          "p90": 0.5254236459732056
+        },
+        "text_structural_gate": {
+          "mean": 0.536155641078949,
+          "std": 0.2068009376525879,
+          "p10": 0.24069178104400635,
+          "p50": 0.5574499368667603,
+          "p90": 0.7964860200881958
+        },
+        "visual_structural_gate": {
+          "mean": 0.7676203846931458,
+          "std": 0.24014070630073547,
+          "p10": 0.3738154470920563,
+          "p50": 0.8636824488639832,
+          "p90": 0.9883949756622314
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.08912952989339828,
+          "std": 0.12380281835794449,
+          "p10": 0.0013637582305818796,
+          "p50": 0.04023224115371704,
+          "p90": 0.2481573522090912
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.3590530753135681,
+            "std": 0.22580444812774658,
+            "p10": 0.12954173982143402,
+            "p50": 0.2927360534667969,
+            "p90": 0.7113813757896423
+          },
+          "routing_global_probability": {
+            "mean": 0.6409469246864319,
+            "std": 0.22580444812774658,
+            "p10": 0.28861844539642334,
+            "p50": 0.7072639465332031,
+            "p90": 0.8704582452774048
+          },
+          "structural_gate": {
+            "mean": 0.536155641078949,
+            "std": 0.2068009376525879,
+            "p10": 0.24069178104400635,
+            "p50": 0.5574499368667603,
+            "p90": 0.7964860200881958
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.04371112212538719,
+            "flattened_cosine": -0.2811453938484192,
+            "rms_a": 0.7567266225814819,
+            "rms_b": 0.5694905519485474,
+            "node_cosine_std": 0.4486565887928009,
+            "node_cosine_p50": -0.02251732349395752,
+            "node_cosine_p90": 0.5375707149505615
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.005227536428719759,
+            "flattened_cosine": 0.0052651651203632355,
+            "rms_a": 0.9997018575668335,
+            "rms_b": 0.9972584247589111,
+            "node_cosine_std": 0.07636693865060806,
+            "node_cosine_p50": 0.0037118177860975266,
+            "node_cosine_p90": 0.1051144003868103
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.21732547879219055,
+            "std": 0.2016494870185852,
+            "p10": 0.025134390220046043,
+            "p50": 0.14797241985797882,
+            "p90": 0.5254236459732056
+          },
+          "routing_global_probability": {
+            "mean": 0.7826745510101318,
+            "std": 0.2016494870185852,
+            "p10": 0.47457626461982727,
+            "p50": 0.8520275950431824,
+            "p90": 0.9748656153678894
+          },
+          "structural_gate": {
+            "mean": 0.7676203846931458,
+            "std": 0.24014070630073547,
+            "p10": 0.3738154470920563,
+            "p50": 0.8636824488639832,
+            "p90": 0.9883949756622314
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.10596252232789993,
+            "flattened_cosine": -0.30598777532577515,
+            "rms_a": 0.8069084286689758,
+            "rms_b": 0.5548046827316284,
+            "node_cosine_std": 0.4182354807853699,
+            "node_cosine_p50": -0.11509843915700912,
+            "node_cosine_p90": 0.45161426067352295
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.006088163238018751,
+            "flattened_cosine": 0.006176006980240345,
+            "rms_a": 0.9988940358161926,
+            "rms_b": 0.9978179931640625,
+            "node_cosine_std": 0.09502726048231125,
+            "node_cosine_p50": 0.007372510619461536,
+            "node_cosine_p90": 0.12874643504619598
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Grocery/seed_44/B1_shared_static/best.pt",
+      "num_nodes": 17074,
+      "active_nodes": 17074,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "local_weight": 0.4777374863624573,
+        "global_weight": 0.522262454032898,
+        "structural_gate": 0.12616807222366333
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.4777374863624573,
+            "std": 0.0,
+            "p10": 0.4777374863624573,
+            "p50": 0.4777374863624573,
+            "p90": 0.4777374863624573
+          },
+          "routing_global_probability": {
+            "mean": 0.522262454032898,
+            "std": 0.0,
+            "p10": 0.522262454032898,
+            "p50": 0.522262454032898,
+            "p90": 0.522262454032898
+          },
+          "structural_gate": {
+            "mean": 0.12616807222366333,
+            "std": 0.0,
+            "p10": 0.12616807222366333,
+            "p50": 0.12616807222366333,
+            "p90": 0.12616807222366333
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.08354929834604263,
+            "flattened_cosine": -0.304023802280426,
+            "rms_a": 0.6657332181930542,
+            "rms_b": 0.6158215999603271,
+            "node_cosine_std": 0.5657283067703247,
+            "node_cosine_p50": 0.21682724356651306,
+            "node_cosine_p90": 0.7412082552909851
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.011823565699160099,
+            "flattened_cosine": -0.011684194207191467,
+            "rms_a": 0.999427080154419,
+            "rms_b": 0.9947115182876587,
+            "node_cosine_std": 0.19190135598182678,
+            "node_cosine_p50": -0.012949216179549694,
+            "node_cosine_p90": 0.24864955246448517
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.4777374863624573,
+            "std": 0.0,
+            "p10": 0.4777374863624573,
+            "p50": 0.4777374863624573,
+            "p90": 0.4777374863624573
+          },
+          "routing_global_probability": {
+            "mean": 0.522262454032898,
+            "std": 0.0,
+            "p10": 0.522262454032898,
+            "p50": 0.522262454032898,
+            "p90": 0.522262454032898
+          },
+          "structural_gate": {
+            "mean": 0.12616807222366333,
+            "std": 0.0,
+            "p10": 0.12616807222366333,
+            "p50": 0.12616807222366333,
+            "p90": 0.12616807222366333
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": 0.03974083065986633,
+            "flattened_cosine": -0.3109651803970337,
+            "rms_a": 0.6911819577217102,
+            "rms_b": 0.6119061708450317,
+            "node_cosine_std": 0.5405046343803406,
+            "node_cosine_p50": 0.12344350665807724,
+            "node_cosine_p90": 0.7055588364601135
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.031985003501176834,
+            "flattened_cosine": 0.03229150176048279,
+            "rms_a": 0.9986607432365417,
+            "rms_b": 0.9960862398147583,
+            "node_cosine_std": 0.2867375314235687,
+            "node_cosine_p50": 0.05318740755319595,
+            "node_cosine_p90": 0.40167436003685
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/Grocery/seed_44/B3_v1/best.pt",
+      "num_nodes": 17074,
+      "active_nodes": 17074,
+      "isolated_nodes": 0,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.28626763820648193,
+          "std": 0.14507406949996948,
+          "p10": 0.144869863986969,
+          "p50": 0.2472890019416809,
+          "p90": 0.4810560643672943
+        },
+        "visual_local_weight": {
+          "mean": 0.23325307667255402,
+          "std": 0.1699192225933075,
+          "p10": 0.06274756789207458,
+          "p50": 0.18428301811218262,
+          "p90": 0.4812315106391907
+        },
+        "text_structural_gate": {
+          "mean": 0.5160576105117798,
+          "std": 0.1648261547088623,
+          "p10": 0.2849172353744507,
+          "p50": 0.5298861265182495,
+          "p90": 0.722953736782074
+        },
+        "visual_structural_gate": {
+          "mean": 0.6670742034912109,
+          "std": 0.24611641466617584,
+          "p10": 0.2824161648750305,
+          "p50": 0.7252324819564819,
+          "p90": 0.9479612112045288
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.03759879991412163,
+          "std": 0.054513126611709595,
+          "p10": 0.0006015269318595529,
+          "p50": 0.016479646787047386,
+          "p90": 0.10386302322149277
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.28626763820648193,
+            "std": 0.14507406949996948,
+            "p10": 0.144869863986969,
+            "p50": 0.2472890019416809,
+            "p90": 0.4810560643672943
+          },
+          "routing_global_probability": {
+            "mean": 0.7137323617935181,
+            "std": 0.14507406949996948,
+            "p10": 0.5189439654350281,
+            "p50": 0.7527109980583191,
+            "p90": 0.8551300764083862
+          },
+          "structural_gate": {
+            "mean": 0.5160576105117798,
+            "std": 0.1648261547088623,
+            "p10": 0.2849172353744507,
+            "p50": 0.5298861265182495,
+            "p90": 0.722953736782074
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.01795020140707493,
+            "flattened_cosine": -0.2825036644935608,
+            "rms_a": 0.7363601922988892,
+            "rms_b": 0.5800661444664001,
+            "node_cosine_std": 0.469185471534729,
+            "node_cosine_p50": 0.019633976742625237,
+            "node_cosine_p90": 0.5792742967605591
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.005145987030118704,
+            "flattened_cosine": -0.0051337541081011295,
+            "rms_a": 0.9996522068977356,
+            "rms_b": 0.9967149496078491,
+            "node_cosine_std": 0.09170142561197281,
+            "node_cosine_p50": -0.004802681505680084,
+            "node_cosine_p90": 0.11515437811613083
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.23325307667255402,
+            "std": 0.1699192225933075,
+            "p10": 0.06274756789207458,
+            "p50": 0.18428301811218262,
+            "p90": 0.4812315106391907
+          },
+          "routing_global_probability": {
+            "mean": 0.7667469382286072,
+            "std": 0.1699192076921463,
+            "p10": 0.5187684297561646,
+            "p50": 0.8157169818878174,
+            "p90": 0.9372523427009583
+          },
+          "structural_gate": {
+            "mean": 0.6670742034912109,
+            "std": 0.24611641466617584,
+            "p10": 0.2824161648750305,
+            "p50": 0.7252324819564819,
+            "p90": 0.9479612112045288
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.07377993315458298,
+            "flattened_cosine": -0.29993975162506104,
+            "rms_a": 0.7811131477355957,
+            "rms_b": 0.5669174790382385,
+            "node_cosine_std": 0.44334307312965393,
+            "node_cosine_p50": -0.07828421890735626,
+            "node_cosine_p90": 0.5209854245185852
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.0003852038353215903,
+            "flattened_cosine": -0.00031897902954369783,
+            "rms_a": 0.998836874961853,
+            "rms_b": 0.9973321557044983,
+            "node_cosine_std": 0.11882731318473816,
+            "node_cosine_p50": 0.004921115469187498,
+            "node_cosine_p90": 0.14846573770046234
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/ele-fashion/seed_42/B1_shared_static/best.pt",
+      "num_nodes": 97766,
+      "active_nodes": 97763,
+      "isolated_nodes": 3,
+      "learned_composition": {
+        "local_weight": 0.4638074040412903,
+        "global_weight": 0.5361925959587097,
+        "structural_gate": 0.13867586851119995
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.46380746364593506,
+            "std": 0.0,
+            "p10": 0.4638074040412903,
+            "p50": 0.4638074040412903,
+            "p90": 0.4638074040412903
+          },
+          "routing_global_probability": {
+            "mean": 0.5361924767494202,
+            "std": 0.0,
+            "p10": 0.5361925959587097,
+            "p50": 0.5361925959587097,
+            "p90": 0.5361925959587097
+          },
+          "structural_gate": {
+            "mean": 0.13867580890655518,
+            "std": 0.0,
+            "p10": 0.13867586851119995,
+            "p50": 0.13867586851119995,
+            "p90": 0.13867586851119995
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.3841644525527954,
+            "flattened_cosine": -0.5739624500274658,
+            "rms_a": 0.8930485248565674,
+            "rms_b": 0.7252951264381409,
+            "node_cosine_std": 0.4797833561897278,
+            "node_cosine_p50": -0.5237828493118286,
+            "node_cosine_p90": 0.36994990706443787
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.0016684104921296239,
+            "flattened_cosine": 0.0017525802832096815,
+            "rms_a": 0.9993061423301697,
+            "rms_b": 0.9960328936576843,
+            "node_cosine_std": 0.2704150378704071,
+            "node_cosine_p50": -0.007463879883289337,
+            "node_cosine_p90": 0.3697054982185364
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.46380746364593506,
+            "std": 0.0,
+            "p10": 0.4638074040412903,
+            "p50": 0.4638074040412903,
+            "p90": 0.4638074040412903
+          },
+          "routing_global_probability": {
+            "mean": 0.5361924767494202,
+            "std": 0.0,
+            "p10": 0.5361925959587097,
+            "p50": 0.5361925959587097,
+            "p90": 0.5361925959587097
+          },
+          "structural_gate": {
+            "mean": 0.13867580890655518,
+            "std": 0.0,
+            "p10": 0.13867586851119995,
+            "p50": 0.13867586851119995,
+            "p90": 0.13867586851119995
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.43349704146385193,
+            "flattened_cosine": -0.6112913489341736,
+            "rms_a": 0.9043208956718445,
+            "rms_b": 0.7483929395675659,
+            "node_cosine_std": 0.46567243337631226,
+            "node_cosine_p50": -0.5807180404663086,
+            "node_cosine_p90": 0.2826348543167114
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.0198728796094656,
+            "flattened_cosine": 0.019983824342489243,
+            "rms_a": 0.9977282285690308,
+            "rms_b": 0.99563068151474,
+            "node_cosine_std": 0.18702800571918488,
+            "node_cosine_p50": 0.014257043600082397,
+            "node_cosine_p90": 0.27181532979011536
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/ele-fashion/seed_42/B3_v1/best.pt",
+      "num_nodes": 97766,
+      "active_nodes": 97763,
+      "isolated_nodes": 3,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.487557977437973,
+          "std": 0.32857900857925415,
+          "p10": 0.04097326844930649,
+          "p50": 0.4793640375137329,
+          "p90": 0.9484918713569641
+        },
+        "visual_local_weight": {
+          "mean": 0.4723019003868103,
+          "std": 0.26112523674964905,
+          "p10": 0.1790284961462021,
+          "p50": 0.4085870087146759,
+          "p90": 0.9171610474586487
+        },
+        "text_structural_gate": {
+          "mean": 0.7184818983078003,
+          "std": 0.2805122137069702,
+          "p10": 0.26167401671409607,
+          "p50": 0.8260434865951538,
+          "p90": 0.9939040541648865
+        },
+        "visual_structural_gate": {
+          "mean": 0.7083081603050232,
+          "std": 0.2352272868156433,
+          "p10": 0.347467839717865,
+          "p50": 0.762456476688385,
+          "p90": 0.9749648571014404
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.12341142445802689,
+          "std": 0.15032576024532318,
+          "p10": 0.0015537501312792301,
+          "p50": 0.06336143612861633,
+          "p90": 0.33262401819229126
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.487557977437973,
+            "std": 0.32857900857925415,
+            "p10": 0.04097326844930649,
+            "p50": 0.4793640375137329,
+            "p90": 0.9484918713569641
+          },
+          "routing_global_probability": {
+            "mean": 0.5124419927597046,
+            "std": 0.32857900857925415,
+            "p10": 0.051508136093616486,
+            "p50": 0.5206359624862671,
+            "p90": 0.9590266942977905
+          },
+          "structural_gate": {
+            "mean": 0.7184818983078003,
+            "std": 0.2805122137069702,
+            "p10": 0.26167401671409607,
+            "p50": 0.8260434865951538,
+            "p90": 0.9939040541648865
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.378865122795105,
+            "flattened_cosine": -0.562035322189331,
+            "rms_a": 0.9016268253326416,
+            "rms_b": 0.7181598544120789,
+            "node_cosine_std": 0.47188013792037964,
+            "node_cosine_p50": -0.5079928040504456,
+            "node_cosine_p90": 0.3535950779914856
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.020265692844986916,
+            "flattened_cosine": -0.020265743136405945,
+            "rms_a": 0.9993226528167725,
+            "rms_b": 0.9972860217094421,
+            "node_cosine_std": 0.09401953220367432,
+            "node_cosine_p50": -0.01778506487607956,
+            "node_cosine_p90": 0.09807167947292328
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.4723019003868103,
+            "std": 0.26112523674964905,
+            "p10": 0.1790284961462021,
+            "p50": 0.4085870087146759,
+            "p90": 0.9171610474586487
+          },
+          "routing_global_probability": {
+            "mean": 0.5276980996131897,
+            "std": 0.26112523674964905,
+            "p10": 0.0828389897942543,
+            "p50": 0.5914129614830017,
+            "p90": 0.8209714889526367
+          },
+          "structural_gate": {
+            "mean": 0.7083081603050232,
+            "std": 0.2352272868156433,
+            "p10": 0.347467839717865,
+            "p50": 0.762456476688385,
+            "p90": 0.9749648571014404
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.4283634126186371,
+            "flattened_cosine": -0.5945115089416504,
+            "rms_a": 0.913354754447937,
+            "rms_b": 0.7313904166221619,
+            "node_cosine_std": 0.44265225529670715,
+            "node_cosine_p50": -0.5525064468383789,
+            "node_cosine_p90": 0.24224884808063507
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.004623083397746086,
+            "flattened_cosine": -0.004622925538569689,
+            "rms_a": 0.9978511333465576,
+            "rms_b": 0.9965898990631104,
+            "node_cosine_std": 0.07746321707963943,
+            "node_cosine_p50": -0.007031690329313278,
+            "node_cosine_p90": 0.09712241590023041
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/ele-fashion/seed_43/B1_shared_static/best.pt",
+      "num_nodes": 97766,
+      "active_nodes": 97763,
+      "isolated_nodes": 3,
+      "learned_composition": {
+        "local_weight": 0.4750722348690033,
+        "global_weight": 0.5249277353286743,
+        "structural_gate": 0.1386585384607315
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.47507232427597046,
+            "std": 0.0,
+            "p10": 0.4750722348690033,
+            "p50": 0.4750722348690033,
+            "p90": 0.4750722348690033
+          },
+          "routing_global_probability": {
+            "mean": 0.5249276161193848,
+            "std": 0.0,
+            "p10": 0.5249277353286743,
+            "p50": 0.5249277353286743,
+            "p90": 0.5249277353286743
+          },
+          "structural_gate": {
+            "mean": 0.1386585235595703,
+            "std": 0.0,
+            "p10": 0.1386585384607315,
+            "p50": 0.1386585384607315,
+            "p90": 0.1386585384607315
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.3813043534755707,
+            "flattened_cosine": -0.5740783214569092,
+            "rms_a": 0.8914697766304016,
+            "rms_b": 0.7261452078819275,
+            "node_cosine_std": 0.4851903021335602,
+            "node_cosine_p50": -0.5236027836799622,
+            "node_cosine_p90": 0.38597598671913147
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.010893287137150764,
+            "flattened_cosine": 0.011007667519152164,
+            "rms_a": 0.9992804527282715,
+            "rms_b": 0.9958005547523499,
+            "node_cosine_std": 0.2341589480638504,
+            "node_cosine_p50": 0.00950506329536438,
+            "node_cosine_p90": 0.31474441289901733
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.47507232427597046,
+            "std": 0.0,
+            "p10": 0.4750722348690033,
+            "p50": 0.4750722348690033,
+            "p90": 0.4750722348690033
+          },
+          "routing_global_probability": {
+            "mean": 0.5249276161193848,
+            "std": 0.0,
+            "p10": 0.5249277353286743,
+            "p50": 0.5249277353286743,
+            "p90": 0.5249277353286743
+          },
+          "structural_gate": {
+            "mean": 0.1386585235595703,
+            "std": 0.0,
+            "p10": 0.1386585384607315,
+            "p50": 0.1386585384607315,
+            "p90": 0.1386585384607315
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.436833918094635,
+            "flattened_cosine": -0.6148661375045776,
+            "rms_a": 0.9059605002403259,
+            "rms_b": 0.7526296377182007,
+            "node_cosine_std": 0.46958813071250916,
+            "node_cosine_p50": -0.5846397876739502,
+            "node_cosine_p90": 0.2872391641139984
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.03314898535609245,
+            "flattened_cosine": 0.033243779093027115,
+            "rms_a": 0.9976829290390015,
+            "rms_b": 0.9954543709754944,
+            "node_cosine_std": 0.15070883929729462,
+            "node_cosine_p50": 0.034757696092128754,
+            "node_cosine_p90": 0.22723649442195892
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/ele-fashion/seed_43/B3_v1/best.pt",
+      "num_nodes": 97766,
+      "active_nodes": 97763,
+      "isolated_nodes": 3,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.5707138776779175,
+          "std": 0.292523592710495,
+          "p10": 0.14413350820541382,
+          "p50": 0.5974037647247314,
+          "p90": 0.9469329118728638
+        },
+        "visual_local_weight": {
+          "mean": 0.5723814368247986,
+          "std": 0.27744799852371216,
+          "p10": 0.2131618708372116,
+          "p50": 0.5386359691619873,
+          "p90": 0.9885308742523193
+        },
+        "text_structural_gate": {
+          "mean": 0.6261777281761169,
+          "std": 0.28682494163513184,
+          "p10": 0.20229491591453552,
+          "p50": 0.6737484931945801,
+          "p90": 0.9695932865142822
+        },
+        "visual_structural_gate": {
+          "mean": 0.6750026345252991,
+          "std": 0.26922696828842163,
+          "p10": 0.25484800338745117,
+          "p50": 0.7524271011352539,
+          "p90": 0.9700438976287842
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.14098243415355682,
+          "std": 0.1575060337781906,
+          "p10": 0.0025012665428221226,
+          "p50": 0.08409759402275085,
+          "p90": 0.37082159519195557
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.5707138776779175,
+            "std": 0.292523592710495,
+            "p10": 0.14413350820541382,
+            "p50": 0.5974037647247314,
+            "p90": 0.9469329118728638
+          },
+          "routing_global_probability": {
+            "mean": 0.4292861521244049,
+            "std": 0.292523592710495,
+            "p10": 0.05306712165474892,
+            "p50": 0.40259623527526855,
+            "p90": 0.8558664917945862
+          },
+          "structural_gate": {
+            "mean": 0.6261777281761169,
+            "std": 0.28682494163513184,
+            "p10": 0.20229491591453552,
+            "p50": 0.6737484931945801,
+            "p90": 0.9695932865142822
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.37234362959861755,
+            "flattened_cosine": -0.5692193508148193,
+            "rms_a": 0.8952915072441101,
+            "rms_b": 0.725937008857727,
+            "node_cosine_std": 0.498300164937973,
+            "node_cosine_p50": -0.5171887874603271,
+            "node_cosine_p90": 0.41557878255844116
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.015489498153328896,
+            "flattened_cosine": -0.015496861189603806,
+            "rms_a": 0.9993019104003906,
+            "rms_b": 0.9971367120742798,
+            "node_cosine_std": 0.08992855250835419,
+            "node_cosine_p50": -0.01633884385228157,
+            "node_cosine_p90": 0.10120242089033127
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.5723814368247986,
+            "std": 0.27744799852371216,
+            "p10": 0.2131618708372116,
+            "p50": 0.5386359691619873,
+            "p90": 0.9885308742523193
+          },
+          "routing_global_probability": {
+            "mean": 0.42761847376823425,
+            "std": 0.27744796872138977,
+            "p10": 0.011469084769487381,
+            "p50": 0.4613640606403351,
+            "p90": 0.7868380546569824
+          },
+          "structural_gate": {
+            "mean": 0.6750026345252991,
+            "std": 0.26922696828842163,
+            "p10": 0.25484800338745117,
+            "p50": 0.7524271011352539,
+            "p90": 0.9700438976287842
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.4320785701274872,
+            "flattened_cosine": -0.6088377237319946,
+            "rms_a": 0.9085952043533325,
+            "rms_b": 0.7481258511543274,
+            "node_cosine_std": 0.4684544801712036,
+            "node_cosine_p50": -0.5722198486328125,
+            "node_cosine_p90": 0.2895597219467163
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.0010139765217900276,
+            "flattened_cosine": -0.000977375078946352,
+            "rms_a": 0.9978411197662354,
+            "rms_b": 0.9966866970062256,
+            "node_cosine_std": 0.07111141830682755,
+            "node_cosine_p50": 0.0,
+            "node_cosine_p90": 0.09010834991931915
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant_label": "B1_shared_static",
+      "variant": "shared_static",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/ele-fashion/seed_44/B1_shared_static/best.pt",
+      "num_nodes": 97766,
+      "active_nodes": 97763,
+      "isolated_nodes": 3,
+      "learned_composition": {
+        "local_weight": 0.477425217628479,
+        "global_weight": 0.522574782371521,
+        "structural_gate": 0.13614362478256226
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.47742512822151184,
+            "std": 0.0,
+            "p10": 0.477425217628479,
+            "p50": 0.477425217628479,
+            "p90": 0.477425217628479
+          },
+          "routing_global_probability": {
+            "mean": 0.5225748419761658,
+            "std": 0.0,
+            "p10": 0.522574782371521,
+            "p50": 0.522574782371521,
+            "p90": 0.522574782371521
+          },
+          "structural_gate": {
+            "mean": 0.13614366948604584,
+            "std": 0.0,
+            "p10": 0.13614362478256226,
+            "p50": 0.13614362478256226,
+            "p90": 0.13614362478256226
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.38029927015304565,
+            "flattened_cosine": -0.5830141305923462,
+            "rms_a": 0.888314425945282,
+            "rms_b": 0.7362902164459229,
+            "node_cosine_std": 0.5038585662841797,
+            "node_cosine_p50": -0.5370121598243713,
+            "node_cosine_p90": 0.42260900139808655
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": 0.007265565451234579,
+            "flattened_cosine": 0.007383015472441912,
+            "rms_a": 0.9992892146110535,
+            "rms_b": 0.9955489039421082,
+            "node_cosine_std": 0.2351142019033432,
+            "node_cosine_p50": 0.0004496462643146515,
+            "node_cosine_p90": 0.3249465227127075
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.47742512822151184,
+            "std": 0.0,
+            "p10": 0.477425217628479,
+            "p50": 0.477425217628479,
+            "p90": 0.477425217628479
+          },
+          "routing_global_probability": {
+            "mean": 0.5225748419761658,
+            "std": 0.0,
+            "p10": 0.522574782371521,
+            "p50": 0.522574782371521,
+            "p90": 0.522574782371521
+          },
+          "structural_gate": {
+            "mean": 0.13614366948604584,
+            "std": 0.0,
+            "p10": 0.13614362478256226,
+            "p50": 0.13614362478256226,
+            "p90": 0.13614362478256226
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.42702069878578186,
+            "flattened_cosine": -0.6160321831703186,
+            "rms_a": 0.8985837697982788,
+            "rms_b": 0.75510174036026,
+            "node_cosine_std": 0.48703107237815857,
+            "node_cosine_p50": -0.5870059728622437,
+            "node_cosine_p90": 0.33390918374061584
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.019114725291728973,
+            "flattened_cosine": -0.019096072763204575,
+            "rms_a": 0.9976916313171387,
+            "rms_b": 0.9955083131790161,
+            "node_cosine_std": 0.17539425194263458,
+            "node_cosine_p50": -0.011905349791049957,
+            "node_cosine_p90": 0.20828953385353088
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant_label": "B3_v1",
+      "variant": "v1",
+      "checkpoint": "outputs/cse_mag_v1_local_global_screen/runs/ele-fashion/seed_44/B3_v1/best.pt",
+      "num_nodes": 97766,
+      "active_nodes": 97763,
+      "isolated_nodes": 3,
+      "learned_composition": {
+        "text_local_weight": {
+          "mean": 0.45036426186561584,
+          "std": 0.35048627853393555,
+          "p10": 0.01523167546838522,
+          "p50": 0.4080166220664978,
+          "p90": 0.9552252292633057
+        },
+        "visual_local_weight": {
+          "mean": 0.4017150104045868,
+          "std": 0.3139376938343048,
+          "p10": 0.04326585307717323,
+          "p50": 0.32238832116127014,
+          "p90": 0.8745988011360168
+        },
+        "text_structural_gate": {
+          "mean": 0.6604583263397217,
+          "std": 0.2821301221847534,
+          "p10": 0.23863521218299866,
+          "p50": 0.7146996855735779,
+          "p90": 0.9832020401954651
+        },
+        "visual_structural_gate": {
+          "mean": 0.638934314250946,
+          "std": 0.249822199344635,
+          "p10": 0.26657429337501526,
+          "p50": 0.6802031993865967,
+          "p90": 0.9460732340812683
+        },
+        "per_node_text_visual_routing_js": {
+          "mean": 0.13077127933502197,
+          "std": 0.15646503865718842,
+          "p10": 0.0016057888278737664,
+          "p50": 0.06455206125974655,
+          "p90": 0.37670695781707764
+        }
+      },
+      "modalities": {
+        "text": {
+          "routing_local_probability": {
+            "mean": 0.45036426186561584,
+            "std": 0.35048627853393555,
+            "p10": 0.01523167546838522,
+            "p50": 0.4080166220664978,
+            "p90": 0.9552252292633057
+          },
+          "routing_global_probability": {
+            "mean": 0.5496357679367065,
+            "std": 0.35048627853393555,
+            "p10": 0.04477476328611374,
+            "p50": 0.591983437538147,
+            "p90": 0.9847683310508728
+          },
+          "structural_gate": {
+            "mean": 0.6604583263397217,
+            "std": 0.2821301221847534,
+            "p10": 0.23863521218299866,
+            "p50": 0.7146996855735779,
+            "p90": 0.9832020401954651
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.37238702178001404,
+            "flattened_cosine": -0.5643443465232849,
+            "rms_a": 0.8980528712272644,
+            "rms_b": 0.7224791049957275,
+            "node_cosine_std": 0.4865938127040863,
+            "node_cosine_p50": -0.5104776620864868,
+            "node_cosine_p90": 0.39122939109802246
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.017081089317798615,
+            "flattened_cosine": -0.017072312533855438,
+            "rms_a": 0.999342143535614,
+            "rms_b": 0.9972540736198425,
+            "node_cosine_std": 0.09149925410747528,
+            "node_cosine_p50": -0.014849039725959301,
+            "node_cosine_p90": 0.09908819198608398
+          }
+        },
+        "visual": {
+          "routing_local_probability": {
+            "mean": 0.4017150104045868,
+            "std": 0.3139376938343048,
+            "p10": 0.04326585307717323,
+            "p50": 0.32238832116127014,
+            "p90": 0.8745988011360168
+          },
+          "routing_global_probability": {
+            "mean": 0.5982849597930908,
+            "std": 0.3139376938343048,
+            "p10": 0.12540121376514435,
+            "p50": 0.6776116490364075,
+            "p90": 0.9567341804504395
+          },
+          "structural_gate": {
+            "mean": 0.638934314250946,
+            "std": 0.249822199344635,
+            "p10": 0.26657429337501526,
+            "p50": 0.6802031993865967,
+            "p90": 0.9460732340812683
+          },
+          "raw_response_cosine": {
+            "mean_node_cosine": -0.42823293805122375,
+            "flattened_cosine": -0.594480037689209,
+            "rms_a": 0.91483074426651,
+            "rms_b": 0.7311056852340698,
+            "node_cosine_std": 0.44732028245925903,
+            "node_cosine_p50": -0.5503571033477783,
+            "node_cosine_p90": 0.2509315311908722
+          },
+          "expert_response_cosine": {
+            "mean_node_cosine": -0.027245571836829185,
+            "flattened_cosine": -0.027280613780021667,
+            "rms_a": 0.9978684782981873,
+            "rms_b": 0.9972270131111145,
+            "node_cosine_std": 0.09020170569419861,
+            "node_cosine_p50": -0.026735831052064896,
+            "node_cosine_p90": 0.09099406749010086
+          }
+        }
+      },
+      "label_access": {
+        "label_fields_consulted": false,
+        "split_indices_loaded": false,
+        "test_labels_accessed": false,
+        "test_metrics_computed": false
+      }
+    }
+  ]
+}

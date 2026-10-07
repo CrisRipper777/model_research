@@ -1,0 +1,462 @@
+[
+  {
+    "status": "reused",
+    "dataset": "Movies",
+    "seed": 42,
+    "label": "A0_legacy_lg",
+    "variant": "A0_legacy_lg",
+    "metrics": {
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693
+    },
+    "metadata": {
+      "best_epoch": 1,
+      "model_parameters": 1314563,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 3.0177,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A0_legacy_lg/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A0_legacy_lg/best.pt",
+    "audit": {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant_label": "A0_legacy_lg",
+      "embedding_finite": true,
+      "parameter_count_model": 1314563,
+      "parameter_count_classifier": 5140,
+      "modalities": {
+        "text": {
+          "gram_diag_min": 0.23347581923007965,
+          "gram_diag_max": 0.3932715058326721,
+          "gram_diag_mean": 0.3133736550807953,
+          "gram_offdiag_abs_mean": 0.04976772144436836,
+          "gram_offdiag_abs_max": 0.04976772144436836,
+          "gram_condition_number": 1.8586777448654175,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.500499963760376,
+            0.499500036239624
+          ],
+          "gate": 0.1190980076789856,
+          "prior_rms": 1.0006648302078247,
+          "structural_response_rms": 0.7068639397621155,
+          "scaled_structural_rms": 0.08418608456850052,
+          "scaled_structural_to_prior_rms_ratio": 0.08413015230186134,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": null
+        },
+        "visual": {
+          "gram_diag_min": 0.2734513580799103,
+          "gram_diag_max": 0.3831090033054352,
+          "gram_diag_mean": 0.32828018069267273,
+          "gram_offdiag_abs_mean": 0.05775821954011917,
+          "gram_offdiag_abs_max": 0.05775821954011917,
+          "gram_condition_number": 1.6405807733535767,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.500499963760376,
+            0.499500036239624
+          ],
+          "gate": 0.1190980076789856,
+          "prior_rms": 0.9986863136291504,
+          "structural_response_rms": 0.7020010948181152,
+          "scaled_structural_rms": 0.08360692858695984,
+          "scaled_structural_to_prior_rms_ratio": 0.08371690634583606,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": null
+        }
+      },
+      "test_metrics_present": false,
+      "train_loss": 3.0177,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1314563,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "other_depth_fields": {}
+      },
+      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A0_legacy_lg/best.pt"
+    }
+  },
+  {
+    "status": "reused",
+    "dataset": "Movies",
+    "seed": 42,
+    "label": "A1_rawpoly_shared",
+    "variant": "A1_rawpoly_shared",
+    "metrics": {
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693
+    },
+    "metadata": {
+      "best_epoch": 1,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 2.9838,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A1_rawpoly_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A1_rawpoly_shared/best.pt",
+    "audit": {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant_label": "A1_rawpoly_shared",
+      "embedding_finite": true,
+      "parameter_count_model": 1249029,
+      "parameter_count_classifier": 5140,
+      "modalities": {
+        "text": {
+          "gram_diag_min": 0.9999996423721313,
+          "gram_diag_max": 1.0000003576278687,
+          "gram_diag_mean": 0.9999998807907104,
+          "gram_offdiag_abs_mean": 0.9684276580810547,
+          "gram_offdiag_abs_max": 0.9947844743728638,
+          "gram_condition_number": 924.41552734375,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.49850136041641235,
+            0.5004976391792297,
+            0.5004989504814148,
+            0.5004990100860596
+          ],
+          "gate": 0.1193079799413681,
+          "prior_rms": 1.0005781650543213,
+          "structural_response_rms": 1.9761910438537598,
+          "scaled_structural_rms": 0.23577536642551422,
+          "scaled_structural_to_prior_rms_ratio": 0.2356391281162067,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": null
+        },
+        "visual": {
+          "gram_diag_min": 0.9999997615814209,
+          "gram_diag_max": 1.0000003576278687,
+          "gram_diag_mean": 1.0,
+          "gram_offdiag_abs_mean": 0.9564325014750162,
+          "gram_offdiag_abs_max": 0.9930826425552368,
+          "gram_condition_number": 695.448974609375,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.49850136041641235,
+            0.5004976391792297,
+            0.5004989504814148,
+            0.5004990100860596
+          ],
+          "gate": 0.1193079799413681,
+          "prior_rms": 0.9985600709915161,
+          "structural_response_rms": 1.9670687913894653,
+          "scaled_structural_rms": 0.23468701541423798,
+          "scaled_structural_to_prior_rms_ratio": 0.23502543535633913,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": null
+        }
+      },
+      "test_metrics_present": false,
+      "train_loss": 2.9838,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1249029,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "other_depth_fields": {}
+      },
+      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A1_rawpoly_shared/best.pt"
+    }
+  },
+  {
+    "status": "reused",
+    "dataset": "Movies",
+    "seed": 42,
+    "label": "A2_sosb_shared",
+    "variant": "A2_sosb_shared",
+    "metrics": {
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693
+    },
+    "metadata": {
+      "best_epoch": 1,
+      "model_parameters": 1249029,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 3.0025,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A2_sosb_shared/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A2_sosb_shared/best.pt",
+    "audit": {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant_label": "A2_sosb_shared",
+      "embedding_finite": true,
+      "parameter_count_model": 1249029,
+      "parameter_count_classifier": 5140,
+      "modalities": {
+        "text": {
+          "gram_diag_min": 0.9999996423721313,
+          "gram_diag_max": 0.9999998807907104,
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_offdiag_abs_mean": 1.1184213555281985e-09,
+          "gram_offdiag_abs_max": 2.6241486761335864e-09,
+          "gram_condition_number": 1.0000004768371582,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.5009990334510803,
+            0.500998854637146,
+            0.49899911880493164,
+            0.49899905920028687
+          ],
+          "gate": 0.11930796504020691,
+          "prior_rms": 1.0006086826324463,
+          "structural_response_rms": 1.0,
+          "scaled_structural_rms": 0.11930796504020691,
+          "scaled_structural_to_prior_rms_ratio": 0.1192353885300357,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": 256
+        },
+        "visual": {
+          "gram_diag_min": 0.9999995231628418,
+          "gram_diag_max": 0.9999998807907104,
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_offdiag_abs_mean": 1.208693367615865e-09,
+          "gram_offdiag_abs_max": 2.2165833613030372e-09,
+          "gram_condition_number": 1.0000005960464478,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.5009990334510803,
+            0.500998854637146,
+            0.49899911880493164,
+            0.49899905920028687
+          ],
+          "gate": 0.11930796504020691,
+          "prior_rms": 0.9986340999603271,
+          "structural_response_rms": 1.0,
+          "scaled_structural_rms": 0.11930796504020691,
+          "scaled_structural_to_prior_rms_ratio": 0.11947115068967369,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": 256
+        }
+      },
+      "test_metrics_present": false,
+      "train_loss": 3.0025,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1249029,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "other_depth_fields": {}
+      },
+      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A2_sosb_shared/best.pt"
+    }
+  },
+  {
+    "status": "reused",
+    "dataset": "Movies",
+    "seed": 42,
+    "label": "A3_sosb_modality",
+    "variant": "A3_sosb_modality",
+    "metrics": {
+      "val_acc": 0.3293341398239136,
+      "val_macro_f1": 0.02477436823104693
+    },
+    "metadata": {
+      "best_epoch": 1,
+      "model_parameters": 1249034,
+      "classifier_parameters": 5140,
+      "optimizer": "AdamW",
+      "optimizer_groups": [
+        {
+          "lr": 0.001,
+          "weight_decay": 0.0001
+        }
+      ],
+      "hidden_dim": 256,
+      "num_layers": 4,
+      "other_depth_fields": {}
+    },
+    "train_loss": 3.0025,
+    "metrics_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A3_sosb_modality/run_metrics.json",
+    "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A3_sosb_modality/best.pt",
+    "audit": {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant_label": "A3_sosb_modality",
+      "embedding_finite": true,
+      "parameter_count_model": 1249034,
+      "parameter_count_classifier": 5140,
+      "modalities": {
+        "text": {
+          "gram_diag_min": 0.9999995231628418,
+          "gram_diag_max": 0.9999998807907104,
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_offdiag_abs_mean": 1.1336155717837453e-09,
+          "gram_offdiag_abs_max": 2.8904962867670747e-09,
+          "gram_condition_number": 1.0000005960464478,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.5009989738464355,
+            0.500998854637146,
+            0.4989992082118988,
+            0.4989990293979645
+          ],
+          "gate": 0.11930796504020691,
+          "prior_rms": 1.0006086826324463,
+          "structural_response_rms": 1.0,
+          "scaled_structural_rms": 0.11930796504020691,
+          "scaled_structural_to_prior_rms_ratio": 0.1192353885300357,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": 256
+        },
+        "visual": {
+          "gram_diag_min": 0.9999996423721313,
+          "gram_diag_max": 1.0,
+          "gram_diag_mean": 0.9999997615814209,
+          "gram_offdiag_abs_mean": 1.1255715618811262e-09,
+          "gram_offdiag_abs_max": 2.0020753943583713e-09,
+          "gram_condition_number": 1.0000003576278687,
+          "gram_condition_jitter": 1e-06,
+          "basis_finite": true,
+          "effective_beta": [
+            0.5015006065368652,
+            0.4994988739490509,
+            0.49949875473976135,
+            0.4994986951351166
+          ],
+          "gate": 0.11930796504020691,
+          "prior_rms": 0.9986340403556824,
+          "structural_response_rms": 1.0,
+          "scaled_structural_rms": 0.11930795758962631,
+          "scaled_structural_to_prior_rms_ratio": 0.11947115035967784,
+          "breakdown_fraction_by_order": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stable_channel_count": 256
+        }
+      },
+      "test_metrics_present": false,
+      "train_loss": 3.0025,
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1249034,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": 4,
+        "other_depth_fields": {}
+      },
+      "checkpoint_path": "outputs/sosb_mag_v15_basis_screen/smoke/runs/Movies/seed_42/A3_sosb_modality/best.pt"
+    }
+  }
+]

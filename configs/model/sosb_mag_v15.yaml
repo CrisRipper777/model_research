@@ -1,0 +1,11 @@
+name: sosb_mag_v15
+variant: A2_sosb_shared
+
+hidden_dim: 256
+num_layers: 4
+dropout: 0.2
+expert_bottleneck: 64
+basis_order: 4
+eps: 1.0e-8
+basis_breakdown_eps: 1.0e-5
+gate_init: -2.0
