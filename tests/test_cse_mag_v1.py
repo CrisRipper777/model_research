@@ -132,3 +132,9 @@ def test_isolated_node_structural_displacements_are_finite():
             atol=0.0,
             rtol=0.0,
         )
+        assert torch.allclose(
+            details["output"][5],
+            details["prior"][5],
+            atol=1.0e-7,
+            rtol=0.0,
+        )
