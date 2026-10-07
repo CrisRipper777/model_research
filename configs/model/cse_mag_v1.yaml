@@ -2,7 +2,7 @@ name: cse_mag_v1
 variant: v1 # independent | shared_static | mvcge_style | v1
 
 hidden_dim: 256
-num_layers: \${model.global_order}
+num_layers: ${model.global_order}
 dropout: 0.2
 
 # Functional Local/Global structural response experts.
