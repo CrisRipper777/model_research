@@ -36,10 +36,13 @@ class _ResponseExpert(nn.Module):
 
     def __init__(self, hidden_dim: int, bottleneck_dim: int, dropout: float):
         super().__init__()
-        self.linear1 = nn.Linear(hidden_dim, bottleneck_dim)
-        self.linear2 = nn.Linear(bottleneck_dim, hidden_dim)
+        # Bias-free transforms plus non-affine normalization guarantee that a
+        # zero structural displacement remains exactly zero. This matters for
+        # isolated nodes and for the protected-prior interpretation.
+        self.linear1 = nn.Linear(hidden_dim, bottleneck_dim, bias=False)
+        self.linear2 = nn.Linear(bottleneck_dim, hidden_dim, bias=False)
         self.dropout = nn.Dropout(dropout)
-        self.norm = nn.LayerNorm(hidden_dim)
+        self.norm = nn.LayerNorm(hidden_dim, elementwise_affine=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         y = self.linear2(self.dropout(F.gelu(self.linear1(x))))
@@ -244,7 +247,9 @@ class Model(nn.Module):
             self.naive_num_experts,
             self.dropout_p,
         )
-        self.naive_output_norm = nn.LayerNorm(self.hidden_dim)
+        self.naive_output_norm = nn.LayerNorm(
+            self.hidden_dim, elementwise_affine=False
+        )
 
         self.fusion_linear1 = nn.Linear(2 * self.hidden_dim, self.hidden_dim)
         self.fusion_linear2 = nn.Linear(self.hidden_dim, self.hidden_dim)
