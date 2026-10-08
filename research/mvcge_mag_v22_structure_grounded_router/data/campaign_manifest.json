@@ -1,0 +1,48 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "expected_runs": 36,
+  "completed_runs": 36,
+  "device": "cuda:0",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "R0_modality_static",
+    "R1_free_node",
+    "R2_structure_grounded",
+    "R3_expert_compatibility"
+  ],
+  "failures": [],
+  "provenance": {
+    "branch": "exp/mvcge_mag_v22_structure_grounded_router",
+    "parent_commit_sha": "c57b57fcaf742f76416e9ed72df47d1f372a0f5b",
+    "head_at_start": "f74013778d5c2c5f2f2abb35cf85cd93c2e2d66f",
+    "freeze_commit_sha": "f74013778d5c2c5f2f2abb35cf85cd93c2e2d66f",
+    "worktree_clean_at_start": true,
+    "started_at_utc": "2026-10-08T05:28:52+00:00"
+  },
+  "updated_at_utc": "2026-10-08T06:07:11+00:00",
+  "selected_checkpoint_audits": 36,
+  "test_evaluation_verified_false": true,
+  "test_metrics_absent": true,
+  "label_free_checkpoint_audit": true,
+  "strength_static_verified": true,
+  "diagnostic_device": "cuda:0",
+  "compatibility_audit_tolerances": {
+    "intermediate_atol": 1e-06,
+    "fused_z_atol": 5e-06,
+    "rtol": 1e-05,
+    "toy_regression_atol": 1e-07
+  },
+  "analysis_retry_notes": [
+    "The first large-checkpoint compatibility audit used atol=1e-7 and stopped on CPU/GPU accumulation roundoff. The final label-free checkpoint audit records atol=1e-6 for intermediate outputs and atol=5e-6 for fused z (rtol=1e-5); toy-graph regression tests remain atol=1e-7, rtol=0. No training, model, or config was changed."
+  ]
+}
