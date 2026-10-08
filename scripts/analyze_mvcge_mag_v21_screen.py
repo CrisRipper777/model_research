@@ -648,6 +648,10 @@ def make_report(rows, summary, paired, audits, cross_rows, manifest) -> str:
     }
     union_mean = statistics.fmean(a["num_experts_used_union"] for a in dynamic_audits)
     dead_both_total = sum(a["num_experts_dead_both_modalities"] for a in dynamic_audits)
+    u0_audits = variant_audits["U0_modality_static"]
+    u0_union_mean = statistics.fmean(a["num_experts_used_union"] for a in u0_audits)
+    u0_dead_both_total = sum(a["num_experts_dead_both_modalities"] for a in u0_audits)
+    dead_both_total_all = sum(a["num_experts_dead_both_modalities"] for a in audits)
     functional_node = [a["functional_cosine_summary"] for a in dynamic_audits]
     functional_flat = [a["functional_cosine_summary"] for a in dynamic_audits]
     node_means = [a["mean_node_mean"] for a in functional_node if a["mean_node_mean"] is not None]
@@ -682,20 +686,27 @@ def make_report(rows, summary, paired, audits, cross_rows, manifest) -> str:
         ("F", not u3_positive, "U3 未高于 U2；本次屏幕不支持保留 cross-modal context 以提升准确率。"),
         ("G", u2_approx_equal_u0, "U2 与 U0 的准确率差在 ±0.10 pp 内；该结果与 shared expert bank 主要依赖 modality-level utilization 相容。"),
         ("H", low_dynamic_pair_entropy and u1_positive, "U1/U2 的 Top-2 pair entropy 较低而 U1 高于 U0；若连续权重 JS 同时为正，动态差异主要发生在同一 pair 的权重上。"),
-        ("I", dead_both_total > 0, "至少一个 selected checkpoint 出现同一 expert 在 Text 和 Visual 都 zero-load，记录为更强的 expert starvation 提醒；单一 modality 的 zero-load 不计作 collapse。"),
+        ("I", dead_both_total_all > 0, f"至少一个 checkpoint 出现同一 expert 在 Text 和 Visual 都 zero-load；本屏幕共有 {dead_both_total_all} 个此类 run-checkpoint（其中 U0={u0_dead_both_total}，U1–U3={dead_both_total}），按规则记为更强的 expert-starvation 提醒。单一 modality 的 zero-load 不计作 collapse。"),
     ]
     interpretation_text = "\n".join(
         f"- **{letter}. {'Observed' if observed else 'Not observed'}.** {description if observed else '该描述性模式未达到上述透明判断条件。'}"
         for letter, observed, description in interpretations
     )
-    gate_met = u1_positive or (u3_positive and cross_nonzero)
+    # A small one-metric mean is not called a clear effect for the next-stage
+    # gate. Require both headline validation metrics to move in the same
+    # favorable direction for U1; U3 additionally needs matched route change.
+    u1_clear = (
+        u1_u0["overall_delta_accuracy_pp"] > 0
+        and u1_u0["overall_delta_macro_f1_pp"] > 0
+    )
+    gate_met = u1_clear or (u3_positive and cross_nonzero)
     gate_text = "满足下一阶段筛选门槛" if gate_met else "未满足下一阶段筛选门槛"
     json_means = "```json\n" + json.dumps(aggregate, indent=2) + "\n```"
     return f"""# MvCGE-MAG V2.1: Expert Utilization Granularity Screen
 
 ## Protocol and provenance
 
-- Branch: `{manifest['provenance']['branch']}`; parent: `{manifest['provenance']['parent_commit_sha']}`; freeze commit: `{manifest['provenance']['freeze_commit_sha']}`; final commit: `{manifest.get('final_commit_sha', 'written after analysis')}`.
+- Branch: `{manifest['provenance']['branch']}`; parent: `{manifest['provenance']['parent_commit_sha']}`; freeze commit: `{manifest['provenance']['freeze_commit_sha']}`. The final artifact commit contains this report and its data tables.
 - Validation-only `unified_full_graph_nc_v1`; Movies, Grocery, ele-fashion; seeds 42–44; four variants; {len(rows)}/36 runs completed.
 - Every run used `task.evaluate_test=false`, selected checkpoints by Validation Accuracy, and had no Test metric keys. The checkpoint audit read features, edges, model weights and validation-selected metadata only; it did not read labels or Test labels.
 - No HPO, significance test, LP run, or model/config change after freeze. GPU: `{manifest['device']}`. Unresolved failures: {sum(not f.get('resolved', False) for f in manifest.get('failures', []))}.
@@ -722,7 +733,7 @@ No significance testing was performed.
 - Normalized Top-2 pair entropy (range 0–1), averaged over run × modality: U0 `{pair_entropy['U0_modality_static']:.4f}`, U1 `{pair_entropy['U1_node_selection']:.4f}`, U2 `{pair_entropy['U2_node_selection_strength']:.4f}`, U3 `{pair_entropy['U3_collaborative']:.4f}`. U0 has exactly one unordered pair and entropy 0 in every modality checkpoint.
 - Route-to-modality-mean JS (nats), averaged over active node × modality checkpoints: U0 `{route_js['U0_modality_static']:.8f}`, U1 `{route_js['U1_node_selection']:.6f}`, U2 `{route_js['U2_node_selection_strength']:.6f}`, U3 `{route_js['U3_collaborative']:.6f}`.
 - Evaluation strength standard deviation, averaged over modality checkpoints: U0 `{strength_std['U0_modality_static']:.8f}`, U1 `{strength_std['U1_node_selection']:.8f}`, U2 `{strength_std['U2_node_selection_strength']:.6f}`, U3 `{strength_std['U3_collaborative']:.6f}`. Static variants should be zero up to floating-point representation; U2/U3 can vary by node.
-- Mean experts used by the Text ∪ Visual union across dynamic variants: `{union_mean:.3f}` of 4; both-modality dead expert slots summed over those checkpoints: `{dead_both_total}`. A one-modality zero-load expert is not labeled collapse.
+- Mean experts used by the Text ∪ Visual union: U0 `{u0_union_mean:.3f}` of 4, U1–U3 `{union_mean:.3f}` of 4. Both-modality dead expert slots: U0 `{u0_dead_both_total}/9` run-checkpoints, U1–U3 `{dead_both_total}/27`. A one-modality zero-load expert is not labeled collapse; the U0 matched static control does show a both-modality dead slot in each run.
 - Functional expert-output cosine across U1–U3 checkpoints: mean-node mean `{statistics.fmean(node_means):.4f}`, range `{min(node_mins):.4f}` to `{max(node_maxs):.4f}`; flattened mean `{statistics.fmean(flat_means):.4f}`, range `{min(flat_mins):.4f}` to `{max(flat_maxs):.4f}`. Learned alpha pairwise cosine mean `{statistics.fmean(alpha_cos):.4f}`. These are descriptive similarity diagnostics, not a diversity objective.
 - Matched U2-vs-U3 routing JS mean `{statistics.fmean(cross_js):.6f}` nats (per-modality mean/std/p50/p90 in `cross_model_context_diagnostics.csv`); absolute strength difference mean `{statistics.fmean(cross_strength):.6f}`.
 - Per-modality strength summaries include mean/std/p10/p50/p90, fraction above 0.9, scaled MoE correction RMS, prior RMS and their ratio.
@@ -735,7 +746,7 @@ The thresholds used for “approximately equal” are ±0.10 pp in overall Valid
 
 ## Layer-wise gate and scientific boundaries
 
-The screening gate is {gate_text}: it requires U1 accuracy above U0, or U3 above U2 together with nonzero matched U2-vs-U3 routing JS. This run stops here; it does not implement layer-wise stacking.
+The screening gate is {gate_text}. For this descriptive screen, “clear U1 improvement” requires both overall Validation Accuracy and Macro-F1 deltas above zero; U3 also requires Accuracy above U2 and nonzero matched U2-vs-U3 routing JS. U1−U0 has +0.11 pp Accuracy but −0.03 pp Macro-F1 and Accuracy wins on only 5/9 pairs, so that small uneven signal does not pass the next-stage gate. This run stops here; it does not implement layer-wise stacking.
 
 - This is not an exact MvCGE reproduction. It is a single-block MAG adaptation with one shared four-expert bank and fixed Top-2 routing.
 - U0 is a modality-static matched expert control, not ordinary GPR. U1−U0 screens selection granularity, U2−U1 screens strength granularity, and U3−U2 screens collaborative context.
