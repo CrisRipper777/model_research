@@ -1,0 +1,46 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "expected_runs": 36,
+  "completed_runs": 36,
+  "device": "cuda:1",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "C0_raw",
+    "C1_effective",
+    "C2_dual_shared_profile",
+    "C3_dual_context_profile"
+  ],
+  "failures": [],
+  "provenance": {
+    "branch": "exp/mvcge_mag_v3a_effective_context_screen",
+    "parent_commit_sha": "bb52895da5863c737fc47c1f88637be12a069445",
+    "head_at_start": "efcdb8c41b21ac6a750b4eea6c1f5a1c3901b6aa",
+    "freeze_commit_sha": "efcdb8c41b21ac6a750b4eea6c1f5a1c3901b6aa",
+    "worktree_clean_at_start": true,
+    "started_at_utc": "2026-10-08T13:49:53+00:00"
+  },
+  "updated_at_utc": "2026-10-08T14:38:31+00:00",
+  "test_evaluation_verified_false": true,
+  "test_metrics_absent": true,
+  "label_free_checkpoint_audit": true,
+  "selected_checkpoint_audits": 36,
+  "all_selected_checkpoints_finite": true,
+  "all_static_routing_verified": true,
+  "max_static_strength_node_difference": 2.9802322387695312e-08,
+  "all_top2_verified": true,
+  "legacy_router_evidence_compatibility_modules_frozen": true,
+  "c0_historical_state_output_audits_exact": false,
+  "c0_historical_exact_pairs": 7,
+  "c0_historical_allclose_1e7_pairs": 7,
+  "analysis_device": "cpu"
+}
