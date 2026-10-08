@@ -631,14 +631,59 @@ def make_report(rows, summary, paired, audits, manifest, repair_rows) -> str:
     e_observed = d3_d2["overall_delta_accuracy_pp"] < 0 and d3_d2["overall_delta_macro_f1_pp"] < 0
     f_observed = _delta_positive(d3_d2)
     g_observed = not (_stable_positive(d1_d0) or _stable_positive(d2_d0))
+    d1_positive_accuracy_datasets = sum(pairs["D1_free_node - D0_static"][f"{dataset}_delta_accuracy_pp_mean"] > 0 for dataset in DATASETS)
+    d2_positive_accuracy_datasets = sum(pairs["D2_struct_free - D0_static"][f"{dataset}_delta_accuracy_pp_mean"] > 0 for dataset in DATASETS)
+    d1_outcome = (
+        f"D1−D0 is {d1_d0['overall_delta_accuracy_pp']:+.2f} pp Accuracy / {d1_d0['overall_delta_macro_f1_pp']:+.2f} pp Macro-F1, "
+        f"with {d1_d0['positive_accuracy_pairs']} positive Accuracy pairs and positive Accuracy means on "
+        f"{d1_positive_accuracy_datasets}/3 datasets."
+    )
+    d2_d1_outcome = f"D2−D1 is {d2_d1['overall_delta_accuracy_pp']:+.2f} pp Accuracy / {d2_d1['overall_delta_macro_f1_pp']:+.2f} pp Macro-F1."
+    d3_d2_outcome = f"D3−D2 is {d3_d2['overall_delta_accuracy_pp']:+.2f} pp Accuracy / {d3_d2['overall_delta_macro_f1_pp']:+.2f} pp Macro-F1."
+    stable_variants = [name for name, passed in (("D1", _stable_positive(d1_d0)), ("D2", _stable_positive(d2_d0))) if passed]
     meanings = [
-        ("A", a_observed, "D1−D0 meets the frozen stable-positive rule after strength is decoupled; node-specific expert selection retains a stable positive signal."),
-        ("B", b_observed, "D1−D0 is approximately equal under the frozen descriptive band or at least one headline delta is non-positive; the old node-routing signal is not consistently retained after decoupling."),
-        ("C", c_observed, "D2−D1 is positive on both headline metrics; structure-grounded evidence adds descriptive value to the free-router parameterization."),
-        ("D", d_observed, "D2−D1 falls within the frozen approximate-equality band; current structural observation provides no distinguishable task value in this screen."),
-        ("E", e_observed, "D3 is below D2 on both headline metrics; static-centered residualization is not supported under hard Top-2 routing."),
-        ("F", f_observed, f"D3 is positive over D2 on both headline metrics; interpret this alongside mean eta Text/Visual {eta_means['text']:.4f}/{eta_means['visual']:.4f} and pair-change fractions (free→final {free_pair_change['text']:.4f}/{free_pair_change['visual']:.4f}; static→final {static_pair_change['text']:.4f}/{static_pair_change['visual']:.4f})."),
-        ("G", g_observed, "Neither D1 nor D2 passes the stable-positive rule versus D0; conclude router-centric optimization and move the next research question to modality-conditioned effective structural contexts for the shared expert action space."),
+        (
+            "A",
+            a_observed,
+            f"{d1_outcome} This meets the frozen stable-positive rule after strength is decoupled; node-specific expert selection retains a stable positive validation signal."
+            if a_observed else f"{d1_outcome} This does not meet the frozen stable-positive rule, so node-specific selection is not established as stable-positive after strength decoupling.",
+        ),
+        (
+            "B",
+            b_observed,
+            f"{d1_outcome} The frozen approximate-equality or non-positive trigger is met; the prior node-routing signal is not consistently retained after strength decoupling."
+            if b_observed else f"{d1_outcome} This is outside the approximate-equality band and both deltas are positive, so B's unstable-or-absent interpretation is not supported.",
+        ),
+        (
+            "C",
+            c_observed,
+            f"{d2_d1_outcome} Both deltas are positive, supporting incremental descriptive value from structural evidence in the free-router parameterization."
+            if c_observed else f"{d2_d1_outcome} At least one delta is non-positive, so a two-metric improvement from structural evidence is not established by this screen.",
+        ),
+        (
+            "D",
+            d_observed,
+            f"{d2_d1_outcome} This falls within the frozen approximate-equality band; current structural observation provides no distinguishable task value in this screen."
+            if d_observed else f"{d2_d1_outcome} This is outside the frozen approximate-equality band, so D's approximate-equality interpretation does not apply.",
+        ),
+        (
+            "E",
+            e_observed,
+            f"{d3_d2_outcome} Both deltas are negative, so static-centered residualization is not supported under hard Top-2 routing."
+            if e_observed else f"{d3_d2_outcome} At least one metric is not lower, so this screen does not show a two-metric loss from static-centered residualization relative to D2.",
+        ),
+        (
+            "F",
+            f_observed,
+            f"{d3_d2_outcome} Both deltas are positive; interpret this alongside mean eta Text/Visual {eta_means['text']:.4f}/{eta_means['visual']:.4f} and pair-change fractions (free→final {free_pair_change['text']:.4f}/{free_pair_change['visual']:.4f}; static→final {static_pair_change['text']:.4f}/{static_pair_change['visual']:.4f})."
+            if f_observed else f"{d3_d2_outcome} At least one delta is non-positive, so a two-metric positive residualization result is not established.",
+        ),
+        (
+            "G",
+            g_observed,
+            f"Neither D1 nor D2 meets the stable-positive rule versus D0 (D1: {d1_d0['positive_accuracy_pairs']} positive Accuracy pairs and {d1_positive_accuracy_datasets}/3 positive dataset means; D2: {d2_d0['positive_accuracy_pairs']} and {d2_positive_accuracy_datasets}/3). End router-centric optimization and move the next research question to modality-conditioned effective structural contexts for the shared expert action space."
+            if g_observed else f"{', '.join(stable_variants)} meets the stable-positive rule versus D0. Positive Accuracy pairs and positive dataset means: D1 {d1_d0['positive_accuracy_pairs']} and {d1_positive_accuracy_datasets}/3; D2 {d2_d0['positive_accuracy_pairs']} and {d2_positive_accuracy_datasets}/3. Retain node routing only as a future candidate after validating the effective structural action space; this screen ends here and does not start V3.",
+        ),
     ]
     interpretation = "\n".join(f"- **{letter}. {'Observed' if observed else 'Not observed'}.** {description}" for letter, observed, description in meanings)
     routing_table = "| Variant | Normalized Top-2 pair entropy | Route-to-mean JS | Route-to-static JS | Mean experts in Text ∪ Visual | Dead slots | Runs with ≥1 dead slot |\n|---|---:|---:|---:|---:|---:|---:|\n"
@@ -722,6 +767,8 @@ Interpretation thresholds were fixed in `README.md`: approximate equality means 
 ## Post-screen decision gate
 
 This screen ends here regardless of result; it does not automatically launch V3. If neither D1 nor D2 is stable-positive versus D0, the next research question is: **Can modality-conditioned effective structural contexts create a better shared expert action space for MAG?** If either passes, retain node routing as a future candidate only after validating that effective structural action space.
+
+Outcome for this campaign: {', '.join(stable_variants) if stable_variants else 'Neither D1 nor D2'} passes the stable-positive rule. Stop after this screen; do not start V3.
 
 - No compatibility routing, expert keys, extra experts, changed Top-K, topology reweighting, cross-modal input, HPO, LP, Test evaluation, or significance testing were introduced.
 - Paired outcomes and diagnostics are descriptive; they do not establish causal mechanisms.

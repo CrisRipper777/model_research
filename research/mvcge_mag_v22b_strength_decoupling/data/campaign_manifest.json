@@ -1,0 +1,42 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "expected_runs": 36,
+  "completed_runs": 36,
+  "device": "cuda:0",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "D0_static",
+    "D1_free_node",
+    "D2_struct_free",
+    "D3_struct_residual"
+  ],
+  "failures": [],
+  "provenance": {
+    "branch": "exp/mvcge_mag_v22b_strength_decoupling",
+    "parent_commit_sha": "d1d7bbd4b795abd014cec6fdc194dc056f6d058c",
+    "head_at_start": "0f8001a51180544a43e4ca3e8c7e16239669e6c0",
+    "freeze_commit_sha": "0f8001a51180544a43e4ca3e8c7e16239669e6c0",
+    "worktree_clean_at_start": true,
+    "started_at_utc": "2026-10-08T08:37:00+00:00"
+  },
+  "updated_at_utc": "2026-10-08T09:29:53+00:00",
+  "selected_checkpoint_audits": 36,
+  "test_evaluation_verified_false": true,
+  "test_metrics_absent": true,
+  "label_free_checkpoint_audit": true,
+  "strength_decoupled_verified": true,
+  "strength_static_verified": true,
+  "legacy_strength_head_frozen_verified": true,
+  "compatibility_modules_frozen_verified": true,
+  "diagnostic_device": "cuda:0"
+}
