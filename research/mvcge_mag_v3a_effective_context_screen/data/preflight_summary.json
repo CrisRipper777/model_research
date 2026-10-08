@@ -1,0 +1,20 @@
+{
+  "label_free": true,
+  "labels_or_splits_read": false,
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "modality_records": 6,
+  "all_dataset_modality_operator_deltas_le_1e-6": false,
+  "max_operator_weight_delta_l2": 0.04025798663496971,
+  "provenance": {
+    "branch": "exp/mvcge_mag_v3a_effective_context_screen",
+    "parent_commit_sha": "bb52895da5863c737fc47c1f88637be12a069445",
+    "head_at_start": "bb52895da5863c737fc47c1f88637be12a069445",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "started_at_utc": "2026-10-08T13:46:29+00:00"
+  }
+}
