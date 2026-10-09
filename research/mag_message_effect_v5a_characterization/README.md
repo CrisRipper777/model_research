@@ -1,0 +1,9 @@
+# V5A: Task-Grounded Multimodal Message-Effect Atlas
+
+This branch characterizes frozen V4A R0 Raw hosts on Movies, Grocery, and ele-fashion (host seed 42). All effects are frozen-host exposed-message singleton contrasts. They change one receiver's normalized Raw basis using the cached incoming message and replay the frozen local experts, fusion, and classifier. Upstream states, other receivers, Raw denominators, routes, strength, and classifier remain fixed. These are not recursive graph deletions or causal graph-edge effects.
+
+The Atlas samples at most 1,500 physical-active training receivers per dataset using degree-quartile strata (seed 2027), then samples up to four incoming directed edges uniformly per receiver. It evaluates both modalities at all four hops. Train labels are used only for effect targets and estimator targets. Validation and Test labels/metrics are not accessed by the main Atlas or estimator. The separate V4A gate deletion audit reads Validation labels only; it never reads Test.
+
+Estimator feature boundary: E0 uses scalar edge/role/router/message cues and hop/modality indicators, with no prediction scalars. E1 adds the active-modality pair block. E2 adds separate Text and Visual pair blocks without cross-modal dot products. E3 adds frozen receiver context (fused embedding, active-modality raw mixture, baseline logits, and prediction scalars). No receiver label is an estimator feature. Estimator receiver partitions use a stable hash of dataset, receiver ID, and 2027 (70/15/15).
+
+Full row tables, hidden feature caches, estimator checkpoints, and logs are kept under the ignored outputs/mag_message_effect_v5a/ directory. The committed audit CSV is a deterministic sample of at most 500 scalar rows per dataset and includes no labels or hidden vectors. Aggregated results and hashes are in data/.

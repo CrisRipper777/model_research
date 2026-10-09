@@ -1,0 +1,18 @@
+{
+  "dataset": "Movies",
+  "estimators": [
+    "E0_heuristic",
+    "E1_unimodal_pair",
+    "E2_multimodal_pair",
+    "E3_host_context"
+  ],
+  "estimator_runs": 4,
+  "targets_per_run": 2,
+  "max_epochs": 3,
+  "finite_predictions": true,
+  "finite_effects": true,
+  "receiver_split_disjoint": true,
+  "metric_rows": 8,
+  "group_metric_rows": 24,
+  "completed_at_utc": "2026-10-09T11:14:39+00:00"
+}

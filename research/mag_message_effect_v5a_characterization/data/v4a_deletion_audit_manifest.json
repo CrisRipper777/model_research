@@ -1,0 +1,21 @@
+{
+  "protocol": "same_checkpoint_residual_gate_zeroing_validation_audit",
+  "checkpoints": 27,
+  "variants": [
+    "R1_global_residual",
+    "R2_expert_residual",
+    "R3_adaptive_residual"
+  ],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "validation_labels_read": true,
+  "test_labels_read": false,
+  "test_metrics_read": false,
+  "same_checkpoint_only": true,
+  "interpretation": "direct dependence audit; not causal proof or training-noise diagnosis",
+  "device": "cuda:1",
+  "completed_at_utc": "2026-10-09T11:01:05+00:00"
+}
