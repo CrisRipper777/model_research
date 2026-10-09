@@ -1,0 +1,113 @@
+{
+  "label_free": true,
+  "labels_or_splits_read": false,
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "decomposition_rows": 48,
+  "initial_variant_checks": [
+    {
+      "dataset": "Movies",
+      "variant": "R1_global_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.1920928955078125e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "Movies",
+      "variant": "R2_expert_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.1920928955078125e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "Movies",
+      "variant": "R3_adaptive_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.1920928955078125e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "Grocery",
+      "variant": "R1_global_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.430511474609375e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "Grocery",
+      "variant": "R2_expert_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.1920928955078125e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "Grocery",
+      "variant": "R3_adaptive_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.5497207641601562e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "ele-fashion",
+      "variant": "R1_global_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.1920928955078125e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "ele-fashion",
+      "variant": "R2_expert_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.430511474609375e-06,
+      "aux_max_abs_diff": 0.0
+    },
+    {
+      "dataset": "ele-fashion",
+      "variant": "R3_adaptive_residual",
+      "z_exact": false,
+      "aux_exact": true,
+      "z_allclose_atol_1e5": true,
+      "z_max_abs_diff": 1.3113021850585938e-06,
+      "aux_max_abs_diff": 0.0
+    }
+  ],
+  "checks": {
+    "finite": true,
+    "decomposition_identity_max_abs_error": 3.814697265625e-06,
+    "decomposition_identity_valid": true,
+    "role_partition_valid": true,
+    "role_contrast_non_degenerate": true,
+    "initial_r0_r3_equality": true,
+    "initial_variant_equality": true,
+    "initial_shared_adaptive_profiles_equal": true
+  },
+  "implementation_degeneracy": false,
+  "passed": true,
+  "provenance": {
+    "branch": "exp/mvcge_mag_v4a_raw_anchored_residual_screen",
+    "parent_commit_sha": "a9853de789fd52297b717e79c4fdb13ede738e0b",
+    "head_at_start": "a9853de789fd52297b717e79c4fdb13ede738e0b",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "started_at_utc": "2026-10-09T06:28:44+00:00"
+  }
+}
