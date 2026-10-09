@@ -1,0 +1,44 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "expected_runs": 36,
+  "completed_runs": 36,
+  "device": "cuda:1",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "R0_raw",
+    "R1_global_residual",
+    "R2_expert_residual",
+    "R3_adaptive_residual"
+  ],
+  "failures": [],
+  "provenance": {
+    "branch": "exp/mvcge_mag_v4a_raw_anchored_residual_screen",
+    "parent_commit_sha": "a9853de789fd52297b717e79c4fdb13ede738e0b",
+    "head_at_start": "ecc11e97025762f5aee1e3193439a23d49a22393",
+    "freeze_commit_sha": "ecc11e97025762f5aee1e3193439a23d49a22393",
+    "worktree_clean_at_start": true,
+    "started_at_utc": "2026-10-09T06:30:31+00:00"
+  },
+  "updated_at_utc": "2026-10-09T07:22:01+00:00",
+  "test_evaluation_verified_false": true,
+  "test_metrics_absent": true,
+  "selected_checkpoint_audits": 36,
+  "all_selected_checkpoints_finite": true,
+  "all_role_partitions_valid": true,
+  "all_decomposition_identities_valid": true,
+  "same_checkpoint_r0_compatibility_pairs": 9,
+  "analysis_device": "cpu",
+  "campaign_device": "cuda:1",
+  "artifacts_complete": true,
+  "analyzed_at_utc": "2026-10-09T07:31:54+00:00"
+}
