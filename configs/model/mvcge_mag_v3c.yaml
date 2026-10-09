@@ -1,0 +1,24 @@
+name: mvcge_mag_v3c
+variant: F3_role_functional
+hidden_dim: 256
+dropout: 0.2
+trajectory_order: 4
+num_experts: 4
+top_k: 2
+expert_bottleneck: 64
+expert_feature_scale: 0.1
+router_dim: 64
+router_hidden_dim: 128
+modality_embed_dim: 16
+strength_init: -1.15
+# Retained only to construct the V3A C0-compatible frozen backbone parameter.
+context_mix_init: 0.10
+role_mix_init: 0.10
+semantic_layernorm_eps: 1.0e-5
+evidence_scalar_dim: 11
+expert_key_embed_dim: 16
+compatibility_dim: 64
+node_residual_init: 0.10
+compatibility_residual_init: 0.10
+balance_weight: 0.01
+eps: 1.0e-8
