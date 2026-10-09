@@ -1,0 +1,111 @@
+{
+  "protocol": "frozen_host_exposed_message_replay",
+  "effect_target_labels": "train_only",
+  "validation_labels_read": false,
+  "test_labels_read": false,
+  "test_metrics_read": false,
+  "sampling_seed": 2027,
+  "receiver_sampling": "physical-active training receivers, deterministic degree quartiles, maximum 1500",
+  "edge_sampling": "uniform without replacement; all edges when indegree <=4, else 4",
+  "receiver_split": "stable hash dataset:receiver_id:2027, 70/15/15",
+  "host_variant": "R0_raw",
+  "host_seed": 42,
+  "local_replay_reconstruction_tolerance": 1e-05,
+  "datasets": [
+    {
+      "dataset": "Movies",
+      "host_checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/Movies/seed_42/R0_raw/best.pt",
+      "host_seed": 42,
+      "receiver_population_by_quartile": [
+        {
+          "population": 2500,
+          "sampled": 375
+        },
+        {
+          "population": 2501,
+          "sampled": 1125
+        }
+      ],
+      "receivers_sampled": 1500,
+      "edges_sampled": 4584,
+      "singleton_rows": 36672,
+      "bundle_rows": 32088,
+      "compensation_feasible_singletons": 34272,
+      "compensation_feasible_fraction": 0.9345549738219895,
+      "compensation_mass_max_abs_error": 2.384185791015625e-07,
+      "effect_target_labels": "train_only",
+      "validation_labels_read": false,
+      "test_labels_read": false,
+      "test_metrics_read": false,
+      "full_local_outputs": {
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/Movies_singleton_raw.csv": "3a9f0576f298b227c34cc34a33b8a8a85b768245a36f3aeb8724abb5074277d3",
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/Movies_bundle_raw.csv": "d02f3659c48b3b3c5a071dc5823a737ed1182f94f76838aedc98367a5d809c67",
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/Movies_effect_features.pt": "7e402bb0cd26566b72721d58eb5c4330ce0d72e47d8d49a3dbaee0e223bcb455"
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "host_checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/Grocery/seed_42/R0_raw/best.pt",
+      "host_seed": 42,
+      "receiver_population_by_quartile": [
+        {
+          "population": 2561,
+          "sampled": 1500
+        }
+      ],
+      "receivers_sampled": 1500,
+      "edges_sampled": 4310,
+      "singleton_rows": 34480,
+      "bundle_rows": 30170,
+      "compensation_feasible_singletons": 31480,
+      "compensation_feasible_fraction": 0.9129930394431555,
+      "compensation_mass_max_abs_error": 4.76837158203125e-07,
+      "effect_target_labels": "train_only",
+      "validation_labels_read": false,
+      "test_labels_read": false,
+      "test_metrics_read": false,
+      "full_local_outputs": {
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/Grocery_singleton_raw.csv": "592e87ef8a3129605eec70ccd36c0f5e2f32b57a15683c0170e1c03adec717bd",
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/Grocery_bundle_raw.csv": "53166d63ba9df219af311b71c2322cadb4dcf05af4e6add52a9212b9296514cd",
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/Grocery_effect_features.pt": "3f64390b136c37d80519432a7b7c4195fe22d58f53b644d5b08dcde182986c8d"
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "host_checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/ele-fashion/seed_42/R0_raw/best.pt",
+      "host_seed": 42,
+      "receiver_population_by_quartile": [
+        {
+          "population": 14664,
+          "sampled": 1125
+        },
+        {
+          "population": 14665,
+          "sampled": 375
+        }
+      ],
+      "receivers_sampled": 1500,
+      "edges_sampled": 3202,
+      "singleton_rows": 25616,
+      "bundle_rows": 22414,
+      "compensation_feasible_singletons": 20096,
+      "compensation_feasible_fraction": 0.7845096814490943,
+      "compensation_mass_max_abs_error": 4.76837158203125e-07,
+      "effect_target_labels": "train_only",
+      "validation_labels_read": false,
+      "test_labels_read": false,
+      "test_metrics_read": false,
+      "full_local_outputs": {
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/ele-fashion_singleton_raw.csv": "bc5416ed67ef96fc67dbbeb6a58d4c5598a38c85f0148fb5356580c83f9d1653",
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/ele-fashion_bundle_raw.csv": "de3d77c36f7a834141151ed06c6dca684e2d0de61427babb6f8f04717056a801",
+        "/hdd1/DataInHere/YHF/model_research/outputs/mag_message_effect_v5a/ele-fashion_effect_features.pt": "2a9dfd87dd40a3483127e659e84c8e38d1ea3ff7e4b63915b28721b2094fa024"
+      }
+    }
+  ],
+  "committed_audit_sample_rows": 1500,
+  "estimator_runs": 36,
+  "created_at_utc": "2026-10-09T11:23:07+00:00",
+  "formal_device": "cpu",
+  "cuda_attempt_note": "An initial cuda:1 formal attempt hit CUDA out-of-memory during Grocery host load under concurrent GPU use; the frozen protocol and training configuration completed on CPU.",
+  "freeze_sha": "dcc6d8b492334d8f9845d11edee4ae5aa210cc3e"
+}

@@ -6,5 +6,8 @@
   "device": "cuda:1",
   "device_name": "NVIDIA GeForce RTX 3090",
   "test_labels_read": false,
-  "test_metrics_read": false
+  "test_metrics_read": false,
+  "preflight_device": "cuda:1",
+  "formal_device": "cpu",
+  "formal_gpu_attempt": "cuda:1 attempt ended with CUDA out-of-memory during Grocery host load while a concurrent workload occupied GPU memory; protocol was rerun unchanged on CPU"
 }

@@ -1,0 +1,23 @@
+{
+  "experiment": "V5A Task-Grounded Multimodal Message-Effect Atlas",
+  "branch": "exp/mag_message_effect_v5a_characterization",
+  "v4a_parent_sha": "d3040d46c4fba8d28b61123599b3b0cf5f2ebed1",
+  "freeze_sha": "dcc6d8b492334d8f9845d11edee4ae5aa210cc3e",
+  "host_campaign": "V4A R0_raw seed42 selected checkpoints; no retraining",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "estimator_runs_expected": 36,
+  "estimator_runs_completed": 36,
+  "effect_target_labels": "train_only",
+  "validation_labels_read_main_atlas": false,
+  "test_labels_read": false,
+  "test_metrics_read": false,
+  "scientific_code_changed_after_freeze": false,
+  "completed_at_utc": "2026-10-09T11:23:07+00:00",
+  "formal_device": "cpu",
+  "cuda_attempt_note": "An initial cuda:1 formal attempt hit CUDA out-of-memory during Grocery host load under concurrent GPU use; the frozen protocol and training configuration completed on CPU.",
+  "frozen_code_sha_at_run": "dcc6d8b492334d8f9845d11edee4ae5aa210cc3e"
+}
