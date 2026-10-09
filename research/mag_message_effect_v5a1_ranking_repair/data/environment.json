@@ -1,0 +1,29 @@
+{
+  "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+  "torch": "2.4.0+cu121",
+  "numpy": "2.4.3",
+  "cuda_available": true,
+  "requested_device": "cuda:1",
+  "cuda_device_name": "NVIDIA GeForce RTX 3090",
+  "cuda_devices": 2,
+  "OMP_NUM_THREADS": null,
+  "MKL_NUM_THREADS": null,
+  "effect_target_labels": "train_only",
+  "validation_labels_read": false,
+  "test_labels_read": false,
+  "test_metrics_read": false,
+  "cuda_memory_at_stage_start": {
+    "0": {
+      "name": "NVIDIA GeForce RTX 3090",
+      "total_bytes": 25431048192,
+      "free_bytes": 838598656,
+      "used_bytes": 24592449536
+    },
+    "1": {
+      "name": "NVIDIA GeForce RTX 3090",
+      "total_bytes": 25438126080,
+      "free_bytes": 17988190208,
+      "used_bytes": 7449935872
+    }
+  }
+}

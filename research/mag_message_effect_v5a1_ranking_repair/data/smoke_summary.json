@@ -1,0 +1,156 @@
+{
+  "dataset": "Movies",
+  "receiver_count": 240,
+  "row_count": 5696,
+  "device": "cuda:1",
+  "max_epochs": 3,
+  "patience": 10,
+  "expected_runs": 20,
+  "completed_runs": 20,
+  "training_runs": [
+    {
+      "model": "M",
+      "estimator": "E0_heuristic",
+      "target": "both",
+      "best_epoch": 3,
+      "best_validation_loss": 0.3344108611345291
+    },
+    {
+      "model": "S",
+      "estimator": "E0_heuristic",
+      "target": "delete",
+      "best_epoch": 3,
+      "best_validation_loss": 0.41114044189453125
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E0_heuristic",
+      "target": "delete",
+      "best_epoch": 1,
+      "best_validation_loss": 0.6929990649223328
+    },
+    {
+      "model": "S",
+      "estimator": "E0_heuristic",
+      "target": "comp",
+      "best_epoch": 3,
+      "best_validation_loss": 0.2577100992202759
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E0_heuristic",
+      "target": "comp",
+      "best_epoch": 1,
+      "best_validation_loss": 0.6929938197135925
+    },
+    {
+      "model": "M",
+      "estimator": "E1_unimodal_pair",
+      "target": "both",
+      "best_epoch": 3,
+      "best_validation_loss": 0.3337535858154297
+    },
+    {
+      "model": "S",
+      "estimator": "E1_unimodal_pair",
+      "target": "delete",
+      "best_epoch": 3,
+      "best_validation_loss": 0.4090158939361572
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E1_unimodal_pair",
+      "target": "delete",
+      "best_epoch": 3,
+      "best_validation_loss": 0.6876649856567383
+    },
+    {
+      "model": "S",
+      "estimator": "E1_unimodal_pair",
+      "target": "comp",
+      "best_epoch": 3,
+      "best_validation_loss": 0.2593327462673187
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E1_unimodal_pair",
+      "target": "comp",
+      "best_epoch": 3,
+      "best_validation_loss": 0.686823308467865
+    },
+    {
+      "model": "M",
+      "estimator": "E2_multimodal_pair",
+      "target": "both",
+      "best_epoch": 3,
+      "best_validation_loss": 0.33976268768310547
+    },
+    {
+      "model": "S",
+      "estimator": "E2_multimodal_pair",
+      "target": "delete",
+      "best_epoch": 3,
+      "best_validation_loss": 0.4141085147857666
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E2_multimodal_pair",
+      "target": "delete",
+      "best_epoch": 1,
+      "best_validation_loss": 0.6919180750846863
+    },
+    {
+      "model": "S",
+      "estimator": "E2_multimodal_pair",
+      "target": "comp",
+      "best_epoch": 3,
+      "best_validation_loss": 0.25780805945396423
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E2_multimodal_pair",
+      "target": "comp",
+      "best_epoch": 1,
+      "best_validation_loss": 0.6923426389694214
+    },
+    {
+      "model": "M",
+      "estimator": "E3_host_context",
+      "target": "both",
+      "best_epoch": 3,
+      "best_validation_loss": 0.33674463629722595
+    },
+    {
+      "model": "S",
+      "estimator": "E3_host_context",
+      "target": "delete",
+      "best_epoch": 3,
+      "best_validation_loss": 0.4065495729446411
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E3_host_context",
+      "target": "delete",
+      "best_epoch": 3,
+      "best_validation_loss": 0.6894732713699341
+    },
+    {
+      "model": "S",
+      "estimator": "E3_host_context",
+      "target": "comp",
+      "best_epoch": 3,
+      "best_validation_loss": 0.25990748405456543
+    },
+    {
+      "model": "Ranker",
+      "estimator": "E3_host_context",
+      "target": "comp",
+      "best_epoch": 1,
+      "best_validation_loss": 0.6926625370979309
+    }
+  ],
+  "validation_selection": "EstimatorVal receiver-equal Huber or RankNet loss",
+  "holdout_used_for_selection": false,
+  "finite": true,
+  "sample_note": "240 lowest-ID receivers from exact V5A sample; matched labels/replays only; heldout used only in smoke finite checks"
+}
