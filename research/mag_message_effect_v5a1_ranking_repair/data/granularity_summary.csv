@@ -1,0 +1,19 @@
+dataset,target,granularity,oracle_gain_mean,best_pointwise_accuracy_posthoc,best_pointwise_excess_over_chance_posthoc,best_ranker_accuracy_posthoc,best_ranker_excess_over_chance_posthoc,selection_note
+Movies,delete,edge,0.007088843192969863,0.5277199074074075,0.027719907407407485,0.5369791666666667,0.036979166666666674,best values are post-hoc descriptive summaries across fixed variants/seeds
+Movies,delete,modality,0.008640156844543475,0.5466666666666666,0.046666666666666634,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Movies,delete,hop,0.011615072200015873,0.5375308641975309,0.03753086419753093,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Movies,comp,edge,0.010215921819961095,0.5123263888888889,0.012326388888888928,0.5252893518518518,0.02528935185185177,best values are post-hoc descriptive summaries across fixed variants/seeds
+Movies,comp,modality,0.005878754684093778,0.5177432216905901,0.01774322169059006,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Movies,comp,hop,0.009273805835916207,0.5087719298245614,0.00877192982456143,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Grocery,delete,edge,0.006413172610803653,0.5413324420677362,0.04133244206773623,0.5901292335115865,0.09012923351158653,best values are post-hoc descriptive summaries across fixed variants/seeds
+Grocery,delete,modality,0.006852485433839674,0.5777310924369747,0.07773109243697474,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Grocery,delete,hop,0.007590369174144557,0.5386904761904762,0.038690476190476164,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Grocery,comp,edge,0.009994510272526423,0.5417223707664884,0.04172237076648844,0.5784870766488414,0.07848707664884136,best values are post-hoc descriptive summaries across fixed variants/seeds
+Grocery,comp,modality,0.005345248328417932,0.5185681470137825,0.01856814701378251,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+Grocery,comp,hop,0.00682340981738115,0.5078483920367535,0.007848392036753471,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+ele-fashion,delete,edge,0.0009378849625209338,0.5256838422391859,0.02568384223918585,0.5644561068702291,0.06445610687022907,best values are post-hoc descriptive summaries across fixed variants/seeds
+ele-fashion,delete,modality,0.003333358459658802,0.6641682785299806,0.16416827852998062,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+ele-fashion,delete,hop,0.0054704282551518,0.5780947775628626,0.07809477756286265,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+ele-fashion,comp,edge,0.002847450323229861,0.5467080152671756,0.04670801526717561,0.5742207379134859,0.07422073791348593,best values are post-hoc descriptive summaries across fixed variants/seeds
+ele-fashion,comp,modality,0.0014898929623320479,0.5294296116504854,0.02942961165048541,,,best values are post-hoc descriptive summaries across fixed variants/seeds
+ele-fashion,comp,hop,0.002826548772271757,0.5136529126213593,0.013652912621359259,,,best values are post-hoc descriptive summaries across fixed variants/seeds

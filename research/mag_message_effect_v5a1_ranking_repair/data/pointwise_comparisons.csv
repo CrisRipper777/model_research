@@ -1,0 +1,865 @@
+dataset,estimator,target,comparison,metric,n_seeds,difference_mean,difference_std,interpretation_note,model
+Movies,E0_heuristic,delete,S-M,mae,3,-1.9039850003649852e-05,2.7951487821107484e-05,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,rmse,3,-1.9146110035341928e-05,7.03393411524232e-06,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,spearman,3,-0.007988018004311797,0.00902533143175324,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,edge_pairwise_accuracy,3,0.005015432098765427,0.004390357514174727,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,edge_top1_agreement,3,-0.0074074074074074,0.007863559144195844,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,edge_top1_excess,3,-0.007407407407407408,0.007863559144195847,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,modality_ordering_accuracy,3,-0.005555555555555536,0.011343253948972988,matched target-sharing control,
+Movies,E0_heuristic,delete,S-M,hop_pairwise_accuracy,3,0.008395061728395029,0.008705819431727812,matched target-sharing control,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,mae,3,-4.744975218789275e-05,4.51679308408655e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,rmse,3,1.1321813466955155e-06,2.0546831288044033e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.005085042834247558,0.009242212995433317,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0022530679603047776,0.008854666497091629,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.001388888888888884,0.009334187571136982,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.010864197530864206,0.006600032792406731,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0016872427983538978,0.013473706033931861,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,mae,3,-6.64896021915426e-05,6.149726125883428e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,rmse,3,-1.8013928688646413e-05,1.7978185681383846e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.002902975170064239,0.012777797219506412,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.002762364138460649,0.004464467396652768,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.006018518518518516,0.003122855917414798,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.00530864197530867,0.005143868310123372,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.010082304526748928,0.006935835236554177,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-M,mae,3,3.7452162020412454e-05,6.117937068215886e-06,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,rmse,3,4.7591409534214015e-05,2.56591835508368e-05,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,spearman,3,-0.007897366986806372,0.003953966592848882,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,edge_pairwise_accuracy,3,-0.00489969135802476,0.005400132162630442,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,edge_top1_agreement,3,-0.015509259259259278,0.011583329632589644,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,edge_top1_excess,3,-0.015509259259259259,0.011583329632589633,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,modality_ordering_accuracy,3,-0.013024986709197254,0.007842699889384342,matched target-sharing control,
+Movies,E0_heuristic,comp,S-M,hop_pairwise_accuracy,3,-0.008683324472798107,0.006483345075288589,matched target-sharing control,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,mae,3,2.4250665558028794e-05,1.8020943364288325e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,rmse,3,1.0547993530162872e-05,1.1917947672991148e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,spearman,3,-0.0068747918298336375,0.009489004749254792,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.014763774440309444,0.004096716166493502,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.00023148148148146216,0.010289866097635603,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.005382775119617211,0.015228267503883577,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.000863902179691641,0.004613012802142506,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,mae,3,6.170282757844124e-05,1.2765970203196862e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,rmse,3,5.813940306437689e-05,1.4823795651926604e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,spearman,3,-0.014772158816640008,0.0071618470557910305,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.019663465798334206,0.0016837387249916118,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.01574074074074074,0.003645374015746196,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.018407761828814467,0.00744047581195023,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.009547226652489749,0.004508872054188184,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-M,mae,3,-0.00013325988301571856,0.00026456331383842557,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,rmse,3,-0.0003108980613527,0.0002857279669231766,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,spearman,3,-0.0037699713273846185,0.01613764732103952,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,edge_pairwise_accuracy,3,0.000617283950617257,0.007562712520994227,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,edge_top1_agreement,3,-0.00833333333333334,0.02015085851187069,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,edge_top1_excess,3,-0.008333333333333335,0.02015085851187071,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,modality_ordering_accuracy,3,-0.01629629629629629,0.017870130491577485,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,S-M,hop_pairwise_accuracy,3,0.006049382716049416,0.0052417064454620054,matched target-sharing control,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,mae,3,0.00044211108830720093,6.083505759321813e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,rmse,3,0.00039057419808282795,0.00023872816708283222,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.023268717457152654,0.022053924455369734,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.0005577522299013612,0.0035354086568874904,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.033333333333333326,0.00891128544209267,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.015679012345678995,0.024403882046181564,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.011522633744855995,0.006614130239626164,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,mae,3,0.00030885120529148234,0.00024943137746492,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,rmse,3,7.967613673012797e-05,9.18919549208506e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,spearman,3,0.019498746129768034,0.02925106820583803,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.0011750361805186182,0.004271586947304296,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.024999999999999984,0.025255892031455292,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.0006172839506172941,0.020559911302121488,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.0054732510288065805,0.006753987897589711,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-M,mae,3,-3.380533995796126e-05,1.063518392173706e-05,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,rmse,3,-1.6200384578995742e-05,1.5608132084585955e-05,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,spearman,3,0.00044674613292881106,0.011787269435335392,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,edge_pairwise_accuracy,3,-0.006481481481481495,0.008445638147977061,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,edge_top1_agreement,3,-0.010648148148148148,0.018332398030762344,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,edge_top1_excess,3,-0.010648148148148148,0.01833239803076234,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,modality_ordering_accuracy,3,0.0,0.013839038406427546,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,S-M,hop_pairwise_accuracy,3,-0.0032340953393585337,0.006413032313154379,matched target-sharing control,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,mae,3,-1.911342318140369e-05,2.870945852084882e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,rmse,3,2.3856601311801617e-05,1.8050816626582838e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,spearman,3,0.0037661781553105845,0.0030025586455370034,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.012157669531573009,0.005138510163293165,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.006018518518518516,0.015344271684422742,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0045853269537480075,0.006727299699544801,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.001085415559099745,0.0015205566455547583,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,mae,3,-5.291876313936496e-05,2.0896940536597008e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,rmse,3,7.656216732805874e-06,8.888936401266093e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,spearman,3,0.004212924288239397,0.013818595825879085,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.018639151013054505,0.005605175509899352,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.004629629629629632,0.0061156688951957945,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0045853269537480075,0.007184413477798793,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.004319510898458279,0.007912958968291342,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-M,mae,3,-3.502481101428564e-05,0.00017479644623231164,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,rmse,3,-0.0002932730897052885,6.125275751666057e-05,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,spearman,3,-0.004030392475353336,0.020587630863644832,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,edge_pairwise_accuracy,3,0.007484567901234566,0.0006292247851196493,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,edge_top1_agreement,3,0.006018518518518516,0.013588574186517755,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,edge_top1_excess,3,0.006018518518518521,0.013588574186517753,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,modality_ordering_accuracy,3,-0.015432098765432075,0.023572812479374962,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,S-M,hop_pairwise_accuracy,3,-0.00798353909465016,0.007169239255219856,matched target-sharing control,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,mae,3,0.0005433290374136883,0.00018108751641812698,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,rmse,3,0.0007313853717005417,0.00021482117540619128,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.005232582392755769,0.02323730045385827,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0189621913580247,0.006839140485906346,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.0004629629629629428,0.020989639975058615,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.05777777777777776,0.0063505289627712016,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.006296296296296355,0.006649115748179416,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,mae,3,0.0005083042263994026,0.0001227516900724152,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,rmse,3,0.0004381122819952533,0.000203322454192188,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,spearman,3,0.0012021899174024322,0.014021384645206473,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.011477623456790135,0.007325530994810303,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.005555555555555573,0.010817890227359175,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.042345679012345684,0.01820809784156703,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.014279835390946516,0.0007080103100446592,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-M,mae,3,-0.00016448322627925804,8.633860191953429e-05,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,rmse,3,-3.709280260437084e-05,7.211125343957667e-05,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,spearman,3,0.0003871359796442248,0.019206778599960752,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,edge_pairwise_accuracy,3,0.003973765432098726,0.010109644342955117,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,edge_top1_agreement,3,-0.003935185185185208,0.016200396487891393,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,edge_top1_excess,3,-0.003935185185185186,0.016200396487891382,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,modality_ordering_accuracy,3,0.0017278043593833003,0.005508873412031547,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,S-M,hop_pairwise_accuracy,3,-0.0026138578770157905,0.010361334199016409,matched target-sharing control,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,mae,3,0.0001340272256211729,0.00011996676613603212,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,rmse,3,5.7027708610586876e-05,5.828574172502539e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,spearman,3,0.0029551409824903566,0.010182880995794423,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.013841540404040417,0.010498543783865836,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.0011574074074073848,0.013718085546323198,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0027246145667198705,0.010630980731430748,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0025474038631933538,0.010169756206261838,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,mae,3,-3.0456000658085163e-05,3.758779055482548e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,rmse,3,1.993490600621604e-05,1.4479621156699173e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,spearman,3,0.0033422769621345816,0.0103209561889469,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.00986777497194169,0.000936711930252619,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.005092592592592593,0.004404235553342706,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.00445241892610317,0.0052122997211928816,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-6.645401382243676e-05,0.000847560095237847,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-M,mae,3,-0.00025146309286355983,0.00012294544502993942,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,rmse,3,-8.024015420417252e-05,4.2895095007551314e-05,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,spearman,3,-0.008889379859121352,0.017703797532352145,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,edge_pairwise_accuracy,3,-0.00474537037037039,0.010733770753596425,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,edge_top1_agreement,3,-0.0011574074074074032,0.0057358850432239926,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,edge_top1_excess,3,-0.0011574074074074056,0.005735885043224013,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,modality_ordering_accuracy,3,0.011604938271604914,0.010892219753142137,matched target-sharing control,
+Movies,E3_host_context,delete,S-M,hop_pairwise_accuracy,3,-0.001316872427983488,0.027129861763607148,matched target-sharing control,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,mae,3,8.480945460672257e-05,9.322551275949538e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,rmse,3,5.5889901754463865e-05,4.4229158610537715e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.0014023917981960475,0.008624535665053399,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0017037147793726264,0.0019157278573231876,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.008564814814814803,0.0016368212527466059,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.0014814814814814725,0.010789586674785627,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0018930041152263415,0.006915294711973224,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,mae,3,-0.00016665363825683725,3.327196911239279e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,rmse,3,-2.435025244970866e-05,4.365546619756001e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.007486988060925304,0.01554640416583107,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.006449085149743017,0.009571472694897928,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.0074074074074074,0.004101862302469768,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.010123456790123442,0.020745884135919834,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0005761316872428535,0.021231058503509127,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-M,mae,3,-4.7127102966299655e-05,3.9076174004018e-05,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,rmse,3,-1.6478806777013577e-05,1.088573659057174e-05,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,spearman,3,0.015149754755586073,0.0019817037007636767,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,edge_pairwise_accuracy,3,0.010262345679012333,0.006273057984561554,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,edge_top1_agreement,3,0.014583333333333337,0.010817890227359189,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,edge_top1_excess,3,0.014583333333333337,0.010817890227359189,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,modality_ordering_accuracy,3,-0.0007974481658692412,0.005869059586873905,matched target-sharing control,
+Movies,E3_host_context,comp,S-M,hop_pairwise_accuracy,3,0.0011075668970405572,0.0018712309128072965,matched target-sharing control,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,mae,3,-3.497598562035691e-05,6.279461782371663e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,rmse,3,-3.6702970969427115e-06,8.967221170315493e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,spearman,3,0.010947186177276502,0.010367602019118788,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.00843347584027406,0.00365985112611505,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.0023148148148148064,0.013325775893170603,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.012161084529505576,0.0051165275265603735,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.00228158780790357,0.0018962373346653456,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,mae,3,-8.210308858665656e-05,2.8929339760657773e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,rmse,3,-2.0149103873956287e-05,3.667555705641314e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,spearman,3,0.026096940932862574,0.009142051487271657,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.0018288698387382747,0.009923025255079338,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.012268518518518531,0.007134738429362261,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.011363636363636334,0.009723201041027026,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E3_host_context,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.003389154704944127,0.0007518413409745274,legacy target differs: old full-host baseline versus matched local baseline,
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,mae,3,0.0005622150311314777,6.731862012684902e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,rmse,3,0.0003839775984992346,0.00024344583232871562,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,spearman,3,0.03898817870793694,0.012475024163719563,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,0.01786265432098766,0.007063241428495376,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,0.036111111111111115,0.01392356781650235,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,0.036111111111111115,0.013923567816502377,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.048641975308641984,0.015432592584691564,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,-0.0015637860082304833,0.002897657076919129,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,mae,3,1.41428415719082e-05,1.3332257074903717e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,rmse,3,9.624867622901509e-06,2.199497219918802e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,spearman,3,0.003057915733150175,0.0026922526342409835,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,0.0004629629629628873,0.00636539000156081,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,-0.007175925925925937,0.014481937332978752,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,-0.007175925925925926,0.014481937332978754,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.007044125465178112,0.005716590422011318,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,0.0016391990076200884,0.007488855979215799,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,mae,3,3.605988489450984e-05,0.0002000077736979306,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,rmse,3,0.00032955154201436365,0.0003960103377180179,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.016516641525696613,0.017091589180934966,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.019868827160493856,0.008982323313396498,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.033333333333333326,0.03177794774624317,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.03333333333333334,0.0317779477462432,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,0.0004938271604938057,0.01350484115582665,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.0013580246913580396,0.011025735092230152,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,mae,3,0.00014326167204351445,7.621153217186377e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,rmse,3,3.6725886565220724e-05,5.1998060630832846e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.0018727080256129918,0.011429401756068564,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.006867283950617291,0.010924819684877204,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.00347222222222221,0.014665772279126988,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.0034722222222222216,0.014665772279126998,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.005582137161084522,0.009723201041027054,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,0.0029239766081871252,0.014994476104381104,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,mae,3,-0.00019345467455827414,1.5004418961655347e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,rmse,3,-0.0006611034619629896,0.00016646590499477752,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,spearman,3,-0.016177995156591646,0.025916637650777213,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.005246913580246926,0.007841002153851974,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.0004629629629629428,0.030197466826597966,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.0004629629629629613,0.030197466826597963,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,-0.021975308641975277,0.0019441994750646636,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,-0.008024691358024657,0.001421987863635474,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,mae,3,-0.00012484396725489082,7.262874090308194e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,rmse,3,-5.09849005001263e-05,5.243991253147367e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,spearman,3,-0.0015223559835995306,0.013012627487542254,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.00281635802469136,0.009822897566690839,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,-0.005555555555555573,0.01632559970602358,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,-0.0055555555555555575,0.016325599706023573,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.008373205741626774,0.0024579003201630426,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,-0.006025163919900804,0.008977825498923283,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,mae,3,0.00044799499811940907,0.0002225919060018454,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,rmse,3,9.222564718187655e-05,8.250181538576164e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,spearman,3,0.04320622538486412,0.021610596399630314,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,0.013464506172839489,0.009280614519544948,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,0.035185185185185174,0.009661405904957978,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,0.03518518518518519,0.009661405904957971,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.03790123456790123,0.005772182581511548,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,-0.003909465020576097,0.005383559164284145,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,mae,3,-5.711466040646552e-05,2.0608939835698354e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,rmse,3,-5.416692649030825e-05,2.0722589057026514e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,spearman,3,0.01140202885288536,0.006333743128362144,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,-0.0011188271604938478,0.0065910148762938344,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,-0.0023148148148148064,0.011259617136125291,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,-0.0023148148148148134,0.011259617136125284,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.020069112174375365,0.0036301170344889863,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,0.007088428141059662,0.004944861382345422,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,mae,3,0.00013429495689594277,0.00027198933750212985,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,rmse,3,0.0003471765136617751,0.00026439303330321313,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.016777062673665327,0.030662490279373785,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.013001543209876546,0.005715868977634718,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.01898148148148147,0.0023606571822188736,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.018981481481481478,0.002360657182218877,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,0.0013580246913580212,0.02477578159729878,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.015390946502057615,0.010504875971533073,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,mae,3,1.2583785722217652e-05,1.1160891358867359e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,rmse,3,1.583346853984563e-05,1.3143788262142113e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.0019323181788975777,0.005566081688960436,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,0.0035879629629629317,0.007198912804354504,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,0.0032407407407407294,0.01064311475238209,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,0.0032407407407407415,0.01064311475238208,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.0038543328017012213,0.008516490879107252,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,0.0035442140705298684,0.0024658727715888475,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,mae,3,-0.0004098929564075483,0.0001300528546314251,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,rmse,3,-0.00044807052646187356,0.00019836961573854142,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,spearman,3,-0.02103698254035966,0.026629250186575346,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,-0.006983024691358031,0.01857734035036276,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,-0.006712962962962976,0.02313888703629591,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,-0.006712962962962965,0.023138887036295925,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.005061728395061711,0.017670285452112897,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,-0.001358024691357984,0.020499280349399268,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,mae,3,-7.487843941932429e-06,1.0770152205775686e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,rmse,3,-3.037090467276904e-05,1.5199534438742269e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,spearman,3,0.01324026279234232,0.006777069812342757,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.009104938271604968,0.006635578161583541,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.012962962962962973,0.0058193542083224935,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.012962962962962963,0.005819354208322469,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.005847953216374231,0.007260234068977982,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Movies,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,-0.002303739145844456,0.0031495432548602404,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E0_heuristic,delete,S-M,mae,3,7.103133613662003e-07,2.9380207189305948e-05,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,rmse,3,2.102459204165787e-05,1.5247382197393093e-05,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,spearman,3,0.021604776938295562,0.016610566076030998,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,edge_pairwise_accuracy,3,-0.013183303624480133,0.007889469719556626,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,edge_top1_agreement,3,-0.01715686274509805,0.027236513769136876,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,edge_top1_excess,3,-0.017156862745098037,0.02723651376913689,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,modality_ordering_accuracy,3,0.02941176470588236,0.022794090754565545,matched target-sharing control,
+Grocery,E0_heuristic,delete,S-M,hop_pairwise_accuracy,3,0.008286647992530352,0.005861288295746859,matched target-sharing control,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,mae,3,1.5111053528524728e-05,5.011779261874056e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,rmse,3,-1.0387227022076497e-05,2.0017346687333804e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,spearman,3,-0.011491600002458377,0.019320820567313074,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.001057225397996131,0.0031476835702840744,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.0028966131907308492,0.0020663142815275713,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.020891690009337088,0.027812573832707983,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.007158418923124854,0.0017162110955581207,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,mae,3,1.5821366889890928e-05,7.162999972504517e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,rmse,3,1.0637365019581374e-05,1.692011033553288e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,spearman,3,0.010113176935837182,0.010670355378385047,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.014240529022476264,0.010272623654785823,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.014260249554367202,0.025862064400261855,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.008520074696545274,0.015581123210449167,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.001128229069405499,0.007472895862771866,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-M,mae,3,6.574568893850941e-07,2.7280727732219696e-05,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,rmse,3,-2.5265580442500788e-06,1.3266850475540834e-06,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,spearman,3,-0.002807925610071495,0.009425263593974104,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,edge_pairwise_accuracy,3,0.0009284016636957881,0.01341049128570367,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,edge_top1_agreement,3,0.0006684491978609652,0.0043320459213956036,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,edge_top1_excess,3,0.000668449197860964,0.004332045921395626,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,modality_ordering_accuracy,3,0.0017866258295048398,0.004785179494449384,matched target-sharing control,
+Grocery,E0_heuristic,comp,S-M,hop_pairwise_accuracy,3,-0.009188361408882037,0.008974962211596299,matched target-sharing control,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,mae,3,-2.5385130985495472e-05,1.8710315019815916e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,rmse,3,1.0764360776245596e-06,5.270566772750799e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,spearman,3,-0.0038204346897513265,0.005365988836951117,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.00478543036859469,0.008667555680897965,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.0002228163992869884,0.004952341972124064,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.0032542113323124435,0.002725134826960522,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.00387102263059382,0.004263643700298093,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,mae,3,-2.4727674096110378e-05,3.585752876547217e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,rmse,3,-1.450121966625519e-06,4.116645417738153e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,spearman,3,-0.006628360299822822,0.009108175036875752,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0038570287048989016,0.00474403129308628,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.0004456327985739768,0.004577236761179639,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.001467585502807604,0.003933393314809209,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.0053173387782882164,0.012789374828611939,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-M,mae,3,6.124707297895891e-07,0.00016675655211906526,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,rmse,3,4.032345922071074e-05,5.565562028492875e-05,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,spearman,3,-0.0006963615957144564,0.0022915710172092905,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,edge_pairwise_accuracy,3,-0.006647355912061781,0.010535522368956246,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,edge_top1_agreement,3,-0.0089126559714795,0.013417173990485382,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,edge_top1_excess,3,-0.008912655971479503,0.013417173990485382,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,modality_ordering_accuracy,3,0.002450980392156854,0.008106328363298448,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,S-M,hop_pairwise_accuracy,3,-0.005018674136321215,0.01698276195838687,matched target-sharing control,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,mae,3,-0.00019575315260085603,0.0002383732935010889,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,rmse,3,-8.457435231473918e-05,7.842071353825417e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,spearman,3,-0.006848569629908634,0.008455993701446589,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.005062798369086445,0.00900375159573025,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.016711229946524058,0.017567204406797706,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.010387488328664799,0.01848866225650054,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0028400248988484553,0.008142841862403431,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,mae,3,-0.00019514068187106645,0.00021381273571541412,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,rmse,3,-4.425089309402844e-05,4.918217795154554e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.00754493122562309,0.009799189338935066,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0015845575429753362,0.00954435869734446,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.007798573975044558,0.02081396193967333,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.007936507936507945,0.024606872831825364,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.0021786492374727593,0.009558309698171848,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-M,mae,3,2.360722838904624e-06,5.128287519245904e-05,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,rmse,3,-9.85303613138903e-07,3.0754220670394602e-06,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,spearman,3,-0.008034873483352833,0.010890310966713525,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,edge_pairwise_accuracy,3,0.009878193701723029,0.013217831563920581,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,edge_top1_agreement,3,0.0162655971479501,0.012134802855784414,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,edge_top1_excess,3,0.01626559714795009,0.012134802855784407,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,modality_ordering_accuracy,3,-0.005232261357835592,0.01569626530017538,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,S-M,hop_pairwise_accuracy,3,-0.0023396290624468352,0.007141437390312486,matched target-sharing control,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,mae,3,-1.7971651465830952e-05,5.923310610171982e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,rmse,3,1.0433483285665623e-08,6.354844017661158e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,spearman,3,0.00583757053472047,0.005297506061166715,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.004951134058639173,0.007402592895188933,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.002673796791443861,0.007095224299505631,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.012187340479836642,0.010634337241449512,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.003360558107878201,0.0011141569553946862,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,mae,3,-1.5610928626926326e-05,2.836830275063565e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,rmse,3,-9.748701298532374e-07,4.814192730831931e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,spearman,3,-0.0021973029486323636,0.007518134342561559,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.014829327760362202,0.012382232608805133,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.01893939393939396,0.010446263965892192,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.006955079122001051,0.0053171686207248,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0010209290454313662,0.006454399497907959,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-M,mae,3,-0.0001905352715897418,0.00010442036397660982,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,rmse,3,-6.040209646861194e-06,1.4769652059625697e-05,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,spearman,3,-0.016227278071239176,0.00633052850949071,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,edge_pairwise_accuracy,3,0.006350267379679105,0.005275936017581078,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,edge_top1_agreement,3,0.004901960784313708,0.01256889908749596,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,edge_top1_excess,3,0.004901960784313728,0.012568899087495946,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,modality_ordering_accuracy,3,0.0011671335200747108,0.0019035371650677237,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,S-M,hop_pairwise_accuracy,3,0.0005835667600373647,0.010210028176133213,matched target-sharing control,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,mae,3,-2.7076494716837818e-05,3.256987610970378e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,rmse,3,-5.310993592504837e-06,1.3185963041206677e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.0010953776059718472,0.012965804418993811,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0008459339848792361,0.008006710624156348,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.0002228163992869884,0.016913511331861263,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.002567693744164342,0.003149098404115804,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0014005602240896309,0.002652929835236858,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,mae,3,-0.00021761176630657962,8.103172251564039e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,rmse,3,-1.1351203239366031e-05,1.8384072544861477e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.015131900465267328,0.019080985195429587,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.005504333394799869,0.006227419210696475,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.004679144385026719,0.007157922640021845,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.0014005602240896309,0.0013101041270216836,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0019841269841269957,0.012767181764962093,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-M,mae,3,-8.97635862289438e-05,3.536402094880435e-05,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,rmse,3,-3.308181466694001e-06,3.923518726006993e-06,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,spearman,3,-0.002892445786986632,0.014810791788294721,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,edge_pairwise_accuracy,3,0.0035279263220439803,0.014489444334917542,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,edge_top1_agreement,3,0.008467023172905541,0.02477373692027588,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,edge_top1_excess,3,0.008467023172905529,0.024773736920275877,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,modality_ordering_accuracy,3,0.012378764675855006,0.01526707139227992,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,S-M,hop_pairwise_accuracy,3,-0.007827122681640356,0.00819949501818137,matched target-sharing control,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,mae,3,7.617397751086968e-06,2.1529427768295666e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,rmse,3,-5.33133593511731e-07,2.7051955693763815e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,spearman,3,-0.01641672075288581,0.0067740351316523196,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0005319421394472205,0.005690029157338155,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,-0.0055704099821746915,0.0056015174197756425,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0007018887187340376,0.0014438117022696295,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0001276161306789462,0.0005801506592218207,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,mae,3,-8.214618847785683e-05,4.6568059108304824e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,rmse,3,-3.8413150602057316e-06,5.9564020690243065e-06,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,spearman,3,-0.019309166539872438,0.015489792463978922,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.0029959841825967595,0.01799472097209419,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.0028966131907308492,0.02787432264526916,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.013080653394589045,0.016306924803433685,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.00769950655096141,0.007640170257843417,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-M,mae,3,-8.559919596711392e-05,0.0002977891476561325,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,rmse,3,-5.702428442257273e-05,7.472349007942757e-05,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,spearman,3,0.002581872465288964,0.009764150643128867,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,edge_pairwise_accuracy,3,-0.0017082590612002753,0.010811507439976534,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,edge_top1_agreement,3,-0.015151515151515174,0.014246316722946338,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,edge_top1_excess,3,-0.015151515151515152,0.01424631672294633,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,modality_ordering_accuracy,3,0.0003501400560224077,0.027469076906359746,matched target-sharing control,
+Grocery,E3_host_context,delete,S-M,hop_pairwise_accuracy,3,-0.014433551198257085,0.02479480479444455,matched target-sharing control,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,mae,3,0.00010571546827071836,0.00021675446374822035,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,rmse,3,2.6382591548038126e-05,7.433917031024408e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,spearman,3,-0.016807962556585773,0.028724784138185164,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.004646106091339364,0.0140024834266184,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.015597147950089133,0.017747154858948195,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.017507002801120424,0.01876654888366349,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0012838468720821616,0.0024758640797848215,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,mae,3,2.0116272303604434e-05,0.00019724527805024757,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,rmse,3,-3.06416928745346e-05,8.004496931344613e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.014226090091296809,0.027725784850516848,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.006354365152539639,0.01606245784125751,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.0004456327985739583,0.017476534359293742,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.017156862745098016,0.04375209812789666,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.013149704326174924,0.02256572166216404,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-M,mae,3,-0.00022829257499619102,0.00010584294614374592,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,rmse,3,-1.624486286402882e-05,1.13102783467416e-05,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,spearman,3,0.01534022904921147,0.014037868085156642,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,edge_pairwise_accuracy,3,0.010806595365418855,0.01105582551698331,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,edge_top1_agreement,3,0.0062388591800356386,0.014587243585858214,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,edge_top1_excess,3,0.006238859180035655,0.014587243585858202,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,modality_ordering_accuracy,3,0.011995916283818317,0.007848132650087682,matched target-sharing control,
+Grocery,E3_host_context,comp,S-M,hop_pairwise_accuracy,3,-0.0023396290624467797,0.003968202783739608,matched target-sharing control,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,mae,3,-4.117617212133322e-05,0.0001266604563093377,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,rmse,3,-4.494604039291528e-06,2.311181135835878e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,spearman,3,0.013319474285102481,0.026871226942229237,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.0015876308726207229,0.009542006063998661,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.007352941176470599,0.012069164495499838,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.004402756508422608,0.0038412243346840824,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.000297770971584103,0.005554193889382234,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,mae,3,-0.00026946874711752423,0.00021978658308526288,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,rmse,3,-2.0739466903320347e-05,2.6886368356639858e-05,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,spearman,3,0.028659703334313957,0.02206264997380785,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.012394226238039577,0.013310448923563171,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.013591800356506237,0.016922315103429154,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.016398672792240925,0.004079726228470105,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E3_host_context,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.002041858090862677,0.0029231244755163334,legacy target differs: old full-host baseline versus matched local baseline,
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,mae,3,0.0001173187412603528,7.007184464093616e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,rmse,3,-1.2621699414860216e-05,1.828210980977468e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,spearman,3,0.04594116044536356,0.00857029349884009,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,-0.003602198455139649,0.007357628579683095,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,0.011586452762923341,0.02374223485734846,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,0.011586452762923355,0.02374223485734846,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.03851540616246498,0.00693241942339748,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,-0.00023342670401490148,0.00368094496499053,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,mae,3,2.5710539125484388e-05,2.5769468330789134e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,rmse,3,3.06165956606592e-06,2.3258859289096395e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,spearman,3,-0.007372457471248879,0.003548480418957972,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,0.002265300059417774,0.020924254000952276,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,0.0064616755793226455,0.024263467981891322,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,0.006461675579322643,0.024263467981891343,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,-0.0005104645227156738,0.006316676197429579,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,-0.003785945210141195,0.007897320432447603,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,mae,3,-1.555875125435098e-05,3.210762006825838e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,rmse,3,-8.674248325779102e-06,9.495988718225364e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.023514557282737946,0.004441610754316977,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.011512180629827728,0.01519686614570125,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.006684491978609615,0.023239227045512328,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.006684491978609629,0.02323922704551234,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.04225023342670403,0.006803497498501223,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.0032679738562091756,0.013697129457034647,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,mae,3,5.193514449908723e-05,4.7984279193158034e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,rmse,3,2.841195108538077e-06,5.0705891193677404e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.00014102921676259253,0.010619281544268395,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.008021390374331602,0.014445595754108675,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.007130124777183611,0.031144918904129817,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.007130124777183604,0.031144918904129803,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.010464522715671257,0.01507707758507672,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.0010209290454313291,0.005145953331714095,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,mae,3,0.00030718533491634153,0.0002445822739119596,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,rmse,3,9.386730989742349e-05,6.881552092848429e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,spearman,3,0.01151845539392883,0.01341416667685095,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.0002228163992869884,0.017647799653751343,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.004901960784313726,0.03656905211930239,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.004901960784313726,0.03656905211930239,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.03898225957049489,0.008168267136751927,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,0.006458138811079965,0.017819682399625354,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,mae,3,0.00021355719600446143,0.00012548162424202674,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,rmse,3,1.5835816643688938e-05,1.0425970858189826e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,spearman,3,-0.020761044702963496,0.03014700852453075,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,-0.004010695187165773,0.008918688540708451,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.004010695187165791,0.03292409186102876,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.0040106951871657776,0.032924091861028744,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.0014037774374680752,0.01773910120925969,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,0.004041177471498995,0.004014446396938675,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,mae,3,0.00011722089862877619,0.0001417703177846271,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,rmse,3,6.677167764192656e-06,4.672261800067855e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,spearman,3,0.02364002191135355,0.00930314932714321,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,0.0029337492572787025,0.009082482822994281,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,0.019830659536541895,0.009006855138773511,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,0.01983065953654189,0.009006855138773504,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.011554621848739474,0.02203936271968661,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,-0.013538748832866468,0.0128914110844856,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,mae,3,2.7413805075003916e-05,1.7679964835850677e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,rmse,3,4.602913997177095e-06,1.8982522241991948e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,spearman,3,-0.012599405344530218,0.004895387846131905,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,0.011215092097445015,0.0045503427127872075,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,0.02205882352941178,0.01036994320696978,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,0.022058823529411766,0.010369943206969781,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,-0.007529351710056105,0.011106269893841026,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,0.003062787136294006,0.009732908957501766,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,mae,3,-0.00020670649357388236,0.00029543764210347484,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,rmse,3,-5.503791719335104e-05,7.137125908826224e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.039045473758262665,0.011344687978675699,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,0.0014854426619131573,0.01311602551352533,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,0.0071301247771835925,0.029250964856459966,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,0.007130124777183601,0.029250964856459956,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.04353408029878617,0.007640937116401908,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,0.0023342670401494034,0.006553292755687462,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,mae,3,-4.018916456876119e-05,2.4635507719862586e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,rmse,3,5.183172549829788e-07,3.70197106185708e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,spearman,3,0.00500139847960361,0.010395122387107148,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.01437165775401065,0.01437928445720295,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.014928698752228168,0.016736463420868014,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.014928698752228164,0.016736463420868024,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,0.007146503318019341,0.014716303537647656,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.006508422664624851,0.00047749583802628875,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,mae,3,0.0004121214105389694,0.00016447559320426644,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,rmse,3,4.288323512171196e-05,3.7752189352255826e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,spearman,3,0.03032760593045697,0.003855627916855805,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,-0.007835710041592392,0.01783281494399845,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,-0.015151515151515157,0.01423585815059118,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,-0.015151515151515152,0.01423585815059117,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.03816526610644259,0.033621954649670514,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,-0.008558979147214485,0.00386194039331728,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,mae,3,7.50282072372142e-05,4.150953818935245e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,rmse,3,2.8991352463541196e-06,2.9754703360964115e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,spearman,3,-0.002528369866765391,0.010068355301784742,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.003267973856209102,0.023929750537746645,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.0017825311942958888,0.019605310969214723,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.0017825311942959027,0.01960531096921474,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.0010209290454313846,0.005381104809164847,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+Grocery,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,0.009528671090692572,0.008421590346444303,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E0_heuristic,delete,S-M,mae,3,8.737891401266728e-06,1.9330479682428506e-05,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,rmse,3,-4.362217088276406e-06,1.0130739509205924e-05,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,spearman,3,-0.019011454608062393,0.02168179792971814,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,edge_pairwise_accuracy,3,0.010867260390161152,0.006002964497928258,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,edge_top1_agreement,3,0.01357323232323234,0.005854557130994757,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,edge_top1_excess,3,0.013573232323232322,0.005854557130994758,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,modality_ordering_accuracy,3,-0.056576402321083165,0.05183036652952362,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,S-M,hop_pairwise_accuracy,3,-0.011766602192134027,0.008681147253425827,matched target-sharing control,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,mae,3,2.703370589922921e-06,4.12226335706313e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,rmse,3,2.0743951953892024e-06,2.505094042102838e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.0028893997722932115,0.009883177153719828,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.008094350971940908,0.007240804780312164,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.0284090909090909,0.00507019520334881,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.011605415860735028,0.009183378164567473,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.004298302170642569,0.0020146500386043513,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,mae,3,1.1441261991189649e-05,2.1182211987795236e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,rmse,3,-2.287821892887204e-06,1.248381139362784e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.01612205483576918,0.024333486954333208,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.002772909418220245,0.0040916354367780145,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.04198232323232324,0.010833966099577343,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.04497098646034814,0.04266477662153672,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.0074683000214914586,0.009613998638319748,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-M,mae,3,-6.819385639146942e-05,1.4075373116264566e-05,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,rmse,3,-2.3915305406898197e-05,1.951914494983268e-06,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,spearman,3,0.0056198262755934245,0.025240255991107775,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,edge_pairwise_accuracy,3,0.02054707379134857,0.018920757409180245,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,edge_top1_agreement,3,0.014835858585858583,0.02749294392413718,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,edge_top1_excess,3,0.014835858585858583,0.02749294392413722,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,modality_ordering_accuracy,3,0.004045307443365694,0.022340940568744447,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,S-M,hop_pairwise_accuracy,3,-0.0003371089536137924,0.007915674283408386,matched target-sharing control,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,mae,3,1.1889886076030427e-05,6.905922629483603e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,rmse,3,3.622874695866085e-06,2.25163960901618e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,spearman,3,0.0057232966440500565,0.004960126811421881,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.026658379636842033,0.0012263361064639704,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.027777777777777773,0.005905393602862898,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0004045307443365694,0.001875731896338109,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0023597626752966208,0.0015609273062014658,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,mae,3,-5.6303970315438986e-05,7.688805820474189e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,rmse,3,-2.0292430711032112e-05,1.48591482560877e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,spearman,3,0.011343122919643484,0.020685267070714303,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.006111305845493464,0.017702011954399015,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.042613636363636354,0.025829889577624703,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.004449838187702264,0.023783174053136975,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E0_heuristic,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.0020226537216828286,0.006936257362250113,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-M,mae,3,-3.9808726882377465e-05,4.1792447489432535e-05,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,rmse,3,-2.807861543400898e-05,3.7200193741522536e-05,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,spearman,3,0.007422524474199235,0.011647319859091131,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,edge_pairwise_accuracy,3,-0.0050042408821034945,0.00925017953554417,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,edge_top1_agreement,3,-0.006313131313131308,0.010091141012086979,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,edge_top1_excess,3,-0.006313131313131316,0.010091141012086984,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,modality_ordering_accuracy,3,-0.01096067053513857,0.03401986353835519,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,S-M,hop_pairwise_accuracy,3,-0.002525252525252597,0.002711041438113697,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,mae,3,1.1049687197023777e-05,4.166193549967789e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,rmse,3,-7.189625270589972e-06,2.7997883987762384e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,spearman,3,-0.010450697922296165,0.006798551300075648,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,0.004008390888161868,0.005478105459134495,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.03314393939393939,0.0060388656785697725,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.006769825918762111,0.014131179106578783,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.005856436707500505,0.004080558251890736,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,mae,3,-2.875903968535369e-05,4.977424600806554e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,rmse,3,-3.526824070459895e-05,1.2326364545281037e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.0030281734480969297,0.005080661364869797,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0009958499939416259,0.01459277098919007,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.026830808080808084,0.015964859364143682,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.01773049645390068,0.022880511873917465,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.008381689232753101,0.0013740287827793069,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-M,mae,3,-2.1703606116392552e-05,1.8002390129536933e-05,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,rmse,3,2.1972045008006313e-06,3.2462387717469247e-06,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,spearman,3,0.0013671049168091632,0.008423137093574682,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,edge_pairwise_accuracy,3,0.004293893129770965,0.01403727972391399,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,edge_top1_agreement,3,0.004103535353535359,0.013664684862319035,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,edge_top1_excess,3,0.004103535353535355,0.013664684862319042,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,modality_ordering_accuracy,3,0.002022653721682847,0.013893143010578021,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,S-M,hop_pairwise_accuracy,3,0.007416396979503785,0.01659425458468613,matched target-sharing control,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,mae,3,1.1960586444320284e-05,1.2929276432233359e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,rmse,3,1.2180617808323542e-06,1.1522594925454303e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,spearman,3,-0.001447990148340068,0.008367274931685634,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.01812165705977044,0.015369402438436184,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.030934343434343425,0.02236043023791016,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.0012135922330096898,0.0019817878177857875,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.003303667745415332,0.003964722337645381,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,mae,3,-9.743019672072266e-06,8.042296689227475e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,rmse,3,3.4152662816329857e-06,3.958332596576244e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,spearman,3,-8.088523153090485e-05,0.001170026541361487,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.013827763929999478,0.017399877920414066,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.035037878787878785,0.029002637937715056,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0008090614886731573,0.011955919665155038,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.010720064724919117,0.017882668837479538,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-M,mae,3,2.1301336776194505e-05,3.220994315149044e-05,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,rmse,3,-4.438364448784936e-06,7.592697629999807e-06,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,spearman,3,-0.018610013766411426,0.02461041238573354,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,edge_pairwise_accuracy,3,1.0602205258725128e-05,0.00789275614435531,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,edge_top1_agreement,3,0.001578282828282836,0.010833966099577359,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,edge_top1_excess,3,0.0015782828282828263,0.010833966099577347,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,modality_ordering_accuracy,3,0.007575757575757606,0.00960919314041839,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,S-M,hop_pairwise_accuracy,3,0.00451321727917479,0.012849155890662068,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,mae,3,2.9295464396164535e-05,1.7184321829124182e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,rmse,3,2.0670659347437014e-05,6.189684971961206e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,spearman,3,0.014314469178263817,0.009808977584866959,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.0042117801319001,0.006389233665489412,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.03693181818181818,0.00940635380413594,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.010960670535138606,0.013179878205518768,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.0015581345368579729,0.006520026399816227,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,mae,3,5.059680117235904e-05,3.7106876343859716e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,rmse,3,1.6232294898652078e-05,3.0315990174464707e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.00429554458814761,0.01817844786124506,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.004201177926641375,0.004907638259274946,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.038510101010101015,0.005030737831600164,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.018536428110896213,0.014072222170030407,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,0.002955082742316817,0.013903404701059281,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-M,mae,3,-1.420126341660161e-05,2.1160991040459008e-05,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,rmse,3,-1.785501944286579e-06,2.0318199540445814e-06,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,spearman,3,0.004673156928418438,0.019016072217811045,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,edge_pairwise_accuracy,3,-0.012033502968617382,0.025062487506812874,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,edge_top1_agreement,3,-0.017045454545454548,0.023464984267734586,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,edge_top1_excess,3,-0.017045454545454548,0.023464984267734603,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,modality_ordering_accuracy,3,0.003438511326860849,0.0097255787056402,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,S-M,hop_pairwise_accuracy,3,0.006877022653721661,0.0066121495792586076,matched target-sharing control,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,mae,3,2.0390336425713435e-05,1.611224608409559e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,rmse,3,5.163771932076289e-06,2.333947754382184e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,spearman,3,-0.012482356684707105,0.013371748396069083,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.005814876841321852,0.008845650189029696,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.04071969696969696,0.024706050415845348,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.008899676375404508,0.0065790679479330585,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.010989751887810132,0.015728508167304596,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,mae,3,6.1890730091118265e-06,6.5779116130537805e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,rmse,3,3.3782699877897096e-06,2.328268882740824e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,spearman,3,-0.007809199756288667,0.030097349849019548,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.017848379809939235,0.021756983545116175,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.023674242424242414,0.027587011384395066,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.012338187702265357,0.0031465107577071405,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E2_multimodal_pair,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.004112729234088471,0.010657335822638645,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-M,mae,3,0.00012069619884696825,9.31956000240203e-05,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,rmse,3,0.0005352156454811718,0.00039930768600578023,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,spearman,3,-0.008368533653990984,0.11085570250871207,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,edge_pairwise_accuracy,3,0.0019720101781169896,0.01911215052432891,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,edge_top1_agreement,3,-0.00946969696969698,0.03158774479707546,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,edge_top1_excess,3,-0.00946969696969697,0.03158774479707545,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,modality_ordering_accuracy,3,-0.01257253384912956,0.11806037799535331,matched target-sharing control,
+ele-fashion,E3_host_context,delete,S-M,hop_pairwise_accuracy,3,-0.0053191489361701745,0.021884964951667654,matched target-sharing control,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,mae,3,-1.8101596149879863e-06,1.5347600338748552e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,rmse,3,4.275398984419516e-05,5.5405365830994264e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,spearman,3,-0.0034624070263854084,0.024841863081698192,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.001951995811047047,0.012904582340471853,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.027462121212121215,0.01663722721351568,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.010638297872340422,0.021812030720873326,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.007468300021491496,0.02154289473067185,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,mae,3,0.00011888603923198027,9.243475379030187e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,rmse,3,0.0005779696353253669,0.00044148431433651186,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,spearman,3,-0.011830940680376397,0.13279202055106315,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,2.001436706994264e-05,0.030087558731226073,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.017992424242424237,0.046987258447179076,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.023210831721469982,0.12523524474561384,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,delete,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.01278744895766167,0.03639060824132964,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-M,mae,3,-4.876447176958206e-05,4.550332280144904e-05,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,rmse,3,-1.896742169769002e-05,2.229635927243883e-05,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,spearman,3,-0.015534415721662745,0.015392770821613172,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,edge_pairwise_accuracy,3,-0.01696352841391008,0.013627550210413104,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,edge_top1_agreement,3,-0.020202020202020183,0.007015817793842458,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,edge_top1_excess,3,-0.020202020202020193,0.007015817793842436,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,modality_ordering_accuracy,3,0.019012944983818763,0.002062710159220338,matched target-sharing control,
+ele-fashion,E3_host_context,comp,S-M,hop_pairwise_accuracy,3,-0.0015507011866235192,0.016071578766356533,matched target-sharing control,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,mae,3,-9.57361742585956e-06,1.8382745517028747e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,rmse,3,1.7645491135550213e-05,2.9610890313015744e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,spearman,3,-0.0070486998104258595,0.0013470655321030688,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.004069840404355152,0.007157483040543133,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.05018939393939394,0.010051567757632981,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,-0.012742718446601945,0.011682466891742406,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,M-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.006944444444444438,0.008013271992799902,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,mae,3,-5.8338089195441624e-05,2.90756328377063e-05,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,rmse,3,-1.3219305621398059e-06,7.467148056069539e-06,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,spearman,3,-0.0225831155320886,0.014213902625811018,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_pairwise_accuracy,3,-0.02103336881826523,0.007570423395141443,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_top1_agreement,3,0.029987373737373757,0.016095389878765114,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,edge_top1_excess,0,,,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,modality_ordering_accuracy,3,0.0062702265372168164,0.009624091628940403,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E3_host_context,comp,S-V5A_MultiTarget_old_effect,hop_pairwise_accuracy,3,-0.008495145631067957,0.015031279607717121,legacy target differs: old full-host baseline versus matched local baseline,
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,mae,3,1.3265519636053089e-06,1.6524169611179908e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,rmse,3,7.904127044323801e-05,7.572078257239154e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,spearman,3,0.04816551174816051,0.04844273218686826,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,-0.010941475826972025,0.014598578319516095,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,-0.02241161616161615,0.007783351013849735,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,-0.02241161616161616,0.0077833510138497165,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.03997421018697613,0.05157912233796599,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,0.02149151085321303,0.004513856862155176,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,mae,3,-4.4899254858416785e-05,1.4576246692070874e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,rmse,3,-2.651429260572269e-05,1.9162027487105427e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,spearman,3,-0.02007911292256653,0.006850934282620844,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,-0.0047285835453774,0.016386475677286686,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,-0.01294191919191919,0.017121277300909867,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,-0.012941919191919197,0.01712127730090987,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,-0.003640776699029106,0.018879064546242816,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,-0.0070792880258899555,0.01709192262282925,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,mae,3,-3.0367491437550847e-06,5.2127331344495404e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,rmse,3,-3.294989211045004e-05,1.0905697162468436e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.017595488863375,0.01987491770960971,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.0068596268023749145,0.005525102030579041,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,-0.007891414141414144,0.0073487668729942295,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,-0.007891414141414142,0.007348766872994202,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.04851708575112831,0.005092059638598112,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.0012894906511928077,0.004679033109193486,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,mae,3,-2.434233356045816e-05,9.925653775291483e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,rmse,3,2.501121730775583e-06,9.245737569571359e-07,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,spearman,3,0.012169838591359027,0.008236171681615178,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,0.013242154368108494,0.01831833426194226,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,0.02525252525252525,0.013510691009490322,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,0.025252525252525262,0.013510691009490346,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,0.014360841423948187,0.005251114476434973,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.005798274002157507,0.006559000273471054,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,mae,3,-6.391085598437517e-05,8.576588886525454e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,rmse,3,-0.00035965282039970614,0.00045349081884005183,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,spearman,3,0.06089217297137025,0.05793318859151131,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.014164546225614971,0.022034805784098728,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.032512626262626264,0.03375902328863671,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.032512626262626264,0.03375902328863668,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.05061250805931657,0.05947622739897474,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,0.004728132387706863,0.015074919987510378,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,mae,3,5.999987575326067e-05,4.546017437553537e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,rmse,3,1.0304838951230577e-05,1.7765766582309156e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,spearman,3,0.020982430395304386,0.015153873061311185,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.02011238337574217,0.03568065660004666,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.01294191919191919,0.03262429337804097,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.01294191919191918,0.03262429337804097,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,-0.0236650485436893,0.01030958328266559,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,0.013551779935275085,0.018925237808838157,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,M
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,mae,3,-4.722006632003889e-05,5.7158267881754204e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,rmse,3,5.532487209750544e-05,3.9532646224785205e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,spearman,3,0.07459949083042214,0.04127397730469675,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,-0.026812977099236673,0.01816355496960567,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,-0.0422979797979798,0.020549218180252276,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,-0.04229797979797981,0.020549218180252262,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,0.08558994197292073,0.04305757289363603,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,delete,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,0.030732860520094458,0.01164589060858205,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,mae,3,1.5909954166600769e-06,1.4600858886083024e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,rmse,3,-4.0178269802385963e-07,3.0782660683789824e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,spearman,3,-0.02433183428135079,0.01155454935375689,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_pairwise_accuracy,3,-0.020981764206955005,0.011394653205837489,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_agreement,3,-0.023674242424242414,0.01359157205909782,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,edge_top1_excess,3,-0.023674242424242428,0.013591572059097841,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,modality_ordering_accuracy,3,-0.005663430420711953,0.020273004875931738,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E1_unimodal_pair-E0_heuristic,comp,E1_unimodal_pair-E0_heuristic,hop_pairwise_accuracy,3,0.0006742179072276219,0.005392900419585011,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,mae,3,5.807331451481689e-05,2.0223212812292978e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,rmse,3,-9.309641125225995e-06,2.5451740962396776e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,spearman,3,-0.04362802710398567,0.03232945484258596,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.0018447837150126951,0.014101993174733747,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,0.0,0.009115864317041424,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,2.3129646346357427e-18,0.009115864317041448,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,-0.02998065764023213,0.03658681189138088,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,delete,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,0.005748979153234579,0.011665209212862215,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,mae,3,-1.6839990860667217e-05,8.187348830070164e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,rmse,3,-1.4815847143116272e-06,1.457290949935461e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,spearman,3,0.015475890602968301,0.016273744536572304,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_pairwise_accuracy,3,-0.003085241730279853,0.0215957474176332,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_agreement,3,0.004103535353535341,0.022993148802366546,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,edge_top1_excess,3,0.004103535353535358,0.022993148802366564,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,modality_ordering_accuracy,3,0.01577669902912619,0.003963575635571461,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E2_multimodal_pair-E1_unimodal_pair,comp,E2_multimodal_pair-E1_unimodal_pair,hop_pairwise_accuracy,3,-0.006337648327939631,0.012884090755935697,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,mae,3,3.548400608639858e-05,7.077762764866597e-05,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,rmse,3,0.00018000118953025052,0.0003015460854585577,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,spearman,3,0.0711336530837907,0.08173726053934044,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.016125954198473236,0.005009516741323396,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.021464646464646447,0.015927368448917782,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.021464646464646464,0.015927368448917758,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,0.030464216634429404,0.05725768668384463,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,delete,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,-0.005104233827638101,0.01802326202973652,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,mae,3,2.5436667400280215e-05,8.297893319639382e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,rmse,3,-6.8770808021728635e-06,6.419991067551738e-06,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,spearman,3,0.0007748577452232087,0.01577343508312782,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_pairwise_accuracy,3,0.015182357930449475,0.005990593112957039,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_agreement,3,0.009785353535353555,0.0027153804504553595,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,edge_top1_excess,3,0.009785353535353538,0.0027153804504553777,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,modality_ordering_accuracy,3,-0.008090614886731387,0.011236200980850413,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S
+ele-fashion,E3_host_context-E2_multimodal_pair,comp,E3_host_context-E2_multimodal_pair,hop_pairwise_accuracy,3,0.0051240560949299034,0.007132702888585875,Fixed V5A feature-ladder comparison; post-hoc descriptive only.,S

@@ -2,11 +2,89 @@
   "experiment": "V5A.1: Matched-Effect & Receiver-Local Ranking Repair",
   "branch": "exp/mag_message_effect_v5a1_ranking_repair",
   "parent_sha": "5b36b3dee2a7198f178b61e01b53fac255ee3651",
+  "formal_freeze_sha": "76b5e208f2d23205a7cae24718ef441026aa3cf3",
+  "host": "V4A R0_raw seed42, existing selected checkpoints, no retraining",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "sampling_max_receivers": 1500,
+  "sampling_max_edges": 4,
+  "sample_seed": 2027,
+  "estimator_seeds": [
+    0,
+    1,
+    2
+  ],
+  "runs_expected": 180,
+  "runs_completed": 180,
+  "run_breakdown": {
+    "MatchedMultiTarget": 36,
+    "MatchedSingleTarget": 72,
+    "ReceiverLocalRankNet": 72
+  },
   "effect_target_labels": "train_only",
   "validation_labels_read": false,
   "test_labels_read": false,
   "test_metrics_read": false,
-  "preflight_completed": true,
-  "smoke_completed": true,
-  "formal_completed": false
+  "holdout_checkpoint_selection": false,
+  "hpo": false,
+  "significance_testing": false,
+  "device": "mixed: cuda:1 for Movies and Grocery; CPU for ele-fashion",
+  "preparation_device_by_dataset": {
+    "Movies": "cuda:1",
+    "Grocery": "cuda:1",
+    "ele-fashion": "cpu"
+  },
+  "training_device_by_dataset": {
+    "Movies": "cuda:1",
+    "Grocery": "cuda:1",
+    "ele-fashion": "cpu"
+  },
+  "cpu_threads_for_ele-fashion": {
+    "OMP_NUM_THREADS": 4,
+    "MKL_NUM_THREADS": 4
+  },
+  "execution_notes": [
+    "Movies and Grocery formal host-cache preparation and estimator runs completed on cuda:1.",
+    "The ele-fashion cuda:1 host-cache preparation reached out-of-memory; cache preparation was completed on CPU. CUDA was unavailable when its estimator stage was attempted, so the same frozen estimator protocol completed on CPU with four OMP/MKL threads.",
+    "Failed attempts contributed no result rows; the committed tables contain the 180 successful fixed-seed runs only."
+  ],
+  "dataset_runs": [
+    {
+      "dataset": "Movies",
+      "receivers": 1500,
+      "rows": 36672,
+      "matched_comp_feasible_rows": 34272,
+      "estimator_runs_completed": 60,
+      "host_checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/Movies/seed_42/R0_raw/best.pt",
+      "sample_crosscheck": true,
+      "preparation_device": "cuda:1",
+      "training_device": "cuda:1"
+    },
+    {
+      "dataset": "Grocery",
+      "receivers": 1500,
+      "rows": 34480,
+      "matched_comp_feasible_rows": 31480,
+      "estimator_runs_completed": 60,
+      "host_checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/Grocery/seed_42/R0_raw/best.pt",
+      "sample_crosscheck": true,
+      "preparation_device": "cuda:1",
+      "training_device": "cuda:1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "receivers": 1500,
+      "rows": 25616,
+      "matched_comp_feasible_rows": 20096,
+      "estimator_runs_completed": 60,
+      "host_checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/ele-fashion/seed_42/R0_raw/best.pt",
+      "sample_crosscheck": true,
+      "preparation_device": "cpu",
+      "training_device": "cpu"
+    }
+  ],
+  "completed_at_utc": "2026-10-09T13:53:16+00:00"
 }
