@@ -463,7 +463,16 @@ def _run_single_lp(
         "text_dim": int(data.x_t.shape[1]) if data.x_t is not None else 0,
         "visual_dim": int(data.x_i.shape[1]) if data.x_i is not None else 0,
     }
-    model = build_model(cfg, data_info).to(device)
+    model = build_model(cfg, data_info)
+    if (
+        getattr(model, "supports_link_prediction", True) is False
+        or bool(getattr(model, "requires_global_semantic_candidates", False))
+    ):
+        raise NotImplementedError(
+            "PSCE-MAG V7A is full-graph NC only: global semantic candidate IDs are "
+            "not mapped into LP sampled-subgraph node IDs"
+        )
+    model = model.to(device)
     proj_dim = int(cfg.task.decoder.get("proj_dim", 0) or 0)
     projection = nn.Linear(model.out_dim, proj_dim).to(device) if proj_dim > 0 else None
     predictor_in_dim = proj_dim if projection is not None else model.out_dim

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/m3/miniconda3/envs/yhf_env/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "exit_code": 0,
+  "passed": true,
+  "elapsed_seconds": 18.349072931800038,
+  "output_tail": "........................................................................ [ 20%]\n........................................................................ [ 40%]\n........................................................................ [ 60%]\n........................................................................ [ 80%]\n....................................................................     [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\ntests/test_mvcge_mag_v4a.py::test_49_training_forward_without_diagnostics_recomputes_role_hops_and_backpropagates\ntests/test_psce_mag_v7a.py::test_all_variants_forward_backward_and_lightweight_info\ntests/test_psce_mag_v7a.py::test_relation_score_and_both_modality_projections_receive_nc_gradient\ntests/test_psce_mag_v7a.py::test_semantic_edge_weights_remain_differentiable\ntests/test_psce_mag_v7a.py::test_shared_expert_bank_processes_physical_and_semantic_profiles\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n    with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n356 passed, 6 warnings in 16.22s\n",
+  "provenance": {
+    "branch": "exp/v7a_physical_semantic_collaborative_experts",
+    "baseline_commit_sha": "af848e6c241994d34827fab8d37611159d167965",
+    "head_at_start": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "freeze_commit_sha": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "2af757cae55de1f0a9d0084093548a33fa2727a9e24d024ad4ba859bc610a278",
+    "started_at_utc": "2026-10-10T11:06:12+00:00"
+  },
+  "recorded_at_utc": "2026-10-10T11:06:30+00:00"
+}

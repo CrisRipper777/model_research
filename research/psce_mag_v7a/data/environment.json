@@ -1,0 +1,22 @@
+{
+  "recorded_at_utc": "2026-10-10T11:06:40+00:00",
+  "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+  "torch": "2.4.0+cu121",
+  "torch_cuda": "12.1",
+  "torch_geometric": "2.7.0",
+  "faiss": "1.15.1",
+  "cuda_available": true,
+  "cuda_device_count": 2,
+  "device": "cuda:1",
+  "selected_device": {
+    "device_index": 1,
+    "device_name": "NVIDIA GeForce RTX 3090",
+    "total_memory_bytes": 25438126080,
+    "free_memory_bytes": 22274768896,
+    "allocated_bytes": 0,
+    "reserved_bytes": 0
+  },
+  "nvidia_smi_snapshot": "Sat Oct 10 19:06:40 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 55%   54C    P8              35W / 350W |  23196MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n| 53%   64C    P2             186W / 350W |   3016MiB / 24576MiB |     90%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           33MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                          8MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   1969335      C   python                                     2744MiB |\n|    1   N/A  N/A   2084914      C   .../miniconda3/envs/yhf_env/bin/python      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+  "gpu_query": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3016 MiB, 21242 MiB, 90 %",
+  "other_processes_terminated": false
+}

@@ -1,0 +1,41 @@
+{
+  "dataset": "Movies",
+  "checkpoint": "outputs/mvcge_mag_v4a_raw_anchored_residual_screen/formal/runs/Movies/seed_42/R0_raw/best.pt",
+  "device": "cpu",
+  "nodes": 16672,
+  "directed_physical_edges": 160802,
+  "mapped_common_weight_count": 48,
+  "missing_v7_state_keys_after_map": [
+    "semantic_coefficients_raw",
+    "semantic_fingerprint_state",
+    "semantic_feature_fingerprint_state",
+    "relation_projections.text.weight",
+    "relation_projections.visual.weight",
+    "relation_scorer.0.weight",
+    "relation_scorer.0.bias",
+    "relation_scorer.2.weight",
+    "relation_scorer.2.bias",
+    "semantic_context_norms.intrinsic.weight",
+    "semantic_context_norms.intrinsic.bias",
+    "semantic_context_norms.physical.weight",
+    "semantic_context_norms.physical.bias",
+    "semantic_context_norms.semantic.weight",
+    "semantic_context_norms.semantic.bias",
+    "semantic_context_encoder.0.weight",
+    "semantic_context_encoder.0.bias",
+    "semantic_selection_head.weight",
+    "semantic_selection_head.bias",
+    "semantic_strength_head.weight",
+    "semantic_strength_head.bias"
+  ],
+  "unexpected_v4_state_keys_after_map": [],
+  "max_absolute_z_error": 0.0,
+  "max_relative_z_error": 0.0,
+  "max_aux_loss_error": 0.0,
+  "tolerance": {
+    "atol": 2e-06,
+    "rtol": 2e-05
+  },
+  "passed": true,
+  "recorded_at_utc": "2026-10-10T10:51:50+00:00"
+}

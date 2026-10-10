@@ -120,7 +120,20 @@ def _run_single_nc(
         "text_dim": int(data.x_t.shape[1]) if data.x_t is not None else 0,
         "visual_dim": int(data.x_i.shape[1]) if data.x_i is not None else 0,
     }
-    model = build_model(cfg, data_info).to(device)
+    model = build_model(cfg, data_info)
+    if bool(getattr(model, "collect_v7_diagnostics", False)) and resolve_inference_mode(cfg) != "full":
+        raise ValueError("PSCE-MAG V7A requires task.inference_mode='full'")
+    if bool(getattr(model, "requires_global_semantic_candidates", False)):
+        cache_path = cfg.model.get("semantic_cache_path")
+        if not cache_path:
+            raise ValueError("PSCE-MAG NC requires model.semantic_cache_path")
+        model.load_semantic_cache(
+            str(cache_path),
+            expected_dataset=str(cfg.dataset.name),
+            expected_feature_fingerprint=cfg.model.get("semantic_feature_fingerprint"),
+            expected_candidate_fingerprint=cfg.model.get("semantic_candidate_fingerprint"),
+        )
+    model = model.to(device)
     classifier = nn.Linear(model.out_dim, int(data.num_classes)).to(device)
     optimizer = build_optimizer(
         list(model.parameters()) + list(classifier.parameters()), cfg, model=model
@@ -301,6 +314,45 @@ def _run_single_nc(
     load_state_dict_cpu(model, best_model_state)
     load_state_dict_cpu(classifier, best_head_state)
 
+    semantic_checkpoint_diagnostics = None
+    if bool(getattr(model, "collect_v7_diagnostics", False)) and model.variant != "a0_raw":
+        model.eval()
+        with torch.no_grad():
+            z_semantic, _, _, _, semantic_info = model(
+                x_all, edge_index_all, return_details=True
+            )
+            z_semantic_cpu = z_semantic.detach().cpu()
+            semantic_checkpoint_diagnostics = semantic_info.get("details", {})
+            del z_semantic, semantic_info
+
+            model.set_semantic_enabled(False)
+            z_physical, _, _, _, _ = model(x_all, edge_index_all)
+            z_physical_cpu = z_physical.detach().cpu()
+            closed_metrics = _evaluate_split(
+                classifier,
+                z_physical_cpu,
+                data.y,
+                data.val_idx,
+                device,
+                inference_batch_size,
+                eval_labels,
+            )
+            semantic_checkpoint_diagnostics["closed_path"] = {
+                "output_delta_rms": float(
+                    (z_semantic_cpu - z_physical_cpu).float().square().mean().sqrt()
+                ),
+                "output_rms": float(z_semantic_cpu.float().square().mean().sqrt()),
+                "val_acc": closed_metrics["acc"],
+                "val_macro_f1": closed_metrics["macro_f1"],
+                "val_acc_delta_from_open": closed_metrics["acc"] - best_metrics["val_acc"],
+                "val_macro_f1_delta_from_open": (
+                    closed_metrics["macro_f1"] - best_metrics["val_macro_f1"]
+                ),
+            }
+            model.set_semantic_enabled(True)
+            del z_semantic_cpu, z_physical, z_physical_cpu
+        model.train()
+
     if bool(cfg.task.get("evaluate_test", True)):
         z = infer_all_embeddings(
             model, data, device, uses_graph, inference_batch_size, inference_mode
@@ -364,6 +416,11 @@ def _run_single_nc(
                 ),
             }
         )
+    if semantic_checkpoint_diagnostics is not None:
+        run_metadata["semantic_checkpoint_diagnostics"] = semantic_checkpoint_diagnostics
+    if getattr(model, "semantic_candidate_fingerprint", None) is not None:
+        run_metadata["semantic_candidate_fingerprint"] = model.semantic_candidate_fingerprint
+        run_metadata["semantic_feature_fingerprint"] = model.semantic_feature_fingerprint
     save_ckpt_path = cfg.task.get("save_ckpt_path")
     if save_ckpt_path:
         path = _checkpoint_path_for_run(save_ckpt_path, cfg, run_id)

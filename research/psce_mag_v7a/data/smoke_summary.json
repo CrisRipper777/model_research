@@ -1,0 +1,1028 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "dataset": "Movies",
+  "seed": 42,
+  "epochs": 1,
+  "expected_runs": 3,
+  "completed_runs": 3,
+  "failures": [],
+  "rows": [
+    {
+      "status": "completed",
+      "mode": "smoke",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a0_raw",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1448885,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 1.0789588019251823,
+        "mean_epoch_wall_seconds": 0.9911014931276441,
+        "mean_train_step_seconds": 0.8899964089505374,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0067509859800338745,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.014334016479551792,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.009792665019631386,
+            "gradient_nonzero": true
+          },
+          "strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0033290074206888676,
+            "gradient_nonzero": true
+          },
+          "semantic_coefficients_raw": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "relation_projections.text.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "relation_projections.visual.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "relation_scorer.0.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "relation_scorer.2.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "semantic_selection_head.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "semantic_strength_head.bias": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          }
+        },
+        "cuda_peak_allocated_bytes": 2435421184,
+        "cuda_peak_reserved_bytes": 2738880512,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090"
+      },
+      "metrics_path": "outputs/psce_mag_v7a/smoke/runs/Movies/seed_42/a0_raw/run_metrics.json",
+      "checkpoint_path": "outputs/psce_mag_v7a/smoke/runs/Movies/seed_42/a0_raw/best.pt",
+      "semantic_checkpoint_diagnostics": null,
+      "audit": {
+        "validation_metrics_finite": true,
+        "test_metrics_absent": true,
+        "best_epoch": 1,
+        "model_parameters": 1448885,
+        "semantic_diagnostics_present": true,
+        "candidate_fingerprint": null
+      }
+    },
+    {
+      "status": "completed",
+      "mode": "smoke",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a1_static_dual",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1576387,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 1.4922447679564357,
+        "mean_epoch_wall_seconds": 1.205244115088135,
+        "mean_train_step_seconds": 1.0701354159973562,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0037444510962814093,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.012504685670137405,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006742375437170267,
+            "gradient_nonzero": true
+          },
+          "strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00299688708037138,
+            "gradient_nonzero": true
+          },
+          "semantic_coefficients_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.002560399007052183,
+            "gradient_nonzero": true
+          },
+          "relation_projections.text.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0001106054478441365,
+            "gradient_nonzero": true
+          },
+          "relation_projections.visual.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 4.8973775847116485e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.0.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 8.002398681128398e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.2.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006939502782188356,
+            "gradient_nonzero": true
+          },
+          "semantic_selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.008931120857596397,
+            "gradient_nonzero": true
+          },
+          "semantic_strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.003081092145293951,
+            "gradient_nonzero": true
+          }
+        },
+        "cuda_peak_allocated_bytes": 3441325568,
+        "cuda_peak_reserved_bytes": 3663724544,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090",
+        "semantic_checkpoint_diagnostics": {
+          "gradient_diagnostics": {
+            "alpha_raw": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.0037444510962814093,
+              "gradient_nonzero": true
+            },
+            "experts.0.linear1.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.012504685670137405,
+              "gradient_nonzero": true
+            },
+            "selection_head.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.006742375437170267,
+              "gradient_nonzero": true
+            },
+            "strength_head.bias": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.00299688708037138,
+              "gradient_nonzero": true
+            },
+            "semantic_coefficients_raw": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.002560399007052183,
+              "gradient_nonzero": true
+            },
+            "relation_projections.text.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.0001106054478441365,
+              "gradient_nonzero": true
+            },
+            "relation_projections.visual.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 4.8973775847116485e-05,
+              "gradient_nonzero": true
+            },
+            "relation_scorer.0.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 8.002398681128398e-05,
+              "gradient_nonzero": true
+            },
+            "relation_scorer.2.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.0006939502782188356,
+              "gradient_nonzero": true
+            },
+            "semantic_selection_head.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.008931120857596397,
+              "gradient_nonzero": true
+            },
+            "semantic_strength_head.bias": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.003081092145293951,
+              "gradient_nonzero": true
+            }
+          },
+          "edge_weight": {
+            "mean": 0.8034466505050659,
+            "std": 0.0003523864725138992,
+            "p10": 0.802996039390564,
+            "p50": 0.8034442663192749,
+            "p90": 0.8039010167121887
+          },
+          "modalities": {
+            "text": {
+              "physical_expert_selection_share": [
+                0.0,
+                0.0,
+                0.5,
+                0.5
+              ],
+              "physical_strength_mean": 0.23812730610370636,
+              "physical_contribution_rms": 0.03676582872867584,
+              "semantic_expert_selection_share": [
+                0.5,
+                0.0,
+                0.0,
+                0.5
+              ],
+              "semantic_strength": {
+                "mean": 0.2036171704530716,
+                "std": 0.0,
+                "p10": 0.2036171704530716,
+                "p50": 0.2036171704530716,
+                "p90": 0.2036171704530716
+              },
+              "semantic_hop_rms": [
+                0.7848607897758484,
+                0.7159568667411804
+              ],
+              "raw_reference_hop_rms": [
+                0.9999999403953552,
+                1.0
+              ],
+              "semantic_raw_cosine": [
+                0.7215579152107239,
+                0.8024722933769226
+              ],
+              "semantic_contribution_rms": 0.09680617600679398,
+              "semantic_to_physical_contribution_rms": 2.633047580718994,
+              "semantic_active_nodes_hop1": 16672,
+              "semantic_active_nodes_hop2": 16672
+            },
+            "visual": {
+              "physical_expert_selection_share": [
+                0.5,
+                0.0,
+                0.5,
+                0.0
+              ],
+              "physical_strength_mean": 0.239267960190773,
+              "physical_contribution_rms": 0.21424633264541626,
+              "semantic_expert_selection_share": [
+                0.5,
+                0.5,
+                0.0,
+                0.0
+              ],
+              "semantic_strength": {
+                "mean": 0.198419451713562,
+                "std": 0.0,
+                "p10": 0.198419451713562,
+                "p50": 0.198419451713562,
+                "p90": 0.198419451713562
+              },
+              "semantic_hop_rms": [
+                0.7598671913146973,
+                0.6926258206367493
+              ],
+              "raw_reference_hop_rms": [
+                1.0,
+                1.0
+              ],
+              "semantic_raw_cosine": [
+                0.7234781384468079,
+                0.8062628507614136
+              ],
+              "semantic_contribution_rms": 0.13826383650302887,
+              "semantic_to_physical_contribution_rms": 0.6453498601913452,
+              "semantic_active_nodes_hop1": 16672,
+              "semantic_active_nodes_hop2": 16672
+            }
+          },
+          "closed_path": {
+            "output_delta_rms": 0.022011052817106247,
+            "output_rms": 1.0012892484664917,
+            "val_acc": 0.3293341398239136,
+            "val_macro_f1": 0.02477436823104693,
+            "val_acc_delta_from_open": 0.0,
+            "val_macro_f1_delta_from_open": 0.0
+          }
+        },
+        "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+        "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b"
+      },
+      "metrics_path": "outputs/psce_mag_v7a/smoke/runs/Movies/seed_42/a1_static_dual/run_metrics.json",
+      "checkpoint_path": "outputs/psce_mag_v7a/smoke/runs/Movies/seed_42/a1_static_dual/best.pt",
+      "semantic_checkpoint_diagnostics": {
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0037444510962814093,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.012504685670137405,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006742375437170267,
+            "gradient_nonzero": true
+          },
+          "strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00299688708037138,
+            "gradient_nonzero": true
+          },
+          "semantic_coefficients_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.002560399007052183,
+            "gradient_nonzero": true
+          },
+          "relation_projections.text.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0001106054478441365,
+            "gradient_nonzero": true
+          },
+          "relation_projections.visual.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 4.8973775847116485e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.0.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 8.002398681128398e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.2.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006939502782188356,
+            "gradient_nonzero": true
+          },
+          "semantic_selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.008931120857596397,
+            "gradient_nonzero": true
+          },
+          "semantic_strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.003081092145293951,
+            "gradient_nonzero": true
+          }
+        },
+        "edge_weight": {
+          "mean": 0.8034466505050659,
+          "std": 0.0003523864725138992,
+          "p10": 0.802996039390564,
+          "p50": 0.8034442663192749,
+          "p90": 0.8039010167121887
+        },
+        "modalities": {
+          "text": {
+            "physical_expert_selection_share": [
+              0.0,
+              0.0,
+              0.5,
+              0.5
+            ],
+            "physical_strength_mean": 0.23812730610370636,
+            "physical_contribution_rms": 0.03676582872867584,
+            "semantic_expert_selection_share": [
+              0.5,
+              0.0,
+              0.0,
+              0.5
+            ],
+            "semantic_strength": {
+              "mean": 0.2036171704530716,
+              "std": 0.0,
+              "p10": 0.2036171704530716,
+              "p50": 0.2036171704530716,
+              "p90": 0.2036171704530716
+            },
+            "semantic_hop_rms": [
+              0.7848607897758484,
+              0.7159568667411804
+            ],
+            "raw_reference_hop_rms": [
+              0.9999999403953552,
+              1.0
+            ],
+            "semantic_raw_cosine": [
+              0.7215579152107239,
+              0.8024722933769226
+            ],
+            "semantic_contribution_rms": 0.09680617600679398,
+            "semantic_to_physical_contribution_rms": 2.633047580718994,
+            "semantic_active_nodes_hop1": 16672,
+            "semantic_active_nodes_hop2": 16672
+          },
+          "visual": {
+            "physical_expert_selection_share": [
+              0.5,
+              0.0,
+              0.5,
+              0.0
+            ],
+            "physical_strength_mean": 0.239267960190773,
+            "physical_contribution_rms": 0.21424633264541626,
+            "semantic_expert_selection_share": [
+              0.5,
+              0.5,
+              0.0,
+              0.0
+            ],
+            "semantic_strength": {
+              "mean": 0.198419451713562,
+              "std": 0.0,
+              "p10": 0.198419451713562,
+              "p50": 0.198419451713562,
+              "p90": 0.198419451713562
+            },
+            "semantic_hop_rms": [
+              0.7598671913146973,
+              0.6926258206367493
+            ],
+            "raw_reference_hop_rms": [
+              1.0,
+              1.0
+            ],
+            "semantic_raw_cosine": [
+              0.7234781384468079,
+              0.8062628507614136
+            ],
+            "semantic_contribution_rms": 0.13826383650302887,
+            "semantic_to_physical_contribution_rms": 0.6453498601913452,
+            "semantic_active_nodes_hop1": 16672,
+            "semantic_active_nodes_hop2": 16672
+          }
+        },
+        "closed_path": {
+          "output_delta_rms": 0.022011052817106247,
+          "output_rms": 1.0012892484664917,
+          "val_acc": 0.3293341398239136,
+          "val_macro_f1": 0.02477436823104693,
+          "val_acc_delta_from_open": 0.0,
+          "val_macro_f1_delta_from_open": 0.0
+        }
+      },
+      "audit": {
+        "validation_metrics_finite": true,
+        "test_metrics_absent": true,
+        "best_epoch": 1,
+        "model_parameters": 1576387,
+        "semantic_diagnostics_present": true,
+        "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5"
+      }
+    },
+    {
+      "status": "completed",
+      "mode": "smoke",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a2_conditional_dual",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1576387,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 1.3875199658796191,
+        "mean_epoch_wall_seconds": 1.0985282617621124,
+        "mean_train_step_seconds": 0.966528173070401,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.005012952256947756,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.01302235759794712,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006958212703466415,
+            "gradient_nonzero": true
+          },
+          "strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0030693928711116314,
+            "gradient_nonzero": true
+          },
+          "semantic_coefficients_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.001131304888986051,
+            "gradient_nonzero": true
+          },
+          "relation_projections.text.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 8.568268094677478e-05,
+            "gradient_nonzero": true
+          },
+          "relation_projections.visual.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 3.8822639908175915e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.0.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 6.268251308938488e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.2.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0005450533353723586,
+            "gradient_nonzero": true
+          },
+          "semantic_selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004689489025622606,
+            "gradient_nonzero": true
+          },
+          "semantic_strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0024140074383467436,
+            "gradient_nonzero": true
+          }
+        },
+        "cuda_peak_allocated_bytes": 3538390528,
+        "cuda_peak_reserved_bytes": 3772776448,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090",
+        "semantic_checkpoint_diagnostics": {
+          "gradient_diagnostics": {
+            "alpha_raw": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.005012952256947756,
+              "gradient_nonzero": true
+            },
+            "experts.0.linear1.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.01302235759794712,
+              "gradient_nonzero": true
+            },
+            "selection_head.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.006958212703466415,
+              "gradient_nonzero": true
+            },
+            "strength_head.bias": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.0030693928711116314,
+              "gradient_nonzero": true
+            },
+            "semantic_coefficients_raw": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.001131304888986051,
+              "gradient_nonzero": true
+            },
+            "relation_projections.text.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 8.568268094677478e-05,
+              "gradient_nonzero": true
+            },
+            "relation_projections.visual.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 3.8822639908175915e-05,
+              "gradient_nonzero": true
+            },
+            "relation_scorer.0.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 6.268251308938488e-05,
+              "gradient_nonzero": true
+            },
+            "relation_scorer.2.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.0005450533353723586,
+              "gradient_nonzero": true
+            },
+            "semantic_selection_head.weight": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.004689489025622606,
+              "gradient_nonzero": true
+            },
+            "semantic_strength_head.bias": {
+              "gradient_present": true,
+              "gradient_finite": true,
+              "gradient_norm": 0.0024140074383467436,
+              "gradient_nonzero": true
+            }
+          },
+          "edge_weight": {
+            "mean": 0.8033891320228577,
+            "std": 0.0003501601458992809,
+            "p10": 0.8029413819313049,
+            "p50": 0.803386926651001,
+            "p90": 0.8038404583930969
+          },
+          "modalities": {
+            "text": {
+              "physical_expert_selection_share": [
+                0.0,
+                0.5,
+                0.0,
+                0.5
+              ],
+              "physical_strength_mean": 0.23810279369354248,
+              "physical_contribution_rms": 0.021799011155962944,
+              "semantic_expert_selection_share": [
+                0.5,
+                0.0,
+                0.4994901418685913,
+                0.0005098368274047971
+              ],
+              "semantic_strength": {
+                "mean": 0.20373068749904633,
+                "std": 0.00022073851141612977,
+                "p10": 0.20342732965946198,
+                "p50": 0.20376551151275635,
+                "p90": 0.2039710283279419
+              },
+              "semantic_hop_rms": [
+                0.7848031520843506,
+                0.7159033417701721
+              ],
+              "raw_reference_hop_rms": [
+                0.9999999403953552,
+                1.0
+              ],
+              "semantic_raw_cosine": [
+                0.7213085293769836,
+                0.802191436290741
+              ],
+              "semantic_contribution_rms": 0.18181273341178894,
+              "semantic_to_physical_contribution_rms": 8.340412139892578,
+              "semantic_active_nodes_hop1": 16672,
+              "semantic_active_nodes_hop2": 16672
+            },
+            "visual": {
+              "physical_expert_selection_share": [
+                0.5,
+                0.5,
+                0.0,
+                0.0
+              ],
+              "physical_strength_mean": 0.23924864828586578,
+              "physical_contribution_rms": 0.22377313673496246,
+              "semantic_expert_selection_share": [
+                0.48971328139305115,
+                0.014695296995341778,
+                0.0,
+                0.495591402053833
+              ],
+              "semantic_strength": {
+                "mean": 0.19830863177776337,
+                "std": 0.0002924691652879119,
+                "p10": 0.19796305894851685,
+                "p50": 0.19827914237976074,
+                "p90": 0.19870975613594055
+              },
+              "semantic_hop_rms": [
+                0.7598262429237366,
+                0.6925914883613586
+              ],
+              "raw_reference_hop_rms": [
+                1.0,
+                1.0
+              ],
+              "semantic_raw_cosine": [
+                0.7232540845870972,
+                0.8060078620910645
+              ],
+              "semantic_contribution_rms": 0.08812826871871948,
+              "semantic_to_physical_contribution_rms": 0.3938286304473877,
+              "semantic_active_nodes_hop1": 16672,
+              "semantic_active_nodes_hop2": 16672
+            }
+          },
+          "closed_path": {
+            "output_delta_rms": 0.03824835643172264,
+            "output_rms": 1.0012764930725098,
+            "val_acc": 0.3293341398239136,
+            "val_macro_f1": 0.02477436823104693,
+            "val_acc_delta_from_open": 0.0,
+            "val_macro_f1_delta_from_open": 0.0
+          }
+        },
+        "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+        "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b"
+      },
+      "metrics_path": "outputs/psce_mag_v7a/smoke/runs/Movies/seed_42/a2_conditional_dual/run_metrics.json",
+      "checkpoint_path": "outputs/psce_mag_v7a/smoke/runs/Movies/seed_42/a2_conditional_dual/best.pt",
+      "semantic_checkpoint_diagnostics": {
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.005012952256947756,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.01302235759794712,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006958212703466415,
+            "gradient_nonzero": true
+          },
+          "strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0030693928711116314,
+            "gradient_nonzero": true
+          },
+          "semantic_coefficients_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.001131304888986051,
+            "gradient_nonzero": true
+          },
+          "relation_projections.text.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 8.568268094677478e-05,
+            "gradient_nonzero": true
+          },
+          "relation_projections.visual.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 3.8822639908175915e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.0.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 6.268251308938488e-05,
+            "gradient_nonzero": true
+          },
+          "relation_scorer.2.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0005450533353723586,
+            "gradient_nonzero": true
+          },
+          "semantic_selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004689489025622606,
+            "gradient_nonzero": true
+          },
+          "semantic_strength_head.bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0024140074383467436,
+            "gradient_nonzero": true
+          }
+        },
+        "edge_weight": {
+          "mean": 0.8033891320228577,
+          "std": 0.0003501601458992809,
+          "p10": 0.8029413819313049,
+          "p50": 0.803386926651001,
+          "p90": 0.8038404583930969
+        },
+        "modalities": {
+          "text": {
+            "physical_expert_selection_share": [
+              0.0,
+              0.5,
+              0.0,
+              0.5
+            ],
+            "physical_strength_mean": 0.23810279369354248,
+            "physical_contribution_rms": 0.021799011155962944,
+            "semantic_expert_selection_share": [
+              0.5,
+              0.0,
+              0.4994901418685913,
+              0.0005098368274047971
+            ],
+            "semantic_strength": {
+              "mean": 0.20373068749904633,
+              "std": 0.00022073851141612977,
+              "p10": 0.20342732965946198,
+              "p50": 0.20376551151275635,
+              "p90": 0.2039710283279419
+            },
+            "semantic_hop_rms": [
+              0.7848031520843506,
+              0.7159033417701721
+            ],
+            "raw_reference_hop_rms": [
+              0.9999999403953552,
+              1.0
+            ],
+            "semantic_raw_cosine": [
+              0.7213085293769836,
+              0.802191436290741
+            ],
+            "semantic_contribution_rms": 0.18181273341178894,
+            "semantic_to_physical_contribution_rms": 8.340412139892578,
+            "semantic_active_nodes_hop1": 16672,
+            "semantic_active_nodes_hop2": 16672
+          },
+          "visual": {
+            "physical_expert_selection_share": [
+              0.5,
+              0.5,
+              0.0,
+              0.0
+            ],
+            "physical_strength_mean": 0.23924864828586578,
+            "physical_contribution_rms": 0.22377313673496246,
+            "semantic_expert_selection_share": [
+              0.48971328139305115,
+              0.014695296995341778,
+              0.0,
+              0.495591402053833
+            ],
+            "semantic_strength": {
+              "mean": 0.19830863177776337,
+              "std": 0.0002924691652879119,
+              "p10": 0.19796305894851685,
+              "p50": 0.19827914237976074,
+              "p90": 0.19870975613594055
+            },
+            "semantic_hop_rms": [
+              0.7598262429237366,
+              0.6925914883613586
+            ],
+            "raw_reference_hop_rms": [
+              1.0,
+              1.0
+            ],
+            "semantic_raw_cosine": [
+              0.7232540845870972,
+              0.8060078620910645
+            ],
+            "semantic_contribution_rms": 0.08812826871871948,
+            "semantic_to_physical_contribution_rms": 0.3938286304473877,
+            "semantic_active_nodes_hop1": 16672,
+            "semantic_active_nodes_hop2": 16672
+          }
+        },
+        "closed_path": {
+          "output_delta_rms": 0.03824835643172264,
+          "output_rms": 1.0012764930725098,
+          "val_acc": 0.3293341398239136,
+          "val_macro_f1": 0.02477436823104693,
+          "val_acc_delta_from_open": 0.0,
+          "val_macro_f1_delta_from_open": 0.0
+        }
+      },
+      "audit": {
+        "validation_metrics_finite": true,
+        "test_metrics_absent": true,
+        "best_epoch": 1,
+        "model_parameters": 1576387,
+        "semantic_diagnostics_present": true,
+        "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5"
+      }
+    }
+  ],
+  "provenance": {
+    "branch": "exp/v7a_physical_semantic_collaborative_experts",
+    "baseline_commit_sha": "af848e6c241994d34827fab8d37611159d167965",
+    "head_at_start": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "freeze_commit_sha": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "2af757cae55de1f0a9d0084093548a33fa2727a9e24d024ad4ba859bc610a278",
+    "started_at_utc": "2026-10-10T11:07:02+00:00"
+  },
+  "updated_at_utc": "2026-10-10T11:07:23+00:00",
+  "audit_passed": true,
+  "checks": {
+    "all_variants_complete": true,
+    "validation_metrics_finite": true,
+    "test_metrics_absent": true,
+    "no_failures": true
+  },
+  "completed_at_utc": "2026-10-10T11:07:23+00:00"
+}

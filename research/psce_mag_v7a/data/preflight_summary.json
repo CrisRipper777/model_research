@@ -1,0 +1,356 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "validation_only": true,
+  "preflight_target_policy": "real train-split labels for one gradient step; full-graph validation only",
+  "device": "cuda:1",
+  "expected_datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "datasets": [
+    {
+      "dataset": "Movies",
+      "status": "passed",
+      "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3016 MiB, 21242 MiB, 91 %",
+      "cuda_free_before_bytes": 22274768896,
+      "cuda_total_bytes": 25438126080,
+      "input_dim": 1536,
+      "num_nodes": 16672,
+      "num_classes": 20,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "directed_physical_edges": 160802,
+      "train_nodes": 10003,
+      "validation_nodes": 3334,
+      "test_metrics_generated": false,
+      "labels_or_splits_loaded_for_preflight": true,
+      "passed": true,
+      "training_loss": 3.093231439590454,
+      "validation_metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "training_step_seconds": 0.9781305082142353,
+      "validation_inference_seconds": 0.09204126009717584,
+      "relation_scoring_seconds": 0.01977969566360116,
+      "semantic_propagation_seconds": 0.04890066105872393,
+      "model_parameters": 1576387,
+      "classifier_parameters": 5140,
+      "gradient_diagnostics": {
+        "alpha_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.005012952722609043,
+          "gradient_nonzero": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.01302235759794712,
+          "gradient_nonzero": true
+        },
+        "selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.006958213169127703,
+          "gradient_nonzero": true
+        },
+        "strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0030693933367729187,
+          "gradient_nonzero": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0011313045397400856,
+          "gradient_nonzero": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 8.568267367081717e-05,
+          "gradient_nonzero": true
+        },
+        "relation_projections.visual.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 3.8822639908175915e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.0.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 6.268250581342727e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.2.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0005450532771646976,
+          "gradient_nonzero": true
+        },
+        "semantic_selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.004689489025622606,
+          "gradient_nonzero": true
+        },
+        "semantic_strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0024140072055161,
+          "gradient_nonzero": true
+        }
+      },
+      "cuda_peak_allocated_bytes": 3538337280,
+      "cuda_peak_reserved_bytes": 3772776448,
+      "cuda_free_after_bytes": 18436980736,
+      "gpu_snapshot_after": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 6676 MiB, 17582 MiB, 96 %",
+      "wall_seconds": 1.6339300400577486,
+      "test_metric_keys_present": false
+    },
+    {
+      "dataset": "Grocery",
+      "status": "passed",
+      "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3190 MiB, 21068 MiB, 96 %",
+      "cuda_free_before_bytes": 22092316672,
+      "cuda_total_bytes": 25438126080,
+      "input_dim": 1536,
+      "num_nodes": 17074,
+      "num_classes": 20,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "directed_physical_edges": 142262,
+      "train_nodes": 10244,
+      "validation_nodes": 3415,
+      "test_metrics_generated": false,
+      "labels_or_splits_loaded_for_preflight": true,
+      "passed": true,
+      "training_loss": 3.1567516326904297,
+      "validation_metrics": {
+        "val_acc": 0.14143484830856323,
+        "val_macro_f1": 0.012390969728065675
+      },
+      "training_step_seconds": 0.2021855441853404,
+      "validation_inference_seconds": 0.08782446198165417,
+      "relation_scoring_seconds": 0.005914044100791216,
+      "semantic_propagation_seconds": 0.022320390213280916,
+      "model_parameters": 1576387,
+      "classifier_parameters": 5140,
+      "gradient_diagnostics": {
+        "alpha_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.013813812285661697,
+          "gradient_nonzero": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.006167376413941383,
+          "gradient_nonzero": true
+        },
+        "selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.00527835451066494,
+          "gradient_nonzero": true
+        },
+        "strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0016568952705711126,
+          "gradient_nonzero": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0004217045789118856,
+          "gradient_nonzero": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 5.57130897504976e-06,
+          "gradient_nonzero": true
+        },
+        "relation_projections.visual.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 4.7412854655703995e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.0.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 4.393064955365844e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.2.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 3.9617563743377104e-05,
+          "gradient_nonzero": true
+        },
+        "semantic_selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.006350725889205933,
+          "gradient_nonzero": true
+        },
+        "semantic_strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 5.626003257930279e-05,
+          "gradient_nonzero": true
+        }
+      },
+      "cuda_peak_allocated_bytes": 3383919104,
+      "cuda_peak_reserved_bytes": 3768582144,
+      "cuda_free_after_bytes": 18441175040,
+      "gpu_snapshot_after": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 6672 MiB, 17586 MiB, 100 %",
+      "wall_seconds": 0.537060652859509,
+      "test_metric_keys_present": false
+    },
+    {
+      "dataset": "ele-fashion",
+      "status": "passed",
+      "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3190 MiB, 21068 MiB, 100 %",
+      "cuda_free_before_bytes": 22092316672,
+      "cuda_total_bytes": 25438126080,
+      "input_dim": 1024,
+      "num_nodes": 97766,
+      "num_classes": 12,
+      "text_dim": 512,
+      "visual_dim": 512,
+      "directed_physical_edges": 399172,
+      "train_nodes": 58659,
+      "validation_nodes": 9777,
+      "test_metrics_generated": false,
+      "labels_or_splits_loaded_for_preflight": true,
+      "passed": true,
+      "training_loss": 2.490327835083008,
+      "validation_metrics": {
+        "val_acc": 0.26040709018707275,
+        "val_macro_f1": 0.06297068728092371
+      },
+      "training_step_seconds": 0.7021828540600836,
+      "validation_inference_seconds": 0.29262197110801935,
+      "relation_scoring_seconds": 0.019367395900189877,
+      "semantic_propagation_seconds": 0.07572745718061924,
+      "model_parameters": 1314243,
+      "classifier_parameters": 3084,
+      "gradient_diagnostics": {
+        "alpha_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.028165588155388832,
+          "gradient_nonzero": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.001124775386415422,
+          "gradient_nonzero": true
+        },
+        "selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.005101400427520275,
+          "gradient_nonzero": true
+        },
+        "strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.000421524397097528,
+          "gradient_nonzero": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.004420057404786348,
+          "gradient_nonzero": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.543441587476991e-05,
+          "gradient_nonzero": true
+        },
+        "relation_projections.visual.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.7588555894908495e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.0.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.7074405807070434e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.2.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.00024194402794819325,
+          "gradient_nonzero": true
+        },
+        "semantic_selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.011417708359658718,
+          "gradient_nonzero": true
+        },
+        "semantic_strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0011932016350328922,
+          "gradient_nonzero": true
+        }
+      },
+      "cuda_peak_allocated_bytes": 14802234368,
+      "cuda_peak_reserved_bytes": 15791554560,
+      "cuda_free_after_bytes": 6418202624,
+      "gpu_snapshot_after": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 18138 MiB, 6120 MiB, 100 %",
+      "wall_seconds": 1.824879415333271,
+      "test_metric_keys_present": false
+    }
+  ],
+  "environment": {
+    "recorded_at_utc": "2026-10-10T11:06:40+00:00",
+    "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+    "torch": "2.4.0+cu121",
+    "torch_cuda": "12.1",
+    "torch_geometric": "2.7.0",
+    "faiss": "1.15.1",
+    "cuda_available": true,
+    "cuda_device_count": 2,
+    "device": "cuda:1",
+    "selected_device": {
+      "device_index": 1,
+      "device_name": "NVIDIA GeForce RTX 3090",
+      "total_memory_bytes": 25438126080,
+      "free_memory_bytes": 22274768896,
+      "allocated_bytes": 0,
+      "reserved_bytes": 0
+    },
+    "nvidia_smi_snapshot": "Sat Oct 10 19:06:40 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 55%   54C    P8              35W / 350W |  23196MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n| 53%   64C    P2             186W / 350W |   3016MiB / 24576MiB |     90%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           33MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                          8MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   1969335      C   python                                     2744MiB |\n|    1   N/A  N/A   2084914      C   .../miniconda3/envs/yhf_env/bin/python      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+    "gpu_query": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23196 MiB, 1056 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3016 MiB, 21242 MiB, 90 %",
+    "other_processes_terminated": false
+  },
+  "passed": true,
+  "provenance": {
+    "branch": "exp/v7a_physical_semantic_collaborative_experts",
+    "baseline_commit_sha": "af848e6c241994d34827fab8d37611159d167965",
+    "head_at_start": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "freeze_commit_sha": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "2af757cae55de1f0a9d0084093548a33fa2727a9e24d024ad4ba859bc610a278",
+    "started_at_utc": "2026-10-10T11:06:39+00:00"
+  },
+  "completed_at_utc": "2026-10-10T11:06:44+00:00"
+}

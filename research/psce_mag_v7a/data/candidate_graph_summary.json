@@ -1,0 +1,313 @@
+{
+  "rule_version": "psce_mag_v7a_mean_center_cosine_union_sym_v1",
+  "top_k_per_modality": 8,
+  "task_evaluate_test": false,
+  "candidate_phase_label_access": false,
+  "datasets": [
+    {
+      "dataset": "Movies",
+      "num_nodes": 16672,
+      "num_edges_raw": 109195,
+      "num_edges_physical": 160802,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "input_dim": 1536,
+      "labels_or_splits_loaded": false,
+      "candidate_phase_label_access": false,
+      "cache_path": "outputs/psce_mag_v7a/semantic_cache/Movies_00be19e20417_99b5f1d73b1c.pt",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "undirected_candidate_edge_count": 205881,
+      "directed_candidate_edge_count": 411762,
+      "candidate_nonphysical_ratio": 0.9120754222099174,
+      "candidate_physical_overlap_ratio": 0.08792457779008261,
+      "text_visual_overlap_jaccard": 0.03397108038138536,
+      "isolated_node_count": 0,
+      "covered_node_count": 16672,
+      "degree_quantiles": {
+        "0": 8.0,
+        "10": 17.0,
+        "25": 19.0,
+        "50": 22.0,
+        "75": 28.0,
+        "90": 36.0,
+        "99": 56.0,
+        "100": 111.0
+      },
+      "similarity_quantiles": {
+        "text": {
+          "0": 0.3744215965270996,
+          "10": 0.6429339647293091,
+          "25": 0.7059977054595947,
+          "50": 0.786060631275177,
+          "75": 0.8780251741409302,
+          "90": 0.93333500623703,
+          "99": 0.99013352394104,
+          "100": 1.000000238418579
+        },
+        "visual": {
+          "0": 0.22816641628742218,
+          "10": 0.3624025881290436,
+          "25": 0.41360270977020264,
+          "50": 0.4787284731864929,
+          "75": 0.553612232208252,
+          "90": 0.632547914981842,
+          "99": 0.8455619215965271,
+          "100": 1.000000238418579
+        }
+      },
+      "retrieval_recall_sample": {
+        "text": {
+          "sample_count": 0,
+          "recall_at_k_mean": 1.0,
+          "recall_at_k_min": 1.0
+        },
+        "visual": {
+          "sample_count": 0,
+          "recall_at_k_mean": 1.0,
+          "recall_at_k_min": 1.0
+        }
+      },
+      "index_provenance": {
+        "text": {
+          "index_type": "IndexFlatIP",
+          "exact": true,
+          "nlist": null,
+          "nprobe": null,
+          "seed": 2026,
+          "faiss_version": "1.15.1",
+          "thread_count": 8,
+          "batch_size": 959,
+          "k": 8,
+          "dimension": 768
+        },
+        "visual": {
+          "index_type": "IndexFlatIP",
+          "exact": true,
+          "nlist": null,
+          "nprobe": null,
+          "seed": 2026,
+          "faiss_version": "1.15.1",
+          "thread_count": 8,
+          "batch_size": 959,
+          "k": 8,
+          "dimension": 768
+        },
+        "faiss_version": "1.15.1",
+        "thread_count": 8,
+        "random_seed": 2026
+      },
+      "construction_seconds": 7.643698038998991,
+      "wall_seconds": 7.888759173918515,
+      "cache_contains_labels": false
+    },
+    {
+      "dataset": "Grocery",
+      "num_nodes": 17074,
+      "num_edges_raw": 85670,
+      "num_edges_physical": 142262,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "input_dim": 1536,
+      "labels_or_splits_loaded": false,
+      "candidate_phase_label_access": false,
+      "cache_path": "outputs/psce_mag_v7a/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9.pt",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "undirected_candidate_edge_count": 205557,
+      "directed_candidate_edge_count": 411114,
+      "candidate_nonphysical_ratio": 0.9378128694230797,
+      "candidate_physical_overlap_ratio": 0.06218713057692027,
+      "text_visual_overlap_jaccard": 0.039925665387216196,
+      "isolated_node_count": 0,
+      "covered_node_count": 17074,
+      "degree_quantiles": {
+        "0": 8.0,
+        "10": 17.0,
+        "25": 19.0,
+        "50": 22.0,
+        "75": 27.0,
+        "90": 34.0,
+        "99": 51.0,
+        "100": 100.0
+      },
+      "similarity_quantiles": {
+        "text": {
+          "0": 0.28417500853538513,
+          "10": 0.5765616297721863,
+          "25": 0.6392145752906799,
+          "50": 0.7251341342926025,
+          "75": 0.8338357210159302,
+          "90": 0.9282921552658081,
+          "99": 0.9973837733268738,
+          "100": 1.0000003576278687
+        },
+        "visual": {
+          "0": 0.21025945246219635,
+          "10": 0.37898075580596924,
+          "25": 0.43950802087783813,
+          "50": 0.538144588470459,
+          "75": 0.675349235534668,
+          "90": 0.8355259895324707,
+          "99": 1.0,
+          "100": 1.0000003576278687
+        }
+      },
+      "retrieval_recall_sample": {
+        "text": {
+          "sample_count": 0,
+          "recall_at_k_mean": 1.0,
+          "recall_at_k_min": 1.0
+        },
+        "visual": {
+          "sample_count": 0,
+          "recall_at_k_mean": 1.0,
+          "recall_at_k_min": 1.0
+        }
+      },
+      "index_provenance": {
+        "text": {
+          "index_type": "IndexFlatIP",
+          "exact": true,
+          "nlist": null,
+          "nprobe": null,
+          "seed": 2026,
+          "faiss_version": "1.15.1",
+          "thread_count": 8,
+          "batch_size": 937,
+          "k": 8,
+          "dimension": 768
+        },
+        "visual": {
+          "index_type": "IndexFlatIP",
+          "exact": true,
+          "nlist": null,
+          "nprobe": null,
+          "seed": 2026,
+          "faiss_version": "1.15.1",
+          "thread_count": 8,
+          "batch_size": 937,
+          "k": 8,
+          "dimension": 768
+        },
+        "faiss_version": "1.15.1",
+        "thread_count": 8,
+        "random_seed": 2026
+      },
+      "construction_seconds": 7.775785077828914,
+      "wall_seconds": 7.859972315840423,
+      "cache_contains_labels": false
+    },
+    {
+      "dataset": "ele-fashion",
+      "num_nodes": 97766,
+      "num_edges_raw": 199602,
+      "num_edges_physical": 399172,
+      "text_dim": 512,
+      "visual_dim": 512,
+      "input_dim": 1024,
+      "labels_or_splits_loaded": false,
+      "candidate_phase_label_access": false,
+      "cache_path": "outputs/psce_mag_v7a/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64.pt",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "undirected_candidate_edge_count": 1102200,
+      "directed_candidate_edge_count": 2204400,
+      "candidate_nonphysical_ratio": 0.9615496280166939,
+      "candidate_physical_overlap_ratio": 0.038450371983306114,
+      "text_visual_overlap_jaccard": 0.08108510252222827,
+      "isolated_node_count": 0,
+      "covered_node_count": 97766,
+      "degree_quantiles": {
+        "0": 8.0,
+        "10": 16.0,
+        "25": 17.0,
+        "50": 21.0,
+        "75": 26.0,
+        "90": 32.0,
+        "99": 50.0,
+        "100": 180.0
+      },
+      "similarity_quantiles": {
+        "text": {
+          "0": 0.2542518675327301,
+          "10": 0.6278708577156067,
+          "25": 0.7050663232803345,
+          "50": 0.7941292524337769,
+          "75": 0.8971022963523865,
+          "90": 0.9999999403953552,
+          "99": 1.0000001192092896,
+          "100": 1.000000238418579
+        },
+        "visual": {
+          "0": 0.30578476190567017,
+          "10": 0.5656570196151733,
+          "25": 0.6495565176010132,
+          "50": 0.7493326663970947,
+          "75": 0.8532689809799194,
+          "90": 0.9999998807907104,
+          "99": 1.0000001192092896,
+          "100": 1.000000238418579
+        }
+      },
+      "retrieval_recall_sample": {
+        "text": {
+          "sample_count": 256,
+          "sample_seed": 2026,
+          "recall_at_k_mean": 0.98828125,
+          "recall_at_k_min": 0.5
+        },
+        "visual": {
+          "sample_count": 256,
+          "sample_seed": 2026,
+          "recall_at_k_mean": 0.98828125,
+          "recall_at_k_min": 0.75
+        }
+      },
+      "index_provenance": {
+        "text": {
+          "index_type": "IndexIVFFlat",
+          "exact": false,
+          "nlist": 625,
+          "nprobe": 50,
+          "training_iterations": 20,
+          "training_seed": 2026,
+          "faiss_version": "1.15.1",
+          "thread_count": 8,
+          "batch_size": 4096,
+          "k": 8,
+          "dimension": 512
+        },
+        "visual": {
+          "index_type": "IndexIVFFlat",
+          "exact": false,
+          "nlist": 625,
+          "nprobe": 50,
+          "training_iterations": 20,
+          "training_seed": 2026,
+          "faiss_version": "1.15.1",
+          "thread_count": 8,
+          "batch_size": 4096,
+          "k": 8,
+          "dimension": 512
+        },
+        "faiss_version": "1.15.1",
+        "thread_count": 8,
+        "random_seed": 2026
+      },
+      "construction_seconds": 139.5635685948655,
+      "wall_seconds": 140.4853625157848,
+      "cache_contains_labels": false
+    }
+  ],
+  "provenance": {
+    "branch": "exp/v7a_physical_semantic_collaborative_experts",
+    "baseline_commit_sha": "af848e6c241994d34827fab8d37611159d167965",
+    "head_at_start": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "freeze_commit_sha": "1150d4d0a785edb50b41b18d3becc2067006d5dd",
+    "worktree_clean_at_start": true,
+    "configuration_fingerprint_sha256": "2af757cae55de1f0a9d0084093548a33fa2727a9e24d024ad4ba859bc610a278",
+    "started_at_utc": "2026-10-10T11:03:33+00:00"
+  },
+  "created_at_utc": "2026-10-10T11:06:09+00:00"
+}
