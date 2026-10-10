@@ -1,0 +1,613 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "dataset": "Movies",
+  "seed": 42,
+  "epochs": 1,
+  "device": "cuda:1",
+  "expected_runs": 4,
+  "completed_runs": 4,
+  "failures": [],
+  "rows": [
+    {
+      "status": "completed",
+      "mode": "smoke_final",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a0_static",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1448758,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 0.8108020550571382,
+        "mean_epoch_wall_seconds": 0.7526138289831579,
+        "mean_train_step_seconds": 0.6746122757904232,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00771919684484601,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011052438989281654,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013084201142191887,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          }
+        },
+        "cuda_peak_allocated_bytes": 2773545472,
+        "cuda_peak_reserved_bytes": 2908749824,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090"
+      },
+      "checkpoint_metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metrics_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a0_static/run_metrics.json",
+      "checkpoint_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a0_static/best.pt",
+      "audit": {
+        "finite_checkpoint_metrics": true,
+        "test_metrics_absent": true,
+        "modalities": {
+          "text": {
+            "top2_weights_sum_max_error": 0.0,
+            "mean_dense_probability": [
+              0.28195956349372864,
+              0.25071999430656433,
+              0.23382611572742462,
+              0.23349428176879883
+            ]
+          },
+          "visual": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.24363994598388672,
+              0.2843817472457886,
+              0.2315659373998642,
+              0.24041235446929932
+            ]
+          }
+        },
+        "parameters": 1448758,
+        "classifier_parameters": 5140
+      }
+    },
+    {
+      "status": "completed",
+      "mode": "smoke_final",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a1_node",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1448758,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 0.8691776171326637,
+        "mean_epoch_wall_seconds": 0.8107447330839932,
+        "mean_train_step_seconds": 0.7331294822506607,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006924757733941078,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.014884593896567822,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013300422579050064,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": false,
+            "gradient_finite": true,
+            "gradient_norm": 0.0,
+            "gradient_nonzero": false
+          }
+        },
+        "cuda_peak_allocated_bytes": 2812491264,
+        "cuda_peak_reserved_bytes": 3181379584,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090"
+      },
+      "checkpoint_metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metrics_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a1_node/run_metrics.json",
+      "checkpoint_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a1_node/best.pt",
+      "audit": {
+        "finite_checkpoint_metrics": true,
+        "test_metrics_absent": true,
+        "modalities": {
+          "text": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.3690100610256195,
+              0.242734894156456,
+              0.2170896828174591,
+              0.171165332198143
+            ]
+          },
+          "visual": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.25643473863601685,
+              0.20307178795337677,
+              0.3256200850009918,
+              0.21487335860729218
+            ]
+          }
+        },
+        "parameters": 1448758,
+        "classifier_parameters": 5140
+      }
+    },
+    {
+      "status": "completed",
+      "mode": "smoke_final",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a2_cross",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1579978,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 0.851291841827333,
+        "mean_epoch_wall_seconds": 0.7815336980856955,
+        "mean_train_step_seconds": 0.7022019233554602,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004110431298613548,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011128610000014305,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013374722562730312,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0012128124944865704,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0019104384118691087,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00027096326812170446,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00028497952735051513,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00176821812056005,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0008240947499871254,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0007363337208516896,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0020044634584337473,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.061150792986154556,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.031080853193998337,
+            "gradient_nonzero": true
+          }
+        },
+        "cuda_peak_allocated_bytes": 3112457728,
+        "cuda_peak_reserved_bytes": 3584032768,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090"
+      },
+      "checkpoint_metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metrics_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a2_cross/run_metrics.json",
+      "checkpoint_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a2_cross/best.pt",
+      "audit": {
+        "finite_checkpoint_metrics": true,
+        "test_metrics_absent": true,
+        "modalities": {
+          "text": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.2985987961292267,
+              0.2677321135997772,
+              0.2524257004261017,
+              0.18124336004257202
+            ],
+            "mean_null_attention": 0.5593230128288269
+          },
+          "visual": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.26303502917289734,
+              0.20115631818771362,
+              0.32757145166397095,
+              0.20823714137077332
+            ],
+            "mean_null_attention": 0.3710259199142456
+          }
+        },
+        "parameters": 1579978,
+        "classifier_parameters": 5140
+      }
+    },
+    {
+      "status": "completed",
+      "mode": "smoke_final",
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a3_intra",
+      "metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metadata": {
+        "best_epoch": 1,
+        "model_parameters": 1579978,
+        "classifier_parameters": 5140,
+        "optimizer": "AdamW",
+        "optimizer_groups": [
+          {
+            "lr": 0.001,
+            "weight_decay": 0.0001
+          }
+        ],
+        "hidden_dim": 256,
+        "num_layers": null,
+        "other_depth_fields": {},
+        "training_wall_seconds": 0.853257258888334,
+        "mean_epoch_wall_seconds": 0.7807946633547544,
+        "mean_train_step_seconds": 0.702138430904597,
+        "epochs_completed": 1,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004066262394189835,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013475869782269001,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013085763901472092,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00038338781450875103,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0007886094390414655,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.012974071316421032,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.014833611436188221,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.10658428072929382,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.05677982047200203,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.000349696958437562,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00034976526512764394,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0014658779837191105,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0008441752288490534,
+            "gradient_nonzero": true
+          }
+        },
+        "cuda_peak_allocated_bytes": 3112457728,
+        "cuda_peak_reserved_bytes": 3586129920,
+        "cuda_device_name": "NVIDIA GeForce RTX 3090"
+      },
+      "checkpoint_metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "metrics_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a3_intra/run_metrics.json",
+      "checkpoint_path": "outputs/mace_mag_v6a_expert_collaboration/smoke_final/runs/Movies/seed_42/a3_intra/best.pt",
+      "audit": {
+        "finite_checkpoint_metrics": true,
+        "test_metrics_absent": true,
+        "modalities": {
+          "text": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.355814665555954,
+              0.2500700354576111,
+              0.22224029898643494,
+              0.1718749701976776
+            ],
+            "mean_null_attention": 0.561648964881897
+          },
+          "visual": {
+            "top2_weights_sum_max_error": 5.960464477539063e-08,
+            "mean_dense_probability": [
+              0.25767865777015686,
+              0.2022288292646408,
+              0.32768017053604126,
+              0.21241232752799988
+            ],
+            "mean_null_attention": 0.5461706519126892
+          }
+        },
+        "parameters": 1579978,
+        "classifier_parameters": 5140
+      }
+    }
+  ],
+  "checks": {
+    "four_variants_complete": true,
+    "all_validation_metrics_finite": true,
+    "test_metrics_absent": true,
+    "no_failures": true
+  },
+  "audit_passed": true,
+  "provenance": {
+    "branch": "exp/mace_mag_v6a_expert_collaboration",
+    "parent_commit_sha": "0c66c6d65ed5da9e5850b7cfeff2454074e52a3b",
+    "head_at_start": "0c66c6d65ed5da9e5850b7cfeff2454074e52a3b",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "f520e1a1c713b7cf42b1eaa77b5ea525e7a68dbe8bda6d2983685f5bb9998f0f",
+    "started_at_utc": "2026-10-10T06:51:28+00:00"
+  }
+}

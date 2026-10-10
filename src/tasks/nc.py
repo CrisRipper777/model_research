@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from pathlib import Path
 
 import torch
@@ -183,7 +184,15 @@ def _run_single_nc(
     if eval_every < 1:
         raise ValueError("task.eval_every must be >= 1")
 
+    record_run_telemetry = bool(getattr(model, "record_run_telemetry", False))
+    epoch_wall_seconds: list[float] = []
+    train_step_seconds: list[float] = []
+    if record_run_telemetry and device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(device)
+    training_started = time.perf_counter()
+
     for epoch in range(1, int(cfg.task.epochs) + 1):
+        epoch_started = time.perf_counter()
         model.train()
         classifier.train()
         if hasattr(model, "set_epoch"):
@@ -197,6 +206,8 @@ def _run_single_nc(
             labels = y_all[train_idx_all]
             loss = nn.functional.cross_entropy(logits, labels) + aux_weight * aux_loss
             loss.backward()
+            if epoch == 1 and hasattr(model, "capture_gradient_diagnostics"):
+                model.capture_gradient_diagnostics()
             torch.nn.utils.clip_grad_norm_(
                 list(model.parameters()) + list(classifier.parameters()),
                 max_norm=grad_clip,
@@ -216,6 +227,8 @@ def _run_single_nc(
                 loss = nn.functional.cross_entropy(logits, labels) + aux_weight * aux_loss
                 optimizer.zero_grad(set_to_none=True)
                 loss.backward()
+                if epoch == 1 and hasattr(model, "capture_gradient_diagnostics"):
+                    model.capture_gradient_diagnostics()
                 torch.nn.utils.clip_grad_norm_(
                     list(model.parameters()) + list(classifier.parameters()),
                     max_norm=grad_clip,
@@ -226,8 +239,11 @@ def _run_single_nc(
                 total_examples += int(labels.numel())
             train_loss = total_loss / max(total_examples, 1)
 
+        train_step_seconds.append(time.perf_counter() - epoch_started)
+
         scheduler_step(cfg, optimizer, epoch, int(cfg.task.epochs))
         if epoch % eval_every != 0:
+            epoch_wall_seconds.append(time.perf_counter() - epoch_started)
             logger.info("Epoch %05d | Train Loss %.4f", epoch, train_loss)
             continue
 
@@ -250,6 +266,7 @@ def _run_single_nc(
             format_pct(val_metrics["acc"]),
             format_pct(val_metrics["macro_f1"]),
         )
+        epoch_wall_seconds.append(time.perf_counter() - epoch_started)
 
         improved = val_metrics["acc"] > best_val + min_delta
         stop_early = False
@@ -318,6 +335,35 @@ def _run_single_nc(
             if cfg.model.get(name) is not None
         },
     }
+    if record_run_telemetry:
+        run_metadata.update(
+            {
+                "training_wall_seconds": float(time.perf_counter() - training_started),
+                "mean_epoch_wall_seconds": float(
+                    sum(epoch_wall_seconds) / max(len(epoch_wall_seconds), 1)
+                ),
+                "mean_train_step_seconds": float(
+                    sum(train_step_seconds) / max(len(train_step_seconds), 1)
+                ),
+                "epochs_completed": len(epoch_wall_seconds),
+                "gradient_diagnostics": getattr(model, "_gradient_diagnostics", None),
+                "cuda_peak_allocated_bytes": (
+                    int(torch.cuda.max_memory_allocated(device))
+                    if device.type == "cuda"
+                    else None
+                ),
+                "cuda_peak_reserved_bytes": (
+                    int(torch.cuda.max_memory_reserved(device))
+                    if device.type == "cuda"
+                    else None
+                ),
+                "cuda_device_name": (
+                    torch.cuda.get_device_name(device)
+                    if device.type == "cuda"
+                    else "CPU"
+                ),
+            }
+        )
     save_ckpt_path = cfg.task.get("save_ckpt_path")
     if save_ckpt_path:
         path = _checkpoint_path_for_run(save_ckpt_path, cfg, run_id)

@@ -1,0 +1,354 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "preflight_label_policy": "no labels or split indices loaded; synthetic targets only for task-loss backward",
+  "device": "cuda:1",
+  "expected_datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "datasets": [
+    {
+      "dataset": "Movies",
+      "num_nodes": 16672,
+      "num_edges_raw": 109195,
+      "num_edges_physical": 160802,
+      "input_dim": 1536,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "num_classes": 20,
+      "feature_bytes_cpu": 102432768,
+      "labels_or_splits_loaded": false,
+      "self_loops_in_propagation": false,
+      "forward_backward": {
+        "status": "passed",
+        "synthetic_loss_finite": true,
+        "attention_key_value_gradients_nonzero": true,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011304859071969986,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.02422294020652771,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004773837048560381,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0005991922225803137,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0009136763983406126,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0002592628006823361,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0002780517388600856,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006295547937043011,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0003495589189697057,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0003816091630142182,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0009359592804685235,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.021860167384147644,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011508737690746784,
+            "gradient_nonzero": true
+          }
+        },
+        "elapsed_seconds": 0.7504377416335046,
+        "cuda_peak_allocated_bytes": 3112324096,
+        "cuda_peak_reserved_bytes": 3569352704
+      },
+      "passed": true,
+      "preflight_wall_seconds": 1.4281230103224516
+    },
+    {
+      "dataset": "Grocery",
+      "num_nodes": 17074,
+      "num_edges_raw": 85670,
+      "num_edges_physical": 142262,
+      "input_dim": 1536,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "num_classes": 20,
+      "feature_bytes_cpu": 104902656,
+      "labels_or_splits_loaded": false,
+      "self_loops_in_propagation": false,
+      "forward_backward": {
+        "status": "passed",
+        "synthetic_loss_finite": true,
+        "attention_key_value_gradients_nonzero": true,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013259319588541985,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.02917196787893772,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004401839338243008,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006013200618326664,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0008757247705943882,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006434271926991642,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0007228540489450097,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0013936632312834263,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0007188095478340983,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0008183963363990188,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0013488580007106066,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.020948778837919235,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011113991029560566,
+            "gradient_nonzero": true
+          }
+        },
+        "elapsed_seconds": 0.06916367914527655,
+        "cuda_peak_allocated_bytes": 2992019968,
+        "cuda_peak_reserved_bytes": 3435134976
+      },
+      "passed": true,
+      "preflight_wall_seconds": 0.21146785700693727
+    },
+    {
+      "dataset": "ele-fashion",
+      "num_nodes": 97766,
+      "num_edges_raw": 199602,
+      "num_edges_physical": 399172,
+      "input_dim": 1024,
+      "text_dim": 512,
+      "visual_dim": 512,
+      "num_classes": 12,
+      "feature_bytes_cpu": 400449536,
+      "labels_or_splits_loaded": false,
+      "self_loops_in_propagation": false,
+      "forward_backward": {
+        "status": "passed",
+        "synthetic_loss_finite": true,
+        "attention_key_value_gradients_nonzero": true,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006812877021729946,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.007052229717373848,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0005818824283778667,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 5.6663251598365605e-05,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00011137947876704857,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0001136158753070049,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00015354705101344734,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004885247442871332,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00198604678735137,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0004493175074458122,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00046786171151325107,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0016190276946872473,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0012042862363159657,
+            "gradient_nonzero": true
+          }
+        },
+        "elapsed_seconds": 0.29464108077809215,
+        "cuda_peak_allocated_bytes": 13145263104,
+        "cuda_peak_reserved_bytes": 14877196288
+      },
+      "passed": true,
+      "preflight_wall_seconds": 0.8135168962180614
+    }
+  ],
+  "environment": {
+    "recorded_at_utc": "2026-10-10T06:51:22+00:00",
+    "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+    "platform": "linux",
+    "torch": "2.4.0+cu121",
+    "torch_cuda": "12.1",
+    "torch_geometric": "2.7.0",
+    "cuda_available": true,
+    "cuda_device_count": 2,
+    "device": "cuda:1",
+    "selected_device": {
+      "device_index": 1,
+      "device_name": "NVIDIA GeForce RTX 3090",
+      "total_memory_bytes": 25438126080,
+      "free_memory_bytes": 25155141632,
+      "allocated_bytes": 0,
+      "reserved_bytes": 0
+    },
+    "protocol": "unified_full_graph_nc_v1",
+    "nvidia_smi_snapshot": "Sat Oct 10 14:51:22 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n|  0%   52C    P8              35W / 350W |  23196MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   48C    P2              29W / 350W |    269MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           33MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                          8MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   1924553      C   python                                      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+    "other_processes_terminated": false
+  },
+  "passed": true,
+  "provenance": {
+    "branch": "exp/mace_mag_v6a_expert_collaboration",
+    "parent_commit_sha": "0c66c6d65ed5da9e5850b7cfeff2454074e52a3b",
+    "head_at_start": "0c66c6d65ed5da9e5850b7cfeff2454074e52a3b",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "f520e1a1c713b7cf42b1eaa77b5ea525e7a68dbe8bda6d2983685f5bb9998f0f",
+    "started_at_utc": "2026-10-10T06:51:22+00:00"
+  }
+}
