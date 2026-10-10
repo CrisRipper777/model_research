@@ -1,0 +1,689 @@
+{
+  "device": "cuda:1",
+  "device_name": "NVIDIA GeForce RTX 3090",
+  "total_memory_bytes": 25438126080,
+  "initial_free_memory_bytes": 25155141632,
+  "initial_nvidia_smi": "Sat Oct 10 14:51:22 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n|  0%   52C    P8              35W / 350W |  23196MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   48C    P2              29W / 350W |    269MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           33MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                          8MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   1924553      C   python                                      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+  "other_processes_terminated": false,
+  "memory_optimizations": {
+    "edge_chunking": false,
+    "activation_checkpointing": false,
+    "cpu_feature_staging": false,
+    "explanation": "Normal full-graph path fit all preflights and formal runs; no memory optimization was enabled."
+  },
+  "preflight": [
+    {
+      "dataset": "Movies",
+      "num_nodes": 16672,
+      "num_edges_raw": 109195,
+      "num_edges_physical": 160802,
+      "input_dim": 1536,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "num_classes": 20,
+      "feature_bytes_cpu": 102432768,
+      "labels_or_splits_loaded": false,
+      "self_loops_in_propagation": false,
+      "forward_backward": {
+        "status": "passed",
+        "synthetic_loss_finite": true,
+        "attention_key_value_gradients_nonzero": true,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011304859071969986,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.02422294020652771,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004773837048560381,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0005991922225803137,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0009136763983406126,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0002592628006823361,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0002780517388600856,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006295547937043011,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0003495589189697057,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0003816091630142182,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0009359592804685235,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.021860167384147644,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011508737690746784,
+            "gradient_nonzero": true
+          }
+        },
+        "elapsed_seconds": 0.7504377416335046,
+        "cuda_peak_allocated_bytes": 3112324096,
+        "cuda_peak_reserved_bytes": 3569352704
+      },
+      "passed": true,
+      "preflight_wall_seconds": 1.4281230103224516
+    },
+    {
+      "dataset": "Grocery",
+      "num_nodes": 17074,
+      "num_edges_raw": 85670,
+      "num_edges_physical": 142262,
+      "input_dim": 1536,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "num_classes": 20,
+      "feature_bytes_cpu": 104902656,
+      "labels_or_splits_loaded": false,
+      "self_loops_in_propagation": false,
+      "forward_backward": {
+        "status": "passed",
+        "synthetic_loss_finite": true,
+        "attention_key_value_gradients_nonzero": true,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.013259319588541985,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.02917196787893772,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004401839338243008,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006013200618326664,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0008757247705943882,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0006434271926991642,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0007228540489450097,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0013936632312834263,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0007188095478340983,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0008183963363990188,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0013488580007106066,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.020948778837919235,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.011113991029560566,
+            "gradient_nonzero": true
+          }
+        },
+        "elapsed_seconds": 0.06916367914527655,
+        "cuda_peak_allocated_bytes": 2992019968,
+        "cuda_peak_reserved_bytes": 3435134976
+      },
+      "passed": true,
+      "preflight_wall_seconds": 0.21146785700693727
+    },
+    {
+      "dataset": "ele-fashion",
+      "num_nodes": 97766,
+      "num_edges_raw": 199602,
+      "num_edges_physical": 399172,
+      "input_dim": 1024,
+      "text_dim": 512,
+      "visual_dim": 512,
+      "num_classes": 12,
+      "feature_bytes_cpu": 400449536,
+      "labels_or_splits_loaded": false,
+      "self_loops_in_propagation": false,
+      "forward_backward": {
+        "status": "passed",
+        "synthetic_loss_finite": true,
+        "attention_key_value_gradients_nonzero": true,
+        "gradient_diagnostics": {
+          "alpha_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.006812877021729946,
+            "gradient_nonzero": true
+          },
+          "selection_head.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.007052229717373848,
+            "gradient_nonzero": true
+          },
+          "experts.0.linear1.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0005818824283778667,
+            "gradient_nonzero": true
+          },
+          "collaboration.expert_pair_bias": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 5.6663251598365605e-05,
+            "gradient_nonzero": true
+          },
+          "collaboration_strength_raw": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00011137947876704857,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0001136158753070049,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00015354705101344734,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.004885247442871332,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.text.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00198604678735137,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.query.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0004493175074458122,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.key.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.00046786171151325107,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.value.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0016190276946872473,
+            "gradient_nonzero": true
+          },
+          "collaboration.directions.visual.output.weight": {
+            "gradient_present": true,
+            "gradient_finite": true,
+            "gradient_norm": 0.0012042862363159657,
+            "gradient_nonzero": true
+          }
+        },
+        "elapsed_seconds": 0.29464108077809215,
+        "cuda_peak_allocated_bytes": 13145263104,
+        "cuda_peak_reserved_bytes": 14877196288
+      },
+      "passed": true,
+      "preflight_wall_seconds": 0.8135168962180614
+    }
+  ],
+  "formal_run_resources": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a0_static",
+      "training_wall_seconds": 20.358125065919012,
+      "mean_epoch_wall_seconds": 0.14129010469542216,
+      "mean_train_step_seconds": 0.07053899080729333,
+      "cuda_peak_allocated_bytes": 2791218688,
+      "cuda_peak_reserved_bytes": 2908749824
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a1_node",
+      "training_wall_seconds": 23.689677260816097,
+      "mean_epoch_wall_seconds": 0.14238854941439383,
+      "mean_train_step_seconds": 0.07290783281257349,
+      "cuda_peak_allocated_bytes": 2830180864,
+      "cuda_peak_reserved_bytes": 3181379584
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a2_cross",
+      "training_wall_seconds": 23.296335401944816,
+      "mean_epoch_wall_seconds": 0.1599538262941808,
+      "mean_train_step_seconds": 0.08798614889799085,
+      "cuda_peak_allocated_bytes": 3134415360,
+      "cuda_peak_reserved_bytes": 3590324224
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "a3_intra",
+      "training_wall_seconds": 19.73370774043724,
+      "mean_epoch_wall_seconds": 0.16302861240742508,
+      "mean_train_step_seconds": 0.09105162231391796,
+      "cuda_peak_allocated_bytes": 3134415360,
+      "cuda_peak_reserved_bytes": 3590324224
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "a0_static",
+      "training_wall_seconds": 15.155778932850808,
+      "mean_epoch_wall_seconds": 0.14471601467406334,
+      "mean_train_step_seconds": 0.07345905975806852,
+      "cuda_peak_allocated_bytes": 2791218688,
+      "cuda_peak_reserved_bytes": 2908749824
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "a1_node",
+      "training_wall_seconds": 18.145739824976772,
+      "mean_epoch_wall_seconds": 0.14609115868341177,
+      "mean_train_step_seconds": 0.07556296117138117,
+      "cuda_peak_allocated_bytes": 2830180864,
+      "cuda_peak_reserved_bytes": 3181379584
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "a2_cross",
+      "training_wall_seconds": 21.03018067870289,
+      "mean_epoch_wall_seconds": 0.1602555994396236,
+      "mean_train_step_seconds": 0.08819169082706517,
+      "cuda_peak_allocated_bytes": 3134415360,
+      "cuda_peak_reserved_bytes": 3590324224
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "a3_intra",
+      "training_wall_seconds": 22.89400641201064,
+      "mean_epoch_wall_seconds": 0.16481779461343574,
+      "mean_train_step_seconds": 0.09107852295023676,
+      "cuda_peak_allocated_bytes": 3134415360,
+      "cuda_peak_reserved_bytes": 3590324224
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "a0_static",
+      "training_wall_seconds": 14.745061329100281,
+      "mean_epoch_wall_seconds": 0.14211846265174888,
+      "mean_train_step_seconds": 0.07253183747148689,
+      "cuda_peak_allocated_bytes": 2791218688,
+      "cuda_peak_reserved_bytes": 2908749824
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "a1_node",
+      "training_wall_seconds": 13.865897270850837,
+      "mean_epoch_wall_seconds": 0.1467187196984397,
+      "mean_train_step_seconds": 0.07647281163984812,
+      "cuda_peak_allocated_bytes": 2830180864,
+      "cuda_peak_reserved_bytes": 3181379584
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "a2_cross",
+      "training_wall_seconds": 17.939224041998386,
+      "mean_epoch_wall_seconds": 0.16399560545548975,
+      "mean_train_step_seconds": 0.09083492398661162,
+      "cuda_peak_allocated_bytes": 3134415360,
+      "cuda_peak_reserved_bytes": 3590324224
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "a3_intra",
+      "training_wall_seconds": 17.61467609880492,
+      "mean_epoch_wall_seconds": 0.1639419470476099,
+      "mean_train_step_seconds": 0.09178407276498086,
+      "cuda_peak_allocated_bytes": 3134415360,
+      "cuda_peak_reserved_bytes": 3590324224
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "a0_static",
+      "training_wall_seconds": 14.419395823962986,
+      "mean_epoch_wall_seconds": 0.14359475783198888,
+      "mean_train_step_seconds": 0.07353529217940422,
+      "cuda_peak_allocated_bytes": 2646138880,
+      "cuda_peak_reserved_bytes": 2782920704
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "a1_node",
+      "training_wall_seconds": 26.969289782922715,
+      "mean_epoch_wall_seconds": 0.1449926922661664,
+      "mean_train_step_seconds": 0.07422344134740379,
+      "cuda_peak_allocated_bytes": 2686875648,
+      "cuda_peak_reserved_bytes": 3038773248
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "a2_cross",
+      "training_wall_seconds": 25.54763337597251,
+      "mean_epoch_wall_seconds": 0.1607150333771898,
+      "mean_train_step_seconds": 0.0885709650960774,
+      "cuda_peak_allocated_bytes": 2998044672,
+      "cuda_peak_reserved_bytes": 3449815040
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "a3_intra",
+      "training_wall_seconds": 21.9829293130897,
+      "mean_epoch_wall_seconds": 0.16313913866009527,
+      "mean_train_step_seconds": 0.0904870568639011,
+      "cuda_peak_allocated_bytes": 2998044672,
+      "cuda_peak_reserved_bytes": 3449815040
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "a0_static",
+      "training_wall_seconds": 17.089367581997067,
+      "mean_epoch_wall_seconds": 0.14045945903742496,
+      "mean_train_step_seconds": 0.07091165466082035,
+      "cuda_peak_allocated_bytes": 2646138880,
+      "cuda_peak_reserved_bytes": 2782920704
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "a1_node",
+      "training_wall_seconds": 18.36017263494432,
+      "mean_epoch_wall_seconds": 0.14747249859632278,
+      "mean_train_step_seconds": 0.07677596154128563,
+      "cuda_peak_allocated_bytes": 2686875648,
+      "cuda_peak_reserved_bytes": 3038773248
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "a2_cross",
+      "training_wall_seconds": 23.357082017231733,
+      "mean_epoch_wall_seconds": 0.1602862441014532,
+      "mean_train_step_seconds": 0.08834571589354996,
+      "cuda_peak_allocated_bytes": 2998044672,
+      "cuda_peak_reserved_bytes": 3449815040
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "a3_intra",
+      "training_wall_seconds": 19.822675830684602,
+      "mean_epoch_wall_seconds": 0.1633020627575562,
+      "mean_train_step_seconds": 0.09106201976638935,
+      "cuda_peak_allocated_bytes": 2998044672,
+      "cuda_peak_reserved_bytes": 3449815040
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "a0_static",
+      "training_wall_seconds": 20.60807238984853,
+      "mean_epoch_wall_seconds": 0.14008570408855542,
+      "mean_train_step_seconds": 0.06956179723331407,
+      "cuda_peak_allocated_bytes": 2646138880,
+      "cuda_peak_reserved_bytes": 2782920704
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "a1_node",
+      "training_wall_seconds": 18.129306855145842,
+      "mean_epoch_wall_seconds": 0.14636855457246917,
+      "mean_train_step_seconds": 0.07647914604581509,
+      "cuda_peak_allocated_bytes": 2686875648,
+      "cuda_peak_reserved_bytes": 3038773248
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "a2_cross",
+      "training_wall_seconds": 20.117248424328864,
+      "mean_epoch_wall_seconds": 0.16134329569575034,
+      "mean_train_step_seconds": 0.08937717242362468,
+      "cuda_peak_allocated_bytes": 2998044672,
+      "cuda_peak_reserved_bytes": 3449815040
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "variant": "a3_intra",
+      "training_wall_seconds": 20.218431205954403,
+      "mean_epoch_wall_seconds": 0.15982490162423346,
+      "mean_train_step_seconds": 0.08867376480581395,
+      "cuda_peak_allocated_bytes": 2998044672,
+      "cuda_peak_reserved_bytes": 3449815040
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "a0_static",
+      "training_wall_seconds": 120.30949236918241,
+      "mean_epoch_wall_seconds": 0.5206538832257959,
+      "mean_train_step_seconds": 0.24512906956906413,
+      "cuda_peak_allocated_bytes": 11155621376,
+      "cuda_peak_reserved_bytes": 12515803136
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "a1_node",
+      "training_wall_seconds": 74.94035513792187,
+      "mean_epoch_wall_seconds": 0.5351382807054887,
+      "mean_train_step_seconds": 0.2562738584557308,
+      "cuda_peak_allocated_bytes": 11385915392,
+      "cuda_peak_reserved_bytes": 12738101248
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "a2_cross",
+      "training_wall_seconds": 94.77927178423852,
+      "mean_epoch_wall_seconds": 0.6095431450754404,
+      "mean_train_step_seconds": 0.3213008504257434,
+      "cuda_peak_allocated_bytes": 13148903424,
+      "cuda_peak_reserved_bytes": 14908653568
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "a3_intra",
+      "training_wall_seconds": 127.96015470288694,
+      "mean_epoch_wall_seconds": 0.6119862931529776,
+      "mean_train_step_seconds": 0.32325302680268636,
+      "cuda_peak_allocated_bytes": 13148903424,
+      "cuda_peak_reserved_bytes": 14908653568
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "a0_static",
+      "training_wall_seconds": 146.34921851707622,
+      "mean_epoch_wall_seconds": 0.5191931109239598,
+      "mean_train_step_seconds": 0.24322243275524802,
+      "cuda_peak_allocated_bytes": 11155621376,
+      "cuda_peak_reserved_bytes": 12515803136
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "a1_node",
+      "training_wall_seconds": 92.15696070017293,
+      "mean_epoch_wall_seconds": 0.5332634447148569,
+      "mean_train_step_seconds": 0.25620625328783897,
+      "cuda_peak_allocated_bytes": 11385915392,
+      "cuda_peak_reserved_bytes": 12738101248
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "a2_cross",
+      "training_wall_seconds": 101.9748409697786,
+      "mean_epoch_wall_seconds": 0.6060225339032301,
+      "mean_train_step_seconds": 0.31883073241564713,
+      "cuda_peak_allocated_bytes": 13148903424,
+      "cuda_peak_reserved_bytes": 14908653568
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "a3_intra",
+      "training_wall_seconds": 100.26121648494154,
+      "mean_epoch_wall_seconds": 0.615229705060032,
+      "mean_train_step_seconds": 0.3258336176374324,
+      "cuda_peak_allocated_bytes": 13148903424,
+      "cuda_peak_reserved_bytes": 14908653568
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "a0_static",
+      "training_wall_seconds": 95.78819665266201,
+      "mean_epoch_wall_seconds": 0.5188371704497083,
+      "mean_train_step_seconds": 0.2442550453631653,
+      "cuda_peak_allocated_bytes": 11155621376,
+      "cuda_peak_reserved_bytes": 12515803136
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "a1_node",
+      "training_wall_seconds": 80.90713285142556,
+      "mean_epoch_wall_seconds": 0.5332456661923441,
+      "mean_train_step_seconds": 0.25467239056519275,
+      "cuda_peak_allocated_bytes": 11385915392,
+      "cuda_peak_reserved_bytes": 12738101248
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "a2_cross",
+      "training_wall_seconds": 112.43136100657284,
+      "mean_epoch_wall_seconds": 0.6072159484954354,
+      "mean_train_step_seconds": 0.3193044205953986,
+      "cuda_peak_allocated_bytes": 13148903424,
+      "cuda_peak_reserved_bytes": 14908653568
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "variant": "a3_intra",
+      "training_wall_seconds": 112.99899086682126,
+      "mean_epoch_wall_seconds": 0.6125013544166357,
+      "mean_train_step_seconds": 0.32486680666887147,
+      "cuda_peak_allocated_bytes": 13148903424,
+      "cuda_peak_reserved_bytes": 14908653568
+    }
+  ],
+  "formal_oom_runs": [],
+  "formal_failed_runs": []
+}
