@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "regression": "same V7A A2 checkpoint and real Movies full graph: V7A A2 vs V7B B0",
+  "dataset": "Movies",
+  "num_nodes": 16672,
+  "candidate_fingerprint_v7a": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+  "candidate_fingerprint_v7b": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+  "weights_loaded_strictly": true,
+  "max_abs_embedding_error": 1.1920928955078125e-06,
+  "max_abs_auxiliary_loss_error": 0.0,
+  "semantic_edge_weight_summary_equal": true,
+  "tolerance": {
+    "atol": 2e-06,
+    "rtol": 2e-05
+  },
+  "device": "cuda:1",
+  "test_metrics_generated": false,
+  "provenance": {
+    "branch": "exp/v7b_provenance_relative_semantic_edges",
+    "baseline_commit_sha": "bcf0d8328642dc6747f8f94f42e56b1717555d64",
+    "head_at_start": "bcf0d8328642dc6747f8f94f42e56b1717555d64",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "b46abaaa9abc9dbf4ff5144c4420a862f0434e2b0c31649a61a42e461556f329",
+    "started_at_utc": "2026-10-11T04:52:54+00:00"
+  },
+  "recorded_at_utc": "2026-10-11T04:52:56+00:00"
+}

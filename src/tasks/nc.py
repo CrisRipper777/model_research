@@ -127,12 +127,14 @@ def _run_single_nc(
         cache_path = cfg.model.get("semantic_cache_path")
         if not cache_path:
             raise ValueError("PSCE-MAG NC requires model.semantic_cache_path")
-        model.load_semantic_cache(
-            str(cache_path),
-            expected_dataset=str(cfg.dataset.name),
-            expected_feature_fingerprint=cfg.model.get("semantic_feature_fingerprint"),
-            expected_candidate_fingerprint=cfg.model.get("semantic_candidate_fingerprint"),
-        )
+        cache_kwargs = {
+            "expected_dataset": str(cfg.dataset.name),
+            "expected_feature_fingerprint": cfg.model.get("semantic_feature_fingerprint"),
+            "expected_candidate_fingerprint": cfg.model.get("semantic_candidate_fingerprint"),
+        }
+        if hasattr(model, "semantic_v7b_fingerprint"):
+            cache_kwargs["expected_v7b_fingerprint"] = cfg.model.get("semantic_v7b_fingerprint")
+        model.load_semantic_cache(str(cache_path), **cache_kwargs)
     model = model.to(device)
     classifier = nn.Linear(model.out_dim, int(data.num_classes)).to(device)
     optimizer = build_optimizer(
@@ -421,6 +423,8 @@ def _run_single_nc(
     if getattr(model, "semantic_candidate_fingerprint", None) is not None:
         run_metadata["semantic_candidate_fingerprint"] = model.semantic_candidate_fingerprint
         run_metadata["semantic_feature_fingerprint"] = model.semantic_feature_fingerprint
+    if getattr(model, "semantic_v7b_fingerprint", None) is not None:
+        run_metadata["semantic_v7b_fingerprint"] = model.semantic_v7b_fingerprint
     save_ckpt_path = cfg.task.get("save_ckpt_path")
     if save_ckpt_path:
         path = _checkpoint_path_for_run(save_ckpt_path, cfg, run_id)

@@ -1,0 +1,392 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "validation_only": true,
+  "preflight_target_policy": "real train-split labels for one gradient step; full-graph validation only",
+  "device": "cuda:1",
+  "expected_datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "datasets": [
+    {
+      "dataset": "Movies",
+      "status": "passed",
+      "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 269 MiB, 23989 MiB, 2 %",
+      "cuda_free_before_bytes": 25155141632,
+      "cuda_total_bytes": 25438126080,
+      "input_dim": 1536,
+      "num_nodes": 16672,
+      "num_classes": 20,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "directed_physical_edges": 160802,
+      "train_nodes": 10003,
+      "validation_nodes": 3334,
+      "test_metrics_generated": false,
+      "labels_or_splits_loaded_for_preflight": true,
+      "passed": true,
+      "training_loss": 3.0932319164276123,
+      "validation_metrics": {
+        "val_acc": 0.3293341398239136,
+        "val_macro_f1": 0.02477436823104693
+      },
+      "training_step_seconds": 0.7916167159564793,
+      "validation_inference_seconds": 0.05455117207020521,
+      "relation_scoring_seconds": 0.008370892144739628,
+      "semantic_propagation_seconds": 0.03721341164782643,
+      "model_parameters": 1576578,
+      "classifier_parameters": 5140,
+      "gradient_diagnostics": {
+        "alpha_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.005013297777622938,
+          "gradient_nonzero": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.013022581115365028,
+          "gradient_nonzero": true
+        },
+        "selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.006958352401852608,
+          "gradient_nonzero": true
+        },
+        "strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.003069483209401369,
+          "gradient_nonzero": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0011311332928016782,
+          "gradient_nonzero": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.5800458186276956e-06,
+          "gradient_nonzero": true
+        },
+        "relation_projections.visual.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.845957396857557e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.0.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.571842517478217e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.2.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 3.136041414109059e-05,
+          "gradient_nonzero": true
+        },
+        "semantic_selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0046891928650438786,
+          "gradient_nonzero": true
+        },
+        "semantic_strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.002413651905953884,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.output_text": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.8576380170998164e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.output_visual": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.5266454031225294e-05,
+          "gradient_nonzero": true
+        }
+      },
+      "cuda_peak_allocated_bytes": 3545715712,
+      "cuda_peak_reserved_bytes": 3772776448,
+      "cuda_free_after_bytes": 21317353472,
+      "gpu_snapshot_after": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3929 MiB, 20329 MiB, 36 %",
+      "wall_seconds": 1.2612184016034007,
+      "test_metric_keys_present": false
+    },
+    {
+      "dataset": "Grocery",
+      "status": "passed",
+      "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 445 MiB, 23813 MiB, 41 %",
+      "cuda_free_before_bytes": 24970592256,
+      "cuda_total_bytes": 25438126080,
+      "input_dim": 1536,
+      "num_nodes": 17074,
+      "num_classes": 20,
+      "text_dim": 768,
+      "visual_dim": 768,
+      "directed_physical_edges": 142262,
+      "train_nodes": 10244,
+      "validation_nodes": 3415,
+      "test_metrics_generated": false,
+      "labels_or_splits_loaded_for_preflight": true,
+      "passed": true,
+      "training_loss": 3.1567516326904297,
+      "validation_metrics": {
+        "val_acc": 0.14143484830856323,
+        "val_macro_f1": 0.012390969728065675
+      },
+      "training_step_seconds": 0.12014731112867594,
+      "validation_inference_seconds": 0.04695139033719897,
+      "relation_scoring_seconds": 0.0037667141295969486,
+      "semantic_propagation_seconds": 0.01181703433394432,
+      "model_parameters": 1576578,
+      "classifier_parameters": 5140,
+      "gradient_diagnostics": {
+        "alpha_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.013813567347824574,
+          "gradient_nonzero": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.006167302373796701,
+          "gradient_nonzero": true
+        },
+        "selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.005278366152197123,
+          "gradient_nonzero": true
+        },
+        "strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0016568978317081928,
+          "gradient_nonzero": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0004217124660499394,
+          "gradient_nonzero": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.4515086377286934e-06,
+          "gradient_nonzero": true
+        },
+        "relation_projections.visual.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.5506237761874218e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.0.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.6148874237842392e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.2.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.9997845558682457e-05,
+          "gradient_nonzero": true
+        },
+        "semantic_selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.006350974552333355,
+          "gradient_nonzero": true
+        },
+        "semantic_strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 5.634617991745472e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.output_text": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.8606266166898422e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.output_visual": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.3530355974799022e-05,
+          "gradient_nonzero": true
+        }
+      },
+      "cuda_peak_allocated_bytes": 3391548928,
+      "cuda_peak_reserved_bytes": 3770679296,
+      "cuda_free_after_bytes": 21319450624,
+      "gpu_snapshot_after": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 3927 MiB, 20331 MiB, 83 %",
+      "wall_seconds": 0.3591184583492577,
+      "test_metric_keys_present": false
+    },
+    {
+      "dataset": "ele-fashion",
+      "status": "passed",
+      "gpu_snapshot_before": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 445 MiB, 23813 MiB, 83 %",
+      "cuda_free_before_bytes": 24970592256,
+      "cuda_total_bytes": 25438126080,
+      "input_dim": 1024,
+      "num_nodes": 97766,
+      "num_classes": 12,
+      "text_dim": 512,
+      "visual_dim": 512,
+      "directed_physical_edges": 399172,
+      "train_nodes": 58659,
+      "validation_nodes": 9777,
+      "test_metrics_generated": false,
+      "labels_or_splits_loaded_for_preflight": true,
+      "passed": true,
+      "training_loss": 2.4903271198272705,
+      "validation_metrics": {
+        "val_acc": 0.26040709018707275,
+        "val_macro_f1": 0.06297068728092371
+      },
+      "training_step_seconds": 0.5205482039600611,
+      "validation_inference_seconds": 0.2207198003306985,
+      "relation_scoring_seconds": 0.016083838883787394,
+      "semantic_propagation_seconds": 0.056402224116027355,
+      "model_parameters": 1314434,
+      "classifier_parameters": 3084,
+      "gradient_diagnostics": {
+        "alpha_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.028162984177470207,
+          "gradient_nonzero": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0011258890153840184,
+          "gradient_nonzero": true
+        },
+        "selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.005101309157907963,
+          "gradient_nonzero": true
+        },
+        "strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.00042151310481131077,
+          "gradient_nonzero": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.0044219521805644035,
+          "gradient_nonzero": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.926686763908947e-06,
+          "gradient_nonzero": true
+        },
+        "relation_projections.visual.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.6898975445656106e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.0.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.9052196194024873e-06,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.2.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.8163534807390533e-05,
+          "gradient_nonzero": true
+        },
+        "semantic_selection_head.weight": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.011423957534134388,
+          "gradient_nonzero": true
+        },
+        "semantic_strength_head.bias": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 0.001193443313241005,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.output_text": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 2.3212143787532113e-05,
+          "gradient_nonzero": true
+        },
+        "relation_scorer.output_visual": {
+          "gradient_present": true,
+          "gradient_finite": true,
+          "gradient_norm": 1.594933019077871e-05,
+          "gradient_nonzero": true
+        }
+      },
+      "cuda_peak_allocated_bytes": 14839902208,
+      "cuda_peak_reserved_bytes": 15846080512,
+      "cuda_free_after_bytes": 9244049408,
+      "gpu_snapshot_after": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 15443 MiB, 8815 MiB, 97 %",
+      "wall_seconds": 1.5112606110051274,
+      "test_metric_keys_present": false
+    }
+  ],
+  "environment": {
+    "recorded_at_utc": "2026-10-11T04:53:21+00:00",
+    "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+    "torch": "2.4.0+cu121",
+    "torch_cuda": "12.1",
+    "torch_geometric": "2.7.0",
+    "faiss": "1.15.1",
+    "cuda_available": true,
+    "cuda_device_count": 2,
+    "device": "cuda:1",
+    "selected_device": {
+      "device_index": 1,
+      "device_name": "NVIDIA GeForce RTX 3090",
+      "total_memory_bytes": 25438126080,
+      "free_memory_bytes": 25155141632,
+      "allocated_bytes": 0,
+      "reserved_bytes": 0
+    },
+    "nvidia_smi_snapshot": "Sun Oct 11 12:53:21 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n|  0%   46C    P8              33W / 350W |  23228MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   48C    P2              26W / 350W |    269MiB / 24576MiB |      2%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   2562572      C   .../miniconda3/envs/yhf_env/bin/python      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+    "gpu_query": "0, NVIDIA GeForce RTX 3090, 24576 MiB, 23228 MiB, 1024 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, 24576 MiB, 269 MiB, 23989 MiB, 2 %",
+    "other_processes_terminated": false
+  },
+  "passed": true,
+  "provenance": {
+    "branch": "exp/v7b_provenance_relative_semantic_edges",
+    "baseline_commit_sha": "bcf0d8328642dc6747f8f94f42e56b1717555d64",
+    "head_at_start": "bcf0d8328642dc6747f8f94f42e56b1717555d64",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "b46abaaa9abc9dbf4ff5144c4420a862f0434e2b0c31649a61a42e461556f329",
+    "started_at_utc": "2026-10-11T04:53:21+00:00"
+  },
+  "completed_at_utc": "2026-10-11T04:53:25+00:00"
+}
