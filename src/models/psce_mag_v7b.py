@@ -55,11 +55,15 @@ class Model(V7AModel):
                 nn.init.normal_(self.relation_scorer[-1].weight, mean=0.0, std=0.005)
                 with torch.no_grad():
                     self.relation_scorer[-1].weight[1].copy_(self.relation_scorer[-1].weight[0])
-        else:
-            # Fixed-weight controls do not optimize or use relation parameters.
+        elif requested in {"b1_fixed_knn", "b2_random_fixed"}:
+            # The fixed-weight controls do not optimize relation parameters.
             for module in (self.relation_projections, self.relation_scorer):
                 for parameter in module.parameters():
                     parameter.requires_grad_(False)
+        else:
+            # B0 is the complete V7A A2 model: its learned Sigmoid relation
+            # projections and scorer remain part of end-to-end training.
+            pass
 
     def load_semantic_cache(
         self,

@@ -1,0 +1,169 @@
+{
+  "passed": true,
+  "regression": "V7A A2 vs corrected V7B B0 real Movies full-graph train-mode forward/backward/AdamW update",
+  "dataset": "Movies",
+  "num_nodes": 16672,
+  "train_nodes": 10003,
+  "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+  "source_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+  "same_initialization": {
+    "model_max_abs_difference": 0.0,
+    "classifier_max_abs_difference": 0.0
+  },
+  "trainable_parameter_set_difference": {
+    "v7a_only": [],
+    "b0_only": []
+  },
+  "trainable_parameters": 1576387,
+  "embedding_max_abs_error": 1.1920928955078125e-06,
+  "logits_max_abs_error": 1.1920928955078125e-06,
+  "cross_entropy_abs_error": 2.384185791015625e-07,
+  "auxiliary_loss_abs_error": 0.0,
+  "total_loss_abs_error": 2.384185791015625e-07,
+  "public_gradient_max_abs_error": 1.1920928955078125e-07,
+  "relation_gradients": {
+    "relation_projections.text.weight": {
+      "finite": true,
+      "norm": 3.065980854444206e-05,
+      "nonzero": true
+    },
+    "relation_projections.visual.weight": {
+      "finite": true,
+      "norm": 1.944513314811047e-05,
+      "nonzero": true
+    },
+    "relation_scorer.0.weight": {
+      "finite": true,
+      "norm": 3.0768391297897324e-05,
+      "nonzero": true
+    },
+    "relation_scorer.0.bias": {
+      "finite": true,
+      "norm": 5.520459126273636e-06,
+      "nonzero": true
+    },
+    "relation_scorer.2.weight": {
+      "finite": true,
+      "norm": 0.00032382694189436734,
+      "nonzero": true
+    },
+    "relation_scorer.2.bias": {
+      "finite": true,
+      "norm": 0.00035489146830514073,
+      "nonzero": true
+    }
+  },
+  "gradient_diagnostics": {
+    "alpha_raw": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.022104797884821892,
+      "gradient_nonzero": true
+    },
+    "experts.0.linear1.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.02422904409468174,
+      "gradient_nonzero": true
+    },
+    "selection_head.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.0302225723862648,
+      "gradient_nonzero": true
+    },
+    "strength_head.bias": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.02205934375524521,
+      "gradient_nonzero": true
+    },
+    "semantic_coefficients_raw": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.0018565487116575241,
+      "gradient_nonzero": true
+    },
+    "relation_projections.text.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 3.065980854444206e-05,
+      "gradient_nonzero": true
+    },
+    "relation_projections.visual.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 1.944513314811047e-05,
+      "gradient_nonzero": true
+    },
+    "relation_scorer.0.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 3.0768391297897324e-05,
+      "gradient_nonzero": true
+    },
+    "relation_scorer.2.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.00032382694189436734,
+      "gradient_nonzero": true
+    },
+    "semantic_selection_head.weight": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.0066437977366149426,
+      "gradient_nonzero": true
+    },
+    "semantic_strength_head.bias": {
+      "gradient_present": true,
+      "gradient_finite": true,
+      "gradient_norm": 0.0016294121742248535,
+      "gradient_nonzero": true
+    }
+  },
+  "adamw_update_max_abs_difference": 1.2405216693878174e-06,
+  "relation_parameter_updates": {
+    "relation_projections.text.weight": {
+      "l1_update": 3.022078514099121,
+      "max_abs_update": 0.000954851508140564
+    },
+    "relation_projections.visual.weight": {
+      "l1_update": 2.721909999847412,
+      "max_abs_update": 0.0009167343378067017
+    },
+    "relation_scorer.0.weight": {
+      "l1_update": 2.748445510864258,
+      "max_abs_update": 0.0009831339120864868
+    },
+    "relation_scorer.0.bias": {
+      "l1_update": 0.04504109546542168,
+      "max_abs_update": 0.0009403005242347717
+    },
+    "relation_scorer.2.weight": {
+      "l1_update": 0.06337352097034454,
+      "max_abs_update": 0.0009988611564040184
+    },
+    "relation_scorer.2.bias": {
+      "l1_update": 0.0009996891021728516,
+      "max_abs_update": 0.0009996891021728516
+    }
+  },
+  "tolerance": {
+    "atol": 2e-05,
+    "rtol": 2e-05,
+    "loss_atol": 2e-06
+  },
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "test_metrics_generated": false,
+  "provenance": {
+    "branch": "exp/v7b1_corrective_replication",
+    "baseline_commit_sha": "75157f052a50c60b791566b2c91207e372956d7b",
+    "head_at_start": "75157f052a50c60b791566b2c91207e372956d7b",
+    "freeze_commit_sha": null,
+    "worktree_clean_at_start": false,
+    "configuration_fingerprint_sha256": "6d116b6913b583c84614560dcdaf96d2d7c871591fae75e3ef1d078f508a4f8a",
+    "started_at_utc": "2026-10-11T07:23:09+00:00"
+  },
+  "recorded_at_utc": "2026-10-11T07:23:11+00:00"
+}
