@@ -1,0 +1,226 @@
+{
+  "recorded_at_utc": "2026-10-11T17:19:29+00:00",
+  "dataset": "Grocery",
+  "variant": "e2_full",
+  "seed": 42,
+  "checkpoint_path": "outputs/pace_mag_v1_pilot/runs/Grocery/seed_42/e2_full/best.pt",
+  "checkpoint_selection": "best_val_accuracy",
+  "validation_metrics_only": {
+    "val_acc": 0.8178623914718628,
+    "val_macro_f1": 0.7351336468140988
+  },
+  "commit_sha": "739f340bb6858b7280dede1dfaaf37740c2de3fa",
+  "semantic_cache_path": "outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+  "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+  "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+  "semantic_v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+  "num_nodes": 17074,
+  "physical_edges": 142262,
+  "effective_node_fraction": {
+    "physical": 1.0,
+    "text": 1.0,
+    "visual": 1.0
+  },
+  "input_message_rms": {
+    "physical": {
+      "text": 0.9959210753440857,
+      "visual": 0.9878451228141785
+    },
+    "text": {
+      "text": 0.997948169708252,
+      "visual": 0.9864590167999268
+    },
+    "visual": {
+      "text": 0.9979637265205383,
+      "visual": 0.9864742755889893
+    }
+  },
+  "aggregate_message_rms": {
+    "physical": {
+      "text": 0.8640335202217102,
+      "visual": 0.8349741101264954
+    },
+    "text": {
+      "text": 0.8184148669242859,
+      "visual": 0.6312068104743958
+    },
+    "visual": {
+      "text": 0.7150737643241882,
+      "visual": 0.8170897960662842
+    }
+  },
+  "expert_output_rms": {
+    "physical": {
+      "text": [
+        0.743387758731842,
+        0.6244048476219177,
+        0.7355248928070068
+      ],
+      "visual": [
+        0.7804490327835083,
+        0.7754374146461487,
+        0.8916710019111633
+      ]
+    },
+    "text": {
+      "text": [
+        0.742286205291748,
+        0.5655267834663391,
+        0.7476348280906677
+      ],
+      "visual": [
+        0.7733327746391296,
+        0.7665061950683594,
+        0.8948087096214294
+      ]
+    },
+    "visual": {
+      "text": [
+        0.7526748776435852,
+        0.6240253448486328,
+        0.719471275806427
+      ],
+      "visual": [
+        0.7520641088485718,
+        0.7170537114143372,
+        0.9116040468215942
+      ]
+    }
+  },
+  "expert_pairwise_cosine": {
+    "physical": {
+      "text": [
+        -0.0641661062836647,
+        0.15014813840389252,
+        0.0050826407968997955
+      ],
+      "visual": [
+        -0.027895553037524223,
+        0.11603932082653046,
+        -0.05208022892475128
+      ]
+    },
+    "text": {
+      "text": [
+        -0.024791408330202103,
+        0.1681879311800003,
+        0.02587418258190155
+      ],
+      "visual": [
+        -0.04576506465673447,
+        0.10669758915901184,
+        -0.07255309820175171
+      ]
+    },
+    "visual": {
+      "text": [
+        -0.07434245944023132,
+        0.14935503900051117,
+        0.0073417737148702145
+      ],
+      "visual": [
+        -0.012523959390819073,
+        0.1435972899198532,
+        -0.036962904036045074
+      ]
+    }
+  },
+  "router": {
+    "physical": {
+      "text": {
+        "mean_probability": [
+          0.31494611501693726,
+          0.26741570234298706,
+          0.4176381528377533
+        ],
+        "mean_entropy": 0.8020666837692261,
+        "valid_node_probability_sum_min": 0.9999998807907104,
+        "valid_node_probability_sum_max": 1.0000001192092896
+      },
+      "visual": {
+        "mean_probability": [
+          0.2655050754547119,
+          0.4711059033870697,
+          0.2633890211582184
+        ],
+        "mean_entropy": 0.5591232180595398,
+        "valid_node_probability_sum_min": 0.9999998211860657,
+        "valid_node_probability_sum_max": 1.0000001192092896
+      }
+    },
+    "text": {
+      "text": {
+        "mean_probability": [
+          0.31359124183654785,
+          0.2476302683353424,
+          0.43877851963043213
+        ],
+        "mean_entropy": 0.8906059265136719,
+        "valid_node_probability_sum_min": 0.9999998807907104,
+        "valid_node_probability_sum_max": 1.0000001192092896
+      },
+      "visual": {
+        "mean_probability": [
+          0.24208369851112366,
+          0.5494879484176636,
+          0.20842835307121277
+        ],
+        "mean_entropy": 0.5602628588676453,
+        "valid_node_probability_sum_min": 0.9999998807907104,
+        "valid_node_probability_sum_max": 1.0000001192092896
+      }
+    },
+    "visual": {
+      "text": {
+        "mean_probability": [
+          0.3194219172000885,
+          0.24188271164894104,
+          0.43869540095329285
+        ],
+        "mean_entropy": 0.7908990979194641,
+        "valid_node_probability_sum_min": 0.9999998807907104,
+        "valid_node_probability_sum_max": 1.0000001192092896
+      },
+      "visual": {
+        "mean_probability": [
+          0.23559562861919403,
+          0.5414620637893677,
+          0.22294238209724426
+        ],
+        "mean_entropy": 0.6541097164154053,
+        "valid_node_probability_sum_min": 0.9999998807907104,
+        "valid_node_probability_sum_max": 1.0000001192092896
+      }
+    }
+  },
+  "physical_response_rms": {
+    "text": 0.5516130328178406,
+    "visual": 0.7393965721130371
+  },
+  "semantic_response_rms": {
+    "text": 0.49823203682899475,
+    "visual": 0.6178786158561707
+  },
+  "beta_phy": 0.5159074664115906,
+  "beta_sem": 0.3051488995552063,
+  "rho": {
+    "text_target_from_text_source": 0.1038510650396347,
+    "visual_target_from_text_source": 0.10257522016763687,
+    "text_target_from_visual_source": 0.104499451816082,
+    "visual_target_from_visual_source": 0.10113514214754105
+  },
+  "gamma_fixed": 0.2,
+  "final_embedding": {
+    "finite": true,
+    "rms": 1.05777907371521
+  },
+  "aux_loss": 0.0,
+  "diagnostic_label_access": false,
+  "test_labels_loaded": false,
+  "test_metrics_computed": false,
+  "notes": [
+    "Diagnostics use the selected Validation checkpoint and only Text/Visual features plus physical/candidate graph topology.",
+    "No NC labels or split files are loaded by this analysis path.",
+    "PT + PV = PU is an operator-level reconstruction; row-quality aggregation and expert nonlinearities do not make the complete model linearly reconstructible."
+  ]
+}

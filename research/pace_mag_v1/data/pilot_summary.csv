@@ -1,0 +1,16 @@
+dataset,variant,runs_expected,runs_completed,runs_failed,val_acc,val_macro_f1,best_epoch,training_seconds,max_peak_allocated_bytes,max_peak_reserved_bytes,e3_single_expert_bottleneck,e3_signed_parameter_delta,interpretation
+Grocery,e0_source_agnostic,1,1,0,0.8204978108406067,0.7488075449908991,133.0,24.964518239721656,1632501248,1906311168,,,single-seed validation observation; no significance claim
+Grocery,e1_no_cross_modal,1,1,0,0.8193265199661255,0.7490166076996383,129.0,23.97075122082606,1560112640,1849688064,,,single-seed validation observation; no significance claim
+Grocery,e2_full,1,1,0,0.8178623914718628,0.7351336468140988,91.0,18.604985835961998,1632501248,1914699776,,,single-seed validation observation; no significance claim
+Grocery,e3_single_expert_control,1,1,0,0.8210834264755249,0.746409963720766,87.0,14.402048279065639,1216970752,1507852288,246,203,single-seed validation observation; no significance claim
+Grocery,e4_static_routing,1,1,0,0.8207906484603882,0.7429574642529422,180.0,30.792128805071115,1358815232,1633681408,,,single-seed validation observation; no significance claim
+Movies,e0_source_agnostic,1,1,0,0.5413917303085327,0.4651554217279113,81.0,17.24656992778182,1584803328,1849688064,,,single-seed validation observation; no significance claim
+Movies,e1_no_cross_modal,1,1,0,0.5407918691635132,0.4595713080195528,72.0,14.993442798033357,1514113536,1784676352,,,single-seed validation observation; no significance claim
+Movies,e2_full,1,1,0,0.542291522026062,0.4527254850374386,88.0,17.90471120364964,1585501696,1849688064,,,single-seed validation observation; no significance claim
+Movies,e3_single_expert_control,1,1,0,0.553389310836792,0.43134986145117604,88.0,14.341525698080659,1191738880,1516240896,246,203,single-seed validation observation; no significance claim
+Movies,e4_static_routing,1,1,0,0.5428914427757263,0.4432524237121525,88.0,16.725686726160347,1320303104,1625292800,,,single-seed validation observation; no significance claim
+ele-fashion,e0_source_agnostic,1,1,0,0.8756264448165894,0.7456622271773619,123.0,110.3079278850928,7865688064,8956936192,,,single-seed validation observation; no significance claim
+ele-fashion,e1_no_cross_modal,1,1,0,0.8766492605209351,0.750326060205126,134.0,115.15232606232166,7450339328,8539602944,,,single-seed validation observation; no significance claim
+ele-fashion,e2_full,1,1,0,0.8764446973800659,0.7472435211970371,135.0,119.06715481774881,7866187264,8965324800,,,single-seed validation observation; no significance claim
+ele-fashion,e3_single_expert_control,1,1,0,0.878081202507019,0.7533532519131285,142.0,97.3055336852558,5295428608,6134169600,246,203,single-seed validation observation; no significance claim
+ele-fashion,e4_static_routing,1,1,0,0.8790017366409302,0.7469303968335864,137.0,112.42047532368451,6310760448,7350517760,,,single-seed validation observation; no significance claim

@@ -7,7 +7,7 @@
 - Verified base SHA: `aa62807c113fde17db058d05d558d2635bccc90b`
 - New branch: `exp/pace_mag_v1_relation_view_experts`
 - The workspace was clean before branch creation. The fetched remote base still matched the requested SHA. No historical branch or commit was modified.
-- Implementation Freeze SHA: pending the final implementation commit.
+- Implementation Freeze SHA: `739f340bb6858b7280dede1dfaaf37740c2de3fa`.
 
 ## Environment
 
@@ -83,4 +83,6 @@ The real Movies E2 preflight found nonzero gradients and AdamW updates in the Pr
 - E3 matches the full Expert+Router+Embedding parameter budget with the closest integer single-MLP width. Exact equality is not promised; per-run width and signed parameter delta are recorded in the Pilot CSV.
 - E0 keeps both learnable semantic route slots, as requested; it does not represent every possible source-agnostic model.
 - The model deliberately rejects Link Prediction and any graph node count different from its global-ID semantic cache.
-- Pilot and Test metrics do not yet exist at this implementation-freeze stage. Implementation success is not evidence of an accuracy benefit.
+- The frozen-code first-round Pilot completed 15/15 runs (three datasets × five variants, seed 42), with zero failures. Each row records the same Implementation Freeze SHA; `evaluate_test=False` for all rows. The report and raw validation/resource records are in `PILOT_REPORT.md` and `data/pilot_runs.csv` / `data/pilot_summary.csv` / `data/resource_profile.csv`.
+- No Test metrics were computed. Pilot differences are single-seed validation observations and do not establish statistical significance or a general accuracy benefit. Full E2 did not lead either validation metric on any dataset; this is preliminary evidence only, not a mechanism conclusion.
+- The Pilot used `cuda:1` (RTX 3090), with peak allocated memory from 1.11 to 7.33 GiB and reserved memory from 1.40 to 8.35 GiB. All jobs completed. Standalone GPU-management probes intermittently failed to initialize during setup while the active training process continued; the runs recorded PyTorch CUDA telemetry and completed without OOM. Upstream CPU autocast deprecation warnings were non-fatal.
