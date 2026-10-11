@@ -15,7 +15,15 @@ All candidate tensors and legacy graph fingerprints were compared directly with 
 | Grocery | 17,074 | 205,557 | True | 100,991 | 96,359 | 8,207 |
 | ele-fashion | 97,766 | 1,102,200 | True | 493,351 | 519,477 | 89,372 |
 
-Degree-preserving null graphs used three successful double-edge swaps per input edge. Exact degrees and edge counts were audited for all nine dataset/seed topologies; graph seeds were 2026/2027/2028 for training seeds 42/43/44. See `data/random_graph_summary.json` for acceptance rates and changed-edge counts.
+Degree-preserving null graphs used three successful double-edge swaps per input edge. Exact degrees and edge counts were audited for all nine dataset/seed topologies; graph seeds were 2026/2027/2028 for training seeds 42/43/44. The physical-overlap audit intersects canonical undirected candidate pairs with the same physical edge list whose fingerprint is stored in the V7B candidate cache.
+
+| Dataset | Physical edges | Real KNN overlap | Random overlap by training seed | Random overlap mean ± population SD | Change vs KNN (pp) | Relative change |
+|---|---:|---:|---|---:|---:|---:|
+| Movies | 80,401 | 18,102 / 205,881 (8.7925%) | 42: 199; 43: 183; 44: 192 | 0.09293% ± 0.00318% | -8.69952 | -98.943% |
+| Grocery | 71,131 | 12,783 / 205,557 (6.2187%) | 42: 143; 43: 129; 44: 152 | 0.06876% ± 0.00460% | -6.14996 | -98.894% |
+| ele-fashion | 199,586 | 42,380 / 1,102,200 (3.8450%) | 42: 141; 43: 147; 44: 157 | 0.01346% ± 0.00060% | -3.83158 | -99.650% |
+
+Overlap rates use undirected candidate edge count as denominator. Relative change is `(random mean rate / KNN rate - 1) × 100%`; per-topology counts, ratios, fingerprints, and deltas are in `data/random_graph_physical_overlap.csv` and `data/random_graph_summary.json`. The randomized graphs retain the KNN degree sequence but almost entirely remove physical-edge overlap, so B1−B2 compares topology while also changing how strongly the semantic candidate graph coincides with the physical graph.
 
 ## Validation results
 
@@ -111,3 +119,4 @@ The protocol is full-graph node classification only. Link prediction remains uns
 - Mechanism diagnostics: `data/semantic_diagnostics.csv`
 - GPU resources: `data/resource_profile.json` and `.csv`
 - Candidate provenance and random topology: `data/candidate_graph_summary.json`, `data/random_graph_summary.json`
+- Random candidate overlap with the physical graph: `data/random_graph_physical_overlap.csv`
