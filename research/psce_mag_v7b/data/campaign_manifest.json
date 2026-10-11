@@ -1,0 +1,40 @@
+{
+  "protocol": "unified_full_graph_nc_v1",
+  "task_evaluate_test": false,
+  "expected_runs": 45,
+  "completed_runs": 45,
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "b0_v7a_original",
+    "b1_fixed_knn",
+    "b2_random_fixed",
+    "b3_relative_shared",
+    "b4_relative_modality"
+  ],
+  "failures": [],
+  "provenance": {
+    "branch": "exp/v7b_provenance_relative_semantic_edges",
+    "baseline_commit_sha": "bcf0d8328642dc6747f8f94f42e56b1717555d64",
+    "head_at_start": "9aa0b85bee7b5f6a5a0016bea970543d8378984d",
+    "freeze_commit_sha": "9aa0b85bee7b5f6a5a0016bea970543d8378984d",
+    "worktree_clean_at_start": true,
+    "configuration_fingerprint_sha256": "b46abaaa9abc9dbf4ff5144c4420a862f0434e2b0c31649a61a42e461556f329",
+    "started_at_utc": "2026-10-11T04:54:37+00:00"
+  },
+  "updated_at_utc": "2026-10-11T05:57:05+00:00",
+  "test_metric_keys_present": false,
+  "status": "complete",
+  "completed_at_utc": "2026-10-11T05:57:05+00:00",
+  "nvidia_smi_at_completion": "Sun Oct 11 13:57:05 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 52%   55C    P8              36W / 350W |  23228MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n| 66%   66C    P0             168W / 350W |     12MiB / 24576MiB |     47%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n+---------------------------------------------------------------------------------------+\n",
+  "device": "cuda:1",
+  "gpu_name": "NVIDIA GeForce RTX 3090"
+}
