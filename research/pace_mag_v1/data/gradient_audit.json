@@ -1,0 +1,199 @@
+{
+  "preflight": {
+    "rho_raw": {
+      "parameter_count": 4,
+      "gradient_present": 4,
+      "gradient_finite": true,
+      "gradient_nonzero": 4,
+      "gradient_l2_norm": 1.1376817383279558e-05
+    },
+    "beta_phy_raw": {
+      "parameter_count": 1,
+      "gradient_present": 1,
+      "gradient_finite": true,
+      "gradient_nonzero": 1,
+      "gradient_l2_norm": 0.001520819729194045
+    },
+    "beta_sem_raw": {
+      "parameter_count": 1,
+      "gradient_present": 1,
+      "gradient_finite": true,
+      "gradient_nonzero": 1,
+      "gradient_l2_norm": 0.0012892596423625946
+    },
+    "projectors": {
+      "parameter_count": 427264,
+      "gradient_present": 427264,
+      "gradient_finite": true,
+      "gradient_nonzero": 427264,
+      "gradient_l2_norm": 6.421886123173094
+    },
+    "cross_modal": {
+      "parameter_count": 33152,
+      "gradient_present": 33152,
+      "gradient_finite": true,
+      "gradient_nonzero": 33152,
+      "gradient_l2_norm": 0.0010597137154925791
+    },
+    "experts": {
+      "parameter_count": 123456,
+      "gradient_present": 123456,
+      "gradient_finite": true,
+      "gradient_nonzero": 123456,
+      "gradient_l2_norm": 0.4800845002007108
+    },
+    "router": {
+      "parameter_count": 34115,
+      "gradient_present": 34115,
+      "gradient_finite": true,
+      "gradient_nonzero": 34115,
+      "gradient_l2_norm": 0.0554484085064641
+    },
+    "relation_embedding": {
+      "parameter_count": 24,
+      "gradient_present": 24,
+      "gradient_finite": true,
+      "gradient_nonzero": 24,
+      "gradient_l2_norm": 8.283572242362425e-05
+    },
+    "modality_embedding": {
+      "parameter_count": 16,
+      "gradient_present": 16,
+      "gradient_finite": true,
+      "gradient_nonzero": 16,
+      "gradient_l2_norm": 0.0001689116470515728
+    },
+    "message_norm": {
+      "parameter_count": 256,
+      "gradient_present": 256,
+      "gradient_finite": true,
+      "gradient_nonzero": 256,
+      "gradient_l2_norm": 0.01267194367020892
+    },
+    "aggregate_norm": {
+      "parameter_count": 256,
+      "gradient_present": 256,
+      "gradient_finite": true,
+      "gradient_nonzero": 256,
+      "gradient_l2_norm": 0.012063320794191632
+    },
+    "mix_norm": {
+      "parameter_count": 512,
+      "gradient_present": 512,
+      "gradient_finite": true,
+      "gradient_nonzero": 512,
+      "gradient_l2_norm": 0.17212357983727603
+    },
+    "physical_norm": {
+      "parameter_count": 512,
+      "gradient_present": 512,
+      "gradient_finite": true,
+      "gradient_nonzero": 512,
+      "gradient_l2_norm": 0.17114542012652145
+    },
+    "fusion": {
+      "parameter_count": 65664,
+      "gradient_present": 65664,
+      "gradient_finite": true,
+      "gradient_nonzero": 65664,
+      "gradient_l2_norm": 4.134115436298527
+    },
+    "skip": {
+      "parameter_count": 32896,
+      "gradient_present": 32896,
+      "gradient_finite": true,
+      "gradient_nonzero": 32896,
+      "gradient_l2_norm": 2.6651691607465473
+    },
+    "fusion_norm": {
+      "parameter_count": 256,
+      "gradient_present": 256,
+      "gradient_finite": true,
+      "gradient_nonzero": 256,
+      "gradient_l2_norm": 0.2243409486676973
+    }
+  },
+  "parameter_updates": {
+    "rho_raw": {
+      "changed_parameter_tensors": 1,
+      "changed_elements": 4,
+      "max_abs_update": 0.0009892582893371582
+    },
+    "beta_phy_raw": {
+      "changed_parameter_tensors": 1,
+      "changed_elements": 1,
+      "max_abs_update": 0.0009999421890825033
+    },
+    "beta_sem_raw": {
+      "changed_parameter_tensors": 1,
+      "changed_elements": 1,
+      "max_abs_update": 0.001000046730041504
+    },
+    "projectors": {
+      "changed_parameter_tensors": 16,
+      "changed_elements": 427264,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "cross_modal": {
+      "changed_parameter_tensors": 8,
+      "changed_elements": 33152,
+      "max_abs_update": 0.0009992318227887154
+    },
+    "experts": {
+      "changed_parameter_tensors": 12,
+      "changed_elements": 123456,
+      "max_abs_update": 0.0010000020265579224
+    },
+    "router": {
+      "changed_parameter_tensors": 4,
+      "changed_elements": 34115,
+      "max_abs_update": 0.0009999945759773254
+    },
+    "relation_embedding": {
+      "changed_parameter_tensors": 1,
+      "changed_elements": 24,
+      "max_abs_update": 0.0009980201721191406
+    },
+    "modality_embedding": {
+      "changed_parameter_tensors": 1,
+      "changed_elements": 16,
+      "max_abs_update": 0.000999152660369873
+    },
+    "message_norm": {
+      "changed_parameter_tensors": 2,
+      "changed_elements": 256,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "aggregate_norm": {
+      "changed_parameter_tensors": 2,
+      "changed_elements": 256,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "mix_norm": {
+      "changed_parameter_tensors": 4,
+      "changed_elements": 512,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "physical_norm": {
+      "changed_parameter_tensors": 4,
+      "changed_elements": 512,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "fusion": {
+      "changed_parameter_tensors": 2,
+      "changed_elements": 65664,
+      "max_abs_update": 0.0010000020265579224
+    },
+    "skip": {
+      "changed_parameter_tensors": 2,
+      "changed_elements": 32896,
+      "max_abs_update": 0.0010000057518482208
+    },
+    "fusion_norm": {
+      "changed_parameter_tensors": 2,
+      "changed_elements": 256,
+      "max_abs_update": 0.0010001063346862793
+    }
+  },
+  "passed": true
+}

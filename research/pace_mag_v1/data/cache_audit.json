@@ -1,0 +1,77 @@
+{
+  "recorded_at_utc": "2026-10-11T17:15:03+00:00",
+  "datasets": [
+    {
+      "dataset": "Movies",
+      "cache_path": "outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+      "num_nodes": 16672,
+      "unique_semantic_edges": 205881,
+      "directed_semantic_edges": 411762,
+      "source_flags_count_0_1_2": {
+        "text": {
+          "0": 95167,
+          "1": 88052,
+          "2": 22662
+        },
+        "visual": {
+          "0": 103720,
+          "1": 70946,
+          "2": 31215
+        }
+      },
+      "label_free_cache_provenance": true,
+      "cache_contains_labels": false
+    },
+    {
+      "dataset": "Grocery",
+      "cache_path": "outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+      "num_nodes": 17074,
+      "unique_semantic_edges": 205557,
+      "directed_semantic_edges": 411114,
+      "source_flags_count_0_1_2": {
+        "text": {
+          "0": 96359,
+          "1": 81804,
+          "2": 27394
+        },
+        "visual": {
+          "0": 100991,
+          "1": 72540,
+          "2": 32026
+        }
+      },
+      "label_free_cache_provenance": true,
+      "cache_contains_labels": false
+    },
+    {
+      "dataset": "ele-fashion",
+      "cache_path": "outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+      "num_nodes": 97766,
+      "unique_semantic_edges": 1102200,
+      "directed_semantic_edges": 2204400,
+      "source_flags_count_0_1_2": {
+        "text": {
+          "0": 519477,
+          "1": 383318,
+          "2": 199405
+        },
+        "visual": {
+          "0": 493351,
+          "1": 435570,
+          "2": 173279
+        }
+      },
+      "label_free_cache_provenance": true,
+      "cache_contains_labels": false
+    }
+  ]
+}
