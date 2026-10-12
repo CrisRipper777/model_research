@@ -200,6 +200,8 @@ def _run_single_nc(
         raise ValueError("task.eval_every must be >= 1")
 
     record_run_telemetry = bool(getattr(model, "record_run_telemetry", False))
+    record_epoch_history = bool(getattr(model, "record_epoch_history", False))
+    epoch_history: list[dict[str, float | int]] = []
     epoch_wall_seconds: list[float] = []
     train_step_seconds: list[float] = []
     if record_run_telemetry and device.type == "cuda":
@@ -282,6 +284,17 @@ def _run_single_nc(
             format_pct(val_metrics["macro_f1"]),
         )
         epoch_wall_seconds.append(time.perf_counter() - epoch_started)
+        if record_epoch_history:
+            epoch_history.append(
+                {
+                    "epoch": epoch,
+                    "train_loss": train_loss,
+                    "val_acc": val_metrics["acc"],
+                    "val_macro_f1": val_metrics["macro_f1"],
+                    "epoch_wall_seconds": epoch_wall_seconds[-1],
+                    "learning_rate": float(optimizer.param_groups[0]["lr"]),
+                }
+            )
 
         improved = val_metrics["acc"] > best_val + min_delta
         stop_early = False
@@ -418,6 +431,8 @@ def _run_single_nc(
                 ),
             }
         )
+    if record_epoch_history:
+        run_metadata["epoch_history"] = epoch_history
     if semantic_checkpoint_diagnostics is not None:
         run_metadata["semantic_checkpoint_diagnostics"] = semantic_checkpoint_diagnostics
     if getattr(model, "semantic_candidate_fingerprint", None) is not None:

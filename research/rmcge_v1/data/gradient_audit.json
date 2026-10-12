@@ -1,0 +1,105 @@
+{
+  "dataset": "ele-fashion",
+  "seed": 42,
+  "gradient_groups": {
+    "projectors": {
+      "parameter_tensors": 16,
+      "parameter_count": 296192,
+      "gradient_present": 296192,
+      "gradient_finite": true,
+      "gradient_nonzero": 296192,
+      "nonzero_tensors": 16,
+      "tensors_with_grad": 16,
+      "gradient_l2_norm": 5.02214906860761,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "router": {
+      "parameter_tensors": 14,
+      "parameter_count": 51922,
+      "gradient_present": 51922,
+      "gradient_finite": true,
+      "gradient_nonzero": 51922,
+      "nonzero_tensors": 14,
+      "tensors_with_grad": 14,
+      "gradient_l2_norm": 0.030028520600486656,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "graph_normalization": {
+      "parameter_tensors": 8,
+      "parameter_count": 1024,
+      "gradient_present": 1024,
+      "gradient_finite": true,
+      "gradient_nonzero": 1024,
+      "nonzero_tensors": 8,
+      "tensors_with_grad": 8,
+      "gradient_l2_norm": 0.01949115560803469,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "cross_modal": {
+      "parameter_tensors": 16,
+      "parameter_count": 66304,
+      "gradient_present": 66304,
+      "gradient_finite": true,
+      "gradient_nonzero": 66304,
+      "nonzero_tensors": 16,
+      "tensors_with_grad": 16,
+      "gradient_l2_norm": 0.1170113687664185,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "experts": {
+      "parameter_tensors": 24,
+      "parameter_count": 246912,
+      "gradient_present": 246912,
+      "gradient_finite": true,
+      "gradient_nonzero": 246912,
+      "nonzero_tensors": 24,
+      "tensors_with_grad": 24,
+      "gradient_l2_norm": 0.38996057967576225,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "fusion": {
+      "parameter_tensors": 6,
+      "parameter_count": 98816,
+      "gradient_present": 98816,
+      "gradient_finite": true,
+      "gradient_nonzero": 98816,
+      "nonzero_tensors": 6,
+      "tensors_with_grad": 6,
+      "gradient_l2_norm": 6.405973557763483,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    }
+  },
+  "parameter_updates": {
+    "projectors": {
+      "changed_parameter_tensors": 16,
+      "changed_elements": 296192,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "router": {
+      "changed_parameter_tensors": 14,
+      "changed_elements": 51922,
+      "max_abs_update": 0.0010001659393310547
+    },
+    "graph_normalization": {
+      "changed_parameter_tensors": 8,
+      "changed_elements": 1024,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "cross_modal": {
+      "changed_parameter_tensors": 16,
+      "changed_elements": 66304,
+      "max_abs_update": 0.000999990850687027
+    },
+    "experts": {
+      "changed_parameter_tensors": 24,
+      "changed_elements": 246912,
+      "max_abs_update": 0.0010000020265579224
+    },
+    "fusion": {
+      "changed_parameter_tensors": 6,
+      "changed_elements": 98816,
+      "max_abs_update": 0.0010001063346862793
+    }
+  },
+  "passed": true
+}

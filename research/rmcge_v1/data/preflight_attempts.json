@@ -1,0 +1,31 @@
+{
+  "final_status": "passed",
+  "superseded_attempts": [
+    {
+      "issue": "Initial preflight created a transient small CUDA context on physical GPU 0 because the shared seed helper initialized all visible CUDA devices.",
+      "impact": "No external process was stopped; model compute used the free RTX 3090 on physical GPU 1. This prompted isolating the selected GPU before CUDA initialization.",
+      "resolution": "Runner now selects a physical GPU at runtime and sets CUDA_VISIBLE_DEVICES to that single device before CUDA initialization."
+    },
+    {
+      "issue": "Two starts after GPU isolation failed before data loading because torch.cuda.mem_get_info required an explicit logical device.",
+      "impact": "No formal training was started and no external process was stopped.",
+      "resolution": "Memory query now targets the selected logical device; the final isolated preflight completed successfully."
+    }
+  ],
+  "final_preflight": {
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "physical_gpu_index": 1,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_visible_devices": "1",
+    "device_count_visible_to_process": 1,
+    "full_graph_nodes": 97766,
+    "forward_backward_adamw": "passed",
+    "checkpoint_reload": "passed",
+    "test_evaluation": false,
+    "regression_tests": "101 passed, 1 skipped",
+    "peak_allocated_bytes": 5854918656,
+    "peak_reserved_bytes": 6463422464,
+    "evidence": "implementation_checks.json"
+  }
+}

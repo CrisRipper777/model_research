@@ -1,0 +1,233 @@
+{
+  "recorded_at_utc": "2026-10-12T07:07:49+00:00",
+  "dataset": "ele-fashion",
+  "seed": 42,
+  "protocol": "unified_full_graph_nc_v1",
+  "source_revision_sha": "e32eaeb676b3851cffc0067c549f42a748569e12",
+  "implementation_source_fingerprint_sha256": "a3894ef593c5271704dc37a82c94e920f2cfb475c7544f8e42e9f0fdaf150d5d",
+  "config_sha256": "3caac4dac1ab0bbe01e83d0ee3a4fba33ee861bedac0b9416fb8273f582bd9de",
+  "config": {
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "num_experts": 3,
+    "expert_bottleneck": 64,
+    "dropout": 0.2,
+    "evaluate_test": false
+  },
+  "parameters_including_classifier": 762718,
+  "device": "cuda:0",
+  "environment": {
+    "recorded_at_utc": "2026-10-12T07:07:36+00:00",
+    "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+    "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
+    "torch": "2.4.0+cu121",
+    "torch_cuda_build": "12.1",
+    "torch_geometric": "2.7.0",
+    "dgl": "2.4.0+cu121",
+    "faiss": "1.15.1",
+    "cuda_available": true,
+    "cuda_device_count": 1,
+    "cuda_visible_devices": "1",
+    "selected_physical_gpu_index": 1,
+    "selected_gpu": {
+      "device": "cuda:0",
+      "physical_index": 1,
+      "name": "NVIDIA GeForce RTX 3090",
+      "total_bytes": 25438126080,
+      "free_bytes": 25155141632,
+      "allocated_bytes": 0,
+      "reserved_bytes": 0
+    },
+    "nvidia_smi": "Mon Oct 12 15:07:36 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 83%   77C    P2             339W / 350W |  22858MiB / 24576MiB |     93%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   53C    P2              29W / 350W |    269MiB / 24576MiB |      3%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    0   N/A  N/A   3138154      C   VLLM::EngineCore                          22756MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   3170064      C   python                                      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+    "other_gpu_processes_stopped": false
+  },
+  "gpu_before": {
+    "device": "cuda:0",
+    "physical_index": 1,
+    "name": "NVIDIA GeForce RTX 3090",
+    "total_bytes": 25438126080,
+    "free_bytes": 24683282432,
+    "allocated_bytes": 463450112,
+    "reserved_bytes": 471859200
+  },
+  "gpu_after": {
+    "device": "cuda:0",
+    "physical_index": 1,
+    "name": "NVIDIA GeForce RTX 3090",
+    "total_bytes": 25438126080,
+    "free_bytes": 18626707456,
+    "allocated_bytes": 724247040,
+    "reserved_bytes": 6463422464
+  },
+  "cuda_peak_allocated_bytes": 5854918656,
+  "cuda_peak_reserved_bytes": 6463422464,
+  "full_graph_forward_finite": true,
+  "full_graph_backward_finite": true,
+  "adamw_step_completed": true,
+  "loss_on_train_indices_only": 2.6711339950561523,
+  "aux_loss_exact_zero": true,
+  "gradient_audit": {
+    "projectors": {
+      "parameter_tensors": 16,
+      "parameter_count": 296192,
+      "gradient_present": 296192,
+      "gradient_finite": true,
+      "gradient_nonzero": 296192,
+      "nonzero_tensors": 16,
+      "tensors_with_grad": 16,
+      "gradient_l2_norm": 5.02214906860761,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "router": {
+      "parameter_tensors": 14,
+      "parameter_count": 51922,
+      "gradient_present": 51922,
+      "gradient_finite": true,
+      "gradient_nonzero": 51922,
+      "nonzero_tensors": 14,
+      "tensors_with_grad": 14,
+      "gradient_l2_norm": 0.030028520600486656,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "graph_normalization": {
+      "parameter_tensors": 8,
+      "parameter_count": 1024,
+      "gradient_present": 1024,
+      "gradient_finite": true,
+      "gradient_nonzero": 1024,
+      "nonzero_tensors": 8,
+      "tensors_with_grad": 8,
+      "gradient_l2_norm": 0.01949115560803469,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "cross_modal": {
+      "parameter_tensors": 16,
+      "parameter_count": 66304,
+      "gradient_present": 66304,
+      "gradient_finite": true,
+      "gradient_nonzero": 66304,
+      "nonzero_tensors": 16,
+      "tensors_with_grad": 16,
+      "gradient_l2_norm": 0.1170113687664185,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "experts": {
+      "parameter_tensors": 24,
+      "parameter_count": 246912,
+      "gradient_present": 246912,
+      "gradient_finite": true,
+      "gradient_nonzero": 246912,
+      "nonzero_tensors": 24,
+      "tensors_with_grad": 24,
+      "gradient_l2_norm": 0.38996057967576225,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    },
+    "fusion": {
+      "parameter_tensors": 6,
+      "parameter_count": 98816,
+      "gradient_present": 98816,
+      "gradient_finite": true,
+      "gradient_nonzero": 98816,
+      "nonzero_tensors": 6,
+      "tensors_with_grad": 6,
+      "gradient_l2_norm": 6.405973557763483,
+      "all_parameter_tensors_have_finite_nonzero_gradients": true
+    }
+  },
+  "parameter_update_audit": {
+    "projectors": {
+      "changed_parameter_tensors": 16,
+      "changed_elements": 296192,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "router": {
+      "changed_parameter_tensors": 14,
+      "changed_elements": 51922,
+      "max_abs_update": 0.0010001659393310547
+    },
+    "graph_normalization": {
+      "changed_parameter_tensors": 8,
+      "changed_elements": 1024,
+      "max_abs_update": 0.0010001063346862793
+    },
+    "cross_modal": {
+      "changed_parameter_tensors": 16,
+      "changed_elements": 66304,
+      "max_abs_update": 0.000999990850687027
+    },
+    "experts": {
+      "changed_parameter_tensors": 24,
+      "changed_elements": 246912,
+      "max_abs_update": 0.0010000020265579224
+    },
+    "fusion": {
+      "changed_parameter_tensors": 6,
+      "changed_elements": 98816,
+      "max_abs_update": 0.0010001063346862793
+    }
+  },
+  "core_gradient_check_passed": true,
+  "core_update_check_passed": true,
+  "checkpoint_reload_max_abs_difference": 1.1920928955078125e-06,
+  "checkpoint_reload_consistent": true,
+  "evaluate_test": false,
+  "test_metrics_computed": false,
+  "test_labels_indexed": false,
+  "cache_audit": {
+    "dataset": "ele-fashion",
+    "cache_path": "outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+    "num_nodes": 97766,
+    "physical_edges": 399172,
+    "text_dim": 512,
+    "visual_dim": 512,
+    "unique_union_edges": 1102200,
+    "directed_union_edges": 2204400,
+    "text_semantic_undirected_edges": 582723,
+    "visual_semantic_undirected_edges": 608849,
+    "both_source_edges": 89372,
+    "source_flags_count_0_1_2": {
+      "text": {
+        "0": 519477,
+        "1": 383318,
+        "2": 199405
+      },
+      "visual": {
+        "0": 493351,
+        "1": 435570,
+        "2": 173279
+      }
+    },
+    "candidate_phase_label_access": false,
+    "cache_contains_labels": false,
+    "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+    "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+    "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+  },
+  "regression_tests": {
+    "command": [
+      "/home/m3/miniconda3/envs/yhf_env/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_rmcge_v1.py",
+      "tests/test_pace_mag_v1.py",
+      "tests/test_pace_mag_v1_audit.py",
+      "tests/test_psce_mag_v7a.py",
+      "tests/test_psce_mag_v7b.py",
+      "tests/test_psce_mag_v7b1_corrective.py"
+    ],
+    "exit_code": 0,
+    "passed_tests": 101,
+    "output_tail": ".................................s...................................... [ 70%]\n..............................                                           [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\ntests/test_rmcge_v1.py: 1 warning\ntests/test_pace_mag_v1.py: 1 warning\ntests/test_psce_mag_v7a.py: 4 warnings\ntests/test_psce_mag_v7b.py: 6 warnings\ntests/test_psce_mag_v7b1_corrective.py: 2 warnings\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n    with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n101 passed, 1 skipped, 15 warnings in 5.40s",
+    "test_files": [
+      "tests/test_rmcge_v1.py",
+      "tests/test_pace_mag_v1.py",
+      "tests/test_pace_mag_v1_audit.py",
+      "tests/test_psce_mag_v7a.py",
+      "tests/test_psce_mag_v7b.py",
+      "tests/test_psce_mag_v7b1_corrective.py"
+    ]
+  },
+  "preflight_checkpoint_path": "outputs/rmcge_v1_pilot/preflight/ele-fashion_attempt_03/preflight_checkpoint.pt",
+  "passed": true
+}
