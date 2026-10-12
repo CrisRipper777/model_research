@@ -1,0 +1,1063 @@
+{
+  "recorded_at_utc": "2026-10-12T07:17:05+00:00",
+  "dataset": "ele-fashion",
+  "seed": 42,
+  "checkpoint_path": "outputs/rmcge_v1_pilot/runs/ele-fashion/seed_42/best.pt",
+  "commit_sha": "8b94d16c3b2a66b658419c7f79e0de688b51a23a",
+  "checkpoint_selection": "best_val_accuracy",
+  "best_epoch": 115,
+  "validation_metrics": {
+    "val_acc": 0.8793085813522339,
+    "val_macro_f1": 0.7418818698476541
+  },
+  "checkpoint_metrics_match_recomputed_validation": true,
+  "parameter_count": 762718,
+  "cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+  "cache_fingerprints": {
+    "feature": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+    "candidate": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+    "v7b": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+  },
+  "source_flags_count_0_1_2": {
+    "text": {
+      "0": 519477,
+      "1": 383318,
+      "2": 199405
+    },
+    "visual": {
+      "0": 493351,
+      "1": 435570,
+      "2": 173279
+    }
+  },
+  "supports": {
+    "physical": {
+      "directed_edges": 399172,
+      "valid_nodes": 97763,
+      "valid_node_fraction": 0.9999693036079407
+    },
+    "text_semantic": {
+      "directed_edges": 1165446,
+      "valid_nodes": 97766,
+      "valid_node_fraction": 1.0
+    },
+    "visual_semantic": {
+      "directed_edges": 1217698,
+      "valid_nodes": 97766,
+      "valid_node_fraction": 1.0
+    }
+  },
+  "layers": [
+    {
+      "layer": 1,
+      "modalities": {
+        "text": {
+          "relations": {
+            "physical": {
+              "support": "physical",
+              "valid_nodes": 97763,
+              "valid_node_fraction": 0.9999693036079407,
+              "mean_neighbors_when_valid": 4.083057880401611,
+              "same_context_rms": 0.9478684067726135,
+              "cross_context_rms": 0.22891554236412048,
+              "cross_to_same_context_rms": 0.24150561483903915,
+              "mean_joint_relation_mass": 0.596804141998291,
+              "mean_joint_expert_probabilities": [
+                0.1182849332690239,
+                0.21234479546546936,
+                0.2661743760108948
+              ],
+              "expert_output_rms": [
+                0.7201375360998432,
+                0.6646244281589688,
+                0.6300565258455769
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.10711636645749797
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.09251676807048678
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.06736901757950349
+                }
+              ]
+            },
+            "semantic": {
+              "support": "text",
+              "valid_nodes": 97766,
+              "valid_node_fraction": 1.0,
+              "mean_neighbors_when_valid": 11.920769691467285,
+              "same_context_rms": 0.9402627944946289,
+              "cross_context_rms": 0.20522524416446686,
+              "cross_to_same_context_rms": 0.21826370815275214,
+              "mean_joint_relation_mass": 0.4032142162322998,
+              "mean_joint_expert_probabilities": [
+                0.08463452756404877,
+                0.12070014327764511,
+                0.19787953794002533
+              ],
+              "expert_output_rms": [
+                0.6858997779336736,
+                0.6229207995376888,
+                0.6031488883362103
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.09761452938729338
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.07316233723891741
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.05098095431430341
+                }
+              ]
+            }
+          },
+          "participating_nodes": 97766,
+          "mean_joint_relation_marginal": {
+            "physical": 0.5967857837677002,
+            "semantic": 0.4032141864299774
+          },
+          "mean_joint_expert_use": [
+            0.20291581749916077,
+            0.33303841948509216,
+            0.46404576301574707
+          ],
+          "joint_route_entropy_nats": 1.0680267810821533,
+          "route_probability_sum_min": 0.9999998211860657,
+          "route_probability_sum_max": 1.000000238418579,
+          "router_log_prior": [
+            [
+              0.21024900674819946,
+              0.20270457863807678,
+              0.19720636308193207
+            ],
+            [
+              0.1289948672056198,
+              0.1287093460559845,
+              0.13353553414344788
+            ]
+          ],
+          "delta_rms": 0.5219522714614868,
+          "input_state_rms": 1.0058244466781616,
+          "relative_update_rms": 0.25946489627752023,
+          "updated_state_rms": 1.0548574924468994
+        },
+        "visual": {
+          "relations": {
+            "physical": {
+              "support": "physical",
+              "valid_nodes": 97763,
+              "valid_node_fraction": 0.9999693036079407,
+              "mean_neighbors_when_valid": 4.083057880401611,
+              "same_context_rms": 0.9383320212364197,
+              "cross_context_rms": 0.28967204689979553,
+              "cross_to_same_context_rms": 0.3087095402734961,
+              "mean_joint_relation_mass": 0.6145845651626587,
+              "mean_joint_expert_probabilities": [
+                0.31869474053382874,
+                0.256778746843338,
+                0.03911111503839493
+              ],
+              "expert_output_rms": [
+                0.6594808750547957,
+                0.5396844523682063,
+                0.5195334315043427
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.08104539266037508
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.07908663881338031
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.03805247283089908
+                }
+              ]
+            },
+            "semantic": {
+              "support": "visual",
+              "valid_nodes": 97766,
+              "valid_node_fraction": 1.0,
+              "mean_neighbors_when_valid": 12.455229759216309,
+              "same_context_rms": 0.9301495552062988,
+              "cross_context_rms": 0.25723734498023987,
+              "cross_to_same_context_rms": 0.27655482232982087,
+              "mean_joint_relation_mass": 0.38543421030044556,
+              "mean_joint_expert_probabilities": [
+                0.1913338452577591,
+                0.16111460328102112,
+                0.03298577293753624
+              ],
+              "expert_output_rms": [
+                0.6501619418395482,
+                0.5215577904914778,
+                0.5128238291007617
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.06872898961231409
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.0808342402474403
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.035908821729787196
+                }
+              ]
+            }
+          },
+          "participating_nodes": 97766,
+          "mean_joint_relation_marginal": {
+            "physical": 0.6145657300949097,
+            "semantic": 0.38543424010276794
+          },
+          "mean_joint_expert_use": [
+            0.5100188255310059,
+            0.4178854823112488,
+            0.07209569215774536
+          ],
+          "joint_route_entropy_nats": 1.079190969467163,
+          "route_probability_sum_min": 0.9999998211860657,
+          "route_probability_sum_max": 1.000000238418579,
+          "router_log_prior": [
+            [
+              0.21024900674819946,
+              0.20270457863807678,
+              0.19720636308193207
+            ],
+            [
+              0.1289948672056198,
+              0.1287093460559845,
+              0.13353553414344788
+            ]
+          ],
+          "delta_rms": 0.47137805819511414,
+          "input_state_rms": 0.9986431002616882,
+          "relative_update_rms": 0.2360092700142786,
+          "updated_state_rms": 1.0391430854797363
+        }
+      }
+    },
+    {
+      "layer": 2,
+      "modalities": {
+        "text": {
+          "relations": {
+            "physical": {
+              "support": "physical",
+              "valid_nodes": 97763,
+              "valid_node_fraction": 0.9999693036079407,
+              "mean_neighbors_when_valid": 4.083057880401611,
+              "same_context_rms": 0.9505185484886169,
+              "cross_context_rms": 0.2144877165555954,
+              "cross_to_same_context_rms": 0.22565337298955826,
+              "mean_joint_relation_mass": 0.5647123456001282,
+              "mean_joint_expert_probabilities": [
+                0.2691173553466797,
+                0.10353171825408936,
+                0.19206325709819794
+              ],
+              "expert_output_rms": [
+                0.6192381590817383,
+                0.6691223187121313,
+                0.7041064910701019
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.12819345916591654
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.10511251690552023
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.09523233463036884
+                }
+              ]
+            },
+            "semantic": {
+              "support": "text",
+              "valid_nodes": 97766,
+              "valid_node_fraction": 1.0,
+              "mean_neighbors_when_valid": 11.920769691467285,
+              "same_context_rms": 0.9392797946929932,
+              "cross_context_rms": 0.19887349009513855,
+              "cross_to_same_context_rms": 0.21172976488879017,
+              "mean_joint_relation_mass": 0.43530499935150146,
+              "mean_joint_expert_probabilities": [
+                0.16100436449050903,
+                0.06553448736667633,
+                0.2087661623954773
+              ],
+              "expert_output_rms": [
+                0.5956689973656788,
+                0.6464673968506972,
+                0.6789556660421768
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.10486595744238794
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.10519484282783635
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.08961194551115674
+                }
+              ]
+            }
+          },
+          "participating_nodes": 97766,
+          "mean_joint_relation_marginal": {
+            "physical": 0.5646950006484985,
+            "semantic": 0.43530499935150146
+          },
+          "mean_joint_expert_use": [
+            0.43011346459388733,
+            0.1690630316734314,
+            0.40082353353500366
+          ],
+          "joint_route_entropy_nats": 1.006309151649475,
+          "route_probability_sum_min": 0.9999998211860657,
+          "route_probability_sum_max": 1.000000238418579,
+          "router_log_prior": [
+            [
+              0.20948335528373718,
+              0.20500779151916504,
+              0.19116871058940887
+            ],
+            [
+              0.12986353039741516,
+              0.12867411971092224,
+              0.14016683399677277
+            ]
+          ],
+          "delta_rms": 0.459977924823761,
+          "input_state_rms": 1.0548574924468994,
+          "relative_update_rms": 0.21802846740784554,
+          "updated_state_rms": 1.1083089113235474
+        },
+        "visual": {
+          "relations": {
+            "physical": {
+              "support": "physical",
+              "valid_nodes": 97763,
+              "valid_node_fraction": 0.9999693036079407,
+              "mean_neighbors_when_valid": 4.083057880401611,
+              "same_context_rms": 0.940851092338562,
+              "cross_context_rms": 0.2559677064418793,
+              "cross_to_same_context_rms": 0.2720597430626888,
+              "mean_joint_relation_mass": 0.6244702339172363,
+              "mean_joint_expert_probabilities": [
+                0.11646591126918793,
+                0.3739413917064667,
+                0.13406294584274292
+              ],
+              "expert_output_rms": [
+                0.5672813995254873,
+                0.5516920521002282,
+                0.5976187181924215
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.10243530841566466
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.155926958123536
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.0933633052038156
+                }
+              ]
+            },
+            "semantic": {
+              "support": "visual",
+              "valid_nodes": 97766,
+              "valid_node_fraction": 1.0,
+              "mean_neighbors_when_valid": 12.455229759216309,
+              "same_context_rms": 0.9277758598327637,
+              "cross_context_rms": 0.22700895369052887,
+              "cross_to_same_context_rms": 0.24468081518250365,
+              "mean_joint_relation_mass": 0.3755488693714142,
+              "mean_joint_expert_probabilities": [
+                0.06447328627109528,
+                0.19832691550254822,
+                0.11274866759777069
+              ],
+              "expert_output_rms": [
+                0.5756445579757676,
+                0.5355571261348229,
+                0.6017446971364673
+              ],
+              "expert_pairwise_cosine": [
+                {
+                  "experts": [
+                    0,
+                    1
+                  ],
+                  "mean": 0.10384082702495627
+                },
+                {
+                  "experts": [
+                    0,
+                    2
+                  ],
+                  "mean": 0.16118176748243254
+                },
+                {
+                  "experts": [
+                    1,
+                    2
+                  ],
+                  "mean": 0.0984160461107389
+                }
+              ]
+            }
+          },
+          "participating_nodes": 97766,
+          "mean_joint_relation_marginal": {
+            "physical": 0.6244511604309082,
+            "semantic": 0.3755488991737366
+          },
+          "mean_joint_expert_use": [
+            0.18093562126159668,
+            0.5722569227218628,
+            0.2468075007200241
+          ],
+          "joint_route_entropy_nats": 1.339135766029358,
+          "route_probability_sum_min": 0.9999997615814209,
+          "route_probability_sum_max": 1.000000238418579,
+          "router_log_prior": [
+            [
+              0.20948335528373718,
+              0.20500779151916504,
+              0.19116871058940887
+            ],
+            [
+              0.12986353039741516,
+              0.12867411971092224,
+              0.14016683399677277
+            ]
+          ],
+          "delta_rms": 0.4321810305118561,
+          "input_state_rms": 1.0391430854797363,
+          "relative_update_rms": 0.2079506838619501,
+          "updated_state_rms": 1.0969163179397583
+        }
+      }
+    }
+  ],
+  "relation_diagnostics": [
+    {
+      "layer": 1,
+      "modality": "text",
+      "relation": "physical",
+      "support": "physical",
+      "valid_nodes": 97763,
+      "valid_node_fraction": 0.9999693036079407,
+      "mean_neighbors_when_valid": 4.083057880401611,
+      "same_context_rms": 0.9478684067726135,
+      "cross_context_rms": 0.22891554236412048,
+      "cross_to_same_context_rms": 0.24150561483903915,
+      "mean_joint_relation_mass": 0.596804141998291,
+      "mean_joint_expert_probabilities": [
+        0.1182849332690239,
+        0.21234479546546936,
+        0.2661743760108948
+      ],
+      "expert_output_rms": [
+        0.7201375360998432,
+        0.6646244281589688,
+        0.6300565258455769
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.10711636645749797
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.09251676807048678
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.06736901757950349
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.5967857837677002,
+        "semantic": 0.4032141864299774
+      },
+      "expert_use": [
+        0.20291581749916077,
+        0.33303841948509216,
+        0.46404576301574707
+      ],
+      "route_entropy_nats": 1.0680267810821533,
+      "delta_rms": 0.5219522714614868,
+      "relative_update_rms": 0.25946489627752023
+    },
+    {
+      "layer": 1,
+      "modality": "text",
+      "relation": "semantic",
+      "support": "text",
+      "valid_nodes": 97766,
+      "valid_node_fraction": 1.0,
+      "mean_neighbors_when_valid": 11.920769691467285,
+      "same_context_rms": 0.9402627944946289,
+      "cross_context_rms": 0.20522524416446686,
+      "cross_to_same_context_rms": 0.21826370815275214,
+      "mean_joint_relation_mass": 0.4032142162322998,
+      "mean_joint_expert_probabilities": [
+        0.08463452756404877,
+        0.12070014327764511,
+        0.19787953794002533
+      ],
+      "expert_output_rms": [
+        0.6858997779336736,
+        0.6229207995376888,
+        0.6031488883362103
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.09761452938729338
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.07316233723891741
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.05098095431430341
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.5967857837677002,
+        "semantic": 0.4032141864299774
+      },
+      "expert_use": [
+        0.20291581749916077,
+        0.33303841948509216,
+        0.46404576301574707
+      ],
+      "route_entropy_nats": 1.0680267810821533,
+      "delta_rms": 0.5219522714614868,
+      "relative_update_rms": 0.25946489627752023
+    },
+    {
+      "layer": 1,
+      "modality": "visual",
+      "relation": "physical",
+      "support": "physical",
+      "valid_nodes": 97763,
+      "valid_node_fraction": 0.9999693036079407,
+      "mean_neighbors_when_valid": 4.083057880401611,
+      "same_context_rms": 0.9383320212364197,
+      "cross_context_rms": 0.28967204689979553,
+      "cross_to_same_context_rms": 0.3087095402734961,
+      "mean_joint_relation_mass": 0.6145845651626587,
+      "mean_joint_expert_probabilities": [
+        0.31869474053382874,
+        0.256778746843338,
+        0.03911111503839493
+      ],
+      "expert_output_rms": [
+        0.6594808750547957,
+        0.5396844523682063,
+        0.5195334315043427
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.08104539266037508
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.07908663881338031
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.03805247283089908
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.6145657300949097,
+        "semantic": 0.38543424010276794
+      },
+      "expert_use": [
+        0.5100188255310059,
+        0.4178854823112488,
+        0.07209569215774536
+      ],
+      "route_entropy_nats": 1.079190969467163,
+      "delta_rms": 0.47137805819511414,
+      "relative_update_rms": 0.2360092700142786
+    },
+    {
+      "layer": 1,
+      "modality": "visual",
+      "relation": "semantic",
+      "support": "visual",
+      "valid_nodes": 97766,
+      "valid_node_fraction": 1.0,
+      "mean_neighbors_when_valid": 12.455229759216309,
+      "same_context_rms": 0.9301495552062988,
+      "cross_context_rms": 0.25723734498023987,
+      "cross_to_same_context_rms": 0.27655482232982087,
+      "mean_joint_relation_mass": 0.38543421030044556,
+      "mean_joint_expert_probabilities": [
+        0.1913338452577591,
+        0.16111460328102112,
+        0.03298577293753624
+      ],
+      "expert_output_rms": [
+        0.6501619418395482,
+        0.5215577904914778,
+        0.5128238291007617
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.06872898961231409
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.0808342402474403
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.035908821729787196
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.6145657300949097,
+        "semantic": 0.38543424010276794
+      },
+      "expert_use": [
+        0.5100188255310059,
+        0.4178854823112488,
+        0.07209569215774536
+      ],
+      "route_entropy_nats": 1.079190969467163,
+      "delta_rms": 0.47137805819511414,
+      "relative_update_rms": 0.2360092700142786
+    },
+    {
+      "layer": 2,
+      "modality": "text",
+      "relation": "physical",
+      "support": "physical",
+      "valid_nodes": 97763,
+      "valid_node_fraction": 0.9999693036079407,
+      "mean_neighbors_when_valid": 4.083057880401611,
+      "same_context_rms": 0.9505185484886169,
+      "cross_context_rms": 0.2144877165555954,
+      "cross_to_same_context_rms": 0.22565337298955826,
+      "mean_joint_relation_mass": 0.5647123456001282,
+      "mean_joint_expert_probabilities": [
+        0.2691173553466797,
+        0.10353171825408936,
+        0.19206325709819794
+      ],
+      "expert_output_rms": [
+        0.6192381590817383,
+        0.6691223187121313,
+        0.7041064910701019
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.12819345916591654
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.10511251690552023
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.09523233463036884
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.5646950006484985,
+        "semantic": 0.43530499935150146
+      },
+      "expert_use": [
+        0.43011346459388733,
+        0.1690630316734314,
+        0.40082353353500366
+      ],
+      "route_entropy_nats": 1.006309151649475,
+      "delta_rms": 0.459977924823761,
+      "relative_update_rms": 0.21802846740784554
+    },
+    {
+      "layer": 2,
+      "modality": "text",
+      "relation": "semantic",
+      "support": "text",
+      "valid_nodes": 97766,
+      "valid_node_fraction": 1.0,
+      "mean_neighbors_when_valid": 11.920769691467285,
+      "same_context_rms": 0.9392797946929932,
+      "cross_context_rms": 0.19887349009513855,
+      "cross_to_same_context_rms": 0.21172976488879017,
+      "mean_joint_relation_mass": 0.43530499935150146,
+      "mean_joint_expert_probabilities": [
+        0.16100436449050903,
+        0.06553448736667633,
+        0.2087661623954773
+      ],
+      "expert_output_rms": [
+        0.5956689973656788,
+        0.6464673968506972,
+        0.6789556660421768
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.10486595744238794
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.10519484282783635
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.08961194551115674
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.5646950006484985,
+        "semantic": 0.43530499935150146
+      },
+      "expert_use": [
+        0.43011346459388733,
+        0.1690630316734314,
+        0.40082353353500366
+      ],
+      "route_entropy_nats": 1.006309151649475,
+      "delta_rms": 0.459977924823761,
+      "relative_update_rms": 0.21802846740784554
+    },
+    {
+      "layer": 2,
+      "modality": "visual",
+      "relation": "physical",
+      "support": "physical",
+      "valid_nodes": 97763,
+      "valid_node_fraction": 0.9999693036079407,
+      "mean_neighbors_when_valid": 4.083057880401611,
+      "same_context_rms": 0.940851092338562,
+      "cross_context_rms": 0.2559677064418793,
+      "cross_to_same_context_rms": 0.2720597430626888,
+      "mean_joint_relation_mass": 0.6244702339172363,
+      "mean_joint_expert_probabilities": [
+        0.11646591126918793,
+        0.3739413917064667,
+        0.13406294584274292
+      ],
+      "expert_output_rms": [
+        0.5672813995254873,
+        0.5516920521002282,
+        0.5976187181924215
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.10243530841566466
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.155926958123536
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.0933633052038156
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.6244511604309082,
+        "semantic": 0.3755488991737366
+      },
+      "expert_use": [
+        0.18093562126159668,
+        0.5722569227218628,
+        0.2468075007200241
+      ],
+      "route_entropy_nats": 1.339135766029358,
+      "delta_rms": 0.4321810305118561,
+      "relative_update_rms": 0.2079506838619501
+    },
+    {
+      "layer": 2,
+      "modality": "visual",
+      "relation": "semantic",
+      "support": "visual",
+      "valid_nodes": 97766,
+      "valid_node_fraction": 1.0,
+      "mean_neighbors_when_valid": 12.455229759216309,
+      "same_context_rms": 0.9277758598327637,
+      "cross_context_rms": 0.22700895369052887,
+      "cross_to_same_context_rms": 0.24468081518250365,
+      "mean_joint_relation_mass": 0.3755488693714142,
+      "mean_joint_expert_probabilities": [
+        0.06447328627109528,
+        0.19832691550254822,
+        0.11274866759777069
+      ],
+      "expert_output_rms": [
+        0.5756445579757676,
+        0.5355571261348229,
+        0.6017446971364673
+      ],
+      "expert_pairwise_cosine": [
+        {
+          "experts": [
+            0,
+            1
+          ],
+          "mean": 0.10384082702495627
+        },
+        {
+          "experts": [
+            0,
+            2
+          ],
+          "mean": 0.16118176748243254
+        },
+        {
+          "experts": [
+            1,
+            2
+          ],
+          "mean": 0.0984160461107389
+        }
+      ],
+      "relation_marginal": {
+        "physical": 0.6244511604309082,
+        "semantic": 0.3755488991737366
+      },
+      "expert_use": [
+        0.18093562126159668,
+        0.5722569227218628,
+        0.2468075007200241
+      ],
+      "route_entropy_nats": 1.339135766029358,
+      "delta_rms": 0.4321810305118561,
+      "relative_update_rms": 0.2079506838619501
+    }
+  ],
+  "fusion": {
+    "graph_term_rms": 1.070344090461731,
+    "intrinsic_skip_rms": 0.785894513130188,
+    "graph_to_skip_rms": 1.3619437120111593,
+    "final_embedding_rms": 1.048418402671814,
+    "final_embedding_finite": true
+  },
+  "frozen_interventions": {
+    "cross_modal_off": {
+      "val_acc": 0.8730694651603699,
+      "val_macro_f1": 0.7328284515114877,
+      "val_acc_delta_percentage_points": -0.6239116191864014,
+      "val_macro_f1_delta_percentage_points": -0.9053418336166463,
+      "prediction_flip_fraction": 0.024751968681812286,
+      "val_logit_relative_delta_rms": 0.10662445299630792,
+      "embedding_relative_delta_rms": 0.14463594333496574
+    },
+    "semantic_relation_off": {
+      "val_acc": 0.8680576682090759,
+      "val_macro_f1": 0.7338137915671353,
+      "val_acc_delta_percentage_points": -1.125091314315796,
+      "val_macro_f1_delta_percentage_points": -0.8068078280518809,
+      "prediction_flip_fraction": 0.024036003276705742,
+      "val_logit_relative_delta_rms": 0.10827238026158671,
+      "embedding_relative_delta_rms": 0.1315207638720781
+    },
+    "physical_relation_off": {
+      "val_acc": 0.8707169890403748,
+      "val_macro_f1": 0.7214798440687399,
+      "val_acc_delta_percentage_points": -0.8591592311859131,
+      "val_macro_f1_delta_percentage_points": -2.0402025778914257,
+      "prediction_flip_fraction": 0.026286181062459946,
+      "val_logit_relative_delta_rms": 0.12771360129185205,
+      "embedding_relative_delta_rms": 0.15915832259873508
+    },
+    "graph_updates_off": {
+      "val_acc": 0.8585455417633057,
+      "val_macro_f1": 0.7084617444485851,
+      "val_acc_delta_percentage_points": -2.0763039588928223,
+      "val_macro_f1_delta_percentage_points": -3.3420125399069023,
+      "prediction_flip_fraction": 0.05062902718782425,
+      "val_logit_relative_delta_rms": 0.21628746952273342,
+      "embedding_relative_delta_rms": 0.27065011129908895
+    },
+    "intrinsic_skip_off": {
+      "val_acc": 0.7867444157600403,
+      "val_macro_f1": 0.670620924061689,
+      "val_acc_delta_percentage_points": -9.25641655921936,
+      "val_macro_f1_delta_percentage_points": -7.1260945785965095,
+      "prediction_flip_fraction": 0.1596604287624359,
+      "val_logit_relative_delta_rms": 0.3337106364717764,
+      "embedding_relative_delta_rms": 0.5404689331876862
+    }
+  },
+  "aux_loss": 0.0,
+  "evaluate_test": false,
+  "test_labels_indexed": false,
+  "test_metrics_computed": false,
+  "interpretation": "Intervention deltas are frozen-checkpoint Validation diagnostics; they are not retrained ablations or estimates of causal generalization."
+}

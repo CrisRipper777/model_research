@@ -1,9 +1,9 @@
 {
   "branch": "exp/rmcge_v1_modality_view_experts",
   "baseline_commit_sha": "e32eaeb676b3851cffc0067c549f42a748569e12",
-  "implementation_freeze_commit_sha": null,
-  "commit_sha": "e32eaeb676b3851cffc0067c549f42a748569e12",
-  "phase": "preflight_passed",
+  "implementation_freeze_commit_sha": "8b94d16c3b2a66b658419c7f79e0de688b51a23a",
+  "commit_sha": "8b94d16c3b2a66b658419c7f79e0de688b51a23a",
+  "phase": "pilot_complete",
   "protocol": "unified_full_graph_nc_v1",
   "datasets": [
     "Movies",
@@ -24,7 +24,7 @@
   "test_metrics_computed": false,
   "selected_device": "cuda:0",
   "environment": {
-    "recorded_at_utc": "2026-10-12T07:07:36+00:00",
+    "recorded_at_utc": "2026-10-12T07:14:05+00:00",
     "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
     "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
     "torch": "2.4.0+cu121",
@@ -45,9 +45,31 @@
       "allocated_bytes": 0,
       "reserved_bytes": 0
     },
-    "nvidia_smi": "Mon Oct 12 15:07:36 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 83%   77C    P2             339W / 350W |  22858MiB / 24576MiB |     93%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   53C    P2              29W / 350W |    269MiB / 24576MiB |      3%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    0   N/A  N/A   3138154      C   VLLM::EngineCore                          22756MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   3170064      C   python                                      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+    "nvidia_smi": "Mon Oct 12 15:14:05 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 75%   77C    P2             343W / 350W |  22858MiB / 24576MiB |     83%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   54C    P2              34W / 350W |    269MiB / 24576MiB |      1%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    0   N/A  N/A   3138154      C   VLLM::EngineCore                          22756MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   3176169      C   python                                      254MiB |\n+---------------------------------------------------------------------------------------+\n",
     "other_gpu_processes_stopped": false
   },
-  "completed_runs": [],
-  "recorded_at_utc": "2026-10-12T07:07:49+00:00"
+  "completed_runs": [
+    {
+      "dataset": "Movies",
+      "status": "completed",
+      "val_acc": 0.5404918789863586,
+      "val_macro_f1": 0.4299585568126555,
+      "best_epoch": 70
+    },
+    {
+      "dataset": "Grocery",
+      "status": "completed",
+      "val_acc": 0.8231332302093506,
+      "val_macro_f1": 0.7520662564889584,
+      "best_epoch": 91
+    },
+    {
+      "dataset": "ele-fashion",
+      "status": "completed",
+      "val_acc": 0.8793085813522339,
+      "val_macro_f1": 0.7418818698476541,
+      "best_epoch": 115
+    }
+  ],
+  "recorded_at_utc": "2026-10-12T07:17:05+00:00"
 }
