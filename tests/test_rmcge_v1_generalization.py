@@ -87,6 +87,18 @@ def test_dirty_path_parser_preserves_first_character_of_modified_paths(monkeypat
     ]
 
 
+def test_postfreeze_guard_only_allows_reviewed_runner_paths():
+    study_runner._validate_postfreeze_changed_paths(
+        [
+            "scripts/run_rmcge_v1_generalization.py",
+            "tests/test_rmcge_v1_generalization.py",
+            "research/rmcge_v1_generalization/IMPLEMENTATION_AUDIT.md",
+        ]
+    )
+    with pytest.raises(RuntimeError, match="outside the reviewed launcher-only fix"):
+        study_runner._validate_postfreeze_changed_paths(["src/tasks/nc.py"])
+
+
 def test_dropout_020_initialization_and_eval_forward_match_and_035_builds():
     default_model = _new_model(seed=123, dropout=0.2).eval()
     explicit_model = _new_model(seed=123, dropout=0.20).eval()

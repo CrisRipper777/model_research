@@ -48,6 +48,11 @@ RELATED_TESTS = (
     "tests/test_psce_mag_v7b.py",
     "tests/test_psce_mag_v7b1_corrective.py",
 )
+POSTFREEZE_ALLOWED_PATHS = {
+    "scripts/run_rmcge_v1_generalization.py",
+    "tests/test_rmcge_v1_generalization.py",
+    "research/rmcge_v1_generalization/IMPLEMENTATION_AUDIT.md",
+}
 SELECTED_PHYSICAL_GPU: int | None = None
 
 
@@ -952,18 +957,47 @@ def _check_freeze_worktree(*, allow_evidence_changes: bool) -> None:
         raise RuntimeError(f"worktree has changes outside generated study evidence: {disallowed}")
 
 
+def _validate_postfreeze_changed_paths(changed_paths: list[str]) -> None:
+    unexpected = sorted(set(changed_paths) - POSTFREEZE_ALLOWED_PATHS)
+    if unexpected:
+        raise RuntimeError(
+            "post-freeze changes touch files outside the reviewed launcher-only fix: "
+            f"{unexpected}"
+        )
+
+
+def _resolve_implementation_freeze_sha(manifest: dict[str, Any], head_sha: str) -> str:
+    freeze_sha = manifest.get("implementation_freeze_sha") or head_sha
+    if freeze_sha == head_sha:
+        return freeze_sha
+    ancestry = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", freeze_sha, head_sha],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if ancestry.returncode != 0:
+        raise RuntimeError(
+            f"current HEAD {head_sha} is not descended from Implementation Freeze {freeze_sha}"
+        )
+    changed = _git("diff", "--name-only", f"{freeze_sha}..{head_sha}").splitlines()
+    _validate_postfreeze_changed_paths(changed)
+    return freeze_sha
+
+
 def run_matrix(batch: str) -> dict[str, Any]:
     global OUTPUT_ROOT
     status = _check_branch(require_clean=False)
     checks = json.loads((DATA_DIR / "implementation_checks.json").read_text(encoding="utf-8"))
     if status["head_sha"] == BASE_SHA:
         raise RuntimeError("commit the Implementation Freeze before starting matrix runs")
-    freeze_sha = status["head_sha"]
     manifest = json.loads((DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
+    freeze_sha = _resolve_implementation_freeze_sha(manifest, status["head_sha"])
+    source_sha = status["head_sha"]
     if checks.get("phase") != "implementation_freeze_ready":
         raise RuntimeError("implementation preflight is not ready")
     if manifest.get("implementation_freeze_sha") not in (None, freeze_sha):
-        raise RuntimeError("manifest freeze SHA differs from current HEAD")
+        raise RuntimeError("manifest freeze SHA differs from resolved Implementation Freeze")
     if batch not in {"seed42", "seeds43_44"}:
         raise ValueError("batch must be seed42 or seeds43_44")
     if batch == "seed42":
@@ -989,6 +1023,9 @@ def run_matrix(batch: str) -> dict[str, Any]:
 
     OUTPUT_ROOT = ROOT / "outputs/rmcge_v1_generalization/runs" / f"freeze_{freeze_sha[:10]}"
     manifest["implementation_freeze_sha"] = freeze_sha
+    source_commits = manifest.setdefault("matrix_source_commits", [])
+    if source_sha not in source_commits:
+        source_commits.append(source_sha)
     manifest["output_root"] = str(OUTPUT_ROOT.relative_to(ROOT))
     manifest["status"] = "matrix_seed42_running" if batch == "seed42" else "matrix_seeds43_44_running"
     manifest["runs"] = manifest.get("runs", [])
@@ -1002,6 +1039,7 @@ def run_matrix(batch: str) -> dict[str, Any]:
             "status": "not_started_gpu_unavailable",
             "error": f"{type(exc).__name__}: {exc}",
             "implementation_freeze_sha": freeze_sha,
+            "source_git_sha": source_sha,
         }
         _record_failure(manifest, failure)
         manifest["status"] = "matrix_not_started_gpu_unavailable"
@@ -1034,7 +1072,7 @@ def run_matrix(batch: str) -> dict[str, Any]:
             _record_failure(manifest, failure)
             raise FileExistsError(failure["error"])
         try:
-            record = _run_one(dataset, treatment, seed, cache_entries[dataset], device, freeze_sha, source_tree_sha)
+            record = _run_one(dataset, treatment, seed, cache_entries[dataset], device, source_sha, source_tree_sha)
             manifest["runs"].append(record)
             existing.add(key)
             for planned in manifest["planned_runs"]:
