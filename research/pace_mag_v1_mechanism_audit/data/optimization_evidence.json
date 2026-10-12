@@ -1,0 +1,956 @@
+{
+  "trained_checkpoint_parameters": [
+    {
+      "dataset": "Movies",
+      "checkpoint_seed": 42,
+      "semantic_edge_weight_constant": 0.8,
+      "bounded_scalars": {
+        "rho": {
+          "source_rows": [
+            "text",
+            "visual"
+          ],
+          "target_columns": [
+            "text",
+            "visual"
+          ],
+          "raw": [
+            [
+              -0.36204689741134644,
+              -0.40883705019950867
+            ],
+            [
+              -0.32636797428131104,
+              -0.4112098217010498
+            ]
+          ],
+          "effective": [
+            [
+              0.10261603444814682,
+              0.09979775547981262
+            ],
+            [
+              0.1047811508178711,
+              0.09965552389621735
+            ]
+          ],
+          "effective_derivative_wrt_raw": [
+            [
+              0.060495831072330475,
+              0.05995938926935196
+            ],
+            [
+              0.06086479127407074,
+              0.05993063002824783
+            ]
+          ],
+          "maximum": 0.25
+        },
+        "beta_phy": {
+          "raw": 0.04062248393893242,
+          "effective": 0.5101542472839355,
+          "effective_derivative_wrt_raw": 0.2498968912620967,
+          "maximum": 1.0
+        },
+        "beta_sem": {
+          "raw": -0.8570994138717651,
+          "effective": 0.29794570803642273,
+          "effective_derivative_wrt_raw": 0.20917406309909747,
+          "maximum": 1.0
+        },
+        "gamma_fixed": 0.2
+      },
+      "router": {
+        "trainable_parameter_count": 34115,
+        "conditioning_embedding_parameter_count": 40,
+        "trained_parameter_tensors": [
+          {
+            "name": "router.0.weight",
+            "shape": [
+              64,
+              529
+            ],
+            "parameter_count": 33856,
+            "sha256": "4edbd9dab24b5012df31bd479ff25b62039b87cbda28751660da4a523c5f58da",
+            "mean": -4.4293428800301626e-05,
+            "std": 0.030768683180212975,
+            "min": -0.11720092594623566,
+            "max": 0.1136271059513092,
+            "l2_norm": 5.66144323348999,
+            "rms": 0.030768712982535362
+          },
+          {
+            "name": "router.0.bias",
+            "shape": [
+              64
+            ],
+            "parameter_count": 64,
+            "sha256": "44fa9e4042ff5bbc883bba9a3c37143133aa986e686fd12841752aa9b50b653d",
+            "mean": -0.0026206052862107754,
+            "std": 0.024129554629325867,
+            "min": -0.0418543703854084,
+            "max": 0.045846737921237946,
+            "l2_norm": 0.19417154788970947,
+            "rms": 0.024271441623568535
+          },
+          {
+            "name": "router.2.weight",
+            "shape": [
+              3,
+              64
+            ],
+            "parameter_count": 192,
+            "sha256": "5ed52cc516f89414600f832236899cbe2f56a88b6cf88e61b34c9aee16ca90c5",
+            "mean": -0.004125615116208792,
+            "std": 0.08274038881063461,
+            "min": -0.15986669063568115,
+            "max": 0.13558615744113922,
+            "l2_norm": 1.1479088068008423,
+            "rms": 0.08284318447113037
+          },
+          {
+            "name": "router.2.bias",
+            "shape": [
+              3
+            ],
+            "parameter_count": 3,
+            "sha256": "c812fc7fb19741d7c8f158da8030bbd7325cc393309a81cc6f1311e73cdde1c3",
+            "mean": -0.04470112919807434,
+            "std": 0.04344742372632027,
+            "min": -0.08848343789577484,
+            "max": 0.014524330385029316,
+            "l2_norm": 0.10797040909528732,
+            "rms": 0.062336746603250504
+          },
+          {
+            "name": "relation_embedding.weight",
+            "shape": [
+              3,
+              8
+            ],
+            "parameter_count": 24,
+            "sha256": "fe631b791dd18d58ed86d88790fc454e8b30f8f9e7b1c3aa0dfef95497784321",
+            "mean": -0.22516648471355438,
+            "std": 0.9564231038093567,
+            "min": -2.7650163173675537,
+            "max": 1.5731276273727417,
+            "l2_norm": 4.81359338760376,
+            "rms": 0.9825706481933594
+          },
+          {
+            "name": "modality_embedding.weight",
+            "shape": [
+              2,
+              8
+            ],
+            "parameter_count": 16,
+            "sha256": "f642f52d85204c426f9dd16b542a6975a849834f48363986dab1b3595fceceb6",
+            "mean": 0.30022260546684265,
+            "std": 1.022098183631897,
+            "min": -1.8591359853744507,
+            "max": 2.2424368858337402,
+            "l2_norm": 4.261114120483398,
+            "rms": 1.0652785301208496
+          }
+        ],
+        "summary_note": "Per-tensor summaries and SHA-256 bind these measurements to the frozen checkpoint without duplicating checkpoint weights."
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "checkpoint_seed": 42,
+      "semantic_edge_weight_constant": 0.8,
+      "bounded_scalars": {
+        "rho": {
+          "source_rows": [
+            "text",
+            "visual"
+          ],
+          "target_columns": [
+            "text",
+            "visual"
+          ],
+          "raw": [
+            [
+              -0.34166836738586426,
+              -0.36272165179252625
+            ],
+            [
+              -0.33099815249443054,
+              -0.38658130168914795
+            ]
+          ],
+          "effective": [
+            [
+              0.1038510650396347,
+              0.10257522016763687
+            ],
+            [
+              0.104499451816082,
+              0.10113514214754105
+            ]
+          ],
+          "effective_derivative_wrt_raw": [
+            [
+              0.06071088835597038,
+              0.060488518327474594
+            ],
+            [
+              0.060818906873464584,
+              0.060221876949071884
+            ]
+          ],
+          "maximum": 0.25
+        },
+        "beta_phy": {
+          "raw": 0.0636514276266098,
+          "effective": 0.5159074664115906,
+          "effective_derivative_wrt_raw": 0.24974695251236412,
+          "maximum": 1.0
+        },
+        "beta_sem": {
+          "raw": -0.822897732257843,
+          "effective": 0.3051488995552063,
+          "effective_derivative_wrt_raw": 0.21203304865545292,
+          "maximum": 1.0
+        },
+        "gamma_fixed": 0.2
+      },
+      "router": {
+        "trainable_parameter_count": 34115,
+        "conditioning_embedding_parameter_count": 40,
+        "trained_parameter_tensors": [
+          {
+            "name": "router.0.weight",
+            "shape": [
+              64,
+              529
+            ],
+            "parameter_count": 33856,
+            "sha256": "ecfad19516eb29fb1381d4ac14d751ea974169b540487c334adff4bd574a2d6c",
+            "mean": -5.9310634242137894e-05,
+            "std": 0.030219458043575287,
+            "min": -0.10775955021381378,
+            "max": 0.10950616002082825,
+            "l2_norm": 5.560390472412109,
+            "rms": 0.030219515785574913
+          },
+          {
+            "name": "router.0.bias",
+            "shape": [
+              64
+            ],
+            "parameter_count": 64,
+            "sha256": "e35912d8853e1b70b76f15b893760780ccbc78839e8a2fb36ccb7a17c355aeef",
+            "mean": -0.0011186351766809821,
+            "std": 0.023882294073700905,
+            "min": -0.04090329259634018,
+            "max": 0.0468059778213501,
+            "l2_norm": 0.19126783311367035,
+            "rms": 0.023908479139208794
+          },
+          {
+            "name": "router.2.weight",
+            "shape": [
+              3,
+              64
+            ],
+            "parameter_count": 192,
+            "sha256": "46327276f0a731a8eb34d3e4eeae7fe099e58431f4821cf2baaa74630f8a37bf",
+            "mean": -0.004270422738045454,
+            "std": 0.0825745090842247,
+            "min": -0.1498425006866455,
+            "max": 0.1477935016155243,
+            "l2_norm": 1.1457149982452393,
+            "rms": 0.08268485963344574
+          },
+          {
+            "name": "router.2.bias",
+            "shape": [
+              3
+            ],
+            "parameter_count": 3,
+            "sha256": "70ae37e72f6bfd700e30956e9c7d86429ecc539d8a791135238e0734708f918c",
+            "mean": -0.043630827218294144,
+            "std": 0.044322602450847626,
+            "min": -0.08924158662557602,
+            "max": 0.016410063952207565,
+            "l2_norm": 0.10772383958101273,
+            "rms": 0.06219438835978508
+          },
+          {
+            "name": "relation_embedding.weight",
+            "shape": [
+              3,
+              8
+            ],
+            "parameter_count": 24,
+            "sha256": "7d5c4492c70ec0ec62ee65b1b1f2e6fe2d0b3b7cbc1099bd6f5be02bbbf7efc5",
+            "mean": -0.228551983833313,
+            "std": 0.9541146755218506,
+            "min": -2.758575439453125,
+            "max": 1.580824851989746,
+            "l2_norm": 4.806422710418701,
+            "rms": 0.9811069369316101
+          },
+          {
+            "name": "modality_embedding.weight",
+            "shape": [
+              2,
+              8
+            ],
+            "parameter_count": 16,
+            "sha256": "49c39bc01c608a93f8ab2b43572a9f3220422f58caf1543f80f9cae69a2b0ad5",
+            "mean": 0.3025382161140442,
+            "std": 1.030036211013794,
+            "min": -1.8608955144882202,
+            "max": 2.265779972076416,
+            "l2_norm": 4.294189929962158,
+            "rms": 1.0735474824905396
+          }
+        ],
+        "summary_note": "Per-tensor summaries and SHA-256 bind these measurements to the frozen checkpoint without duplicating checkpoint weights."
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "checkpoint_seed": 42,
+      "semantic_edge_weight_constant": 0.8,
+      "bounded_scalars": {
+        "rho": {
+          "source_rows": [
+            "text",
+            "visual"
+          ],
+          "target_columns": [
+            "text",
+            "visual"
+          ],
+          "raw": [
+            [
+              -0.3478034436702728,
+              -0.27577444911003113
+            ],
+            [
+              -0.3584250509738922,
+              -0.3177405297756195
+            ]
+          ],
+          "effective": [
+            [
+              0.10347878932952881,
+              0.10787250846624374
+            ],
+            [
+              0.10283522307872772,
+              0.10530662536621094
+            ]
+          ],
+          "effective_derivative_wrt_raw": [
+            [
+              0.060647349804639816,
+              0.06132659316062927
+            ],
+            [
+              0.06053489074110985,
+              0.0609486848115921
+            ]
+          ],
+          "maximum": 0.25
+        },
+        "beta_phy": {
+          "raw": 0.1032697781920433,
+          "effective": 0.525794506072998,
+          "effective_derivative_wrt_raw": 0.24933464345645007,
+          "maximum": 1.0
+        },
+        "beta_sem": {
+          "raw": -0.7512060403823853,
+          "effective": 0.3205585777759552,
+          "effective_derivative_wrt_raw": 0.21780077599021208,
+          "maximum": 1.0
+        },
+        "gamma_fixed": 0.2
+      },
+      "router": {
+        "trainable_parameter_count": 34115,
+        "conditioning_embedding_parameter_count": 40,
+        "trained_parameter_tensors": [
+          {
+            "name": "router.0.weight",
+            "shape": [
+              64,
+              529
+            ],
+            "parameter_count": 33856,
+            "sha256": "ef04b45b2eb09a481b5451e8de86c408710c3d79ae79c4f2911ef8946fa93d24",
+            "mean": 0.0001681411813478917,
+            "std": 0.036873698234558105,
+            "min": -0.18475598096847534,
+            "max": 0.18901783227920532,
+            "l2_norm": 6.784830570220947,
+            "rms": 0.03687407821416855
+          },
+          {
+            "name": "router.0.bias",
+            "shape": [
+              64
+            ],
+            "parameter_count": 64,
+            "sha256": "ff74f042de581b04a8760db57baa941068c8988cfb858ffa0765e6b74140ed34",
+            "mean": 0.004233441781252623,
+            "std": 0.02800905704498291,
+            "min": -0.04691522940993309,
+            "max": 0.04694335162639618,
+            "l2_norm": 0.2266174554824829,
+            "rms": 0.028327181935310364
+          },
+          {
+            "name": "router.2.weight",
+            "shape": [
+              3,
+              64
+            ],
+            "parameter_count": 192,
+            "sha256": "cf5452669ff0d919899409516f5ffcca24da1c94bbee40c2c97e722cf7f4dea8",
+            "mean": 0.008867651224136353,
+            "std": 0.09327458590269089,
+            "min": -0.19382888078689575,
+            "max": 0.1639268547296524,
+            "l2_norm": 1.2982782125473022,
+            "rms": 0.09369516372680664
+          },
+          {
+            "name": "router.2.bias",
+            "shape": [
+              3
+            ],
+            "parameter_count": 3,
+            "sha256": "23a4af98b98e4fb9d00e7810c5c06c6484be224aec82008e39b539283306d880",
+            "mean": -0.07684829086065292,
+            "std": 0.03566018491983414,
+            "min": -0.11320887506008148,
+            "max": -0.028404083102941513,
+            "l2_norm": 0.14673760533332825,
+            "rms": 0.08471899479627609
+          },
+          {
+            "name": "relation_embedding.weight",
+            "shape": [
+              3,
+              8
+            ],
+            "parameter_count": 24,
+            "sha256": "32f09bbc6c2547d9fc8c2f041d3fdb1c2c7b1d29d7be1381b88b1baa49e5c84b",
+            "mean": 0.2159959077835083,
+            "std": 1.249792456626892,
+            "min": -1.803202748298645,
+            "max": 2.5715057849884033,
+            "l2_norm": 6.213473320007324,
+            "rms": 1.2683199644088745
+          },
+          {
+            "name": "modality_embedding.weight",
+            "shape": [
+              2,
+              8
+            ],
+            "parameter_count": 16,
+            "sha256": "157aec7feaa2f12be4b77920f978b38f66000c5e15b8b198eec4c2e95b93a080",
+            "mean": 0.24637353420257568,
+            "std": 0.8280312418937683,
+            "min": -1.0903210639953613,
+            "max": 1.547796368598938,
+            "l2_norm": 3.4556286334991455,
+            "rms": 0.8639071583747864
+          }
+        ],
+        "summary_note": "Per-tensor summaries and SHA-256 bind these measurements to the frozen checkpoint without duplicating checkpoint weights."
+      }
+    }
+  ],
+  "pilot_e2_epoch1_gradient_summaries": [
+    {
+      "dataset": "Movies",
+      "gradient_timing": "epoch 1, before global norm clipping",
+      "groups": {
+        "cross_modal": {
+          "parameter_count": 33152,
+          "gradient_l2_norm": 0.0010597137073585234,
+          "gradient_rms_from_l2": 5.820143398857398e-06,
+          "gradient_present": 33152,
+          "gradient_finite": true
+        },
+        "rho_raw": {
+          "parameter_count": 4,
+          "gradient_l2_norm": 1.1376817383279558e-05,
+          "gradient_rms_from_l2": 5.688408691639779e-06,
+          "gradient_present": 4,
+          "gradient_finite": true
+        },
+        "beta_phy_raw": {
+          "parameter_count": 1,
+          "gradient_l2_norm": 0.0015208194963634014,
+          "gradient_rms_from_l2": 0.0015208194963634014,
+          "gradient_present": 1,
+          "gradient_finite": true
+        },
+        "beta_sem_raw": {
+          "parameter_count": 1,
+          "gradient_l2_norm": 0.001289259409531951,
+          "gradient_rms_from_l2": 0.001289259409531951,
+          "gradient_present": 1,
+          "gradient_finite": true
+        },
+        "experts": {
+          "parameter_count": 123456,
+          "gradient_l2_norm": 0.4800845002822627,
+          "gradient_rms_from_l2": 0.0013663488135353284,
+          "gradient_present": 123456,
+          "gradient_finite": true
+        },
+        "router": {
+          "parameter_count": 34115,
+          "gradient_l2_norm": 0.055448409236946265,
+          "gradient_rms_from_l2": 0.00030020395074813026,
+          "gradient_present": 34115,
+          "gradient_finite": true
+        },
+        "fusion": {
+          "parameter_count": 65664,
+          "gradient_l2_norm": 4.134115435640929,
+          "gradient_rms_from_l2": 0.016133141085259036,
+          "gradient_present": 65664,
+          "gradient_finite": true
+        },
+        "skip": {
+          "parameter_count": 32896,
+          "gradient_l2_norm": 2.665169159726505,
+          "gradient_rms_from_l2": 0.014694446521430206,
+          "gradient_present": 32896,
+          "gradient_finite": true
+        }
+      }
+    },
+    {
+      "dataset": "Grocery",
+      "gradient_timing": "epoch 1, before global norm clipping",
+      "groups": {
+        "cross_modal": {
+          "parameter_count": 33152,
+          "gradient_l2_norm": 0.0007117404959383238,
+          "gradient_rms_from_l2": 3.909010254722934e-06,
+          "gradient_present": 33152,
+          "gradient_finite": true
+        },
+        "rho_raw": {
+          "parameter_count": 4,
+          "gradient_l2_norm": 3.885167188855121e-06,
+          "gradient_rms_from_l2": 1.9425835944275605e-06,
+          "gradient_present": 4,
+          "gradient_finite": true
+        },
+        "beta_phy_raw": {
+          "parameter_count": 1,
+          "gradient_l2_norm": 0.0014380360953509808,
+          "gradient_rms_from_l2": 0.0014380360953509808,
+          "gradient_present": 1,
+          "gradient_finite": true
+        },
+        "beta_sem_raw": {
+          "parameter_count": 1,
+          "gradient_l2_norm": 0.0009437999688088894,
+          "gradient_rms_from_l2": 0.0009437999688088894,
+          "gradient_present": 1,
+          "gradient_finite": true
+        },
+        "experts": {
+          "parameter_count": 123456,
+          "gradient_l2_norm": 0.3723807375341364,
+          "gradient_rms_from_l2": 0.0010598175500646885,
+          "gradient_present": 123456,
+          "gradient_finite": true
+        },
+        "router": {
+          "parameter_count": 34115,
+          "gradient_l2_norm": 0.05852145821200824,
+          "gradient_rms_from_l2": 0.00031684178501338074,
+          "gradient_present": 34115,
+          "gradient_finite": true
+        },
+        "fusion": {
+          "parameter_count": 65664,
+          "gradient_l2_norm": 3.2146902524071614,
+          "gradient_rms_from_l2": 0.012545138662643843,
+          "gradient_present": 65664,
+          "gradient_finite": true
+        },
+        "skip": {
+          "parameter_count": 32896,
+          "gradient_l2_norm": 2.068578425019426,
+          "gradient_rms_from_l2": 0.011405135366699022,
+          "gradient_present": 32896,
+          "gradient_finite": true
+        }
+      }
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradient_timing": "epoch 1, before global norm clipping",
+      "groups": {
+        "cross_modal": {
+          "parameter_count": 33152,
+          "gradient_l2_norm": 0.0012092669338690642,
+          "gradient_rms_from_l2": 6.64151733977092e-06,
+          "gradient_present": 33152,
+          "gradient_finite": true
+        },
+        "rho_raw": {
+          "parameter_count": 4,
+          "gradient_l2_norm": 6.80125913277152e-06,
+          "gradient_rms_from_l2": 3.40062956638576e-06,
+          "gradient_present": 4,
+          "gradient_finite": true
+        },
+        "beta_phy_raw": {
+          "parameter_count": 1,
+          "gradient_l2_norm": 0.0011315849842503667,
+          "gradient_rms_from_l2": 0.0011315849842503667,
+          "gradient_present": 1,
+          "gradient_finite": true
+        },
+        "beta_sem_raw": {
+          "parameter_count": 1,
+          "gradient_l2_norm": 0.001180044375360012,
+          "gradient_rms_from_l2": 0.001180044375360012,
+          "gradient_present": 1,
+          "gradient_finite": true
+        },
+        "experts": {
+          "parameter_count": 123456,
+          "gradient_l2_norm": 0.5298372615544339,
+          "gradient_rms_from_l2": 0.0015079481076062042,
+          "gradient_present": 123456,
+          "gradient_finite": true
+        },
+        "router": {
+          "parameter_count": 34115,
+          "gradient_l2_norm": 0.11270906070578716,
+          "gradient_rms_from_l2": 0.0006102195856403905,
+          "gradient_present": 34115,
+          "gradient_finite": true
+        },
+        "fusion": {
+          "parameter_count": 65664,
+          "gradient_l2_norm": 5.6387779602724315,
+          "gradient_rms_from_l2": 0.02200499763437802,
+          "gradient_present": 65664,
+          "gradient_finite": true
+        },
+        "skip": {
+          "parameter_count": 32896,
+          "gradient_l2_norm": 3.5095223617526305,
+          "gradient_rms_from_l2": 0.019349799419797257,
+          "gradient_present": 32896,
+          "gradient_finite": true
+        }
+      }
+    }
+  ],
+  "real_graph_preflight_gradient_and_update_audit": {
+    "preflight": {
+      "rho_raw": {
+        "parameter_count": 4,
+        "gradient_present": 4,
+        "gradient_finite": true,
+        "gradient_nonzero": 4,
+        "gradient_l2_norm": 1.1376817383279558e-05
+      },
+      "beta_phy_raw": {
+        "parameter_count": 1,
+        "gradient_present": 1,
+        "gradient_finite": true,
+        "gradient_nonzero": 1,
+        "gradient_l2_norm": 0.001520819729194045
+      },
+      "beta_sem_raw": {
+        "parameter_count": 1,
+        "gradient_present": 1,
+        "gradient_finite": true,
+        "gradient_nonzero": 1,
+        "gradient_l2_norm": 0.0012892596423625946
+      },
+      "projectors": {
+        "parameter_count": 427264,
+        "gradient_present": 427264,
+        "gradient_finite": true,
+        "gradient_nonzero": 427264,
+        "gradient_l2_norm": 6.421886123173094
+      },
+      "cross_modal": {
+        "parameter_count": 33152,
+        "gradient_present": 33152,
+        "gradient_finite": true,
+        "gradient_nonzero": 33152,
+        "gradient_l2_norm": 0.0010597137154925791
+      },
+      "experts": {
+        "parameter_count": 123456,
+        "gradient_present": 123456,
+        "gradient_finite": true,
+        "gradient_nonzero": 123456,
+        "gradient_l2_norm": 0.4800845002007108
+      },
+      "router": {
+        "parameter_count": 34115,
+        "gradient_present": 34115,
+        "gradient_finite": true,
+        "gradient_nonzero": 34115,
+        "gradient_l2_norm": 0.0554484085064641
+      },
+      "relation_embedding": {
+        "parameter_count": 24,
+        "gradient_present": 24,
+        "gradient_finite": true,
+        "gradient_nonzero": 24,
+        "gradient_l2_norm": 8.283572242362425e-05
+      },
+      "modality_embedding": {
+        "parameter_count": 16,
+        "gradient_present": 16,
+        "gradient_finite": true,
+        "gradient_nonzero": 16,
+        "gradient_l2_norm": 0.0001689116470515728
+      },
+      "message_norm": {
+        "parameter_count": 256,
+        "gradient_present": 256,
+        "gradient_finite": true,
+        "gradient_nonzero": 256,
+        "gradient_l2_norm": 0.01267194367020892
+      },
+      "aggregate_norm": {
+        "parameter_count": 256,
+        "gradient_present": 256,
+        "gradient_finite": true,
+        "gradient_nonzero": 256,
+        "gradient_l2_norm": 0.012063320794191632
+      },
+      "mix_norm": {
+        "parameter_count": 512,
+        "gradient_present": 512,
+        "gradient_finite": true,
+        "gradient_nonzero": 512,
+        "gradient_l2_norm": 0.17212357983727603
+      },
+      "physical_norm": {
+        "parameter_count": 512,
+        "gradient_present": 512,
+        "gradient_finite": true,
+        "gradient_nonzero": 512,
+        "gradient_l2_norm": 0.17114542012652145
+      },
+      "fusion": {
+        "parameter_count": 65664,
+        "gradient_present": 65664,
+        "gradient_finite": true,
+        "gradient_nonzero": 65664,
+        "gradient_l2_norm": 4.134115436298527
+      },
+      "skip": {
+        "parameter_count": 32896,
+        "gradient_present": 32896,
+        "gradient_finite": true,
+        "gradient_nonzero": 32896,
+        "gradient_l2_norm": 2.6651691607465473
+      },
+      "fusion_norm": {
+        "parameter_count": 256,
+        "gradient_present": 256,
+        "gradient_finite": true,
+        "gradient_nonzero": 256,
+        "gradient_l2_norm": 0.2243409486676973
+      }
+    },
+    "parameter_updates": {
+      "rho_raw": {
+        "changed_parameter_tensors": 1,
+        "changed_elements": 4,
+        "max_abs_update": 0.0009892582893371582
+      },
+      "beta_phy_raw": {
+        "changed_parameter_tensors": 1,
+        "changed_elements": 1,
+        "max_abs_update": 0.0009999421890825033
+      },
+      "beta_sem_raw": {
+        "changed_parameter_tensors": 1,
+        "changed_elements": 1,
+        "max_abs_update": 0.001000046730041504
+      },
+      "projectors": {
+        "changed_parameter_tensors": 16,
+        "changed_elements": 427264,
+        "max_abs_update": 0.0010001063346862793
+      },
+      "cross_modal": {
+        "changed_parameter_tensors": 8,
+        "changed_elements": 33152,
+        "max_abs_update": 0.0009992318227887154
+      },
+      "experts": {
+        "changed_parameter_tensors": 12,
+        "changed_elements": 123456,
+        "max_abs_update": 0.0010000020265579224
+      },
+      "router": {
+        "changed_parameter_tensors": 4,
+        "changed_elements": 34115,
+        "max_abs_update": 0.0009999945759773254
+      },
+      "relation_embedding": {
+        "changed_parameter_tensors": 1,
+        "changed_elements": 24,
+        "max_abs_update": 0.0009980201721191406
+      },
+      "modality_embedding": {
+        "changed_parameter_tensors": 1,
+        "changed_elements": 16,
+        "max_abs_update": 0.000999152660369873
+      },
+      "message_norm": {
+        "changed_parameter_tensors": 2,
+        "changed_elements": 256,
+        "max_abs_update": 0.0010001063346862793
+      },
+      "aggregate_norm": {
+        "changed_parameter_tensors": 2,
+        "changed_elements": 256,
+        "max_abs_update": 0.0010001063346862793
+      },
+      "mix_norm": {
+        "changed_parameter_tensors": 4,
+        "changed_elements": 512,
+        "max_abs_update": 0.0010001063346862793
+      },
+      "physical_norm": {
+        "changed_parameter_tensors": 4,
+        "changed_elements": 512,
+        "max_abs_update": 0.0010001063346862793
+      },
+      "fusion": {
+        "changed_parameter_tensors": 2,
+        "changed_elements": 65664,
+        "max_abs_update": 0.0010000020265579224
+      },
+      "skip": {
+        "changed_parameter_tensors": 2,
+        "changed_elements": 32896,
+        "max_abs_update": 0.0010000057518482208
+      },
+      "fusion_norm": {
+        "changed_parameter_tensors": 2,
+        "changed_elements": 256,
+        "max_abs_update": 0.0010001063346862793
+      }
+    },
+    "passed": true
+  },
+  "training_logs": [
+    {
+      "dataset": "Movies",
+      "epochs_logged": 118,
+      "checkpoint_best_epoch": 88,
+      "logged_best_accuracy_epoch": 88,
+      "first_epoch": {
+        "epoch": 1,
+        "train_loss": 2.9469,
+        "val_acc_pct": 32.93,
+        "val_macro_f1_pct": 2.48
+      },
+      "best_accuracy_epoch": {
+        "epoch": 88,
+        "train_loss": 0.4636,
+        "val_acc_pct": 54.23,
+        "val_macro_f1_pct": 45.27
+      },
+      "last_epoch": {
+        "epoch": 118,
+        "train_loss": 0.1306,
+        "val_acc_pct": 52.04,
+        "val_macro_f1_pct": 44.21
+      },
+      "minimum_train_loss": 0.1306,
+      "early_stop_line": "2026-10-12 01:17:48,085 INFO Early stopping at epoch 118",
+      "interpretation_limit": "The log contains train loss and validation metrics, but no train Accuracy/Macro-F1, per-epoch gradients, optimizer state, or intermediate weights."
+    },
+    {
+      "dataset": "Grocery",
+      "epochs_logged": 121,
+      "checkpoint_best_epoch": 91,
+      "logged_best_accuracy_epoch": 91,
+      "first_epoch": {
+        "epoch": 1,
+        "train_loss": 3.1943,
+        "val_acc_pct": 14.14,
+        "val_macro_f1_pct": 1.24
+      },
+      "best_accuracy_epoch": {
+        "epoch": 91,
+        "train_loss": 0.1522,
+        "val_acc_pct": 81.79,
+        "val_macro_f1_pct": 73.51
+      },
+      "last_epoch": {
+        "epoch": 121,
+        "train_loss": 0.0463,
+        "val_acc_pct": 81.64,
+        "val_macro_f1_pct": 73.86
+      },
+      "minimum_train_loss": 0.0449,
+      "early_stop_line": "2026-10-12 01:19:28,700 INFO Early stopping at epoch 121",
+      "interpretation_limit": "The log contains train loss and validation metrics, but no train Accuracy/Macro-F1, per-epoch gradients, optimizer state, or intermediate weights."
+    },
+    {
+      "dataset": "ele-fashion",
+      "epochs_logged": 165,
+      "checkpoint_best_epoch": 135,
+      "logged_best_accuracy_epoch": 135,
+      "first_epoch": {
+        "epoch": 1,
+        "train_loss": 2.6204,
+        "val_acc_pct": 29.0,
+        "val_macro_f1_pct": 4.35
+      },
+      "best_accuracy_epoch": {
+        "epoch": 135,
+        "train_loss": 0.2558,
+        "val_acc_pct": 87.64,
+        "val_macro_f1_pct": 74.72
+      },
+      "last_epoch": {
+        "epoch": 165,
+        "train_loss": 0.2096,
+        "val_acc_pct": 87.53,
+        "val_macro_f1_pct": 75.6
+      },
+      "minimum_train_loss": 0.1997,
+      "early_stop_line": "2026-10-12 01:26:04,226 INFO Early stopping at epoch 165",
+      "interpretation_limit": "The log contains train loss and validation metrics, but no train Accuracy/Macro-F1, per-epoch gradients, optimizer state, or intermediate weights."
+    }
+  ],
+  "rho_parameterization": {
+    "form": "rho = rho_max * sigmoid(rho_raw)",
+    "rho_max": 0.25,
+    "pilot_initial_rho": 0.1,
+    "effective_derivative_at_initial": 0.06,
+    "interpretation": "The initial derivative is about 0.06; use each frozen checkpoint's measured rho and derivative to assess saturation. A small raw-gradient L2 alone cannot establish an optimization defect; E2 records are first-epoch summaries and AdamW's normalized update also depends on its moment state."
+  },
+  "cross_modal_initialization": {
+    "module": "CrossModalBottleneck.second.weight",
+    "initialization": "Normal(0, 0.02); bias zero",
+    "interpretation": "The output layer is deliberately small and is multiplied by rho. Whether that combination suppresses messages must be judged from measured Phi/injection/context ratios and frozen interventions, not initialization alone."
+  },
+  "trajectory_limit": "No per-epoch gradients, parameter checkpoints, optimizer state, or training Accuracy are stored; only epoch-1 gradient summaries, logs, and each selected best Validation checkpoint are available.",
+  "gradient_norm_limit": "L2 norms across groups have different parameter counts and scales. RMS-from-L2 is supplied descriptively; neither is an importance ranking or a direct comparison of AdamW update magnitude."
+}

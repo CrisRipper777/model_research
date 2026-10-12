@@ -1,0 +1,52 @@
+{
+  "audit_branch": "exp/pace_mag_v1_mechanism_audit",
+  "instrumentation_commit": "0a0762aac2c4cf25795ebc0ebf8015057f970ddb",
+  "required_v1_freeze_commit": "739f340bb6858b7280dede1dfaaf37740c2de3fa",
+  "required_v1_pilot_report_commit": "d4094d3f003826d71a496495e27d8998f8f594ec",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "checkpoint_hashes": {
+    "Movies": "39374c272be126d2093243d5fb8bf8e7c19fe12fccbcfd4781aa03dedd0f0e3c",
+    "Grocery": "2d302ebb45984809a9e612d865292b9eb268fcbe8b2f7e372f40d65f429e1f1e",
+    "ele-fashion": "bb406d0e574b3d8f3ff177f49aeeaac4fd8e6327dcda4a57aa175a3541505a74"
+  },
+  "selected_device": {
+    "device": "cuda:1",
+    "name": "NVIDIA GeForce RTX 3090",
+    "free_bytes": 16601972736,
+    "total_bytes": 25438126080,
+    "allocated_bytes": 8519680,
+    "reserved_bytes": 6067060736
+  },
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.4.0+cu121",
+    "torch_cuda_build": "12.1",
+    "cuda_device_count": 2,
+    "selected_device": {
+      "device": "cuda:1",
+      "name": "NVIDIA GeForce RTX 3090",
+      "free_bytes": 22725656576,
+      "total_bytes": 25438126080,
+      "allocated_bytes": 0,
+      "reserved_bytes": 0
+    },
+    "package_versions": {
+      "torch-geometric": "2.7.0",
+      "dgl": "2.4.0+cu121",
+      "faiss-cpu": "1.15.1"
+    },
+    "nvidia_smi_snapshot": "Mon Oct 12 10:16:43 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n|100%   82C    P2             327W / 350W |  23228MiB / 24576MiB |     94%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n| 76%   76C    P2             282W / 350W |   2329MiB / 24576MiB |     94%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   1390688      C   VLLM::EngineCore                          23126MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   3013640      C   ...n3090/SCGFM-ART/../.venv/bin/python     2312MiB |\n+---------------------------------------------------------------------------------------+\n"
+  },
+  "router_permutation_seed": 20261012,
+  "inference_mode": "torch.inference_mode",
+  "optimizer_created_or_called": false,
+  "training_performed": false,
+  "test_labels_accessed": false,
+  "test_metrics_computed": false,
+  "label_tensor_note": "The repository MAG NC loader materializes its full label tensor. Audit metrics index train/validation labels only; Test label values and test_idx are not accessed.",
+  "failures": []
+}

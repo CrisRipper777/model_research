@@ -1,0 +1,149 @@
+{
+  "Movies": {
+    "dataset": "Movies",
+    "checkpoint_path": "outputs/pace_mag_v1_pilot/runs/Movies/seed_42/e2_full/best.pt",
+    "checkpoint_sha256": "39374c272be126d2093243d5fb8bf8e7c19fe12fccbcfd4781aa03dedd0f0e3c",
+    "config_path": "outputs/pace_mag_v1_pilot/runs/Movies/seed_42/e2_full/resolved_config.yaml",
+    "config_sha256": "392a7a97b195b812146fde26488315bb0f2f556040126822d991e050ff36120c",
+    "cache_path": "outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+    "cache_fingerprints": {
+      "feature": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "candidate": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "v7b": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "data_info": {
+      "input_dim": 1536,
+      "num_nodes": 16672,
+      "num_classes": 20,
+      "text_dim": 768,
+      "visual_dim": 768
+    },
+    "labels_loaded_in_memory": true,
+    "labels_accessed_for_audit": [
+      "train_idx",
+      "val_idx"
+    ],
+    "test_label_values_accessed": false,
+    "test_metrics_computed": false,
+    "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+    "checkpoint_metrics": {
+      "val_acc": 0.542291522026062,
+      "val_macro_f1": 0.4527254850374386
+    },
+    "pilot_csv_metrics": {
+      "val_acc": 0.542291522026062,
+      "val_macro_f1": 0.4527254850374386
+    },
+    "original_forward_audit_forward_max_abs_embedding_difference": 1.1920928955078125e-06,
+    "original_forward_audit_forward_max_abs_logit_difference": 1.9073486328125e-06,
+    "val_acc_reproduced": 0.542291522026062,
+    "val_macro_f1_reproduced": 0.4527254850374386,
+    "val_ce_reproduced": 1.5632362365722656,
+    "val_acc_difference_from_pilot": 0.0,
+    "val_macro_f1_difference_from_pilot": 0.0,
+    "parity_tolerance": 1e-05,
+    "passed": true,
+    "state_sha256_before_and_after_equal": true,
+    "model_eval_state_preserved": true,
+    "model_source_commit": "739f340bb6858b7280dede1dfaaf37740c2de3fa",
+    "pilot_report_commit": "d4094d3f003826d71a496495e27d8998f8f594ec"
+  },
+  "Grocery": {
+    "dataset": "Grocery",
+    "checkpoint_path": "outputs/pace_mag_v1_pilot/runs/Grocery/seed_42/e2_full/best.pt",
+    "checkpoint_sha256": "2d302ebb45984809a9e612d865292b9eb268fcbe8b2f7e372f40d65f429e1f1e",
+    "config_path": "outputs/pace_mag_v1_pilot/runs/Grocery/seed_42/e2_full/resolved_config.yaml",
+    "config_sha256": "c4d14a1ddfc5a6e956d74478869b61917d2d37165ea548702c29b3fecd89ffbc",
+    "cache_path": "outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+    "cache_fingerprints": {
+      "feature": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "candidate": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "v7b": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "data_info": {
+      "input_dim": 1536,
+      "num_nodes": 17074,
+      "num_classes": 20,
+      "text_dim": 768,
+      "visual_dim": 768
+    },
+    "labels_loaded_in_memory": true,
+    "labels_accessed_for_audit": [
+      "train_idx",
+      "val_idx"
+    ],
+    "test_label_values_accessed": false,
+    "test_metrics_computed": false,
+    "split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+    "checkpoint_metrics": {
+      "val_acc": 0.8178623914718628,
+      "val_macro_f1": 0.7351336468140988
+    },
+    "pilot_csv_metrics": {
+      "val_acc": 0.8178623914718628,
+      "val_macro_f1": 0.7351336468140988
+    },
+    "original_forward_audit_forward_max_abs_embedding_difference": 1.3560056686401367e-06,
+    "original_forward_audit_forward_max_abs_logit_difference": 2.86102294921875e-06,
+    "val_acc_reproduced": 0.8178623914718628,
+    "val_macro_f1_reproduced": 0.7351336468140988,
+    "val_ce_reproduced": 0.7263707518577576,
+    "val_acc_difference_from_pilot": 0.0,
+    "val_macro_f1_difference_from_pilot": 0.0,
+    "parity_tolerance": 1e-05,
+    "passed": true,
+    "state_sha256_before_and_after_equal": true,
+    "model_eval_state_preserved": true,
+    "model_source_commit": "739f340bb6858b7280dede1dfaaf37740c2de3fa",
+    "pilot_report_commit": "d4094d3f003826d71a496495e27d8998f8f594ec"
+  },
+  "ele-fashion": {
+    "dataset": "ele-fashion",
+    "checkpoint_path": "outputs/pace_mag_v1_pilot/runs/ele-fashion/seed_42/e2_full/best.pt",
+    "checkpoint_sha256": "bb406d0e574b3d8f3ff177f49aeeaac4fd8e6327dcda4a57aa175a3541505a74",
+    "config_path": "outputs/pace_mag_v1_pilot/runs/ele-fashion/seed_42/e2_full/resolved_config.yaml",
+    "config_sha256": "fc593c03c863bb9275e931aba2cc1b668e1eb07309c7dc17912efbfbe7e5c574",
+    "cache_path": "outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+    "cache_fingerprints": {
+      "feature": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "candidate": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "v7b": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    },
+    "data_info": {
+      "input_dim": 1024,
+      "num_nodes": 97766,
+      "num_classes": 12,
+      "text_dim": 512,
+      "visual_dim": 512
+    },
+    "labels_loaded_in_memory": true,
+    "labels_accessed_for_audit": [
+      "train_idx",
+      "val_idx"
+    ],
+    "test_label_values_accessed": false,
+    "test_metrics_computed": false,
+    "split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+    "checkpoint_metrics": {
+      "val_acc": 0.8764446973800659,
+      "val_macro_f1": 0.7472435211970371
+    },
+    "pilot_csv_metrics": {
+      "val_acc": 0.8764446973800659,
+      "val_macro_f1": 0.7472435211970371
+    },
+    "original_forward_audit_forward_max_abs_embedding_difference": 1.430511474609375e-06,
+    "original_forward_audit_forward_max_abs_logit_difference": 2.86102294921875e-06,
+    "val_acc_reproduced": 0.8764446973800659,
+    "val_macro_f1_reproduced": 0.7472435211970371,
+    "val_ce_reproduced": 0.40786126255989075,
+    "val_acc_difference_from_pilot": 0.0,
+    "val_macro_f1_difference_from_pilot": 0.0,
+    "parity_tolerance": 1e-05,
+    "passed": true,
+    "state_sha256_before_and_after_equal": true,
+    "model_eval_state_preserved": true,
+    "model_source_commit": "739f340bb6858b7280dede1dfaaf37740c2de3fa",
+    "pilot_report_commit": "d4094d3f003826d71a496495e27d8998f8f594ec"
+  }
+}

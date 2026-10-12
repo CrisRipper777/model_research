@@ -1,0 +1,1091 @@
+{
+  "Movies": {
+    "dataset": "Movies",
+    "seed": 42,
+    "construction": "CPU model construction only; no checkpoint weights loaded and no training/optimizer step",
+    "common_parameter_tensors": [
+      {
+        "name": "aggregate_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "aggregate_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "beta_phy_raw",
+        "group": "scalar common module",
+        "parameter_count": 1,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "beta_sem_raw",
+        "group": "scalar common module",
+        "parameter_count": 1,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 64,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 64,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "fusion.bias",
+        "group": "post-router randomized common module",
+        "parameter_count": 128,
+        "exact_equal": false,
+        "max_abs_difference": 0.07764449715614319
+      },
+      {
+        "name": "fusion.weight",
+        "group": "post-router randomized common module",
+        "parameter_count": 65536,
+        "exact_equal": false,
+        "max_abs_difference": 0.08814089000225067
+      },
+      {
+        "name": "fusion_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "fusion_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "message_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "message_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.text.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.text.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.visual.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.visual.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.text.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.text.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.visual.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.visual.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.norm.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.norm.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 16384,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.shortcut.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.shortcut.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.norm.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.norm.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 16384,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.shortcut.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.shortcut.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "rho_raw",
+        "group": "pre-expert common module",
+        "parameter_count": 4,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "skip.bias",
+        "group": "post-router randomized common module",
+        "parameter_count": 128,
+        "exact_equal": false,
+        "max_abs_difference": 0.1175844818353653
+      },
+      {
+        "name": "skip.weight",
+        "group": "post-router randomized common module",
+        "parameter_count": 32768,
+        "exact_equal": false,
+        "max_abs_difference": 0.12417185306549072
+      }
+    ],
+    "group_summary": {
+      "LayerNorm common module": {
+        "tensor_count": 14,
+        "parameter_count": 1792,
+        "exact_equal_tensors": 14,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "scalar common module": {
+        "tensor_count": 2,
+        "parameter_count": 2,
+        "exact_equal_tensors": 2,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "pre-expert common module": {
+        "tensor_count": 25,
+        "parameter_count": 460420,
+        "exact_equal_tensors": 25,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "post-router randomized common module": {
+        "tensor_count": 4,
+        "parameter_count": 98560,
+        "exact_equal_tensors": 0,
+        "different_tensors": 4,
+        "max_abs_difference": 0.12417185306549072
+      }
+    },
+    "e2_processing_parameters": {
+      "experts": 123456,
+      "router_and_embeddings": 34155,
+      "total": 157611
+    },
+    "e3_single_processing_parameters": 157814,
+    "e3_parameter_difference": 203,
+    "e2_approx_linear_macs_per_node_for_six_view_modality_calls": 941568,
+    "e3_approx_linear_macs_per_node_for_six_view_modality_calls": 944640,
+    "e3_relative_mac_difference": 0.0032626427406199023,
+    "cost_scope_note": "Counts multiply-accumulates in expert and router Linear layers only; excludes activations, sparse propagation, normalization, memory traffic, and any hardware-dependent dispatch cost."
+  },
+  "Grocery": {
+    "dataset": "Grocery",
+    "seed": 42,
+    "construction": "CPU model construction only; no checkpoint weights loaded and no training/optimizer step",
+    "common_parameter_tensors": [
+      {
+        "name": "aggregate_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "aggregate_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "beta_phy_raw",
+        "group": "scalar common module",
+        "parameter_count": 1,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "beta_sem_raw",
+        "group": "scalar common module",
+        "parameter_count": 1,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 64,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 64,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "fusion.bias",
+        "group": "post-router randomized common module",
+        "parameter_count": 128,
+        "exact_equal": false,
+        "max_abs_difference": 0.07764449715614319
+      },
+      {
+        "name": "fusion.weight",
+        "group": "post-router randomized common module",
+        "parameter_count": 65536,
+        "exact_equal": false,
+        "max_abs_difference": 0.08814089000225067
+      },
+      {
+        "name": "fusion_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "fusion_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "message_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "message_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.text.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.text.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.visual.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.visual.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.text.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.text.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.visual.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.visual.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.norm.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.norm.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 16384,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.shortcut.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.shortcut.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.norm.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.norm.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 16384,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.shortcut.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.shortcut.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 98304,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "rho_raw",
+        "group": "pre-expert common module",
+        "parameter_count": 4,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "skip.bias",
+        "group": "post-router randomized common module",
+        "parameter_count": 128,
+        "exact_equal": false,
+        "max_abs_difference": 0.1175844818353653
+      },
+      {
+        "name": "skip.weight",
+        "group": "post-router randomized common module",
+        "parameter_count": 32768,
+        "exact_equal": false,
+        "max_abs_difference": 0.12417185306549072
+      }
+    ],
+    "group_summary": {
+      "LayerNorm common module": {
+        "tensor_count": 14,
+        "parameter_count": 1792,
+        "exact_equal_tensors": 14,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "scalar common module": {
+        "tensor_count": 2,
+        "parameter_count": 2,
+        "exact_equal_tensors": 2,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "pre-expert common module": {
+        "tensor_count": 25,
+        "parameter_count": 460420,
+        "exact_equal_tensors": 25,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "post-router randomized common module": {
+        "tensor_count": 4,
+        "parameter_count": 98560,
+        "exact_equal_tensors": 0,
+        "different_tensors": 4,
+        "max_abs_difference": 0.12417185306549072
+      }
+    },
+    "e2_processing_parameters": {
+      "experts": 123456,
+      "router_and_embeddings": 34155,
+      "total": 157611
+    },
+    "e3_single_processing_parameters": 157814,
+    "e3_parameter_difference": 203,
+    "e2_approx_linear_macs_per_node_for_six_view_modality_calls": 941568,
+    "e3_approx_linear_macs_per_node_for_six_view_modality_calls": 944640,
+    "e3_relative_mac_difference": 0.0032626427406199023,
+    "cost_scope_note": "Counts multiply-accumulates in expert and router Linear layers only; excludes activations, sparse propagation, normalization, memory traffic, and any hardware-dependent dispatch cost."
+  },
+  "ele-fashion": {
+    "dataset": "ele-fashion",
+    "seed": 42,
+    "construction": "CPU model construction only; no checkpoint weights loaded and no training/optimizer step",
+    "common_parameter_tensors": [
+      {
+        "name": "aggregate_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "aggregate_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "beta_phy_raw",
+        "group": "scalar common module",
+        "parameter_count": 1,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "beta_sem_raw",
+        "group": "scalar common module",
+        "parameter_count": 1,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 64,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.text_to_visual.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 64,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "cross_modal.visual_to_text.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 8192,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "fusion.bias",
+        "group": "post-router randomized common module",
+        "parameter_count": 128,
+        "exact_equal": false,
+        "max_abs_difference": 0.08360470086336136
+      },
+      {
+        "name": "fusion.weight",
+        "group": "post-router randomized common module",
+        "parameter_count": 65536,
+        "exact_equal": false,
+        "max_abs_difference": 0.08831848949193954
+      },
+      {
+        "name": "fusion_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "fusion_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "message_norm.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "message_norm.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.text.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.text.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.visual.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "mix_norm.visual.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.text.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.text.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.visual.bias",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "physical_norm.visual.weight",
+        "group": "LayerNorm common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 65536,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.norm.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.norm.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 16384,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.shortcut.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.text.shortcut.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 65536,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.first.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.first.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 65536,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.norm.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.norm.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.second.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.second.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 16384,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.shortcut.bias",
+        "group": "pre-expert common module",
+        "parameter_count": 128,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "projectors.visual.shortcut.weight",
+        "group": "pre-expert common module",
+        "parameter_count": 65536,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "rho_raw",
+        "group": "pre-expert common module",
+        "parameter_count": 4,
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "name": "skip.bias",
+        "group": "post-router randomized common module",
+        "parameter_count": 128,
+        "exact_equal": false,
+        "max_abs_difference": 0.1182311624288559
+      },
+      {
+        "name": "skip.weight",
+        "group": "post-router randomized common module",
+        "parameter_count": 32768,
+        "exact_equal": false,
+        "max_abs_difference": 0.12344319373369217
+      }
+    ],
+    "group_summary": {
+      "LayerNorm common module": {
+        "tensor_count": 14,
+        "parameter_count": 1792,
+        "exact_equal_tensors": 14,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "scalar common module": {
+        "tensor_count": 2,
+        "parameter_count": 2,
+        "exact_equal_tensors": 2,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "pre-expert common module": {
+        "tensor_count": 25,
+        "parameter_count": 329348,
+        "exact_equal_tensors": 25,
+        "different_tensors": 0,
+        "max_abs_difference": 0.0
+      },
+      "post-router randomized common module": {
+        "tensor_count": 4,
+        "parameter_count": 98560,
+        "exact_equal_tensors": 0,
+        "different_tensors": 4,
+        "max_abs_difference": 0.12344319373369217
+      }
+    },
+    "e2_processing_parameters": {
+      "experts": 123456,
+      "router_and_embeddings": 34155,
+      "total": 157611
+    },
+    "e3_single_processing_parameters": 157814,
+    "e3_parameter_difference": 203,
+    "e2_approx_linear_macs_per_node_for_six_view_modality_calls": 941568,
+    "e3_approx_linear_macs_per_node_for_six_view_modality_calls": 944640,
+    "e3_relative_mac_difference": 0.0032626427406199023,
+    "cost_scope_note": "Counts multiply-accumulates in expert and router Linear layers only; excludes activations, sparse propagation, normalization, memory traffic, and any hardware-dependent dispatch cost."
+  }
+}
