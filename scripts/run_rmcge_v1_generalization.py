@@ -929,7 +929,18 @@ def _verify_initialization_pairs(runs: list[dict[str, Any]], dataset: str, seed:
 
 
 def _dirty_paths() -> list[str]:
-    return [line[3:] for line in _git("status", "--porcelain").splitlines() if len(line) >= 4]
+    result = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return [
+        line[3:]
+        for line in result.stdout.splitlines()
+        if len(line) >= 4
+    ]
 
 
 def _check_freeze_worktree(*, allow_evidence_changes: bool) -> None:

@@ -3,12 +3,14 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 import torch
 import torch.nn.functional as F
 from omegaconf import OmegaConf
 
+from scripts import run_rmcge_v1_generalization as study_runner
 from src.data import MAGData
 from src.models.rmcge_v1 import Model, build_semantic_operators
 from src.tasks.nc import _evaluate_indices_from_embeddings, run_nc
@@ -66,6 +68,23 @@ def _attach_views(model: Model) -> torch.Tensor:
     model.semantic_degree_visual = views["degree_visual"]
     edge_index = torch.tensor([[0, 1, 2, 3, 4], [1, 2, 3, 4, 5]])
     return edge_index
+
+
+def test_dirty_path_parser_preserves_first_character_of_modified_paths(monkeypatch):
+    monkeypatch.setattr(
+        study_runner.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(
+            stdout=(
+                " M research/rmcge_v1_generalization/data/manifest.json\n"
+                "?? research/rmcge_v1_generalization/data/runs.csv\n"
+            )
+        ),
+    )
+    assert study_runner._dirty_paths() == [
+        "research/rmcge_v1_generalization/data/manifest.json",
+        "research/rmcge_v1_generalization/data/runs.csv",
+    ]
 
 
 def test_dropout_020_initialization_and_eval_forward_match_and_035_builds():

@@ -33,6 +33,8 @@ The parity result shows identical initial states and step losses, a two-step par
 
 An initial parity invocation landed on a GPU occupied by the VLLM engine and ran out of memory. That diagnostic failure is retained; the successful parity retry explicitly used physical GPU 1. One retry attempt also encountered the existing `seed_42` output directory and launched no training; its record has been corrected to show that no directory was written by that invocation. Both actual O0 runs are preserved in their independent output directories.
 
+After the 12-run seed-42 review passed, the first seed-43/44 launch stopped before training because the shared Git helper stripped the leading status-column whitespace and corrupted one modified path. The worktree parser now reads raw porcelain output, with a regression test; the complete suite passes **107 passed, 1 skipped**. This follow-up changes only the launch guard. The model, NC training, configuration, optimizer, and metric code remain at Implementation Freeze `e002af6a9c57de21986129d2b1c6e8478bcc74e3`; seed-43/44 provenance will record the follow-up runner commit.
+
 The revised hard checks are configuration and optimizer parity, official split/data/cache fingerprints, per-seed initialization hashes, short-run numerical parity, RNG preservation, finite histories, no Test-label indexing, and successful Validation-only Checkpoint reloads. The Implementation Freeze precedes training. The first batch contains all 12 seed-42 runs; seeds 43 and 44 follow only after that batch passes integrity review.
 
 ## Evidence files
