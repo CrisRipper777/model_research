@@ -1,0 +1,116 @@
+{
+  "Grocery": {
+    "archived_all_cross_off_match": true,
+    "archived_all_cross_off_max_metric_difference": 2.3941272686567316e-08,
+    "cache_fingerprints": {
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "checkpoint_epoch": 91,
+    "embedding_sha256": "75fb3d486a1756d5cbe468233b5c1ebe0b82800ca3eaef19ba8951360307488d",
+    "evaluate_test": false,
+    "logit_sha256": "6fcbdfa0e298c41efbfea0ba4cd08571fd685aa2ce3e103e9b375b766160150b",
+    "node_diagnostic_forward_max_abs_difference": 1.1920928955078125e-06,
+    "original_artifact_limit": "The original Pilot did not persist embedding/logit arrays or checksums; this study recomputed and hashed them twice from its frozen checkpoint.",
+    "original_checkpoint_sha256": "9a5b21f9ff21adbebac4aecd7717eb03008367cabbe406d1ec47719953fec9a3",
+    "passed": true,
+    "pilot_metrics_match": {
+      "metrics": {
+        "val_acc": {
+          "absolute_difference": 0.0,
+          "observed": 0.8231332302093506,
+          "passed": true,
+          "reference": 0.8231332302093506
+        },
+        "val_macro_f1": {
+          "absolute_difference": 0.0,
+          "observed": 0.7520662564889584,
+          "passed": true,
+          "reference": 0.7520662564889584
+        }
+      },
+      "passed": true
+    },
+    "repeated_embedding_max_abs_difference": 1.3113021850585938e-06,
+    "repeated_logit_max_abs_difference": 2.86102294921875e-06,
+    "test_labels_indexed": false,
+    "test_metrics_computed": false
+  },
+  "Movies": {
+    "archived_all_cross_off_match": true,
+    "archived_all_cross_off_max_metric_difference": 1.4697352723747059e-08,
+    "cache_fingerprints": {
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "checkpoint_epoch": 70,
+    "embedding_sha256": "d02dde5070fb8a7ed538a8974a132d335cb8ab7724c0877855ca8560888ea664",
+    "evaluate_test": false,
+    "logit_sha256": "27b50e4fca7e5dc77abd541de84376d1ebf71e2a572f57ff69ce6361d08a6a1c",
+    "node_diagnostic_forward_max_abs_difference": 1.1920928955078125e-06,
+    "original_artifact_limit": "The original Pilot did not persist embedding/logit arrays or checksums; this study recomputed and hashed them twice from its frozen checkpoint.",
+    "original_checkpoint_sha256": "4111e903bacdf641fd8a209d90420a66a2a38338550a77bdeb6a22b8e9e9a67e",
+    "passed": true,
+    "pilot_metrics_match": {
+      "metrics": {
+        "val_acc": {
+          "absolute_difference": 0.0,
+          "observed": 0.5404918789863586,
+          "passed": true,
+          "reference": 0.5404918789863586
+        },
+        "val_macro_f1": {
+          "absolute_difference": 0.0,
+          "observed": 0.4299585568126555,
+          "passed": true,
+          "reference": 0.4299585568126555
+        }
+      },
+      "passed": true
+    },
+    "repeated_embedding_max_abs_difference": 1.0728836059570312e-06,
+    "repeated_logit_max_abs_difference": 2.384185791015625e-06,
+    "test_labels_indexed": false,
+    "test_metrics_computed": false
+  },
+  "ele-fashion": {
+    "archived_all_cross_off_match": true,
+    "archived_all_cross_off_max_metric_difference": 0.0,
+    "cache_fingerprints": {
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    },
+    "checkpoint_epoch": 115,
+    "embedding_sha256": "c3eea033551ec679375eaac953f7b347a56d348885da57555688bc38108325db",
+    "evaluate_test": false,
+    "logit_sha256": "c82680077bf3faa3613c431653176017a332d52c305719b35c13e8e8c7ed32b9",
+    "node_diagnostic_forward_max_abs_difference": 1.5497207641601562e-06,
+    "original_artifact_limit": "The original Pilot did not persist embedding/logit arrays or checksums; this study recomputed and hashed them twice from its frozen checkpoint.",
+    "original_checkpoint_sha256": "33b4f3f3982f74bc35546d7828000d75d0108683871419344cb54d6e012a460a",
+    "passed": true,
+    "pilot_metrics_match": {
+      "metrics": {
+        "val_acc": {
+          "absolute_difference": 0.0,
+          "observed": 0.8793085813522339,
+          "passed": true,
+          "reference": 0.8793085813522339
+        },
+        "val_macro_f1": {
+          "absolute_difference": 0.0,
+          "observed": 0.7418818698476541,
+          "passed": true,
+          "reference": 0.7418818698476541
+        }
+      },
+      "passed": true
+    },
+    "repeated_embedding_max_abs_difference": 1.6689300537109375e-06,
+    "repeated_logit_max_abs_difference": 3.814697265625e-06,
+    "test_labels_indexed": false,
+    "test_metrics_computed": false
+  }
+}

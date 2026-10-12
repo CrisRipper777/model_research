@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import hashlib
 import time
 from pathlib import Path
 
@@ -9,6 +10,7 @@ import torch
 import torch.nn as nn
 from sklearn.metrics import f1_score
 from torch.utils.data import DataLoader as TorchDataLoader
+from omegaconf import OmegaConf
 
 from src.data import MAGData
 from src.models import build_model
@@ -92,6 +94,94 @@ def _evaluate_split(
                 zero_division=0,
             )
         ),
+    }
+
+
+@torch.no_grad()
+def _evaluate_indices_from_embeddings(
+    classifier: nn.Module,
+    z: torch.Tensor,
+    labels: torch.Tensor,
+    idx: torch.Tensor,
+    device: torch.device,
+    batch_size: int,
+) -> dict[str, float]:
+    """Compute CE/accuracy on cached CPU embeddings without touching CUDA RNG."""
+    del device
+    classifier.eval()
+    indices = idx.detach().cpu().long()
+    labels_cpu = labels.detach().cpu()
+    weight = classifier.weight.detach().cpu()
+    bias = classifier.bias.detach().cpu() if classifier.bias is not None else None
+    correct = 0
+    total = 0
+    loss_sum = 0.0
+    for batch_indices in indices.split(int(batch_size)):
+        logits = nn.functional.linear(z[batch_indices], weight, bias)
+        targets = labels_cpu[batch_indices]
+        loss_sum += float(
+            nn.functional.cross_entropy(logits, targets, reduction="sum").item()
+        )
+        correct += int((logits.argmax(dim=-1) == targets).sum().item())
+        total += int(targets.numel())
+    if total == 0:
+        raise ValueError("cannot evaluate an empty node index")
+    return {"cross_entropy": loss_sum / total, "acc": correct / total}
+
+
+def _parameter_l2_norm(parameters) -> float:
+    total = 0.0
+    for parameter in parameters:
+        total += float(parameter.detach().double().square().sum().cpu())
+    return total**0.5
+
+
+def _module_state_sha256(module: nn.Module) -> str:
+    digest = hashlib.sha256()
+    for name, tensor in sorted(module.state_dict().items()):
+        value = tensor.detach().cpu().contiguous()
+        digest.update(name.encode("utf-8"))
+        digest.update(str(value.dtype).encode("ascii"))
+        digest.update(str(tuple(value.shape)).encode("ascii"))
+        digest.update(value.numpy().tobytes())
+    return digest.hexdigest()
+
+
+def _extended_parameter_audit(model, classifier, optimizer) -> dict[str, object]:
+    parameter_names = {
+        id(parameter): f"model.{name}" for name, parameter in model.named_parameters()
+    }
+    parameter_names.update(
+        {
+            id(parameter): f"classifier.{name}"
+            for name, parameter in classifier.named_parameters()
+        }
+    )
+    groups = []
+    for index, group in enumerate(optimizer.param_groups):
+        parameters = list(group["params"])
+        groups.append(
+            {
+                "group_index": index,
+                "parameter_tensors": len(parameters),
+                "parameter_count": sum(int(parameter.numel()) for parameter in parameters),
+                "learning_rate": float(group["lr"]),
+                "weight_decay": float(group["weight_decay"]),
+                "parameter_names": [
+                    parameter_names.get(id(parameter), f"unnamed_parameter_{position}")
+                    for position, parameter in enumerate(parameters)
+                ],
+            }
+        )
+    return {
+        "model_l2": _parameter_l2_norm(model.parameters()),
+        "classifier_l2": _parameter_l2_norm(classifier.parameters()),
+        "combined_l2": _parameter_l2_norm(
+            list(model.parameters()) + list(classifier.parameters())
+        ),
+        "model_state_sha256": _module_state_sha256(model),
+        "classifier_state_sha256": _module_state_sha256(classifier),
+        "optimizer_groups": groups,
     }
 
 
@@ -201,9 +291,33 @@ def _run_single_nc(
 
     record_run_telemetry = bool(getattr(model, "record_run_telemetry", False))
     record_epoch_history = bool(getattr(model, "record_epoch_history", False))
+    record_extended_validation = bool(
+        cfg.task.get("record_extended_validation", False)
+    )
+    if record_extended_validation and not full_graph_training:
+        raise ValueError("extended validation is currently scoped to full-graph NC")
+    if record_extended_validation and bool(cfg.task.get("evaluate_test", True)):
+        raise ValueError("extended-validation study requires evaluate_test=false")
+    if record_extended_validation and not cfg.task.get("best_f1_ckpt_path"):
+        raise ValueError("extended-validation study requires task.best_f1_ckpt_path")
+    if record_extended_validation and not cfg.task.get("save_ckpt_path"):
+        raise ValueError("extended-validation study requires task.save_ckpt_path")
     epoch_history: list[dict[str, float | int]] = []
     epoch_wall_seconds: list[float] = []
     train_step_seconds: list[float] = []
+    optimizer_update_count = 0
+    best_f1 = -1.0
+    best_f1_epoch: int | None = None
+    best_f1_metrics: dict[str, float] | None = None
+    best_f1_model_state = None
+    best_f1_head_state = None
+    best_acc_extended_metrics: dict[str, float] | None = None
+    best_f1_extended_metrics: dict[str, float] | None = None
+    initial_parameter_audit = (
+        _extended_parameter_audit(model, classifier, optimizer)
+        if record_extended_validation
+        else None
+    )
     if record_run_telemetry and device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
     training_started = time.perf_counter()
@@ -231,6 +345,7 @@ def _run_single_nc(
                 error_if_nonfinite=True,
             )
             optimizer.step()
+            optimizer_update_count += 1
             train_loss = float(loss.detach().item())
             del z
         else:
@@ -252,6 +367,7 @@ def _run_single_nc(
                     error_if_nonfinite=True,
                 )
                 optimizer.step()
+                optimizer_update_count += 1
                 total_loss += float(loss.detach().item()) * int(labels.numel())
                 total_examples += int(labels.numel())
             train_loss = total_loss / max(total_examples, 1)
@@ -276,6 +392,33 @@ def _run_single_nc(
             inference_batch_size,
             eval_labels,
         )
+        extended_epoch_metrics: dict[str, float] | None = None
+        if record_extended_validation:
+            # Reuse the existing eval embedding tensor. These linear-head-only
+            # evaluations are deterministic and do not consume model/dropout RNG.
+            train_eval = _evaluate_indices_from_embeddings(
+                classifier,
+                z,
+                data.y,
+                data.train_idx,
+                device,
+                inference_batch_size,
+            )
+            val_eval = _evaluate_indices_from_embeddings(
+                classifier,
+                z,
+                data.y,
+                data.val_idx,
+                device,
+                inference_batch_size,
+            )
+            extended_epoch_metrics = {
+                "train_ce": train_loss,
+                "train_accuracy_eval": train_eval["acc"],
+                "val_ce": val_eval["cross_entropy"],
+                "val_acc": val_metrics["acc"],
+                "val_macro_f1": val_metrics["macro_f1"],
+            }
         logger.info(
             "Epoch %05d | Train Loss %.4f | Val Acc %.2f | Val Macro-F1 %.2f",
             epoch,
@@ -285,16 +428,17 @@ def _run_single_nc(
         )
         epoch_wall_seconds.append(time.perf_counter() - epoch_started)
         if record_epoch_history:
-            epoch_history.append(
-                {
-                    "epoch": epoch,
-                    "train_loss": train_loss,
-                    "val_acc": val_metrics["acc"],
-                    "val_macro_f1": val_metrics["macro_f1"],
-                    "epoch_wall_seconds": epoch_wall_seconds[-1],
-                    "learning_rate": float(optimizer.param_groups[0]["lr"]),
-                }
-            )
+            history_row: dict[str, float | int] = {
+                "epoch": epoch,
+                "train_loss": train_loss,
+                "val_acc": val_metrics["acc"],
+                "val_macro_f1": val_metrics["macro_f1"],
+                "epoch_wall_seconds": epoch_wall_seconds[-1],
+                "learning_rate": float(optimizer.param_groups[0]["lr"]),
+            }
+            if extended_epoch_metrics is not None:
+                history_row.update(extended_epoch_metrics)
+            epoch_history.append(history_row)
 
         improved = val_metrics["acc"] > best_val + min_delta
         stop_early = False
@@ -305,6 +449,8 @@ def _run_single_nc(
                 "val_acc": val_metrics["acc"],
                 "val_macro_f1": val_metrics["macro_f1"],
             }
+            if extended_epoch_metrics is not None:
+                best_acc_extended_metrics = dict(extended_epoch_metrics)
             best_model_state = clone_state_dict(model)
             best_head_state = clone_state_dict(classifier)
             patience_left = patience_total
@@ -317,6 +463,16 @@ def _run_single_nc(
                 format_pct(best_val),
             )
             stop_early = patience_left <= 0
+        if extended_epoch_metrics is not None and val_metrics["macro_f1"] > best_f1:
+            best_f1 = val_metrics["macro_f1"]
+            best_f1_epoch = epoch
+            best_f1_metrics = {
+                "val_acc": val_metrics["acc"],
+                "val_macro_f1": val_metrics["macro_f1"],
+            }
+            best_f1_extended_metrics = dict(extended_epoch_metrics)
+            best_f1_model_state = clone_state_dict(model)
+            best_f1_head_state = clone_state_dict(classifier)
         del z
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
@@ -326,6 +482,15 @@ def _run_single_nc(
 
     if best_model_state is None or best_head_state is None:
         raise RuntimeError("NC training finished without a validation-selected checkpoint")
+    if record_extended_validation and (
+        best_f1_model_state is None or best_f1_head_state is None
+    ):
+        raise RuntimeError("extended-validation study finished without a Best-F1 checkpoint")
+    final_parameter_audit = (
+        _extended_parameter_audit(model, classifier, optimizer)
+        if record_extended_validation
+        else None
+    )
     load_state_dict_cpu(model, best_model_state)
     load_state_dict_cpu(classifier, best_head_state)
 
@@ -433,6 +598,35 @@ def _run_single_nc(
         )
     if record_epoch_history:
         run_metadata["epoch_history"] = epoch_history
+    if record_extended_validation:
+        study_provenance = cfg.task.get("extended_checkpoint_metadata", {})
+        if OmegaConf.is_config(study_provenance):
+            study_provenance = OmegaConf.to_container(study_provenance, resolve=True)
+        run_metadata.update(
+            {
+                "extended_validation": True,
+                "train_ce_mode": "training-mode stochastic forward, pre-optimizer-step loss",
+                "train_accuracy_mode": "eval-mode no-grad prediction after epoch update",
+                "validation_ce_mode": "eval-mode no-grad unweighted cross entropy",
+                "accuracy_stopping_horizon_epochs": len(epoch_wall_seconds),
+                "optimizer_update_count": optimizer_update_count,
+                "initial_parameter_audit": initial_parameter_audit,
+                "final_parameter_audit": final_parameter_audit,
+                "dual_checkpoint_selection": {
+                    "best_accuracy": {
+                        "epoch": int(best_epoch),
+                        "metrics": best_acc_extended_metrics,
+                        "rule": "Validation Accuracy > previous best + early_stop_min_delta",
+                    },
+                    "best_macro_f1": {
+                        "epoch": int(best_f1_epoch),
+                        "metrics": best_f1_extended_metrics,
+                        "rule": "highest Validation Macro-F1 through the Accuracy stopping horizon; earliest epoch wins ties",
+                    },
+                },
+                "study_provenance": study_provenance,
+            }
+        )
     if semantic_checkpoint_diagnostics is not None:
         run_metadata["semantic_checkpoint_diagnostics"] = semantic_checkpoint_diagnostics
     if getattr(model, "semantic_candidate_fingerprint", None) is not None:
@@ -443,21 +637,64 @@ def _run_single_nc(
     save_ckpt_path = cfg.task.get("save_ckpt_path")
     if save_ckpt_path:
         path = _checkpoint_path_for_run(save_ckpt_path, cfg, run_id)
-        torch.save(
-            {
+        accuracy_checkpoint = {
                 "task": "nc",
                 "protocol_version": str(cfg.task.protocol_version),
                 "seed": seed,
                 "selection": "best_val_accuracy",
                 "epoch": best_epoch,
-                "metrics": dict(best_metrics),
+                "metrics": (
+                    dict(best_acc_extended_metrics)
+                    if record_extended_validation
+                    else dict(best_metrics)
+                ),
                 "run_metadata": run_metadata,
-                "model_state": clone_state_dict(model),
-                "head_state": clone_state_dict(classifier),
+                "model_state": (
+                    best_model_state if record_extended_validation else clone_state_dict(model)
+                ),
+                "head_state": (
+                    best_head_state if record_extended_validation else clone_state_dict(classifier)
+                ),
                 "data_info": data_info,
-            },
-            path,
-        )
+            }
+        if record_extended_validation:
+            accuracy_checkpoint["selection_scope"] = (
+                "best Accuracy checkpoint observed before Accuracy-driven early stopping"
+            )
+            torch.save(accuracy_checkpoint, path)
+            f1_path = _checkpoint_path_for_run(
+                cfg.task.get("best_f1_ckpt_path"), cfg, run_id
+            )
+            f1_checkpoint = {
+                **accuracy_checkpoint,
+                "selection": "best_val_macro_f1_within_accuracy_stopping_horizon",
+                "epoch": int(best_f1_epoch),
+                "metrics": dict(best_f1_extended_metrics),
+                "model_state": best_f1_model_state,
+                "head_state": best_f1_head_state,
+                "selection_scope": (
+                    "highest Macro-F1 among epochs observed before Accuracy-driven early stopping; earliest epoch wins ties"
+                ),
+            }
+            torch.save(f1_checkpoint, f1_path)
+            logger.info("Saved Best-Accuracy checkpoint: %s | epoch=%s", path, best_epoch)
+            logger.info("Saved Best-F1 checkpoint: %s | epoch=%s", f1_path, best_f1_epoch)
+        else:
+            torch.save(
+                {
+                    "task": "nc",
+                    "protocol_version": str(cfg.task.protocol_version),
+                    "seed": seed,
+                    "selection": "best_val_accuracy",
+                    "epoch": best_epoch,
+                    "metrics": dict(best_metrics),
+                    "run_metadata": run_metadata,
+                    "model_state": clone_state_dict(model),
+                    "head_state": clone_state_dict(classifier),
+                    "data_info": data_info,
+                },
+                path,
+            )
         logger.info("Saved checkpoint: %s | best_epoch=%s", path, best_epoch)
 
     logger.info(

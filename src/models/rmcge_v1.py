@@ -380,8 +380,13 @@ class Model(nn.Module):
         )
         if self.hidden_dim != 128 or self.num_layers != 2 or self.num_experts != 3:
             raise ValueError("RM-CGE V1 freezes hidden_dim=128, num_layers=2, num_experts=3")
-        if self.expert_bottleneck != 64 or not math.isclose(self.dropout, 0.2):
-            raise ValueError("RM-CGE V1 freezes expert_bottleneck=64 and dropout=0.2")
+        if self.expert_bottleneck != 64 or not any(
+            math.isclose(self.dropout, allowed, rel_tol=0.0, abs_tol=1.0e-8)
+            for allowed in (0.2, 0.35)
+        ):
+            raise ValueError(
+                "RM-CGE V1 freezes expert_bottleneck=64 and allows dropout in {0.20, 0.35}"
+            )
         if self.text_dim < 1 or self.visual_dim < 1:
             raise ValueError("RM-CGE requires positive Text and Visual feature dimensions")
         if self.expert_chunk_size < 1:
@@ -556,6 +561,7 @@ class Model(nn.Module):
         *,
         intervention: Mapping[str, Any],
         collect_details: bool,
+        collect_node_diagnostics: bool = False,
     ) -> tuple[torch.Tensor, torch.Tensor, dict[str, Any] | None]:
         layer = self.encoder_layers[layer_index]
         current = {"text": h_text, "visual": h_visual}
@@ -571,6 +577,14 @@ class Model(nn.Module):
         }
         disabled_relations = set(intervention.get("disable_relations", ()))
         cross_enabled = not bool(intervention.get("disable_cross_modal", False))
+        cross_disabled_relations = {
+            relation
+            for relation, key in (
+                ("physical", "disable_cross_modal_on_physical"),
+                ("semantic", "disable_cross_modal_on_semantic"),
+            )
+            if bool(intervention.get(key, False))
+        }
         target_supports = {
             "text": ("physical", "text"),
             "visual": ("physical", "visual"),
@@ -602,6 +616,8 @@ class Model(nn.Module):
                         ]
                     )
                     cross = self._apply_mask(cross, valid)
+                    if relation in cross_disabled_relations:
+                        cross = torch.zeros_like(cross)
                 else:
                     cross = torch.zeros_like(same)
                 state_block = layer.block_norm(current[modality])
@@ -669,6 +685,48 @@ class Model(nn.Module):
                         "mean_neighbors_when_valid": float(mean_neighbors.cpu()),
                         "same_context_rms": self._masked_rms(context["same"], active),
                         "cross_context_rms": self._masked_rms(context["cross"], active),
+                        "same_context_post_layernorm_rms": self._masked_rms(
+                            blocks[modality][relation_id].view(
+                                blocks[modality][relation_id].size(0), 4, self.hidden_dim
+                            )[:, 1],
+                            active,
+                        ),
+                        "cross_context_post_layernorm_rms": self._masked_rms(
+                            blocks[modality][relation_id].view(
+                                blocks[modality][relation_id].size(0), 4, self.hidden_dim
+                            )[:, 3],
+                            active,
+                        ),
+                        "same_context_low_variance_node_fraction": (
+                            float(
+                                (
+                                    context["same"][active]
+                                    .float()
+                                    .var(dim=-1, unbiased=False)
+                                    < 1.0e-6
+                                )
+                                .float()
+                                .mean()
+                                .cpu()
+                            )
+                            if bool(active.any())
+                            else 0.0
+                        ),
+                        "cross_context_low_variance_node_fraction": (
+                            float(
+                                (
+                                    context["cross"][active]
+                                    .float()
+                                    .var(dim=-1, unbiased=False)
+                                    < 1.0e-6
+                                )
+                                .float()
+                                .mean()
+                                .cpu()
+                            )
+                            if bool(active.any())
+                            else 0.0
+                        ),
                         "cross_to_same_context_rms": self._rms_ratio(
                             context["cross"], context["same"], active
                         ),
@@ -727,6 +785,50 @@ class Model(nn.Module):
                         ),
                     }
                 )
+                if collect_node_diagnostics:
+                    candidate_probability = probabilities[participating]
+                    top1_expert = torch.full(
+                        (probabilities.size(0),),
+                        -1,
+                        dtype=torch.long,
+                        device=probabilities.device,
+                    )
+                    if candidate_probability.numel():
+                        top1_expert[participating] = (
+                            candidate_probability.flatten(1).argmax(dim=-1)
+                            % self.num_experts
+                        )
+                    route_entropy = -(
+                        probabilities.clamp_min(1.0e-12).log() * probabilities
+                    ).sum(dim=(1, 2))
+                    route_entropy = torch.where(
+                        participating, route_entropy, torch.zeros_like(route_entropy)
+                    )
+                    relation_node_details: dict[str, Any] = {}
+                    for relation_id, context in enumerate(contexts[modality]):
+                        node_state = normalized[modality]
+                        same_context = context["same"]
+                        relation_node_details[context["relation"]] = {
+                            "valid": context["valid"].detach().cpu(),
+                            "same_context_cosine": F.cosine_similarity(
+                                node_state.float(), same_context.float(), dim=-1, eps=1.0e-12
+                            ).detach().cpu(),
+                            "same_context_normalized_l2": (
+                                torch.linalg.vector_norm(
+                                    node_state.float() - same_context.float(), dim=-1
+                                )
+                                / torch.linalg.vector_norm(
+                                    node_state.float(), dim=-1
+                                ).clamp_min(1.0e-12)
+                            ).detach().cpu(),
+                        }
+                    modality_detail["node_diagnostics"] = {
+                        "participating": participating.detach().cpu(),
+                        "relation_mass": probabilities.sum(dim=-1).detach().cpu(),
+                        "top1_expert": top1_expert.detach().cpu(),
+                        "entropy": route_entropy.detach().cpu(),
+                        "relations": relation_node_details,
+                    }
                 layer_details["modalities"][modality] = modality_detail
         return next_states["text"], next_states["visual"], layer_details
 
@@ -757,6 +859,7 @@ class Model(nn.Module):
         *,
         return_details: bool = False,
         intervention: Mapping[str, Any] | None = None,
+        return_node_diagnostics: bool = False,
     ):
         if x.ndim != 2 or x.size(0) != self.num_nodes:
             raise RuntimeError("RM-CGE V1 requires the complete global-ID node matrix")
@@ -771,6 +874,8 @@ class Model(nn.Module):
         intervention = dict(intervention or {})
         allowed = {
             "disable_cross_modal",
+            "disable_cross_modal_on_physical",
+            "disable_cross_modal_on_semantic",
             "disable_relations",
             "disable_intrinsic_skip",
         }
@@ -824,6 +929,7 @@ class Model(nn.Module):
                         degrees,
                         intervention=layer_intervention,
                         collect_details=False,
+                        collect_node_diagnostics=False,
                     )
                     return text_next, visual_next
 
@@ -843,10 +949,11 @@ class Model(nn.Module):
                     operators,
                     degrees,
                     intervention=layer_intervention,
-                    collect_details=return_details,
+                    collect_details=return_details or return_node_diagnostics,
+                    collect_node_diagnostics=return_node_diagnostics,
                 )
             current = {"text": text_next, "visual": visual_next}
-            if return_details and layer_detail is not None:
+            if (return_details or return_node_diagnostics) and layer_detail is not None:
                 graph_details.append(layer_detail)
 
         fused = torch.cat(
@@ -865,7 +972,7 @@ class Model(nn.Module):
         z = self.fusion_norm(graph_term + skip_term)
         aux_loss = x.new_zeros(())
         info: dict[str, Any] = {"model": "rmcge_v1"}
-        if return_details:
+        if return_details or return_node_diagnostics:
             info["details"] = {
                 "layers": graph_details,
                 "fusion": {

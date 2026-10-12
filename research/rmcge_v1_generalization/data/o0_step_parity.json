@@ -1,0 +1,30 @@
+{
+  "baseline_validation_metrics": {
+    "acc": 0.3293341398239136,
+    "macro_f1": 0.02477436823104693
+  },
+  "dataset": "Movies",
+  "device": "cuda:0",
+  "diagnostic_cpu_metrics_preserve_rng_states": true,
+  "first_step_loss_frozen": 3.2623634338378906,
+  "first_step_loss_study": 3.2623634338378906,
+  "first_step_parameter_max_abs_difference": 5.047768354415894e-07,
+  "frozen_model_source_sha256": "a8bbf5e3f8ac99581079d397a4d4cc7f07e7ab0d23404b804357b88166b00705",
+  "frozen_reference_sha": "8b94d16c3b2a66b658419c7f79e0de688b51a23a",
+  "initialization_identical": true,
+  "interpretation": "Two-update numerical parity diagnostic only; not a formal run. Repeated CUDA sparse aggregation may create small floating-point differences despite equal RNG states.",
+  "passed": true,
+  "second_step_loss_frozen": 2.5419247150421143,
+  "second_step_loss_study": 2.5419247150421143,
+  "second_step_parameter_max_abs_difference": 5.047768354415894e-07,
+  "seed": 42,
+  "selected_physical_gpu": 1,
+  "study_model_source_sha256": "29d69fdf7473f923284b556450aec6a27f40d6d4230d902da87f7ed44b5286da",
+  "study_validation_metrics": {
+    "acc": 0.3293341398239136,
+    "macro_f1": 0.02477436823104693
+  },
+  "test_evaluation": false,
+  "test_labels_indexed": false,
+  "updates_performed": 2
+}

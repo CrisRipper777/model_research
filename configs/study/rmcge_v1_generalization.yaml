@@ -1,0 +1,52 @@
+name: rmcge_v1_generalization
+baseline_branch: exp/rmcge_v1_modality_view_experts
+baseline_pilot_sha: 7e4b3dedb9de419ecec4193a1c2e50efd80dc3ab
+implementation_freeze_sha: 8b94d16c3b2a66b658419c7f79e0de688b51a23a
+branch: exp/rmcge_v1_generalization_study
+protocol: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+seeds: [42, 43, 44]
+
+training:
+  optimizer: adamw
+  learning_rate: 0.001
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  grad_clip: 1.0
+  eval_every: 1
+  scheduler: null
+  evaluate_test: false
+
+frozen_model:
+  hidden_dim: 128
+  num_layers: 2
+  num_experts: 3
+  expert_bottleneck: 64
+  router_hidden_dim: 64
+  residual_scale: 0.5
+  semantic_knn_k: 8
+
+treatments:
+  O0:
+    dropout: 0.20
+    weight_decay: 0.0001
+  O1:
+    dropout: 0.35
+    weight_decay: 0.0001
+  O2:
+    dropout: 0.20
+    weight_decay: 0.05
+  O3:
+    dropout: 0.35
+    weight_decay: 0.05
+
+paths:
+  output_root: outputs/rmcge_v1_generalization/runs
+  research_root: research/rmcge_v1_generalization
+
+diagnostics:
+  low_variance_feature_threshold: 0.000001
+  pearson_and_spearman: true
+  test_evaluation: false

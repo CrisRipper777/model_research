@@ -1,0 +1,960 @@
+{
+  "base_sha": "7e4b3dedb9de419ecec4193a1c2e50efd80dc3ab",
+  "branch": "exp/rmcge_v1_generalization_study",
+  "cache_fingerprints": {
+    "Grocery": {
+      "cache_path": "outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "Movies": {
+      "cache_path": "outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "ele-fashion": {
+      "cache_path": "outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    }
+  },
+  "dataset_input_fingerprints": {
+    "Grocery": {
+      "dataset": "Grocery",
+      "feature_tensor_sha256": "71b3fc3e41a1f0abc5b23b5a5cf8980d9a88dc6c73b5a05258834ccdc282d59f",
+      "official_nc_split_file_sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+      "official_nc_split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "physical_edge_index_sha256": "4b7a1311a84b3b430fffa9e3d1d198fa9dbb32bce3bc162fe1711b86a060cb78",
+      "protocol": "unified_full_graph_nc_v1",
+      "semantic_cache_file_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "split_config_key": "nc_split_path",
+      "test_labels_indexed": false,
+      "text_feature_tensor_sha256": "c6633f187f4cf00328accdcc4d2461f95faddaa835f8dd863d9a587e0e764428",
+      "train_indices_sha256": "e69e94b207ce2a6f1fb2ee5ca01ff88f7c329b201a928be3a53becdce646173c",
+      "train_node_count": 10244,
+      "train_validation_labels_sha256": "2920fb124580fe70d36e0be08c88b662250f60e03f1ed9b3252bc6ab6b8e23cf",
+      "validation_indices_sha256": "12ccae7f1026d2dadd0099d249b36e0d407af7d3e679a2bbde6a857d6860babc",
+      "validation_node_count": 3415,
+      "visual_feature_tensor_sha256": "f323522d0de23d5ed3b4a315b777c2e2c30f8157e9fdcc0fed05d649f780e3ca"
+    },
+    "Movies": {
+      "dataset": "Movies",
+      "feature_tensor_sha256": "87a1d49caf17cf6a70f6aba8908f06ce7eb285784d7949691c01b2cfc1fd7dc7",
+      "official_nc_split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+      "official_nc_split_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "physical_edge_index_sha256": "38981e7a3efa7fb62f1fdb6cdf4ed68f681b36553ba3504730670cf0e817c9a1",
+      "protocol": "unified_full_graph_nc_v1",
+      "semantic_cache_file_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "split_config_key": "nc_split_path",
+      "test_labels_indexed": false,
+      "text_feature_tensor_sha256": "79fe1334e61af2fbd73be851b99dcbb4676639ef1af0620479eb8d01a1b015d0",
+      "train_indices_sha256": "9acefdba130750beb3998781f2901a8dd10d079cdbef0f1ecfae35e95e4c7c4d",
+      "train_node_count": 10003,
+      "train_validation_labels_sha256": "2ad513a35f786b98de17362c8fc124a80d1af7d6627ddc404a720d52f0120865",
+      "validation_indices_sha256": "23d2ad787692dd1903418c14cd087021504feb97c3a64a7e317f8bb610de841b",
+      "validation_node_count": 3334,
+      "visual_feature_tensor_sha256": "155f44eb7df451a7a78f42573f1b26d92eb1dc5093330e651a3ef7e1f35105f1"
+    },
+    "ele-fashion": {
+      "dataset": "ele-fashion",
+      "feature_tensor_sha256": "d08404f949fd071cb9058ad34648abd8f94ad44d64dcc4169ef3ebc3785a2967",
+      "official_nc_split_file_sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f",
+      "official_nc_split_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "physical_edge_index_sha256": "4cca6669f49598f10212d78f387a19813c90b27cdf8ec328a4901a761cd2a6b5",
+      "protocol": "unified_full_graph_nc_v1",
+      "semantic_cache_file_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "split_config_key": "node_split_path",
+      "test_labels_indexed": false,
+      "text_feature_tensor_sha256": "3926f3765d0c83c697a6cd62bebca5bdef536a60988db5fb030f9da3233d905e",
+      "train_indices_sha256": "0a81ff294ab4d93734682a391ba4401ccab11dd580124ec0d54f7d1dca218c7b",
+      "train_node_count": 58659,
+      "train_validation_labels_sha256": "63f718fbb1056e05971330fbfa61a40d509efff9a9d8b2ab48c5f7aef6f72c45",
+      "validation_indices_sha256": "1b3737b5f55f2cd0bad347c8f1f5647b046b2674718b9a77de88adfad0e0a717",
+      "validation_node_count": 9777,
+      "visual_feature_tensor_sha256": "c434d0cd645694556a1402857eae8ed1c9650486bc6cae1c3126bf9acc203d9d"
+    }
+  },
+  "environment": {
+    "cuda_visible_devices": "1",
+    "cudnn": 90100,
+    "determinism": {
+      "algorithms_enabled": false,
+      "cublas_workspace_config": null,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "warn_only": false
+    },
+    "gpu_allocated_bytes_at_start": 0,
+    "gpu_compute_capability": [
+      8,
+      6
+    ],
+    "gpu_free_bytes_at_start": 25155141632,
+    "gpu_name": "NVIDIA GeForce RTX 3090",
+    "gpu_reserved_bytes_at_start": 0,
+    "gpu_total_bytes": 25438126080,
+    "numpy": "2.4.3",
+    "nvidia_driver": "535.309.01",
+    "nvidia_smi_snapshot": "Tue Oct 13 00:13:02 2026       \n+---------------------------------------------------------------------------------------+\n| NVIDIA-SMI 535.309.01             Driver Version: 535.309.01   CUDA Version: 12.2     |\n|-----------------------------------------+----------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |\n|                                         |                      |               MIG M. |\n|=========================================+======================+======================|\n|   0  NVIDIA GeForce RTX 3090        Off | 00000000:01:00.0 Off |                  N/A |\n| 72%   73C    P2             343W / 350W |  22858MiB / 24576MiB |     95%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n|   1  NVIDIA GeForce RTX 3090        Off | 00000000:07:00.0 Off |                  N/A |\n|  0%   49C    P2              28W / 350W |    269MiB / 24576MiB |      0%      Default |\n|                                         |                      |                  N/A |\n+-----------------------------------------+----------------------+----------------------+\n                                                                                         \n+---------------------------------------------------------------------------------------+\n| Processes:                                                                            |\n|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |\n|        ID   ID                                                             Usage      |\n|=======================================================================================|\n|    0   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                           43MiB |\n|    0   N/A  N/A      1677      G   ...libexec/gnome-remote-desktop-daemon        4MiB |\n|    0   N/A  N/A      1780      G   /usr/bin/gnome-shell                         14MiB |\n|    0   N/A  N/A   2285932      G   ...irefox/8995/usr/lib/firefox/firefox       11MiB |\n|    0   N/A  N/A   3138154      C   VLLM::EngineCore                          22756MiB |\n|    1   N/A  N/A      1521      G   /usr/lib/xorg/Xorg                            4MiB |\n|    1   N/A  N/A   3358243      C   .../miniconda3/envs/yhf_env/bin/python      254MiB |\n+---------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+    "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
+    "selected_physical_gpu": 1,
+    "tf32": {
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "float32_matmul_precision": "highest"
+    },
+    "torch": "2.4.0+cu121",
+    "torch_cuda_build": "12.1",
+    "training_randomness": {
+      "activation_checkpoint_preserve_rng_state": true,
+      "activation_checkpointing": true,
+      "dropout": "standard torch.nn.Dropout; CUDA RNG is reseeded once per run",
+      "extended_train_val_metrics": "CPU linear evaluation from cached eval embeddings; no extra model forward or RNG draw",
+      "seed_helper": "random.seed, numpy.random.seed, torch.manual_seed, torch.cuda.manual_seed_all"
+    }
+  },
+  "failures": [
+    {
+      "dataset": "Movies",
+      "error": "O0 replay gate failed: training curve and checkpoint metrics did not match the archived V1 run; parameter counts matched.",
+      "gate_evidence": {
+        "best_checkpoint_metrics_match": false,
+        "dataset": "Movies",
+        "diagnostic": "Core V1 source/config/optimizer and dropout mask stream are unchanged. The original and study runs match to numerical precision through early epochs, then diverge gradually; exact deterministic replay is not established. GPU sparse aggregation repeated forward passes differ at ~1e-6. The matrix remains blocked pending an O0 reproducibility investigation.",
+        "embedding_max_abs_difference": 1.0912991762161255,
+        "logit_max_abs_difference": 1.9633848667144775,
+        "old_checkpoint_artifact_limit": "The original Pilot did not persist embedding/logit arrays or checksums; this check reconstructs both from its frozen checkpoint and requires deterministic repeatability plus O0 agreement.",
+        "original_best_epoch": 70,
+        "original_embedding_sha256": "6373697268cc5625932a5d7c05dfa5f487840ab81645403de434b9259f962195",
+        "original_epochs_completed": 100,
+        "original_logit_sha256": "ad1d5e8d7547a3b8b122adb52537ad0f92735c83841041539e01ed3694b1a527",
+        "parameter_count_match": true,
+        "passed": false,
+        "repeat_embedding_max_abs_difference": 1.1920928955078125e-06,
+        "repeat_logit_max_abs_difference": 1.9073486328125e-06,
+        "run_dir": "outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42",
+        "seed": 42,
+        "study_best_epoch": 70,
+        "study_embedding_sha256": "abe8f8536d1501b7374166c76cb2ad1765bde1961ec41ee7f11f68e209b14bcd",
+        "study_epochs_completed": 100,
+        "study_logit_sha256": "73cba30e00fa5b0a66fa88ea2a802ef1f90941dacf01286fe0203e3bcb7aa194",
+        "train_ce_max_abs_difference": 0.08066549897193909,
+        "trajectory_match": false,
+        "treatment": "O0",
+        "validation_accuracy_max_abs_difference": 0.01889622211456299,
+        "validation_macro_f1_max_abs_difference": 0.02909761767978536
+      },
+      "phase": "o0",
+      "record_correction": "The first traceback serialized an earlier comparator bug that coupled parameter-count status to checkpoint-metric status. The finalized structured comparison separately checks counts and confirms 892242 model / 2580 classifier parameters match.",
+      "run_dir": "outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42",
+      "seed": 42,
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v1_generalization.py\", line 656, in run_o0\n    evidence = _compare_o0(run_dir, entry, device, result)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v1_generalization.py\", line 490, in _compare_o0\n    raise RuntimeError(\"O0 reproduction gate failed: \" + json.dumps(evidence, indent=2))\nRuntimeError: O0 reproduction gate failed: {\n  \"passed\": false,\n  \"dataset\": \"Movies\",\n  \"treatment\": \"O0\",\n  \"seed\": 42,\n  \"original_best_epoch\": 70,\n  \"study_best_epoch\": 70,\n  \"original_epochs_completed\": 100,\n  \"study_epochs_completed\": 100,\n  \"train_ce_max_abs_difference\": 0.08066549897193909,\n  \"validation_accuracy_max_abs_difference\": 0.01889622211456299,\n  \"validation_macro_f1_max_abs_difference\": 0.02909761767978536,\n  \"parameter_count_match\": false,\n  \"best_checkpoint_metrics_match\": false,\n  \"trajectory_match\": false,\n  \"embedding_max_abs_difference\": 1.0912991762161255,\n  \"logit_max_abs_difference\": 1.9633848667144775,\n  \"repeat_embedding_max_abs_difference\": 1.1920928955078125e-06,\n  \"repeat_logit_max_abs_difference\": 1.9073486328125e-06,\n  \"original_embedding_sha256\": \"6373697268cc5625932a5d7c05dfa5f487840ab81645403de434b9259f962195\",\n  \"study_embedding_sha256\": \"abe8f8536d1501b7374166c76cb2ad1765bde1961ec41ee7f11f68e209b14bcd\",\n  \"original_logit_sha256\": \"ad1d5e8d7547a3b8b122adb52537ad0f92735c83841041539e01ed3694b1a527\",\n  \"study_logit_sha256\": \"73cba30e00fa5b0a66fa88ea2a802ef1f90941dacf01286fe0203e3bcb7aa194\",\n  \"old_checkpoint_artifact_limit\": \"The original Pilot did not persist embedding/logit arrays or checksums; this check reconstructs both from its frozen checkpoint and requires deterministic repeatability plus O0 agreement.\"\n}\n",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "error": "FileExistsError: refusing to overwrite existing run directory: /hdd1/DataInHere/YHF/model_research/outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42",
+      "intended_new_run_dir": "outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42_attempt_02",
+      "phase": "o0",
+      "record_correction": "No training process was launched: the first retry selected the existing seed_42 directory and refused to overwrite it. The run_dir recorded in that stale failure row was the intended attempt_02 path, not a directory written by that invocation.",
+      "run_dir": null,
+      "seed": 42,
+      "status": "not_started_existing_output_protected",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v1_generalization.py\", line 658, in run_o0\n    result = _run_one(\"Movies\", treatment, 42, entry, device, status[\"head_sha\"], source_tree_sha)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v1_generalization.py\", line 500, in _run_one\n    raise FileExistsError(f\"refusing to overwrite existing run directory: {run_dir}\")\nFileExistsError: refusing to overwrite existing run directory: /hdd1/DataInHere/YHF/model_research/outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42\n",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "error": "O0 replay gate failed: attempt_02 completed 97 rather than 100 epochs, selected epoch 67 rather than 70, and did not match the archived training/validation trajectory.",
+      "gate_evidence": {
+        "best_checkpoint_metrics_match": false,
+        "dataset": "Movies",
+        "embedding_max_abs_difference": 0.7892063856124878,
+        "epochs_compared_for_trajectory": 97,
+        "epochs_completed_match": false,
+        "logit_max_abs_difference": 1.3067600727081299,
+        "old_checkpoint_artifact_limit": "The original Pilot did not persist embedding/logit arrays or checksums; this check reconstructs both from its frozen checkpoint and requires deterministic repeatability plus O0 agreement.",
+        "original_best_epoch": 70,
+        "original_embedding_sha256": "a70f6cee63b3bc283ccd5d57b50b42185ee53776806efe4b246a27998c201cd5",
+        "original_epochs_completed": 100,
+        "original_logit_sha256": "a69987a141f59c314a798ac0b3ea2ca7aa36def4bb266591bc5e79e06106594b",
+        "parameter_count_match": true,
+        "passed": false,
+        "repeat_embedding_max_abs_difference": 1.1920928955078125e-06,
+        "repeat_logit_max_abs_difference": 1.9073486328125e-06,
+        "seed": 42,
+        "study_best_epoch": 67,
+        "study_embedding_sha256": "e89728d997be5692fc514bb1321c785343bceddeaf61375056138992834523be",
+        "study_epochs_completed": 97,
+        "study_logit_sha256": "3a416b2f01fd776e750824f356b0c3ae708568c022417edd275854d3dd9f86a4",
+        "train_ce_max_abs_difference": 0.03839266300201416,
+        "trajectory_match": false,
+        "treatment": "O0",
+        "validation_accuracy_max_abs_difference": 0.020995795726776123,
+        "validation_macro_f1_max_abs_difference": 0.026304741299727596
+      },
+      "phase": "o0",
+      "record_correction": "Final structured comparison added after correcting _compare_o0 to retain common-epoch curve evidence when stopping horizons differ.",
+      "run_dir": "outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42_attempt_02",
+      "seed": 42,
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v1_generalization.py\", line 690, in run_o0\n    evidence = _compare_o0(run_dir, entry, device, result)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v1_generalization.py\", line 435, in _compare_o0\n    raise RuntimeError(f\"O0 completed {len(current_history)} epochs; original completed {len(original_history)}\")\nRuntimeError: O0 completed 97 epochs; original completed 100\n",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "disposition": "Successful retry ran on physical GPU 1; see o0_step_parity_attempts.json.",
+      "error": "Two-update parity diagnostic initially hit OOM on a GPU with 15 MiB free; no parity conclusion was produced in that attempt.",
+      "phase": "o0_step_parity",
+      "seed": 42,
+      "status": "failed_diagnostic_execution_gpu_selection_oom",
+      "treatment": "O0"
+    }
+  ],
+  "historical_o0_replay": {
+    "classification": "historical_full_training_replay_not_exact",
+    "formal_gate_blocking": false,
+    "old_attempts_and_failures_retained": true,
+    "original_gate_record": {
+      "best_checkpoint_metrics_match": false,
+      "dataset": "Movies",
+      "diagnostic": "Core V1 source/config/optimizer and dropout mask stream are unchanged. The original and study runs match to numerical precision through early epochs, then diverge gradually; exact deterministic replay is not established. GPU sparse aggregation repeated forward passes differ at ~1e-6. The matrix remains blocked pending an O0 reproducibility investigation.",
+      "embedding_max_abs_difference": 1.0912991762161255,
+      "logit_max_abs_difference": 1.9633848667144775,
+      "old_checkpoint_artifact_limit": "The original Pilot did not persist embedding/logit arrays or checksums; this check reconstructs both from its frozen checkpoint and requires deterministic repeatability plus O0 agreement.",
+      "original_best_epoch": 70,
+      "original_embedding_sha256": "6373697268cc5625932a5d7c05dfa5f487840ab81645403de434b9259f962195",
+      "original_epochs_completed": 100,
+      "original_logit_sha256": "ad1d5e8d7547a3b8b122adb52537ad0f92735c83841041539e01ed3694b1a527",
+      "parameter_count_match": true,
+      "passed": false,
+      "repeat_embedding_max_abs_difference": 1.1920928955078125e-06,
+      "repeat_logit_max_abs_difference": 1.9073486328125e-06,
+      "run_dir": "outputs/rmcge_v1_generalization/runs/Movies/O0/seed_42",
+      "seed": 42,
+      "study_best_epoch": 70,
+      "study_embedding_sha256": "abe8f8536d1501b7374166c76cb2ad1765bde1961ec41ee7f11f68e209b14bcd",
+      "study_epochs_completed": 100,
+      "study_logit_sha256": "73cba30e00fa5b0a66fa88ea2a802ef1f90941dacf01286fe0203e3bcb7aa194",
+      "train_ce_max_abs_difference": 0.08066549897193909,
+      "trajectory_match": false,
+      "treatment": "O0",
+      "validation_accuracy_max_abs_difference": 0.01889622211456299,
+      "validation_macro_f1_max_abs_difference": 0.02909761767978536
+    },
+    "previous_investigation_record": {
+      "attempts_file": "o0_replay_attempts.json",
+      "diagnostic_preserves_rng": true,
+      "first_step_parameter_max_abs_difference": 5.047768354415894e-07,
+      "initialization_identical": true,
+      "interpretation": "The study instrumentation preserves initialization, dropout RNG state through CPU-only diagnostics, and two controlled optimizer updates within 5.05e-7 parameter max difference. Full-run O0 replay still fails; small CUDA sparse-operation differences are a plausible source of long-horizon divergence but have not been isolated as the sole cause. Do not start the 36-run matrix.",
+      "replay_status": "failed; formal matrix gate remains closed",
+      "second_step_parameter_max_abs_difference": 5.047768354415894e-07,
+      "step_parity_file": "o0_step_parity.json",
+      "step_parity_passed": true
+    },
+    "short_run_parity": {
+      "baseline_validation_metrics": {
+        "acc": 0.3293341398239136,
+        "macro_f1": 0.02477436823104693
+      },
+      "dataset": "Movies",
+      "device": "cuda:0",
+      "diagnostic_cpu_metrics_preserve_rng_states": true,
+      "first_step_loss_frozen": 3.2623634338378906,
+      "first_step_loss_study": 3.2623634338378906,
+      "first_step_parameter_max_abs_difference": 5.047768354415894e-07,
+      "frozen_model_source_sha256": "a8bbf5e3f8ac99581079d397a4d4cc7f07e7ab0d23404b804357b88166b00705",
+      "frozen_reference_sha": "8b94d16c3b2a66b658419c7f79e0de688b51a23a",
+      "initialization_identical": true,
+      "interpretation": "Two-update numerical parity diagnostic only; not a formal run. Repeated CUDA sparse aggregation may create small floating-point differences despite equal RNG states.",
+      "passed": true,
+      "second_step_loss_frozen": 2.5419247150421143,
+      "second_step_loss_study": 2.5419247150421143,
+      "second_step_parameter_max_abs_difference": 5.047768354415894e-07,
+      "seed": 42,
+      "selected_physical_gpu": 1,
+      "study_model_source_sha256": "29d69fdf7473f923284b556450aec6a27f40d6d4230d902da87f7ed44b5286da",
+      "study_validation_metrics": {
+        "acc": 0.3293341398239136,
+        "macro_f1": 0.02477436823104693
+      },
+      "test_evaluation": false,
+      "test_labels_indexed": false,
+      "updates_performed": 2
+    },
+    "short_run_parity_passed": true
+  },
+  "historical_planned_run_statuses": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "replay_gate_failed",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O3"
+    }
+  ],
+  "implementation_freeze_sha": null,
+  "original_checkpoints": {
+    "Grocery": {
+      "checkpoint_path": "outputs/rmcge_v1_pilot/runs/Grocery/seed_42/best.pt",
+      "checkpoint_sha256": "9a5b21f9ff21adbebac4aecd7717eb03008367cabbe406d1ec47719953fec9a3",
+      "diagnostic_path": "research/rmcge_v1/data/diagnostics/Grocery_seed_42.json"
+    },
+    "Movies": {
+      "checkpoint_path": "outputs/rmcge_v1_pilot/runs/Movies/seed_42/best.pt",
+      "checkpoint_sha256": "4111e903bacdf641fd8a209d90420a66a2a38338550a77bdeb6a22b8e9e9a67e",
+      "diagnostic_path": "research/rmcge_v1/data/diagnostics/Movies_seed_42.json"
+    },
+    "ele-fashion": {
+      "checkpoint_path": "outputs/rmcge_v1_pilot/runs/ele-fashion/seed_42/best.pt",
+      "checkpoint_sha256": "33b4f3f3982f74bc35546d7828000d75d0108683871419344cb54d6e012a460a",
+      "diagnostic_path": "research/rmcge_v1/data/diagnostics/ele-fashion_seed_42.json"
+    }
+  },
+  "planned_runs": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned",
+      "treatment": "O3"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned",
+      "treatment": "O3"
+    }
+  ],
+  "preflight_tests_passed": 106,
+  "runs": [],
+  "status": "implementation_freeze_ready",
+  "study": "RM-CGE V1 Generalization & Optimization Study",
+  "training_configuration_audit": {
+    "all_datasets_frozen_controls_match": true,
+    "datasets": {
+      "Grocery": {
+        "compared_controls": [
+          "device",
+          "model.activation_checkpointing",
+          "model.cross_modal_bottleneck",
+          "model.dropout",
+          "model.expert_bottleneck",
+          "model.expert_chunk_size",
+          "model.hidden_dim",
+          "model.modality_embedding_dim",
+          "model.name",
+          "model.num_experts",
+          "model.num_layers",
+          "model.physical_prior",
+          "model.relation_embedding_dim",
+          "model.residual_scale",
+          "model.router_correction_init_std",
+          "model.router_hidden_dim",
+          "model.semantic_cache_path",
+          "model.semantic_candidate_fingerprint",
+          "model.semantic_feature_fingerprint",
+          "model.semantic_prior",
+          "model.semantic_v7b_fingerprint",
+          "seed",
+          "task.early_stop_min_delta",
+          "task.early_stop_min_epoch",
+          "task.epochs",
+          "task.eval_every",
+          "task.evaluate_test",
+          "task.grad_clip",
+          "task.inference_batch_size",
+          "task.inference_mode",
+          "task.loss.aux_weight",
+          "task.lr",
+          "task.optimizer",
+          "task.patience",
+          "task.protocol_version",
+          "task.scheduler",
+          "task.training_mode",
+          "task.weight_decay"
+        ],
+        "dataset_configuration_identical": true,
+        "expected_study_only_differences": [
+          "task.record_extended_validation=true adds CPU-only train/validation metrics and dual-checkpoint bookkeeping",
+          "task.best_f1_ckpt_path, task.run_metrics_path, task.save_ckpt_path and paths.output_root point to isolated study outputs",
+          "task.extended_checkpoint_metadata records study/config/cache provenance"
+        ],
+        "frozen_controls_match": true,
+        "non_frozen_helper_differences_documented": [
+          "task.record_extended_validation",
+          "task.best_f1_ckpt_path",
+          "task.extended_checkpoint_metadata",
+          "task.run_metrics_path",
+          "task.save_ckpt_path",
+          "paths.output_root"
+        ],
+        "pilot_and_study_evaluate_test": [
+          false,
+          false
+        ],
+        "pilot_config_sha256": "da8ca1a6273da697d7f21aa8fe1bd5b245f5d09c8b6ccb10fbdfb150b330f64c",
+        "pilot_dropout": 0.2,
+        "pilot_weight_decay": 0.0001,
+        "study_extended_validation": true,
+        "study_o0_config_sha256_before_run_output_paths": "e7c7f7c3d8445454480daa748506fbc388a2fbe857eccdba4fedc6e10c181a2f",
+        "study_o0_dropout": 0.2,
+        "study_o0_weight_decay": 0.0001
+      },
+      "Movies": {
+        "compared_controls": [
+          "device",
+          "model.activation_checkpointing",
+          "model.cross_modal_bottleneck",
+          "model.dropout",
+          "model.expert_bottleneck",
+          "model.expert_chunk_size",
+          "model.hidden_dim",
+          "model.modality_embedding_dim",
+          "model.name",
+          "model.num_experts",
+          "model.num_layers",
+          "model.physical_prior",
+          "model.relation_embedding_dim",
+          "model.residual_scale",
+          "model.router_correction_init_std",
+          "model.router_hidden_dim",
+          "model.semantic_cache_path",
+          "model.semantic_candidate_fingerprint",
+          "model.semantic_feature_fingerprint",
+          "model.semantic_prior",
+          "model.semantic_v7b_fingerprint",
+          "seed",
+          "task.early_stop_min_delta",
+          "task.early_stop_min_epoch",
+          "task.epochs",
+          "task.eval_every",
+          "task.evaluate_test",
+          "task.grad_clip",
+          "task.inference_batch_size",
+          "task.inference_mode",
+          "task.loss.aux_weight",
+          "task.lr",
+          "task.optimizer",
+          "task.patience",
+          "task.protocol_version",
+          "task.scheduler",
+          "task.training_mode",
+          "task.weight_decay"
+        ],
+        "dataset_configuration_identical": true,
+        "expected_study_only_differences": [
+          "task.record_extended_validation=true adds CPU-only train/validation metrics and dual-checkpoint bookkeeping",
+          "task.best_f1_ckpt_path, task.run_metrics_path, task.save_ckpt_path and paths.output_root point to isolated study outputs",
+          "task.extended_checkpoint_metadata records study/config/cache provenance"
+        ],
+        "frozen_controls_match": true,
+        "non_frozen_helper_differences_documented": [
+          "task.record_extended_validation",
+          "task.best_f1_ckpt_path",
+          "task.extended_checkpoint_metadata",
+          "task.run_metrics_path",
+          "task.save_ckpt_path",
+          "paths.output_root"
+        ],
+        "pilot_and_study_evaluate_test": [
+          false,
+          false
+        ],
+        "pilot_config_sha256": "f0abc026c68661744d0757474d3e9fc1bca2806cc2141abe89ac931b1cf6602b",
+        "pilot_dropout": 0.2,
+        "pilot_weight_decay": 0.0001,
+        "study_extended_validation": true,
+        "study_o0_config_sha256_before_run_output_paths": "38a00369fb2115171113bdac6b8a6acc112f9b7d107cd07fba8c3334ac6fbffa",
+        "study_o0_dropout": 0.2,
+        "study_o0_weight_decay": 0.0001
+      },
+      "ele-fashion": {
+        "compared_controls": [
+          "device",
+          "model.activation_checkpointing",
+          "model.cross_modal_bottleneck",
+          "model.dropout",
+          "model.expert_bottleneck",
+          "model.expert_chunk_size",
+          "model.hidden_dim",
+          "model.modality_embedding_dim",
+          "model.name",
+          "model.num_experts",
+          "model.num_layers",
+          "model.physical_prior",
+          "model.relation_embedding_dim",
+          "model.residual_scale",
+          "model.router_correction_init_std",
+          "model.router_hidden_dim",
+          "model.semantic_cache_path",
+          "model.semantic_candidate_fingerprint",
+          "model.semantic_feature_fingerprint",
+          "model.semantic_prior",
+          "model.semantic_v7b_fingerprint",
+          "seed",
+          "task.early_stop_min_delta",
+          "task.early_stop_min_epoch",
+          "task.epochs",
+          "task.eval_every",
+          "task.evaluate_test",
+          "task.grad_clip",
+          "task.inference_batch_size",
+          "task.inference_mode",
+          "task.loss.aux_weight",
+          "task.lr",
+          "task.optimizer",
+          "task.patience",
+          "task.protocol_version",
+          "task.scheduler",
+          "task.training_mode",
+          "task.weight_decay"
+        ],
+        "dataset_configuration_identical": true,
+        "expected_study_only_differences": [
+          "task.record_extended_validation=true adds CPU-only train/validation metrics and dual-checkpoint bookkeeping",
+          "task.best_f1_ckpt_path, task.run_metrics_path, task.save_ckpt_path and paths.output_root point to isolated study outputs",
+          "task.extended_checkpoint_metadata records study/config/cache provenance"
+        ],
+        "frozen_controls_match": true,
+        "non_frozen_helper_differences_documented": [
+          "task.record_extended_validation",
+          "task.best_f1_ckpt_path",
+          "task.extended_checkpoint_metadata",
+          "task.run_metrics_path",
+          "task.save_ckpt_path",
+          "paths.output_root"
+        ],
+        "pilot_and_study_evaluate_test": [
+          false,
+          false
+        ],
+        "pilot_config_sha256": "f2687e22c8b73908f2cfa04f31c5eceecd881290495d4130c2cb4783fa6ed3c0",
+        "pilot_dropout": 0.2,
+        "pilot_weight_decay": 0.0001,
+        "study_extended_validation": true,
+        "study_o0_config_sha256_before_run_output_paths": "85cbf8a8a1d2df525e50e642042a54adf9b562a91bdc934590a6f663865269cd",
+        "study_o0_dropout": 0.2,
+        "study_o0_weight_decay": 0.0001
+      }
+    }
+  }
+}
