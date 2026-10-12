@@ -1,0 +1,398 @@
+[
+  {
+    "dataset": "Movies",
+    "runs": [
+      {
+        "first10_train_ce": 2.3028865218162538,
+        "first10_val_ce": 2.168268602138947,
+        "last10_train_ce": 0.40245606899261477,
+        "last10_val_ce": 1.6378478161789516,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.3865286111831665,
+        "first10_val_ce": 2.248030135183901,
+        "last10_train_ce": 0.3821177303791046,
+        "last10_val_ce": 1.6812459431941735,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.300732100009918,
+        "first10_val_ce": 2.1738863262503747,
+        "last10_train_ce": 0.5314655750989914,
+        "last10_val_ce": 1.5701091910524145,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O0"
+  },
+  {
+    "dataset": "Movies",
+    "runs": [
+      {
+        "first10_train_ce": 2.3033865094184875,
+        "first10_val_ce": 2.1671436952843806,
+        "last10_train_ce": 0.3278106451034546,
+        "last10_val_ce": 1.6973539227701337,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.383725309371948,
+        "first10_val_ce": 2.244601768122938,
+        "last10_train_ce": 0.4448880136013031,
+        "last10_val_ce": 1.5963560657009224,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.3008403062820433,
+        "first10_val_ce": 2.1707527293369453,
+        "last10_train_ce": 0.37722494304180143,
+        "last10_val_ce": 1.6494024925483655,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O1"
+  },
+  {
+    "dataset": "Movies",
+    "runs": [
+      {
+        "first10_train_ce": 2.3029226541519163,
+        "first10_val_ce": 2.1683079546200137,
+        "last10_train_ce": 0.3437789022922516,
+        "last10_val_ce": 1.674467928679889,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.386519765853882,
+        "first10_val_ce": 2.248018243031081,
+        "last10_train_ce": 0.44477546215057373,
+        "last10_val_ce": 1.610014393605654,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.3007265448570253,
+        "first10_val_ce": 2.173875224955009,
+        "last10_train_ce": 0.28868520706892015,
+        "last10_val_ce": 1.727540058394571,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O2"
+  },
+  {
+    "dataset": "Movies",
+    "runs": [
+      {
+        "first10_train_ce": 2.3034139275550842,
+        "first10_val_ce": 2.1671747437621853,
+        "last10_train_ce": 0.5352587521076202,
+        "last10_val_ce": 1.5372446116245502,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.383710265159607,
+        "first10_val_ce": 2.244583212263797,
+        "last10_train_ce": 0.4217663049697876,
+        "last10_val_ce": 1.611686866728217,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.3008346796035766,
+        "first10_val_ce": 2.170744762180376,
+        "last10_train_ce": 0.49473531246185304,
+        "last10_val_ce": 1.5810634748050387,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O3"
+  },
+  {
+    "dataset": "Grocery",
+    "runs": [
+      {
+        "first10_train_ce": 2.5314080715179443,
+        "first10_val_ce": 2.3429831768164346,
+        "last10_train_ce": 0.06283287219703197,
+        "last10_val_ce": 0.7864653370355966,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.526052677631378,
+        "first10_val_ce": 2.36201901079795,
+        "last10_train_ce": 0.12002546638250351,
+        "last10_val_ce": 0.7335342554676062,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.515872931480408,
+        "first10_val_ce": 2.3610954085834552,
+        "last10_train_ce": 0.10945315808057784,
+        "last10_val_ce": 0.7384844693676793,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O0"
+  },
+  {
+    "dataset": "Grocery",
+    "runs": [
+      {
+        "first10_train_ce": 2.5244935870170595,
+        "first10_val_ce": 2.3184102620561857,
+        "last10_train_ce": 0.12412923648953438,
+        "last10_val_ce": 0.7430557827370058,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.569695258140564,
+        "first10_val_ce": 2.4017937008144217,
+        "last10_train_ce": 0.05233820155262947,
+        "last10_val_ce": 0.7880837141402819,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.5313404321670534,
+        "first10_val_ce": 2.3614945123764643,
+        "last10_train_ce": 0.08689888119697571,
+        "last10_val_ce": 0.7677850261369874,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O1"
+  },
+  {
+    "dataset": "Grocery",
+    "runs": [
+      {
+        "first10_train_ce": 2.531471240520477,
+        "first10_val_ce": 2.343073998558748,
+        "last10_train_ce": 0.10624880269169808,
+        "last10_val_ce": 0.7424234763909225,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.5260895609855654,
+        "first10_val_ce": 2.3620703839906665,
+        "last10_train_ce": 0.15706640779972075,
+        "last10_val_ce": 0.6998382023243046,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.5158989310264586,
+        "first10_val_ce": 2.361138817715959,
+        "last10_train_ce": 0.11147891357541084,
+        "last10_val_ce": 0.7431215327026904,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O2"
+  },
+  {
+    "dataset": "Grocery",
+    "runs": [
+      {
+        "first10_train_ce": 2.5245832562446595,
+        "first10_val_ce": 2.318549768942167,
+        "last10_train_ce": 0.032547729648649694,
+        "last10_val_ce": 0.8482118039668741,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.569715881347656,
+        "first10_val_ce": 2.4018231692670207,
+        "last10_train_ce": 0.07426668405532837,
+        "last10_val_ce": 0.7754856360953515,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 2.531361961364746,
+        "first10_val_ce": 2.361532574007138,
+        "last10_train_ce": 0.10201816484332085,
+        "last10_val_ce": 0.7364678749542459,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O3"
+  },
+  {
+    "dataset": "ele-fashion",
+    "runs": [
+      {
+        "first10_train_ce": 1.3280936002731323,
+        "first10_val_ce": 1.0825194451003473,
+        "last10_train_ce": 0.1483941927552223,
+        "last10_val_ce": 0.4651881488442262,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.456612241268158,
+        "first10_val_ce": 1.2124513192033919,
+        "last10_train_ce": 0.16937685906887054,
+        "last10_val_ce": 0.44832489740949744,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.4222926914691925,
+        "first10_val_ce": 1.141412503965381,
+        "last10_train_ce": 0.16329815685749055,
+        "last10_val_ce": 0.4454885137292083,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O0"
+  },
+  {
+    "dataset": "ele-fashion",
+    "runs": [
+      {
+        "first10_train_ce": 1.3695393979549408,
+        "first10_val_ce": 1.1065124393106909,
+        "last10_train_ce": 0.14687957167625426,
+        "last10_val_ce": 0.4665764436334558,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.4734328985214233,
+        "first10_val_ce": 1.216209942409082,
+        "last10_train_ce": 0.24991896450519563,
+        "last10_val_ce": 0.39937712614846227,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.462754338979721,
+        "first10_val_ce": 1.1709636502901422,
+        "last10_train_ce": 0.22243072390556334,
+        "last10_val_ce": 0.4101883351272438,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O1"
+  },
+  {
+    "dataset": "ele-fashion",
+    "runs": [
+      {
+        "first10_train_ce": 1.328136396408081,
+        "first10_val_ce": 1.0825735296027188,
+        "last10_train_ce": 0.11239869743585587,
+        "last10_val_ce": 0.4994008260428252,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.4566709637641906,
+        "first10_val_ce": 1.2125244203052286,
+        "last10_train_ce": 0.1723136931657791,
+        "last10_val_ce": 0.44285113637135465,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.4223285019397736,
+        "first10_val_ce": 1.1414577674924247,
+        "last10_train_ce": 0.17580724954605104,
+        "last10_val_ce": 0.44051513984011426,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O2"
+  },
+  {
+    "dataset": "ele-fashion",
+    "runs": [
+      {
+        "first10_train_ce": 1.3695882141590119,
+        "first10_val_ce": 1.1065698649213396,
+        "last10_train_ce": 0.12161521464586258,
+        "last10_val_ce": 0.4949102335599494,
+        "late_val_ce_up": false,
+        "seed": 42,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.4734898567199708,
+        "first10_val_ce": 1.2162813629684142,
+        "last10_train_ce": 0.17713484913110733,
+        "last10_val_ce": 0.43280490384799786,
+        "late_val_ce_up": false,
+        "seed": 43,
+        "train_ce_down": true
+      },
+      {
+        "first10_train_ce": 1.4627896010875703,
+        "first10_val_ce": 1.1710051257295502,
+        "last10_train_ce": 0.230233995616436,
+        "last10_val_ce": 0.4204491058814693,
+        "late_val_ce_up": false,
+        "seed": 44,
+        "train_ce_down": true
+      }
+    ],
+    "treatment": "O3"
+  }
+]

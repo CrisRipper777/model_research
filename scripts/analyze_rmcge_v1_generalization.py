@@ -8,6 +8,7 @@ import csv
 import hashlib
 import json
 import math
+import os
 import sys
 import traceback
 from pathlib import Path
@@ -47,7 +48,7 @@ def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
                 fields.append(key)
     temporary = path.with_suffix(path.suffix + ".tmp")
     with temporary.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow(
@@ -409,7 +410,18 @@ def evaluate_all_checkpoints() -> tuple[list[dict[str, Any]], list[dict[str, Any
     manifest = json.loads((DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
     if manifest.get("status") != "matrix_completed" or len(manifest.get("runs", [])) != 36:
         raise RuntimeError("cannot summarize until the full 36-run matrix is complete")
-    device = study._choose_device()
+    fallback_reason = None
+    if torch.cuda.is_available():
+        try:
+            device = study._choose_device()
+        except Exception as exc:
+            device = "cpu"
+            fallback_reason = f"CUDA device selection failed during report-time checkpoint replay: {type(exc).__name__}: {exc}"
+    else:
+        device = "cpu"
+        fallback_reason = "CUDA was unavailable during report-time checkpoint replay."
+    if device == "cpu":
+        torch.set_num_threads(min(8, os.cpu_count() or 1))
     cache_entries = {dataset: pilot._verify_cache_entry(dataset, pilot._cache_entries()[dataset]) for dataset in DATASETS}
     metrics_rows: list[dict[str, Any]] = []
     class_rows: list[dict[str, Any]] = []
@@ -469,12 +481,24 @@ def evaluate_all_checkpoints() -> tuple[list[dict[str, Any]], list[dict[str, Any
                     "dataset": dataset, "treatment": treatment, "seed": int(run["seed"]), "selection": selection,
                     "selection_epoch": int(checkpoint["epoch"]), **evaluated,
                     "checkpoint_path": str((run_dir / checkpoint_file).relative_to(ROOT)),
+                    "evaluation_device": device,
                     "evaluate_test": False, "test_labels_indexed": False,
                 })
                 del model, classifier, z, logits
         del data
     _write_csv(DATA_DIR / "validation_class_metrics.csv", class_rows)
     _write_csv(DATA_DIR / "checkpoint_validation_replay.csv", metrics_rows)
+    _write_json(DATA_DIR / "report_validation_evaluation.json", {
+        "status": "passed",
+        "checkpoint_count": len(metrics_rows),
+        "class_metric_rows": len(class_rows),
+        "evaluation_device": device,
+        "cuda_available_at_report_time": bool(torch.cuda.is_available()),
+        "cpu_fallback_reason": fallback_reason,
+        "test_evaluation": False,
+        "test_labels_indexed": False,
+        "evaluation_scope": "full-graph embeddings; validation indices only for scorecards",
+    })
     return metrics_rows, class_rows
 
 
@@ -541,6 +565,53 @@ def _summaries(runs: list[dict[str, Any]], checkpoint_rows: list[dict[str, Any]]
     return result
 
 
+def _cached_checkpoint_replay(runs: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]] | None:
+    audit_path = DATA_DIR / "report_validation_evaluation.json"
+    replay_path = DATA_DIR / "checkpoint_validation_replay.csv"
+    class_path = DATA_DIR / "validation_class_metrics.csv"
+    if not (audit_path.is_file() and replay_path.is_file() and class_path.is_file()):
+        return None
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    if (
+        audit.get("status") != "passed"
+        or audit.get("checkpoint_count") != 72
+        or audit.get("test_evaluation") is not False
+        or audit.get("test_labels_indexed") is not False
+    ):
+        return None
+    rows = _read_csv(replay_path)
+    classes = _read_csv(class_path)
+    if len(rows) != 72 or len(classes) != int(audit.get("class_metric_rows", -1)):
+        return None
+    expected_runs = {(r["dataset"], r["treatment"], int(r["seed"])): r for r in runs}
+    seen: set[tuple[str, str, int, str]] = set()
+    converted = []
+    float_fields = ("val_acc", "val_macro_f1", "val_ce")
+    for row in rows:
+        key = (row["dataset"], row["treatment"], int(row["seed"]))
+        selection = row["selection"]
+        unique_key = (*key, selection)
+        if key not in expected_runs or unique_key in seen or selection not in {"best_acc", "best_f1"}:
+            return None
+        if row.get("evaluate_test") != "False" or row.get("test_labels_indexed") != "False":
+            return None
+        source = expected_runs[key]
+        suffix = "best_acc" if selection == "best_acc" else "best_f1"
+        for field in float_fields:
+            expected = float(source[f"{field}_{suffix}"])
+            observed = float(row[field])
+            if not math.isfinite(observed) or not math.isclose(observed, expected, abs_tol=2e-6, rel_tol=0):
+                return None
+            row[field] = observed
+        row["seed"] = int(row["seed"])
+        row["selection_epoch"] = int(row["selection_epoch"])
+        seen.add(unique_key)
+        converted.append(row)
+    if len(seen) != 72:
+        return None
+    return converted, classes
+
+
 def _write_mechanism_report(checks, intervention_rows, router_rows, scale_rows) -> None:
     lines = [
         "# RM-CGE V1 Frozen Mechanism Diagnostics",
@@ -570,48 +641,152 @@ def _write_mechanism_report(checks, intervention_rows, router_rows, scale_rows) 
     (RESEARCH / "MECHANISM_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def _generalization_report(runs: list[dict[str, Any]], paired: list[dict[str, Any]], effects: list[dict[str, Any]], summaries: dict[str, Any], checkpoint_rows: list[dict[str, Any]]) -> None:
+def _generalization_report(
+    runs: list[dict[str, Any]],
+    paired: list[dict[str, Any]],
+    effects: list[dict[str, Any]],
+    summaries: dict[str, Any],
+    tradeoffs: list[dict[str, Any]],
+    manifest: dict[str, Any],
+) -> None:
+    checks = json.loads((DATA_DIR / "implementation_checks.json").read_text(encoding="utf-8"))
+    environment = checks["environment"]
+    replay = json.loads((DATA_DIR / "o0_replay_attempts.json").read_text(encoding="utf-8"))
+    attempt_2 = json.loads((DATA_DIR / "o0_attempt_02_comparison.json").read_text(encoding="utf-8"))
+    historical = checks["historical_o0_replay"]
+    parity = historical["short_run_parity"]
+    evaluation = json.loads((DATA_DIR / "report_validation_evaluation.json").read_text(encoding="utf-8"))
+    evaluation_note = (
+        f"All 72 saved checkpoints were replayed for Validation scorecards on `{evaluation['evaluation_device']}` at report time. CUDA was unavailable then, so the replay used CPU."
+        if not evaluation["cuda_available_at_report_time"]
+        else f"All 72 saved checkpoints were replayed for Validation scorecards on `{evaluation['evaluation_device']}` at report time."
+    )
     lines = [
         "# RM-CGE V1 Generalization & Optimization Results",
         "",
         "## Protocol and interpretation",
         "",
-        "The complete 2×2 Dropout × AdamW Weight Decay matrix contains 36 Full-Graph NC runs: three datasets, four fixed treatments, and seeds 42/43/44. The seed-level training run is the experimental unit (n=3 per dataset/treatment). All displayed standard deviations use the sample SD (ddof=1). Comparisons are paired by seed and descriptive; no p-values or statistical-significance claims are made. Test evaluation remained disabled.",
+        "The complete 2×2 Dropout × AdamW Weight Decay matrix contains 36 Full-Graph NC runs: Movies, Grocery, and ele-fashion; O0–O3; seeds 42, 43, and 44. The seed-level training run is the experimental unit (n=3 per dataset/treatment). Reported SDs are sample SDs (ddof=1). Treatment comparisons are paired by seed and descriptive; there are no p-values or statistical-significance claims. Test evaluation remained disabled and Test labels were not indexed.",
         "",
-        "The primary table below uses Best-Accuracy checkpoints only. Best-Macro-F1 checkpoint summaries appear in a separate table. Train CE is the stochastic training-mode loss before that epoch's optimizer update; Train Accuracy is eval-mode after the update. The displayed CE proxy gap pairs pre-update Train CE with post-update Validation CE, so it is a trajectory diagnostic and not a same-state train/validation gap. Eval Train Accuracy and Validation Accuracy are both post-update. Validation CE and all metrics are unweighted.",
+        f"{evaluation_note} The run-time checkpoint reload audit is separately recorded in `data/final_integrity_audit.json`.",
+        "",
+        f"Implementation Freeze: `{manifest.get('implementation_freeze_sha')}`. Seed 42 used the frozen source; seeds 43/44 record the launcher-guard follow-up source SHA per run. The post-freeze commits changed only runner validation, regression tests, and audit prose; RM-CGE model, optimizer, training, configuration, and metric logic remained frozen.",
+        "",
+        "## Historical O0 replay: non-exact and nonblocking",
+        "",
+        "The archived Pilot is retained as a reference only. The original accuracy checkpoint used 100 epochs, Best Epoch 70, Validation Accuracy 0.540492, and Macro-F1 0.429959. The old exact-replay requirement is retired; the two replay artifacts below remain unchanged and are classified as `historical_full_training_replay_not_exact`.",
+        "",
+        "| Run | Epochs | Best Epoch | Val Accuracy | Val Macro-F1 | Max Train CE trajectory Δ | Max Val Accuracy Δ | Max Val Macro-F1 Δ |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    a1, a2 = replay["attempts"]
+    lines.append(
+        f"| Historical Pilot | 100 | 70 | 0.540492 | 0.429959 | — | — | — |"
+    )
+    lines.append(
+        f"| O0 replay 1 | {a1['epochs_completed']} | {a1['best_epoch']} | {a1['val_accuracy']:.6f} | {a1['val_macro_f1']:.6f} | {a1['max_train_ce_abs_difference']:.6f} | {a1['val_accuracy_max_abs_difference']:.6f} | {a1['val_macro_f1_max_abs_difference']:.6f} |"
+    )
+    lines.append(
+        f"| O0 replay 2 | {attempt_2['study_epochs_completed']} | {attempt_2['study_best_epoch']} | 0.540792 | 0.435800 | {attempt_2['train_ce_max_abs_difference']:.6f} | {attempt_2['validation_accuracy_max_abs_difference']:.6f} | {attempt_2['validation_macro_f1_max_abs_difference']:.6f} |"
+    )
+    lines.extend([
+        "",
+        "Both runs had 892,242 model and 2,580 classifier parameters. Their curves remained highly correlated, but the maximum common-epoch differences and Best Epoch/score differences are factual mismatches, not overwritten results. The original Pilot did not save its per-node embedding/logit arrays, so later replay checks reconstructed them from the checkpoint; repeated inference itself varied by about 1.2e-6 in embeddings and 1.9e-6 in logits.",
+        "",
+        "The O0 config audit matched the original dataset config and frozen model/training controls: dropout 0.20, AdamW, LR 1e-3, weight decay 1e-4, protocol, model dimensions, initialization, optimizer grouping and early-stopping rules. The study-only additions are ordered CPU train/validation head metrics, Best-F1 bookkeeping, provenance, and isolated output paths. The additional metrics reuse eval embeddings and preserve CPU/CUDA RNG; standard Dropout is reseeded per run and activation checkpointing preserves RNG state.",
+        "",
+        f"A frozen-source two-update Forward/Backward/AdamW audit had identical initial weights and step losses, with maximum parameter error {parity['second_step_parameter_max_abs_difference']:.3g}; extra CPU metrics preserved RNG states. This supports short-run parity but cannot establish identical full training paths. No further full historical replay was performed.",
+        "",
+        f"Recorded environment: Python {environment['python'].split('|')[0].strip()}, NumPy {environment['numpy']}, PyTorch {environment['torch']} (CUDA build {environment['torch_cuda_build']}), cuDNN {environment['cudnn']}, driver {environment['nvidia_driver']}, {environment['gpu_name']} physical GPU {environment['selected_physical_gpu']}. CUDA matmul TF32={environment['tf32']['cuda_matmul_allow_tf32']}, cuDNN TF32={environment['tf32']['cudnn_allow_tf32']}, float32 matmul precision `{environment['tf32']['float32_matmul_precision']}`; deterministic algorithms={environment['determinism']['algorithms_enabled']}, cuDNN deterministic={environment['determinism']['cudnn_deterministic']}, benchmark={environment['determinism']['cudnn_benchmark']}, CUBLAS_WORKSPACE_CONFIG={environment['determinism']['cublas_workspace_config']}.",
+        "",
+        "Small sparse CUDA propagation variation is plausible but was not isolated as the sole cause. The formal runtime was not changed to force deterministic algorithms or alter TF32. The remaining unresolved issue is why tiny numerical differences amplify over long training; this does not block the internally paired matrix.",
+        "",
+        "## Internal O0 baselines",
+        "",
+        "These O0 results come from the same frozen internal matrix as O1–O3; no historical Pilot score is used as an acceptance target.",
+        "",
+        "| Dataset | O0 seed 42 Acc / F1 | O0 seed 43 Acc / F1 | O0 seed 44 Acc / F1 | Mean Acc ± sample SD | Mean F1 ± sample SD |",
+        "|---|---:|---:|---:|---:|---:|",
+    ])
+    for dataset in DATASETS:
+        subset = sorted((r for r in runs if r["dataset"] == dataset and r["treatment"] == "O0"), key=lambda r: int(r["seed"]))
+        acc_values = np.asarray([float(r["val_acc_best_acc"]) for r in subset])
+        f1_values = np.asarray([float(r["val_macro_f1_best_acc"]) for r in subset])
+        seed_cells = " | ".join(f"{r['val_acc_best_acc']:.6f} / {r['val_macro_f1_best_acc']:.6f}" for r in subset)
+        lines.append(f"| {dataset} | {seed_cells} | {acc_values.mean():.6f} ± {acc_values.std(ddof=1):.6f} | {f1_values.mean():.6f} ± {f1_values.std(ddof=1):.6f} |")
+    lines.extend([
         "",
         "## Best-Accuracy results (mean ± sample SD)",
         "",
-        "| Dataset | Treatment | Val Acc | Val Macro-F1 | Val CE | Best epoch | Train CE | Eval Train Acc | Train CE−Val CE* | Train Acc−Val Acc | Train time (s) | Peak alloc. GiB |",
+        "Train CE is the stochastic training-mode loss before that epoch's optimizer update; Train Accuracy is eval-mode after the update. `Train CE−Val CE` pairs a pre-update Train CE with post-update Validation CE, so it is a trajectory proxy rather than a same-state gap. Validation CE is unweighted.",
+        "",
+        "| Dataset | Treatment | Val Acc | Val Macro-F1 | Val CE | Best epoch | Train CE | Eval Train Acc | Train CE−Val CE | Train Acc−Val Acc | Train time (s) | Peak alloc. GiB |",
         "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
-    ]
+    ])
     for dataset in DATASETS:
         for treatment in study.TREATMENTS:
             row = summaries["best_accuracy"][dataset][treatment]
-            runs_subset = [item for item in runs if item["dataset"] == dataset and item["treatment"] == treatment]
-            mean_train_ce = np.mean([float(item["train_ce_best_acc"]) for item in runs_subset])
-            mean_train_acc = np.mean([float(item["train_accuracy_eval_best_acc"]) for item in runs_subset])
-            mean_ce_gap = np.mean([float(item["train_ce_minus_val_ce_best_acc"]) for item in runs_subset])
-            mean_acc_gap = np.mean([float(item["eval_train_acc_minus_val_acc_best_acc"]) for item in runs_subset])
-            lines.append(
-                f"| {dataset} | {treatment} | {row['val_acc']['mean']:.4f} ± {row['val_acc']['sample_sd']:.4f} | {row['val_macro_f1']['mean']:.4f} ± {row['val_macro_f1']['sample_sd']:.4f} | {row['val_ce']['mean']:.4f} ± {row['val_ce']['sample_sd']:.4f} | {row['selection_epoch']['mean']:.1f} ± {row['selection_epoch']['sample_sd']:.1f} | {mean_train_ce:.4f} | {mean_train_acc:.4f} | {mean_ce_gap:.4f} | {mean_acc_gap:.4f} | {row['training_seconds']['mean']:.1f} | {row['peak_allocated_gib_mean']:.2f} |"
-            )
+            run_group = [r for r in runs if r["dataset"] == dataset and r["treatment"] == treatment]
+            mean_train_ce = np.mean([float(r["train_ce_best_acc"]) for r in run_group])
+            mean_train_acc = np.mean([float(r["train_accuracy_eval_best_acc"]) for r in run_group])
+            mean_ce_gap = np.mean([float(r["train_ce_minus_val_ce_best_acc"]) for r in run_group])
+            mean_acc_gap = np.mean([float(r["eval_train_acc_minus_val_acc_best_acc"]) for r in run_group])
+            lines.append(f"| {dataset} | {treatment} | {row['val_acc']['mean']:.4f} ± {row['val_acc']['sample_sd']:.4f} | {row['val_macro_f1']['mean']:.4f} ± {row['val_macro_f1']['sample_sd']:.4f} | {row['val_ce']['mean']:.4f} ± {row['val_ce']['sample_sd']:.4f} | {row['selection_epoch']['mean']:.1f} ± {row['selection_epoch']['sample_sd']:.1f} | {mean_train_ce:.4f} | {mean_train_acc:.4f} | {mean_ce_gap:.4f} | {mean_acc_gap:.4f} | {row['training_seconds']['mean']:.1f} | {row['peak_allocated_gib_mean']:.2f} |")
     lines.extend(["", "## Best-Macro-F1 results (mean ± sample SD)", "", "| Dataset | Treatment | Val Acc | Val Macro-F1 | Val CE | Best-F1 epoch |", "|---|---|---:|---:|---:|---:|"])
     for dataset in DATASETS:
         for treatment in study.TREATMENTS:
             row = summaries["best_macro_f1"][dataset][treatment]
             lines.append(f"| {dataset} | {treatment} | {row['val_acc']['mean']:.4f} ± {row['val_acc']['sample_sd']:.4f} | {row['val_macro_f1']['mean']:.4f} ± {row['val_macro_f1']['sample_sd']:.4f} | {row['val_ce']['mean']:.4f} ± {row['val_ce']['sample_sd']:.4f} | {row['selection_epoch']['mean']:.1f} ± {row['selection_epoch']['sample_sd']:.1f} |")
-    lines.extend(["", "## Paired regularization effects", "", "| Dataset | Contrast | Metric | Mean paired Δ | Sample SD | n seeds |", "|---|---|---|---:|---:|---:|"])
+    lines.extend([
+        "",
+        "## Three-seed paired regularization effects",
+        "",
+        "Acc/F1 positive differences favor the first treatment; Validation CE negative differences favor the first treatment. O1−O0 is Dropout at low decay; O2−O0 is Weight Decay at low dropout; O3−O1 is Weight Decay at high dropout; O3−O2 is Dropout at high decay; Interaction is `(O3−O2)−(O1−O0)`. All are paired by dataset and seed.",
+        "",
+        "| Dataset | Contrast | Metric | seed 42 | seed 43 | seed 44 | Mean Δ | Sample SD |",
+        "|---|---|---|---:|---:|---:|---:|---:|",
+    ])
     for row in effects:
-        lines.append(f"| {row['dataset']} | {row['contrast']} | {row['metric']} | {row['mean_paired_difference']:.6f} | {row['sample_sd_paired_difference']:.6f} | {row['seed_count']} |")
-    lines.extend(["", "The interaction is `(O3−O2)−(O1−O0)`. Positive values mean the dropout contrast is more positive at high decay for Accuracy/F1, or less negative for CE, according to the sign of the metric. They are descriptive contrasts across three paired seed runs.", "", "## Train/validation trajectories and checkpoint trade-offs", "", "See `figures/training_curves.*` for Train CE / Validation CE and eval Train Accuracy / Validation Accuracy across epochs. Thin traces show individual seeds; bold traces show treatment means over the runs available at that epoch. `figures/validation_acc_macro_f1.*` displays both checkpoint-selection rules independently. `figures/best_epoch_distribution.*` displays the run-level selection epochs.", "", "`data/checkpoint_tradeoffs.csv` lists paired Best-Accuracy and Best-Macro-F1 scorecards, epochs, and class metrics are available in `data/validation_class_metrics.csv`. All class scorecards include every configured class; main Macro-F1 follows the historical Train+Validation observed class set.", "", "## Descriptive generalization flags"])
+        seed_values = {int(item["seed"]): float(item["paired_difference"]) for item in paired if item["dataset"] == row["dataset"] and item["contrast"] == row["contrast"] and item["metric"] == row["metric"]}
+        lines.append(f"| {row['dataset']} | {row['contrast']} | {row['metric']} | {seed_values[42]:+.6f} | {seed_values[43]:+.6f} | {seed_values[44]:+.6f} | {row['mean_paired_difference']:+.6f} | {row['sample_sd_paired_difference']:.6f} |")
+    lines.extend([
+        "",
+        "## Checkpoint selection trade-offs",
+        "",
+        "The table reports Best-F1 minus Best-Accuracy for the same run, summarized over the three seeds as mean ± sample SD. Differences may be positive or negative because the primary Accuracy rule and F1 rule select different epochs.",
+        "",
+        "| Dataset | Treatment | Δ Val Acc | Δ Macro-F1 | Δ Val CE | Δ selected epoch |",
+        "|---|---|---:|---:|---:|---:|",
+    ])
+    tradeoff_fields = ("best_f1_minus_best_acc_accuracy", "best_f1_minus_best_acc_macro_f1", "best_f1_minus_best_acc_val_ce")
+    for dataset in DATASETS:
+        for treatment in study.TREATMENTS:
+            group = [r for r in tradeoffs if r["dataset"] == dataset and r["treatment"] == treatment]
+            parts = []
+            for field in tradeoff_fields:
+                values = np.asarray([float(r[field]) for r in group])
+                parts.append(f"{values.mean():+.4f} ± {values.std(ddof=1):.4f}")
+            epoch_diff = np.asarray([int(r["best_f1_epoch"]) - int(r["best_acc_epoch"]) for r in group], dtype=float)
+            lines.append(f"| {dataset} | {treatment} | {parts[0]} | {parts[1]} | {parts[2]} | {epoch_diff.mean():+.1f} ± {epoch_diff.std(ddof=1):.1f} |")
+    lines.extend([
+        "",
+        "## Frozen Physical/Semantic cross-modal diagnostics",
+        "",
+        "Stage B used the original three Seed-42 Best-Accuracy checkpoints. These are frozen-path sensitivities, not retrained ablations; removing a path also changes Router inputs. Physical cross-modal removal had larger single-path sensitivity than Semantic removal on Movies and Grocery; ele-fashion effects were smaller and mixed. Full Validation CE/Accuracy/F1, flip rates, and embedding/logit changes remain in `data/frozen_cross_relation_interventions.csv` and `MECHANISM_REPORT.md`.",
+        "",
+        "The frozen Semantic route-mass SD spans the nodewise range recorded in `data/router_node_statistics.csv` (about 0.02–0.17 across dataset/layer/modality summaries), showing node-conditional variation without establishing relation reliability. Raw cross-modal context RMS is lower than same-modal RMS; after independent block LayerNorm both are near unit RMS. See `data/cross_modal_scales.csv` for per-relation values.",
+        "",
+        "## Train/validation trajectories and generalization flags",
+        "",
+        "See `figures/training_curves.*` for Train CE / Validation CE and eval Train Accuracy / Validation Accuracy. Thin traces show individual seeds; bold traces show the runs available at each epoch. `figures/validation_acc_macro_f1.*` and `figures/best_epoch_distribution.*` show checkpoint-rule outcomes. Accuracy and Macro-F1, as well as their per-class Validation scorecards, are computed under separate checkpoint-selection rules.",
+    ])
     flags = []
     history = _read_csv(DATA_DIR / "epoch_history.csv")
     for dataset in DATASETS:
         for treatment in study.TREATMENTS:
             group_flags = []
             for seed in study.SEEDS:
-                rows = sorted((row for row in history if row["dataset"] == dataset and row["treatment"] == treatment and int(row["seed"]) == seed), key=lambda x: int(x["epoch"]))
+                rows = sorted((r for r in history if r["dataset"] == dataset and r["treatment"] == treatment and int(r["seed"]) == seed), key=lambda r: int(r["epoch"]))
                 if len(rows) < 10:
                     continue
                 train_first = float(np.mean([float(r["train_ce"]) for r in rows[:10]]))
@@ -621,9 +796,21 @@ def _generalization_report(runs: list[dict[str, Any]], paired: list[dict[str, An
                 group_flags.append({"seed": seed, "train_ce_down": train_last < train_first, "late_val_ce_up": val_last > val_first, "first10_train_ce": train_first, "last10_train_ce": train_last, "first10_val_ce": val_first, "last10_val_ce": val_last})
             flags.append({"dataset": dataset, "treatment": treatment, "runs": group_flags})
             count = sum(item["train_ce_down"] and item["late_val_ce_up"] for item in group_flags)
-            lines.append(f"- **{dataset}/{treatment}:** {count}/{len(group_flags)} seed trajectories show lower mean Train CE in their last ten epochs and higher mean Validation CE than their first ten epochs. This endpoint check is descriptive and sensitive to early stopping.")
+            lines.append(f"- **{dataset}/{treatment}:** {count}/{len(group_flags)} seed trajectories show lower mean Train CE in their last ten epochs and higher mean Validation CE than in their first ten. This endpoint comparison is descriptive and sensitive to early stopping.")
     _write_json(DATA_DIR / "trajectory_generalization_flags.json", flags)
-    lines.extend(["", "## Reproducibility files", "", "`data/manifest.json` records the parent SHA, implementation freeze SHA, run configuration hashes, source SHA, cache fingerprints, hardware, and status. `data/runs.csv` and `data/epoch_history.csv` contain the run and epoch evidence. `data/paired_comparisons.csv` retains seed-level differences and `data/factorial_effects.csv` contains their means and sample SDs. The checkpoints remain under the ignored `outputs/` tree and are referenced by relative paths."])
+    source_shas = sorted({r["source_git_sha"] for r in runs})
+    lines.extend([
+        "",
+        "## Remaining uncertainty",
+        "",
+        "The historical full-run divergence remains unexplained. Short-run parity, config/data/cache checks, RNG-safe diagnostics, and checkpoint reloads passed, but small sparse CUDA differences are only a plausible contributor and were not isolated. Three seeds on fixed official splits are a small optimization sample; rank changes and early-stopping epoch variation should be read descriptively. No V1.1, Router/expert change, or Test evaluation was performed.",
+        "",
+        "## Reproducibility files",
+        "",
+        f"`data/manifest.json` records the parent SHA, Implementation Freeze SHA, per-run source SHAs ({', '.join(f'`{x}`' for x in source_shas)}), config/data/cache fingerprints, hardware, and run status. `data/runs.csv`, `data/epoch_history.csv`, `data/paired_comparisons.csv`, and `data/factorial_effects.csv` retain run, trajectory, paired, and aggregate evidence. `data/final_integrity_audit.json` records the final audit of all 36 runs and 72 checkpoints. Checkpoints remain under ignored `outputs/` and are referenced by relative paths.",
+        "",
+        "Figure source validation, measured panel alignment, PDF font-floor checks, and rendered collision audits are summarized in `data/figure_qa.json` and `data/figure_qa_external_audits.json`; source figures are exported as SVG, PDF, and 600 dpi PNG.",
+    ])
     (RESEARCH / "GENERALIZATION_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -653,7 +840,9 @@ def _decision_memo(runs: list[dict[str, Any]], summaries: dict[str, Any], effect
 def _implementation_audit() -> None:
     checks = json.loads((DATA_DIR / "implementation_checks.json").read_text(encoding="utf-8"))
     tests = checks["test_evidence"]
-    o0 = checks.get("o0_reproduction", {})
+    o0 = checks["historical_o0_replay"]
+    original = o0["original_gate_record"]
+    parity = o0["short_run_parity"]
     lines = [
         "# RM-CGE V1 Generalization Study Implementation Audit",
         "",
@@ -673,16 +862,28 @@ def _implementation_audit() -> None:
         "",
         "Initial model state and classifier state hashes were compared for every Dataset × Seed × Treatment before optimization. Details are in `implementation_checks.json`.",
         "",
-        "## Regression and replay evidence",
+        "## Completed matrix integrity",
+        "",
+        "All 36 planned Dataset × Treatment × Seed runs completed: 12 per seed and 9 matched Dataset × Seed blocks. The initial seed-42 batch passed its integrity review. Two later seed-43/44 launcher attempts stopped before training because the worktree status parser dropped a status-column space and the runner conflated current HEAD with the freeze identity; both issues were fixed before the successful runs. These post-freeze changes affect only launch validation, its tests, and audit prose; exact source SHAs are recorded per run.",
+        "",
+        "The final integrity audit reports finite histories and metrics, 72 verified checkpoint files and Validation reloads, no Test evaluation or Test-label indexing, identical data/cache fingerprints within each Dataset × Seed block, and matched initial model and classifier hashes across O0–O3. It retains four historical failure entries and records zero failures in the completed matrix.",
+        "",
+        "## Regression and revised replay evidence",
         "",
         f"The isolated CPU regression suite passed {tests.get('passed_tests')} tests across {len(tests.get('files', []))} RM-CGE/PACE/V7 files. Full captured output is stored in `implementation_checks.json`.",
+        "",
+        "The post-freeze launcher-guard regression run passed 108 tests with 1 skipped (15 dependency/deprecation warnings; 8.58 s). The original preflight result of 106 passed / 1 skipped remains unchanged. Exact command and result metadata are in `data/runner_guard_regression_test.json`; the two guarded runner fixes are commits `0876797` and `0896373`.",
         "",
     ]
     if o0:
         lines.extend([
-            f"The Movies/O0/seed-42 replay gate **{'passed' if o0.get('passed') else 'failed'}**: Best epoch {o0.get('original_best_epoch')} vs {o0.get('study_best_epoch')}; epochs {o0.get('original_epochs_completed')} vs {o0.get('study_epochs_completed')}; max Train CE trajectory difference {o0.get('train_ce_max_abs_difference'):.3g}; max Validation Accuracy difference {o0.get('validation_accuracy_max_abs_difference'):.3g}; max Macro-F1 difference {o0.get('validation_macro_f1_max_abs_difference'):.3g}; checkpoint embedding/logit max difference {o0.get('embedding_max_abs_difference'):.3g}/{o0.get('logit_max_abs_difference'):.3g}.",
+            f"The original Movies/O0/seed-42 replay was recorded as failed under the former full-trajectory gate: Pilot Best Epoch {original['original_best_epoch']} vs replay {original['study_best_epoch']}; epochs {original['original_epochs_completed']} vs {original['study_epochs_completed']}; maximum Train CE trajectory difference {original['train_ce_max_abs_difference']:.6f}; Validation Accuracy difference {original['validation_accuracy_max_abs_difference']:.6f}; Macro-F1 difference {original['validation_macro_f1_max_abs_difference']:.6f}. Replay checkpoint embedding/logit differences were {original['embedding_max_abs_difference']:.6f}/{original['logit_max_abs_difference']:.6f}.",
             "",
-            "Original Pilot embedding/logit arrays were not archived. The replay reconstructs their values from the frozen checkpoint, verifies deterministic repeated inference, compares all O0 outputs to the reloaded historical checkpoint, and saves SHA-256 hashes. This evidence limit is explicit in `implementation_checks.json`.",
+            f"This is now classified `{o0['classification']}` and is nonblocking. Original Pilot embedding/logit arrays were not archived; the checks reconstruct them from its checkpoint. Repeated CUDA sparse aggregation varied by {original['repeat_embedding_max_abs_difference']:.3g} in embeddings and {original['repeat_logit_max_abs_difference']:.3g} in logits, but this is evidence of possible numerical variation, not proof that CUDA caused the long-run mismatch.",
+            "",
+            f"The controlled two-update Forward/Backward/AdamW check matched initial weights and both step losses; maximum parameter error was {parity['second_step_parameter_max_abs_difference']:.3g}. RNG-preservation checks for added metrics passed. This bounds a short numerical comparison and does not establish full-trajectory identity. No further full historical O0 replay was run.",
+            "",
+            "Revised correctness criteria require matching data/splits/features/semantic-cache/protocol; V1 model math, O0 dropout-0.20 initialization, optimizer and update rules; reasonable short-run numerical parity; RNG-safe Train/Validation metrics; disabled Test metrics with no Test labels indexed; finite metrics; verified checkpoint save/reload; and matched Dataset × Seed model and classifier initialization across O0–O3. Exact historical best epoch, epoch count, scores, and per-epoch curve equality are not acceptance gates.",
             "",
         ])
     lines.extend([
@@ -697,16 +898,20 @@ def summarize_and_report() -> dict[str, Any]:
     manifest = json.loads((DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
     if manifest.get("status") != "matrix_completed" or len(manifest.get("runs", [])) != 36:
         raise RuntimeError("the complete study matrix is not available")
-    checkpoint_rows, class_rows = evaluate_all_checkpoints()
     run_rows = manifest["runs"]
+    cached_replay = _cached_checkpoint_replay(run_rows)
+    if cached_replay is None:
+        checkpoint_rows, class_rows = evaluate_all_checkpoints()
+    else:
+        checkpoint_rows, class_rows = cached_replay
     paired, effects = _paired_effects(run_rows)
     _write_csv(DATA_DIR / "paired_comparisons.csv", paired)
     _write_csv(DATA_DIR / "factorial_effects.csv", effects)
     tradeoffs = []
-    lookup = {(row["dataset"], row["treatment"], int(row["seed"])): row for row in checkpoint_rows}
+    lookup = {(row["dataset"], row["treatment"], int(row["seed"]), row["selection"]): row for row in checkpoint_rows}
     for run in run_rows:
-        acc = lookup[(run["dataset"], run["treatment"], int(run["seed"]))]
-        f1 = next(row for row in checkpoint_rows if row["dataset"] == run["dataset"] and row["treatment"] == run["treatment"] and int(row["seed"]) == int(run["seed"]) and row["selection"] == "best_f1")
+        acc = lookup[(run["dataset"], run["treatment"], int(run["seed"]), "best_acc")]
+        f1 = lookup[(run["dataset"], run["treatment"], int(run["seed"]), "best_f1")]
         tradeoffs.append({
             "dataset": run["dataset"], "treatment": run["treatment"], "seed": int(run["seed"]),
             "best_acc_epoch": acc["selection_epoch"], "best_f1_epoch": f1["selection_epoch"],
@@ -720,10 +925,10 @@ def summarize_and_report() -> dict[str, Any]:
     _write_csv(DATA_DIR / "checkpoint_tradeoffs.csv", tradeoffs)
     summaries = _summaries(run_rows, checkpoint_rows)
     _write_json(DATA_DIR / "summary_statistics.json", summaries)
-    _write_implementation_audit()
+    _implementation_audit()
     frozen_rows = _read_csv(DATA_DIR / "frozen_cross_relation_interventions.csv")
     router_rows = _read_csv(DATA_DIR / "router_node_statistics.csv")
-    _generalization_report(run_rows, paired, effects, summaries, checkpoint_rows)
+    _generalization_report(run_rows, paired, effects, summaries, tradeoffs, manifest)
     _decision_memo(run_rows, summaries, effects, frozen_rows, router_rows, manifest)
     from scripts.plot_rmcge_v1_generalization import create_figures
 

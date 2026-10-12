@@ -1,0 +1,87 @@
+{
+  "all_test_evaluation_disabled": true,
+  "checkpoint_files_verified": 72,
+  "checkpoint_metric_replay_max_abs_delta": {
+    "val_acc": 0.0,
+    "val_ce": 1.4645508406019303e-07,
+    "val_macro_f1": 0.0
+  },
+  "completed_runs": 36,
+  "data_fingerprints_consistent_by_dataset_seed": true,
+  "finite_histories_and_metrics": true,
+  "historical_failures_retained": 4,
+  "implementation_freeze_sha": "e002af6a9c57de21986129d2b1c6e8478bcc74e3",
+  "initial_model_and_classifier_states_paired": true,
+  "matrix_status": "matrix_completed",
+  "new_matrix_failures": 0,
+  "output_root": "outputs/rmcge_v1_generalization/runs/freeze_e002af6a9c",
+  "pair_blocks": [
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "Movies",
+      "model_initialization_matched": true,
+      "seed": 42
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "Movies",
+      "model_initialization_matched": true,
+      "seed": 43
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "Movies",
+      "model_initialization_matched": true,
+      "seed": 44
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "Grocery",
+      "model_initialization_matched": true,
+      "seed": 42
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "Grocery",
+      "model_initialization_matched": true,
+      "seed": 43
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "Grocery",
+      "model_initialization_matched": true,
+      "seed": 44
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "ele-fashion",
+      "model_initialization_matched": true,
+      "seed": 42
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "ele-fashion",
+      "model_initialization_matched": true,
+      "seed": 43
+    },
+    {
+      "classifier_initialization_matched": true,
+      "dataset": "ele-fashion",
+      "model_initialization_matched": true,
+      "seed": 44
+    }
+  ],
+  "source_git_sha_by_seed": {
+    "42": [
+      "e002af6a9c57de21986129d2b1c6e8478bcc74e3"
+    ],
+    "43": [
+      "089637306507c9d648bbec4e429c0886a1fbd5bd"
+    ],
+    "44": [
+      "089637306507c9d648bbec4e429c0886a1fbd5bd"
+    ]
+  },
+  "status": "passed",
+  "test_labels_indexed": false
+}

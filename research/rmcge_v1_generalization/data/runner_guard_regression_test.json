@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/home/m3/miniconda3/envs/yhf_env/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_rmcge_v1_generalization.py",
+    "tests/test_rmcge_v1.py",
+    "tests/test_pace_mag_v1.py",
+    "tests/test_pace_mag_v1_audit.py",
+    "tests/test_psce_mag_v7a.py",
+    "tests/test_psce_mag_v7b.py",
+    "tests/test_psce_mag_v7b1_corrective.py"
+  ],
+  "exit_code": 0,
+  "passed": 108,
+  "skipped": 1,
+  "warnings": 15,
+  "elapsed_seconds": 8.58,
+  "historical_preflight_result_preserved": {
+    "passed": 106,
+    "skipped": 1
+  },
+  "covers_runner_guard_commits": [
+    "0876797c326187571f83b508658217b4ae6c3ac8",
+    "089637306507c9d648bbec4e429c0886a1fbd5bd"
+  ],
+  "output_summary": "108 passed, 1 skipped, 15 warnings in 8.58s; warnings are existing PyG deprecation and torch checkpoint autocast FutureWarnings."
+}

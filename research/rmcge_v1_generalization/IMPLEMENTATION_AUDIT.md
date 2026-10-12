@@ -1,51 +1,41 @@
-# RM-CGE V1 Generalization Study: Implementation Audit
+# RM-CGE V1 Generalization Study Implementation Audit
 
-## Scope and revised status
+## Frozen boundary
 
-**Researcher-approved revision (2026-10-13):** Exact historical Pilot trajectory replay is no longer an admission gate. The two prior O0 attempts remain immutable records classified as `historical_full_training_replay_not_exact`; they are references, not internal baselines. The study is reopened for implementation audit, an Implementation Freeze commit, and the paired internal matrix.
+The RM-CGE V1 model math, initializers, projectors, relation operators, relation-specific same/cross support, shared experts, joint masked Softmax, residual scale, fusion, and CE objective remain unchanged. The model source changes only the legal dropout set (`0.20`, `0.35`), read-only diagnostic output, and relation-specific cross-context zeroing interventions. Default dropout remains `0.20`; regression testing checks the original default initialization and evaluation forward exactly.
 
-The study branch is `exp/rmcge_v1_generalization_study`, based on Pilot Report commit `7e4b3dedb9de419ecec4193a1c2e50efd80dc3ab`. The revised preflight passed; the run-level Checkpoint reload audit is part of each formal run. The Implementation Freeze commit is next.
+## Training instrumentation
 
-The model change is limited to allowing dropout 0.20 or 0.35 and adding opt-in node diagnostics and relation-specific cross-modal interventions. The default V1 forward path at dropout 0.20 retains the same core operators, initialization, relation propagation, router, expert bank, and fusion. Training changes are behind `record_extended_validation`; they add train/validation diagnostics and a separate Best-F1 checkpoint while preserving Accuracy-driven stopping. Test evaluation is disabled for the study.
+Extended validation is opt-in through `task.record_extended_validation`. Full-graph embeddings from the existing eval pass are reused for train/validation CE and Train Accuracy; index batching is ordered and does not construct a random DataLoader. Test evaluation must be false. Validation CE is unweighted Cross-Entropy. The Accuracy early-stopping comparator, min-delta, patience horizon, optimizer sequence, and ordinary training loss remain the V1 logic.
 
-## Validation performed
+Best-Accuracy and Best-Macro-F1 snapshots are cloned independently during the same Accuracy-stopped trajectory. Best-F1 is selected only from epochs observed before Accuracy-driven stopping. Checkpoints include both state dictionaries, selection epoch/rule, validation scorecard, full resolved training configuration, configuration hash, source SHA, and cache fingerprints.
 
-- Required RM-CGE, PACE-MAG, V7A/V7B regression suites and the new study suite: **106 passed, 1 skipped** (latest run 5.70 s; 15 existing dependency/deprecation warnings).
-- Python compilation and `git diff --check` passed for the study scripts and sources.
-- Preflight verified official split-file, feature, physical-edge, semantic-cache and train/validation-label fingerprints for all three datasets. All four treatments had identical model and classifier initialization for each of the nine Dataset × Seed blocks. Frozen O0 controls and dataset configurations match the Pilot; only CPU-side train/validation diagnostics, Best-F1 bookkeeping, provenance and isolated output paths are added. Model/classifier parameter counts match the archived Movies O0 reference: 892,242 / 2,580.
-- Stage B replay reproduced the archived Validation metrics for all three Seed-42 checkpoints; repeated full-graph GPU inference varied by only about 1–4 × 10⁻⁶ in maximum embedding/logit values. The per-relation interventions, valid-mask-aware router summaries, and context-scale audit were generated without Test labels.
-- A two-update parity check loaded the frozen model class directly from commit `8b94d16c3b2a66b658419c7f79e0de688b51a23a`. Initialization and classifier state were identical. Both versions had equal first- and second-step loss; maximum parameter difference after each update was `5.0478e-7`. The additional CPU-only train/validation head diagnostics preserved CPU and CUDA RNG states.
+## Protocol and optimizer audit
 
-## Historical full-training replay: not exact, nonblocking
+The 2×2 study changes only dropout and the existing AdamW weight decay. Existing `build_optimizer` resolves to a single parameter group for RM-CGE V1, containing every model and classifier parameter. The study records per-group parameter names/counts, LR/decay, initial and final parameter norms, actual optimizer updates, first-epoch gradient diagnostics, and CUDA peak memory for each run. No no-decay parameter exclusion is added.
 
-The reference Movies/O0/seed-42 run completed 100 epochs, selected epoch 70, and reported Validation Accuracy `0.540492` and Macro-F1 `0.429959`.
+Initial model state and classifier state hashes were compared for every Dataset × Seed × Treatment before optimization. Details are in `implementation_checks.json`.
 
-| Study attempt | Epochs | Best epoch | Val Accuracy | Val Macro-F1 | Train CE RMSE vs reference | Val Acc RMSE | Val F1 RMSE | Result |
-|---|---:|---:|---:|---:|---:|---:|---:|---|
-| `seed_42` | 100 | 70 | 0.537493 | 0.436371 | 0.03011 | 0.00390 | 0.00714 | Failed |
-| `seed_42_attempt_02` | 97 | 67 | 0.540792 | 0.435800 | 0.01082 | 0.00443 | 0.00721 | Failed |
+## Completed matrix integrity
 
-Both trajectories remain highly correlated with the reference, but validation metrics diverged from about epochs 31–33 onward, and the second attempt stopped three epochs earlier. These are observed historical differences, not corrected or rewritten results. Their records remain in `data/o0_attempt_02_comparison.json`, `data/o0_replay_attempts.json`, and `data/failures.json`.
+All 36 planned Dataset × Treatment × Seed runs completed: 12 per seed and 9 matched Dataset × Seed blocks. The initial seed-42 batch passed its integrity review. Two later seed-43/44 launcher attempts stopped before training because the worktree status parser dropped a status-column space and the runner conflated current HEAD with the freeze identity; both issues were fixed before the successful runs. These post-freeze changes affect only launch validation, its tests, and audit prose; exact source SHAs are recorded per run.
 
-The parity result shows identical initial states and step losses, a two-step parameter difference of `5.0478e-7`, and no RNG-state change from the CPU-only extra metrics. Repeated CUDA sparse aggregation differed around 10⁻⁶ in the earlier probe. These facts make floating-point amplification plausible, but they do not establish CUDA as the sole cause. Python/NumPy/Torch/CUDA/cuDNN/driver/GPU, TF32 and deterministic settings are now captured in preflight; the formal runtime settings are not changed to pursue exact historical replay.
+The final integrity audit reports finite histories and metrics, 72 verified checkpoint files and Validation reloads, no Test evaluation or Test-label indexing, identical data/cache fingerprints within each Dataset × Seed block, and matched initial model and classifier hashes across O0–O3. It retains four historical failure entries and records zero failures in the completed matrix.
 
-## Engineering exceptions and next gate
+## Regression and revised replay evidence
 
-An initial parity invocation landed on a GPU occupied by the VLLM engine and ran out of memory. That diagnostic failure is retained; the successful parity retry explicitly used physical GPU 1. One retry attempt also encountered the existing `seed_42` output directory and launched no training; its record has been corrected to show that no directory was written by that invocation. Both actual O0 runs are preserved in their independent output directories.
+The isolated CPU regression suite passed 106 tests across 7 RM-CGE/PACE/V7 files. Full captured output is stored in `implementation_checks.json`.
 
-After the 12-run seed-42 review passed, two seed-43/44 launches stopped before training due to launch-guard assumptions: the shared Git helper stripped leading status-column whitespace, and the runner treated the current HEAD as the Implementation Freeze SHA. The guard now reads raw porcelain output, keeps the original Freeze SHA for output grouping, records the current runner source commit separately, and checks that post-freeze changes are limited to the launcher, its tests, and this audit note. Regression tests cover both cases; the complete suite passes **108 passed, 1 skipped**. The model, NC training, configuration, optimizer, and metric code remain at Implementation Freeze `e002af6a9c57de21986129d2b1c6e8478bcc74e3`; seed-43/44 provenance will record the guard-fix runner commit.
+The post-freeze launcher-guard regression run passed 108 tests with 1 skipped (15 dependency/deprecation warnings; 8.58 s). The original preflight result of 106 passed / 1 skipped remains unchanged. Exact command and result metadata are in `data/runner_guard_regression_test.json`; the two guarded runner fixes are commits `0876797` and `0896373`.
 
-The revised hard checks are configuration and optimizer parity, official split/data/cache fingerprints, per-seed initialization hashes, short-run numerical parity, RNG preservation, finite histories, no Test-label indexing, and successful Validation-only Checkpoint reloads. The Implementation Freeze precedes training. The first batch contains all 12 seed-42 runs; seeds 43 and 44 follow only after that batch passes integrity review.
+The original Movies/O0/seed-42 replay was recorded as failed under the former full-trajectory gate: Pilot Best Epoch 70 vs replay 70; epochs 100 vs 100; maximum Train CE trajectory difference 0.080665; Validation Accuracy difference 0.018896; Macro-F1 difference 0.029098. Replay checkpoint embedding/logit differences were 1.091299/1.963385.
 
-## Evidence files
+This is now classified `historical_full_training_replay_not_exact` and is nonblocking. Original Pilot embedding/logit arrays were not archived; the checks reconstruct them from its checkpoint. Repeated CUDA sparse aggregation varied by 1.19e-06 in embeddings and 1.91e-06 in logits, but this is evidence of possible numerical variation, not proof that CUDA caused the long-run mismatch.
 
-- `data/implementation_checks.json`
-- `data/o0_replay_attempts.json`
-- `data/o0_step_parity.json`
-- `data/o0_step_parity_attempts.json`
-- `data/o0_attempt_02_comparison.json`
-- `data/failures.json`
-- `data/frozen_checkpoint_replay_checks.json`
-- `data/frozen_cross_relation_interventions.csv`
-- `data/router_node_statistics.csv`
-- `data/cross_modal_scales.csv`
+The controlled two-update Forward/Backward/AdamW check matched initial weights and both step losses; maximum parameter error was 5.05e-07. RNG-preservation checks for added metrics passed. This bounds a short numerical comparison and does not establish full-trajectory identity. No further full historical O0 replay was run.
+
+Revised correctness criteria require matching data/splits/features/semantic-cache/protocol; V1 model math, O0 dropout-0.20 initialization, optimizer and update rules; reasonable short-run numerical parity; RNG-safe Train/Validation metrics; disabled Test metrics with no Test labels indexed; finite metrics; verified checkpoint save/reload; and matched Dataset × Seed model and classifier initialization across O0–O3. Exact historical best epoch, epoch count, scores, and per-epoch curve equality are not acceptance gates.
+
+The Test split was disabled in all training configs and diagnostic checkpoint scorecards; per-class and aggregate analyses index only Validation labels, while Macro-F1's historical class set is built from Train and Validation labels. No architecture variants, Test evaluation, extra seeds, or hyperparameter searches are included.
+
+Parent Pilot Report SHA: `7e4b3dedb9de419ecec4193a1c2e50efd80dc3ab`. Source SHA and worktree fingerprints for the pre-freeze replay and post-freeze matrix are stored in the manifest and run CSV.

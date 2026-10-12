@@ -12,6 +12,12 @@ from typing import Any
 import matplotlib
 
 matplotlib.use("Agg")
+matplotlib.rcParams.update({
+    "svg.fonttype": "none",
+    "pdf.fonttype": 42,
+    "font.family": "sans-serif",
+    "font.sans-serif": ["DejaVu Sans", "sans-serif"],
+})
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.lines import Line2D
@@ -33,13 +39,13 @@ def _save(fig, stem: str, title_tokens: list[str]) -> dict[str, Any]:
     OUT.mkdir(parents=True, exist_ok=True)
     fig.canvas.draw()
     renderer = fig.canvas.get_renderer()
-    width, height = fig.canvas.get_width_height()
+    page = fig.get_tightbbox(renderer).transformed(fig.dpi_scale_trans)
     clipped = []
     for text in fig.findobj(match=matplotlib.text.Text):
         if not text.get_visible() or not text.get_text():
             continue
         bbox = text.get_window_extent(renderer=renderer)
-        if bbox.x0 < -1.5 or bbox.y0 < -1.5 or bbox.x1 > width + 1.5 or bbox.y1 > height + 1.5:
+        if not text.get_clip_on() and (bbox.x0 < page.x0 - 1.5 or bbox.y0 < page.y0 - 1.5 or bbox.x1 > page.x1 + 1.5 or bbox.y1 > page.y1 + 1.5):
             clipped.append(text.get_text())
     axes = [axis.get_window_extent(renderer=renderer) for axis in fig.axes]
     overlaps = []
@@ -52,11 +58,29 @@ def _save(fig, stem: str, title_tokens: list[str]) -> dict[str, Any]:
                 dy = min(left.y1, right.y1) - max(left.y0, right.y0)
                 if dx > 1.0 and dy > 1.0:
                     overlaps.append([left_index, right_index, float(dx), float(dy)])
-    paths = {}
-    for extension in ("png", "svg", "pdf"):
-        path = OUT / f"{stem}.{extension}"
-        fig.savefig(path, dpi=220, bbox_inches="tight", facecolor="white")
-        paths[extension] = str(path.relative_to(ROOT))
+    from audit_panel_alignment import require_matplotlib_panel_alignment
+
+    alignment_path = OUT / f"{stem}.alignment.json"
+    alignment = require_matplotlib_panel_alignment(
+        fig,
+        json_out=alignment_path,
+        tolerance_pt=1.5,
+        gutter_tolerance_pt=1.5,
+        strict=True,
+    )
+    svg_path = OUT / f"{stem}.svg"
+    pdf_path = OUT / f"{stem}.pdf"
+    png_path = OUT / f"{stem}.png"
+    fig.savefig(svg_path, bbox_inches="tight", facecolor="white")
+    svg_lines = svg_path.read_text(encoding="utf-8").splitlines()
+    svg_path.write_text("\n".join(line.rstrip() for line in svg_lines) + "\n", encoding="utf-8")
+    fig.savefig(pdf_path, bbox_inches="tight", facecolor="white")
+    fig.savefig(png_path, dpi=600, bbox_inches="tight", facecolor="white")
+    paths = {
+        "svg": str(svg_path.relative_to(ROOT)),
+        "pdf": str(pdf_path.relative_to(ROOT)),
+        "png": str(png_path.relative_to(ROOT)),
+    }
     plt.close(fig)
     pdf_text = ""
     if shutil.which("pdftotext"):
@@ -71,6 +95,8 @@ def _save(fig, stem: str, title_tokens: list[str]) -> dict[str, Any]:
     return {
         "stem": stem,
         "files": paths,
+        "alignment_json": str(alignment_path.relative_to(ROOT)),
+        "alignment_status": alignment.get("status", alignment.get("verdict", "passed")),
         "canvas_text_clipping": clipped,
         "axes_collisions": overlaps,
         "pdf_text_characters": len(pdf_text),
@@ -89,7 +115,8 @@ def _legend_treatments(fig, handles=None, **kwargs):
 def _training_curves() -> dict[str, Any]:
     rows = _csv("epoch_history.csv")
     fig, axes = plt.subplots(3, 2, figsize=(13.2, 10.4), sharex="col", layout="constrained")
-    fig.suptitle("RM-CGE V1 validation trajectories", fontsize=16, fontweight="semibold")
+    fig.suptitle("RM-CGE V1 validation trajectories", fontsize=16, fontweight="bold", y=1.13)
+    study_max_epoch = max(int(row["epoch"]) for row in rows)
     metrics = (("train_ce", "val_ce", "Cross-Entropy"), ("train_accuracy_eval", "val_acc", "Accuracy"))
     for row_index, dataset in enumerate(DATASETS):
         for column, (train_metric, val_metric, title) in enumerate(metrics):
@@ -97,7 +124,6 @@ def _training_curves() -> dict[str, Any]:
             for treatment in TREATMENTS:
                 group = [r for r in rows if r["dataset"] == dataset and r["treatment"] == treatment]
                 for record in group:
-                    epochs = np.asarray([int(r["epoch"]) for r in group if int(r["seed"]) == int(record["seed"])])
                     # Plot each seed trace once; curves stop at their own early-stopping epoch.
                     if record["epoch"] != next(r["epoch"] for r in group if int(r["seed"]) == int(record["seed"])):
                         continue
@@ -120,6 +146,7 @@ def _training_curves() -> dict[str, Any]:
             axis.set_xlabel("Epoch")
             axis.set_ylabel("Loss" if column == 0 else "Fraction")
             axis.grid(alpha=0.22, linewidth=0.6)
+            axis.set_xlim(0, study_max_epoch)
             if column == 1:
                 axis.set_ylim(bottom=0)
     handles = [
@@ -127,7 +154,7 @@ def _training_curves() -> dict[str, Any]:
         Line2D([0], [0], color="#333333", lw=2, ls="--", label="Validation"),
         *[Line2D([0], [0], color=COLORS[t], lw=2, label=t) for t in TREATMENTS],
     ]
-    _legend_treatments(fig, handles, bbox_to_anchor=(0.5, 1.015))
+    _legend_treatments(fig, handles, bbox_to_anchor=(0.5, 1.045))
     return _save(fig, "training_curves", ["RM-CGE V1 validation trajectories", "Cross-Entropy", "Accuracy"])
 
 
@@ -136,9 +163,8 @@ def _paired_effect_figure() -> dict[str, Any]:
     contrasts = ("O1-O0", "O2-O0", "O3-O1", "O3-O2", "Interaction=(O3-O2)-(O1-O0)")
     metrics = ("val_accuracy", "val_macro_f1", "validation_ce")
     pretty = {"val_accuracy": "Validation Accuracy (pp)", "val_macro_f1": "Validation Macro-F1 (pp)", "validation_ce": "Validation CE"}
-    fig, axes = plt.subplots(3, 3, figsize=(15, 10.8), layout="constrained")
-    fig.suptitle("Seed-paired regularization contrasts · Best-Accuracy checkpoints", fontsize=15, fontweight="semibold")
-    rng = np.random.default_rng(801)
+    fig, axes = plt.subplots(3, 3, figsize=(15, 10.8))
+    fig.suptitle("Seed-paired regularization contrasts · Best-Accuracy checkpoints", fontsize=15, fontweight="bold", y=0.985)
     for i, dataset in enumerate(DATASETS):
         for j, metric in enumerate(metrics):
             axis = axes[i, j]
@@ -147,26 +173,27 @@ def _paired_effect_figure() -> dict[str, Any]:
                 values = np.asarray([float(r["paired_difference"]) for r in group])
                 scale = 100.0 if metric != "validation_ce" else 1.0
                 values *= scale
-                jitter = rng.uniform(-0.07, 0.07, len(values))
+                jitter = np.linspace(-0.07, 0.07, len(values))
                 axis.scatter(x_index + jitter, values, s=28, color="#4C78A8", alpha=0.85, zorder=3)
                 if len(values):
                     mean = values.mean()
                     sd = values.std(ddof=1) if len(values) > 1 else 0.0
                     axis.errorbar(x_index, mean, yerr=sd, fmt="D", color="#E45756", capsize=3, markersize=5, zorder=4)
             axis.axhline(0, color="#444444", lw=0.9, alpha=0.7)
-            axis.set_xticks(range(len(contrasts)), ["O1−O0", "O2−O0", "O3−O1", "O3−O2", "Interaction"], rotation=35, ha="right")
+            axis.set_xticks(range(len(contrasts)))
+            axis.set_xticklabels(["O1−O0", "O2−O0", "O3−O1", "O3−O2", "Int."], rotation=35, rotation_mode="anchor", ha="right")
             axis.set_title(f"{dataset} · {pretty[metric]}", fontsize=10.5)
+            axis.set_ylabel("Seed-paired difference")
             axis.grid(axis="y", alpha=0.22, linewidth=0.6)
-            if j == 0:
-                axis.set_ylabel("Seed-paired difference" + (" (percentage points)" if metric != "validation_ce" else ""))
-    fig.text(0.5, 0.005, "Points are three seed-level paired differences; diamonds and bars show mean ± sample SD. Descriptive only.", ha="center", fontsize=9)
+    fig.subplots_adjust(left=0.10, right=0.99, bottom=0.19, top=0.88, wspace=0.34, hspace=0.38)
+    fig.text(0.5, 0.025, "Acc/F1 differences are percentage points; CE differences use CE units. Int. is the dropout × weight-decay difference-in-differences. Points are paired seeds; diamonds/bars show mean ± sample SD (n=3).", ha="center", fontsize=9)
     return _save(fig, "paired_factorial_effects", ["Seed-paired regularization contrasts", "Best-Accuracy"])
 
 
 def _checkpoint_tradeoff_figure() -> dict[str, Any]:
     rows = _csv("checkpoint_validation_replay.csv")
-    fig, axes = plt.subplots(1, 3, figsize=(14.2, 4.6), layout="constrained")
-    fig.suptitle("Validation Accuracy and Macro-F1 by checkpoint rule", fontsize=15, fontweight="semibold")
+    fig, axes = plt.subplots(1, 3, figsize=(14.2, 4.6))
+    fig.suptitle("Validation Accuracy and Macro-F1 by checkpoint rule", fontsize=15, fontweight="bold", y=0.99)
     markers = {42: "o", 43: "s", 44: "^"}
     for axis, dataset in zip(axes, DATASETS):
         subset = [row for row in rows if row["dataset"] == dataset]
@@ -183,14 +210,15 @@ def _checkpoint_tradeoff_figure() -> dict[str, Any]:
         axis.grid(alpha=0.22, linewidth=0.6)
     treatment_handles = [Line2D([0], [0], marker="o", color="none", markerfacecolor=COLORS[t], markeredgecolor="white", label=t, markersize=7) for t in TREATMENTS]
     rule_handles = [Line2D([0], [0], marker="o", color="#444444", markerfacecolor="#444444", label="Best Accuracy", markersize=6), Line2D([0], [0], marker="o", color="#444444", markerfacecolor="white", label="Best Macro-F1", markersize=6)]
-    _legend_treatments(fig, treatment_handles + rule_handles, bbox_to_anchor=(0.5, 1.045), ncol=6)
+    fig.subplots_adjust(left=0.09, right=0.99, bottom=0.16, top=0.82, wspace=0.32)
+    _legend_treatments(fig, treatment_handles + rule_handles, bbox_to_anchor=(0.5, 0.945), ncol=6)
     return _save(fig, "validation_acc_macro_f1", ["Validation Accuracy and Macro-F1", "checkpoint rule"])
 
 
 def _best_epoch_figure() -> dict[str, Any]:
     rows = _csv("checkpoint_validation_replay.csv")
-    fig, axes = plt.subplots(1, 3, figsize=(13.5, 4.5), layout="constrained")
-    fig.suptitle("Checkpoint selection epochs", fontsize=15, fontweight="semibold")
+    fig, axes = plt.subplots(1, 3, figsize=(13.5, 4.5))
+    fig.suptitle("Checkpoint selection epochs", fontsize=15, fontweight="bold", y=0.99)
     offsets = {"best_acc": -0.12, "best_f1": 0.12}
     marker = {"best_acc": "o", "best_f1": "s"}
     for axis, dataset in zip(axes, DATASETS):
@@ -204,15 +232,16 @@ def _best_epoch_figure() -> dict[str, Any]:
         axis.set_ylabel("Selected epoch")
         axis.grid(axis="y", alpha=0.22, linewidth=0.6)
     handles = [*[Line2D([0], [0], marker="o", color="none", markerfacecolor=COLORS[t], label=t, markersize=7) for t in TREATMENTS], Line2D([0], [0], marker="o", color="#444444", markerfacecolor="#444444", label="Best Accuracy", markersize=6), Line2D([0], [0], marker="s", color="#444444", markerfacecolor="#444444", label="Best Macro-F1", markersize=6)]
-    _legend_treatments(fig, handles, bbox_to_anchor=(0.5, 1.035), ncol=6)
+    fig.subplots_adjust(left=0.08, right=0.99, bottom=0.15, top=0.82, wspace=0.30)
+    _legend_treatments(fig, handles, bbox_to_anchor=(0.5, 0.945), ncol=6)
     return _save(fig, "best_epoch_distribution", ["Checkpoint selection epochs", "Selected epoch"])
 
 
 def _class_f1_figure() -> dict[str, Any]:
     rows = _csv("validation_class_metrics.csv")
     treatment = "O0"
-    fig, axes = plt.subplots(1, 3, figsize=(14.5, 5.0), layout="constrained")
-    fig.suptitle("Per-class Validation F1: checkpoint-rule comparison · O0", fontsize=14.5, fontweight="semibold")
+    fig, axes = plt.subplots(1, 3, figsize=(14.5, 5.0))
+    fig.suptitle("Per-class Validation F1: checkpoint-rule comparison · O0", fontsize=14.5, fontweight="bold", y=0.99)
     for axis, dataset in zip(axes, DATASETS):
         selected = [r for r in rows if r["dataset"] == dataset and r["treatment"] == treatment]
         supports = {}
@@ -234,7 +263,8 @@ def _class_f1_figure() -> dict[str, Any]:
         axis.set_ylim(-0.03, 1.03)
         axis.grid(axis="y", alpha=0.22, linewidth=0.6)
     handles = [Line2D([0], [0], marker="o", color="none", markerfacecolor="#4C78A8", label="Best Accuracy", markersize=7), Line2D([0], [0], marker="s", color="#F58518", markerfacecolor="white", label="Best Macro-F1", markersize=7)]
-    fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 1.04), ncol=2, frameon=False)
+    fig.subplots_adjust(left=0.09, right=0.99, bottom=0.16, top=0.82, wspace=0.31)
+    fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.945), ncol=2, frameon=False)
     return _save(fig, "class_f1_checkpoint_tradeoff", ["Per-class Validation F1", "O0"])
 
 

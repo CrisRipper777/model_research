@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "backend": "Python Matplotlib Agg",
+  "source_validation": {
+    "ready": true,
+    "counts": {
+      "PASS": 19,
+      "WARN": 2,
+      "FAIL": 0
+    },
+    "accepted_warnings": [
+      "No TIFF submission raster was requested; PDF/SVG are report vectors and PNG is a 600 dpi preview.",
+      "The 335.3 mm figure width is for the internal multi-panel research report, not a journal-width submission."
+    ]
+  },
+  "minimum_pdf_font_pt": 9.0,
+  "pdfs_meet_five_point_floor": true,
+  "all_panel_alignment_pass": true,
+  "all_collision_audits_pass": true,
+  "final_visual_review": "All five final PNG figures were inspected; title/legend and paired-label collisions were corrected and rechecked.",
+  "figures": [
+    {
+      "stem": "training_curves",
+      "alignment_verdict": "PASS",
+      "alignment_failures": 0,
+      "pdf_text_auditable": true,
+      "minimum_pdf_font_pt": 10.0,
+      "below_five_point_runs": 0,
+      "collision_verdict": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "files": {
+        "pdf": "figures/training_curves.pdf",
+        "svg": "figures/training_curves.svg",
+        "png": "figures/training_curves.png",
+        "alignment_json": "figures/training_curves.alignment.json",
+        "text_audit_json": "figures/training_curves.text-audit.json",
+        "collision_audit_json": "figures/training_curves.collision-audit.json"
+      }
+    },
+    {
+      "stem": "paired_factorial_effects",
+      "alignment_verdict": "PASS",
+      "alignment_failures": 0,
+      "pdf_text_auditable": true,
+      "minimum_pdf_font_pt": 9.0,
+      "below_five_point_runs": 0,
+      "collision_verdict": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "files": {
+        "pdf": "figures/paired_factorial_effects.pdf",
+        "svg": "figures/paired_factorial_effects.svg",
+        "png": "figures/paired_factorial_effects.png",
+        "alignment_json": "figures/paired_factorial_effects.alignment.json",
+        "text_audit_json": "figures/paired_factorial_effects.text-audit.json",
+        "collision_audit_json": "figures/paired_factorial_effects.collision-audit.json"
+      }
+    },
+    {
+      "stem": "validation_acc_macro_f1",
+      "alignment_verdict": "PASS",
+      "alignment_failures": 0,
+      "pdf_text_auditable": true,
+      "minimum_pdf_font_pt": 10.0,
+      "below_five_point_runs": 0,
+      "collision_verdict": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "files": {
+        "pdf": "figures/validation_acc_macro_f1.pdf",
+        "svg": "figures/validation_acc_macro_f1.svg",
+        "png": "figures/validation_acc_macro_f1.png",
+        "alignment_json": "figures/validation_acc_macro_f1.alignment.json",
+        "text_audit_json": "figures/validation_acc_macro_f1.text-audit.json",
+        "collision_audit_json": "figures/validation_acc_macro_f1.collision-audit.json"
+      }
+    },
+    {
+      "stem": "best_epoch_distribution",
+      "alignment_verdict": "PASS",
+      "alignment_failures": 0,
+      "pdf_text_auditable": true,
+      "minimum_pdf_font_pt": 10.0,
+      "below_five_point_runs": 0,
+      "collision_verdict": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "files": {
+        "pdf": "figures/best_epoch_distribution.pdf",
+        "svg": "figures/best_epoch_distribution.svg",
+        "png": "figures/best_epoch_distribution.png",
+        "alignment_json": "figures/best_epoch_distribution.alignment.json",
+        "text_audit_json": "figures/best_epoch_distribution.text-audit.json",
+        "collision_audit_json": "figures/best_epoch_distribution.collision-audit.json"
+      }
+    },
+    {
+      "stem": "class_f1_checkpoint_tradeoff",
+      "alignment_verdict": "PASS",
+      "alignment_failures": 0,
+      "pdf_text_auditable": true,
+      "minimum_pdf_font_pt": 10.0,
+      "below_five_point_runs": 0,
+      "collision_verdict": "PASS",
+      "collision_failures": 0,
+      "collision_warnings": 0,
+      "files": {
+        "pdf": "figures/class_f1_checkpoint_tradeoff.pdf",
+        "svg": "figures/class_f1_checkpoint_tradeoff.svg",
+        "png": "figures/class_f1_checkpoint_tradeoff.png",
+        "alignment_json": "figures/class_f1_checkpoint_tradeoff.alignment.json",
+        "text_audit_json": "figures/class_f1_checkpoint_tradeoff.text-audit.json",
+        "collision_audit_json": "figures/class_f1_checkpoint_tradeoff.collision-audit.json"
+      }
+    }
+  ]
+}
