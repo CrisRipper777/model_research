@@ -35,6 +35,16 @@ RESEARCH = ROOT / "research/rmcge_v2"
 DATA_DIR = RESEARCH / "data"
 OUTPUT = ROOT / "outputs/rmcge_v2"
 SUMMARY = ROOT / "research/psce_mag_v7b/data/candidate_graph_summary.json"
+ARTIFACT_CSV_FIELDS = {
+    "runs.csv": ["dataset", "variant", "seed", "status", "best_epoch", "val_acc", "val_macro_f1", "wall_seconds", "checkpoint_path", "run_metrics_path", "diagnostics_path", "config_sha256", "test_metrics_present", "error"],
+    "epoch_history.csv": ["dataset", "variant", "seed", "epoch", "train_loss", "train_objective", "train_ce", "train_ce_eval", "train_accuracy_eval", "train_macro_f1_eval", "val_ce", "val_acc", "val_macro_f1", "epoch_wall_seconds", "learning_rate"],
+    "paired_comparisons.csv": ["dataset", "seed", "metric", "contrast", "difference", "left_value", "right_value"],
+    "edge_weight_diagnostics.csv": ["dataset", "variant", "seed", "modality", "mean", "std", "p10", "p50", "p90", "mean_abs_from_one", "fraction_abs_gt_0_1", "fraction_abs_gt_0_2", "mean_by_target_degree_bin", "mean_abs_reverse_difference", "text_visual_correlation", "text_visual_correlation_defined", "text_visual_mean_abs_difference"],
+    "message_scale_diagnostics.csv": ["dataset", "variant", "seed", "modality", "u1_rms", "delta_rms", "delta_hat_rms", "delta_weighted_rms_by_expert", "cross_rms", "cross_hat_rms", "cross_weighted_rms_by_expert", "knn_rms", "knn_hat_rms", "knn_weighted_rms_by_expert", "floor_hit_dimensions", "physical_profile_rms_by_expert", "combined_profile_rms_by_expert", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine", "weighted_graph_correction_rms", "intrinsic_rms", "router_correction_rms", "router_entropy", "dense_probability_mean", "expert_selection_share", "base_expert_selection_share", "router_top2_flip_fraction", "expert_coefficients"],
+    "expert_router_diagnostics.csv": ["dataset", "variant", "seed", "modality", "expert_selection_share", "base_expert_selection_share", "dense_probability_mean", "router_entropy", "router_correction_rms", "router_top2_flip_fraction", "expert_coefficients", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine"],
+    "frozen_interventions.csv": ["dataset", "variant", "seed", "intervention", "val_acc", "val_macro_f1", "val_acc_delta", "val_macro_f1_delta", "logit_delta_rms", "prediction_flip_fraction"],
+    "resource_profile.csv": ["dataset", "variant", "seed", "wall_seconds", "epochs_completed", "mean_epoch_wall_seconds", "peak_allocated_bytes", "peak_reserved_bytes", "cuda_device_name"],
+}
 
 
 def now() -> str:
@@ -512,6 +522,13 @@ def setup_logger(path: Path) -> logging.Logger:
 def append_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     new_file = not path.exists()
+    if not new_file:
+        with path.open("r", newline="", encoding="utf-8") as handle:
+            existing_fields = next(csv.reader(handle), None)
+        if existing_fields != fields:
+            raise RuntimeError(
+                f"CSV schema mismatch for {path}: expected {fields}, found {existing_fields}"
+            )
     with path.open("a", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         if new_file:
@@ -527,21 +544,30 @@ def append_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> Non
             )
 
 
+def ensure_csv_header(path: Path, fields: list[str]) -> None:
+    """Create or update a header-only artifact; never reinterpret data rows."""
+    if not path.exists():
+        append_csv(path, [], fields)
+        return
+    with path.open("r", newline="", encoding="utf-8") as handle:
+        reader = csv.reader(handle)
+        existing_fields = next(reader, None)
+        has_data = next(reader, None) is not None
+    if existing_fields == fields:
+        return
+    if has_data:
+        raise RuntimeError(
+            f"Refusing to change CSV schema with existing data in {path}: "
+            f"expected {fields}, found {existing_fields}"
+        )
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        csv.writer(handle, lineterminator="\n").writerow(fields)
+
+
 def initialize_artifact_files() -> None:
-    fields = {
-        "runs.csv": ["dataset", "variant", "seed", "status", "best_epoch", "val_acc", "val_macro_f1", "wall_seconds", "checkpoint_path", "run_metrics_path", "diagnostics_path", "config_sha256", "test_metrics_present", "error"],
-        "epoch_history.csv": ["dataset", "variant", "seed", "epoch", "train_loss", "train_objective", "train_ce", "train_ce_eval", "train_accuracy_eval", "train_macro_f1_eval", "val_ce", "val_acc", "val_macro_f1", "epoch_wall_seconds", "learning_rate"],
-        "paired_comparisons.csv": ["dataset", "seed", "metric", "contrast", "difference", "left_value", "right_value"],
-        "edge_weight_diagnostics.csv": ["dataset", "variant", "seed", "modality", "mean", "std", "p10", "p50", "p90", "mean_abs_from_one", "fraction_abs_gt_0_1", "fraction_abs_gt_0_2", "mean_by_target_degree_bin", "mean_abs_reverse_difference", "text_visual_correlation", "text_visual_correlation_defined", "text_visual_mean_abs_difference"],
-        "message_scale_diagnostics.csv": ["dataset", "variant", "seed", "modality", "u1_rms", "delta_rms", "delta_hat_rms", "delta_weighted_rms_by_expert", "cross_rms", "cross_hat_rms", "cross_weighted_rms_by_expert", "knn_rms", "knn_hat_rms", "knn_weighted_rms_by_expert", "floor_hit_dimensions", "physical_profile_rms_by_expert", "combined_profile_rms_by_expert", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine", "weighted_graph_correction_rms", "intrinsic_rms", "router_correction_rms", "router_entropy", "dense_probability_mean", "expert_selection_share", "base_expert_selection_share", "router_top2_flip_fraction", "expert_coefficients"],
-        "expert_router_diagnostics.csv": ["dataset", "variant", "seed", "modality", "expert_selection_share", "base_expert_selection_share", "dense_probability_mean", "router_entropy", "router_correction_rms", "router_top2_flip_fraction", "expert_coefficients", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine"],
-        "frozen_interventions.csv": ["dataset", "variant", "seed", "intervention", "val_acc", "val_macro_f1", "val_acc_delta", "val_macro_f1_delta", "logit_delta_rms", "prediction_flip_fraction"],
-        "resource_profile.csv": ["dataset", "variant", "seed", "wall_seconds", "epochs_completed", "mean_epoch_wall_seconds", "peak_allocated_bytes", "peak_reserved_bytes", "cuda_device_name"],
-    }
-    for name, columns in fields.items():
+    for name, columns in ARTIFACT_CSV_FIELDS.items():
         path = DATA_DIR / name
-        if not path.exists():
-            append_csv(path, [], columns)
+        ensure_csv_header(path, columns)
     if not (DATA_DIR / "failures.json").exists():
         write_json(DATA_DIR / "failures.json", [])
     if not (DATA_DIR / "gradient_audit.json").exists():
@@ -920,7 +946,7 @@ def campaign(seeds: tuple[int, ...], device: str) -> list[dict[str, Any]]:
                     row["diagnostics_path"] = str((OUTPUT / "runs" / dataset / variant / f"seed_{seed}" / "checkpoint_diagnostics.json").relative_to(ROOT))
                     rows.append(row)
                     update_manifest_run(row)
-                    append_csv(DATA_DIR / "runs.csv", [row], ["dataset", "variant", "seed", "status", "best_epoch", "val_acc", "val_macro_f1", "wall_seconds", "checkpoint_path", "run_metrics_path", "diagnostics_path", "config_sha256", "test_metrics_present"])
+                    append_csv(DATA_DIR / "runs.csv", [row], ["dataset", "variant", "seed", "status", "best_epoch", "val_acc", "val_macro_f1", "wall_seconds", "checkpoint_path", "run_metrics_path", "diagnostics_path", "config_sha256", "test_metrics_present", "error"])
                     all_history = [
                         {"dataset": dataset, "variant": variant, "seed": seed, **epoch}
                         for epoch in diagnostics["history"]
@@ -955,14 +981,6 @@ def append_mechanism_rows(diagnostics: dict[str, Any]) -> None:
         if modality in edge:
             append_csv(DATA_DIR / "edge_weight_diagnostics.csv", [{"dataset": diagnostics["dataset"], "variant": diagnostics["variant"], "seed": diagnostics["seed"], "modality": modality, **edge[modality], "text_visual_correlation": edge.get("text_visual_correlation"), "text_visual_correlation_defined": edge.get("text_visual_correlation_defined"), "text_visual_mean_abs_difference": edge.get("text_visual_mean_abs_difference")}], ["dataset", "variant", "seed", "modality", "mean", "std", "p10", "p50", "p90", "mean_abs_from_one", "fraction_abs_gt_0_1", "fraction_abs_gt_0_2", "mean_by_target_degree_bin", "mean_abs_reverse_difference", "text_visual_correlation", "text_visual_correlation_defined", "text_visual_mean_abs_difference"])
     for modality, values in diagnostics["mechanism_details"].get("modalities", {}).items():
-        if diagnostics["variant"] == "V0":
-            values = {
-                **values,
-                "expert_selection_share": values.get("physical_expert_selection_share"),
-                "base_expert_selection_share": values.get("physical_expert_selection_share"),
-                "expert_output_rms": None,
-                "weighted_graph_correction_rms": values.get("physical_contribution_rms"),
-            }
         row = {"dataset": diagnostics["dataset"], "variant": diagnostics["variant"], "seed": diagnostics["seed"], "modality": modality, **values}
         append_csv(DATA_DIR / "message_scale_diagnostics.csv", [row], ["dataset", "variant", "seed", "modality", "u1_rms", "delta_rms", "delta_hat_rms", "delta_weighted_rms_by_expert", "cross_rms", "cross_hat_rms", "cross_weighted_rms_by_expert", "knn_rms", "knn_hat_rms", "knn_weighted_rms_by_expert", "floor_hit_dimensions", "physical_profile_rms_by_expert", "combined_profile_rms_by_expert", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine", "weighted_graph_correction_rms", "intrinsic_rms", "router_correction_rms", "router_entropy", "dense_probability_mean", "expert_selection_share", "base_expert_selection_share", "router_top2_flip_fraction", "expert_coefficients"])
         append_csv(DATA_DIR / "expert_router_diagnostics.csv", [{key: row.get(key) for key in ("dataset", "variant", "seed", "modality", "expert_selection_share", "base_expert_selection_share", "dense_probability_mean", "router_entropy", "router_correction_rms", "router_top2_flip_fraction", "expert_coefficients", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine")}], ["dataset", "variant", "seed", "modality", "expert_selection_share", "base_expert_selection_share", "dense_probability_mean", "router_entropy", "router_correction_rms", "router_top2_flip_fraction", "expert_coefficients", "expert_output_rms", "expert_output_rms_by_expert", "expert_output_pairwise_cosine"])
