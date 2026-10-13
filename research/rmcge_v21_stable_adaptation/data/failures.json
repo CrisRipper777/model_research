@@ -9,6 +9,37 @@
       "status": "failed",
       "timestamp": "2026-10-13T19:39:18+0800",
       "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v21_stable_adaptation.py\", line 1011, in audit_and_run\n    result = run_one(dataset, condition, seed, caches[dataset], initial_audit[\"pairs\"][f\"{dataset}/seed_{seed}\"], device=device)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v21_stable_adaptation.py\", line 899, in run_one\n    _zero_test_attestation(result)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v21_stable_adaptation.py\", line 497, in _zero_test_attestation\n    raise RuntimeError(\"Test metric field present\")\nRuntimeError: Test metric field present\n"
+    },
+    {
+      "attempt_tag": null,
+      "condition": "validation_checkpoint_audit",
+      "dataset": "analysis",
+      "error": "analysis history reader assumed canonical seed_42/result.json, but completed run is registered under seed_42_attestation_fix1/result.json",
+      "error_type": "FileNotFoundError",
+      "phase": "analysis",
+      "resolution": "analysis now reads each run result_path from runs.csv; a path-registry regression test was added",
+      "seed": -1,
+      "status": "failed_during_analysis_no_tables_written",
+      "test_evaluation": false,
+      "timestamp": "2026-10-13T20:04:10+0800",
+      "traceback": "Traceback (most recent call last):\n  File \"scripts/analyze_rmcge_v21_stable_adaptation.py\", line 364, in <module>\n    print(json.dumps(analyze(args.device), indent=2, sort_keys=True))\n  File \"scripts/analyze_rmcge_v21_stable_adaptation.py\", line 270, in analyze\n    _append_warm_history(dataset, seed, epoch_rows)\n  File \"scripts/analyze_rmcge_v21_stable_adaptation.py\", line 342, in _append_warm_history\n    result = json.loads(path.read_text(encoding=\"utf-8\"))\nFileNotFoundError: [Errno 2] No such file or directory: \"outputs/rmcge_v21_stable_adaptation/runs/Movies/W0/seed_42/result.json\""
+    },
+    {
+      "affected_artifact": "research/rmcge_v21_stable_adaptation/data/expert_router_diagnostics.csv",
+      "attempt_tag": null,
+      "condition": "expert_router_diagnostics_export",
+      "dataset": "all",
+      "error": "V2.1 profile diagnostics use delta_rms/cross_rms/cross_delta_rms keys while the aggregate CSV schema expects delta_intra_rms/cross_base_rms/delta_cross_rms; extrasaction=ignore left these columns empty",
+      "error_type": "SchemaMappingMismatch",
+      "phase": "diagnostic_artifact_quality_gate",
+      "pre_correction_artifact_sha256": "c123601ece53b9a9283dbe8bf2bee8e6749ae5f97fe982615e8bec0a5a394609",
+      "pre_correction_rows": 3236,
+      "resolution": "normalize diagnostic aliases and rebuild aggregate tables from the saved per-run result JSON; no model training was repeated",
+      "seed": -1,
+      "source_artifact": "outputs/rmcge_v21_stable_adaptation/runs/*/*/seed_*_attestation_fix1/result.json expert_diagnostics",
+      "status": "derived_columns_were_blank_raw_run_diagnostics_preserved",
+      "test_evaluation": false,
+      "timestamp": "2026-10-13T20:10:41+0800"
     }
   ]
 }

@@ -49,4 +49,9 @@ After the path and diagnostic-schema fixes, the focused suite passes **28 tests*
 
 ## Freeze boundary
 
-The corrected implementation freeze includes the diagnosis and training/analyzer entry points, study configuration, utility functions, focused tests, initialization audit, failure-safe attempt handling, and this document. Seed 42 remains the first nine-run gate: its preserved first attempt is not counted as a verified run, and seeds 43/44 remain gated on a clean nine-run batch with per-run numerical, state-freeze, selector-update, checkpoint, and Test-disabled checks.
+The corrected implementation freeze includes the diagnosis and training/analyzer entry points, study configuration, utility functions, focused tests, initialization audit, and failure-safe attempt handling. The formal matrix is complete: 27 verified runs across all datasets, conditions, and seeds. The preserved partial Movies/W0/seed 42 attempt is not counted as verified; the tagged retry is the registered run. The per-run numerical, state-freeze, selector-update, checkpoint, and Test-disabled gates passed.
+
+
+## Final evidence closure
+
+The final audit covers 27 registered runs and 54 selected checkpoints. All runs report `test_evaluation=false`; Test label values were not indexed. The three recorded failures (runner attestation, registered-path analysis lookup, and expert-diagnostic CSV alias mapping) remain in `data/failures.json`; all have documented resolutions. The last issue was repaired by regenerating aggregate tables from saved run JSON without repeating model training. Latest recorded tests: focused suite **28 passed**; complete suite **512 passed, 1 skipped** (18 warnings); Python compilation and `git diff --check` passed. Nine warm-start C0 Best Accuracy source checkpoint files were separately re-hashed locally and all nine matched the audit manifest. Detailed rows are in `data/warmstart_source_checkpoints.csv`.

@@ -1,0 +1,84 @@
+{
+  "checkpoint_reloads": 54,
+  "classwise_rows": 1836,
+  "degree_group_rows": 1368,
+  "paired_rows": 162,
+  "prediction_transition_rows": 54,
+  "runs": 27,
+  "split_fingerprints": {
+    "Grocery/seed_42": {
+      "feature_sha256": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "physical_edge_index_sha256": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "b3167848262ee4f9541843d4080a0d8834c1de5251e710b34cef8ef3c6ddcca0",
+      "validation_index_sha256": "0e84f61879f9bd0baa2a24a373dc579cef85a6e112e1f3dc75783448eaa851de"
+    },
+    "Grocery/seed_43": {
+      "feature_sha256": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "physical_edge_index_sha256": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "4982af6a8f9e0176a4362e632713bafaa84a7c966ab0976be7de3f1143edca03",
+      "validation_index_sha256": "8dba12f515332e6dc6e9f9546d21b434c3522ba5e9e8168c4b6e2a97ced29608"
+    },
+    "Grocery/seed_44": {
+      "feature_sha256": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "physical_edge_index_sha256": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "4bc2b59314efa0b4f0d520ae8568c1c05091e8d0426c4c602b864d34608f63f5",
+      "validation_index_sha256": "0c85df0b875aef935e3327ebe8a379f2d429f0a48f02706b0da29fde3c029138"
+    },
+    "Movies/seed_42": {
+      "feature_sha256": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "physical_edge_index_sha256": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "9785bafabb1328d47db953f89bf7a3384e6f3edeb0b31b06338cf6ca8f225330",
+      "validation_index_sha256": "15d61cf932cb045c6af6c633e7a5ca628cb0f858e2ba4195ab602c295b70c092"
+    },
+    "Movies/seed_43": {
+      "feature_sha256": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "physical_edge_index_sha256": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "d8abc1b351bd26f01554f246745b231b1f383bd7abcca03183f1fcc68aa668f0",
+      "validation_index_sha256": "40ed0ad641d19cbd6bf992a18e700e6f6b90c0a73f3db15e60205fadf00872b1"
+    },
+    "Movies/seed_44": {
+      "feature_sha256": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "physical_edge_index_sha256": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "fb698803a4a039f0885b8d52e42376a6564f185e793e61bb7e3a1758b6d02d16",
+      "validation_index_sha256": "928d23550082d94a9839b188bec88c10435298b2d86dec17797655a6448b8018"
+    },
+    "ele-fashion/seed_42": {
+      "feature_sha256": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "physical_edge_index_sha256": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+      "validation_index_sha256": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+    },
+    "ele-fashion/seed_43": {
+      "feature_sha256": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "physical_edge_index_sha256": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+      "validation_index_sha256": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+    },
+    "ele-fashion/seed_44": {
+      "feature_sha256": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "physical_edge_index_sha256": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "test_label_values_indexed": false,
+      "train_index_sha256": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+      "validation_index_sha256": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+    }
+  },
+  "test_evaluation": false,
+  "test_label_values_indexed": false
+}

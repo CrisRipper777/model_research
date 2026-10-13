@@ -1,0 +1,90 @@
+{
+  "analysis_registry_path_correction_commit": "aa2a369f866775fd48b2e70412a3ee68b69aaf8e",
+  "branch": "exp/rmcge_v21_stable_adaptation",
+  "corrected_implementation_freeze_commit": "f455e196d8fbfb6d934e66472d3a6ac274d1f420",
+  "diagnosis_commit": "63c6f4ce8b56bee31590fc18f6e09c45e8488089",
+  "evidence_commit": "recorded_in_final_git_revision_and_delivery",
+  "experiment": {
+    "conditions": [
+      "W0",
+      "W1",
+      "W2"
+    ],
+    "datasets": [
+      "Movies",
+      "Grocery",
+      "ele-fashion"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "selected_checkpoints_reloaded": 54,
+    "test_evaluation": false,
+    "test_label_values_indexed": false,
+    "verified_runs": 27
+  },
+  "expert_diagnostic_schema_correction_commit": "7427f85bef1f0220893d81b2e9f64bea75683896",
+  "failure_records_preserved": 3,
+  "large_checkpoints_logits_embeddings_raw_features_and_raw_labels_committed": false,
+  "machine_readable_outputs": [
+    "data/runs.csv",
+    "data/epoch_history.csv",
+    "data/paired_comparisons.csv",
+    "data/paired_comparison_summary.csv",
+    "data/warmstart_checkpoint_metrics.csv",
+    "data/warmstart_classwise_metrics.csv",
+    "data/warmstart_prediction_transitions.csv",
+    "data/warmstart_degree_group_metrics.csv",
+    "data/selector_diagnostics.csv",
+    "data/expert_router_diagnostics.csv",
+    "data/checkpoint_tradeoffs.csv",
+    "data/resource_profile.csv",
+    "data/stage_transition_audit.json",
+    "data/initialization_audit.json",
+    "data/implementation_checks.json",
+    "data/failures.json",
+    "data/analysis_audit.json",
+    "data/warmstart_source_checkpoints.csv"
+  ],
+  "reports": [
+    "CLASSWISE_DIAGNOSTICS.md",
+    "TRAINING_DYNAMICS.md",
+    "ADAPTATION_REPORT.md",
+    "MECHANISM_REPORT.md",
+    "DECISION_MEMO.md",
+    "IMPLEMENTATION_AUDIT.md"
+  ],
+  "runtime": {
+    "cublas_workspace_config": null,
+    "cuda_build": "12.1",
+    "cudnn": "90100",
+    "deterministic_algorithms": false,
+    "driver": "535.309.01",
+    "numpy": "2.4.3",
+    "physical_device": "GPU 1 / NVIDIA GeForce RTX 3090",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "test_evaluation": false,
+    "tf32_cudnn": true,
+    "tf32_matmul": false,
+    "training_started": true,
+    "visible_device_in_study_process": "cuda:0"
+  },
+  "source_branch": "exp/rmcge_v21_message_purpose_selection",
+  "source_checkpoint_audit": {
+    "artifact": "data/warmstart_source_checkpoints.csv",
+    "count": 9,
+    "local_sha256_verified": 9,
+    "type": "historical C0 Best Accuracy"
+  },
+  "source_commit": "218d6d230e5afc16e259c09777f6363de5e0c6cf",
+  "study": "RM-CGE V2.1 Stable Adaptation",
+  "validation": {
+    "focused_tests": "28 passed",
+    "full_tests": "512 passed, 1 skipped, 18 warnings",
+    "git_diff_check": "passed",
+    "py_compile": "passed"
+  }
+}
