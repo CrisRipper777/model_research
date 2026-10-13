@@ -186,7 +186,7 @@ The corresponding four expert-specific values, physical and combined profile RMS
 | ele-fashion | C2 | text | 1.1880 | 0.9061 | 0.8977 | 0.3280 | 0.355 | 0.500 |
 | ele-fashion | C2 | visual | 1.1732 | 0.7728 | 0.9407 | 0.3405 | 0.346 | 0.500 |
 
-Entropy is for the existing route distribution; largest expert shares summarize Top-2 selection counts. Top-2 flips compare the trained node route with the base route. The Router architecture, Top-2 selection and balance loss were unchanged. These diagnostics are descriptive and do not by themselves establish pathological concentration.
+Entropy is for the existing route distribution; largest expert shares summarize Top-2 selection counts. Grocery Visual is severely concentrated in every condition: its largest mean dense probability is 0.9996–0.9998, route entropy is 0.0022–0.0032, and correction-logit RMS is 3.14–3.51. This behavior is already present in C0, so these runs do not attribute it to V2.1. Movies routes are more distributed and ele-fashion is intermediate. Top-2 flips compare the trained node route with the base route; they describe route changes and are not a concentration measure. The Router architecture, Top-2 selection and balance loss were unchanged. Treat the Grocery Visual router as a serious inherited pathology for a separately scoped investigation.
 
 ## Frozen checkpoint interventions
 

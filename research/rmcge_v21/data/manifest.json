@@ -3,7 +3,7 @@
     "manifest_hash_excluded_from_artifact_integrity": "the manifest records the artifact-integrity hash, so hashing it there would create a self-reference",
     "post_run_report_template_repair": true,
     "script": "scripts/analyze_rmcge_v21.py",
-    "script_sha256": "8f3b0a5412df8044c4c0d12c0d585761db2aebe17abbeb06fbd9689a9ecb715a",
+    "script_sha256": "0c70ac321e8de6a15911bd09673673c88a827ddaa599708887af09568638ba88",
     "training_records_or_metrics_changed": false
   },
   "baseline_commit_sha": "ba1fbbd100a0b218ec66853e29ea0cfee8cfa5b4",
@@ -27,7 +27,7 @@
   },
   "created_at_utc": "2026-10-13T09:02:17+00:00",
   "evidence_analysis": {
-    "artifact_integrity_sha256": "ddc07923998bdfe78ced2ebf7012d561c87b9e111cd66a1023750065b790abb2",
+    "artifact_integrity_sha256": "1333a66525d517d6a9567b9cdb58f2fda5cc608e2f6a979f13fdee5baff0486e",
     "edge_rows": 108,
     "epoch_history_rows": 3633,
     "paired_rows": 81,
@@ -1206,5 +1206,5 @@
   "study": "RM-CGE V2.1 Message-Purpose Conditioned Selective Graph Experts",
   "test_evaluation": false,
   "test_label_values_indexed": false,
-  "updated_at_utc": "2026-10-13T09:56:30+00:00"
+  "updated_at_utc": "2026-10-13T09:57:57+00:00"
 }
