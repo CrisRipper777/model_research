@@ -1,0 +1,147 @@
+{
+  "branch": "exp/rmcge_v22_cross_message_content",
+  "conditions": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "datasets": {
+    "Grocery": {
+      "cache_path_abs": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "features": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "num_test_indices_masked": 3415,
+      "num_train": 10244,
+      "num_validation": 3415,
+      "physical_edge_index": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "seed_split_fingerprints": {
+        "42": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+        "43": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7",
+        "44": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783"
+      },
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "train_val_split": {
+        "test_idx": "e5317f83fc623b24ef510b85f9a90a3d8ff414a6b5927457278f2aa0d784ef33",
+        "train_idx": "b3167848262ee4f9541843d4080a0d8834c1de5251e710b34cef8ef3c6ddcca0",
+        "train_val_labels": "e7f814b5dccd34fd262a88cffdd1f46c7874bafadc06aa5f404965a5563fc254",
+        "val_idx": "0e84f61879f9bd0baa2a24a373dc579cef85a6e112e1f3dc75783448eaa851de"
+      },
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "Movies": {
+      "cache_path_abs": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "features": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "num_test_indices_masked": 3335,
+      "num_train": 10003,
+      "num_validation": 3334,
+      "physical_edge_index": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "seed_split_fingerprints": {
+        "42": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+        "43": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c",
+        "44": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563"
+      },
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "train_val_split": {
+        "test_idx": "abc60824e43fd59741e117b3bd9eb3048ab24df0fde2a9f352b216935efad74a",
+        "train_idx": "9785bafabb1328d47db953f89bf7a3384e6f3edeb0b31b06338cf6ca8f225330",
+        "train_val_labels": "9da188886ea7d8c181be5e5c79f042ef1ae95d78996c346396a14acf2a0db101",
+        "val_idx": "15d61cf932cb045c6af6c633e7a5ca628cb0f858e2ba4195ab602c295b70c092"
+      },
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "ele-fashion": {
+      "cache_path_abs": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+      "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "features": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "num_edges": 399172,
+      "num_nodes": 97766,
+      "num_test_indices_masked": 29330,
+      "num_train": 58659,
+      "num_validation": 9777,
+      "physical_edge_index": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "seed_split_fingerprints": {
+        "42": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+        "43": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+        "44": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+      },
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+      "train_val_split": {
+        "test_idx": "291f9506dd9017adb90e88b0fd8123286d2875ca963d2551bf67a042fbc99f1a",
+        "train_idx": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+        "train_val_labels": "8b731095b5e140750034b5bdd921b560c757e29c2584add11b8e98b276e6f0a5",
+        "val_idx": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+      },
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    }
+  },
+  "environment": {
+    "cublas_workspace_config": null,
+    "cuda_available": true,
+    "cuda_build": "12.1",
+    "cudnn": 90100,
+    "cudnn_tf32": true,
+    "deterministic_algorithms": false,
+    "device_count": 1,
+    "devices": [
+      "NVIDIA GeForce RTX 3090"
+    ],
+    "matmul_tf32": false,
+    "numpy": "2.4.3",
+    "physical_gpu_snapshot": {
+      "available": true,
+      "devices": [
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 22858,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 0,
+          "utilization_percent": 88,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 351,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 1,
+          "utilization_percent": 0,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      ],
+      "error": null
+    },
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "timestamp_utc": "2026-10-13T14:45:47+00:00",
+    "visible_devices": "1"
+  },
+  "formal_cuda_visibility": "CUDA_VISIBLE_DEVICES=1 (logical cuda:0)",
+  "formal_run_count": 45,
+  "last_preflight_utc": "2026-10-13T14:33:12+00:00",
+  "protocol_version": "unified_full_graph_nc_v1",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "selected_physical_gpu": 1,
+  "source_commit": "151f1c08a872d55cdf3e7de37d950c7485fb4014",
+  "study": "RM-CGE V2.2 Receiver-Conditioned Cross-modal Message Experts",
+  "test_evaluation": false,
+  "test_label_values_indexed": false
+}

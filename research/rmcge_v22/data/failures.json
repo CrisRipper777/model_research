@@ -1,0 +1,16 @@
+{
+  "failures": [
+    {
+      "stage": "real_data_initialization_preflight",
+      "dataset": "ele-fashion",
+      "condition": "M0_vs_V2.1_C0",
+      "seed": 43,
+      "time_utc": "2026-10-13",
+      "error": "Preflight stopped because a provisional 2e-6 max-logit threshold was exceeded; observed max absolute difference was 2.9802322387695312e-6.",
+      "classification": "nonblocking_preflight_tolerance_revision",
+      "evidence_boundary": "The M0/C0 initial common tensors and classifier were exact; the discrepancy is a small floating-point forward difference on GPU. Other completed dataset-seed checks were between 1.1920928955078125e-6 and 1.6689300537109375e-6. No training was started.",
+      "resolution": "The real-data comparison now uses atol=5e-5, matching the existing V2.1 paired-initialization audit tolerance. The observed 2.98e-6 remains recorded; it is not replaced with zero.",
+      "test_evaluation": false
+    }
+  ]
+}

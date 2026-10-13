@@ -1,0 +1,34 @@
+study: RM-CGE V2.2 Receiver-Conditioned Cross-modal Message Experts
+protocol_version: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+conditions: [M0, M1, M2, M3, M4]
+seeds: [42, 43, 44]
+first_batch_seeds: [42]
+training:
+  optimizer: adamw
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  dropout: 0.2
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 1.0e-4
+  grad_clip: 1.0
+  eval_every: 1
+  best_checkpoint: validation_accuracy
+  separate_best_checkpoint: validation_macro_f1
+  evaluate_test: false
+  balance_loss_weight: 0.01
+content:
+  hidden_dim: 256
+  rank: 32
+  gate_hidden: 64
+  modality_embedding_dim: 8
+  eta_init: 0.25
+  gate_final_layer_zero_init: true
+  query_normalization: none
+  value_normalization: none
+  physical_operator: original_symmetric_degree_normalized
+  edge_chunk_size: 16384
+  in_router_features: false
+  new_auxiliary_loss: false
