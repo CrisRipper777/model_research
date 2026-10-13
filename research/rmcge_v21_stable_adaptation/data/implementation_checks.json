@@ -1,0 +1,60 @@
+{
+  "branch": "exp/rmcge_v21_stable_adaptation",
+  "finalized": false,
+  "formal_run_count": 0,
+  "phase": "pre_freeze",
+  "pre_freeze_validation": {
+    "focused_suite": {
+      "command": "python -m pytest -q tests/test_rmcge_v21_stable_adaptation.py",
+      "passed": 25
+    },
+    "full_suite": {
+      "command": "CUDA_VISIBLE_DEVICES='' python -m pytest -q",
+      "exit_code": 0,
+      "passed": 509,
+      "skipped": 1,
+      "warnings": 18
+    },
+    "git_diff_check": {
+      "passed": true
+    },
+    "gpu_initialization_preflight": {
+      "audit_sha256": "c98c8f47de9e71d39da661ef366fe0ee6ae2c237b5a2f6683c453978da4d25f4",
+      "pairs": [
+        "Grocery/seed_42",
+        "Movies/seed_42",
+        "ele-fashion/seed_42"
+      ],
+      "status": "passed",
+      "test_evaluation": false
+    },
+    "py_compile": {
+      "files": [
+        "scripts/run_rmcge_v21_stable_adaptation.py",
+        "scripts/analyze_rmcge_v21_stable_adaptation.py",
+        "scripts/diagnose_rmcge_v21_classes.py",
+        "src/research/rmcge_v21_stable_adaptation.py",
+        "tests/test_rmcge_v21_stable_adaptation.py"
+      ],
+      "passed": true
+    }
+  },
+  "runtime_environment": {
+    "cublas_workspace_config": null,
+    "cuda_build": "12.1",
+    "cudnn": "90100",
+    "deterministic_algorithms": false,
+    "driver": "535.309.01",
+    "numpy": "2.4.3",
+    "physical_device": "GPU 1 / NVIDIA GeForce RTX 3090",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "test_evaluation": false,
+    "tf32_cudnn": true,
+    "tf32_matmul": false,
+    "training_started": false,
+    "visible_device_in_study_process": "cuda:0"
+  },
+  "test_evaluation_disabled": true,
+  "timestamp_local": "2026-10-13T19:37:25+0800"
+}

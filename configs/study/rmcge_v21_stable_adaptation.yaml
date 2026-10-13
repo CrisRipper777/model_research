@@ -1,0 +1,52 @@
+name: rmcge_v21_stable_adaptation
+source_branch: exp/rmcge_v21_message_purpose_selection
+source_commit: 218d6d230e5afc16e259c09777f6363de5e0c6cf
+datasets: [Movies, Grocery, ele-fashion]
+seeds: [42, 43, 44]
+conditions: [W0, W1, W2]
+source_checkpoint_selection: best_val_accuracy
+protocol_version: unified_full_graph_nc_v1
+evaluate_test: false
+
+stage1:
+  purpose: selector_only_adaptation
+  epochs: 12
+  optimizer: AdamW
+  selector_lr: 0.001
+  weight_decay: 0.0001
+  dropout_mode: eval
+  gradients_enabled: true
+  objective: train_cross_entropy_plus_model_balance_loss
+  model_balance_weight: 0.01
+  grad_clip: 1.0
+  freeze_inherited_model: true
+  freeze_classifier: true
+
+stage2:
+  purpose: joint_optimization
+  max_epochs: 90
+  optimizer: AdamW
+  optimizer_state: fresh_empty
+  common_model_lr: 0.0001
+  classifier_lr: 0.0001
+  selector_lr: 0.0005
+  weight_decay: 0.0001
+  dropout: 0.2
+  grad_clip: 1.0
+  scheduler: null
+  validation_every: 1
+  early_stopping_metric: validation_accuracy
+  patience: 30
+  minimum_epoch: 20
+  minimum_delta: 0.0001
+
+checkpoint_selection:
+  main_candidates: [t0, stage2_joint_epochs]
+  stage1_candidate: false
+  primary: validation_accuracy
+  secondary: validation_macro_f1
+  if_no_accuracy_improvement: retain_t0
+
+batch_gate:
+  first_seed: 42
+  require_all_nine_runs_verified_before_remaining_seeds: true
