@@ -1,0 +1,30 @@
+study: RM-CGE V2.1 Message-Purpose Conditioned Selective Graph Experts
+protocol_version: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+conditions: [C0, C1, C2]
+seeds: [42, 43, 44]
+first_batch_seed: 42
+model:
+  hidden_dim: 256
+  physical_hops: 4
+  num_experts: 4
+  top_k: 2
+  expert_bottleneck: 64
+  dropout: 0.2
+training:
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  grad_clip: 1.0
+  eval_every: 1
+  evaluate_test: false
+  checkpoint_selection: best_val_accuracy
+  aux_weight: 1.0
+cache:
+  source: V7B.1 K=8
+  modality_support: source_flags presence (> 0)
+  both_edge_policy: retain fully in both modality graphs

@@ -1,0 +1,194 @@
+{
+  "baseline_commit_sha": "ba1fbbd100a0b218ec66853e29ea0cfee8cfa5b4",
+  "branch": "exp/rmcge_v21_message_purpose_selection",
+  "cache_feature_candidate_v7b_fingerprints": {
+    "Grocery": {
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "Movies": {
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "ele-fashion": {
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    }
+  },
+  "created_at_utc": "2026-10-13T09:02:17+00:00",
+  "formal_runs_planned": 27,
+  "implementation_checks_sha256": "730971a9dd291ee429572117f3c636eeabfd27ec6f97cd4578d2cb5065c06f2f",
+  "implementation_freeze_sha": null,
+  "planned_runs": [
+    {
+      "condition": "C0",
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "Movies",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "Movies",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "Movies",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "Grocery",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "Grocery",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "Grocery",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C0",
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C1",
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "status": "planned"
+    },
+    {
+      "condition": "C2",
+      "dataset": "ele-fashion",
+      "seed": 44,
+      "status": "planned"
+    }
+  ],
+  "protocol_version": "unified_full_graph_nc_v1",
+  "status": "implementation_freeze_ready",
+  "study": "RM-CGE V2.1 Message-Purpose Conditioned Selective Graph Experts",
+  "test_evaluation": false,
+  "test_label_values_indexed": false
+}
