@@ -22,6 +22,7 @@ from src.research.rmcge_v21_stable_adaptation import (
     select_main_candidates,
     selector_state_sha256,
 )
+from scripts.analyze_rmcge_v21_stable_adaptation import _append_warm_history
 from scripts.run_rmcge_v21_stable_adaptation import _zero_test_attestation
 from src.tasks.nc import _resolve_nc_eval_labels
 
@@ -263,6 +264,25 @@ def test_test_attestation_flags_are_allowed_but_test_metric_fields_are_rejected(
 
     with pytest.raises(RuntimeError, match="unexpected Test metric fields"):
         _zero_test_attestation({"test_accuracy": 0.99})
+
+
+def test_warm_history_analysis_uses_attempt_path_from_run_registry(tmp_path, monkeypatch):
+    result_path = tmp_path / "attempt" / "result.json"
+    result_path.parent.mkdir()
+    result_path.write_text(json.dumps({
+        "best_accuracy_epoch": 2,
+        "best_f1_epoch": 3,
+        "history": [{"stage": "joint", "epoch": 2}, {"stage": "joint", "epoch": 3}],
+    }))
+    import scripts.analyze_rmcge_v21_stable_adaptation as analyzer
+
+    monkeypatch.setattr(analyzer, "ROOT", tmp_path)
+    run_index = {("Movies", 42, condition): {"result_path": "attempt/result.json"} for condition in ("W0", "W1", "W2")}
+    rows = []
+    _append_warm_history("Movies", 42, rows, run_index)
+    assert len(rows) == 6
+    assert sum(row["is_best_accuracy_epoch"] for row in rows) == 3
+    assert sum(row["is_best_f1_epoch"] for row in rows) == 3
 
 
 def test_receiver_mass_conservation_and_zero_score_identity():

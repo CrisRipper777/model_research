@@ -1057,11 +1057,15 @@ def audit_and_run(
     atomic_json(DATA_DIR / "implementation_checks.json", implementation_checks)
 
 
-def append_failure(dataset: str, condition: str, seed: int, exc: BaseException, *, attempt_tag: str | None = None) -> None:
+def append_failure(
+    dataset: str, condition: str, seed: int, exc: BaseException, *,
+    attempt_tag: str | None = None, phase: str = "training",
+) -> None:
     path = DATA_DIR / "failures.json"
     current = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"failures": []}
     current.setdefault("failures", []).append({
         "dataset": dataset, "condition": condition, "seed": seed, "status": "failed",
+        "phase": phase,
         "attempt_tag": attempt_tag,
         "error_type": type(exc).__name__, "error": str(exc), "traceback": traceback.format_exc(),
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z"),

@@ -20,7 +20,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.diagnose_rmcge_v21_classes import metrics_for
 from scripts.run_rmcge_v21 import DATASETS, SEEDS, build_config, data_info, sha256_file, verify_cache_entries
-from scripts.run_rmcge_v21_stable_adaptation import OUTPUT
+from scripts.run_rmcge_v21_stable_adaptation import OUTPUT, append_failure
 from src.data import load_mag_data
 from src.models import build_model
 from src.tasks.nc import _resolve_nc_eval_labels
@@ -267,7 +267,7 @@ def analyze(device: str = "cuda:0") -> dict[str, Any]:
                             "cold_or_t0_value": t0[metric], "warm_value": selected[metric],
                             "difference": selected[metric] - t0[metric], "causal_isolation": False,
                         })
-            _append_warm_history(dataset, seed, epoch_rows)
+            _append_warm_history(dataset, seed, epoch_rows, run_index)
             del data, x, edge, physical_degree, predictions, logits_by_key
             if device.startswith("cuda"):
                 torch.cuda.empty_cache()
@@ -336,9 +336,11 @@ def _write_coldstart_warmstart_comparison(warm_rows: list[dict[str, Any]]) -> No
     _write_csv("coldstart_warmstart_comparison.csv", output, ["dataset", "seed", "cold_condition", "warm_condition", "checkpoint", "metric", "cold_value", "warm_value", "difference_warm_minus_cold", "interpretation", "causal_isolation"])
 
 
-def _append_warm_history(dataset: str, seed: int, output: list[dict[str, Any]]) -> None:
+def _append_warm_history(
+    dataset: str, seed: int, output: list[dict[str, Any]], run_index: dict[tuple[str, int, str], dict[str, str]],
+) -> None:
     for condition in WARM_CONDITIONS:
-        path = OUTPUT / "runs" / dataset / condition / f"seed_{seed}" / "result.json"
+        path = ROOT / run_index[(dataset, seed, condition)]["result_path"]
         result = json.loads(path.read_text(encoding="utf-8"))
         acc_epoch, f1_epoch = int(result["best_accuracy_epoch"]), int(result["best_f1_epoch"])
         joint_history = [item for item in result["history"] if item["stage"] == "joint"]
@@ -361,4 +363,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", default="cuda:0", help="set CUDA_VISIBLE_DEVICES=1 to use the free RTX 3090")
     args = parser.parse_args()
-    print(json.dumps(analyze(args.device), indent=2, sort_keys=True))
+    try:
+        print(json.dumps(analyze(args.device), indent=2, sort_keys=True))
+    except BaseException as exc:
+        append_failure("analysis", "validation_checkpoint_audit", -1, exc, phase="analysis")
+        raise
