@@ -38,6 +38,7 @@ from scripts.run_rmcge_v22 import (  # noqa: E402
     read_rows,
     write_rows,
 )
+from scripts.audit_rmcge_v22_physical_strength import FIELDS as STRENGTH_FIELDS  # noqa: E402
 
 
 CONTRASTS = (
@@ -274,6 +275,7 @@ def audit_and_analyze() -> dict[str, Any]:
     gates = read_rows(DATA_DIR / "content_gate_diagnostics.csv")
     messages = read_rows(DATA_DIR / "message_scale_diagnostics.csv")
     routers = read_rows(DATA_DIR / "expert_router_diagnostics.csv")
+    strengths = read_rows(DATA_DIR / "physical_strength_diagnostics.csv")
     interventions = read_rows(DATA_DIR / "frozen_interventions.csv")
     resources = read_rows(DATA_DIR / "resource_profile.csv")
     artifacts = _read_json(DATA_DIR / "artifact_integrity.json")
@@ -293,6 +295,7 @@ def audit_and_analyze() -> dict[str, Any]:
         "expert_router_diagnostics.csv": _validate_table("expert_router_diagnostics.csv", routers, ROUTER_FIELDS, ("dataset", "condition", "seed", "modality")),
         "frozen_interventions.csv": _validate_table("frozen_interventions.csv", interventions, INTERVENTION_FIELDS, ("dataset", "condition", "seed", "intervention")),
         "resource_profile.csv": _validate_table("resource_profile.csv", resources, RESOURCE_FIELDS, ("dataset", "condition", "seed"), 45),
+        "physical_strength_diagnostics.csv": _validate_table("physical_strength_diagnostics.csv", strengths, STRENGTH_FIELDS, ("dataset", "condition", "seed", "modality"), 90),
     }
     expected_diagnostic_rows = {
         "degree_group_metrics.csv": 45 * 2 * 5,
@@ -300,6 +303,7 @@ def audit_and_analyze() -> dict[str, Any]:
         "message_scale_diagnostics.csv": 45 * 2,
         "expert_router_diagnostics.csv": 45 * 2,
         "frozen_interventions.csv": 9 * (3 + 3 + 3 + 4 + 5),
+        "physical_strength_diagnostics.csv": 45 * 2,
     }
     diagnostic_tables = {
         "degree_group_metrics.csv": degrees,
@@ -307,6 +311,7 @@ def audit_and_analyze() -> dict[str, Any]:
         "message_scale_diagnostics.csv": messages,
         "expert_router_diagnostics.csv": routers,
         "frozen_interventions.csv": interventions,
+        "physical_strength_diagnostics.csv": strengths,
     }
     for name, expected_count in expected_diagnostic_rows.items():
         if len(diagnostic_tables[name]) != expected_count:
@@ -382,6 +387,14 @@ def audit_and_analyze() -> dict[str, Any]:
     for row in interventions:
         if row["status"] != "ok":
             raise ValueError("failed frozen intervention present")
+    for row in strengths:
+        key = (row["dataset"], row["condition"], int(row["seed"]))
+        if row["test_evaluation"].lower() != "false" or row["eval_cpu_rng_unchanged"].lower() != "true" or row["model_parameters_unchanged"].lower() != "true":
+            raise ValueError("Physical Strength probe violated its label/RNG boundary")
+        if int(row["active_node_count"]) <= 0:
+            raise ValueError("Physical Strength probe has no active nodes")
+        if row["checkpoint_sha256"] != lookup[key]["best_accuracy_checkpoint_sha256"]:
+            raise ValueError(f"Physical Strength probe used an unexpected checkpoint: {key}")
 
     paired = paired_results(lookup)
     paired_summary = _paired_summary_rows(paired)
@@ -419,9 +432,9 @@ def audit_and_analyze() -> dict[str, Any]:
     (DATA_DIR / "content_summary.json").write_text(json.dumps(content, indent=2, sort_keys=True, allow_nan=False), encoding="utf-8")
     report = _pilot_report(lookup, paired_summary, manifest, schema_audit, failures)
     (STUDY / "PILOT_REPORT.md").write_text(report, encoding="utf-8")
-    (STUDY / "CONTENT_MECHANISM_REPORT.md").write_text(_mechanism_report(content, interventions, routers, messages), encoding="utf-8")
+    (STUDY / "CONTENT_MECHANISM_REPORT.md").write_text(_mechanism_report(content, interventions, routers, messages, strengths), encoding="utf-8")
     (STUDY / "CLASSWISE_REPORT.md").write_text(_classwise_report(classes, degrees, transitions), encoding="utf-8")
-    (STUDY / "DECISION_MEMO.md").write_text(_decision_memo(lookup, classes, degrees, messages, gates, routers, interventions, resources, failures), encoding="utf-8")
+    (STUDY / "DECISION_MEMO.md").write_text(_decision_memo(lookup, classes, degrees, messages, gates, routers, strengths, interventions, resources, failures), encoding="utf-8")
     return schema_audit
 
 
@@ -481,7 +494,7 @@ def _pilot_report(lookup, paired_summary, manifest, audit, failures) -> str:
     return "\n".join(lines)
 
 
-def _mechanism_report(content, interventions, routers, messages) -> str:
+def _mechanism_report(content, interventions, routers, messages, strengths) -> str:
     lines = [
         "# Content mechanism report", "",
         "These measurements are evaluated on each Best Accuracy checkpoint. Gate activity establishes that a pathway learned; frozen interventions show checkpoint sensitivity. Neither alone proves standalone causal utility. Pair input channels and active capacity differ across M1/M2/M3.", "",
@@ -496,13 +509,15 @@ def _mechanism_report(content, interventions, routers, messages) -> str:
             if any(value is None for value in vals):
                 vals = [float("nan")] * 6
             lines.append(f"| {dataset} | {condition} | {vals[0]:.5g} | {vals[1]:.5g} | {vals[2]:.5g} | {vals[3]:.5g} | {vals[4]:.5g} | {vals[5]:.5g} |")
-    lines += ["", "The CSV retains 32-channel means, standard deviations and correlation matrices per Dataset × Seed × Modality. M1 and M2 have no pair-query sensitivity by construction. M3/M4 use a fixed label-free receiver-query roll for both gate and frozen-logit sensitivity.", "", "## Physical, cross-modal, and semantic scale", "", "All entries are means over three seeds. Physical Profile, eta-weighted Content, and expert-output columns retain the four expert-wise RMS values, in expert order. `u1` is the physical one-hop reference; `Cross` is projected cross-modal context; `KNN` is the semantic-neighbor context. `*_hat` values are the normalized inputs actually used by the expert path.", "", "| Dataset | Arm | Modality | Physical u1 RMS | Cross raw / normalized RMS | KNN raw / normalized RMS | Four-order Physical Profile RMS by expert | Content normalized RMS | Eta-weighted Content RMS by expert | Expert output RMS by expert |", "|---|---|---|---:|---:|---:|---|---:|---|---|"]
+    lines += ["", "The CSV retains 32-channel means, standard deviations and correlation matrices per Dataset × Seed × Modality. M1 and M2 have no pair-query sensitivity by construction. M3/M4 use a fixed label-free receiver-query roll for both gate and frozen-logit sensitivity.", "", "## Physical, cross-modal, and semantic scale", "", "All entries are means over three seeds. Physical Strength is the scalar shared by active nodes for a modality at the frozen checkpoint, captured by a CPU eval-only probe. Physical Profile, eta-weighted Content, and expert-output columns retain the four expert-wise RMS values, in expert order. `u1` is the physical one-hop reference; `Cross` is projected cross-modal context; `KNN` is the semantic-neighbor context. `*_hat` values are the normalized inputs actually used by the expert path.", "", "| Dataset | Arm | Modality | Physical Strength | Physical u1 RMS | Cross raw / normalized RMS | KNN raw / normalized RMS | Four-order Physical Profile RMS by expert | Content normalized RMS | Eta-weighted Content RMS by expert | Expert output RMS by expert |", "|---|---|---|---:|---:|---:|---:|---|---:|---|---|"]
     for dataset in DATASETS:
         for condition in CONDITIONS:
             for modality in ("text", "visual"):
                 rows = [r for r in messages if r["dataset"] == dataset and r["condition"] == condition and r["modality"] == modality]
                 if not rows:
                     continue
+                strength_rows = [r for r in strengths if r["dataset"] == dataset and r["condition"] == condition and r["modality"] == modality]
+                physical_strength = statistics.mean(float(r["physical_strength_mean"]) for r in strength_rows)
                 def scalar(field: str) -> float:
                     return statistics.mean(float(row[field]) for row in rows)
                 def vector(field: str) -> list[float]:
@@ -511,7 +526,7 @@ def _mechanism_report(content, interventions, routers, messages) -> str:
                 phys = ", ".join(f"{value:.4g}" for value in vector("physical_profile_rms_by_expert"))
                 eta = ", ".join(f"{value:.4g}" for value in vector("eta_weighted_rms_by_expert"))
                 output = ", ".join(f"{value:.4g}" for value in vector("expert_output_rms_by_expert"))
-                lines.append(f"| {dataset} | {condition} | {modality} | {scalar('u1_rms'):.4g} | {scalar('cross_rms'):.4g} / {scalar('cross_hat_rms'):.4g} | {scalar('knn_rms'):.4g} / {scalar('knn_hat_rms'):.4g} | [{phys}] | {scalar('content_normalized_rms'):.4g} | [{eta}] | [{output}] |")
+                lines.append(f"| {dataset} | {condition} | {modality} | {physical_strength:.4g} | {scalar('u1_rms'):.4g} | {scalar('cross_rms'):.4g} / {scalar('cross_hat_rms'):.4g} | {scalar('knn_rms'):.4g} / {scalar('knn_hat_rms'):.4g} | [{phys}] | {scalar('content_normalized_rms'):.4g} | [{eta}] | [{output}] |")
     lines += ["", "These scale measurements show whether semantic KNN and cross-modal context reach a similar or different magnitude from physical propagation and whether the learned content correction survives normalization and expert-specific `eta`. Scale alone does not establish that a component supplies useful label information. Modality-specific per-seed values remain in `message_scale_diagnostics.csv`.", "", "## Target-modality differences", "", "Positive Text−Visual values mean the Text-target pathway has the larger scale. These are descriptive averages over the three paired seeds.", "", "| Dataset | Arm | Normalized Content RMS Δ (Text−Visual) | Eta-weighted Content RMS Δ | Residual/Cross cosine Δ |", "|---|---|---:|---:|---:|"]
     for dataset in DATASETS:
         for condition in ("M1", "M2", "M3", "M4"):
@@ -601,7 +616,7 @@ def _historical_v21_c0_means() -> dict[str, dict[str, float]]:
     return output
 
 
-def _decision_memo(lookup, classes, degrees, messages, gates, routers, interventions, resources, failures) -> str:
+def _decision_memo(lookup, classes, degrees, messages, gates, routers, strengths, interventions, resources, failures) -> str:
     lines = ["# Decision memo", "", "This memo distinguishes (a) measured paired Validation facts, (b) frozen-checkpoint sensitivity, and (c) hypotheses this experiment cannot identify. Three seeds are descriptive; no significance claim is made. All deltas below are left arm minus right arm, with seed order 42/43/44.", ""]
     historical = _historical_v21_c0_means()
     lines += ["## 1. Does M0 reproduce the strong collaborative baseline?", ""]
@@ -717,7 +732,7 @@ def _decision_memo(lookup, classes, degrees, messages, gates, routers, intervent
             lines.append(f"| {checkpoint} | {condition} | {cells[0]} | {cells[1]} |")
     lines += ["", "Observed classwise pattern: at Best Accuracy, M2 retains a mean Class 11 recall loss while M3/M4 are closer to the internal M0 reference; Class 1 improves modestly for M2/M3/M4. At Best F1, all four arms have lower mean Class 11 and Class 1 recall than M0, with large seed spread for Class 11. Thus the prior Fashion minority-class concern is reduced for some Accuracy-selected arms, not resolved across checkpoint criteria. Full precision/recall/F1/support/predicted counts and confusion matrices are retained for each seed and both checkpoints; no Validation subgroup was used to retune the frozen model.", ""]
 
-    lines += ["## 9–11. Expert contribution, Cross redundancy, and Router", "", "| Dataset | Arm | Content normalized RMS / Cross-hat RMS | Residual–Cross cosine | Eta-weighted Content RMS / Physical Profile RMS | Router entropy (max normalized expert share) | Content-off Δ Acc / F1 pp; flip % |", "|---|---|---:|---:|---:|---:|---:|"]
+    lines += ["## 9–11. Expert contribution, Cross redundancy, and Router", "", "| Dataset | Arm | Physical Strength mean | Intrinsic / Graph-correction RMS | Content normalized RMS / Cross-hat RMS | Residual–Cross cosine | Eta-weighted Content RMS / Physical Profile RMS | Router entropy (max normalized expert share) | Content-off Δ Acc / F1 pp; flip % |", "|---|---|---:|---:|---:|---:|---:|---:|---:|"]
     for dataset in DATASETS:
         for condition in ("M0", "M1", "M2", "M3", "M4"):
             mr = [r for r in messages if r["dataset"] == dataset and r["condition"] == condition]
@@ -728,6 +743,13 @@ def _decision_memo(lookup, classes, degrees, messages, gates, routers, intervent
             phys_vals = [v for r in mr for v in json.loads(r["physical_profile_rms_by_expert"])]
             eta = statistics.mean(eta_vals) if eta_vals else 0.0
             physical = statistics.mean(phys_vals) if phys_vals else float("nan")
+            strength_rows = [r for r in strengths if r["dataset"] == dataset and r["condition"] == condition]
+            strength = statistics.mean(float(r["physical_strength_mean"]) for r in strength_rows) if strength_rows else float("nan")
+            correction_ratios = [
+                float(r["intrinsic_rms"]) / float(r["weighted_graph_correction_rms"])
+                for r in mr if float(r["weighted_graph_correction_rms"]) > 0
+            ]
+            correction_ratio = statistics.mean(correction_ratios) if correction_ratios else float("nan")
             rr = [r for r in resources if r["dataset"] == dataset and r["condition"] == condition]
             router_rows = [r for r in routers if r["dataset"] == dataset and r["condition"] == condition]
             entropy = statistics.mean(float(r["router_entropy"]) for r in router_rows) if router_rows else float("nan")
@@ -737,7 +759,7 @@ def _decision_memo(lookup, classes, degrees, messages, gates, routers, intervent
             da, _ = _mean_rows(off, "val_acc_delta", percentage=True) if off else (0.0, 0.0)
             df, _ = _mean_rows(off, "val_macro_f1_delta", percentage=True) if off else (0.0, 0.0)
             flips, _ = _mean_rows(off, "prediction_flip_fraction", percentage=True) if off else (0.0, 0.0)
-            lines.append(f"| {dataset} | {condition} | {normalized:.4g}/{cross:.4g} | {cosine:.4g} | {eta:.4g}/{physical:.4g} | {entropy:.4g}/{max_share:.3f} | {da:+.3f}/{df:+.3f}; {flips:.2f} |")
+            lines.append(f"| {dataset} | {condition} | {strength:.4g} | {correction_ratio:.4g} | {normalized:.4g}/{cross:.4g} | {cosine:.4g} | {eta:.4g}/{physical:.4g} | {entropy:.4g}/{max_share:.3f} | {da:+.3f}/{df:+.3f}; {flips:.2f} |")
     lines += ["", "Observed interpretation: every active arm has a nonzero first-step final ContentGate gradient and a nonzero learned output-layer update; content-off interventions change logits/predictions after the shared expert/router stack, so the pathway is not completely erased downstream. Residual–Cross cosine is comparatively low in these summaries, which argues against simple vector duplication. Cross Base off generally produces larger logit RMS; metric sensitivity is material but varies by dataset and arm. This does not rule out functional overlap or establish the causal utility of either component. Router entropy/share describe allocation (notably low average entropy on Grocery); there is no direct evidence that the Router wholly overrides Content because frozen content-off comparisons remain sensitive, but those interventions do not retrain or isolate Router-mediated effects.", ""]
 
     lines += ["## 12. Compute, memory, and effective capacity", "", "| Dataset | Arm | Parameters | Mean trainable parameters | Mean wall seconds | Peak allocated GPU GiB |", "|---|---|---:|---:|---:|---:|"]
