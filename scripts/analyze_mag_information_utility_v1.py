@@ -33,6 +33,30 @@ NODE_GROUPS = OUTPUT / "node_groups"
 DATASETS = ("Movies", "Grocery", "ele-fashion")
 SEEDS = (42, 43, 44)
 CONDITIONS = ("I0", "I1", "I2", "I3", "I4")
+BASELINE_COMMIT = "4cd655a411a6c0ab12e067285cd2202208b0ab18"
+IMPLEMENTATION_FREEZE_COMMIT = "76cf4ea73192029501425321fe1683de203140ed"
+FROZEN_CORE_PATHS = (
+    "configs/model/mag_information_probe_v1.yaml",
+    "configs/study/mag_information_utility_v1.yaml",
+    "research/mag_information_utility_v1/EXPERIMENT_DESIGN.md",
+    "research/mag_information_utility_v1/GRAPH_SIGNAL_REPORT.md",
+    "research/mag_information_utility_v1/data/graph_structure_stats.csv",
+    "research/mag_information_utility_v1/data/node_group_definitions.json",
+    "research/mag_information_utility_v1/data/pre_run_data_manifest.json",
+    "research/mag_information_utility_v1/data/random_graph_audit.json",
+    "research/mag_information_utility_v1/data/train_only_label_relation_stats.csv",
+    "src/models/mag_information_probe_v1.py",
+)
+ALLOWED_POST_FREEZE_PATHS = frozenset(
+    {
+        "research/mag_information_utility_v1/IMPLEMENTATION_AUDIT.md",
+        "research/mag_information_utility_v1/data/failures.json",
+        "scripts/analyze_mag_information_utility_v1.py",
+        "scripts/run_mag_information_utility_v1.py",
+        "tests/test_mag_information_utility_analysis_v1.py",
+        "tests/test_mag_information_utility_v1.py",
+    }
+)
 CONTRASTS = (("I1", "I0"), ("I2", "I1"), ("I3", "I2"), ("I3", "I4"))
 PRIMARY_METRICS = (
     "validation_accuracy",
@@ -49,6 +73,72 @@ def sha256_file(path: Path) -> str:
     with path.open("rb") as handle:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
+    return digest.hexdigest()
+
+
+def _git_bytes(*args: str) -> bytes:
+    return subprocess.run(
+        ["git", *args], cwd=ROOT, check=True, stdout=subprocess.PIPE
+    ).stdout
+
+
+def _validate_source_commits(source_commits: set[str]) -> str:
+    """Require run sources to descend from Freeze with unchanged model/protocol.
+
+    Runtime commits may adjust provenance or checkpoint diagnostics after
+    Freeze. The allowlist bounds those changes; hashes of model, configuration,
+    and pre-run protocol/data audit files must remain identical to Freeze.
+    """
+    if not source_commits:
+        raise ValueError("no source commits found in completed runs")
+    reference_hashes: dict[str, str] | None = None
+    for commit in sorted(source_commits):
+        try:
+            subprocess.run(
+                ["git", "merge-base", "--is-ancestor", IMPLEMENTATION_FREEZE_COMMIT, commit],
+                cwd=ROOT,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+        except subprocess.CalledProcessError as exc:
+            raise ValueError(
+                f"run source {commit} is not descended from implementation freeze "
+                f"{IMPLEMENTATION_FREEZE_COMMIT}"
+            ) from exc
+        changed = set(
+            _git_bytes("diff", "--name-only", f"{IMPLEMENTATION_FREEZE_COMMIT}..{commit}")
+            .decode("utf-8")
+            .splitlines()
+        )
+        unexpected = changed - ALLOWED_POST_FREEZE_PATHS
+        if unexpected:
+            raise ValueError(
+                f"run source {commit} changes files outside the runtime-fix allowlist: "
+                f"{sorted(unexpected)}"
+            )
+        hashes = {
+            path: hashlib.sha256(_git_bytes("show", f"{commit}:{path}")).hexdigest()
+            for path in FROZEN_CORE_PATHS
+        }
+        freeze_hashes = {
+            path: hashlib.sha256(
+                _git_bytes("show", f"{IMPLEMENTATION_FREEZE_COMMIT}:{path}")
+            ).hexdigest()
+            for path in FROZEN_CORE_PATHS
+        }
+        if hashes != freeze_hashes:
+            differing = [path for path in FROZEN_CORE_PATHS if hashes[path] != freeze_hashes[path]]
+            raise ValueError(f"frozen model/protocol files differ at {commit}: {differing}")
+        if reference_hashes is not None and hashes != reference_hashes:
+            raise ValueError(f"frozen model/protocol hashes differ across run sources at {commit}")
+        reference_hashes = hashes
+    digest = hashlib.sha256()
+    for path, value in sorted((reference_hashes or {}).items()):
+        digest.update(path.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(value.encode("ascii"))
+        digest.update(b"\n")
     return digest.hexdigest()
 
 
@@ -227,8 +317,6 @@ def _run_rows(runs: dict[tuple[str, str, int], dict[str, Any]]) -> list[dict[str
                 raise ValueError(f"treatments do not share initial model and head: {dataset} seed {seed}")
             if len({row["total_parameter_count"] for row in block}) != 1:
                 raise ValueError(f"parameter count differs among treatments: {dataset} seed {seed}")
-            if len({row["source_commit"] for row in block}) != 1:
-                raise ValueError(f"source commit differs among treatments: {dataset} seed {seed}")
             if len({row["provenance"]["split_sha256"] for row in block}) != 1:
                 raise ValueError(f"official split differs among treatments: {dataset} seed {seed}")
             if len({row["provenance"]["feature_fingerprint"] for row in block}) != 1:
@@ -792,9 +880,8 @@ def analyze() -> dict[str, Any]:
                 key = (dataset, condition, seed)
                 runs[key], histories[key] = _validate_run(*key)
 
-    freeze_commits = {row["source_commit"] for row in runs.values()}
-    if len(freeze_commits) != 1:
-        raise ValueError(f"the 45 runs do not share one frozen source commit: {sorted(freeze_commits)}")
+    source_commits = {row["source_commit"] for row in runs.values()}
+    frozen_core_sha256 = _validate_source_commits(source_commits)
     for dataset in DATASETS:
         text_hashes = {runs[(dataset, c, s)]["provenance"]["random_text_cache_sha256"] for c in CONDITIONS for s in SEEDS}
         visual_hashes = {runs[(dataset, c, s)]["provenance"]["random_visual_cache_sha256"] for c in CONDITIONS for s in SEEDS}
@@ -824,7 +911,8 @@ def analyze() -> dict[str, Any]:
         "expected_runs": 45,
         "observed_runs": len(run_rows),
         "all_runs_complete": len(run_rows) == 45,
-        "one_implementation_freeze_commit": next(iter(freeze_commits)),
+        "implementation_freeze_commit": IMPLEMENTATION_FREEZE_COMMIT,
+        "frozen_model_protocol_sha256": frozen_core_sha256,
         "test_evaluation_disabled_for_all_runs": all(row["evaluate_test"] is False and row["test_labels_indexed"] is False for row in runs.values()),
         "all_checkpoints_saved_and_reloaded": all(row["best_accuracy_reload_reproduced"] and row["best_f1_reload_reproduced"] for row in runs.values()),
         "paired_initialization_validated": True,
@@ -832,7 +920,7 @@ def analyze() -> dict[str, Any]:
         "random_topology_frozen_across_training_seeds": True,
         "random_graph_audit": random_audit,
         "data_and_cache_manifest": graph_manifest,
-        "source_commits": sorted(freeze_commits),
+        "source_commits": sorted(source_commits),
         "analysis_code_sha256": sha256_file(Path(__file__).resolve()),
     }
     write_json(DATA / "implementation_checks.json", checks)
@@ -858,8 +946,10 @@ def analyze() -> dict[str, Any]:
     manifest = {
         "study": "MAG Information Utility V1",
         "branch": "exp/mag_information_utility_v1",
-        "baseline_commit": "4cd655a411a6c0ab12e067285cd2202208b0ab18",
-        "implementation_freeze_commit": next(iter(freeze_commits)),
+        "baseline_commit": BASELINE_COMMIT,
+        "implementation_freeze_commit": IMPLEMENTATION_FREEZE_COMMIT,
+        "source_commits": sorted(source_commits),
+        "frozen_model_protocol_sha256": frozen_core_sha256,
         "datasets": list(DATASETS),
         "conditions": list(CONDITIONS),
         "seeds": list(SEEDS),
@@ -876,7 +966,8 @@ def analyze() -> dict[str, Any]:
     write_json(DATA / "manifest.json", manifest)
     return {
         "completed_runs": len(run_rows),
-        "freeze_commit": next(iter(freeze_commits)),
+        "freeze_commit": IMPLEMENTATION_FREEZE_COMMIT,
+        "source_commits": sorted(source_commits),
         "outputs": ["runs.csv", "epoch_history.csv", "paired_information_gains.csv", "checkpoint_tradeoffs.csv", "node_group_metrics.csv", "conditional_error_analysis.csv", "r0_reference_comparison.csv"],
     }
 

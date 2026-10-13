@@ -16,5 +16,14 @@
     "seed": 42,
     "source_commit": "a139010c9be1d4876d2ecb63fefb76c3b337e902",
     "time_unix": 1791863389.042651
+  },
+  {
+    "condition": "I3",
+    "dataset": "ele-fashion",
+    "exception_type": "AssertionError",
+    "message": "Best-Accuracy checkpoint per-node CE replay exceeded the measured roundoff envelope: max_abs_diff=3.81469727e-06, atol=3e-06",
+    "seed": 44,
+    "source_commit": "9435ee0213eb778130ed64ad495cd71875ecc4a5",
+    "time_unix": 1791864410.960164
   }
 ]

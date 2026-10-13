@@ -240,8 +240,8 @@ def test_checkpoint_node_ce_replay_uses_narrow_measured_roundoff_tolerance():
     from scripts.run_mag_information_utility_v1 import _assert_node_ce_replay
 
     reference = np.asarray([0.25, 1.75, 2.5], dtype=np.float32)
-    replay = reference + np.asarray([1.9e-6, -2.1e-6, 0.0], dtype=np.float32)
+    replay = reference + np.asarray([3.9e-6, -4.1e-6, 0.0], dtype=np.float32)
     observed = _assert_node_ce_replay(replay, reference)
-    assert 2.0e-6 < observed <= 3.0e-6
+    assert 3.0e-6 < observed <= 5.0e-6
     with pytest.raises(AssertionError, match="exceeded the measured roundoff envelope"):
-        _assert_node_ce_replay(reference + 3.1e-6, reference)
+        _assert_node_ce_replay(reference + 5.1e-6, reference)

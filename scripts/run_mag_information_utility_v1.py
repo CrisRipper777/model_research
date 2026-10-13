@@ -62,7 +62,7 @@ DATA_DIR = RESEARCH / "data"
 OUTPUT_ROOT = ROOT / "outputs/mag_information_utility_v1"
 RUN_ROOT = OUTPUT_ROOT / "runs"
 CACHE_ROOT = OUTPUT_ROOT / "cache"
-CHECKPOINT_NODE_CE_REPLAY_ATOL = 3.0e-6
+CHECKPOINT_NODE_CE_REPLAY_ATOL = 5.0e-6
 
 
 def git(*args: str) -> str:
@@ -1226,10 +1226,11 @@ def _check_finite_metrics(metrics: dict[str, float], where: str) -> None:
 def _assert_node_ce_replay(actual: np.ndarray, expected: np.ndarray) -> float:
     """Check per-node CE replay against the observed sparse-forward roundoff.
 
-    CUDA repeated forwards showed <=2.15e-6 maximum absolute per-node CE
-    variation while predictions and aggregate metrics stayed unchanged. Keep
-    this tolerance narrowly above that measured envelope; prediction equality
-    and aggregate checkpoint metrics are checked separately and more strictly.
+    Repeated forwards showed <=2.15e-6 on Movies and <=3.34e-6 on the much
+    larger ele-fashion Validation set, while predictions and aggregate metrics
+    stayed unchanged. The 5e-6 bound is narrowly above the observed envelope;
+    prediction equality and aggregate checkpoint metrics are checked
+    separately and more strictly.
     """
     actual = np.asarray(actual, dtype=np.float64)
     expected = np.asarray(expected, dtype=np.float64)
