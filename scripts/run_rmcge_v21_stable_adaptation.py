@@ -9,6 +9,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import statistics
 import sys
 import time
@@ -493,14 +494,20 @@ def _save_progress(run_dir: Path, result: dict[str, Any]) -> None:
 def _zero_test_attestation(record: dict[str, Any]) -> None:
     record["test_evaluation"] = False
     record["test_label_values_indexed"] = False
-    if any(str(key).startswith("test_") for key in record):
-        raise RuntimeError("Test metric field present")
+    allowed_attestations = {"test_evaluation", "test_label_values_indexed"}
+    unexpected = [str(key) for key in record if str(key).startswith("test_") and key not in allowed_attestations]
+    if unexpected:
+        raise RuntimeError(f"unexpected Test metric fields present: {unexpected}")
 
 
-def run_one(dataset: str, condition: str, seed: int, cache: dict[str, Any], init_audit: dict[str, Any], *, device: str) -> dict[str, Any]:
+def run_one(
+    dataset: str, condition: str, seed: int, cache: dict[str, Any], init_audit: dict[str, Any], *,
+    device: str, attempt_tag: str | None = None,
+) -> dict[str, Any]:
     from src.data import load_mag_data
 
-    warm_dir = OUTPUT / "runs" / dataset / condition / f"seed_{seed}"
+    run_name = f"seed_{seed}" if attempt_tag is None else f"seed_{seed}_{attempt_tag}"
+    warm_dir = OUTPUT / "runs" / dataset / condition / run_name
     result_path = warm_dir / "result.json"
     if result_path.is_file():
         previous = json.loads(result_path.read_text(encoding="utf-8"))
@@ -869,7 +876,9 @@ def run_one(dataset: str, condition: str, seed: int, cache: dict[str, Any], init
     f1_val = best_f1["metrics"]["validation"]
     result = {
         "dataset": dataset, "condition": condition, "seed": seed,
+        "attempt_tag": attempt_tag,
         "model_condition": CONDITION_MAP[condition], "status": "completed_and_verified",
+        "result_path": str(result_path.relative_to(ROOT)),
         "source_checkpoint": source["path"], "source_checkpoint_sha256": source["checkpoint_sha256"],
         "source_checkpoint_epoch": source["epoch"], "selected_stage": best_accuracy["stage"],
         "best_accuracy_epoch": best_accuracy["epoch"], "best_f1_epoch": best_f1["epoch"],
@@ -912,15 +921,17 @@ def run_one(dataset: str, condition: str, seed: int, cache: dict[str, Any], init
 
 
 def _load_completed_results() -> list[dict[str, Any]]:
-    rows = []
+    rows_by_key = {}
     base = OUTPUT / "runs"
     if not base.exists():
-        return rows
-    for path in sorted(base.glob("*/*/seed_*/result.json")):
+        return []
+    paths = sorted(base.glob("*/*/seed_*/result.json"), key=lambda path: path.stat().st_mtime_ns)
+    for path in paths:
         item = json.loads(path.read_text(encoding="utf-8"))
         if item.get("status") == "completed_and_verified":
-            rows.append(item)
-    return rows
+            key = (item["dataset"], item["condition"], int(item["seed"]))
+            rows_by_key[key] = item
+    return list(rows_by_key.values())
 
 
 def persist_tables(results: list[dict[str, Any]]) -> None:
@@ -944,7 +955,7 @@ def persist_tables(results: list[dict[str, Any]]) -> None:
             "epochs_completed": result["epochs_completed"], "joint_updates": result["joint_updates"], "stage1_epochs": result["stage1_epochs"],
             "wall_seconds": result["wall_seconds"], "peak_allocated_bytes": result["peak_allocated_bytes"], "peak_reserved_bytes": result["peak_reserved_bytes"],
             "gpu_name": result["gpu_name"], "model_parameters": result["model_parameters"], "classifier_parameters": result["classifier_parameters"],
-            "result_path": str((OUTPUT / "runs" / result["dataset"] / result["condition"] / f"seed_{result['seed']}" / "result.json").relative_to(ROOT)),
+            "result_path": result["result_path"],
             "best_accuracy_checkpoint": result["checkpoint_paths"]["best_accuracy"], "best_f1_checkpoint": result["checkpoint_paths"]["best_f1"],
             "test_evaluation": False, "error": "",
         })
@@ -982,7 +993,9 @@ def persist_tables(results: list[dict[str, Any]]) -> None:
     atomic_json(DATA_DIR / "stage_transition_audit.json", stage_audits)
 
 
-def audit_and_run(seeds: tuple[int, ...], *, device: str, audit_only: bool = False) -> None:
+def audit_and_run(
+    seeds: tuple[int, ...], *, device: str, audit_only: bool = False, attempt_tag: str | None = None,
+) -> None:
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required for this study")
     torch.cuda.set_device(torch.device(device))
@@ -1008,9 +1021,12 @@ def audit_and_run(seeds: tuple[int, ...], *, device: str, audit_only: bool = Fal
         for dataset in DATASETS:
             for condition in ("W0", "W1", "W2"):
                 try:
-                    result = run_one(dataset, condition, seed, caches[dataset], initial_audit["pairs"][f"{dataset}/seed_{seed}"], device=device)
+                    result = run_one(
+                        dataset, condition, seed, caches[dataset], initial_audit["pairs"][f"{dataset}/seed_{seed}"],
+                        device=device, attempt_tag=attempt_tag,
+                    )
                 except BaseException as exc:
-                    append_failure(dataset, condition, seed, exc)
+                    append_failure(dataset, condition, seed, exc, attempt_tag=attempt_tag)
                     raise
                 current = _load_completed_results()
                 persist_tables(current)
@@ -1041,11 +1057,12 @@ def audit_and_run(seeds: tuple[int, ...], *, device: str, audit_only: bool = Fal
     atomic_json(DATA_DIR / "implementation_checks.json", implementation_checks)
 
 
-def append_failure(dataset: str, condition: str, seed: int, exc: BaseException) -> None:
+def append_failure(dataset: str, condition: str, seed: int, exc: BaseException, *, attempt_tag: str | None = None) -> None:
     path = DATA_DIR / "failures.json"
     current = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"failures": []}
     current.setdefault("failures", []).append({
         "dataset": dataset, "condition": condition, "seed": seed, "status": "failed",
+        "attempt_tag": attempt_tag,
         "error_type": type(exc).__name__, "error": str(exc), "traceback": traceback.format_exc(),
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
     })
@@ -1066,9 +1083,12 @@ def main() -> None:
     parser.add_argument("--seeds", default="42", type=parse_seeds, help="42 for the gated first batch, or all")
     parser.add_argument("--device", default="cuda:0", help="use cuda:0 with CUDA_VISIBLE_DEVICES=1")
     parser.add_argument("--audit-only", action="store_true", help="verify t0 loading and paired initialization without training")
+    parser.add_argument("--attempt-tag", default=None, help="write a preserved retry into a distinct run directory")
     args = parser.parse_args()
+    if args.attempt_tag is not None and not re.fullmatch(r"[A-Za-z0-9_-]+", args.attempt_tag):
+        parser.error("--attempt-tag may contain only letters, digits, underscores, and hyphens")
     try:
-        audit_and_run(args.seeds, device=args.device, audit_only=args.audit_only)
+        audit_and_run(args.seeds, device=args.device, audit_only=args.audit_only, attempt_tag=args.attempt_tag)
     except BaseException as exc:
         failure_path = DATA_DIR / "failures.json"
         current = json.loads(failure_path.read_text(encoding="utf-8")) if failure_path.exists() else {"failures": []}

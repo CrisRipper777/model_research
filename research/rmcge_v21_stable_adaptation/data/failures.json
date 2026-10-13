@@ -1,3 +1,14 @@
 {
-  "failures": []
+  "failures": [
+    {
+      "condition": "W0",
+      "dataset": "Movies",
+      "error": "Test metric field present",
+      "error_type": "RuntimeError",
+      "seed": 42,
+      "status": "failed",
+      "timestamp": "2026-10-13T19:39:18+0800",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v21_stable_adaptation.py\", line 1011, in audit_and_run\n    result = run_one(dataset, condition, seed, caches[dataset], initial_audit[\"pairs\"][f\"{dataset}/seed_{seed}\"], device=device)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v21_stable_adaptation.py\", line 899, in run_one\n    _zero_test_attestation(result)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v21_stable_adaptation.py\", line 497, in _zero_test_attestation\n    raise RuntimeError(\"Test metric field present\")\nRuntimeError: Test metric field present\n"
+    }
+  ]
 }

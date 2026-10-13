@@ -1,6 +1,29 @@
 {
   "branch": "exp/rmcge_v21_stable_adaptation",
+  "corrected_implementation_validation": {
+    "focused_suite": {
+      "command": "CUDA_VISIBLE_DEVICES= python -m pytest -q tests/test_rmcge_v21_stable_adaptation.py",
+      "exit_code": 0,
+      "passed": 26
+    },
+    "full_suite": {
+      "command": "CUDA_VISIBLE_DEVICES= python -m pytest -q",
+      "exit_code": 0,
+      "passed": 510,
+      "skipped": 1,
+      "warnings": 18
+    },
+    "git_diff_check": {
+      "passed": true
+    },
+    "py_compile": {
+      "passed": true
+    },
+    "regression_test": "intentional false Test attestation fields accepted; unexpected Test metric field rejected"
+  },
+  "failure_record_count": 1,
   "finalized": false,
+  "formal_attempt_count": 1,
   "formal_run_count": 0,
   "phase": "pre_freeze",
   "pre_freeze_validation": {
@@ -38,6 +61,26 @@
       ],
       "passed": true
     }
+  },
+  "preserved_failed_attempt": {
+    "attempt_tag": null,
+    "completed_joint_epochs": 49,
+    "condition": "W0",
+    "dataset": "Movies",
+    "failure": "Test attestation guard rejected its own test_evaluation=false and test_label_values_indexed=false fields",
+    "joint_updates": 49,
+    "output_directory_local": "outputs/rmcge_v21_stable_adaptation/runs/Movies/W0/seed_42",
+    "preserved_file_sha256": {
+      "best_accuracy.pt": "acacf89b59754edfc2cd422947206edbba2a2c4f7159475423251d4bd02a6f78",
+      "best_f1.pt": "ee5764e8bcc46fbf7165e8693d5b5c211975c73371af1b052d31196a3c86bd66",
+      "resolved_config.yaml": "4a14cc1617bf794d13b9626290710e5a277e024dec84c856a75c285c50748295",
+      "run_progress.json": "4b42091b27a370bef175ff4444ff8284686cca081660a8e704d6031c9049acba",
+      "source_audit.json": "b28695746f7e30d4b740567156f67aa82209d5eef7f0be1b8dc6d6cb6a2fcbea"
+    },
+    "repaired_by": "explicitly allow only the two boolean Test audit fields; separate --attempt-tag retry directory",
+    "seed": 42,
+    "status": "failed_during_finalization_not_a_verified_run",
+    "test_evaluation": false
   },
   "runtime_environment": {
     "cublas_workspace_config": null,

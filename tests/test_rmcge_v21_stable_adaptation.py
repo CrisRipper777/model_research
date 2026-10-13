@@ -22,6 +22,7 @@ from src.research.rmcge_v21_stable_adaptation import (
     select_main_candidates,
     selector_state_sha256,
 )
+from scripts.run_rmcge_v21_stable_adaptation import _zero_test_attestation
 from src.tasks.nc import _resolve_nc_eval_labels
 
 
@@ -252,6 +253,16 @@ def test_official_macro_f1_label_resolution_excludes_test_only_class():
 
     assert _resolve_nc_eval_labels(Data(), include_test=False) == [0, 1, 2]
     assert _resolve_nc_eval_labels(Data(), include_test=True) == [0, 1, 2, 9]
+
+
+def test_test_attestation_flags_are_allowed_but_test_metric_fields_are_rejected():
+    record = {"status": "completed"}
+    _zero_test_attestation(record)
+    assert record["test_evaluation"] is False
+    assert record["test_label_values_indexed"] is False
+
+    with pytest.raises(RuntimeError, match="unexpected Test metric fields"):
+        _zero_test_attestation({"test_accuracy": 0.99})
 
 
 def test_receiver_mass_conservation_and_zero_score_identity():
