@@ -1,0 +1,55 @@
+{
+  "baseline_commit": "4cd655a411a6c0ab12e067285cd2202208b0ab18",
+  "branch": "exp/mag_information_utility_v1",
+  "completed_runs": 45,
+  "conditions": [
+    "I0",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "expected_runs": 45,
+  "files": {
+    "DECISION_MEMO.md": "b4a088779d13c136b49d76538ecd7934f620d7f51ea24a881f60d62a6377f303",
+    "EXPERIMENT_DESIGN.md": "6ffe1b324c9b0b11fe4d5deda4e082f4c5e4e5bd69e9de5f8f40c964e7714aba",
+    "GRAPH_SIGNAL_REPORT.md": "f30480ccc942468e429d0354795ce23fe07c2a85dd0f1046cb15916674a929d2",
+    "IMPLEMENTATION_AUDIT.md": "857ed1cdfa6d1a31992a00904457dad247522be8eab051881f09b7dd9caf10d7",
+    "INFORMATION_UTILITY_REPORT.md": "2b98ab93edb3262765d56346cfe4a74ec6ed800dc73d95bb61231c7af67c4a5a",
+    "NODE_GROUP_ANALYSIS.md": "81c8b21a56e11f2aafc23f9f1364db12986a00e71de81be6e009f7aa0fd9305f",
+    "data/checkpoint_tradeoffs.csv": "7fdf44856882e1553c14ba9ab3eed225493caa873c6212ac3265bb3970a47f37",
+    "data/conditional_error_analysis.csv": "fdc27ae13658dbc524e2f9fedf0beed7303b032048933058f5d8019c698024a7",
+    "data/epoch_history.csv": "3cdb7dad35bb6ef42cb7b717b22a221caca3976c9c36282199eed317dbc37f3f",
+    "data/failures.json": "0eacdccec7a319f8e8854ff90e29212a43b249d184bebe97403bfc37bcd31961",
+    "data/graph_structure_stats.csv": "1d65328dfb460ac2c08b6fd638612bfd379439693f14b139c6d6f770aebadf01",
+    "data/implementation_checks.json": "403802ef9f1474687563b7205e1610ade5a2e14485cfb25a06cd772bb0b0bbb5",
+    "data/node_group_definitions.json": "78a5d830abf61260e069958808908580211b6a2b13444ca5c0272716df37d11c",
+    "data/node_group_metrics.csv": "cfe288522f64c3673c17e3d3d25a81ba33bdd8da9f0ac5196ba77c9772e57539",
+    "data/paired_information_gains.csv": "4062471c19814da73b3a5da19a716b849b72f09b44036f62511557a91874d4dd",
+    "data/pre_run_data_manifest.json": "47ed9ddb470c076d9db5a7055500724c71b47f3d6c67eb5fa3681daeba9d733c",
+    "data/r0_reference_comparison.csv": "8c7b93f06384303cc128b4db935d65a588245db5d59ffa00616e81b0b3054b01",
+    "data/random_graph_audit.json": "bf1f5364837d0586ee96be47547bb199144fdf35d7270233f642f3b5cfeda783",
+    "data/runs.csv": "843f74b5de8cbd85fc70de59a00fe6c2dc47803c07f5f0b225abaf86940c5c43",
+    "data/train_only_label_relation_stats.csv": "3188f230ddd9c4dcaa297853efd7f13b1dd7b55e90738d509a248759e5757968"
+  },
+  "frozen_model_protocol_sha256": "2d92672127fabfe6040381925a89b709c25f309471da0aab487eaf1ce52f5945",
+  "implementation_freeze_commit": "76cf4ea73192029501425321fe1683de203140ed",
+  "protocol": "unified_full_graph_nc_v1",
+  "random_semantic_graphs_fixed_across_training_seeds": true,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "source_commits": [
+    "9435ee0213eb778130ed64ad495cd71875ecc4a5",
+    "946f224eb9d3439eab9a71a856012f3069ed1b47"
+  ],
+  "study": "MAG Information Utility V1",
+  "test_evaluation": false
+}

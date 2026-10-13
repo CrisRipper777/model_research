@@ -2,8 +2,8 @@
 
 This document records implementation-level checks before the 45-run study.
 The Implementation Freeze is preserved as a separate commit. Runtime guard
-corrections and completed batch checks are recorded below; final matrix
-analysis is added after all 45 runs pass validation.
+corrections and completed batch checks are recorded below. The final analyzer
+validated and summarized all 45 runs without evaluating Test labels.
 
 ## Frozen implementation
 
@@ -41,8 +41,9 @@ analysis is added after all 45 runs pass validation.
 | Pre-label node-group construction | pass: all three datasets; group arrays hash recorded |
 | 15-run Seed 42 gate | pass: 15/15 complete; all finite, no Test evaluation, checkpoints reloaded, paired initializations match |
 | 15-run Seed 43 gate | pass: 15/15 complete with the same integrity checks |
-| Seed 44 retry | pending; 13/15 complete before the measured replay-bound update; rerun the full seed batch from the corrected runner commit |
-| 45-run checkpoint and finite-metric audit | pending |
+| Seed 44 retry | pass: reran all 15 runs at source `946f224`; all finite, no Test evaluation, checkpoints reloaded, paired initializations match |
+| 45-run checkpoint and finite-metric audit | pass: 45/45 complete; prediction and checkpoint hashes, reload metrics, epoch histories, paired starts, Test boundary, and frozen semantic-topology hashes validate |
+| Source/model freeze audit | pass: runs use `9435ee0` and `946f224`, both descend from Freeze; changes since Freeze are limited to runner/replay/audit files and the model/config/protocol SHA-256 is identical (`2d92672127fabfe6040381925a89b709c25f309471da0aab487eaf1ce52f5945`) |
 
 ## Runtime observed during the pre-freeze GPU gate
 
@@ -77,8 +78,32 @@ corrected in a separate follow-up commit and covered by a regression test.
 The final analyzer requires each run source to descend from the Implementation
 Freeze, limits later source changes to the documented runner/replay and audit
 files, and verifies that every model/configuration/protocol core hash matches
-the Freeze. This allows runtime-check corrections while keeping the compared
-model and study protocol fixed.
+the Freeze. Seeds 42/43 retain their source `9435ee0`; all seed44 runs use
+`946f224`, which only adjusts the per-node CE diagnostic bound based on the
+recorded Movies and ele-fashion replay envelope and updates source validation.
+The full model, configurations, data/cache fingerprints, and experiment
+protocol hash remain frozen across both run-source commits.
+
+The final matrix was executed on the idle `cuda:1` NVIDIA GeForce RTX 3090.
+Each 15-run seed gate reported finite metrics, Test evaluation disabled,
+successful checkpoint reloads, matching treatment initialization hashes, and
+no errors. The analyzer generated the paired endpoint, epoch, checkpoint,
+node-group, conditional-error, R0-reference, and manifest evidence. It
+validated 45 runs and confirmed the validation-prediction arrays reproduce
+the stored metrics. No Test labels were read or evaluated.
+
+Three early failed attempts remain in `data/failures.json`: the pre-epoch
+cache provenance key defect, a Movies/I3 checkpoint replay rejection, and an
+ele-fashion/I3 seed44 per-node CE difference of `3.81e-6` above the prior
+`3e-6` check. Their original failure records are unchanged. Failed checkpoints
+and partial run artifacts retain their SHA manifests in ignored local
+`outputs/mag_information_utility_v1/failed_attempts/` directories. The updated
+`5e-6` per-node CE bound is based on observed repeat evaluations; prediction
+identity and aggregate checkpoint metrics remain checked separately.
+
+Final analysis artifacts and their SHA-256 values are recorded in
+`data/manifest.json`. Full repository tests pass (452 passed; 16 upstream
+warnings), including 11 model/runner and 3 analysis-specific study tests.
 
 The corrected-source attempt later stopped after Movies/I3 because a 2e-6
 maximum per-node CE replay check was narrower than observed forward-to-forward
