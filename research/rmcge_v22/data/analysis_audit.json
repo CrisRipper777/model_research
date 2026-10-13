@@ -1,0 +1,332 @@
+{
+  "checkpoint_hash_records": 90,
+  "checkpoint_sha_and_size_verified": 90,
+  "failure_record_count": 4,
+  "generated_utc": "2026-10-13T16:24:45+00:00",
+  "gradient_audit_run_count": 45,
+  "implementation_check_run_count": 45,
+  "last_batch_completed_utc": "2026-10-13T16:03:00+00:00",
+  "no_test_metrics": true,
+  "paired_comparison_rows": 378,
+  "paired_summary_rows": 126,
+  "tables": {
+    "classwise_metrics.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "checkpoint",
+        "class_id",
+        "precision",
+        "recall",
+        "f1",
+        "support",
+        "predicted_count"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "checkpoint",
+        "class_id"
+      ],
+      "rows": 1560,
+      "unique_keys": 1560
+    },
+    "confusion_matrices.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "checkpoint",
+        "true_class",
+        "predicted_class",
+        "count"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "checkpoint",
+        "true_class",
+        "predicted_class"
+      ],
+      "rows": 28320,
+      "unique_keys": 28320
+    },
+    "content_gate_diagnostics.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality",
+        "mode",
+        "edge_count",
+        "channel_mean",
+        "channel_std",
+        "channel_correlation",
+        "abs_ge_0_99_fraction",
+        "receiver_query_roll_gate_rms"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality"
+      ],
+      "rows": 72,
+      "unique_keys": 72
+    },
+    "degree_group_metrics.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "checkpoint",
+        "degree_group",
+        "node_count",
+        "val_count",
+        "accuracy",
+        "macro_f1",
+        "cross_entropy",
+        "content_text_rms",
+        "content_visual_rms"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "checkpoint",
+        "degree_group"
+      ],
+      "rows": 450,
+      "unique_keys": 450
+    },
+    "epoch_history.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "epoch",
+        "train_loss",
+        "train_objective",
+        "train_ce",
+        "train_ce_eval",
+        "train_accuracy_eval",
+        "train_macro_f1_eval",
+        "val_ce",
+        "val_acc",
+        "val_macro_f1",
+        "epoch_wall_seconds",
+        "learning_rate"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "epoch"
+      ],
+      "rows": 5842,
+      "unique_keys": 5842
+    },
+    "expert_router_diagnostics.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality",
+        "router_entropy",
+        "expert_selection_share",
+        "expert_coefficients"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality"
+      ],
+      "rows": 90,
+      "unique_keys": 90
+    },
+    "frozen_interventions.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "intervention",
+        "status",
+        "val_acc",
+        "val_macro_f1",
+        "val_ce",
+        "val_acc_delta",
+        "val_macro_f1_delta",
+        "logit_delta_rms",
+        "prediction_flip_fraction"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "intervention"
+      ],
+      "rows": 162,
+      "unique_keys": 162
+    },
+    "message_scale_diagnostics.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality",
+        "u1_rms",
+        "cross_rms",
+        "cross_hat_rms",
+        "knn_rms",
+        "knn_hat_rms",
+        "intra_delta_rms",
+        "content_lowrank_rms",
+        "content_residual_rms",
+        "content_normalized_rms",
+        "content_cross_cosine",
+        "eta_weighted_rms_by_expert",
+        "physical_profile_rms_by_expert",
+        "combined_profile_rms_by_expert",
+        "expert_output_rms_by_expert",
+        "intrinsic_rms",
+        "weighted_graph_correction_rms"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality"
+      ],
+      "rows": 90,
+      "unique_keys": 90
+    },
+    "physical_strength_diagnostics.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality",
+        "active_node_count",
+        "physical_strength_mean",
+        "physical_strength_std",
+        "physical_strength_min",
+        "physical_strength_max",
+        "checkpoint_sha256",
+        "eval_cpu_rng_unchanged",
+        "model_parameters_unchanged",
+        "test_evaluation"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "modality"
+      ],
+      "rows": 90,
+      "unique_keys": 90
+    },
+    "prediction_transitions.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "reference_condition",
+        "class_id",
+        "correct_to_wrong",
+        "wrong_to_correct",
+        "unchanged_correct",
+        "unchanged_wrong"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "class_id"
+      ],
+      "rows": 648,
+      "unique_keys": 648
+    },
+    "resource_profile.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "wall_seconds",
+        "epochs_completed",
+        "mean_epoch_wall_seconds",
+        "peak_allocated_bytes",
+        "peak_reserved_bytes",
+        "cuda_device_name",
+        "parameter_count",
+        "trainable_parameter_count",
+        "content_path_active",
+        "intra_selector_path_active",
+        "content_parameter_count",
+        "intra_selector_parameter_count"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed"
+      ],
+      "rows": 45,
+      "unique_keys": 45
+    },
+    "runs.csv": {
+      "fields": [
+        "dataset",
+        "condition",
+        "seed",
+        "status",
+        "best_accuracy_epoch",
+        "best_f1_epoch",
+        "val_acc",
+        "val_macro_f1",
+        "val_ce",
+        "best_f1_val_acc",
+        "best_f1_val_macro_f1",
+        "best_f1_val_ce",
+        "train_acc",
+        "train_macro_f1",
+        "train_ce",
+        "train_ce_eval",
+        "train_val_acc_gap",
+        "train_val_macro_f1_gap",
+        "train_val_ce_gap",
+        "model_parameters",
+        "classifier_parameters",
+        "wall_seconds",
+        "peak_allocated_bytes",
+        "peak_reserved_bytes",
+        "best_accuracy_checkpoint",
+        "best_f1_checkpoint",
+        "best_accuracy_checkpoint_sha256",
+        "best_f1_checkpoint_sha256",
+        "run_metrics_path",
+        "run_dir",
+        "initial_model_sha256",
+        "initial_classifier_sha256",
+        "semantic_cache_sha256",
+        "feature_fingerprint",
+        "candidate_fingerprint",
+        "v7b_fingerprint",
+        "split_fingerprint",
+        "test_evaluation",
+        "error"
+      ],
+      "key_fields": [
+        "dataset",
+        "condition",
+        "seed"
+      ],
+      "rows": 45,
+      "unique_keys": 45
+    }
+  },
+  "test_evaluation": false,
+  "test_label_values_indexed": false
+}

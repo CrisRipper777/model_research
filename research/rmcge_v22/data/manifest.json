@@ -1,5 +1,18 @@
 {
+  "active_implementation_freeze_sha": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
+  "analysis_report_commit_affects_training": false,
+  "analysis_report_only_commit": "88ebdee",
+  "analysis_report_only_commits": [
+    "88ebdeee906ab5041f0cfba70d104256bf54110f",
+    "03fa9251e437c86a03219d062174bb16c1c1982f",
+    "dbca12952b937551a7c73576e9f8499570146b4c"
+  ],
   "branch": "exp/rmcge_v22_cross_message_content",
+  "completed_seed_batches": [
+    42,
+    43,
+    44
+  ],
   "conditions": [
     "M0",
     "M1",
@@ -109,13 +122,13 @@
           "memory_used_mib": 22858,
           "name": "NVIDIA GeForce RTX 3090",
           "physical_index": 0,
-          "utilization_percent": 88,
+          "utilization_percent": 81,
           "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
         },
         {
           "driver_version": "535.309.01",
           "memory_total_mib": 24576,
-          "memory_used_mib": 351,
+          "memory_used_mib": 12,
           "name": "NVIDIA GeForce RTX 3090",
           "physical_index": 1,
           "utilization_percent": 0,
@@ -127,21 +140,139 @@
     "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
     "python": "3.12.13",
     "pytorch": "2.4.0+cu121",
-    "timestamp_utc": "2026-10-13T14:45:47+00:00",
+    "timestamp_utc": "2026-10-13T15:23:15+00:00",
     "visible_devices": "1"
+  },
+  "final_report_generator_commit": "dbca12952b937551a7c73576e9f8499570146b4c",
+  "first_successful_formal_run": {
+    "best_accuracy_epoch": 96,
+    "best_f1_epoch": 87,
+    "checkpoints_reload_verified": true,
+    "condition": "M0",
+    "dataset": "Movies",
+    "implementation_commit": "49c20e5b9c7adca2d07d9806a2cf24088bb65fff",
+    "seed": 42,
+    "test_evaluation": false,
+    "validation_accuracy": 0.5572885274887085,
+    "validation_ce": 1.4013469219207764,
+    "validation_macro_f1": 0.4653774545868429
   },
   "formal_cuda_visibility": "CUDA_VISIBLE_DEVICES=1 (logical cuda:0)",
   "formal_run_count": 45,
-  "last_preflight_utc": "2026-10-13T14:33:12+00:00",
+  "formal_run_runner_commits": {
+    "all datasets x M0-M4 / seed_43": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
+    "all datasets x M0-M4 / seed_44": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
+    "seed_42": {
+      "Movies/M0/seed_42": "49c20e5b9c7adca2d07d9806a2cf24088bb65fff",
+      "Movies/M1-M4 and Grocery/M0-M4/seed_42": "4cf359b233e915f616fdbd69d01148ba56fb94bc",
+      "ele-fashion/M0-M4/seed_42": "5bfee4de9d90fb4047e93b67428310bf8898c9a3"
+    }
+  },
+  "implementation_freeze_commits": [
+    {
+      "note": "Movies/M0/seed_42 completed under unchanged model/training path; original GPU memory guard falsely classified its own CUDA context.",
+      "sha": "49c20e5b9c7adca2d07d9806a2cf24088bb65fff",
+      "status": "superseded_operational_guard"
+    },
+    {
+      "note": "PID-aware GPU guard fixed; Fashion/M0 checkpoint audit exposed mismatch between all-class and Train+Validation-observed Macro-F1 label sets.",
+      "sha": "4cf359b233e915f616fdbd69d01148ba56fb94bc",
+      "status": "superseded_checkpoint_metric_audit"
+    },
+    {
+      "note": "Checkpoint and frozen-intervention metrics use the protocol Train+Validation label set with Test disabled.",
+      "sha": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
+      "status": "active"
+    }
+  ],
+  "last_batch_completed_utc": "2026-10-13T16:03:00+00:00",
+  "last_preflight_utc": "2026-10-13T15:23:19+00:00",
+  "physical_strength_probe": {
+    "checkpoint": "Best Accuracy only",
+    "checkpoint_sha256_recorded_and_matched": true,
+    "cpu_rng_unchanged": true,
+    "device": "CPU",
+    "model_parameters_unchanged": true,
+    "rows": 90,
+    "runs": 45,
+    "script": "scripts/audit_rmcge_v22_physical_strength.py",
+    "source_commit": "dbca12952b937551a7c73576e9f8499570146b4c",
+    "test_evaluation": false,
+    "test_labels_indexed": false
+  },
+  "post_training_device_probe": {
+    "cause": "unresolved; observed after all 45 runs completed; no device reset or additional GPU workload attempted",
+    "kernel_driver_version": "535.309.01",
+    "kernel_module_loaded": true,
+    "nvidia_device_nodes_present": false,
+    "nvidia_smi_and_nvml_available": false,
+    "observed_utc": "2026-10-13T16:06:09Z",
+    "pytorch_cuda_available": false,
+    "training_process_exit_code": 0
+  },
+  "preserved_failed_checkpoint_retest": {
+    "best_accuracy": {
+      "val_acc": 0.8738877177238464,
+      "val_ce": 0.41408854722976685,
+      "val_macro_f1": 0.7430692326795789
+    },
+    "best_f1": {
+      "val_acc": 0.8684667944908142,
+      "val_ce": 0.42073482275009155,
+      "val_macro_f1": 0.7599310789720101
+    },
+    "condition": "M0",
+    "dataset": "ele-fashion",
+    "formal_rerun": {
+      "best_accuracy": {
+        "val_acc": 0.8758310079574585,
+        "val_ce": 0.4592972993850708,
+        "val_macro_f1": 0.7414429060212939
+      },
+      "best_accuracy_epoch": 185,
+      "best_f1": {
+        "val_acc": 0.8673416972160339,
+        "val_ce": 0.4189598560333252,
+        "val_macro_f1": 0.764229056857544
+      },
+      "best_f1_epoch": 163,
+      "checkpoint_hashes": {
+        "best_accuracy": "eea5da34e07878341abd4558b618e2d079a026cd35a06505eed867b6e7b994ea",
+        "best_f1": "5bc204b00e7a855f1ce55f5b4990bb499e76335506a4b5752bc9cb0e7d60159e"
+      },
+      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/attempts/ele-fashion/M0/seed_42__20261013T230636339753",
+      "runner_commit": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
+      "status": "complete",
+      "test_evaluation": false
+    },
+    "formal_rerun_required": false,
+    "frozen_interventions_completed": 3,
+    "retest_commit": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
+    "retry_difference_vs_preserved_best_accuracy_checkpoint": {
+      "interpretation": "trajectory variability; historical failure and checkpoint remain unchanged",
+      "val_acc_pp": 0.19432902336120605,
+      "val_ce": 0.045208752155303955,
+      "val_macro_f1_pp": -0.16263266582849933
+    },
+    "seed": 42,
+    "test_labels_masked": true,
+    "training_commit": "4cf359b233e915f616fdbd69d01148ba56fb94bc"
+  },
   "protocol_version": "unified_full_graph_nc_v1",
+  "seed42_integrity_review": "pass",
   "seeds": [
     42,
     43,
     44
   ],
   "selected_physical_gpu": 1,
-  "source_commit": "151f1c08a872d55cdf3e7de37d950c7485fb4014",
+  "source_commit": "5bfee4de9d90fb4047e93b67428310bf8898c9a3",
   "study": "RM-CGE V2.2 Receiver-Conditioned Cross-modal Message Experts",
+  "successful_run_runner_commits": {
+    "Movies/M0/seed_42": "49c20e5b9c7adca2d07d9806a2cf24088bb65fff",
+    "Movies/M1-M4 and Grocery/M0-M4/seed_42": "4cf359b233e915f616fdbd69d01148ba56fb94bc",
+    "ele-fashion/M0-M4/seed_42": "5bfee4de9d90fb4047e93b67428310bf8898c9a3"
+  },
   "test_evaluation": false,
   "test_label_values_indexed": false
 }

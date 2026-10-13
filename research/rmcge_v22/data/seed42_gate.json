@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "finite train/validation histories",
+    "all checkpoints reload and reproduce metrics",
+    "shared initialization and split/cache pairing",
+    "evaluation RNG unchanged",
+    "M1-M4 final Gate layer receives task gradient",
+    "Test evaluation disabled"
+  ],
+  "completed_runs": 15,
+  "generated_utc": "2026-10-13T15:22:20+00:00",
+  "performance_threshold_used": false,
+  "seed": 42,
+  "status": "pass"
+}

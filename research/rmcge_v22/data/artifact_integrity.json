@@ -1,0 +1,1147 @@
+{
+  "analysis_schema_audit": {
+    "checkpoint_hash_records": 90,
+    "checkpoint_sha_and_size_verified": 90,
+    "failure_record_count": 4,
+    "generated_utc": "2026-10-13T16:24:45+00:00",
+    "gradient_audit_run_count": 45,
+    "implementation_check_run_count": 45,
+    "last_batch_completed_utc": "2026-10-13T16:03:00+00:00",
+    "no_test_metrics": true,
+    "paired_comparison_rows": 378,
+    "paired_summary_rows": 126,
+    "tables": {
+      "classwise_metrics.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "checkpoint",
+          "class_id",
+          "precision",
+          "recall",
+          "f1",
+          "support",
+          "predicted_count"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "checkpoint",
+          "class_id"
+        ],
+        "rows": 1560,
+        "unique_keys": 1560
+      },
+      "confusion_matrices.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "checkpoint",
+          "true_class",
+          "predicted_class",
+          "count"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "checkpoint",
+          "true_class",
+          "predicted_class"
+        ],
+        "rows": 28320,
+        "unique_keys": 28320
+      },
+      "content_gate_diagnostics.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality",
+          "mode",
+          "edge_count",
+          "channel_mean",
+          "channel_std",
+          "channel_correlation",
+          "abs_ge_0_99_fraction",
+          "receiver_query_roll_gate_rms"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality"
+        ],
+        "rows": 72,
+        "unique_keys": 72
+      },
+      "degree_group_metrics.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "checkpoint",
+          "degree_group",
+          "node_count",
+          "val_count",
+          "accuracy",
+          "macro_f1",
+          "cross_entropy",
+          "content_text_rms",
+          "content_visual_rms"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "checkpoint",
+          "degree_group"
+        ],
+        "rows": 450,
+        "unique_keys": 450
+      },
+      "epoch_history.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "epoch",
+          "train_loss",
+          "train_objective",
+          "train_ce",
+          "train_ce_eval",
+          "train_accuracy_eval",
+          "train_macro_f1_eval",
+          "val_ce",
+          "val_acc",
+          "val_macro_f1",
+          "epoch_wall_seconds",
+          "learning_rate"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "epoch"
+        ],
+        "rows": 5842,
+        "unique_keys": 5842
+      },
+      "expert_router_diagnostics.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality",
+          "router_entropy",
+          "expert_selection_share",
+          "expert_coefficients"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality"
+        ],
+        "rows": 90,
+        "unique_keys": 90
+      },
+      "frozen_interventions.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "intervention",
+          "status",
+          "val_acc",
+          "val_macro_f1",
+          "val_ce",
+          "val_acc_delta",
+          "val_macro_f1_delta",
+          "logit_delta_rms",
+          "prediction_flip_fraction"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "intervention"
+        ],
+        "rows": 162,
+        "unique_keys": 162
+      },
+      "message_scale_diagnostics.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality",
+          "u1_rms",
+          "cross_rms",
+          "cross_hat_rms",
+          "knn_rms",
+          "knn_hat_rms",
+          "intra_delta_rms",
+          "content_lowrank_rms",
+          "content_residual_rms",
+          "content_normalized_rms",
+          "content_cross_cosine",
+          "eta_weighted_rms_by_expert",
+          "physical_profile_rms_by_expert",
+          "combined_profile_rms_by_expert",
+          "expert_output_rms_by_expert",
+          "intrinsic_rms",
+          "weighted_graph_correction_rms"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality"
+        ],
+        "rows": 90,
+        "unique_keys": 90
+      },
+      "physical_strength_diagnostics.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality",
+          "active_node_count",
+          "physical_strength_mean",
+          "physical_strength_std",
+          "physical_strength_min",
+          "physical_strength_max",
+          "checkpoint_sha256",
+          "eval_cpu_rng_unchanged",
+          "model_parameters_unchanged",
+          "test_evaluation"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "modality"
+        ],
+        "rows": 90,
+        "unique_keys": 90
+      },
+      "prediction_transitions.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "reference_condition",
+          "class_id",
+          "correct_to_wrong",
+          "wrong_to_correct",
+          "unchanged_correct",
+          "unchanged_wrong"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "class_id"
+        ],
+        "rows": 648,
+        "unique_keys": 648
+      },
+      "resource_profile.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "wall_seconds",
+          "epochs_completed",
+          "mean_epoch_wall_seconds",
+          "peak_allocated_bytes",
+          "peak_reserved_bytes",
+          "cuda_device_name",
+          "parameter_count",
+          "trainable_parameter_count",
+          "content_path_active",
+          "intra_selector_path_active",
+          "content_parameter_count",
+          "intra_selector_parameter_count"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed"
+        ],
+        "rows": 45,
+        "unique_keys": 45
+      },
+      "runs.csv": {
+        "fields": [
+          "dataset",
+          "condition",
+          "seed",
+          "status",
+          "best_accuracy_epoch",
+          "best_f1_epoch",
+          "val_acc",
+          "val_macro_f1",
+          "val_ce",
+          "best_f1_val_acc",
+          "best_f1_val_macro_f1",
+          "best_f1_val_ce",
+          "train_acc",
+          "train_macro_f1",
+          "train_ce",
+          "train_ce_eval",
+          "train_val_acc_gap",
+          "train_val_macro_f1_gap",
+          "train_val_ce_gap",
+          "model_parameters",
+          "classifier_parameters",
+          "wall_seconds",
+          "peak_allocated_bytes",
+          "peak_reserved_bytes",
+          "best_accuracy_checkpoint",
+          "best_f1_checkpoint",
+          "best_accuracy_checkpoint_sha256",
+          "best_f1_checkpoint_sha256",
+          "run_metrics_path",
+          "run_dir",
+          "initial_model_sha256",
+          "initial_classifier_sha256",
+          "semantic_cache_sha256",
+          "feature_fingerprint",
+          "candidate_fingerprint",
+          "v7b_fingerprint",
+          "split_fingerprint",
+          "test_evaluation",
+          "error"
+        ],
+        "key_fields": [
+          "dataset",
+          "condition",
+          "seed"
+        ],
+        "rows": 45,
+        "unique_keys": 45
+      }
+    },
+    "test_evaluation": false,
+    "test_label_values_indexed": false
+  },
+  "checkpoints": [
+    {
+      "bytes": 7301822,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M0/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "5b924dd1ee622a624af6ede32d3af6baaf4463618ce3eeaa36119c1baaa4a2c6"
+    },
+    {
+      "bytes": 7300696,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M0/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "b9d22555f039d0d929937934d18affbcb8803a1eb21c284200e104bf99786af7"
+    },
+    {
+      "bytes": 7300478,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M1/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "608036d6137368491afdc29f817d7b4177cd5af542be1ff51711ee59fefed218"
+    },
+    {
+      "bytes": 7299352,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M1/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "79a8bc1139f55dd4462e1e3772758533f502be0ff81137f749aea8049af0f771"
+    },
+    {
+      "bytes": 7298622,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M2/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "d92444edc469a8bf4e6bcc91a35f29f040a9a08cf70f2dce588cf47684b3aadb"
+    },
+    {
+      "bytes": 7297496,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M2/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "6f3ce92ba63556b609d24e26f4fc4a9570e49092f7f5b5a92e399068c45762bb"
+    },
+    {
+      "bytes": 7300350,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M3/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "a96bc4f9f59c83404f0f3a26306b92f6afce653044b736eb5f6afe1a1961277d"
+    },
+    {
+      "bytes": 7299224,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M3/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "c79b4d083f98879c12bf6032a110445a164b755d795ffbe03a3cd3c038b99492"
+    },
+    {
+      "bytes": 7304062,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M4/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "3106d9355d739e3589fddd2dca349353770f5788709cdb54ca33845d931258ca"
+    },
+    {
+      "bytes": 7302936,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M4/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "f9fd7a329ba1ab034079885ac727fb90d4bfc0bed5a651037d93ab22678bdfeb"
+    },
+    {
+      "bytes": 7299518,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M0/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "e24f279fa130d344ef2c3260396cff40c46b75b30cbb9e13c037e878e8731d29"
+    },
+    {
+      "bytes": 7298392,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M0/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "bf45c662ec439c9ba441f4e72fd1366c3edc7b57b686b307af4a2ff1f9575700"
+    },
+    {
+      "bytes": 7297278,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M1/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "524b37a2ffb165db506acaa75464ed612b1119282e33f9927309185d12718afe"
+    },
+    {
+      "bytes": 7296152,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M1/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "e5666cb866ebbd7fb231aab0e394435b34b83f92883b3a232877d9dc37b651f1"
+    },
+    {
+      "bytes": 7300222,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M2/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "98c8ddfd24efb1df686fc829f1dfc3ad52d71296d1105b2e7ff366a737eb8222"
+    },
+    {
+      "bytes": 7299096,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M2/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "da2b18b5fc30aacceaa765c10d60fad54f51a98965b6633b822a89cccce79025"
+    },
+    {
+      "bytes": 7297278,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M3/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "cff8e2429981511b16e0793d8499fdb3c2ca4e78337bf742e0cbca32eca5d585"
+    },
+    {
+      "bytes": 7296152,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M3/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "637ee81d1281aa382a479fd7ba1edd195be439a1a8fc50e082feb2dbe65975ae"
+    },
+    {
+      "bytes": 7298750,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M4/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "d863f4f490bd8e52ab5c1e6df15d737fecd73b94b517b53dd516716c238971e7"
+    },
+    {
+      "bytes": 7297624,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M4/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "4d1bced49ae63a2f8c489db8eca5f4b9b1910ab113f8c02d357d88a4e02797c7"
+    },
+    {
+      "bytes": 6256830,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/attempts/ele-fashion/M0/seed_42__20261013T230636339753/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "eea5da34e07878341abd4558b618e2d079a026cd35a06505eed867b6e7b994ea"
+    },
+    {
+      "bytes": 6255704,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/attempts/ele-fashion/M0/seed_42__20261013T230636339753/best_f1.pt",
+      "seed": 42,
+      "sha256": "5bc204b00e7a855f1ce55f5b4990bb499e76335506a4b5752bc9cb0e7d60159e"
+    },
+    {
+      "bytes": 6251006,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M1/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "4a04e0de53d1b8d7f5556a023741278b619fa496a9e01b4663e6e122d91564f6"
+    },
+    {
+      "bytes": 6249880,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M1/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "4d6a9c0bfe72416715187d0a3fa0e35797ad38efca8d72ce696efb461bafe31a"
+    },
+    {
+      "bytes": 6250430,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M2/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "0ed2a22292c620da518d8c7ad33f271e756641bbfb23873cad147e62ebbcbe3f"
+    },
+    {
+      "bytes": 6249304,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M2/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "a5f9cc7790a63ef3bef56157f34468825078ba0ee39cf40769e392581005327d"
+    },
+    {
+      "bytes": 6254206,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M3/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "e2770e06ec6d081eaa4597a8e9d6af511e1fc808d13553ebc4263f3f7a0abe6b"
+    },
+    {
+      "bytes": 6253016,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M3/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "1ceb2bb951fb33dd308c9d4244713588699ec8494cc8b2bd5ee3928c522d1d57"
+    },
+    {
+      "bytes": 6247550,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M4/seed_42/best_accuracy.pt",
+      "seed": 42,
+      "sha256": "ffbabed1d5648286bd25425ca9edc9b29c0e4d534c68507b83e77b0447ff1daf"
+    },
+    {
+      "bytes": 6246424,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M4/seed_42/best_f1.pt",
+      "seed": 42,
+      "sha256": "b6227b2b3834859a80a0e1038d431ef902f77bcb54cd9761bda5ba837b985282"
+    },
+    {
+      "bytes": 7303678,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M0/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "ef1aa06a06291fee7c4e07bc589c2a97c61f8a72e5ed8764bd6fbe395597b7c6"
+    },
+    {
+      "bytes": 7302552,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M0/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "f559c540b058e5e42a9a9fd4483738de0a999aa75f68ee9bb7b911b0d4f4cb54"
+    },
+    {
+      "bytes": 7300926,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M1/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "f468e6c6c65c8e137478c3f33b90f985a83b6c547381eca660372dd4566a20ec"
+    },
+    {
+      "bytes": 7299736,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M1/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "22b50ab6b249a24aa28c1fd9474b040961f5757caa0a4e851109f5a6c8c1cfb4"
+    },
+    {
+      "bytes": 7298878,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M2/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "37f5d6378c07b02e1c595a4ad568e5cd8018e299ec928a87a186c9c7a7bbaba8"
+    },
+    {
+      "bytes": 7297752,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M2/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "0be1a9b4a72a1a8c31145b80bd43bc90cc4150fba964b8419b00b71f121d4a81"
+    },
+    {
+      "bytes": 7297790,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M3/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "8d59ddeffd60445f07ff8a37e37380590e2c3704f951a836a6eb9b583cdf0a63"
+    },
+    {
+      "bytes": 7296664,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M3/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "78b96d848511a5a854a25a061634866a41a29bed69486ed727b4e788615535e7"
+    },
+    {
+      "bytes": 7298494,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M4/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "813be71d6dd7eb2540bed374a4661b90d43a31ac33b8b5bc6357b07583dd47cd"
+    },
+    {
+      "bytes": 7297368,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M4/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "f5ae2898ad17fd5663fc3e2c7089bcb1320fb6daa6c063050ba07223a5e6bb72"
+    },
+    {
+      "bytes": 7299262,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M0/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "d1f76eeb827e4d108cef242b59bd29652b1dac25977403f25d466e339bd522c8"
+    },
+    {
+      "bytes": 7298136,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M0/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "25fe5ad9ed5497339b98d601b5ef96f4051eacccb90d3a64917d96bcdc67d84e"
+    },
+    {
+      "bytes": 7298046,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M1/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "bf28eeb31d51dd25d4025ea653ad4ca169c50a91865ea63a723349727b2a4705"
+    },
+    {
+      "bytes": 7296920,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M1/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "f5836a7b5090d90a5655a5b301a792bf6d52d630f2c894830b4eb96d4b5705c3"
+    },
+    {
+      "bytes": 7297918,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M2/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "31126d9a97e71a7f9a56742a7e224d8a59c1437b15309334f0a461da0cee89e9"
+    },
+    {
+      "bytes": 7296792,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M2/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "1300fb174d2dcf3313d54fdb025907f6cd64f044837d248607dc682bf3e524d1"
+    },
+    {
+      "bytes": 7298494,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M3/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "5c94aef7ca270b86bf17b5545149f883e88ec308fb7033d41f20595cbdd4c8ec"
+    },
+    {
+      "bytes": 7297368,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M3/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "93d6ffd71b776986ef70dafa61358b544cd48e6a4eaa3d2c825e70c76e1d4be3"
+    },
+    {
+      "bytes": 7296638,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M4/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "e16371586cfc99743353137e1e880e15208536482ff2018791a95062f46e5974"
+    },
+    {
+      "bytes": 7295512,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M4/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "fe224c40f39cf66a89a8b234657b3ef52484187a6b7a4b8a0762713e77c7ac10"
+    },
+    {
+      "bytes": 6254974,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M0/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "f2ca132695446dbe606c837441210267c1b72ae6e6b92804c790537bf59b5b43"
+    },
+    {
+      "bytes": 6253848,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M0/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "7a4a35347d114c8dc40afac66ebce6a9d41e6e8785c622794d23b8888285e222"
+    },
+    {
+      "bytes": 6249534,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M1/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "a79c1da2ee8336897630bea2b56efb1e95b4c9b58253577299d9e770816d30a9"
+    },
+    {
+      "bytes": 6248408,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M1/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "c34182371fb83c6096f2ca63c7bc0750162b1eb2139e76365a92bf4d55b38792"
+    },
+    {
+      "bytes": 6248446,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M2/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "22bd5eeb9b4c384fdf7b43b7ef3a37f2da8c3a5a0265e5e9db2be33cb400e9f9"
+    },
+    {
+      "bytes": 6247320,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M2/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "06064cfa9bc74cf2e547e2c93499501a0409807067f1c14e58e934b0f5415ee1"
+    },
+    {
+      "bytes": 6249534,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M3/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "c7300c49b43ac84d325e85c92e93ba792fcb919dbc16098e6337638c90865f4e"
+    },
+    {
+      "bytes": 6248408,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M3/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "2488e2e1f09990e4d8dfdaef6ba17384b635698e3c2e6049ed51ba8e3eb308b1"
+    },
+    {
+      "bytes": 6248702,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M4/seed_43/best_accuracy.pt",
+      "seed": 43,
+      "sha256": "d829967ede332653d0f5a0783ea2d5c31d860fae54a9dc4f27d6a4d802714f98"
+    },
+    {
+      "bytes": 6247576,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M4/seed_43/best_f1.pt",
+      "seed": 43,
+      "sha256": "add9bf1f2ed298602d1dd2a46efcf1ae9ebef0f48eec7d9b089eff3e37c3ce8c"
+    },
+    {
+      "bytes": 7299710,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M0/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "812183847f67eb55d5adcbb14198d58d595b56a8513817831249a55a09b1100b"
+    },
+    {
+      "bytes": 7298584,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M0/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "1f8de90b78492395f26b50adebd8fb79f47a3ec16164d91ec35a2bb3a870f68a"
+    },
+    {
+      "bytes": 7298366,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M1/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "852ac3c6d0b192c9e09d608ed2bfe7870047ab62a043cdd1971bc24608c1ba4c"
+    },
+    {
+      "bytes": 7297240,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M1/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "bddf10f504cfce82d624048e4e9ab24b5fa8f370f0bcac5efe5fbf550625d975"
+    },
+    {
+      "bytes": 7303934,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M2/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "03f41c3f406c2574cc06ad41a72d9afa70e924bc850c8e5a680ff7d3e03970af"
+    },
+    {
+      "bytes": 7302808,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M2/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "18abbc5b8246de3df7d2eb2aedfe3dc701caef646fb176058285a8086f4565ce"
+    },
+    {
+      "bytes": 7298046,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M3/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "c42381c6b738b5d57c9ba39c32dd8e0efe5a69038b2611b909bf0119404b42ed"
+    },
+    {
+      "bytes": 7296920,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M3/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "52d9ec9c6830ab75f34f601e746e2c636189bcf23dbcb22f9b2928ce493e6913"
+    },
+    {
+      "bytes": 7298750,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M4/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "cd018954001fba79a158860978a1a76d8e8ba5733f378fbe29cd69bc53c0a9ed"
+    },
+    {
+      "bytes": 7297624,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "Movies",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Movies/M4/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "e392efb5e9c55d79e1b8d46c419587687f2e5ce1750c359a07a5b1b331c22557"
+    },
+    {
+      "bytes": 7299966,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M0/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "c824b3550d2aff1bac1e4c86ac31b9340952988e31fdf0fd0327c7032cd566c9"
+    },
+    {
+      "bytes": 7298840,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M0/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "1e1f805778150902bd068fda40627836e28d0edac190acacbc8b69789a1047f2"
+    },
+    {
+      "bytes": 7308094,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M1/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "94c39c0e263588cbb2f36e1b733400df42a65ad8efb7cc93ca1877d5d5f42baf"
+    },
+    {
+      "bytes": 7306968,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M1/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "199b67607aa2f84bd41367b2c09afb8e72aefdbf0fac0a46db8a197a6ad0fd0c"
+    },
+    {
+      "bytes": 7300926,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M2/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "bb86bd470feb3bcf0df5bbf270770ea6c1246fd4b9209d7e4d3195d1184d91a3"
+    },
+    {
+      "bytes": 7299736,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M2/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "74dabeab58bcca3950d81ca1b2ba9dc2505336257cc0942e52336c262c86cc6b"
+    },
+    {
+      "bytes": 7299262,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M3/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "99f6d5fe8cb25fc601a2f24f6b3332c9d5bbdf2801728367a6614e628e9f00a3"
+    },
+    {
+      "bytes": 7298136,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M3/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "f413554bd0c4e2391701e3c92b2e8cbfb87b564f611121fe4b9670821902e0be"
+    },
+    {
+      "bytes": 7299262,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M4/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "e9bf3267b8ca2e04202e4cc3fbc3a33ed111947f97d23affcc9d02c7b3e05447"
+    },
+    {
+      "bytes": 7298136,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "Grocery",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/Grocery/M4/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "d1c406e51eeaea9b6e86204504876242ce5b401fe08e4f75be72f109327e8e9f"
+    },
+    {
+      "bytes": 6252606,
+      "checkpoint": "best_accuracy",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M0/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "111c62f0098efc83d9d60410ac87dba1982238d6dfbf45c3a3ac6579bd388cb1"
+    },
+    {
+      "bytes": 6251480,
+      "checkpoint": "best_f1",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M0/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "c5566f8694439051fdcc3e7dc6c1e78a8fab3f0b37e53cb5ceea94151678bcd7"
+    },
+    {
+      "bytes": 6247678,
+      "checkpoint": "best_accuracy",
+      "condition": "M1",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M1/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "934fce85557b837a86bdc3f4d9cae62ca848ba8fba2952b310028e6546f75032"
+    },
+    {
+      "bytes": 6246552,
+      "checkpoint": "best_f1",
+      "condition": "M1",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M1/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "dcfad84f37607158f602a5a1ec80cc14705cadde2d72ade434ff15126e3f70b7"
+    },
+    {
+      "bytes": 6249534,
+      "checkpoint": "best_accuracy",
+      "condition": "M2",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M2/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "9cf50ff050c5a808d43cc066a62f58b3a912aba7d695ae6f468cc4b8a6e9d637"
+    },
+    {
+      "bytes": 6248408,
+      "checkpoint": "best_f1",
+      "condition": "M2",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M2/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "05867328ee814905fa2b51b4497b924769bc058c8f7118dea803eb4639b73d56"
+    },
+    {
+      "bytes": 6247934,
+      "checkpoint": "best_accuracy",
+      "condition": "M3",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M3/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "661c2a5dab6aec1a320edb856dcc23e26625f099839c37720776222f10a02aec"
+    },
+    {
+      "bytes": 6246808,
+      "checkpoint": "best_f1",
+      "condition": "M3",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M3/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "fa4ec17f07ee0e9cf0b70cc9ce8b0798f8e8df21f31f23d2ed3bd8765a5410a4"
+    },
+    {
+      "bytes": 6248446,
+      "checkpoint": "best_accuracy",
+      "condition": "M4",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M4/seed_44/best_accuracy.pt",
+      "seed": 44,
+      "sha256": "79ad8b06ecc83592465f41a459a8450d2030d5d6c0a007240052c295ea33a63f"
+    },
+    {
+      "bytes": 6247320,
+      "checkpoint": "best_f1",
+      "condition": "M4",
+      "dataset": "ele-fashion",
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M4/seed_44/best_f1.pt",
+      "seed": 44,
+      "sha256": "3be62ca0d58508a325e260d94c88cc14ba4ebf6851ddfd64c31f1eb27a3dc5c3"
+    }
+  ],
+  "complete_run_count": 45
+}
