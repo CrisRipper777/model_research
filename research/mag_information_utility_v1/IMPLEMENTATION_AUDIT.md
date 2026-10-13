@@ -31,14 +31,14 @@ first 15-run batch and the final matrix. No training pilot has been completed.
 
 | Audit | Status |
 |---|---|
-| Full repository test suite | pass after the provenance fix: 451 passed, 16 upstream warnings |
-| Model-mask, shape, initialization, and provenance tests | pass: 10 study-specific tests |
+| Full repository test suite | pass after checkpoint replay fix: 452 passed, 16 upstream warnings |
+| Model-mask, shape, initialization, provenance, and replay-tolerance tests | pass: 11 study-specific tests |
 | Analysis pairing, report, and history-validation tests | pass: 3 study-specific tests |
 | V7B cache feature and physical fingerprints | pass: all three datasets |
 | Separate Text/Visual degree-preserving null graph audit | pass: all three datasets; degree/edge constraints exact |
 | Training-path random-cache provenance revalidation | pass: all three datasets |
 | Pre-label node-group construction | pass: all three datasets; group arrays hash recorded |
-| 15-run Seed 42 gate | pending; first invocation aborted before epoch 1 due to a provenance key mismatch, and the failure is retained |
+| 15-run Seed 42 gate | pending; first invocation stopped before epoch 1 on a provenance key mismatch; corrected-source attempt completed Movies I0–I2 but stopped at the I3 checkpoint replay assertion; both failures are retained |
 | 45-run checkpoint and finite-metric audit | pending |
 
 ## Runtime observed during the pre-freeze GPU gate
@@ -69,6 +69,23 @@ before epoch 1 because `_run_provenance` looked for `candidate_cache` while the
 graph bundle exposes its V7B cache as `cache`. No optimizer step, checkpoint,
 epoch history, or validation prediction was produced. The runner's failure row
 is preserved in ignored `outputs/mag_information_utility_v1/failures.json` and
-will be copied into the final tracked failure record. The field lookup is
+has been copied into the tracked failure record. The field lookup is
 corrected in a separate follow-up commit and covered by a regression test; all
 45 completed runs must share that corrected source commit.
+
+The corrected-source attempt later stopped after training Movies/I3 because a
+2e-6 maximum per-node CE replay check was slightly narrower than observed
+forward-to-forward floating-point variation. Five repeated evaluations of the
+same saved checkpoint had identical predictions and Accuracy/Macro-F1; scalar
+Validation CE differed by at most `1.2e-7`, while maximum per-node CE
+difference was `2.15e-6`. A separate diagnostic process enabled deterministic
+algorithms and `CUBLAS_WORKSPACE_CONFIG=:4096:8`; five repeated forwards still
+had zero prediction flips and identical scalar CE, with maximum per-node CE
+difference `1.91e-6`. This confirms small GPU-forward numeric variation but
+does not identify one kernel as its sole cause. The formal environment was not
+changed. The replay check is set to `3e-6`, just above the measured envelope;
+node IDs, labels, and predictions must still match exactly, and aggregate
+checkpoint metrics retain the existing `2e-6` check. The failed attempt's
+checkpoints and completed I0–I2 artifacts were copied with SHA-256 manifests
+under ignored `outputs/mag_information_utility_v1/failed_attempts/` before the
+seed-42 batch is rerun from one corrected source commit.

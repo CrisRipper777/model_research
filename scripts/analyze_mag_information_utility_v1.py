@@ -267,6 +267,7 @@ def _run_rows(runs: dict[tuple[str, str, int], dict[str, Any]]) -> list[dict[str
                     "checkpoint_accuracy_sha256": row["best_accuracy_checkpoint_sha256"],
                     "checkpoint_f1_sha256": row["best_f1_checkpoint_sha256"],
                     "validation_predictions_sha256": row["validation_predictions_sha256"],
+                    "best_accuracy_reload_max_node_ce_abs_diff": row["best_accuracy_reload_max_node_ce_abs_diff"],
                     "split_sha256": row["provenance"]["split_sha256"],
                     "feature_fingerprint": row["provenance"]["feature_fingerprint"],
                     "candidate_fingerprint": row["provenance"]["candidate_fingerprint"],
