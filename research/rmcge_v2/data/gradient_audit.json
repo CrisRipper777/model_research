@@ -1,3 +1,6403 @@
 {
-  "runs": []
+  "runs": [
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006750986911356449,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.014334017410874367,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009792665019631386,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003329007886350155,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.1513136774301529,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.0021667955812077,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 12.15028336512474,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.19082136348823,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.207179647518876,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.39229394456634636,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4284921216565167,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.054888442158699036,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 15.384455226781052,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.1932008095927049,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.7009567124773004,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.1834399318421206,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2852485986028635,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V0"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006406180560588837,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.019197246059775352,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.07325515896081924,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04098183289170265,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.11923456192016602,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05334426835179329,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015088063664734364,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.704127311706543,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0035207008477300406,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031654746271669865,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0072324941866099834,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1216816902160645,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5748523473739624,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009595104493200779,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005534266121685505,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.17031267285346985,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.0252361596599044,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.05496424809098244,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.006461041909194,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 5.0067901611328125e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 6.9459381798791675,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.590800555970776,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.49664126189761,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.2796549793358432,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.3321103273979986,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.03825407475233078,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.06745601445436478,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.03592008352279663,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 3.4547663918288336,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 14.360455359258802,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.19493746448521193,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.5882177753302311,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.16084176106930864,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.31529194307745934,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V1"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006406179163604975,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.019197244197130203,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.07325515896081924,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04098183289170265,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.11923456192016602,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05334426835179329,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0016531511209905148,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004155089613050222,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015088064596056938,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.704127311706543,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003520700614899397,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031654746271669865,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0072324941866099834,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1216816902160645,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5748523473739624,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009595104493200779,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00553426519036293,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.22624050080776215,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.054797426516496,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.05061855912208557,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.8305056052385593,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.09385678172111511,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0875483825802803,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 3.2722748519473592,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.758750896748836,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 7.570683016748212,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.216268320028696,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.288633138142599,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.39915081824075277,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.3892242537820145,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.045871034264564514,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.0636165663599968,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.027505774050951004,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.306923317302722,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 15.36640650964417,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.20576712492525207,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.586250841152521,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.16558437894359146,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.3289939364622162,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V2"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.016307706013321877,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006921854801476002,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008376997895538807,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0018458274425938725,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.07386713474988937,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.3613859587943982,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 4.987194339020321,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.60316432104991,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.3517309760817966,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.4134753238442627,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.652563407940249,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.0812353789806366,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 13.807398875565916,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.24779846047487927,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.9973020822796392,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.25462773006148237,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2618062637779288,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V0"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015795055776834488,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0037783437874168158,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04825925454497337,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020811649039387703,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0592520572245121,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02739403396844864,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007257168646901846,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.455065131187439,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008618679828941822,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005072167608886957,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0074112084694206715,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.1873998641967773,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.3302901089191437,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009396323934197426,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0007828420493751764,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.10280770808458328,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.4212008153757885,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.02895646169781685,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.269563599973621,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 4.76837158203125e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 4.775018920798708,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.8278849920184292,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.6225236451304963,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.4855187873891732,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.6848276191408167,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.007678938563913107,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.08063007891178131,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.08635246008634567,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 3.6100687005026617,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 14.1783073432108,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.25298263766110024,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 2.1085719867906723,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.22229014636417974,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2767566631892673,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V1"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015795055776834488,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0037783437874168158,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04825925454497337,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020811649039387703,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0592520572245121,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02739403210580349,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0015697793569415808,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0036116077098995447,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007257169112563133,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.455065131187439,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008618680760264397,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00507216714322567,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007411208003759384,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.1873998641967773,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.3302901089191437,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009396323934197426,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0007828423986211419,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.08536199480295181,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.3576314055431267,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.018226051703095436,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 2.9940254188464994,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.06728152185678482,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.08372940123081207,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 2.5475970845325127,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.764574069077098,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 4.338630322850406,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.5833025968997276,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.343641217997518,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.403472804256793,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.627228267378603,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.011280386708676815,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07227980345487595,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.06894516199827194,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.136789682801441,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 13.649192189076997,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.23522920690601468,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 2.0649557984541995,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.22113635621413252,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2597352521324281,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03176312521100044,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008077257312834263,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00022991013247519732,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.3996887803077698,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.0556361612677045,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 17.26261085924336,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 6.952663440649175,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 6.481213311982962,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.6622344071373326,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.38039000566377,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.08379613608121872,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 13.922995959971871,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.20045788989114424,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.8020677068855648,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.30965260909637765,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.33279123426227614,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03066587634384632,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0004789744270965457,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.043586403131484985,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.021136891096830368,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0428403802216053,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020351609215140343,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1167333126068115,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020477864891290665,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004993876907974482,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005370012484490871,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.49529901146888733,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5819124579429626,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007872434332966805,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0014895822387188673,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.18035176396369934,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.1154710449684972,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.17094050347805023,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 6.826629424466968,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 9.5367431640625e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 11.541162339815534,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 5.436925440794478,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 4.40542012387168,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.4255190497137757,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4501848883536463,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.15345178544521332,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07849156111478806,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.04086454585194588,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 5.261512783844844,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 12.516022554184886,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.1753402271321462,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.533900505530842,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.241609408895369,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.46248341138703886,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.030665874481201172,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00047897431068122387,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.043586403131484985,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.021136891096830368,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0428403802216053,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020351609215140343,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0021808987949043512,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0039001291152089834,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1167333126068115,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020477864891290665,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004993876442313194,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005370012484490871,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4952990412712097,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5819124579429626,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007872434332966805,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0014895818894729018,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.15741576254367828,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 0.9635046758580522,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.10515356063842773,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 5.2262605492216325,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.06564833223819733,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0701303482055664,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 2.835064907627901,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 2.0141733716994605,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 8.380581635510088,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.15215433414563,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.699977547558459,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.2608416776737317,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4804445313888928,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.11456393450498581,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.06585465371608734,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.03832487389445305,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.565529813957597,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 11.28771390787161,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.15953993236946173,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.3842737592539334,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.18440262639627142,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.3642391249411445,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 42,
+      "variant": "V2"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.024402843788266182,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.014739894308149815,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007172032725065947,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0003744266286958009,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.1257690042257309,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.047295111064069,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 9.96065164853373,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.3996098652781375,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.2680305699114776,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.27672608376843894,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.2782519482853627,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.05355745553970337,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 14.027279192662405,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.17345837960238147,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.5989586880529107,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.1608266046815606,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.28243874304729083,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V0"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.023407166823744774,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008025836199522018,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.059443388134241104,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.033861689269542694,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05767365172505379,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03279842436313629,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015200414694845676,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.494598627090454,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012390893884003162,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003337264060974121,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005511093884706497,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.9466922283172607,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4686863124370575,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007145128678530455,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0019331767689436674,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.23690678179264069,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.2173085258754954,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.04714338853955269,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.8775581171058184,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 6.4373016357421875e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 8.34846909199999,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.234954728127637,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.1277533551750216,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.40919989663568523,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.3428767457065924,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.046954195946455,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.08392995595932007,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.020631080493330956,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.15174723977377,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 15.364921384946317,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.23123363657398963,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.6272336330030108,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.20653188230911357,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.3512349659005972,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V1"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.023407164961099625,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008025836199522018,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.059443388134241104,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.033861689269542694,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05767365172505379,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03279842436313629,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002631905023008585,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0029700954910367727,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015200414694845676,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.494598627090454,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012390893884003162,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003337264060974121,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005511093884706497,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.9466922283172607,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4686863124370575,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007145128678530455,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0019331772346049547,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.10544899106025696,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.030047441914485,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.01478264108300209,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 2.3371184449093905,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.0560801737010479,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0727292150259018,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 2.821430835575285,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.6217344142209729,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 3.998477312430674,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 2.761649552221425,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 1.6283611624434593,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.15454003140315198,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.13830019278572,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.019960377365350723,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.06536740809679031,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.02230019122362137,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 2.9229494097938487,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 12.152929666826164,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.18557603154536464,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.4467504043923167,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.16728859427775086,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.27108120315038886,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V2"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006874504499137402,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01123795285820961,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015479657799005508,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006725343409925699,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.10435977578163147,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.4465188905895048,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 7.574263937882939,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.9961333585769316,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.9842920858186748,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.614931148568455,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.71690101320897,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07191462814807892,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 14.873332622070048,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.24044195622815712,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 2.0004078315141793,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.21730251520205415,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.30121976467714145,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V0"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00791027583181858,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.016267692670226097,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04312530905008316,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022787567228078842,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.07080940902233124,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.031411703675985336,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.011554977856576443,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.5989091396331787,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007560984697192907,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005993967410176992,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012296216562390327,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.6010253429412842,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.3555876910686493,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.016838502138853073,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002962492173537612,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.11965131014585495,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.467461437117927,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.028895743191242218,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.277325466297932,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 4.827976226806641e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 5.102882522596428,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.554470945737026,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.48205494381213,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.4802766139113985,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.636803839538251,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.014314623549580574,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07881568372249603,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.07086974382400513,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 3.529464837741562,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 13.988745443414485,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.26471132664105035,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.9458592104600931,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2209603350103701,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.28974401098383246,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V1"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007910276763141155,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.016267692670226097,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04312530905008316,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022787567228078842,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.07080941647291183,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.031411703675985336,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0024663240183144808,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002962927334010601,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.011554977856576443,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.5989092588424683,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007560984697192907,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005993967410176992,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012296216562390327,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.6010253429412842,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.3555876910686493,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.016838502138853073,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0029624924063682556,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.11677549034357071,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.4149890969961936,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.061725419014692307,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.9566456027837895,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.09466536343097687,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.07993786782026291,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 2.496844724603541,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.686968990145973,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 6.88504938192147,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.099970188278069,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.2674009239752904,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.6706483382489234,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.7160559012061847,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.04227542132139206,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07484854012727737,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.06582868844270706,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.205550964191875,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 15.002933334742774,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.24930751683347285,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.8988786003004994,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.22124685717690915,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2792895341797421,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03169877827167511,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007075136993080378,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0016384150367230177,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.24805569648742676,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 0.9417205959907053,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 11.65338999433169,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.659254221199726,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.299291148941826,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.25901991037314664,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.54406508249131,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07488425076007843,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 12.265013138936808,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.19240451083279533,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.6849202756522512,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.22843241614771873,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.33419993034844814,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.029707588255405426,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009840830229222775,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.06547921895980835,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03732140734791756,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0583384707570076,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02031084895133972,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.4967763423919678,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01673540100455284,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003533595008775592,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004987423773854971,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5261857509613037,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6346459984779358,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007084270473569632,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028719897381961346,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.22962085902690887,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.1323932504040393,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.13585227727890015,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 6.174132802210979,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 8.64267349243164e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 10.958937758953672,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.96838803529656,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.9564608578885534,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.33267606201316197,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4515802620356664,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.16155926883220673,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07588214427232742,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.069973424077034,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.770679864312418,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 12.42580308264757,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.19749469803454886,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.6298416614382158,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.20753209608837542,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.42517457874888764,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.029707586392760277,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009840830229222775,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.06547921895980835,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03732140734791756,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0583384707570076,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02031084895133972,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0037872318644076586,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0047431462444365025,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.4967763423919678,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01673540100455284,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003533595474436879,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004987423773854971,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5261857509613037,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6346459984779358,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007084270473569632,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028719904366880655,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.2008737325668335,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.051044080069834,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.09568695724010468,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 5.429405579842904,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.08554715663194656,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.05775872617959976,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 3.004712063388964,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.94709997462766,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 9.529632818943789,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.359205864336053,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.1489804701938113,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.26540602351489717,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4580658056835327,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.14006385207176208,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.06651034951210022,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.05348411947488785,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.660188857980463,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 11.758845828273628,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.18391499806549355,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.5696317293480986,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.1852242094856438,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.36772804181253915,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 43,
+      "variant": "V2"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02808408811688423,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.018236808478832245,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04309583082795143,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02242381125688553,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.1394243985414505,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.079380182883259,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 8.363159440040683,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.471727019348455,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.4186120900456554,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.2535851224881624,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.3439997313202547,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.05751722306013107,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 14.535018793716931,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.1872378244139046,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.677126698243065,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.167354149018741,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2688605069382981,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V0"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.027918905019760132,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022630222141742706,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.08788975328207016,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.057603754103183746,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.08835367858409882,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04249648377299309,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02477087825536728,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.286957025527954,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020748259499669075,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.019317418336868286,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.036744553595781326,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.069958209991455,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.7804902791976929,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03945447504520416,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.014077046886086464,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.23792515695095062,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.1638972727993466,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.0462823286652565,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.8754451363829223,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 5.364418029785156e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 7.07142920507636,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.951184776770593,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.9646563815801374,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.3394099059437913,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4379220641608135,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.049973540008068085,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07660800963640213,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.03586317598819733,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 3.4531505198952868,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 15.394919915354235,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.2051794345408739,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.6988488583742776,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.1822113059191939,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.332769279218228,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V1"
+    },
+    {
+      "dataset": "Movies",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.027918901294469833,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022630220279097557,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.08788975328207016,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.057603754103183746,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.08835367858409882,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04249648377299309,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.001566932536661625,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0025539868511259556,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02477087639272213,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.286957025527954,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020748257637023926,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.019317418336868286,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.036744553595781326,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.069958209991455,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.7804902195930481,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.039454467594623566,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01407704595476389,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.21235325932502747,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.1484595997650227,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.045052219182252884,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 4.0077173659341785,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.0831260085105896,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.09163108468055725,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 3.1657008704626155,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.8634445368683918,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 6.740622473606549,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.101846082482871,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.1272055661667717,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.3641152469104551,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.437367185219902,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.03619314730167389,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07461375743150711,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.038693927228450775,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.072829686081109,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 15.693473553925928,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.2120816928914052,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.6852590699734553,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.18382813172153462,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.33172497448195043,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V2"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.026745092123746872,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00869214441627264,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01556418277323246,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006445593200623989,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.11947903037071228,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.5402717217357258,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 8.407576119329914,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.8061615675402773,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.732193832808965,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.519034456414682,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.692170844560859,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.08709227293729782,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 14.6204636627816,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.26514493144197665,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.983644901315624,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2709471602048609,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.27148376724515116,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V0"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.026793768629431725,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008045843802392483,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04808424413204193,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.031035369262099266,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.075944684445858,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0261712446808815,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009183726273477077,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.5501903295516968,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01617496833205223,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00950597133487463,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.013950727880001068,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.1487407684326172,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.3989696800708771,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015616149641573429,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005538825877010822,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.11276009678840637,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.5670541102431177,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.0437919907271862,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 3.555993824880652,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 5.424022674560547e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 5.805028213262141,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.811450297504537,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.8269968089820847,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.5464898986374905,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.6678930055994834,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.009928792715072632,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.09197937697172165,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.0638754665851593,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 3.4218943311409227,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 14.61877711448083,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.27383627170154284,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 2.0360033022925847,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2359314766304766,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.27793048840946133,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V1"
+    },
+    {
+      "dataset": "Grocery",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.026793766766786575,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008045843802392483,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.04808424040675163,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.031035369262099266,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.075944684445858,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0261712446808815,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00034965795930474997,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0007945869583636522,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009183726273477077,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.5501903295516968,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.016174964606761932,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00950597133487463,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.013950727880001068,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.1487407684326172,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.3989696502685547,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015616150572896004,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005538825411349535,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.08190202713012695,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.4835989183023446,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.021877450868487358,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 2.84623858995864,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.05341625213623047,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.07708580791950226,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 2.611511022341559,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 1.7554782948833243,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 4.235952473643811,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 3.2028715279479893,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 2.1561718930433336,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.35064272170890404,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.5106710007034803,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.022777622565627098,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.08578100055456161,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.05892759561538696,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 3.4698193837616773,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 13.16508875572052,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.25135135742006026,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.974642566902466,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2326897330484216,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.2564945853309672,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V2"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02495512366294861,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00871121697127819,
+          "gradient_present": true
+        },
+        "relation_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "relation_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.031292542815208435,
+          "gradient_present": true
+        },
+        "semantic_coefficients_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "semantic_strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.013745101168751717,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.35204148292541504,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 0.9758556583942816,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "experts": {
+          "l2_update_norm": 15.748707049428122,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 6.044514155058473,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 5.233046535193256,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.5002914424939496,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.4082025664610853,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.07241208106279373,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "projectors": {
+          "l2_update_norm": 13.276730692517903,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.2012679513536724,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.7926928956953616,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2732174784523442,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.3474289484001992,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V0"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0350293330848217,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004131142050027847,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05239782854914665,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.026079824194312096,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.041942596435546875,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022562744095921516,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": false
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.8371187448501587,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02535797655582428,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00373448827303946,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005766764283180237,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4534412920475006,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.510121762752533,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007125074043869972,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00015439529670402408,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.2390500158071518,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 0.9988148991572093,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.15098872780799866,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 5.485729176792977,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 7.033348083496094e-06,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "edge_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "edge_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "experts": {
+          "l2_update_norm": 9.533482669284686,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 4.269704211805949,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 3.1446940207305154,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.30483451027820424,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.48352099482856,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.14856095612049103,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.056061722338199615,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.05422810837626457,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 4.289822818666198,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 11.67690925085979,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.19958909281238243,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.6621889139842139,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2161876786271105,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.3539713907434937,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V1"
+    },
+    {
+      "dataset": "ele-fashion",
+      "gradients": {
+        "alpha_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.035029336810112,
+          "gradient_present": true
+        },
+        "cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004131142050027847,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05239782854914665,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.026079824194312096,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.041942596435546875,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022562744095921516,
+          "gradient_present": true
+        },
+        "delta_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "edge_scorer.2.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0014994125813245773,
+          "gradient_present": true
+        },
+        "edge_scorer.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0022453605197370052,
+          "gradient_present": true
+        },
+        "experts.0.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.8371187448501587,
+          "gradient_present": true
+        },
+        "knn_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02535797655582428,
+          "gradient_present": true
+        },
+        "node_router.3.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0037344887387007475,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005766764283180237,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4534412920475006,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.510121762752533,
+          "gradient_present": true
+        },
+        "selection_head.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007125074043869972,
+          "gradient_present": true
+        },
+        "strength_head.bias": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00015439548587892205,
+          "gradient_present": true
+        }
+      },
+      "parameter_update_norms": {
+        "alpha_raw": {
+          "l2_update_norm": 0.21600306034088135,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "context_encoder": {
+          "l2_update_norm": 1.2858238091348801,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "cross_coefficients": {
+          "l2_update_norm": 0.27426010370254517,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "cross_projections": {
+          "l2_update_norm": 8.206041107408035,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "delta_coefficients": {
+          "l2_update_norm": 0.055271416902542114,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_modality_embedding": {
+          "l2_update_norm": 0.11537939310073853,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "edge_projections": {
+          "l2_update_norm": 5.2630915042206325,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "edge_scorer": {
+          "l2_update_norm": 4.364723622609641,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "experts": {
+          "l2_update_norm": 14.094788789920182,
+          "tensors": 8,
+          "updated_tensors": 8
+        },
+        "fusion_linear1": {
+          "l2_update_norm": 6.246052208220567,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_linear2": {
+          "l2_update_norm": 5.973494221010318,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_norm": {
+          "l2_update_norm": 0.6066618188380773,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "fusion_skip": {
+          "l2_update_norm": 2.454284845355608,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "knn_coefficients": {
+          "l2_update_norm": 0.16622716188430786,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "modality_embedding": {
+          "l2_update_norm": 0.08250774443149567,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_modality_embedding": {
+          "l2_update_norm": 0.05138460174202919,
+          "tensors": 1,
+          "updated_tensors": 1
+        },
+        "node_router": {
+          "l2_update_norm": 7.690395246580508,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "projectors": {
+          "l2_update_norm": 13.582585780301104,
+          "tensors": 16,
+          "updated_tensors": 16
+        },
+        "relation_projections": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "relation_scorer": {
+          "l2_update_norm": 0.0,
+          "tensors": 4,
+          "updated_tensors": 0
+        },
+        "router_norms": {
+          "l2_update_norm": 0.2615838983549895,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "router_projectors": {
+          "l2_update_norm": 1.9665868345062627,
+          "tensors": 4,
+          "updated_tensors": 4
+        },
+        "selection_head": {
+          "l2_update_norm": 0.2643948283561042,
+          "tensors": 2,
+          "updated_tensors": 2
+        },
+        "semantic_coefficients_raw": {
+          "l2_update_norm": 0.0,
+          "tensors": 1,
+          "updated_tensors": 0
+        },
+        "semantic_context_encoder": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_context_norms": {
+          "l2_update_norm": 0.0,
+          "tensors": 6,
+          "updated_tensors": 0
+        },
+        "semantic_selection_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "semantic_strength_head": {
+          "l2_update_norm": 0.0,
+          "tensors": 2,
+          "updated_tensors": 0
+        },
+        "strength_head": {
+          "l2_update_norm": 0.4557066520416815,
+          "tensors": 2,
+          "updated_tensors": 2
+        }
+      },
+      "seed": 44,
+      "variant": "V2"
+    }
+  ]
 }

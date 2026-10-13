@@ -8276,6 +8276,29 @@
     "tf32": "reported from runtime; not changed by this study",
     "training_evaluation_rng": "Train/Val scorecards reuse the epoch's eval embeddings and a deterministic linear head; they add no model forward and no dropout draw"
   },
+  "seed_batch_verifications": [
+    {
+      "all_histories_finite": true,
+      "seed": 42,
+      "test_evaluation": false,
+      "verified_at_utc": "2026-10-13T06:36:19+00:00",
+      "verified_runs": 9
+    },
+    {
+      "all_histories_finite": true,
+      "seed": 43,
+      "test_evaluation": false,
+      "verified_at_utc": "2026-10-13T06:46:40+00:00",
+      "verified_runs": 9
+    },
+    {
+      "all_histories_finite": true,
+      "seed": 44,
+      "test_evaluation": false,
+      "verified_at_utc": "2026-10-13T06:58:39+00:00",
+      "verified_runs": 9
+    }
+  ],
   "test_evaluation": false,
   "test_label_values_indexed": false
 }

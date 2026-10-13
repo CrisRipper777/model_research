@@ -1,0 +1,83 @@
+{
+  "post_freeze_regression": {
+    "command": "conda run -n yhf_env python -m pytest -q",
+    "passed": 467,
+    "return_code": 0,
+    "skipped": 0,
+    "targeted_v2_command": "conda run -n yhf_env python -m pytest -q tests/test_rmcge_v2_analysis.py tests/test_rmcge_v2.py",
+    "targeted_v2_passed": 15,
+    "targeted_v2_return_code": 0,
+    "warnings": 17
+  },
+  "repair": "derived CSV/JSON evidence regenerated from immutable per-run checkpoint diagnostics and run metrics; training artifacts were not changed",
+  "source_audit": {
+    "checkpoints_reloaded": {
+      "best_accuracy": true,
+      "best_macro_f1": true
+    },
+    "csv_artifacts": {
+      "checkpoint_metric_differences.csv": {
+        "columns": 9,
+        "rows_including_header": 190,
+        "sha256": "50e4a6cf4ac4ee8f8e6ac5b94c81d3dd669d115a06e72c2f3d1c5cdf30b74ebd"
+      },
+      "edge_weight_diagnostics.csv": {
+        "columns": 17,
+        "rows_including_header": 55,
+        "sha256": "d89c8126e9805bd3564d9e69c7f5863d95b8a839cea75d33d74c19708a01fb39"
+      },
+      "epoch_history.csv": {
+        "columns": 15,
+        "rows_including_header": 3758,
+        "sha256": "e8727fc6913adb632024e2f4fffefd1ae9de7e887026ef5fac7900a0f6955776"
+      },
+      "expert_router_diagnostics.csv": {
+        "columns": 14,
+        "rows_including_header": 55,
+        "sha256": "bdc52989b78d47b13e3c9063887e13a7665579ee5ad1c5633ba894afb983d9ac"
+      },
+      "frozen_interventions.csv": {
+        "columns": 10,
+        "rows_including_header": 109,
+        "sha256": "f05b6d49f688996459e03d4c89d441b7a21f8638aeb545c2422dd8f1b7287396"
+      },
+      "message_scale_diagnostics.csv": {
+        "columns": 29,
+        "rows_including_header": 55,
+        "sha256": "058cc0b89fb37e996b515ceaebd841688a3afa94c1d719392eead975b2bf9851"
+      },
+      "paired_comparisons.csv": {
+        "columns": 7,
+        "rows_including_header": 82,
+        "sha256": "b58adf7b70e0beac255e1cd10ff6f5fa32902e9bf34e5d226881eb80e30b9bc6"
+      },
+      "resource_profile.csv": {
+        "columns": 9,
+        "rows_including_header": 28,
+        "sha256": "532386f3bf5a07fdb15502459d496f2f3a38b4e5bbb9eaad3440b68652e190cf"
+      },
+      "runs.csv": {
+        "columns": 14,
+        "rows_including_header": 28,
+        "sha256": "51958a377cf2ad1e39ed1686f7fb839542a8660dd4efe4aa2a85f4b98b79accd"
+      },
+      "summary.csv": {
+        "columns": 30,
+        "rows_including_header": 10,
+        "sha256": "cf61e3112a30df05595b474a977b7215730802e2da3d808e3da697fb6249b5b9"
+      },
+      "summary_by_run.csv": {
+        "columns": 18,
+        "rows_including_header": 28,
+        "sha256": "78de366063f7eea7c115d2087475ecc377460de055536ea6ce652ea16ed6cf00"
+      }
+    },
+    "epoch_history_rows": 3757,
+    "finite_epoch_metric_values_checked": 30056,
+    "message_scale_source_fields_compared": 1944,
+    "status": "passed",
+    "test_metrics_present": false,
+    "unique_run_keys": 27,
+    "verified_runs": 27
+  }
+}
