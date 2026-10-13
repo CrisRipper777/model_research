@@ -1,16 +1,28 @@
 {
   "failures": [
     {
-      "stage": "real_data_initialization_preflight",
-      "dataset": "ele-fashion",
-      "condition": "M0_vs_V2.1_C0",
-      "seed": 43,
-      "time_utc": "2026-10-13",
-      "error": "Preflight stopped because a provisional 2e-6 max-logit threshold was exceeded; observed max absolute difference was 2.9802322387695312e-6.",
       "classification": "nonblocking_preflight_tolerance_revision",
+      "condition": "M0_vs_V2.1_C0",
+      "dataset": "ele-fashion",
+      "error": "Preflight stopped because a provisional 2e-6 max-logit threshold was exceeded; observed max absolute difference was 2.9802322387695312e-6.",
       "evidence_boundary": "The M0/C0 initial common tensors and classifier were exact; the discrepancy is a small floating-point forward difference on GPU. Other completed dataset-seed checks were between 1.1920928955078125e-6 and 1.6689300537109375e-6. No training was started.",
       "resolution": "The real-data comparison now uses atol=5e-5, matching the existing V2.1 paired-initialization audit tolerance. The observed 2.98e-6 remains recorded; it is not replaced with zero.",
-      "test_evaluation": false
+      "seed": 43,
+      "stage": "real_data_initialization_preflight",
+      "test_evaluation": false,
+      "time_utc": "2026-10-13"
+    },
+    {
+      "classification": "nonblocking_resource_guard_false_positive",
+      "condition": "M1",
+      "dataset": "Movies",
+      "error": "The initial 512 MiB total-memory guard observed 583 MiB on physical GPU 1 after Movies/M0 completed and misclassified the current runner CUDA context as another workload. No M1 training started.",
+      "resolution": "The per-run guard now identifies the current PID from nvidia-smi compute-app telemetry, rejects foreign compute PIDs, and bounds unattributed GPU memory. Movies/M0 seed 42 was already fully checkpointed and audited before this stop; model, training, and analysis code are unchanged.",
+      "seed": 42,
+      "stage": "pre_run_gpu_guard",
+      "test_evaluation": false,
+      "time_utc": "2026-10-13T14:50:02+00:00",
+      "training_started": false
     }
   ]
 }

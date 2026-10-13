@@ -818,23 +818,52 @@ def run_one(dataset: str, condition: str, seed: int, device_name: str, cache: di
         del safe_data, raw_data
 
 
-def _assert_physical_gpu_idle(physical_gpu: int, max_used_mib: int = 512) -> None:
+def _assert_physical_gpu_idle(physical_gpu: int, max_unattributed_mib: int = 256) -> None:
     result = subprocess.run(
-        ["nvidia-smi", "--query-gpu=index,memory.used", "--format=csv,noheader,nounits"],
+        ["nvidia-smi", "--query-gpu=index,uuid,memory.used", "--format=csv,noheader,nounits"],
         check=True,
         capture_output=True,
         text=True,
         timeout=10,
     )
-    snapshots = {}
+    snapshots: dict[int, tuple[str, int]] = {}
     for line in result.stdout.splitlines():
-        index, used = (value.strip() for value in line.split(",", maxsplit=1))
-        snapshots[int(index)] = int(used)
+        index, uuid, used = (value.strip() for value in line.split(",", maxsplit=2))
+        snapshots[int(index)] = (uuid, int(used))
     if physical_gpu not in snapshots:
         raise RuntimeError(f"physical GPU {physical_gpu} is not present in nvidia-smi output")
-    if snapshots[physical_gpu] > max_used_mib:
+    selected_uuid, total_used_mib = snapshots[physical_gpu]
+    apps = subprocess.run(
+        ["nvidia-smi", "--query-compute-apps=gpu_uuid,pid,used_memory", "--format=csv,noheader,nounits"],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=10,
+    )
+    own_pid = os.getpid()
+    own_used_mib = 0
+    foreign_apps = []
+    for line in apps.stdout.splitlines():
+        uuid, pid_text, used_text = (value.strip() for value in line.split(",", maxsplit=2))
+        if uuid != selected_uuid:
+            continue
+        try:
+            pid, used = int(pid_text), int(used_text)
+        except ValueError:
+            pid, used = int(pid_text), 0
+        if pid == own_pid:
+            own_used_mib += used
+        else:
+            foreign_apps.append({"pid": pid, "used_memory_mib": used})
+    if foreign_apps:
         raise RuntimeError(
-            f"physical GPU {physical_gpu} is in use ({snapshots[physical_gpu]} MiB > {max_used_mib} MiB); refusing to share it"
+            f"physical GPU {physical_gpu} has other compute processes {foreign_apps}; refusing to share it"
+        )
+    unattributed_mib = max(total_used_mib - own_used_mib, 0)
+    if unattributed_mib > max_unattributed_mib:
+        raise RuntimeError(
+            f"physical GPU {physical_gpu} has {unattributed_mib} MiB not attributed to this process "
+            f"(limit {max_unattributed_mib} MiB); refusing to share it"
         )
 
 
@@ -859,6 +888,18 @@ def run_batch(seeds: tuple[int, ...], physical_gpu: int) -> None:
                     continue
                 try:
                     _assert_physical_gpu_idle(physical_gpu)
+                except Exception as exc:
+                    failure = {
+                        "dataset": dataset, "condition": condition, "seed": seed,
+                        "stage": "pre_run_gpu_guard", "training_started": False,
+                        "time_utc": utc_now(), "error": repr(exc), "test_evaluation": False,
+                    }
+                    failure_path = DATA_DIR / "failures.json"
+                    failures = json.loads(failure_path.read_text()) if failure_path.exists() else {"failures": []}
+                    failures["failures"].append(failure)
+                    atomic_json(failure_path, failures)
+                    raise
+                try:
                     run_one(dataset, condition, seed, str(device), caches[dataset])
                 except FileExistsError as exc:
                     raise RuntimeError(str(exc)) from exc

@@ -20,6 +20,10 @@ The V2.1 C1 public tree and the V2.2 content module are created under RNG-isolat
 
 Pre-freeze verification: full repository suite **524 passed, 2 skipped**; focused CUDA V2.2 suite **10 passed** on physical GPU 1; Python compile and `git diff --check` pass. Checkpoint reload auditing verifies Best Accuracy and Best F1 validation Accuracy, Macro-F1, and CE against saved values at `1e-6`. Reports retain stochastic pre-update Train CE separately from post-update eval-mode Train CE and Validation CE, and include their comparable Train−Validation CE gap. Formal runs also check that the selected GPU remains available before each run.
 
+## First-run guard correction
+
+The initial Freeze (`49c20e5b9c7adca2d07d9806a2cf24088bb65fff`) completed Movies/M0/seed 42, saved and reloaded both checkpoints, and recorded Validation Accuracy `0.557289`, Macro-F1 `0.465377`, and CE `1.401347`. Before Movies/M1 began, the original GPU guard saw 583 MiB total use (the current Python process's own CUDA context plus baseline) and stopped the batch. This false positive is preserved in `data/failures.json`; no M1 training began. The guard is corrected to identify the current PID via `nvidia-smi` compute-app telemetry, reject other compute PIDs, and bound unattributed device memory. The correction is outside the model/training path; the completed M0 run remains valid, while the corrected implementation is frozen in a follow-up commit before resuming. The post-correction full suite passes **525 passed, 2 skipped**, including a mocked PID-aware guard regression test; a live CUDA guard smoke is recorded before the follow-up freeze.
+
 ## Test-label boundary
 
 Before NC training, the runner writes sentinel `-100` into a copied label tensor at Test indices. The shared trainer receives only that safe copy, Test evaluation is false, and Train/Validation audits reject any sentinel values. Cache generation and verification report no label access. No Test metric is written.

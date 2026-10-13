@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import os
+import subprocess
+
 import torch
+import pytest
 
 from src.data.types import MAGData
 from scripts.analyze_rmcge_v22 import paired_results, validate_runs
-from scripts.run_rmcge_v22 import _degree_rows, dataset_fingerprints, mask_test_labels
+from scripts.run_rmcge_v22 import _assert_physical_gpu_idle, _degree_rows, dataset_fingerprints, mask_test_labels
 from scripts.analyze_rmcge_v22 import CONDITIONS, DATASETS, SEEDS
 
 
@@ -71,3 +75,21 @@ def test_degree_groups_use_global_node_logits_and_include_degree_one_content():
     assert degree1["accuracy"] == 1.0
     assert degree1["content_text_rms"] == 1.0
     assert degree1["content_visual_rms"] == 2.0
+
+
+def test_gpu_guard_ignores_own_cuda_context_and_rejects_other_process(monkeypatch):
+    own_pid = os.getpid()
+    responses = iter([
+        subprocess.CompletedProcess([], 0, "0, uuid0, 22858\n1, uuid1, 583\n", ""),
+        subprocess.CompletedProcess([], 0, f"uuid1, {own_pid}, 568\n", ""),
+    ])
+    monkeypatch.setattr("scripts.run_rmcge_v22.subprocess.run", lambda *args, **kwargs: next(responses))
+    _assert_physical_gpu_idle(1)
+
+    responses = iter([
+        subprocess.CompletedProcess([], 0, "0, uuid0, 22858\n1, uuid1, 583\n", ""),
+        subprocess.CompletedProcess([], 0, f"uuid1, {own_pid + 1}, 10\n", ""),
+    ])
+    monkeypatch.setattr("scripts.run_rmcge_v22.subprocess.run", lambda *args, **kwargs: next(responses))
+    with pytest.raises(RuntimeError, match="other compute processes"):
+        _assert_physical_gpu_idle(1)
