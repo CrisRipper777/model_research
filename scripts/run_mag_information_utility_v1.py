@@ -1130,7 +1130,8 @@ def _run_provenance(dataset: str, seed: int, cfg, bundle: dict[str, Any], data) 
     split_path = nc_split_path(cfg)
     if not split_path.is_file():
         raise FileNotFoundError(f"official split is missing; no split generation allowed: {split_path}")
-    cache_meta = bundle["candidate_cache"]["metadata"]
+    cache_meta = bundle["cache"]["metadata"]
+    semantic_cache_path = _candidate_cache_path(dataset)
     resolved_config = OmegaConf.to_container(cfg, resolve=True)
     return {
         "branch": git("branch", "--show-current"),
@@ -1147,11 +1148,12 @@ def _run_provenance(dataset: str, seed: int, cfg, bundle: dict[str, Any], data) 
         "feature_shape_visual": list(data.x_i.shape),
         "text_array_sha256": _array_fingerprint(_array32(data.x_t)),
         "visual_array_sha256": _array_fingerprint(_array32(data.x_i)),
-        "semantic_cache_path": str(bundle["candidate_cache"]["metadata"].get("cache_path", _candidate_cache_path(dataset))),
-        "semantic_cache_sha256": file_sha256(_candidate_cache_path(dataset)),
+        "semantic_cache_path": str(semantic_cache_path),
+        "semantic_cache_sha256": file_sha256(semantic_cache_path),
         "feature_fingerprint": cache_meta["feature_fingerprint"],
         "candidate_fingerprint": cache_meta["candidate_fingerprint"],
         "v7b_fingerprint": cache_meta["v7b_fingerprint"],
+        "physical_edge_fingerprint": bundle["random_audit"]["physical_edge_fingerprint"],
         "random_text_cache_sha256": file_sha256(CACHE_ROOT / f"{dataset}_random_text.pt"),
         "random_visual_cache_sha256": file_sha256(CACHE_ROOT / f"{dataset}_random_visual.pt"),
         "evaluate_test": False,

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import hashlib
+from types import SimpleNamespace
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -194,3 +196,41 @@ def test_evaluation_preserves_torch_rng_state():
     assert torch.equal(before, after)
     assert set(metrics) == {"cross_entropy", "accuracy", "macro_f1"}
     assert all(np.isfinite(value) for value in metrics.values())
+
+
+def test_run_provenance_reads_the_graph_bundle_cache_field(tmp_path, monkeypatch):
+    import scripts.run_mag_information_utility_v1 as runner
+
+    split_path = tmp_path / "split.pt"
+    cache_path = tmp_path / "candidates.pt"
+    split_path.write_bytes(b"split")
+    cache_path.write_bytes(b"cache")
+    monkeypatch.setattr(runner, "nc_split_path", lambda cfg: split_path)
+    monkeypatch.setattr(runner, "_candidate_cache_path", lambda dataset: cache_path)
+    monkeypatch.setattr(runner, "file_sha256", lambda path: f"sha:{Path(path).name}")
+    metadata = {
+        "feature_fingerprint": "feature-fp",
+        "candidate_fingerprint": "candidate-fp",
+        "v7b_fingerprint": "v7b-fp",
+    }
+    bundle = {
+        "cache": {"metadata": metadata},
+        "random_audit": {
+            "source_feature_fingerprint": "feature-fp",
+            "source_candidate_fingerprint": "candidate-fp",
+            "source_v7b_fingerprint": "v7b-fp",
+            "physical_edge_fingerprint": "physical-fp",
+        },
+    }
+    data = SimpleNamespace(
+        num_nodes=4,
+        edge_index=torch.tensor([[0, 1], [1, 0]]),
+        x_t=np.ones((4, 3), dtype=np.float32),
+        x_i=np.ones((4, 2), dtype=np.float32),
+    )
+    cfg = OmegaConf.create({"dataset": {"name": "Movies"}, "seed": 42})
+    provenance = runner._run_provenance("Movies", 42, cfg, bundle, data)
+    assert provenance["semantic_cache_path"] == str(cache_path)
+    assert provenance["semantic_cache_sha256"] == "sha:candidates.pt"
+    assert provenance["feature_fingerprint"] == "feature-fp"
+    assert provenance["physical_edge_fingerprint"] == "physical-fp"

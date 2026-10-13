@@ -31,14 +31,14 @@ first 15-run batch and the final matrix. No training pilot has been completed.
 
 | Audit | Status |
 |---|---|
-| Full repository test suite | pass: 450 passed, 16 upstream warnings |
-| Model-mask, shape, and initialization tests | pass: 9 study-specific tests |
+| Full repository test suite | pass after the provenance fix: 451 passed, 16 upstream warnings |
+| Model-mask, shape, initialization, and provenance tests | pass: 10 study-specific tests |
 | Analysis pairing, report, and history-validation tests | pass: 3 study-specific tests |
 | V7B cache feature and physical fingerprints | pass: all three datasets |
 | Separate Text/Visual degree-preserving null graph audit | pass: all three datasets; degree/edge constraints exact |
 | Training-path random-cache provenance revalidation | pass: all three datasets |
 | Pre-label node-group construction | pass: all three datasets; group arrays hash recorded |
-| 15-run Seed 42 gate | pending |
+| 15-run Seed 42 gate | pending; first invocation aborted before epoch 1 due to a provenance key mismatch, and the failure is retained |
 | 45-run checkpoint and finite-metric audit | pending |
 
 ## Runtime observed during the pre-freeze GPU gate
@@ -61,3 +61,14 @@ An earlier process check briefly saw no CUDA device nodes, but the subsequent
 pre-batch environment check passed and the selector mapped the idle GPU 1 to
 PyTorch `cuda:1`. The formal batch can proceed under the unchanged environment;
 per-run hardware and determinism details are written to the run provenance.
+
+## Pre-epoch runner defect and correction
+
+The first Seed 42 invocation reached `cuda:1` and prepared Movies, then stopped
+before epoch 1 because `_run_provenance` looked for `candidate_cache` while the
+graph bundle exposes its V7B cache as `cache`. No optimizer step, checkpoint,
+epoch history, or validation prediction was produced. The runner's failure row
+is preserved in ignored `outputs/mag_information_utility_v1/failures.json` and
+will be copied into the final tracked failure record. The field lookup is
+corrected in a separate follow-up commit and covered by a regression test; all
+45 completed runs must share that corrected source commit.
