@@ -786,6 +786,7 @@
   "formal_runs_planned": 27,
   "freeze_commit_subject": "Freeze RM-CGE V2.1 implementation",
   "head_at_preflight": "ba1fbbd100a0b218ec66853e29ea0cfee8cfa5b4",
+  "implementation_freeze_sha": "38f4a46a6c6af70c59266ec91174eaec55fdd86b",
   "initialization_pairing": {
     "datasets": {
       "Grocery": {
@@ -9988,6 +9989,29 @@
     "tf32_and_determinism": "reported from the runtime and not changed by this study",
     "train_val_rng": "extended Train/Validation scorecards reuse deterministic eval embeddings and do not invoke a stochastic model forward"
   },
+  "seed_batch_verifications": [
+    {
+      "histories_finite": true,
+      "seed": 42,
+      "test_evaluation": false,
+      "verified_at_utc": "2026-10-13T09:18:50+00:00",
+      "verified_runs": 9
+    },
+    {
+      "histories_finite": true,
+      "seed": 43,
+      "test_evaluation": false,
+      "verified_at_utc": "2026-10-13T09:33:27+00:00",
+      "verified_runs": 9
+    },
+    {
+      "histories_finite": true,
+      "seed": 44,
+      "test_evaluation": false,
+      "verified_at_utc": "2026-10-13T09:48:37+00:00",
+      "verified_runs": 9
+    }
+  ],
   "test_evaluation": false,
   "test_label_values_indexed": false
 }
