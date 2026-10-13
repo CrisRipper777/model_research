@@ -1,0 +1,53 @@
+name: mag_information_utility_v1
+baseline_commit: 4cd655a411a6c0ab12e067285cd2202208b0ab18
+branch: exp/mag_information_utility_v1
+protocol: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+seeds: [42, 43, 44]
+conditions: [I0, I1, I2, I3, I4]
+
+training:
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  dropout: 0.20
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  grad_clip: 1.0
+  eval_every: 1
+  scheduler: null
+  evaluate_test: false
+
+model:
+  hidden_dim: 128
+  dropout: 0.20
+  physical_orders: [1, 2]
+  semantic_orders: [1]
+  context_slots_per_modality: 6
+  bias_free_context_processor: true
+
+semantic_graphs:
+  source_cache_dir: outputs/psce_mag_v7b/semantic_cache
+  source_rule: psce_mag_v7b_source_flags_relative_edges_v1
+  knn_k: 8
+  randomization: independent_text_visual_double_edge_swap
+  swaps_per_edge: 3
+  topology_seed_by_dataset:
+    Movies: 2026
+    Grocery: 2027
+    ele-fashion: 2028
+  frozen_across_training_seeds: true
+
+paths:
+  output_root: outputs/mag_information_utility_v1/runs
+  cache_root: outputs/mag_information_utility_v1/cache
+  research_root: research/mag_information_utility_v1
+
+analysis:
+  primary_checkpoint: best_validation_accuracy
+  secondary_checkpoint: best_validation_macro_f1
+  f1_label_set: all_configured_classes
+  frozen_representation_probe: false
+  evaluate_test: false

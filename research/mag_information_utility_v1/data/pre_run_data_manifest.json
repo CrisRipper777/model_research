@@ -1,0 +1,78 @@
+{
+  "baseline_commit": "4cd655a411a6c0ab12e067285cd2202208b0ab18",
+  "branch": "exp/mag_information_utility_v1",
+  "candidate_and_random_graph_construction_label_access": false,
+  "conditions": [
+    "I0",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "datasets": {
+    "Grocery": {
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "input_info": {
+        "candidate_phase_label_access": false,
+        "dataset": "Grocery",
+        "input_dim": 1536,
+        "labels_or_splits_loaded": false,
+        "num_edges_physical": 142262,
+        "num_edges_raw": 85670,
+        "num_nodes": 17074,
+        "text_dim": 768,
+        "visual_dim": 768
+      },
+      "physical_edge_fingerprint": "09ebef980db9ff399a36ecc53c1755d13c1c1842ff470a068b0b03fc5a3467af",
+      "source_cache": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "source_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "Movies": {
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "input_info": {
+        "candidate_phase_label_access": false,
+        "dataset": "Movies",
+        "input_dim": 1536,
+        "labels_or_splits_loaded": false,
+        "num_edges_physical": 160802,
+        "num_edges_raw": 109195,
+        "num_nodes": 16672,
+        "text_dim": 768,
+        "visual_dim": 768
+      },
+      "physical_edge_fingerprint": "a6997d4e32af018d880f1dd20ad05b92c36dadbd5f237f64b523372794660900",
+      "source_cache": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "source_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "ele-fashion": {
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "input_info": {
+        "candidate_phase_label_access": false,
+        "dataset": "ele-fashion",
+        "input_dim": 1024,
+        "labels_or_splits_loaded": false,
+        "num_edges_physical": 399172,
+        "num_edges_raw": 199602,
+        "num_nodes": 97766,
+        "text_dim": 512,
+        "visual_dim": 512
+      },
+      "physical_edge_fingerprint": "f0c298e298724e0bb4f3fe27424e4bacc533eb51dff0afaf616bbbd6e7787af1",
+      "source_cache": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+      "source_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    }
+  },
+  "protocol": "unified_full_graph_nc_v1",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "test_evaluation": false
+}

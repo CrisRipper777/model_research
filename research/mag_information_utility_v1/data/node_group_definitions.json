@@ -1,0 +1,594 @@
+{
+  "datasets": {
+    "Grocery": {
+      "groups": {
+        "physical_degree_q": {
+          "cut_points": [
+            1.0,
+            3.0,
+            5.0,
+            11.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_degree_q",
+          "group_counts_all_nodes": [
+            0,
+            6707,
+            2973,
+            3666,
+            3728
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "physical_neighbor_text_consistency_q": {
+          "cut_points": [
+            0.032768260687589645,
+            0.29725731015205387,
+            0.4905112326145171,
+            0.6719380855560303
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_neighbor_text_consistency_q",
+          "group_counts_all_nodes": [
+            3414,
+            3416,
+            3414,
+            3415,
+            3415
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "physical_neighbor_visual_consistency_q": {
+          "cut_points": [
+            0.13041600286960606,
+            0.29296565651893614,
+            0.44154558181762693,
+            0.6013173818588257
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_neighbor_visual_consistency_q",
+          "group_counts_all_nodes": [
+            3415,
+            3415,
+            3414,
+            3415,
+            3415
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "text_knn_degree_q": {
+          "cut_points": [
+            9.0,
+            10.0,
+            12.0,
+            16.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "text_knn_degree_q",
+          "group_counts_all_nodes": [
+            3110,
+            2529,
+            3665,
+            4113,
+            3657
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "text_knn_neighbor_text_consistency_q": {
+          "cut_points": [
+            0.8068061470985413,
+            0.8551556587219238,
+            0.8936313509941101,
+            0.93468257188797
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "text_knn_neighbor_text_consistency_q",
+          "group_counts_all_nodes": [
+            3415,
+            3415,
+            3414,
+            3415,
+            3415
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "visual_knn_degree_q": {
+          "cut_points": [
+            8.0,
+            10.0,
+            12.0,
+            15.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "visual_knn_degree_q",
+          "group_counts_all_nodes": [
+            0,
+            6203,
+            3914,
+            3200,
+            3757
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "visual_knn_neighbor_visual_consistency_q": {
+          "cut_points": [
+            0.6757700920104981,
+            0.7380289196968078,
+            0.7919412612915039,
+            0.8528241634368896
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "visual_knn_neighbor_visual_consistency_q",
+          "group_counts_all_nodes": [
+            3415,
+            3415,
+            3414,
+            3415,
+            3415
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        }
+      },
+      "labels_used": false,
+      "node_count": 17074,
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/mag_information_utility_v1/node_groups/Grocery.npz",
+      "sha256": "1d180c066c1a8aaa32e8ef71c487e75d90c66c5a015c28d8e6932601bfed3315"
+    },
+    "Movies": {
+      "groups": {
+        "physical_degree_q": {
+          "cut_points": [
+            1.0,
+            3.0,
+            7.0,
+            15.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_degree_q",
+          "group_counts_all_nodes": [
+            0,
+            5432,
+            4171,
+            3716,
+            3353
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "physical_neighbor_text_consistency_q": {
+          "cut_points": [
+            0.012971515581011778,
+            0.3342572748661042,
+            0.5556969523429871,
+            0.7397860646247865
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_neighbor_text_consistency_q",
+          "group_counts_all_nodes": [
+            3335,
+            3334,
+            3334,
+            3334,
+            3335
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "physical_neighbor_visual_consistency_q": {
+          "cut_points": [
+            0.3045207679271698,
+            0.43592033386230467,
+            0.5391065359115601,
+            0.6453851461410522
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_neighbor_visual_consistency_q",
+          "group_counts_all_nodes": [
+            3335,
+            3334,
+            3334,
+            3333,
+            3336
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "text_knn_degree_q": {
+          "cut_points": [
+            9.0,
+            10.0,
+            12.0,
+            16.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "text_knn_degree_q",
+          "group_counts_all_nodes": [
+            2993,
+            2426,
+            3568,
+            3802,
+            3883
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "text_knn_neighbor_text_consistency_q": {
+          "cut_points": [
+            0.836709713935852,
+            0.8801441788673401,
+            0.9139310121536255,
+            0.9504844903945923
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "text_knn_neighbor_text_consistency_q",
+          "group_counts_all_nodes": [
+            3335,
+            3334,
+            3334,
+            3334,
+            3335
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "visual_knn_degree_q": {
+          "cut_points": [
+            8.0,
+            10.0,
+            11.0,
+            15.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "visual_knn_degree_q",
+          "group_counts_all_nodes": [
+            0,
+            6250,
+            2107,
+            4676,
+            3639
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "visual_knn_neighbor_visual_consistency_q": {
+          "cut_points": [
+            0.6448176622390748,
+            0.6979640603065491,
+            0.7404010534286499,
+            0.7833488583564758
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "visual_knn_neighbor_visual_consistency_q",
+          "group_counts_all_nodes": [
+            3335,
+            3334,
+            3334,
+            3334,
+            3335
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        }
+      },
+      "labels_used": false,
+      "node_count": 16672,
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/mag_information_utility_v1/node_groups/Movies.npz",
+      "sha256": "0b473c0abcc94330497c56f644501f783712cf7b0a08390d92ba537cd869f269"
+    },
+    "ele-fashion": {
+      "groups": {
+        "physical_degree_q": {
+          "cut_points": [
+            1.0,
+            2.0,
+            4.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_degree_q",
+          "group_counts_all_nodes": [
+            3,
+            45426,
+            28852,
+            23485
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 4,
+          "missing_or_no_neighbor_count": 0
+        },
+        "physical_neighbor_text_consistency_q": {
+          "cut_points": [
+            0.432829624414444,
+            0.5974132776260376,
+            0.7095585942268371,
+            0.8121968150138855
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_neighbor_text_consistency_q",
+          "group_counts_all_nodes": [
+            19553,
+            19552,
+            19553,
+            19552,
+            19553
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 3
+        },
+        "physical_neighbor_visual_consistency_q": {
+          "cut_points": [
+            0.2168437331914902,
+            0.41155037879943857,
+            0.5641574025154114,
+            0.7068948984146118
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "physical_neighbor_visual_consistency_q",
+          "group_counts_all_nodes": [
+            19553,
+            19552,
+            19553,
+            19552,
+            19553
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 3
+        },
+        "text_knn_degree_q": {
+          "cut_points": [
+            8.0,
+            9.0,
+            11.0,
+            14.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "text_knn_degree_q",
+          "group_counts_all_nodes": [
+            0,
+            26377,
+            27318,
+            21240,
+            22831
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "text_knn_neighbor_text_consistency_q": {
+          "cut_points": [
+            0.8398784399032593,
+            0.8872494697570801,
+            0.9215984344482422,
+            0.9569060802459717
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "text_knn_neighbor_text_consistency_q",
+          "group_counts_all_nodes": [
+            19553,
+            19553,
+            19553,
+            19553,
+            19554
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "visual_knn_degree_q": {
+          "cut_points": [
+            8.0,
+            10.0,
+            12.0,
+            15.0
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "visual_knn_degree_q",
+          "group_counts_all_nodes": [
+            0,
+            34954,
+            20999,
+            19102,
+            22711
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        },
+        "visual_knn_neighbor_visual_consistency_q": {
+          "cut_points": [
+            0.8102057576179504,
+            0.8654590845108032,
+            0.905312180519104,
+            0.9458010196685791
+          ],
+          "definition": "20/40/60/80 percentiles computed over all nodes before label grouping",
+          "feature": "visual_knn_neighbor_visual_consistency_q",
+          "group_counts_all_nodes": [
+            19553,
+            19553,
+            19553,
+            19553,
+            19554
+          ],
+          "groups": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "labels_used_to_define_groups": false,
+          "missing_or_no_neighbor_code": 5,
+          "missing_or_no_neighbor_count": 0
+        }
+      },
+      "labels_used": false,
+      "node_count": 97766,
+      "path": "/hdd1/DataInHere/YHF/model_research/outputs/mag_information_utility_v1/node_groups/ele-fashion.npz",
+      "sha256": "003a773d029db2f46fe3a6ea4c9b18284c2256ee4ed57cb94fea743a46ccc19f"
+    }
+  },
+  "groups_computed_before_model_training": true,
+  "labels_used_to_define_groups": false
+}

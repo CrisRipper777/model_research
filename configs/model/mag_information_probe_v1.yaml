@@ -1,0 +1,12 @@
+name: mag_information_probe_v1
+hidden_dim: 128
+dropout: 0.20
+physical_orders: [1, 2]
+semantic_orders: [1]
+context_slot_names:
+  - physical_1_same
+  - physical_2_same
+  - physical_1_cross
+  - physical_2_cross
+  - semantic_same
+  - semantic_cross
