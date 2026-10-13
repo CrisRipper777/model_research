@@ -10,6 +10,7 @@ import math
 import re
 import statistics
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -390,7 +391,8 @@ def audit_and_analyze() -> dict[str, Any]:
     write_rows(DATA_DIR / "summary.csv", summary, ["dataset", "condition", "metric", "mean", "sample_sd", "seed_42", "seed_43", "seed_44", "unit"])
 
     schema_audit = {
-        "generated_utc": manifest.get("last_batch_completed_utc"),
+        "generated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "last_batch_completed_utc": manifest.get("last_batch_completed_utc"),
         "test_evaluation": False,
         "test_label_values_indexed": False,
         "tables": schemas,
@@ -656,6 +658,15 @@ def _decision_memo(lookup, classes, degrees, messages, gates, routers, intervent
                 sensitivity = "not recorded"
             lines.append(f"| {dataset} | {condition} | {channel_sd:.5g} | {saturation:.5g} | {roll:.5g} | {sensitivity} |")
     lines += ["", "Observed conclusion: M3's edge-conditioned Gate responds to receiver-query changes in every dataset, and frozen query rolls change Validation logits/predictions. M3 has favorable paired Macro-F1 deltas over M2 in Movies and ele-fashion but not Grocery; it is not a consistent cross-dataset improvement over M1/M2 or M0. M4−M3 is mixed on Movies/Grocery and negative on ele-fashion Accuracy and Macro-F1; this does not establish robust cooperation with Intra selection. A nonzero receiver-query roll effect shows frozen output sensitivity, not a retrained ablation or proof of class benefit. M3−M1 and M3−M2 are not strict capacity-matched effects because the gate input channels and active capacity differ. M4−M3 is a trained condition-bundle comparison; the M4 `intra_selection_off` intervention is complementary frozen sensitivity, not a factorial interaction estimate.", ""]
+    m3_best_acc = "; ".join(
+        f"{dataset}: Acc {_paired_observation(lookup,dataset,'M3','M0','val_acc',percentage=True)}, Macro-F1 {_paired_observation(lookup,dataset,'M3','M0','val_macro_f1',percentage=True)}"
+        for dataset in DATASETS
+    )
+    m3_best_f1 = "; ".join(
+        f"{dataset}: Macro-F1 {_paired_observation(lookup,dataset,'M3','M0','best_f1_val_macro_f1',percentage=True)}"
+        for dataset in DATASETS
+    )
+    lines += [f"At Best Accuracy, M3−M0 is {m3_best_acc}. At the independently selected Best F1 checkpoint, M3−M0 Macro-F1 is {m3_best_f1}. The selected-checkpoint result therefore trades off by dataset and selection rule; it does not support a blanket M3 gain.", ""]
 
     intra = [r for r in interventions if r["condition"] == "M4" and r["intervention"] == "intra_selection_off"]
     lines += ["## 7. Do degree-1 nodes benefit?", ""]
