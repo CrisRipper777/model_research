@@ -105,6 +105,8 @@ def _evaluate_indices_from_embeddings(
     idx: torch.Tensor,
     device: torch.device,
     batch_size: int,
+    eval_labels: list[int] | tuple[int, ...] | None = None,
+    compute_macro_f1: bool = False,
 ) -> dict[str, float]:
     """Compute CE/accuracy on cached CPU embeddings without touching CUDA RNG."""
     del device
@@ -116,17 +118,39 @@ def _evaluate_indices_from_embeddings(
     correct = 0
     total = 0
     loss_sum = 0.0
+    predictions: list[torch.Tensor] = []
+    targets_seen: list[torch.Tensor] = []
     for batch_indices in indices.split(int(batch_size)):
         logits = nn.functional.linear(z[batch_indices], weight, bias)
         targets = labels_cpu[batch_indices]
+        predicted = logits.argmax(dim=-1)
+        if compute_macro_f1:
+            predictions.append(predicted.cpu())
+            targets_seen.append(targets.cpu())
         loss_sum += float(
             nn.functional.cross_entropy(logits, targets, reduction="sum").item()
         )
-        correct += int((logits.argmax(dim=-1) == targets).sum().item())
+        correct += int((predicted == targets).sum().item())
         total += int(targets.numel())
     if total == 0:
         raise ValueError("cannot evaluate an empty node index")
-    return {"cross_entropy": loss_sum / total, "acc": correct / total}
+    result = {
+        "cross_entropy": loss_sum / total,
+        "acc": correct / total,
+    }
+    if compute_macro_f1:
+        predictions_all = torch.cat(predictions)
+        targets_all = torch.cat(targets_seen)
+        result["macro_f1"] = float(
+            f1_score(
+                targets_all.numpy(),
+                predictions_all.numpy(),
+                labels=list(eval_labels) if eval_labels is not None else None,
+                average="macro",
+                zero_division=0,
+            )
+        )
+    return result
 
 
 def _parameter_l2_norm(parameters) -> float:
@@ -335,7 +359,8 @@ def _run_single_nc(
             z, _, _, aux_loss, _ = model(x_all, edge_index_all)
             logits = classifier(z[train_idx_all])
             labels = y_all[train_idx_all]
-            loss = nn.functional.cross_entropy(logits, labels) + aux_weight * aux_loss
+            train_ce_tensor = nn.functional.cross_entropy(logits, labels)
+            loss = train_ce_tensor + aux_weight * aux_loss
             loss.backward()
             if epoch == 1 and hasattr(model, "capture_gradient_diagnostics"):
                 model.capture_gradient_diagnostics()
@@ -347,6 +372,7 @@ def _run_single_nc(
             optimizer.step()
             optimizer_update_count += 1
             train_loss = float(loss.detach().item())
+            train_ce_value = float(train_ce_tensor.detach().item())
             del z
         else:
             total_loss = 0.0
@@ -371,6 +397,7 @@ def _run_single_nc(
                 total_loss += float(loss.detach().item()) * int(labels.numel())
                 total_examples += int(labels.numel())
             train_loss = total_loss / max(total_examples, 1)
+            train_ce_value = train_loss
 
         train_step_seconds.append(time.perf_counter() - epoch_started)
 
@@ -396,6 +423,7 @@ def _run_single_nc(
         if record_extended_validation:
             # Reuse the existing eval embedding tensor. These linear-head-only
             # evaluations are deterministic and do not consume model/dropout RNG.
+            record_train_f1 = bool(cfg.task.get("record_train_ce_separately", False))
             train_eval = _evaluate_indices_from_embeddings(
                 classifier,
                 z,
@@ -403,6 +431,8 @@ def _run_single_nc(
                 data.train_idx,
                 device,
                 inference_batch_size,
+                eval_labels if record_train_f1 else None,
+                compute_macro_f1=record_train_f1,
             )
             val_eval = _evaluate_indices_from_embeddings(
                 classifier,
@@ -411,14 +441,24 @@ def _run_single_nc(
                 data.val_idx,
                 device,
                 inference_batch_size,
+                eval_labels if record_train_f1 else None,
+                compute_macro_f1=record_train_f1,
             )
             extended_epoch_metrics = {
-                "train_ce": train_loss,
+                "train_ce": (
+                    train_ce_value
+                    if bool(cfg.task.get("record_train_ce_separately", False))
+                    else train_loss
+                ),
+                **({"train_ce_eval": train_eval["cross_entropy"]} if record_train_f1 else {}),
+                **({"train_objective": train_loss} if record_train_f1 else {}),
                 "train_accuracy_eval": train_eval["acc"],
                 "val_ce": val_eval["cross_entropy"],
                 "val_acc": val_metrics["acc"],
                 "val_macro_f1": val_metrics["macro_f1"],
             }
+            if record_train_f1:
+                extended_epoch_metrics["train_macro_f1_eval"] = train_eval["macro_f1"]
         logger.info(
             "Epoch %05d | Train Loss %.4f | Val Acc %.2f | Val Macro-F1 %.2f",
             epoch,
@@ -605,7 +645,18 @@ def _run_single_nc(
         run_metadata.update(
             {
                 "extended_validation": True,
-                "train_ce_mode": "training-mode stochastic forward, pre-optimizer-step loss",
+                "train_ce_mode": (
+                    "training-mode stochastic pre-optimizer-step cross entropy, separated from auxiliary loss"
+                    if bool(cfg.task.get("record_train_ce_separately", False))
+                    else "training-mode stochastic forward, pre-optimizer-step loss"
+                ),
+                **(
+                    {
+                        "train_ce_eval_mode": "eval-mode no-grad cross entropy on post-update full-graph embeddings"
+                    }
+                    if bool(cfg.task.get("record_train_ce_separately", False))
+                    else {}
+                ),
                 "train_accuracy_mode": "eval-mode no-grad prediction after epoch update",
                 "validation_ce_mode": "eval-mode no-grad unweighted cross entropy",
                 "accuracy_stopping_horizon_epochs": len(epoch_wall_seconds),
