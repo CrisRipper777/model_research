@@ -43,7 +43,9 @@ The guard now permits only those two explicit false-valued attestations and reje
 
 After all 27 runs passed, the first analysis invocation found a second bookkeeping issue: the history reader constructed canonical run paths instead of using each run's registered `result_path`, so it could not read tagged retry directories. The invocation reloaded Validation checkpoints for Movies/seed 42 and then stopped before writing any analysis tables; Test remained disabled. The failure is preserved. The analyzer now resolves history through `runs.csv`, and a regression test exercises attempt-directory paths. This correction changes only analysis artifact lookup, not the frozen training implementation or any run/checkpoint.
 
-The focused suite now passes **27 tests**, and the full repository suite passes **511 tests with 1 skipped** (18 existing deprecation/future warnings). No historical V2.1 regression was found. Tests run in CPU-only mode; real GPU/state/cache equivalence is separately evidenced by the seed-42 t0 audit above.
+The expert profile export was then checked against the raw per-run diagnostics. A third schema mismatch had left the intra delta, cross base, and cross delta columns blank because model detail keys did not match the aggregate table names. The original per-run JSON retains those values. The exporter now maps these aliases and the aggregate will be rebuilt from the saved run records; no training is repeated.
+
+After the path and diagnostic-schema fixes, the focused suite passes **28 tests**, and the full repository suite passes **512 tests with 1 skipped** (18 existing deprecation/future warnings). No historical V2.1 regression was found. Tests run in CPU-only mode; real GPU/state/cache equivalence is separately evidenced by the seed-42 t0 audit above.
 
 ## Freeze boundary
 

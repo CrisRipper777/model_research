@@ -50,6 +50,7 @@ from src.research.rmcge_v21_stable_adaptation import (  # noqa: E402
     make_joint_optimizer,
     make_stage1_optimizer,
     module_sha256,
+    normalize_expert_diagnostic_fields,
     parameter_snapshot,
     rms_update,
     selector_state_sha256,
@@ -961,7 +962,7 @@ def persist_tables(results: list[dict[str, Any]]) -> None:
         })
         history_rows.extend(result["history"])
         selector_rows.extend(result["selector_diagnostics"])
-        expert_rows.extend(result["expert_diagnostics"])
+        expert_rows.extend(normalize_expert_diagnostic_fields(item) for item in result["expert_diagnostics"])
         for checkpoint in ("best_accuracy", "best_f1"):
             chosen = result["best_accuracy_metrics"] if checkpoint == "best_accuracy" else result["best_f1_metrics"]
             stage = result["selected_stage"] if checkpoint == "best_accuracy" else result["best_f1_stage"]

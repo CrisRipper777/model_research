@@ -247,3 +247,19 @@ def rms_update(before: dict[str, torch.Tensor], named_parameters) -> float:
 
 def parameter_snapshot(named_parameters) -> dict[str, torch.Tensor]:
     return {name: parameter.detach().cpu().clone() for name, parameter in named_parameters}
+
+
+def normalize_expert_diagnostic_fields(record: dict[str, Any]) -> dict[str, Any]:
+    """Map V2.1's detail keys to the stable-adaptation CSV schema."""
+    aliases = {
+        "delta_intra_rms": "delta_rms",
+        "delta_intra_hat_rms": "delta_hat_rms",
+        "delta_intra_weighted_rms_by_expert": "delta_weighted_rms_by_expert",
+        "cross_base_rms": "cross_rms",
+        "cross_base_hat_rms": "cross_hat_rms",
+        "cross_base_weighted_rms_by_expert": "cross_weighted_rms_by_expert",
+        "delta_cross_rms": "cross_delta_rms",
+        "delta_cross_hat_rms": "cross_delta_hat_rms",
+        "delta_cross_weighted_rms_by_expert": "cross_delta_weighted_rms_by_expert",
+    }
+    return {**record, **{target: record.get(source) for target, source in aliases.items()}}

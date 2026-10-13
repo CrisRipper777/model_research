@@ -18,6 +18,7 @@ from src.research.rmcge_v21_stable_adaptation import (
     make_stage1_optimizer,
     metric_bundle,
     module_sha256,
+    normalize_expert_diagnostic_fields,
     physical_degree_groups,
     select_main_candidates,
     selector_state_sha256,
@@ -283,6 +284,30 @@ def test_warm_history_analysis_uses_attempt_path_from_run_registry(tmp_path, mon
     assert len(rows) == 6
     assert sum(row["is_best_accuracy_epoch"] for row in rows) == 3
     assert sum(row["is_best_f1_epoch"] for row in rows) == 3
+
+
+def test_expert_detail_fields_map_to_mechanism_csv_schema():
+    details = {
+        "delta_rms": 1.0,
+        "delta_hat_rms": 0.5,
+        "delta_weighted_rms_by_expert": [0.1, 0.2],
+        "cross_rms": 2.0,
+        "cross_hat_rms": 1.0,
+        "cross_weighted_rms_by_expert": [0.3, 0.4],
+        "cross_delta_rms": 3.0,
+        "cross_delta_hat_rms": 1.5,
+        "cross_delta_weighted_rms_by_expert": [0.5, 0.6],
+    }
+    normalized = normalize_expert_diagnostic_fields(details)
+    assert normalized["delta_intra_rms"] == 1.0
+    assert normalized["delta_intra_hat_rms"] == 0.5
+    assert normalized["delta_intra_weighted_rms_by_expert"] == [0.1, 0.2]
+    assert normalized["cross_base_rms"] == 2.0
+    assert normalized["cross_base_hat_rms"] == 1.0
+    assert normalized["cross_base_weighted_rms_by_expert"] == [0.3, 0.4]
+    assert normalized["delta_cross_rms"] == 3.0
+    assert normalized["delta_cross_hat_rms"] == 1.5
+    assert normalized["delta_cross_weighted_rms_by_expert"] == [0.5, 0.6]
 
 
 def test_receiver_mass_conservation_and_zero_score_identity():
