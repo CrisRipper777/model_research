@@ -8,7 +8,7 @@ import pytest
 
 from src.data.types import MAGData
 from scripts.analyze_rmcge_v22 import paired_results, validate_runs
-from scripts.run_rmcge_v22 import _assert_physical_gpu_idle, _degree_rows, dataset_fingerprints, mask_test_labels
+from scripts.run_rmcge_v22 import _assert_physical_gpu_idle, _degree_rows, dataset_fingerprints, mask_test_labels, metric_bundle
 from scripts.analyze_rmcge_v22 import CONDITIONS, DATASETS, SEEDS
 
 
@@ -28,6 +28,13 @@ def test_test_label_mask_is_applied_before_training_and_fingerprinting_ignores_t
     assert safe.y.tolist() == [0, 1, 2, 1, -100, -100]
     changed_test = _data([0, 1, 2, 1, 2, 0])
     assert dataset_fingerprints(data) == dataset_fingerprints(changed_test)
+
+
+def test_metric_bundle_uses_train_validation_supported_classes_without_test_labels():
+    labels = torch.tensor([1, 1, -100, -100])
+    logits = torch.tensor([[0.0, 1.0, -1.0], [0.0, 1.0, -1.0], [9.0, 0.0, 0.0], [9.0, 0.0, 0.0]])
+    result = metric_bundle(logits, labels, torch.tensor([0, 1]), 3, eval_labels=[1])
+    assert result["macro_f1"] == 1.0
 
 
 def _run_rows():

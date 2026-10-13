@@ -34,7 +34,7 @@ from scripts.run_rmcge_v21 import data_info, sha256_file, tensor_fingerprint, ve
 from src.data import load_mag_data  # noqa: E402
 from src.models import build_model  # noqa: E402
 from src.tasks.inference import infer_all_embeddings  # noqa: E402
-from src.tasks.nc import run_nc  # noqa: E402
+from src.tasks.nc import _resolve_nc_eval_labels, run_nc  # noqa: E402
 from src.utils.seeds import set_seed  # noqa: E402
 
 
@@ -403,7 +403,13 @@ def load_model_checkpoint(cfg, data, cache, checkpoint_path: Path, device: torch
     return payload, model, head, initial_model_state
 
 
-def metric_bundle(logits: torch.Tensor, labels: torch.Tensor, idx: torch.Tensor, num_classes: int) -> dict[str, Any]:
+def metric_bundle(
+    logits: torch.Tensor,
+    labels: torch.Tensor,
+    idx: torch.Tensor,
+    num_classes: int,
+    eval_labels: list[int],
+) -> dict[str, Any]:
     indices = idx.detach().cpu().long()
     y = labels[indices].detach().cpu().long()
     if bool((y < 0).any()):
@@ -412,7 +418,7 @@ def metric_bundle(logits: torch.Tensor, labels: torch.Tensor, idx: torch.Tensor,
     pred = selected.argmax(-1)
     return {
         "acc": float((pred == y).float().mean()),
-        "macro_f1": float(f1_score(y.numpy(), pred.numpy(), labels=list(range(num_classes)), average="macro", zero_division=0)),
+        "macro_f1": float(f1_score(y.numpy(), pred.numpy(), labels=list(eval_labels), average="macro", zero_division=0)),
         "ce": float(torch.nn.functional.cross_entropy(selected, y)),
         "prediction": pred,
         "target": y,
@@ -500,6 +506,7 @@ def analyze_checkpoint(
     model.eval()
     x_device = safe_data.x.to(device)
     edge_device = safe_data.edge_index.to(device)
+    eval_labels = _resolve_nc_eval_labels(safe_data, include_test=False)
     model._capture_content_nodes = checkpoint_name == "best_accuracy"
     model._last_content_by_modality = {}
     cpu_rng_before = torch.random.get_rng_state().clone()
@@ -511,8 +518,8 @@ def analyze_checkpoint(
     cuda_rng_unchanged = cuda_rng_before is None or torch.equal(cuda_rng_before, torch.cuda.get_rng_state(device))
     if not cpu_rng_unchanged or not cuda_rng_unchanged:
         raise RuntimeError("eval-mode Train/Validation diagnostics changed CPU/CUDA RNG state")
-    val = metric_bundle(logits, safe_data.y, safe_data.val_idx, int(safe_data.num_classes))
-    train = metric_bundle(logits, safe_data.y, safe_data.train_idx, int(safe_data.num_classes))
+    val = metric_bundle(logits, safe_data.y, safe_data.val_idx, int(safe_data.num_classes), eval_labels)
+    train = metric_bundle(logits, safe_data.y, safe_data.train_idx, int(safe_data.num_classes), eval_labels)
     checkpoint_metrics = payload["metrics"]
     for key, checkpoint_key in (("acc", "val_acc"), ("macro_f1", "val_macro_f1"), ("ce", "val_ce")):
         if abs(val[key] - float(checkpoint_metrics[checkpoint_key])) > 1e-6:
@@ -546,12 +553,12 @@ def analyze_checkpoint(
     return output
 
 
-def _eval_intervention(model, head, x, edge, labels, val_idx, num_classes, device, intervention, **kwargs):
+def _eval_intervention(model, head, x, edge, labels, val_idx, num_classes, eval_labels, device, intervention, **kwargs):
     model.set_interventions(**kwargs)
     with torch.no_grad():
         z = model(x, edge)[0]
         logits = head(z).detach().cpu()
-    metrics = metric_bundle(logits, labels, val_idx, num_classes)
+    metrics = metric_bundle(logits, labels, val_idx, num_classes, eval_labels)
     return {
         "dataset": "", "condition": "", "seed": 0, "intervention": intervention, "status": "ok",
         "val_acc": metrics["acc"], "val_macro_f1": metrics["macro_f1"], "val_ce": metrics["ce"],
@@ -563,6 +570,7 @@ def _eval_intervention(model, head, x, edge, labels, val_idx, num_classes, devic
 def frozen_interventions(dataset, condition, seed, result, safe_data, device):
     model, head = result["model"], result["head"]
     x, edge = safe_data.x.to(device), safe_data.edge_index.to(device)
+    eval_labels = _resolve_nc_eval_labels(safe_data, include_test=False)
     base = result["val"]
     specifications = [("content_off", {"content_off": True})]
     if condition == "M4":
@@ -573,8 +581,8 @@ def frozen_interventions(dataset, condition, seed, result, safe_data, device):
     rows = []
     for name, kwargs in specifications:
         item = _eval_intervention(
-            model, head, x, edge, safe_data.y, safe_data.val_idx, int(safe_data.num_classes), device,
-            name, **kwargs,
+            model, head, x, edge, safe_data.y, safe_data.val_idx, int(safe_data.num_classes),
+            eval_labels, device, name, **kwargs,
         )
         metrics = item.pop("_metrics")
         item.update({

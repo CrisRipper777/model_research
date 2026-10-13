@@ -23,6 +23,29 @@
       "test_evaluation": false,
       "time_utc": "2026-10-13T14:50:02+00:00",
       "training_started": false
+    },
+    {
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('reloaded best_accuracy validation macro_f1 mismatch: 0.6811467966229473')",
+      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/rmcge_v22/runs/ele-fashion/M0/seed_42",
+      "seed": 42,
+      "test_evaluation": false,
+      "time_utc": "2026-10-13T15:01:50+00:00",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v22.py\", line 719, in run_one\n    analyzed = analyze_run(dataset, condition, seed, cache, cfg, raw_data, safe_data, paths, device)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v22.py\", line 593, in analyze_run\n    acc = analyze_checkpoint(dataset, condition, seed, \"best_accuracy\", paths[\"best_accuracy\"], cache, raw_data, safe_data, cfg, device)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v22.py\", line 519, in analyze_checkpoint\n    raise RuntimeError(f\"reloaded {checkpoint_name} validation {key} mismatch: {val[key]}\")\nRuntimeError: reloaded best_accuracy validation macro_f1 mismatch: 0.6811467966229473\n"
+    },
+    {
+      "classification": "analysis_metric_label_set_mismatch",
+      "condition": "M0",
+      "dataset": "ele-fashion",
+      "error": "Analyzer recomputed validation Macro-F1 as 0.6811467966229473 while the Best Accuracy checkpoint stored 0.7430692326795789.",
+      "evidence_boundary": "Model training reached its stopping horizon and saved Best Accuracy and Best F1 checkpoints. Validation Accuracy matched before the Macro-F1 check stopped analysis. No metrics row was accepted and no Test labels were read.",
+      "resolution": "Use the NC protocol label set resolved from Train+Validation only via _resolve_nc_eval_labels(include_test=False) for checkpoint and frozen-intervention global metrics. Preserve original failed run and rerun ele-fashion/M0/seed_42 into an attempt directory.",
+      "seed": 42,
+      "stage": "checkpoint_validation_metric_reproduction",
+      "test_evaluation": false,
+      "time_utc": "2026-10-13T15:01:50+00:00",
+      "training_completed": true
     }
   ]
 }
