@@ -1,0 +1,31 @@
+{
+  "environment": "yhf_env",
+  "command": "python -m pytest -q",
+  "final_status": "pass",
+  "passed": 539,
+  "failed": 0,
+  "skipped": 0,
+  "warnings": 21,
+  "duration_seconds": 27.0,
+  "focused_view_cge_tests": {
+    "command": "python -m pytest -q tests/test_mag_view_cge_v1.py tests/test_mag_view_cge_v1_analysis.py",
+    "passed": 11,
+    "failed": 0
+  },
+  "first_full_suite_attempt": {
+    "passed": 535,
+    "failed": 3,
+    "causes": [
+      "Two new analyzer unit fixtures omitted Best-F1 Train metrics; fixture fields were added.",
+      "The existing V2.2 analyzer test passed a manifest without dataset/cache/split provenance required by validate_runs; only the stale test fixture was updated, with no V2.2 production behavior changes."
+    ]
+  },
+  "intermediate_full_suite_attempt": {
+    "passed": 536,
+    "skipped": 2,
+    "failed": 0,
+    "note": "The reason for the two skips in this intermediate attempt was not isolated. The final run used python -m pytest -q -rs and reported no skips."
+  },
+  "py_compile": "pass",
+  "git_diff_check": "pass"
+}

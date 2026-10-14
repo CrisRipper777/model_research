@@ -1,0 +1,26 @@
+{
+  "formal_runs_started": false,
+  "attempts": [
+    {
+      "stage": "sandbox_cuda_probe",
+      "result": "unavailable",
+      "evidence": "The sandbox process reported torch.cuda.is_available()=false and device_count=0, while nvidia-smi showed physical GPU 1 idle. A user-authorized escalated read-only probe successfully allocated and released one tensor on physical GPU 1."
+    },
+    {
+      "stage": "real_data_cache_validation",
+      "result": "implementation_assumption_corrected",
+      "evidence": "V7B.1 source_flags store proposal counts, not only Boolean values. Existing operators select edges with source_flags[:, modality] > 0. Validation was changed to accept nonnegative integer counts while enforcing at least one source modality per cached pair; operator semantics remain unchanged."
+    },
+    {
+      "stage": "first_full_graph_backward",
+      "result": "implementation_bug_fixed",
+      "evidence": "A physical mixture retained an extra expert axis, producing [experts,nodes,hidden] and triggering an attempted 159.04 GiB training-index allocation. The accumulator was corrected to [nodes,hidden], a shape assertion was added, unit tests passed, and the subsequent all-dataset preflight passed."
+    },
+    {
+      "stage": "final_full_graph_preflight",
+      "result": "pass",
+      "datasets": ["Movies", "Grocery", "ele-fashion"],
+      "evidence_file": "preflight.json"
+    }
+  ]
+}

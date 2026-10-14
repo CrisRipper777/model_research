@@ -1,0 +1,16 @@
+study: MAG View-Collaborative Experts V1
+protocol: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+conditions: [A0_legacy, A1_separate_intra, A2_cross_source]
+seeds: [42, 43, 44]
+optimizer: AdamW
+learning_rate: 0.001
+weight_decay: 0.0001
+dropout: 0.2
+epochs: 300
+patience: 30
+early_stop_min_epoch: 30
+grad_clip: 1.0
+checkpoint_selection: validation_accuracy
+save_best_validation_macro_f1: true
+evaluate_test: false

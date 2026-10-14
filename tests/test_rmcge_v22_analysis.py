@@ -59,7 +59,27 @@ def _run_rows():
 
 def test_run_manifest_validation_and_all_required_paired_contrasts():
     rows = _run_rows()
-    lookup = validate_runs(rows, {"test_evaluation": False, "test_label_values_indexed": False})
+    manifest = {
+        "test_evaluation": False,
+        "test_label_values_indexed": False,
+        "datasets": {
+            dataset: {
+                "cache_sha256": "cache",
+                "feature_fingerprint": "feature",
+                "candidate_fingerprint": "candidate",
+                "v7b_fingerprint": "v7b",
+                "seed_split_fingerprints": {str(seed): "split" for seed in SEEDS},
+            }
+            for dataset in DATASETS
+        },
+    }
+    for row in rows:
+        row.update({
+            "feature_fingerprint": "feature",
+            "candidate_fingerprint": "candidate",
+            "v7b_fingerprint": "v7b",
+        })
+    lookup = validate_runs(rows, manifest)
     paired = paired_results(lookup)
     assert len(paired) == 3 * 7 * 3 * 6
     m3_m2 = [row for row in paired if row["dataset"] == "Movies" and row["contrast"] == "M3-M2" and row["metric"] == "best_accuracy.val_acc"]
