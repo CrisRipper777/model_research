@@ -42,6 +42,7 @@ STUDY = ROOT / "research/mag_view_cge_v1"
 DATA = STUDY / "data"
 OUTPUT = ROOT / "outputs/mag_view_cge_v1"
 PROTOCOL = legacy.PROTOCOL
+IMPLEMENTATION_FREEZE_COMMIT = "f981a5f0164b1ed73c379724139e75c84abb0c98"
 PREDICTIONS: dict[tuple[str, int], torch.Tensor] = {}
 
 
@@ -155,7 +156,8 @@ def prepare_study(physical_gpu: int) -> dict[str, dict[str, Any]]:
         **previous,
         "study": "MAG View-Collaborative Experts V1",
         "branch": subprocess.run(["git", "branch", "--show-current"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip(),
-        "implementation_freeze_commit": subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip(),
+        "implementation_freeze_commit": IMPLEMENTATION_FREEZE_COMMIT,
+        "source_commit": subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip(),
         "protocol_version": PROTOCOL,
         "datasets": records,
         "conditions": list(CONDITIONS), "seeds": list(SEEDS),
@@ -488,7 +490,22 @@ def run_batch(seeds: tuple[int, ...], physical_gpu: int) -> None:
                     print(f"SKIP verified {dataset}/{condition}/seed_{seed}", flush=True)
                     continue
                 legacy._assert_physical_gpu_idle(physical_gpu)
-                run_one(dataset, condition, seed, caches[dataset], device)
+                failure_path = DATA / "failures.json"
+                failures_before = json.loads(failure_path.read_text()).get("failures", []) if failure_path.exists() else []
+                try:
+                    run_one(dataset, condition, seed, caches[dataset], device)
+                except Exception as exc:
+                    failures_after = json.loads(failure_path.read_text()).get("failures", []) if failure_path.exists() else []
+                    if len(failures_after) == len(failures_before):
+                        failure = {
+                            "dataset": dataset, "condition": condition, "seed": seed,
+                            "stage": "runner_setup", "training_started": False,
+                            "time_utc": utc_now(), "error": repr(exc),
+                            "traceback": traceback.format_exc(), "test_evaluation": False,
+                        }
+                        failures_after.append(failure)
+                        atomic_json(failure_path, {"failures": failures_after})
+                    raise
         manifest = json.loads((DATA / "manifest.json").read_text())
         manifest.setdefault("completed_seed_batches", [])
         if seed not in manifest["completed_seed_batches"]:

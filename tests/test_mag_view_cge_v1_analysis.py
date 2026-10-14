@@ -3,6 +3,7 @@ from __future__ import annotations
 import pytest
 
 from scripts.analyze_mag_view_cge_v1 import CONDITIONS, DATASETS, SEEDS, compute_paired_comparisons, validate_runs
+from scripts.preflight_mag_view_cge_v1 import config as build_config
 
 
 def _rows():
@@ -66,3 +67,13 @@ def test_run_validation_checks_manifest_cache_and_seed_split_provenance():
     rows[0]["feature_fingerprint"] = "wrong"
     with pytest.raises(ValueError, match="manifest provenance mismatch"):
         validate_runs(rows, manifest=manifest)
+
+
+def test_training_config_initializes_extended_checkpoint_metadata():
+    cache = {
+        "cache_path_abs": "/tmp/cache.pt", "feature_fingerprint": "feature",
+        "candidate_fingerprint": "candidate", "v7b_fingerprint": "v7b",
+    }
+    cfg = build_config("Movies", "A0_legacy", 42, "mag_view_cge_v1", cache, "cpu")
+    assert cfg.task.extended_checkpoint_metadata["condition"] == "A0_legacy"
+    assert cfg.task.extended_checkpoint_metadata["test_evaluation"] is False

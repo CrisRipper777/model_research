@@ -62,6 +62,11 @@ def config(dataset: str, condition: str, seed: int, model_name: str, cache: dict
     cfg.task.loss.aux_weight = 1.0
     cfg.task.record_extended_validation = True
     cfg.task.record_train_ce_separately = True
+    cfg.task.extended_checkpoint_metadata = {
+        "study": "MAG View-Collaborative Experts V1", "dataset": dataset,
+        "condition": condition, "seed": seed, "official_train_val_split": True,
+        "test_evaluation": False, "test_label_values_indexed": False,
+    }
     cfg.paths.output_root = str(ROOT / "outputs/mag_view_cge_v1/hydra")
     OmegaConf.resolve(cfg)
     return cfg

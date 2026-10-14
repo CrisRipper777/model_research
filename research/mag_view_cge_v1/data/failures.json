@@ -1,0 +1,17 @@
+{
+  "failures": [
+    {
+      "dataset": "Movies",
+      "condition": "A0_legacy",
+      "seed": 42,
+      "stage": "runner_setup",
+      "training_started": false,
+      "attempt": 1,
+      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mag_view_cge_v1/runs/Movies/A0_legacy/seed_42",
+      "time_local": "2026-10-14 Asia/Shanghai",
+      "error": "OmegaConf ConfigAttributeError: task.extended_checkpoint_metadata was missing when the runner tried to update checkpoint metadata.",
+      "resolution": "Initialize the metadata mapping in the shared View-CGE config builder; add a config regression test; preserve the failed attempt directory; retry under a new attempt directory after the runner fix commit.",
+      "test_evaluation": false
+    }
+  ]
+}
