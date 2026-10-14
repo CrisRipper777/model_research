@@ -27,6 +27,18 @@
       "test_evaluation": false,
       "time_utc": "2026-10-14T10:02:25+00:00",
       "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mag_view_cge_v1.py\", line 375, in run_one\n    acc = analyze_checkpoint(dataset, condition, seed, \"best_accuracy\", acc_path, safe, cache, device)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mag_view_cge_v1.py\", line 211, in analyze_checkpoint\n    z, _, _, _, info = model(x, edge, return_details=True)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1553, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1562, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mag_view_cge_v1.py\", line 417, in forward\n    result = super().forward(x, edge_index, return_details=return_details)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/rmcge_v22.py\", line 500, in forward\n    result = super().forward(x, edge_index, return_details=return_details)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/rmcge_v21.py\", line 525, in forward\n    return self._forward_v21_added(x, edge_index, return_details=return_details)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/rmcge_v21.py\", line 447, in _forward_v21_added\n    \"expert_output_rms\": self._scalar_rms(expert_values, active),\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mag_view_cge_v1.py\", line 428, in _scalar_rms\n    value = value[active]\n            ~~~~~^^^^^^^^\nIndexError: The shape of the mask [16672] at index 0 does not match the shape of the indexed tensor [4, 16672, 256] at index 0\n"
+    },
+    {
+      "stage": "resource_guard_before_run",
+      "dataset": "Movies",
+      "condition": "A0_legacy",
+      "seed": 44,
+      "training_started": false,
+      "time_utc": "2026-10-14T10:30:18Z",
+      "error": "The runner stopped before starting Movies/A0_legacy/seed_44 because the existing GPU-idle guard detected external PID 27585 using 816 MiB on physical GPU 1.",
+      "external_process": "/hdd2/DataInHere/LLH/.venv/bin/python -u /hdd2/DataInHere/LLH/configs/migration_tools/worker.py --run /hdd2/DataInHere/LLH/runs/20261014T102944791347Z_actor_gcn_layer_concat_7bdf8540",
+      "resolution": "Preserved all completed runs and checkpoints. Do not signal or share with the external process; resume the fixed batch command after physical GPU 1 is idle. The runner skips verified seed 43 and resumes at missing seed 44 cells.",
+      "test_evaluation": false
     }
   ]
 }

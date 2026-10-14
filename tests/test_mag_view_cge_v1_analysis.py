@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import pytest
 
-from scripts.analyze_mag_view_cge_v1 import CONDITIONS, DATASETS, SEEDS, compute_paired_comparisons, validate_runs
+from scripts.analyze_mag_view_cge_v1 import (
+    CONDITIONS, DATASETS, SEEDS, best_f1_checkpoint_report_rows,
+    compute_paired_comparisons, validate_runs,
+)
 from scripts.preflight_mag_view_cge_v1 import config as build_config
 
 
@@ -16,6 +19,7 @@ def _rows():
                 f1 = base - condition_idx / 200
                 rows.append({
                     "dataset": dataset, "condition": condition, "seed": str(seed), "status": "complete",
+                    "best_f1_epoch": str(seed),
                     "test_evaluation": "False", "val_acc": str(acc), "val_macro_f1": str(f1), "val_ce": "1.0",
                     "best_f1_val_acc": str(acc), "best_f1_val_macro_f1": str(f1), "best_f1_val_ce": "1.0",
                     "train_acc": str(acc), "train_macro_f1": str(f1), "train_ce": "1.0",
@@ -36,6 +40,15 @@ def test_run_validation_and_paired_contrasts():
     summary = next(item for item in paired if item["dataset"] == DATASETS[1] and item["contrast"] == f"{CONDITIONS[2]}-{CONDITIONS[0]}" and item["metric"] == "val_macro_f1" and item["seed"] == "mean_sample_sd")
     assert abs(summary["difference"] + 0.01) < 1e-9
     assert summary["positive_seed_count"] == 0
+
+
+def test_best_f1_report_includes_validation_ce_and_epochs():
+    rows = best_f1_checkpoint_report_rows(validate_runs(_rows()))
+    assert len(rows) == len(DATASETS) * len(CONDITIONS)
+    assert rows[0] == [
+        "Movies", "A0_legacy", "50.430 ± 0.010%", "50.430 ± 0.010%",
+        "1.00000 ± 0.00000", "42, 43, 44",
+    ]
 
 
 def test_run_validation_rejects_test_metrics_and_duplicate_keys():

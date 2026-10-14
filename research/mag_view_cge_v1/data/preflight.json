@@ -1,11 +1,11 @@
 {
-  "completed_utc": "2026-10-14T09:54:15Z",
+  "completed_utc": "2026-10-14T10:01:40Z",
   "datasets": {
     "Grocery": {
       "a0_classifier_bias_sha256": "2a28cf3399ea52a56585152b59fb7b382d72025d455fe85f03ba387916237eeb",
       "a0_classifier_weight_sha256": "1db73c8df111d14ed2fee1a1109d01b26a33cf6eeca92a6847d5e07e2cac096c",
       "a0_common_parameter_max_abs_error": 0.0,
-      "a0_forward_max_abs_error": 1.430511474609375e-06,
+      "a0_forward_max_abs_error": 1.9073486328125e-06,
       "cache_fingerprints": {
         "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
         "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
@@ -46,7 +46,7 @@
             "alpha_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.01136344950646162,
+              "gradient_norm": 0.01136345136910677,
               "gradient_present": true
             },
             "content_eta": {
@@ -190,7 +190,7 @@
             "gamma_s_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.005319172516465187,
+              "gradient_norm": 0.0053191720508039,
               "gradient_present": true
             },
             "key_projection.weight": {
@@ -214,7 +214,7 @@
             "node_router.3.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.006707682739943266,
+              "gradient_norm": 0.006707683205604553,
               "gradient_present": true
             },
             "projectors.text.linear1.weight": {
@@ -262,7 +262,7 @@
             "strength_head.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0008366911788471043,
+              "gradient_norm": 0.000836691353470087,
               "gradient_present": true
             },
             "view_router.0.weight": {
@@ -280,24 +280,24 @@
             "view_router.2.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.000695400289259851,
+              "gradient_norm": 0.0006954004056751728,
               "gradient_present": true
             }
           },
           "loss": 3.165090560913086,
           "peak_allocated_bytes": 2568294912,
           "peak_reserved_bytes": 2871001088,
-          "seconds": 0.10497605707496405
+          "seconds": 0.11975265201181173
         },
         "A2_cross_source": {
-          "cross_projection_gradient_norm": 0.018139608204364777,
+          "cross_projection_gradient_norm": 0.018139610067009926,
           "gamma_c_updated": true,
           "gamma_s_updated": true,
           "gradient_diagnostics": {
             "alpha_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.015088334679603577,
+              "gradient_norm": 0.0150883374735713,
               "gradient_present": true
             },
             "content_eta": {
@@ -363,7 +363,7 @@
             "cross_coefficients": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.004783616401255131,
+              "gradient_norm": 0.004783616866916418,
               "gradient_present": true
             },
             "cross_delta_coefficients": {
@@ -513,7 +513,7 @@
             "strength_head.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0011920880060642958,
+              "gradient_norm": 0.0011920876568183303,
               "gradient_present": true
             },
             "view_router.0.weight": {
@@ -525,20 +525,20 @@
             "view_router.2.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0006757124792784452,
+              "gradient_norm": 0.0006757123628631234,
               "gradient_present": true
             },
             "view_router.2.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0011203677859157324,
+              "gradient_norm": 0.0011203676695004106,
               "gradient_present": true
             }
           },
           "loss": 3.168186664581299,
           "peak_allocated_bytes": 2731457536,
           "peak_reserved_bytes": 3164602368,
-          "seconds": 0.12438973505049944
+          "seconds": 0.12502589216455817
         }
       },
       "new_model_hash": "f388f81d0cd4d55a7e40adb9d51a96f319cf4b8a6c2f030c7ecf123eeec14623",
@@ -595,7 +595,7 @@
             "alpha_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.006936646532267332,
+              "gradient_norm": 0.00693664513528347,
               "gradient_present": true
             },
             "content_eta": {
@@ -739,7 +739,7 @@
             "gamma_s_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0029588688630610704,
+              "gradient_norm": 0.002958868630230427,
               "gradient_present": true
             },
             "key_projection.weight": {
@@ -823,7 +823,7 @@
             "view_router.2.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.00011833151802420616,
+              "gradient_norm": 0.00011833143071271479,
               "gradient_present": true
             },
             "view_router.2.weight": {
@@ -836,7 +836,7 @@
           "loss": 3.101680040359497,
           "peak_allocated_bytes": 2683520512,
           "peak_reserved_bytes": 3170893824,
-          "seconds": 0.2540620919317007
+          "seconds": 0.2550403829663992
         },
         "A2_cross_source": {
           "cross_projection_gradient_norm": 0.019829582422971725,
@@ -846,7 +846,7 @@
             "alpha_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.007450924254953861,
+              "gradient_norm": 0.0074509247206151485,
               "gradient_present": true
             },
             "content_eta": {
@@ -990,7 +990,7 @@
             "gamma_s_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0027101675514131784,
+              "gradient_norm": 0.002710167318582535,
               "gradient_present": true
             },
             "key_projection.weight": {
@@ -1008,7 +1008,7 @@
             "node_router.3.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.003492779564112425,
+              "gradient_norm": 0.003492779331281781,
               "gradient_present": true
             },
             "node_router.3.weight": {
@@ -1062,7 +1062,7 @@
             "strength_head.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0037402212619781494,
+              "gradient_norm": 0.0037402205634862185,
               "gradient_present": true
             },
             "view_router.0.weight": {
@@ -1087,7 +1087,7 @@
           "loss": 3.1058268547058105,
           "peak_allocated_bytes": 2860536832,
           "peak_reserved_bytes": 3317694464,
-          "seconds": 0.12841008510440588
+          "seconds": 0.13014927180483937
         }
       },
       "new_model_hash": "518dbd45b3a5999b6a67b167c320bbbc44e3619e5881290b618bef344168247b",
@@ -1210,7 +1210,7 @@
             "cross_coefficients": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.000402596517233178,
+              "gradient_norm": 0.00040259622619487345,
               "gradient_present": true
             },
             "cross_delta_coefficients": {
@@ -1276,7 +1276,7 @@
             "fusion_linear1.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 2.1445717811584473,
+              "gradient_norm": 2.144571542739868,
               "gradient_present": true
             },
             "gamma_c_raw": {
@@ -1312,7 +1312,7 @@
             "node_router.3.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.005311913322657347,
+              "gradient_norm": 0.005311913788318634,
               "gradient_present": true
             },
             "projectors.text.linear1.weight": {
@@ -1354,13 +1354,13 @@
             "selection_head.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.007767593953758478,
+              "gradient_norm": 0.007767593488097191,
               "gradient_present": true
             },
             "strength_head.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.00025671347975730896,
+              "gradient_norm": 0.00025671382900327444,
               "gradient_present": true
             },
             "view_router.0.weight": {
@@ -1378,24 +1378,24 @@
             "view_router.2.weight": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0025890059769153595,
+              "gradient_norm": 0.002589006209746003,
               "gradient_present": true
             }
           },
           "loss": 2.5000269412994385,
           "peak_allocated_bytes": 10778925568,
           "peak_reserved_bytes": 12067012608,
-          "seconds": 0.4449619632214308
+          "seconds": 0.44524866389110684
         },
         "A2_cross_source": {
-          "cross_projection_gradient_norm": 0.008610215969383717,
+          "cross_projection_gradient_norm": 0.008610216900706291,
           "gamma_c_updated": true,
           "gamma_s_updated": true,
           "gradient_diagnostics": {
             "alpha_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.02816636860370636,
+              "gradient_norm": 0.02816636674106121,
               "gradient_present": true
             },
             "content_eta": {
@@ -1461,7 +1461,7 @@
             "cross_coefficients": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0005585284088738263,
+              "gradient_norm": 0.0005585285252891481,
               "gradient_present": true
             },
             "cross_delta_coefficients": {
@@ -1533,7 +1533,7 @@
             "gamma_c_raw": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.0012165227672085166,
+              "gradient_norm": 0.0012165226507931948,
               "gradient_present": true
             },
             "gamma_s_raw": {
@@ -1611,7 +1611,7 @@
             "strength_head.bias": {
               "gradient_finite": true,
               "gradient_nonzero": true,
-              "gradient_norm": 0.00019832735415548086,
+              "gradient_norm": 0.00019832700490951538,
               "gradient_present": true
             },
             "view_router.0.weight": {
@@ -1633,10 +1633,10 @@
               "gradient_present": true
             }
           },
-          "loss": 2.4994423389434814,
+          "loss": 2.4994425773620605,
           "peak_allocated_bytes": 11709892608,
           "peak_reserved_bytes": 13132365824,
-          "seconds": 0.5456950031220913
+          "seconds": 0.5445179422385991
         }
       },
       "new_model_hash": "c9bd06ba57d6cc9df86eafbdb1764860128e132ea7fbe5362d63cecf1fdc1d68",
@@ -1698,7 +1698,7 @@
     "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
     "python": "3.12.13",
     "pytorch": "2.4.0+cu121",
-    "timestamp_utc": "2026-10-14T09:54:00+00:00",
+    "timestamp_utc": "2026-10-14T10:01:25+00:00",
     "visible_devices": "1"
   },
   "formal_runs_started": false,

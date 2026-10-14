@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "finite full-graph histories",
+    "shared initialization/split/cache pairing",
+    "first-step semantic gradients",
+    "checkpoint reload and validation reproduction",
+    "Test evaluation disabled",
+    "CUDA memory and training-step preflight passed"
+  ],
+  "completed_runs": 9,
+  "generated_utc": "2026-10-14T10:16:36+00:00",
+  "performance_threshold_used": false,
+  "seed": 42,
+  "status": "pass"
+}

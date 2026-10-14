@@ -129,6 +129,25 @@ def _pct(mean: float, sd: float) -> str:
     return f"{100*mean:.3f} ± {100*sd:.3f}%"
 
 
+def best_f1_checkpoint_report_rows(
+    lookup: dict[tuple[str, str, int], dict[str, str]],
+) -> list[list[str]]:
+    """Summarize all required Validation metrics for the Best-F1 checkpoints."""
+    rows = []
+    for dataset in DATASETS:
+        for condition in CONDITIONS:
+            run_rows = [lookup[(dataset, condition, seed)] for seed in SEEDS]
+            f1_mean, f1_sd = _mean_sd([float(row["best_f1_val_macro_f1"]) for row in run_rows])
+            acc_mean, acc_sd = _mean_sd([float(row["best_f1_val_acc"]) for row in run_rows])
+            ce_mean, ce_sd = _mean_sd([float(row["best_f1_val_ce"]) for row in run_rows])
+            epochs = ", ".join(str(int(row["best_f1_epoch"])) for row in run_rows)
+            rows.append([
+                dataset, condition, _pct(f1_mean, f1_sd), _pct(acc_mean, acc_sd),
+                f"{ce_mean:.5f} ± {ce_sd:.5f}", epochs,
+            ])
+    return rows
+
+
 def main() -> None:
     run_rows = read_csv(DATA / "runs.csv")
     history = read_csv(DATA / "epoch_history.csv")
@@ -150,11 +169,14 @@ def main() -> None:
     lines = [
         "# MAG View-Collaborative Experts V1: Pilot Report", "",
         "## Protocol and provenance", "",
-        f"- Branch: `{manifest.get('branch', 'unknown')}`; source/freeze commit: `{manifest.get('implementation_freeze_commit', 'not recorded')}`.",
+        f"- Branch: `{manifest.get('branch', 'unknown')}`; Implementation Freeze commit: `{manifest.get('implementation_freeze_commit', 'not recorded')}`; formal-run source commit: `{manifest.get('source_commit', 'not recorded')}`.",
         f"- Runs: {len(run_rows)}/27; epoch-history rows: {len(history)}; retained failures: {len(failures.get('failures', []))}.",
         f"- Protocol: `{manifest.get('protocol_version')}`; Test evaluation disabled and Test labels masked before NC training/evaluation.",
         f"- Device: {preflight.get('device_name')}; physical GPU {preflight.get('physical_gpu')}; PyTorch `{preflight.get('environment', {}).get('pytorch')}`, CUDA build `{preflight.get('environment', {}).get('cuda_build')}`.",
         "- Results are Validation-only and paired by Dataset × Seed. The historical reports are context, not the acceptance target.", "",
+        "## Retained failed attempts and batch interruption", "",
+        "The three entries in `data/failures.json` are retained execution history, not completed metric rows. Movies/A0/seed42 attempt 1 stopped before training because checkpoint metadata was absent. Attempt 2 trained 103 epochs and wrote both checkpoints, then failed in post-training diagnostics when a node mask was applied to a tensor with an expert-leading axis; the bug was fixed and formal attempt 3 completed the cell. After all nine seed43 cells completed, the GPU-idle guard stopped the batch before seed44 because an independent LLH worker (PID 27585) used 816 MiB on physical GPU 1. It was not interrupted. After it exited, the runner skipped verified seed43 results and completed seed44. No completed checkpoint was overwritten.",
+        "Full tracebacks, paths, timestamps and resolution evidence remain in `data/failures.json`; preflight-only engineering corrections are detailed in `data/preflight_attempts.json`.", "",
         "## Best Accuracy checkpoint", "",
     ]
     for metric, label in (("val_acc", "Validation Accuracy"), ("val_macro_f1", "Validation Macro-F1"), ("val_ce", "Validation CE")):
@@ -169,14 +191,8 @@ def main() -> None:
         lines.extend(_markdown_table(table_rows, ["Dataset", "Condition", label, "Best epochs"])); lines.append("")
 
     lines.extend(["## Best Macro-F1 checkpoint", ""])
-    f1_rows = []
-    for dataset in DATASETS:
-        for condition in CONDITIONS:
-            vals = [float(lookup[(dataset, condition, seed)]["best_f1_val_macro_f1"]) for seed in SEEDS]
-            mean, sd = _mean_sd(vals)
-            acc = [float(lookup[(dataset, condition, seed)]["best_f1_val_acc"]) for seed in SEEDS]
-            f1_rows.append([dataset, condition, _pct(mean, sd), _pct(*_mean_sd(acc))])
-    lines.extend(_markdown_table(f1_rows, ["Dataset", "Condition", "Macro-F1", "Accuracy"])); lines.append("")
+    f1_rows = best_f1_checkpoint_report_rows(lookup)
+    lines.extend(_markdown_table(f1_rows, ["Dataset", "Condition", "Macro-F1", "Accuracy", "Validation CE", "Best epochs"])); lines.append("")
 
     lines.extend(["## Paired contrasts", "", "Values are left minus right; per-seed rows are in `data/paired_comparisons.csv`. These are descriptive three-seed comparisons, not significance tests.", ""])
     contrast_rows = []
@@ -289,8 +305,9 @@ def main() -> None:
         "# Implementation Audit", "",
         f"- Branch: `{manifest.get('branch', 'unknown')}`.",
         f"- Implementation Freeze Commit: `{manifest.get('implementation_freeze_commit', 'unknown')}`.",
+        f"- Formal-run source commit: `{manifest.get('source_commit', 'unknown')}`; the evidence/report commit is the final delivery commit on this branch.",
         f"- Evidence/run count: {len(run_rows)}/27; epoch-history rows {len(history)}; failed/retried attempts recorded: {failure_count}.",
-        f"- Test results: `{test_evidence.get('summary', test_evidence.get('status'))}`.",
+        f"- Final test results: {test_evidence.get('passed', 'n/a')} passed, {test_evidence.get('failed', 'n/a')} failed, {test_evidence.get('skipped', 'n/a')} skipped, {test_evidence.get('warnings', 'n/a')} warnings in {test_evidence.get('duration_seconds', 'n/a')} s; focused View-CGE: {test_evidence.get('focused_view_cge_tests', {}).get('passed', 'n/a')} passed.",
         f"- Checkpoints independently checked for file size and SHA256: {verified_checkpoints}/{expected_checkpoints}.",
         f"- A0 real-data forward compatibility maximum absolute error: {max_preflight_error:.9g}; per-dataset values are in `data/preflight.json`.",
         f"- Seed42 initialization and split gate: `{(DATA / 'seed42_gate.json').is_file() and json.loads((DATA / 'seed42_gate.json').read_text()).get('status') == 'pass'}`.",
@@ -306,6 +323,13 @@ def main() -> None:
         "- Semantic view masks are applied after expert response; physically isolated nodes retain valid semantic messages.",
         "- Full graph only; link prediction is explicitly unsupported. No labels were used for graph/cache creation.",
         "- Current evidence does not establish causal utility for individual routed experts; frozen closure is checkpoint sensitivity only.", "",
+        "## Preserved execution failures", "",
+        "Movies/A0/seed42 attempt 1 stopped before training because checkpoint metadata was absent. Attempt 2 trained 103 epochs and wrote checkpoints, then failed in post-training diagnostics on a node mask with an expert-leading tensor axis; the defect was fixed, both failed attempt directories were retained, and attempt 3 completed the formal cell. After seed43 completed, the GPU-idle guard stopped before seed44 when an independent LLH worker (PID 27585, 816 MiB on physical GPU 1) appeared. No process was interrupted; after it exited, seed43 was verified/skipped and seed44 completed. The three records remain in `data/failures.json`.",
+        "", "## Evidence categories and self-review", "",
+        "- **Code facts:** A0 delegates the V2.2 M0 forward; A1/A2 make Physical, same-source Semantic and (A2) opposite-source-support Cross views explicit. All views share one four-expert bank and one S/C router. Direction, expert identity, initialization isolation, gradients and empty-view masking are tested.",
+        "- **Measured results:** the frozen preflight, paired hashes/fingerprints, 27 Test-disabled runs, 54 hashed checkpoints, classwise/degree/transition data and view/router diagnostics are stored under `data/`.",
+        "- **Unproven mechanism claims:** nonzero messages, route selection or prediction sensitivity do not prove causal utility for an expert or view; frozen view closure is not a retrained ablation. Three seeds are descriptive only.",
+        "- **Self-review:** the contribution is the relation-source organization and opposite-source support path, not shared experts alone (already present in V7A). Semantic messages are not duplicated in Physical input; the legacy Physical pathway remains and its weighted contribution is larger in the aggregate diagnostics. A1/A0 and A2/A1 are whole-condition contrasts, not isolated component effects. Test labels/metrics were not used; LP support is not claimed; no next model version is prescribed.", "",
     ]
     (STUDY / "IMPLEMENTATION_AUDIT.md").write_text("\n".join(audit), encoding="utf-8")
 
@@ -330,6 +354,11 @@ def main() -> None:
         "The view/router diagnostics establish that the implementation executed with measured nonzero propagation and expert responses where supports exist; they do not by themselves prove classification value. Frozen view closure is checkpoint sensitivity. It is not a retrained causal ablation.",
         "", "## Scope limits", "",
         "No Test metrics were produced. The study does not estimate a universal effect beyond these datasets/splits/seeds, and does not separately identify optimization, stochastic, or class-prior causes of run variation. No new model version is prescribed by this memo.", "",
+        "## Evidence categories", "",
+        "- **Code facts:** A0 uses the legacy V2.2 M0 forward; A1/A2 separate cached source-specific KNN context into shared-expert semantic views, with A2 adding opposite-source KNN support. All views call the same four experts and share one S/C router; Test labels are masked and the analyzer rejects Test metrics.",
+        "- **Measured validation facts:** all 27 runs completed with matched initial model/head hashes per Dataset × Seed, official split/cache fingerprints, finite metrics and 54 hashed checkpoints. Paired estimates and dataset/seed results in `PILOT_REPORT.md` are validation evidence only.",
+        "- **Unproven explanation:** router entropy, contribution scales, expert corrections and frozen-checkpoint flips show execution and sensitivity; they do not establish per-view retraining causality or a robust performance mechanism. Three seeds do not support broad population claims.",
+        "- **Execution history:** two Movies/A0/seed42 failures were retained before a successful attempt; a GPU-idle guard paused seed44 while preserving an independent GPU job. All events are itemized in `data/failures.json`; failed attempts do not count as completed scores.", "",
     ])
     (STUDY / "DECISION_MEMO.md").write_text("\n".join(memo), encoding="utf-8")
     print(f"validated and summarized {len(run_rows)} runs; wrote reports under {STUDY}")

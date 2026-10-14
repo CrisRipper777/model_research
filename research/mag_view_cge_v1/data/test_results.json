@@ -1,16 +1,20 @@
 {
   "environment": "yhf_env",
-  "command": "python -m pytest -q",
+  "command": "CUDA_VISIBLE_DEVICES=1 python -m pytest -q -rs (authorized GPU context)",
   "final_status": "pass",
-  "passed": 539,
+  "passed": 542,
   "failed": 0,
   "skipped": 0,
   "warnings": 21,
-  "duration_seconds": 27.0,
+  "duration_seconds": 58.89,
   "focused_view_cge_tests": {
-    "command": "python -m pytest -q tests/test_mag_view_cge_v1.py tests/test_mag_view_cge_v1_analysis.py",
-    "passed": 11,
-    "failed": 0
+    "command": "CUDA_VISIBLE_DEVICES=1 python -m pytest -q tests/test_mag_view_cge_v1.py tests/test_mag_view_cge_v1_analysis.py",
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 3,
+    "duration_seconds": 5.18,
+    "note": "Includes the report test requiring Best-F1 Validation CE and best epoch fields."
   },
   "first_full_suite_attempt": {
     "passed": 535,
@@ -21,10 +25,14 @@
     ]
   },
   "intermediate_full_suite_attempt": {
-    "passed": 536,
+    "passed": 538,
     "skipped": 2,
     "failed": 0,
-    "note": "The reason for the two skips in this intermediate attempt was not isolated. The final run used python -m pytest -q -rs and reported no skips."
+    "skip_reasons": [
+      "tests/test_pace_mag_v1.py:362: CUDA is unavailable",
+      "tests/test_rmcge_v22.py:245: CUDA smoke requires an authorized visible GPU"
+    ],
+    "note": "The final run repeated the suite with only physical GPU 1 visible; both CUDA tests passed."
   },
   "py_compile": "pass",
   "git_diff_check": "pass"
