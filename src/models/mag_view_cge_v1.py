@@ -425,7 +425,7 @@ class Model(RMCGEV22Model):
     @staticmethod
     def _scalar_rms(value: torch.Tensor, active: torch.Tensor | None = None) -> float:
         if active is not None:
-            value = value[active]
+            value = value[:, active, :] if value.ndim == 3 else value[active]
         if value.numel() == 0:
             return 0.0
         return float(torch.sqrt(value.detach().float().square().mean()).cpu())

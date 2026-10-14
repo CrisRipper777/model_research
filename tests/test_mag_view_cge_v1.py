@@ -237,3 +237,10 @@ def test_a2_calls_one_shared_expert_bank_for_each_view():
         handle.remove()
     assert output.shape == (5, 256)
     assert calls == [6, 6, 6, 6]  # physical + S + C for each target modality
+
+
+def test_scalar_rms_preserves_legacy_expert_axis_masking():
+    values = torch.arange(24, dtype=torch.float32).reshape(3, 4, 2)
+    active = torch.tensor([True, False, True, False])
+    expected = values[:, active, :].square().mean().sqrt().item()
+    assert abs(Model._scalar_rms(values, active) - expected) < 1e-7

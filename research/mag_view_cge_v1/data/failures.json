@@ -1,17 +1,32 @@
 {
   "failures": [
     {
-      "dataset": "Movies",
-      "condition": "A0_legacy",
-      "seed": 42,
-      "stage": "runner_setup",
-      "training_started": false,
       "attempt": 1,
-      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mag_view_cge_v1/runs/Movies/A0_legacy/seed_42",
-      "time_local": "2026-10-14 Asia/Shanghai",
+      "condition": "A0_legacy",
+      "dataset": "Movies",
       "error": "OmegaConf ConfigAttributeError: task.extended_checkpoint_metadata was missing when the runner tried to update checkpoint metadata.",
       "resolution": "Initialize the metadata mapping in the shared View-CGE config builder; add a config regression test; preserve the failed attempt directory; retry under a new attempt directory after the runner fix commit.",
-      "test_evaluation": false
+      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mag_view_cge_v1/runs/Movies/A0_legacy/seed_42",
+      "seed": 42,
+      "stage": "runner_setup",
+      "test_evaluation": false,
+      "time_local": "2026-10-14 Asia/Shanghai",
+      "training_started": false
+    },
+    {
+      "condition": "A0_legacy",
+      "dataset": "Movies",
+      "error": "IndexError('The shape of the mask [16672] at index 0 does not match the shape of the indexed tensor [4, 16672, 256] at index 0')",
+      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mag_view_cge_v1/runs/Movies/A0_legacy/seed_42_attempt_2",
+      "seed": 42,
+      "training_started": true,
+      "epochs_completed": 103,
+      "best_accuracy_epoch": 73,
+      "training_wall_seconds": 25.2825,
+      "checkpoints_written_but_run_failed": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-14T10:02:25+00:00",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mag_view_cge_v1.py\", line 375, in run_one\n    acc = analyze_checkpoint(dataset, condition, seed, \"best_accuracy\", acc_path, safe, cache, device)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mag_view_cge_v1.py\", line 211, in analyze_checkpoint\n    z, _, _, _, info = model(x, edge, return_details=True)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1553, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1562, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mag_view_cge_v1.py\", line 417, in forward\n    result = super().forward(x, edge_index, return_details=return_details)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/rmcge_v22.py\", line 500, in forward\n    result = super().forward(x, edge_index, return_details=return_details)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/rmcge_v21.py\", line 525, in forward\n    return self._forward_v21_added(x, edge_index, return_details=return_details)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/rmcge_v21.py\", line 447, in _forward_v21_added\n    \"expert_output_rms\": self._scalar_rms(expert_values, active),\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mag_view_cge_v1.py\", line 428, in _scalar_rms\n    value = value[active]\n            ~~~~~^^^^^^^^\nIndexError: The shape of the mask [16672] at index 0 does not match the shape of the indexed tensor [4, 16672, 256] at index 0\n"
     }
   ]
 }
