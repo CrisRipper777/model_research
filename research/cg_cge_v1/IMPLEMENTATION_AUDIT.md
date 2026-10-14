@@ -4,6 +4,7 @@
 
 - New branch: `exp/cg_cge_v1_complementary_experts`.
 - Frozen parent at branch creation: `ffdb8c2b53ea4c67793d26c420832aa9a118cb58` (`exp/mag_view_collaborative_experts_v1`).
+- Implementation Freeze Commit: `aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556`. It freezes code, tests and CPU pairing evidence; GPU memory/compute acceptance remains an explicit outstanding preflight gate.
 - The parent tree was clean before work began. Existing View-CGE reports, run CSVs, failed attempts and checkpoints have not been edited.
 - The V1 code is isolated in `src/models/cg_cge_v1.py`; the NC change is opt-in and defaults to the original `main CE + aux_weight * aux_loss` arithmetic.
 - Dataset/cache/init CPU preflight passes across three datasets and all three seeds. All nine B0 cells match on split, feature, physical graph, semantic cache SHA, candidate and V7B.1 fingerprints, and protocol. B1/B2 model and external-head initialization hashes match in all nine cells.
@@ -29,7 +30,7 @@
 conda run -n yhf_env python -m pytest tests/test_cg_cge_v1.py tests/test_cg_cge_v1_analysis.py -q
 ```
 
-The implementation freeze commit will contain the passing software tests and CPU pairing evidence. GPU memory/compute acceptance is explicitly pending a later non-shared GPU preflight; the current driver/NVML failure prevents it. Formal source and evidence commits will be recorded only after training and reports. No formal run was started.
+The Implementation Freeze Commit contains the passing software tests and CPU pairing evidence. GPU memory/compute acceptance is explicitly pending a later non-shared GPU preflight; the current driver/NVML failure prevents it. No formal run started, so a formal-run source SHA and final evidence commit do not yet exist. The runner resolves the source SHA from `HEAD` at launch and locates the freeze commit from its message.
 
 ## Evidence limits / risks under review
 
