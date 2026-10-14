@@ -6,7 +6,16 @@
       "status": "failed_or_refused",
       "test_evaluation": false,
       "time_utc": "2026-10-14T14:49:05Z",
-      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_cg_cge_v1.py\", line 295, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_cg_cge_v1.py\", line 145, in main\n    raise RuntimeError(\"CUDA unavailable or requested physical device is not isolated\")\nRuntimeError: CUDA unavailable or requested physical device is not isolated\n"
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_cg_cge_v1.py\", line 295, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_cg_cge_v1.py\", line 145, in main\n    raise RuntimeError(\"CUDA unavailable or requested physical device is not isolated\")\nRuntimeError: CUDA unavailable or requested physical device is not isolated\n",
+      "follow_up_snapshot": {
+        "time_utc": "2026-10-14T14:57:02Z",
+        "driver_responding": true,
+        "decision": "refuse_gpu_use_while_other_compute_is_active",
+        "devices": [
+          {"physical_index": 0, "name": "NVIDIA GeForce RTX 3090", "memory_used_mib": 22858, "memory_total_mib": 24576, "utilization_percent": 96, "process": "VLLM::EngineCore", "pid": 3138154},
+          {"physical_index": 1, "name": "NVIDIA GeForce RTX 3090", "memory_used_mib": 13787, "memory_total_mib": 24576, "utilization_percent": 92, "process": "python", "pid": 98051}
+        ]
+      }
     }
   ]
 }
