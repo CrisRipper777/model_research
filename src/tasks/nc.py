@@ -44,6 +44,43 @@ def _resolve_training_mode(cfg, model=None) -> str:
     return "full_graph" if _uses_graph_encoder(cfg) else "feature_only"
 
 
+def _compose_full_graph_loss(
+    *,
+    model,
+    info: dict,
+    main_ce: torch.Tensor,
+    aux_loss: torch.Tensor,
+    aux_weight: float,
+    unimodal_weight: float,
+    labels: torch.Tensor,
+    train_idx: torch.Tensor,
+) -> tuple[torch.Tensor, torch.Tensor | None]:
+    """Compose the opt-in unimodal CE objective using training indices only."""
+    if unimodal_weight < 0:
+        raise ValueError("task.loss.unimodal_weight must be non-negative")
+    if unimodal_weight == 0:
+        # Preserve the legacy arithmetic exactly when the extension is off.
+        return main_ce + aux_weight * aux_loss, None
+    if not bool(getattr(model, "supports_unimodal_aux_loss", False)):
+        raise ValueError("positive unimodal_weight requires a model that declares supports_unimodal_aux_loss")
+    if not isinstance(info, dict) or not isinstance(info.get("unimodal_logits"), dict):
+        raise RuntimeError("training forward omitted the declared unimodal_logits interface")
+    logits = info["unimodal_logits"]
+    if set(logits) != {"text", "visual"}:
+        raise RuntimeError("unimodal_logits must contain exactly Text and Visual logits")
+    target = labels[train_idx]
+    if target.numel() == 0 or bool((target < 0).any()):
+        raise ValueError("unimodal auxiliary supervision requires valid training labels")
+    losses = []
+    for modality in ("text", "visual"):
+        value = logits[modality]
+        if value.ndim != 2 or value.size(0) != labels.size(0):
+            raise RuntimeError(f"{modality} auxiliary logits must cover the full global graph")
+        losses.append(nn.functional.cross_entropy(value[train_idx], target))
+    unimodal_ce = 0.5 * (losses[0] + losses[1])
+    return main_ce + unimodal_weight * unimodal_ce + aux_weight * aux_loss, unimodal_ce
+
+
 def _resolve_nc_eval_labels(data: MAGData, *, include_test: bool = True) -> list[int]:
     """Use one stable Macro-F1 label set across the supervised task splits."""
     if data.y is None:
@@ -258,6 +295,14 @@ def _run_single_nc(
     training_mode = _resolve_training_mode(cfg, model)
     uses_graph = _uses_graph_encoder(cfg)
     full_graph_training = training_mode == "full_graph"
+    unimodal_weight = float(cfg.task.loss.get("unimodal_weight", 0.0))
+    if unimodal_weight < 0:
+        raise ValueError("task.loss.unimodal_weight must be non-negative")
+    if unimodal_weight > 0:
+        if not full_graph_training:
+            raise ValueError("unimodal auxiliary CE is supported only by full-graph NC")
+        if not bool(getattr(model, "supports_unimodal_aux_loss", False)):
+            raise ValueError("positive unimodal_weight requires a model that declares supports_unimodal_aux_loss")
 
     # Graph encoders use the entire graph every epoch. Only MLP receives
     # feature-only minibatches.
@@ -353,14 +398,31 @@ def _run_single_nc(
         if hasattr(model, "set_epoch"):
             model.set_epoch(epoch)
         optimizer.zero_grad(set_to_none=True)
+        train_unimodal_ce_value: float | None = None
+        train_balance_aux_value: float | None = None
         if full_graph_training:
             if hasattr(model, "_batch_n_id"):
                 model._batch_n_id = None
-            z, _, _, aux_loss, _ = model(x_all, edge_index_all)
+            z, _, _, aux_loss, forward_info = model(x_all, edge_index_all)
             logits = classifier(z[train_idx_all])
             labels = y_all[train_idx_all]
             train_ce_tensor = nn.functional.cross_entropy(logits, labels)
-            loss = train_ce_tensor + aux_weight * aux_loss
+            if unimodal_weight > 0:
+                loss, unimodal_ce_tensor = _compose_full_graph_loss(
+                    model=model,
+                    info=forward_info,
+                    main_ce=train_ce_tensor,
+                    aux_loss=aux_loss,
+                    aux_weight=aux_weight,
+                    unimodal_weight=unimodal_weight,
+                    labels=y_all,
+                    train_idx=train_idx_all,
+                )
+                train_unimodal_ce_value = float(unimodal_ce_tensor.detach().item())
+            else:
+                # Keep the pre-extension loss path byte-for-byte equivalent.
+                loss = train_ce_tensor + aux_weight * aux_loss
+            train_balance_aux_value = float(aux_loss.detach().item())
             loss.backward()
             if epoch == 1 and hasattr(model, "capture_gradient_diagnostics"):
                 model.capture_gradient_diagnostics()
@@ -459,6 +521,9 @@ def _run_single_nc(
             }
             if record_train_f1:
                 extended_epoch_metrics["train_macro_f1_eval"] = train_eval["macro_f1"]
+            if train_unimodal_ce_value is not None:
+                extended_epoch_metrics["train_unimodal_ce"] = train_unimodal_ce_value
+                extended_epoch_metrics["train_balance_aux"] = float(train_balance_aux_value or 0.0)
         logger.info(
             "Epoch %05d | Train Loss %.4f | Val Acc %.2f | Val Macro-F1 %.2f",
             epoch,
@@ -661,6 +726,12 @@ def _run_single_nc(
                 "validation_ce_mode": "eval-mode no-grad unweighted cross entropy",
                 "accuracy_stopping_horizon_epochs": len(epoch_wall_seconds),
                 "optimizer_update_count": optimizer_update_count,
+                "unimodal_auxiliary_weight": unimodal_weight,
+                "unimodal_auxiliary_loss": (
+                    "0.5 * (Text CE + Visual CE) on global train_idx only"
+                    if unimodal_weight > 0
+                    else None
+                ),
                 "initial_parameter_audit": initial_parameter_audit,
                 "final_parameter_audit": final_parameter_audit,
                 "dual_checkpoint_selection": {

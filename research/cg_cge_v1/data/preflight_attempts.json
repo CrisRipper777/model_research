@@ -1,0 +1,12 @@
+{
+  "attempts": [
+    {
+      "error": "RuntimeError('CUDA unavailable or requested physical device is not isolated')",
+      "physical_gpu": 1,
+      "status": "failed_or_refused",
+      "test_evaluation": false,
+      "time_utc": "2026-10-14T14:49:05Z",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_cg_cge_v1.py\", line 295, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_cg_cge_v1.py\", line 145, in main\n    raise RuntimeError(\"CUDA unavailable or requested physical device is not isolated\")\nRuntimeError: CUDA unavailable or requested physical device is not isolated\n"
+    }
+  ]
+}
