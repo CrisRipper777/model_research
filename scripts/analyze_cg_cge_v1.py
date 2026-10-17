@@ -76,6 +76,7 @@ def _report_text(current: list[dict[str, str]], parent: list[dict[str, str]], su
         "# CG-CGE V1 Pilot Report", "",
         "Validation-only report. Test evaluation was disabled; Test labels were masked before training.",
         "All B1/B2 results use the frozen new implementation and internal paired baseline. B0 is included only where the full protocol fingerprint gate passed.",
+        f"Implementation Freeze Commit: `{current[0]['implementation_freeze_commit']}`; formal source commit: `{current[0]['formal_source_commit']}`.",
         "",
         "## Best-Accuracy checkpoint: Validation metrics", "",
         "| Dataset | Condition | Accuracy % | Macro-F1 % | CE | Train–Val Acc gap pp | Train–Val F1 gap pp | Train–Val CE gap |",
@@ -125,15 +126,40 @@ def _report_text(current: list[dict[str, str]], parent: list[dict[str, str]], su
                         f"{int(row['positive_seeds'])}/{int(row['negative_seeds'])}/{int(row['zero_seeds'])}")
             lines.append(f"| {dataset} | {label} | {fmt(acc, 100)} | {fmt(f1, 100)} | {fmt(ce)} |")
 
-    lines.extend(["", "## Individual formal runs", "", "| Dataset | Condition | Seed | Val Acc % | Val Macro-F1 % | Val CE | Best Acc epoch | Best F1 epoch | Wall sec | Peak allocated GiB | Film scale/shift update norm |",
-                  "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"])
+    lines.extend(["", "## Individual formal runs", "", "| Dataset | Condition | Seed | Val Acc % | Val Macro-F1 % | Val CE | Best Acc epoch | Best F1 epoch | Wall sec | Peak allocated GiB | Peak reserved GiB | Film scale/shift update norm |",
+                  "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"])
     for row in sorted(current, key=lambda r: (DATASETS.index(r["dataset"]), CONDITIONS.index(r["condition"]), int(r["seed"]))):
         allocated = "" if not row.get("peak_allocated_bytes") else f"{int(row['peak_allocated_bytes']) / (1024 ** 3):.2f}"
+        reserved = "" if not row.get("peak_reserved_bytes") else f"{int(row['peak_reserved_bytes']) / (1024 ** 3):.2f}"
         film = f"{float(row['role_film_best_accuracy_scale_update_norm']):.3g}/{float(row['role_film_best_accuracy_shift_update_norm']):.3g}"
-        lines.append(f"| {row['dataset']} | {row['condition']} | {row['seed']} | {100*_float(row,'val_acc'):.3f} | {100*_float(row,'val_macro_f1'):.3f} | {_float(row,'val_ce'):.4f} | {row['best_accuracy_epoch']} | {row['best_f1_epoch']} | {float(row['wall_seconds']):.1f} | {allocated} | {film} |")
+        lines.append(f"| {row['dataset']} | {row['condition']} | {row['seed']} | {100*_float(row,'val_acc'):.3f} | {100*_float(row,'val_macro_f1'):.3f} | {_float(row,'val_ce'):.4f} | {row['best_accuracy_epoch']} | {row['best_f1_epoch']} | {float(row['wall_seconds']):.1f} | {allocated} | {reserved} | {film} |")
+
+    lines.extend(["", "## Resources and execution environment", "",
+                  "| Dataset | Condition | Wall seconds mean ± SD | Mean epoch seconds | Peak allocated GiB | Peak reserved GiB | Trainable model params | Optimizer params |",
+                  "|---|---|---:|---:|---:|---:|---:|---:|"])
+    for dataset in DATASETS:
+        for condition in CONDITIONS:
+            rows = [current_by[(dataset, condition, seed)] for seed in SEEDS]
+            mean_epoch = statistics.mean(_float(row, "mean_epoch_wall_seconds") for row in rows)
+            peak_allocated = max(int(row["peak_allocated_bytes"]) for row in rows) / (1024 ** 3)
+            peak_reserved = max(int(row["peak_reserved_bytes"]) for row in rows) / (1024 ** 3)
+            lines.append(
+                f"| {dataset} | {condition} | {_mean_sd(rows, 'wall_seconds')} | {mean_epoch:.3f} | "
+                f"{peak_allocated:.2f} | {peak_reserved:.2f} | {rows[0]['model_parameters']} | {rows[0]['trainable_optimizer_parameters']} |"
+            )
+    env = preflight["environment"]
+    gpu_snapshot = env["physical_gpu_snapshot"]
+    gpu0 = next(device for device in gpu_snapshot["devices"] if device["physical_index"] == 0)
+    gpu1 = next(device for device in gpu_snapshot["devices"] if device["physical_index"] == 1)
+    lines.extend([
+        "",
+        f"Formal runs used physical GPU0: {gpu0['name']}, driver {gpu0['driver_version']}, 24 GiB. Peak accepted-run reservation was {max(int(row['peak_reserved_bytes']) for row in current) / (1024 ** 3):.2f} GiB. GPU1 was not used; the preflight snapshot showed {gpu1['memory_used_mib']} MiB and {gpu1['utilization_percent']}% utilization there.",
+        f"Runtime: Python {env['python']}; PyTorch {env['pytorch']}; CUDA build {env['cuda_build']}; cuDNN {env['cudnn']}; NumPy {env['numpy']}. `matmul_tf32={str(env['matmul_tf32']).lower()}`, `cudnn_tf32={str(env['cudnn_tf32']).lower()}`, deterministic algorithms `{str(env['deterministic_algorithms']).lower()}`, `CUBLAS_WORKSPACE_CONFIG={env['cublas_workspace_config']!r}`.",
+        "All 36 checkpoint files passed stored SHA256 and byte-count verification. The peak reserved memory remained below the 24 GiB device capacity; no formal run recorded OOM.",
+    ])
 
     lines.extend(["", "## Optimization and mechanism diagnostics", "",
-                  "- B1 and B2 use the same dropout (0.2), AdamW learning rate (1e-3), and weight decay (1e-4). This whole-model matrix does not separately identify dropout × weight-decay effects.",
+                  "- B1 and B2 use the same dropout (0.2), AdamW learning rate (1e-3), and weight decay (1e-4). This whole-model comparison does not identify dropout or weight-decay main effects or their interaction; a factorial study would be needed.",
                   "- Per-epoch main CE, unimodal CE, balance auxiliary loss, Train/Validation Accuracy/F1/CE, and timing are in `data/epoch_history.csv`.",
                   "- Mechanism activation does not establish causal utility. The three-seed paired comparisons are descriptive and do not prove population-level significance.",
                   "- Test labels and metrics are excluded.", ""])
@@ -181,17 +207,58 @@ def _report_text(current: list[dict[str, str]], parent: list[dict[str, str]], su
                 gate = f"{cross_mean('channel_gate_mean'):.3f}/{cross_mean('channel_gate_saturation_fraction'):.3f}"
                 lines.append(f"| {dataset} | {condition} | {modality} | {regular_mean('physical_profile_rms'):.4g} | {regular_mean('same_semantic_response_rms'):.4g} | {source} | {raw} | {calibrated} | {gate} | {cross_mean('cross_to_unimodal_rms'):.4g} | {cross_mean('semantic_attention_entropy_multi_neighbor'):.4g} |")
 
+    lines.extend(["", "### Shared-expert selection by call path", "",
+                  "Mean Top-2 selection share across Best-Accuracy checkpoints, modalities, datasets and seeds. Shares are descriptive and do not prove expert specialization.",
+                  "| Condition | Call path | Expert 0 | Expert 1 | Expert 2 | Expert 3 |", "|---|---|---:|---:|---:|---:|"])
+    best_diagnostics = [row for row in diagnostics if row.get("checkpoint") == "best_accuracy"]
+    for condition in CONDITIONS:
+        for path_name, key, nested in (
+            ("Physical", "physical_expert_selection_share", None),
+            ("Same-source Semantic", "same_expert_selection_share", None),
+            ("Complementary", "cross_completion", "complementary_expert_selection_share"),
+        ):
+            vectors = []
+            for row in best_diagnostics:
+                if row.get("condition") != condition:
+                    continue
+                value = json.loads(row[key])
+                vectors.append(value if nested is None else value[nested])
+            means = [statistics.mean(float(vector[index]) for vector in vectors) for index in range(4)]
+            lines.append(f"| {condition} | {path_name} | " + " | ".join(f"{value:.3f}" for value in means) + " |")
+
     lines.extend(["", "### Role-FiLM updates", "",
                   "B1 is an identity bypass with frozen FiLM parameters. B2 parameter change norms are measured from the zero initialization at the Best-Accuracy checkpoint.", "",
                   "| Dataset | B2 scale update norm mean ± SD | B2 shift update norm mean ± SD |", "|---|---:|---:|"])
     for dataset in DATASETS:
         rows = [current_by[(dataset, "B2_conditioned_experts", seed)] for seed in SEEDS]
         lines.append(f"| {dataset} | {_mean_sd(rows, 'role_film_best_accuracy_scale_update_norm')} | {_mean_sd(rows, 'role_film_best_accuracy_shift_update_norm')} |")
-    failure_count = len((failures or {}).get("failures", [])) + len(preflight_attempts or [])
-    lines.extend(["## Failures and unresolved issues", "",
-                  f"Preserved formal/preflight failures or resource refusals: {failure_count}. See `data/failures.json` and `data/preflight_attempts.json`.",
-                  "Remaining interpretation issues must be filled from observed evidence: CUDA sparse/index accumulation may be nondeterministic; three seeds cannot resolve all stochastic variance; physical and semantic candidate scale effects should be interpreted alongside the one-way cap and selector weights.", ""])
-    lines.append("No Test evaluation was performed.")
+    best_cross = [json.loads(row["cross_completion"]) for row in best_diagnostics]
+    none_weights = [float(item["none_source_weight"]) for item in best_cross]
+    cross_ratios = [float(item["cross_to_unimodal_rms"]) for item in best_cross]
+    lines.extend([
+        "",
+        "## Independent implementation and claim audit",
+        "",
+        "| Review question | Evidence and judgement |",
+        "|---|---|",
+        "| Is the unimodal representation independent of cross-modal completion? | Code path builds each `U_m` from that modality's projector, physical propagation and same-source KNN before either direction calls completion; the cross candidate is applied once afterward. This is supported by the forward tests and source review. |",
+        "| Is Physical Cross duplicated in the unimodal backbone? | No. The reused trunk's old physical cross input is zeroed for the independent stage; `P V_(o→m)` is calculated only in the new completion branch. |",
+        "| Does Semantic Attention use a receiver query? | Yes. Receiver Q and opposite-source K enter edge-only receiver-wise sparse softmax; all 18 runs recorded finite nonzero Q/K and sender-Phi gradients. |",
+        f"| Is No-completion active or constant? | Its per-node weight varied across Best-Accuracy checkpoints ({min(none_weights):.3f}–{max(none_weights):.3f}); it is not a constant option. It is near zero in several cells, while Movies visual uses a material reject fraction, so rejection is available but not equally used across modalities/domains. |",
+        f"| Are the layered gates suppressing Cross to zero? | The measured cross-residual/unimodal RMS ratio ranged {min(cross_ratios):.3f}–{max(cross_ratios):.3f}. Cross remains secondary to the backbone, but is not numerically zero; this scale does not establish task utility. |",
+        "| Are core experts shared across Physical, Semantic and Complementary calls? | The code invokes the same four `self.experts` objects; unit tests confirm one shared bank. The path-level usage table shows different selection distributions, but that is suggestive activity rather than causal specialization evidence. |",
+        "| Does Role-FiLM adapt and preserve the B1 identity control? | B1 FiLM is frozen/bypassed; B2 starts at exact identity, receives nonzero finite gradients in all runs and has nonzero scale/shift updates. B2 has no stable Validation advantage over B1 in this matrix. |",
+        "| Does auxiliary CE use only permitted labels? | NC computes both auxiliary CEs from `train_idx`; Test labels are `-100` at trainer entry. Unit tests check values, gradients and optimizer/checkpoint updates. All 18 run records show Test evaluation false and no Test metrics. |",
+        "| Does the model improve over B0? | Paired results are mixed and dataset-dependent: small gains on Movies/Grocery are accompanied by lower Macro-F1 on ele-fashion. See all per-seed differences above; n=3 is descriptive. |",
+        "| Is a simpler condition preferable for continued work? | B2 does not provide a consistent gain over B1 and adds 8,192 trainable FiLM parameters. B1 is the more defensible reference if this line is revisited; this report does not authorize a successor model. |",
+        "",
+        "## Failures and unresolved issues",
+        "",
+        f"Preserved records: {len((failures or {}).get('failures', []))} runner failures and {len(preflight_attempts or [])} GPU preflight attempts/refusals. The October 14 GPU refusal was due to active foreign GPU processes; no process was stopped. On October 17, the ordinary command sandbox lacked NVIDIA device nodes, while the read-only host probe showed GPU0 idle and the full preflight then passed. Two pre-training runner failures were caused by resetting CUDA memory statistics before lazy context initialization; the fix explicitly initializes CUDA. A third attempt trained and saved checkpoints but failed archival because CG-CGE wrote gradient diagnostics to the wrong telemetry attribute; the mismatch was fixed and Movies/B1/seed42 was rerun in a new attempt. These records remain in `data/failures.json`, `data/preflight_attempts.json` and local run folders.",
+        "The failed diagnostics attempt and accepted retry had the same data/split/cache and identical initial model/head hashes, but different Validation trajectories (failed attempt Best-Accuracy 56.5087% / Macro-F1 49.6891%; accepted retry 56.5387% / 49.4394%). The cause is unresolved. This study used dropout and GPU sparse/index operations with deterministic algorithms disabled; it did not isolate which source accounts for the trajectory difference, so it is not attributed solely to CUDA.",
+        "Across the 18 accepted runs, losses and gradients were finite and no OOM occurred. Remaining optimization concerns are substantial Train–Validation Accuracy/F1 gaps on Movies and Grocery, three-seed uncertainty, and checkpoint-selection sensitivity. Exact full-trajectory repeatability was not demonstrated.",
+        "No Test evaluation was performed.",
+    ])
     return "\n".join(lines)
 
 

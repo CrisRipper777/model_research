@@ -1,0 +1,25 @@
+{
+  "b0_strictly_paired": {
+    "Grocery": true,
+    "Movies": true,
+    "ele-fashion": true
+  },
+  "baseline": "A2_cross_source",
+  "conditions": [
+    "B1_complementary",
+    "B2_conditioned_experts"
+  ],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "formal_runs": 18,
+  "primary_rule": "validation-only paired descriptive means and sample standard deviations; no Test evaluation",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "status": "complete"
+}

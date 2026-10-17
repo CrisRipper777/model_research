@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "finite train/validation history",
+    "matching initialization/split/cache",
+    "auxiliary and sparse-attention gradients",
+    "checkpoint reload metric reproduction",
+    "Test labels masked/Test evaluation disabled",
+    "full-graph GPU preflight passed"
+  ],
+  "completed_runs": 6,
+  "generated_utc": "2026-10-17T02:25:49+00:00",
+  "performance_threshold_used": false,
+  "seed": 42,
+  "status": "pass"
+}
