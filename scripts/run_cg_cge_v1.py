@@ -238,10 +238,14 @@ def run_one(dataset: str, condition: str, seed: int, cache: dict[str, Any], devi
     del initial_model, initial_head
 
     logger = legacy.setup_logger(run_dir / "train.log")
-    if device.type == "cuda":
-        torch.cuda.reset_peak_memory_stats(device)
     started = time.perf_counter()
     try:
+        if device.type == "cuda":
+            # CUDA is lazily initialized. Availability/device-count checks do
+            # not create a context, and resetting memory stats before the
+            # first CUDA allocation can raise "Invalid device argument".
+            torch.cuda.init()
+            torch.cuda.reset_peak_memory_stats(device)
         run_nc(cfg, safe_data, device, logger)
         if not accuracy_path.is_file() or not f1_path.is_file() or not metrics_path.is_file():
             raise RuntimeError("NC trainer did not save both validation checkpoints and run metrics")

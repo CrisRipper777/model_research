@@ -1,0 +1,30 @@
+{
+  "failures": [
+    {
+      "condition": "B1_complementary",
+      "dataset": "Movies",
+      "error": "RuntimeError('Invalid device argument')",
+      "note": "Runner stopped before run_nc; no optimization step or checkpoint was produced. An initial emulation called get_device_name before resetting stats and therefore initialized the CUDA context; a minimal probe showed availability/device_count alone do not initialize it, and reset_peak_memory_stats then fails. The root cause is runner startup order.",
+      "run_dir": "outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_01",
+      "seed": 42,
+      "started_utc": "2026-10-17T02:06:10+00:00",
+      "test_evaluation": false,
+      "time_utc": "2026-10-17T02:07:38Z",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 489, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 485, in main\n    run_batch(tuple(args.seeds), args.physical_gpu)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 462, in run_batch\n    run_one(dataset, condition, seed, caches[dataset], device)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 242, in run_one\n    torch.cuda.reset_peak_memory_stats(device)\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/cuda/memory.py\", line 322, in reset_peak_memory_stats\n    return torch._C._cuda_resetPeakMemoryStats(device)\nRuntimeError: Invalid device argument\n",
+      "training_started": false
+    },
+    {
+      "condition": "B1_complementary",
+      "dataset": "Movies",
+      "error": "RuntimeError('Invalid device argument')",
+      "note": "Runner again stopped before run_nc because the CUDA context had not been initialized. No optimizer step, checkpoint or Test evaluation occurred. A minimal CUDA probe confirmed that explicit torch.cuda.init() is required before the peak-stat reset in this environment.",
+      "run_dir": "outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_02",
+      "seed": 42,
+      "started_utc": "2026-10-17T02:08:00+00:00",
+      "test_evaluation": false,
+      "time_utc": "2026-10-17T02:08:31Z",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 489, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 485, in main\n    run_batch(tuple(args.seeds), args.physical_gpu)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 462, in run_batch\n    run_one(dataset, condition, seed, caches[dataset], device)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 242, in run_one\n    torch.cuda.reset_peak_memory_stats(device)\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/cuda/memory.py\", line 322, in reset_peak_memory_stats\n    return torch._C._cuda_resetPeakMemoryStats(device)\nRuntimeError: Invalid device argument\n",
+      "training_started": false
+    }
+  ]
+}
