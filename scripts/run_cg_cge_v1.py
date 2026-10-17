@@ -270,7 +270,9 @@ def run_one(dataset: str, condition: str, seed: int, cache: dict[str, Any], devi
         if metadata["initial_parameter_audit"]["classifier_state_sha256"] != initial_head_hash:
             raise RuntimeError("NC Trainer classifier hash differs from matched initial head")
 
-        gradients = metadata.get("gradient_diagnostics", {})
+        gradients = metadata.get("gradient_diagnostics")
+        if not isinstance(gradients, dict):
+            raise RuntimeError("NC Trainer did not persist first-step gradient diagnostics")
         required_gradients = (
             "gamma_s_raw", "view_router.2.weight", "query_projections.text.weight",
             "key_projections.visual.weight", "cross_projections.visual_to_text.0.weight",

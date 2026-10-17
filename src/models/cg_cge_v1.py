@@ -585,7 +585,7 @@ class Model(RMCGEV2Model):
     def capture_gradient_diagnostics(self) -> dict[str, Any]:
         parameters = dict(self.named_parameters())
         names = (
-            "gamma_s_raw", "cross_lambda_raw",
+            "gamma_s_raw", "view_router.2.weight", "cross_lambda_raw",
             "query_projections.text.weight", "query_projections.visual.weight",
             "key_projections.text.weight", "key_projections.visual.weight",
             "cross_projections.visual_to_text.0.weight",
@@ -605,7 +605,11 @@ class Model(RMCGEV2Model):
                 "gradient_norm": norm,
                 "gradient_nonzero": norm > 0.0,
             }
+        # The NC trainer serializes this attribute after the first backward
+        # pass. Keep the local name for model diagnostics and mirror the
+        # trainer's telemetry contract.
         self._last_gradient_diagnostics = result
+        self._gradient_diagnostics = result
         return result
 
 

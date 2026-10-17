@@ -277,6 +277,8 @@ def main() -> None:
                 }
                 if not gradients["query_projections.text.weight"]["gradient_nonzero"]:
                     raise RuntimeError(f"receiver query got no gradient: {dataset}/{condition}")
+                if not gradients["view_router.2.weight"]["gradient_nonzero"]:
+                    raise RuntimeError(f"physical view router got no gradient: {dataset}/{condition}")
                 if condition == "B2_conditioned_experts" and not gradients["role_film_scale"]["gradient_nonzero"]:
                     raise RuntimeError(f"B2 Role-FiLM got no gradient: {dataset}")
                 del z, info, optimizer, head, model

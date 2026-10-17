@@ -25,6 +25,56 @@
       "time_utc": "2026-10-17T02:08:31Z",
       "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 489, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 485, in main\n    run_batch(tuple(args.seeds), args.physical_gpu)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 462, in run_batch\n    run_one(dataset, condition, seed, caches[dataset], device)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 242, in run_one\n    torch.cuda.reset_peak_memory_stats(device)\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/cuda/memory.py\", line 322, in reset_peak_memory_stats\n    return torch._C._cuda_resetPeakMemoryStats(device)\nRuntimeError: Invalid device argument\n",
       "training_started": false
+    },
+    {
+      "best_accuracy_checkpoint_metrics": {
+        "epoch": 114,
+        "metrics": {
+          "train_accuracy_eval": 0.8108567429771069,
+          "train_balance_aux": 0.011851999908685684,
+          "train_ce": 0.6342499852180481,
+          "train_ce_eval": 0.5786475361102607,
+          "train_macro_f1_eval": 0.8243205325063652,
+          "train_objective": 1.0020636320114136,
+          "train_unimodal_ce": 1.1865386962890625,
+          "val_acc": 0.5650869607925415,
+          "val_ce": 1.4361633044484854,
+          "val_macro_f1": 0.4968907930383552
+        },
+        "rule": "Validation Accuracy > previous best + early_stop_min_delta"
+      },
+      "best_f1_checkpoint_metrics": {
+        "epoch": 86,
+        "metrics": {
+          "train_accuracy_eval": 0.7426771968409477,
+          "train_balance_aux": 0.011847889982163906,
+          "train_ce": 0.7804744243621826,
+          "train_ce_eval": 0.7585716960693042,
+          "train_macro_f1_eval": 0.7460938889321433,
+          "train_objective": 1.1628988981246948,
+          "train_unimodal_ce": 1.235255241394043,
+          "val_acc": 0.5602879524230957,
+          "val_ce": 1.361082959189412,
+          "val_macro_f1": 0.5074701497688338
+        },
+        "rule": "highest Validation Macro-F1 through the Accuracy stopping horizon; earliest epoch wins ties"
+      },
+      "checkpoints_saved": [
+        "best_accuracy.pt",
+        "best_f1.pt"
+      ],
+      "condition": "B1_complementary",
+      "dataset": "Movies",
+      "epochs_completed": 144,
+      "error": "AttributeError(\"'NoneType' object has no attribute 'get'\")",
+      "formal_source_commit": "3faf57e69d5987d242d39c610a35d09fa8151166",
+      "note": "Training completed 144 epochs and saved both validation checkpoints, but the runner rejected the missing gradient telemetry after training. CG-CGE capture stored _last_gradient_diagnostics while NC trainer serializes _gradient_diagnostics. No Test evaluation occurred. This is a diagnostics-interface failure, not evidence of a numerical or optimization failure; the run remains an unaccepted failed attempt and will be rerun after the instrumentation fix.",
+      "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_03",
+      "seed": 42,
+      "test_evaluation": false,
+      "time_utc": "2026-10-17T02:11:10+00:00",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_cg_cge_v1.py\", line 280, in run_one\n    if not gradients.get(name, {}).get(\"gradient_nonzero\", False):\n           ^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'get'\n",
+      "training_started": true
     }
   ]
 }

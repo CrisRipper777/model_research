@@ -101,6 +101,9 @@ def test_forward_auxiliary_heads_gradients_checkpoint_and_eval_rng():
     assert torch.isfinite(z).all() and torch.isfinite(aux)
     loss = z.square().mean() + aux + sum(v.square().mean() for v in info["unimodal_logits"].values())
     loss.backward()
+    diagnostics = model.capture_gradient_diagnostics()
+    assert model._gradient_diagnostics == diagnostics
+    assert diagnostics["view_router.2.weight"]["gradient_nonzero"]
     for name in ("query_projections.text.weight", "key_projections.visual.weight",
                  "cross_projections.visual_to_text.0.weight", "unimodal_heads.text.weight",
                  "projectors.text.linear1.weight", "role_film_scale", "role_film_shift"):
