@@ -1,0 +1,13 @@
+{
+  "attempts": [
+    {
+      "command": "CUDA_VISIBLE_DEVICES=0 conda run --no-capture-output -n yhf_env python scripts/run_hybrid_cge_v11.py --seeds 43 44 --physical-gpu 0",
+      "data_or_checkpoint_written": false,
+      "error": "Sandbox-launched nvidia-smi child process could not communicate with the NVIDIA driver (exit status 9) during the runner idle guard.",
+      "resolution": "Reran through the previously authorized host GPU access after independently confirming physical GPU 0 idle; the idle guard then passed.",
+      "status": "refused_before_training",
+      "time_utc": "2026-10-17T14:00:52+00:00",
+      "training_started": false
+    }
+  ]
+}

@@ -15,7 +15,7 @@ The two conditions have identical state-dict structure and initialization. H1 ma
 
 ## Dataset and initialization preflight
 
-`data/preflight_cpu.json` confirms the official dataset/split and cache fingerprints for Movies, Grocery and ele-fashion at seeds 42/43/44. Each cell matches the historical A2 and B1 fingerprint/run records. H1 and H2 have matching model and classifier initialization hashes for every Dataset×Seed; both models have 2,268,134 trainable parameters and four shared expert objects. Test labels are sentinel-masked in the preflight training data object.
+`data/preflight_cpu.json` confirms the official dataset/split and cache fingerprints for Movies, Grocery and ele-fashion at seeds 42/43/44. Each cell matches the historical A2 and B1 fingerprint/run records. H1 and H2 have matching model and classifier initialization hashes for every Dataset×Seed and four shared expert objects. Model parameter count is dataset-dependent because the private auxiliary heads scale with class count: 2,268,134 on Movies/Grocery and 2,001,878 on ele-fashion. Test labels are sentinel-masked in the preflight training data object.
 
 ## GPU 0 preflight
 

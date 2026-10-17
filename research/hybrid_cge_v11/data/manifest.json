@@ -1,0 +1,68 @@
+{
+  "branch": "exp/hybrid_cge_v11",
+  "conditions": [
+    "H1_hybrid",
+    "H2_hybrid_plus"
+  ],
+  "environment": {
+    "cublas_workspace_config": null,
+    "cuda_available": true,
+    "cuda_build": "12.1",
+    "cudnn": 90100,
+    "cudnn_tf32": true,
+    "deterministic_algorithms": false,
+    "device_count": 1,
+    "devices": [
+      "NVIDIA GeForce RTX 3090"
+    ],
+    "matmul_tf32": false,
+    "numpy": "2.4.3",
+    "physical_gpu_snapshot": {
+      "available": true,
+      "devices": [
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 475,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 0,
+          "utilization_percent": 65,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 7397,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 1,
+          "utilization_percent": 3,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      ],
+      "error": null
+    },
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "timestamp_utc": "2026-10-17T13:58:41+00:00",
+    "visible_devices": "0"
+  },
+  "formal_run_count": 18,
+  "formal_source_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
+  "implementation_freeze_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
+  "last_batch_completed_utc": "2026-10-17T13:58:41+00:00",
+  "last_batch_seeds": [
+    43,
+    44
+  ],
+  "physical_gpu": 0,
+  "protocol_version": "unified_full_graph_nc_v1",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "source_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
+  "study": "Hybrid-CGE V1.1",
+  "test_evaluation": false
+}

@@ -20,6 +20,9 @@ REFERENCE_DATA = {
     "CG-CGE B1": (ROOT / "research/cg_cge_v1/data", "B1_complementary"),
     "View-CGE A2": (ROOT / "research/mag_view_cge_v1/data", "A2_cross_source"),
 }
+REFERENCE_PREFLIGHT_KEYS = {
+    name: condition for name, (_, condition) in REFERENCE_DATA.items()
+}
 CHECKPOINTS = {
     "Best-Accuracy": {"Accuracy": "val_acc", "Macro-F1": "val_macro_f1", "CE": "val_ce"},
     "Best-F1": {"Accuracy": "best_f1_val_acc", "Macro-F1": "best_f1_val_macro_f1", "CE": "best_f1_val_ce"},
@@ -73,8 +76,9 @@ def fmt(values, scale=1.0, digits=3):
 
 
 def strict_reference(preflight, dataset, reference):
+    reference_key = REFERENCE_PREFLIGHT_KEYS.get(reference, reference)
     return all(
-        preflight["datasets"][dataset]["seeds"][str(seed)]["historical_reference_match"][reference]["eligible"]
+        preflight["datasets"][dataset]["seeds"][str(seed)]["historical_reference_match"][reference_key]["eligible"]
         for seed in SEEDS
     )
 
@@ -212,12 +216,18 @@ def main():
                 "residual_to_collaborative_rms", "relative_control_trigger_fraction",
                 "relative_control_trigger_fraction_supported", "relative_control_scale_mean", "tau",
                 "channel_gate_mean", "channel_gate_saturation_fraction",
-                "late_cross_dropout_probability", "late_cross_dropout_realized_fraction",
+                "late_cross_dropout_probability",
                 "complementary_expert_rms", "semantic_attention_entropy_multi_neighbor",
             ):
                 values = [float(row[key]) for row in late if key in row]
                 if values:
                     mechanism_rows.append({"dataset": dataset, "condition": condition, "scope": "late_mean", "metric": key, **stats(values)})
+            eval_dropout = [float(row["late_cross_dropout_realized_fraction"]) for row in late if "late_cross_dropout_realized_fraction" in row]
+            if eval_dropout:
+                mechanism_rows.append({
+                    "dataset": dataset, "condition": condition, "scope": "eval_mode",
+                    "metric": "late_cross_dropout_realized_fraction", **stats(eval_dropout),
+                })
             for key in (
                 "physical_cross_input_router_correction_rms", "physical_route_top2_flip_fraction",
                 "physical_private_response_rms", "physical_collab_response_rms",
@@ -269,6 +279,8 @@ def main():
         raise RuntimeError("epoch history is missing")
     failures = json.loads((DATA / "failures.json").read_text()) if (DATA / "failures.json").exists() else {"failures": []}
     attempts = json.loads((DATA / "preflight_attempts.json").read_text()) if (DATA / "preflight_attempts.json").exists() else {"attempts": []}
+    interference = json.loads((DATA / "runner_interference_events.json").read_text()) if (DATA / "runner_interference_events.json").exists() else {"events": []}
+    access_attempts = json.loads((DATA / "runner_access_attempts.json").read_text()) if (DATA / "runner_access_attempts.json").exists() else {"attempts": []}
     env = manifest["environment"]
     ref_line = "; ".join(
         f"{name}: {sum(eligible[(d,name)] for d in DATASETS)}/3 datasets paired"
@@ -327,8 +339,8 @@ def main():
                 )
     report.extend([
         "", "## Per-seed results and Train/Validation gaps", "",
-        "| Dataset | Condition | Seed | Val Acc % | Val Macro-F1 % | Val CE | Best Acc Epoch | Best F1 Epoch | Train–Val Acc Gap pp | Train–Val F1 Gap pp |",
-        "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| Dataset | Condition | Seed | Val Acc % | Val Macro-F1 % | Val CE | Best Acc Epoch | Best F1 Epoch | Train–Val Acc Gap pp | Train–Val F1 Gap pp | Train–Val CE Gap |",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ])
     for dataset in DATASETS:
         for condition in CONDITIONS:
@@ -338,7 +350,27 @@ def main():
                     f"| {dataset} | {condition} | {seed} | {finite(row,'val_acc')*100:.3f} | "
                     f"{finite(row,'val_macro_f1')*100:.3f} | {finite(row,'val_ce'):.4f} | "
                     f"{row['best_accuracy_epoch']} | {row['best_f1_epoch']} | "
-                    f"{finite(row,'train_val_acc_gap')*100:.3f} | {finite(row,'train_val_macro_f1_gap')*100:.3f} |"
+                    f"{finite(row,'train_val_acc_gap')*100:.3f} | {finite(row,'train_val_macro_f1_gap')*100:.3f} | "
+                    f"{finite(row,'train_val_ce_gap'):.4f} |"
+                )
+    report.extend([
+        "",
+        "Train–Validation Accuracy/F1/CE gaps are Train minus Validation, with Train evaluated in eval mode at that checkpoint. The table above uses the Best-Accuracy checkpoint; the next table uses each run's Best-F1 checkpoint.",
+        "",
+        "### Per-seed Best-F1 checkpoint metrics and gaps", "",
+        "| Dataset | Condition | Seed | Val Acc % | Val Macro-F1 % | Val CE | Train–Val Acc Gap pp | Train–Val F1 Gap pp | Train–Val CE Gap |",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|",
+    ])
+    for dataset in DATASETS:
+        for condition in CONDITIONS:
+            for seed in SEEDS:
+                row = current_by[(dataset, condition, seed)]
+                report.append(
+                    f"| {dataset} | {condition} | {seed} | {finite(row,'best_f1_val_acc')*100:.3f} | "
+                    f"{finite(row,'best_f1_val_macro_f1')*100:.3f} | {finite(row,'best_f1_val_ce'):.4f} | "
+                    f"{finite(row,'best_f1_train_val_acc_gap')*100:.3f} | "
+                    f"{finite(row,'best_f1_train_val_macro_f1_gap')*100:.3f} | "
+                    f"{finite(row,'best_f1_train_val_ce_gap'):.4f} |"
                 )
 
     report.extend(["", "## Paired Validation differences", "",
@@ -348,15 +380,41 @@ def main():
         if row["reference"] not in (*REFERENCE_DATA.keys(), "within-study H1"):
             continue
         scale = 100 if row["metric"] in ("Accuracy", "Macro-F1") else 1
-        value = f"{float(row['mean_difference'])*scale:+.3f} ± {float(row['sample_sd'])*scale:.3f}"
+        value = f"{float(row['mean'])*scale:+.3f} ± {float(row['sample_sd'])*scale:.3f}"
         signs = f"{row['positive_seeds']}/{row['negative_seeds']}/{row['zero_seeds']}"
         report.append(
             f"| {row['dataset']} | {row['condition']} − {row['reference']} | {row['checkpoint']} | "
             f"{row['metric']} | {value} | {signs} |"
         )
 
+    regularization_rows = [
+        row for row in summary_rows
+        if row["condition"] == "H2_hybrid_plus"
+        and row["reference"] == "within-study H1"
+        and row["checkpoint"] == "Best-Accuracy"
+    ]
+    report.extend([
+        "", "## Dropout, weight decay and interaction", "",
+        "The shared backbone dropout is 0.2 and AdamW weight decay is 1e-4 in every formal run. H1 has no late-residual dropout and masks SameNode; H2 adds a valid SameNode candidate and applies p=0.15 non-inverted dropout to the final Late residual during training. The H2−H1 estimate therefore describes this combined package. This design cannot separate SameNode from late dropout, estimate a SameNode×dropout interaction, or estimate a weight-decay main effect or interaction. The three-seed paired contrasts below are descriptive, not a factorial causal estimate.",
+        "",
+        "| Dataset | H2−H1 Δ Accuracy pp | H2−H1 Δ Macro-F1 pp | H2−H1 Δ CE |", "|---|---:|---:|---:|",
+    ])
+    for dataset in DATASETS:
+        by_metric = {row["metric"]: row for row in regularization_rows if row["dataset"] == dataset}
+        report.append(
+            f"| {dataset} | "
+            f"{float(by_metric['Accuracy']['mean'])*100:+.3f} ± {float(by_metric['Accuracy']['sample_sd'])*100:.3f} | "
+            f"{float(by_metric['Macro-F1']['mean'])*100:+.3f} ± {float(by_metric['Macro-F1']['sample_sd'])*100:.3f} | "
+            f"{float(by_metric['CE']['mean']):+.4f} ± {float(by_metric['CE']['sample_sd']):.4f} |"
+        )
+    report.extend([
+        "",
+        "The train-mode GPU preflight recorded realized node-mask drop fractions of 0 for H1 and approximately 0.148–0.150 for H2 across datasets and both target modalities (one seed-42 optimizer-step check). Best-checkpoint mechanism diagnostics run in evaluation mode, so their realized dropout fraction is 0 by design; the configured training probability remains 0.15 for H2.",
+        "",
+    ])
+
     report.extend(["", "## Training curves and auxiliary loss", "",
-                   "Full epoch-by-epoch Train/Validation Accuracy, Macro-F1, CE, Private auxiliary CE, balance auxiliary and timing are retained in data/epoch_history.csv. The report figure training_curves.pdf shows seed means with sample SD; the data behind it are the full run histories.",
+                   "Full epoch-by-epoch Train/Validation Accuracy, Macro-F1, CE, Private auxiliary CE, balance auxiliary and timing are retained in data/epoch_history.csv. The figure [training curves](figures/training_curves/hybrid_cge_v11_training_curves.pdf) shows seed means with sample SD; the data behind it are the full run histories.",
                    "",
                    "| Dataset | Condition | First-epoch Private CE | Best-Accuracy-epoch Private CE | Best-F1 − Best-Accuracy Δ Acc pp | Δ Macro-F1 pp | Δ CE |",
                    "|---|---|---:|---:|---:|---:|---:|"])
@@ -380,6 +438,12 @@ def main():
                 f"{fmt(acc_delta,100)} | {fmt(f1_delta,100)} | {fmt(ce_delta,digits=4)} |"
             )
 
+    report.extend([
+        "", "## Figure and QA", "",
+        "The linked 3×3 training-curve figure plots mean ± sample SD across three matched seeds at every displayed epoch, truncated to each dataset's shared complete horizon. Strict source, panel-alignment, PDF text-size and rendered-collision checks all passed; see [figure QA](figures/QA.md) and its machine-readable records.",
+        "",
+    ])
+
     report.extend(["", "## Resource profile", "",
                    "| Dataset | Condition | Wall seconds | Mean epoch seconds | Peak allocated GiB | Peak reserved GiB | Model parameters | Optimizer parameters |",
                    "|---|---|---:|---:|---:|---:|---:|---:|"])
@@ -400,7 +464,7 @@ def main():
     report.append(
         f"Environment: Python {env['python']}, PyTorch {env['pytorch']}, CUDA build {env['cuda_build']}, cuDNN {env['cudnn']}, NumPy {env['numpy']}; matmul TF32={env['matmul_tf32']}, cuDNN TF32={env['cudnn_tf32']}, deterministic algorithms={env['deterministic_algorithms']}, CUBLAS_WORKSPACE_CONFIG={env['cublas_workspace_config']!r}."
     )
-    report.append("All 36 selected checkpoints passed SHA256 and byte-count verification. No accepted run recorded an OOM.")
+    report.append("All 36 selected checkpoints reloaded and reproduced their Validation metrics, and passed SHA256 and byte-count verification. No accepted run recorded an OOM.")
 
     report.extend(["", "## Mechanism and architecture diagnostics", "",
                    "Values below summarize Best-Accuracy checkpoints. They verify executed paths, not causal usefulness.",
@@ -424,8 +488,10 @@ def main():
         )
 
     failure_text = [
-        f"Preserved failures: {len(failures.get('failures', []))} formal-run failures; "
-        f"{len(attempts.get('attempts', []))} preflight attempts/refusals."
+        f"Preserved records: {len(failures.get('failures', []))} formal-run failures; "
+        f"{len(attempts.get('attempts', []))} preflight attempts/refusals; "
+        f"{len(access_attempts.get('attempts', []))} runner launch-access records; "
+        f"{len(interference.get('events', []))} foreign-GPU guard stops."
     ]
     for row in failures.get("failures", []):
         failure_text.append(
@@ -436,6 +502,25 @@ def main():
         failure_text.append(
             f"- Preflight {row.get('time_utc','')}: {row.get('status','unknown')} — {row.get('error','')}."
         )
+    for row in access_attempts.get("attempts", []):
+        failure_text.append(
+            f"- Runner access {row.get('time_utc','')}: {row.get('status','unknown')}; "
+            f"training_started={row.get('training_started', False)} — {row.get('error','').rstrip('. ')}. "
+            f"{row.get('resolution','')}"
+        )
+    for row in interference.get("events", []):
+        gpu_process = row.get("foreign_process", {})
+        failure_text.append(
+            f"- Runner {row.get('observed_at_utc','')}: stopped before the next cell on physical GPU "
+            f"{row.get('physical_gpu','?')} because foreign PID {gpu_process.get('pid','?')} held "
+            f"{gpu_process.get('used_memory_mib','?')} MiB; no process was interrupted."
+        )
+    failure_text.extend([
+        "Unresolved findings:",
+        "- H2's Best-Accuracy Accuracy gain is small but positive on all three datasets; its Macro-F1 difference is negative on Movies/Grocery and positive on ele-fashion. The dataset-dependent tradeoff is not explained by this study, and SameNode cannot be separated from late dropout.",
+        "- Train/Validation gaps are larger on Movies and Grocery than ele-fashion. This study records the pattern but does not identify its data or optimization cause.",
+        "- Seed-to-seed variation is descriptive with three seeds. Formal runs retain the recorded default nondeterministic-algorithm setting; no deterministic full-run replay was attempted, so the contribution of individual stochastic sources remains unmeasured.",
+    ])
     report.extend([
         "", "## Independent implementation audit", "",
         "- Private state is computed from each receiver modality only. The early cross message enters every Collaborative physical expert profile and the inherited physical-router Cross input. The Late branch has no Physical Cross candidate.",
@@ -450,7 +535,7 @@ def main():
         "No Test evaluation was performed. Mechanism magnitudes do not by themselves establish causal contribution.",
         "",
         "## Evidence files", "",
-        "runs.csv, summary.csv, paired_comparisons.csv, epoch_history.csv, classwise_metrics.csv, elefashion_minority_class_metrics.csv, mechanism_diagnostics.csv, mechanism_summary.csv, resource_profile.csv, gradient_audit.json, artifact_integrity.json, preflight_cpu.json, preflight.json and manifest.json are retained under data/.",
+        "runs.csv, summary.csv, paired_comparisons.csv, epoch_history.csv, classwise_metrics.csv, elefashion_minority_class_metrics.csv, mechanism_diagnostics.csv, mechanism_summary.csv, resource_profile.csv, gradient_audit.json, artifact_integrity.json, preflight_cpu.json, preflight.json, runner_interference_events.json, runner_access_attempts.json and manifest.json are retained under data/. Figure exports and [figure QA](figures/QA.md) are retained alongside the report.",
     ])
     (STUDY / "PILOT_REPORT.md").write_text("\n".join(report) + "\n", encoding="utf-8")
 
@@ -469,6 +554,8 @@ def main():
         "test_evaluation": False,
         "implementation_freeze_commit": freeze,
         "formal_source_commit": source,
+        "runner_interference_event_count": len(interference.get("events", [])),
+        "runner_access_attempt_count": len(access_attempts.get("attempts", [])),
     }
     (DATA / "analysis_summary.json").write_text(json.dumps(analysis, indent=2, sort_keys=True), encoding="utf-8")
 
@@ -508,8 +595,10 @@ def main():
         "",
         "Best-F1 results, seed-level signs and Train/Validation gaps are in PILOT_REPORT.md and paired_comparisons.csv. Interpret small gains against seed spread, checkpoint sensitivity and the ele-fashion lower-support class results.",
         "",
+        "No optional training-strategy screen was run. H2's paired Best-Accuracy differences are small and mixed by metric: Accuracy is positive across datasets, Macro-F1 is slightly lower on Movies and Grocery but higher on ele-fashion, and CE improves on Movies/Grocery but is slightly higher on ele-fashion. Since H2 combines SameNode with late dropout, this pattern does not provide a clean, isolated hypothesis for changing dropout, weight decay or learning rate in a small screen.",
+        "",
         "## Interpretation boundary", "",
-        "H2 is a combined Same-node plus training-only late-dropout package; this matrix does not separate those effects. Physical/semantic router activity and residual scales are diagnostics, not causal ablations. The default results should determine whether any optional small training-strategy screen is warranted. No Test evaluation or successor method was included.",
+        "H2 is a combined Same-node plus training-only late-dropout package; this matrix does not separate those effects. Physical/semantic router activity and residual scales are diagnostics, not causal ablations. The mixed endpoint pattern did not justify an optional training-strategy screen. No Test evaluation or successor method was included.",
         "",
     ])
     (STUDY / "DECISION_MEMO.md").write_text("\n".join(memo), encoding="utf-8")

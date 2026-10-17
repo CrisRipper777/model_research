@@ -1,0 +1,37 @@
+{
+  "checkpoint_integrity": "pass",
+  "conditions": [
+    "H1_hybrid",
+    "H2_hybrid_plus"
+  ],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "formal_runs": 18,
+  "formal_source_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
+  "historical_reference_eligibility": {
+    "CG-CGE B1": {
+      "Grocery": true,
+      "Movies": true,
+      "ele-fashion": true
+    },
+    "View-CGE A2": {
+      "Grocery": true,
+      "Movies": true,
+      "ele-fashion": true
+    }
+  },
+  "implementation_freeze_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
+  "runner_access_attempt_count": 1,
+  "runner_interference_event_count": 1,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "status": "complete",
+  "test_evaluation": false,
+  "verified_checkpoint_count": 36
+}

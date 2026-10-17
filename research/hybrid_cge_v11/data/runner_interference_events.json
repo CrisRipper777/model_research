@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "action": "runner stopped; foreign process was not inspected, interrupted or terminated",
+      "completed_formal_cells_at_stop": 16,
+      "error": "physical GPU 0 has other compute processes [{'pid': 1353598, 'used_memory_mib': 5350}]; refusing to share it",
+      "foreign_process": {
+        "pid": 1353598,
+        "used_memory_mib": 5350
+      },
+      "not_started_cells": [
+        {
+          "condition": "H1_hybrid",
+          "dataset": "ele-fashion",
+          "seed": 44
+        },
+        {
+          "condition": "H2_hybrid_plus",
+          "dataset": "ele-fashion",
+          "seed": 44
+        }
+      ],
+      "observed_at_utc": "2026-10-17T08:56:41+00:00",
+      "physical_gpu": 0,
+      "runner_batch_seeds": [
+        43,
+        44
+      ],
+      "status": "stopped_before_next_cell_foreign_gpu_process",
+      "test_evaluation": false,
+      "training_started_for_not_started_cells": false
+    }
+  ]
+}

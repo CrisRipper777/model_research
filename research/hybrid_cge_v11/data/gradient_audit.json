@@ -1,0 +1,3892 @@
+{
+  "runs": [
+    {
+      "condition": "H1_hybrid",
+      "dataset": "Movies",
+      "final_parameter_audit": {
+        "classifier_l2": 3.5423880165713095,
+        "classifier_state_sha256": "e5624c125ad2ad3a8eb71094d92835ac3200b2b013d726eff2eed45522995088",
+        "combined_l2": 64.74193335995552,
+        "model_l2": 64.64494893125814,
+        "model_state_sha256": "5669786d6be83d7bf2ec7bec191e314aa208231f51adf40896069fa2a95ab3fc",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0030633292626589537,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0023602524306625128,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.14518526196479797,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.21011509001255035,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009096392430365086,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.9371596358250827e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 9.040085569722578e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0029122475534677505,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02087269350886345,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 9.151428821496665e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.220296275685541e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00805753841996193,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8880783319473267,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8918856978416443,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006073471158742905,
+          "gradient_present": true
+        }
+      },
+      "seed": 42
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "Movies",
+      "final_parameter_audit": {
+        "classifier_l2": 3.367944236170293,
+        "classifier_state_sha256": "def08db1fa3858e7b8925d44cc3470e0cab545d4e148c42f2ff9f996a1f49c26",
+        "combined_l2": 63.207601282339944,
+        "model_l2": 63.11780898834583,
+        "model_state_sha256": "86d568b5aec06b6e033f3a9b5b875d566abb839f2481035971f2fbfefc9c6131",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0032313757110387087,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0023790630511939526,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.14916415512561798,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.2149808406829834,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009031310677528381,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.0125309674767777e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.684242594521493e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0029100554529577494,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.020907556638121605,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.759837975143455e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.664174851612188e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004311656579375267,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8880783319473267,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8918856978416443,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00602381769567728,
+          "gradient_present": true
+        }
+      },
+      "seed": 42
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "Grocery",
+      "final_parameter_audit": {
+        "classifier_l2": 3.45707212675934,
+        "classifier_state_sha256": "9b5f75c4c6432bb73170773d0258dd051012fc55cb56e527b14231392fba3ff4",
+        "combined_l2": 63.17096881756597,
+        "model_l2": 63.07630263149764,
+        "model_state_sha256": "5fca92f72eada2875ef306c27fd98e08bfba8f9bfdb31841a73203be46bfff67",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.001455320161767304,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002418975345790386,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.1108710989356041,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.1055627390742302,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.011425585485994816,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.517955701681785e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.1841351048788056e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028736635576933622,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004897244740277529,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.537022348609753e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.855087925330736e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0009681233204901218,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5134527683258057,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5532928109169006,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003132648067548871,
+          "gradient_present": true
+        }
+      },
+      "seed": 42
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "Grocery",
+      "final_parameter_audit": {
+        "classifier_l2": 3.3563596503320703,
+        "classifier_state_sha256": "edaf1cb901bd74b65c22c3a69815c2abd4932186a207ab18a00d14ef15c403c7",
+        "combined_l2": 62.65373109693527,
+        "model_l2": 62.5637664328539,
+        "model_state_sha256": "d82e75b1deb05ea74bded42259cac29a45380c5c3be7b587423a4886d614d68e",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0015236265026032925,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0024271977599710226,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.11390949785709381,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10774463415145874,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.011362715624272823,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.771123061189428e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1658564946847036e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028713049832731485,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004912912379950285,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.8495955373509787e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.96366472664522e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0005771932192146778,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5134527683258057,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5532928109169006,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031248258892446756,
+          "gradient_present": true
+        }
+      },
+      "seed": 42
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "ele-fashion",
+      "final_parameter_audit": {
+        "classifier_l2": 2.4695241575698463,
+        "classifier_state_sha256": "531f18842d7ccbe2a866b3331f6d137570c5205a472280865df1d626b9621594",
+        "combined_l2": 64.52802211226356,
+        "model_l2": 64.48074974871147,
+        "model_state_sha256": "4b36cc13a6d6b367b6e289b30c2b91a5496949f72a2ef9494dda348dc12701be",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2004962,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0022144243121147156,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0033205063082277775,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10441116243600845,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10060811787843704,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.014755003154277802,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.089083449798636e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.092814197065309e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006923191715031862,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0004998213844373822,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.658112422679551e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 7.69172256696038e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0010115524055436254,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.9421362280845642,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8951197266578674,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0034017993602901697,
+          "gradient_present": true
+        }
+      },
+      "seed": 42
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "ele-fashion",
+      "final_parameter_audit": {
+        "classifier_l2": 2.6008166163083577,
+        "classifier_state_sha256": "2147fd8d6ddc391ad2d3cbcd0abccf9e8435120ebf7a6f597e62a3aee4d819f4",
+        "combined_l2": 66.06176370606909,
+        "model_l2": 66.01054746693775,
+        "model_state_sha256": "36ebd3e99d21425fd8bc3051ab3a828b2df6f2aee79b9b754f82346e5f486916",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2004962,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0022957120090723038,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0033393162302672863,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10643751919269562,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.1033158153295517,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.014827531762421131,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.080678314086981e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.09220470424043e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006920370738953352,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0005052587948739529,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.8977528927498497e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.903924880432896e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.000555899110622704,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.9421362280845642,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8951197266578674,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0033943515736609697,
+          "gradient_present": true
+        }
+      },
+      "seed": 42
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "Movies",
+      "final_parameter_audit": {
+        "classifier_l2": 3.1887765021800902,
+        "classifier_state_sha256": "a80848306e4c81c6224d71fd95918711a6e8178279a6a42a6303a996bc10bd72",
+        "combined_l2": 61.41475312807811,
+        "model_l2": 61.33191343992069,
+        "model_state_sha256": "fbe92e64746b85bbea1f7dbb2db2b201d6b90ccd6356ff250ce9187e0ae468ed",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0027856947854161263,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031517797615379095,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.12799157202243805,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10204733908176422,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007664065808057785,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.3103347959695384e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.755035817855969e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02294904738664627,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007448182906955481,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 6.0872032918268815e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.01445834338665e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002807918004691601,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.1104720830917358,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8914767503738403,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.004482777789235115,
+          "gradient_present": true
+        }
+      },
+      "seed": 43
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "Movies",
+      "final_parameter_audit": {
+        "classifier_l2": 3.1984347261633386,
+        "classifier_state_sha256": "1df3d7b6ee18923696cb4877ef2a935776100088696376d56d7482275fd295f4",
+        "combined_l2": 61.405822683863164,
+        "model_l2": 61.32246794433926,
+        "model_state_sha256": "6240c6b3a814c349079253838ec53bce799bdaa221e41d81a463bb7ed7dfeb9b",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003027966944500804,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031576480250805616,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.13616806268692017,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10492895543575287,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007611081004142761,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.6499692719662562e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.9351365810725838e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022712532430887222,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007470537908375263,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.103660128545016e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.524560047982959e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0014680571621283889,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.1104720830917358,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8914768099784851,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00447198236361146,
+          "gradient_present": true
+        }
+      },
+      "seed": 43
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "Grocery",
+      "final_parameter_audit": {
+        "classifier_l2": 3.425775017374496,
+        "classifier_state_sha256": "11f92026af80dca5784a7d65bc912112da142f77c28bbd3898a671bb07c01095",
+        "combined_l2": 62.62782942480176,
+        "model_l2": 62.53406338942319,
+        "model_state_sha256": "da397de4161e1cf0c55ce596bfec6164c2eaa8002efa99771f8a81daf9c9b02a",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0018317886861041188,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003278490621596575,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.08840851485729218,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10528877377510071,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009903283789753914,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.00176964426646e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.482706597424112e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02989274449646473,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015457765199244022,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.1515304474160075e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1067122361273505e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00554263312369585,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6398543119430542,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4928938150405884,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028994199819862843,
+          "gradient_present": true
+        }
+      },
+      "seed": 43
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "Grocery",
+      "final_parameter_audit": {
+        "classifier_l2": 3.3893497414094877,
+        "classifier_state_sha256": "2f8f5f833de70f920a9f34f09c99b1a5bbace264d7b899d5c537a8145eeba88f",
+        "combined_l2": 62.41622369361604,
+        "model_l2": 62.324130868403806,
+        "model_state_sha256": "7611f43c581aa0b5335db1f17ed458dedab6134cb0f011dbc6242d00bc972a93",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0019956687465310097,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0032939319498836994,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0947379544377327,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10693047940731049,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009793889708817005,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.0127634595846757e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.805445208447054e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.029832210391759872,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.015317765064537525,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1061285224277526e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.0784588994283695e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0030854991637170315,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6398543119430542,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.4928938150405884,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0029044547118246555,
+          "gradient_present": true
+        }
+      },
+      "seed": 43
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "ele-fashion",
+      "final_parameter_audit": {
+        "classifier_l2": 2.628918471674323,
+        "classifier_state_sha256": "f760bcb6cafbe4bf71ae254be89680c1a50af3cd71b6c0db224dff6ba338605c",
+        "combined_l2": 65.73366894597748,
+        "model_l2": 65.68107810297158,
+        "model_state_sha256": "eba6bbc5f2b347b47f5688a71d375f2415c78cf1c00c5f704aacd8dacba678d2",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2004962,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002626323839649558,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0033068761695176363,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.12367764115333557,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.13177190721035004,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008296022191643715,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 8.75217592692934e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 6.398426194209605e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0027225820813328028,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.010350127704441547,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 7.476512109860778e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 7.38627277314663e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0036894611548632383,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6582772135734558,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.9395690560340881,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028268450405448675,
+          "gradient_present": true
+        }
+      },
+      "seed": 43
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "ele-fashion",
+      "final_parameter_audit": {
+        "classifier_l2": 2.6351208355228395,
+        "classifier_state_sha256": "42252e0984ca6fff082c6b1b839835952187f5221f6af4408ee416b74666feb2",
+        "combined_l2": 65.74855693756166,
+        "model_l2": 65.69572952296048,
+        "model_state_sha256": "1cad9a4d4498f4c8d358601581946fa4f0dd8e632938dfdb5477332708e2790f",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2004962,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002757707377895713,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003312705783173442,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.12692910432815552,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.13545195758342743,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.008358944207429886,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.4822874770034105e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.239935904275626e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0027252836152911186,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.010339487344026566,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.803989602602087e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.784225191338919e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002010147552937269,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6582772135734558,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.9395690560340881,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0028353312518447638,
+          "gradient_present": true
+        }
+      },
+      "seed": 43
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "Movies",
+      "final_parameter_audit": {
+        "classifier_l2": 3.275858847874305,
+        "classifier_state_sha256": "9398cc4704dae9fc2016f56442bb5391df5e5a0643030eee5aa9a8d79cd33acc",
+        "combined_l2": 61.790591762099794,
+        "model_l2": 61.70369501998465,
+        "model_state_sha256": "8f781c8f8e37a47fcc0f417a5b8113b1503facb965a4db83fcf1c6d226975296",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0045549762435257435,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003029793733730912,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.18523132801055908,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.16625216603279114,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0073150950483977795,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.762383807450533e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00010913261940004304,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03157752379775047,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02080524154007435,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 9.854281233856454e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.381151277106255e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01003812812268734,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.9888578057289124,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8143981099128723,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002759654773399234,
+          "gradient_present": true
+        }
+      },
+      "seed": 44
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "Movies",
+      "final_parameter_audit": {
+        "classifier_l2": 3.333256276282985,
+        "classifier_state_sha256": "8f2c67b1ff3bba8687b70f5a76c7acf160e8485e30f889daa41db2ed277bb8a0",
+        "combined_l2": 62.155016136483496,
+        "model_l2": 62.06557365821365,
+        "model_state_sha256": "56d11c26f4c90025c3e88864253d2b2f1a751415d3df9138dfdb438c4632e002",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.005007070489227772,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003035665024071932,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.19642183184623718,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.16949445009231567,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007295715622603893,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.9416498364298604e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.49725882592611e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.031382966786623,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.02077740617096424,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.9694972403813154e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.7521298761712387e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0053697628900408745,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.9888578057289124,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8143981099128723,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0027688343543559313,
+          "gradient_present": true
+        }
+      },
+      "seed": 44
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "Grocery",
+      "final_parameter_audit": {
+        "classifier_l2": 3.621840400241654,
+        "classifier_state_sha256": "9757de6d2d51304eb33b65146e4b531dad15f23f26bbce8d01aef2ed5b574fda",
+        "combined_l2": 63.518399755944756,
+        "model_l2": 63.41505641147992,
+        "model_state_sha256": "81412eaec68075707409dff55ea176373180353dc4ce8270aea260d7e27c46af",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0023718473967164755,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0030481438152492046,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0965002104640007,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.11371393501758575,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0020590696949511766,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.3008815080393106e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.8691184929339215e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006727113388478756,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007413211278617382,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.576353603624739e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.7136071366840042e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0010441220365464687,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6117428541183472,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5620275139808655,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002736362861469388,
+          "gradient_present": true
+        }
+      },
+      "seed": 44
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "Grocery",
+      "final_parameter_audit": {
+        "classifier_l2": 3.5865876285334357,
+        "classifier_state_sha256": "513b4f18307d47ac88e9fddfbcfc5b2ad6acecd4d03e37f7477cad7f6b617811",
+        "combined_l2": 63.589050354450066,
+        "model_l2": 63.487823353487535,
+        "model_state_sha256": "decc2e2a29972e9ebe55b8abf67272ea716aa630537a2db3a195a8675485af3a",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2273274,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002656593918800354,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0030467472970485687,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.10427039861679077,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.11644240468740463,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0019412587862461805,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.6997464626911096e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.5025838112924248e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006636954378336668,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.007317670620977879,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.3391310605802573e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.4073882084630895e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0006131258560344577,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6117428541183472,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5620275139808655,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0027426122687757015,
+          "gradient_present": true
+        }
+      },
+      "seed": 44
+    },
+    {
+      "condition": "H1_hybrid",
+      "dataset": "ele-fashion",
+      "final_parameter_audit": {
+        "classifier_l2": 2.5640951107079712,
+        "classifier_state_sha256": "cdb631e0084f093145933b50e260a2362a86ca550ea3d7c5cdd77165ea45ebb6",
+        "combined_l2": 64.48915814190529,
+        "model_l2": 64.43816364635876,
+        "model_state_sha256": "b1327cad9e55fc2598e1e53b6b15e9fab65be430f2ef17ed2a53263264e4c6f4",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2004962,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0026696149725466967,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031264328863471746,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.09388855844736099,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.09142300486564636,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012533189728856087,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.408141078078188e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.1649203669512644e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.040926624089479446,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0033481623977422714,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 6.729502638336271e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 7.316053961403668e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031539779156446457,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8463070392608643,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.116974949836731,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0022789707873016596,
+          "gradient_present": true
+        }
+      },
+      "seed": 44
+    },
+    {
+      "condition": "H2_hybrid_plus",
+      "dataset": "ele-fashion",
+      "final_parameter_audit": {
+        "classifier_l2": 2.6564805675738024,
+        "classifier_state_sha256": "c6fe2721e99e5020aaed9147893c1291744337e7d7c6c0a1a91cc9c4fe5bf029",
+        "combined_l2": 66.54455045153279,
+        "model_l2": 66.4915055160484,
+        "model_state_sha256": "36eb9f0fe5cf37db1187152a9a9aa32707f937f85768d592110e4ebe929d10c6",
+        "optimizer_groups": [
+          {
+            "group_index": 0,
+            "learning_rate": 0.001,
+            "parameter_count": 2004962,
+            "parameter_names": [
+              "model.alpha_raw",
+              "model.cross_lambda_raw",
+              "model.gamma_s_raw",
+              "model.physical_cross_coefficients",
+              "model.tau_raw",
+              "model.projectors.text.linear1.weight",
+              "model.projectors.text.linear1.bias",
+              "model.projectors.text.linear2.weight",
+              "model.projectors.text.linear2.bias",
+              "model.projectors.text.skip.weight",
+              "model.projectors.text.skip.bias",
+              "model.projectors.text.norm.weight",
+              "model.projectors.text.norm.bias",
+              "model.projectors.visual.linear1.weight",
+              "model.projectors.visual.linear1.bias",
+              "model.projectors.visual.linear2.weight",
+              "model.projectors.visual.linear2.bias",
+              "model.projectors.visual.skip.weight",
+              "model.projectors.visual.skip.bias",
+              "model.projectors.visual.norm.weight",
+              "model.projectors.visual.norm.bias",
+              "model.experts.0.linear1.weight",
+              "model.experts.0.linear2.weight",
+              "model.experts.1.linear1.weight",
+              "model.experts.1.linear2.weight",
+              "model.experts.2.linear1.weight",
+              "model.experts.2.linear2.weight",
+              "model.experts.3.linear1.weight",
+              "model.experts.3.linear2.weight",
+              "model.router_projectors.text.weight",
+              "model.router_projectors.text.bias",
+              "model.router_projectors.visual.weight",
+              "model.router_projectors.visual.bias",
+              "model.router_norms.text.weight",
+              "model.router_norms.text.bias",
+              "model.router_norms.visual.weight",
+              "model.router_norms.visual.bias",
+              "model.modality_embedding.weight",
+              "model.context_encoder.0.weight",
+              "model.context_encoder.0.bias",
+              "model.selection_head.weight",
+              "model.selection_head.bias",
+              "model.strength_head.weight",
+              "model.strength_head.bias",
+              "model.fusion_linear1.weight",
+              "model.fusion_linear1.bias",
+              "model.fusion_linear2.weight",
+              "model.fusion_linear2.bias",
+              "model.fusion_skip.weight",
+              "model.fusion_skip.bias",
+              "model.fusion_norm.weight",
+              "model.fusion_norm.bias",
+              "model.cross_projections.visual_to_text.0.weight",
+              "model.cross_projections.visual_to_text.2.weight",
+              "model.cross_projections.text_to_visual.0.weight",
+              "model.cross_projections.text_to_visual.2.weight",
+              "model.node_modality_embedding.weight",
+              "model.node_router.0.weight",
+              "model.node_router.0.bias",
+              "model.node_router.3.weight",
+              "model.node_router.3.bias",
+              "model.view_type_embedding.weight",
+              "model.view_router.0.weight",
+              "model.view_router.0.bias",
+              "model.view_router.2.weight",
+              "model.view_router.2.bias",
+              "model.query_projections.text.weight",
+              "model.query_projections.visual.weight",
+              "model.key_projections.text.weight",
+              "model.key_projections.visual.weight",
+              "model.source_selector.0.weight",
+              "model.source_selector.0.bias",
+              "model.source_selector.2.weight",
+              "model.source_selector.2.bias",
+              "model.channel_gate.0.weight",
+              "model.channel_gate.0.bias",
+              "model.channel_gate.2.weight",
+              "model.channel_gate.2.bias",
+              "model.interaction.0.weight",
+              "model.interaction.0.bias",
+              "model.interaction.2.weight",
+              "model.interaction.2.bias",
+              "model.interaction.3.weight",
+              "model.interaction.3.bias",
+              "model.comp_modality_embedding.weight",
+              "model.comp_router.0.weight",
+              "model.comp_router.0.bias",
+              "model.comp_router.3.weight",
+              "model.comp_router.3.bias",
+              "model.unimodal_heads.text.weight",
+              "model.unimodal_heads.text.bias",
+              "model.unimodal_heads.visual.weight",
+              "model.unimodal_heads.visual.bias",
+              "classifier.weight",
+              "classifier.bias"
+            ],
+            "parameter_tensors": 95,
+            "weight_decay": 0.0001
+          }
+        ]
+      },
+      "first_step": {
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0029690854717046022,
+          "gradient_present": true
+        },
+        "comp_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0031256924849003553,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.09897265583276749,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.09821663051843643,
+          "gradient_present": true
+        },
+        "gamma_s_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012574245221912861,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.7368563678464852e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.648637928359676e-05,
+          "gradient_present": true
+        },
+        "node_router.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.040842123329639435,
+          "gradient_present": true
+        },
+        "physical_cross_coefficients": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003330946434289217,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.4515451261540875e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 3.747345908777788e-05,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0019290301715955138,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.8463070392608643,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.116974949836731,
+          "gradient_present": true
+        },
+        "view_router.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0022732035722583532,
+          "gradient_present": true
+        }
+      },
+      "seed": 44
+    }
+  ]
+}

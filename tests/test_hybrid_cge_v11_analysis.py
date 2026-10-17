@@ -26,8 +26,8 @@ def test_paired_summary_rejects_nonfinite_and_empty_input():
 
 def test_historical_pairing_requires_all_three_seed_fingerprints():
     preflight = {"datasets": {"Movies": {"seeds": {str(seed): {
-        "historical_reference_match": {"View-CGE A2": {"eligible": seed != 44}}
+        "historical_reference_match": {"A2_cross_source": {"eligible": seed != 44}}
     } for seed in (42, 43, 44)}}}}
     assert strict_reference(preflight, "Movies", "View-CGE A2") is False
-    preflight["datasets"]["Movies"]["seeds"]["44"]["historical_reference_match"]["View-CGE A2"]["eligible"] = True
+    preflight["datasets"]["Movies"]["seeds"]["44"]["historical_reference_match"]["A2_cross_source"]["eligible"] = True
     assert strict_reference(preflight, "Movies", "View-CGE A2") is True

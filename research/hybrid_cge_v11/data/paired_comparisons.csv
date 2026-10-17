@@ -1,0 +1,379 @@
+dataset,condition,seed,checkpoint,reference,metric,value,reference_value,difference
+Movies,H1_hybrid,42,Best-Accuracy,within_condition,val_acc,0.5632873177528381,,
+Movies,H1_hybrid,43,Best-Accuracy,within_condition,val_acc,0.5596880912780762,,
+Movies,H1_hybrid,44,Best-Accuracy,within_condition,val_acc,0.5671865344047546,,
+Movies,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_acc,0.5632873177528381,0.565386950969696,-0.00209963321685791
+Movies,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_acc,0.5596880912780762,0.5614876747131348,-0.0017995834350585938
+Movies,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_acc,0.5671865344047546,0.5686862468719482,-0.0014997124671936035
+Movies,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_acc,0.5632873177528381,0.5593881011009216,0.003899216651916504
+Movies,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_acc,0.5596880912780762,0.5572885274887085,0.0023995637893676758
+Movies,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_acc,0.5671865344047546,0.5620875954627991,0.005098938941955566
+Movies,H1_hybrid,42,Best-Accuracy,within_condition,val_macro_f1,0.5051714663219825,,
+Movies,H1_hybrid,43,Best-Accuracy,within_condition,val_macro_f1,0.49090766119844026,,
+Movies,H1_hybrid,44,Best-Accuracy,within_condition,val_macro_f1,0.49999833741447447,,
+Movies,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_macro_f1,0.5051714663219825,0.4943944519297522,0.010777014392230333
+Movies,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_macro_f1,0.49090766119844026,0.48479311393357616,0.006114547264864101
+Movies,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_macro_f1,0.49999833741447447,0.5091324609688807,-0.009134123554406182
+Movies,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_macro_f1,0.5051714663219825,0.4855640710475783,0.019607395274404193
+Movies,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_macro_f1,0.49090766119844026,0.47764531579092984,0.013262345407510423
+Movies,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_macro_f1,0.49999833741447447,0.47538890725919225,0.02460943015528222
+Movies,H1_hybrid,42,Best-Accuracy,within_condition,val_ce,1.4489058256149292,,
+Movies,H1_hybrid,43,Best-Accuracy,within_condition,val_ce,1.3469359874725342,,
+Movies,H1_hybrid,44,Best-Accuracy,within_condition,val_ce,1.3236901760101318,,
+Movies,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_ce,1.4489058256149292,1.410722017288208,0.03818380832672119
+Movies,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_ce,1.3469359874725342,1.3899750709533691,-0.04303908348083496
+Movies,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_ce,1.3236901760101318,1.3252005577087402,-0.0015103816986083984
+Movies,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_ce,1.4489058256149292,1.3584777116775513,0.09042811393737793
+Movies,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_ce,1.3469359874725342,1.3653366565704346,-0.01840066909790039
+Movies,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_ce,1.3236901760101318,1.4533530473709106,-0.1296628713607788
+Movies,H1_hybrid,42,Best-F1,within_condition,best_f1_val_acc,0.548890233039856,,
+Movies,H1_hybrid,43,Best-F1,within_condition,best_f1_val_acc,0.545590877532959,,
+Movies,H1_hybrid,44,Best-F1,within_condition,best_f1_val_acc,0.5623875260353088,,
+Movies,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_acc,0.548890233039856,0.5599880218505859,-0.01109778881072998
+Movies,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_acc,0.545590877532959,0.5467906594276428,-0.0011997818946838379
+Movies,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_acc,0.5623875260353088,0.5629873871803284,-0.0005998611450195312
+Movies,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_acc,0.548890233039856,0.5452909469604492,0.0035992860794067383
+Movies,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_acc,0.545590877532959,0.5428914427757263,0.002699434757232666
+Movies,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_acc,0.5623875260353088,0.5545890927314758,0.007798433303833008
+Movies,H1_hybrid,42,Best-F1,within_condition,best_f1_val_macro_f1,0.5059949730179384,,
+Movies,H1_hybrid,43,Best-F1,within_condition,best_f1_val_macro_f1,0.49488249212298463,,
+Movies,H1_hybrid,44,Best-F1,within_condition,best_f1_val_macro_f1,0.5217916679991724,,
+Movies,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.5059949730179384,0.5027233999050265,0.0032715731129119296
+Movies,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.49488249212298463,0.5113843199591833,-0.01650182783619869
+Movies,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.5217916679991724,0.5132824268115981,0.008509241187574346
+Movies,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.5059949730179384,0.5032811749974427,0.0027137980204956502
+Movies,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.49488249212298463,0.48845688247833435,0.006425609644650276
+Movies,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.5217916679991724,0.4953948698739025,0.026396798125269905
+Movies,H1_hybrid,42,Best-F1,within_condition,best_f1_val_ce,1.4478175640106201,,
+Movies,H1_hybrid,43,Best-F1,within_condition,best_f1_val_ce,1.4092577695846558,,
+Movies,H1_hybrid,44,Best-F1,within_condition,best_f1_val_ce,1.3716914653778076,,
+Movies,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_ce,1.4478175640106201,1.3779948949813843,0.06982266902923584
+Movies,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_ce,1.4092577695846558,1.4697232246398926,-0.060465455055236816
+Movies,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_ce,1.3716914653778076,1.3330059051513672,0.03868556022644043
+Movies,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_ce,1.4478175640106201,1.404146671295166,0.0436708927154541
+Movies,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_ce,1.4092577695846558,1.437537670135498,-0.028279900550842285
+Movies,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_ce,1.3716914653778076,1.478857159614563,-0.10716569423675537
+Movies,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_acc,0.5680863857269287,,
+Movies,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_acc,0.5632873177528381,,
+Movies,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_acc,0.5719856023788452,,
+Movies,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_acc,0.5680863857269287,0.565386950969696,0.002699434757232666
+Movies,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_acc,0.5632873177528381,0.5614876747131348,0.0017996430397033691
+Movies,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_acc,0.5719856023788452,0.5686862468719482,0.0032993555068969727
+Movies,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_acc,0.5680863857269287,0.5593881011009216,0.00869828462600708
+Movies,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_acc,0.5632873177528381,0.5572885274887085,0.005998790264129639
+Movies,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_acc,0.5719856023788452,0.5620875954627991,0.009898006916046143
+Movies,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_macro_f1,0.4926769643954623,,
+Movies,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_macro_f1,0.4894997447565263,,
+Movies,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_macro_f1,0.5112112784177348,,
+Movies,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_macro_f1,0.4926769643954623,0.4943944519297522,-0.0017174875342898521
+Movies,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_macro_f1,0.4894997447565263,0.48479311393357616,0.004706630822950142
+Movies,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_macro_f1,0.5112112784177348,0.5091324609688807,0.0020788174488541866
+Movies,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_macro_f1,0.4926769643954623,0.4855640710475783,0.007112893347884008
+Movies,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_macro_f1,0.4894997447565263,0.47764531579092984,0.011854428965596464
+Movies,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_macro_f1,0.5112112784177348,0.47538890725919225,0.03582237115854259
+Movies,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_ce,1.375349760055542,,
+Movies,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_ce,1.3409247398376465,,
+Movies,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_ce,1.3327252864837646,,
+Movies,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_ce,1.375349760055542,1.410722017288208,-0.035372257232666016
+Movies,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_ce,1.3409247398376465,1.3899750709533691,-0.049050331115722656
+Movies,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_ce,1.3327252864837646,1.3252005577087402,0.007524728775024414
+Movies,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_ce,1.375349760055542,1.3584777116775513,0.016872048377990723
+Movies,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_ce,1.3409247398376465,1.3653366565704346,-0.024411916732788086
+Movies,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_ce,1.3327252864837646,1.4533530473709106,-0.120627760887146
+Movies,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_acc,0.5509898066520691,,
+Movies,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_acc,0.5545890927314758,,
+Movies,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_acc,0.5575884580612183,,
+Movies,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_acc,0.5509898066520691,0.5599880218505859,-0.008998215198516846
+Movies,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_acc,0.5545890927314758,0.5467906594276428,0.007798433303833008
+Movies,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_acc,0.5575884580612183,0.5629873871803284,-0.005398929119110107
+Movies,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_acc,0.5509898066520691,0.5452909469604492,0.005698859691619873
+Movies,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_acc,0.5545890927314758,0.5428914427757263,0.011697649955749512
+Movies,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_acc,0.5575884580612183,0.5545890927314758,0.0029993653297424316
+Movies,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_macro_f1,0.5113769017115357,,
+Movies,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_macro_f1,0.5014273100331004,,
+Movies,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_macro_f1,0.512826182837737,,
+Movies,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.5113769017115357,0.5027233999050265,0.008653501806509256
+Movies,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.5014273100331004,0.5113843199591833,-0.00995700992608295
+Movies,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.512826182837737,0.5132824268115981,-0.0004562439738611257
+Movies,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.5113769017115357,0.5032811749974427,0.008095726714092977
+Movies,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.5014273100331004,0.48845688247833435,0.012970427554766017
+Movies,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.512826182837737,0.4953948698739025,0.017431312963834433
+Movies,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_ce,1.430802583694458,,
+Movies,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_ce,1.4229404926300049,,
+Movies,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_ce,1.3427420854568481,,
+Movies,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_ce,1.430802583694458,1.3779948949813843,0.05280768871307373
+Movies,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_ce,1.4229404926300049,1.4697232246398926,-0.046782732009887695
+Movies,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_ce,1.3427420854568481,1.3330059051513672,0.009736180305480957
+Movies,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_ce,1.430802583694458,1.404146671295166,0.026655912399291992
+Movies,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_ce,1.4229404926300049,1.437537670135498,-0.014597177505493164
+Movies,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_ce,1.3427420854568481,1.478857159614563,-0.13611507415771484
+Movies,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_acc,0.5680863857269287,0.5632873177528381,0.004799067974090576
+Movies,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_acc,0.5632873177528381,0.5596880912780762,0.003599226474761963
+Movies,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_acc,0.5719856023788452,0.5671865344047546,0.004799067974090576
+Movies,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_macro_f1,0.4926769643954623,0.5051714663219825,-0.012494501926520185
+Movies,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_macro_f1,0.4894997447565263,0.49090766119844026,-0.001407916441913959
+Movies,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_macro_f1,0.5112112784177348,0.49999833741447447,0.011212941003260368
+Movies,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_ce,1.375349760055542,1.4489058256149292,-0.07355606555938721
+Movies,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_ce,1.3409247398376465,1.3469359874725342,-0.006011247634887695
+Movies,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_ce,1.3327252864837646,1.3236901760101318,0.009035110473632812
+Movies,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_acc,0.5509898066520691,0.548890233039856,0.0020995736122131348
+Movies,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_acc,0.5545890927314758,0.545590877532959,0.008998215198516846
+Movies,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_acc,0.5575884580612183,0.5623875260353088,-0.004799067974090576
+Movies,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_macro_f1,0.5113769017115357,0.5059949730179384,0.0053819286935973265
+Movies,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_macro_f1,0.5014273100331004,0.49488249212298463,0.006544817910115741
+Movies,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_macro_f1,0.512826182837737,0.5217916679991724,-0.008965485161435471
+Movies,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_ce,1.430802583694458,1.4478175640106201,-0.01701498031616211
+Movies,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_ce,1.4229404926300049,1.4092577695846558,0.013682723045349121
+Movies,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_ce,1.3427420854568481,1.3716914653778076,-0.028949379920959473
+Grocery,H1_hybrid,42,Best-Accuracy,within_condition,val_acc,0.8360175490379333,,
+Grocery,H1_hybrid,43,Best-Accuracy,within_condition,val_acc,0.8404099345207214,,
+Grocery,H1_hybrid,44,Best-Accuracy,within_condition,val_acc,0.8316251635551453,,
+Grocery,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_acc,0.8360175490379333,0.8357247710227966,0.00029277801513671875
+Grocery,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_acc,0.8404099345207214,0.8409956097602844,-0.0005856752395629883
+Grocery,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_acc,0.8316251635551453,0.8322108387947083,-0.0005856752395629883
+Grocery,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_acc,0.8360175490379333,0.8325036764144897,0.0035138726234436035
+Grocery,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_acc,0.8404099345207214,0.8404099345207214,0.0
+Grocery,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_acc,0.8316251635551453,0.8325036764144897,-0.0008785128593444824
+Grocery,H1_hybrid,42,Best-Accuracy,within_condition,val_macro_f1,0.768572301583857,,
+Grocery,H1_hybrid,43,Best-Accuracy,within_condition,val_macro_f1,0.7735374051315097,,
+Grocery,H1_hybrid,44,Best-Accuracy,within_condition,val_macro_f1,0.7506411551616169,,
+Grocery,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_macro_f1,0.768572301583857,0.7705893602961575,-0.0020170587123005124
+Grocery,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7735374051315097,0.7683212481542206,0.005216156977289055
+Grocery,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7506411551616169,0.7535828948271555,-0.0029417396655385675
+Grocery,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_macro_f1,0.768572301583857,0.7587968729451793,0.009775428638677752
+Grocery,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_macro_f1,0.7735374051315097,0.7735177207332036,1.9684398306130113e-05
+Grocery,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_macro_f1,0.7506411551616169,0.7559734508718391,-0.005332295710222201
+Grocery,H1_hybrid,42,Best-Accuracy,within_condition,val_ce,0.6508293747901917,,
+Grocery,H1_hybrid,43,Best-Accuracy,within_condition,val_ce,0.6165319085121155,,
+Grocery,H1_hybrid,44,Best-Accuracy,within_condition,val_ce,0.6866210699081421,,
+Grocery,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_ce,0.6508293747901917,0.6345722675323486,0.016257107257843018
+Grocery,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_ce,0.6165319085121155,0.6014862656593323,0.015045642852783203
+Grocery,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_ce,0.6866210699081421,0.707061231136322,-0.02044016122817993
+Grocery,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_ce,0.6508293747901917,0.6356641054153442,0.015165269374847412
+Grocery,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_ce,0.6165319085121155,0.6329221129417419,-0.016390204429626465
+Grocery,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_ce,0.6866210699081421,0.7290778756141663,-0.04245680570602417
+Grocery,H1_hybrid,42,Best-F1,within_condition,best_f1_val_acc,0.8348462581634521,,
+Grocery,H1_hybrid,43,Best-F1,within_condition,best_f1_val_acc,0.838653028011322,,
+Grocery,H1_hybrid,44,Best-F1,within_condition,best_f1_val_acc,0.826061487197876,,
+Grocery,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_acc,0.8348462581634521,0.8301610350608826,0.00468522310256958
+Grocery,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_acc,0.838653028011322,0.838067352771759,0.0005856752395629883
+Grocery,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_acc,0.826061487197876,0.8263543248176575,-0.00029283761978149414
+Grocery,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_acc,0.8348462581634521,0.8319180011749268,0.0029282569885253906
+Grocery,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_acc,0.838653028011322,0.838067352771759,0.0005856752395629883
+Grocery,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_acc,0.826061487197876,0.8286969065666199,-0.0026354193687438965
+Grocery,H1_hybrid,42,Best-F1,within_condition,best_f1_val_macro_f1,0.77585258850862,,
+Grocery,H1_hybrid,43,Best-F1,within_condition,best_f1_val_macro_f1,0.7787401515836075,,
+Grocery,H1_hybrid,44,Best-F1,within_condition,best_f1_val_macro_f1,0.75318852916643,,
+Grocery,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.77585258850862,0.7741616326008687,0.001690955907751368
+Grocery,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7787401515836075,0.7720183969088763,0.0067217546747312396
+Grocery,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.75318852916643,0.7585685648825388,-0.005380035716108789
+Grocery,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.77585258850862,0.7834218682717523,-0.007569279763132264
+Grocery,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7787401515836075,0.7740133567067649,0.004726794876842688
+Grocery,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.75318852916643,0.7576182620859109,-0.0044297329194809
+Grocery,H1_hybrid,42,Best-F1,within_condition,best_f1_val_ce,0.6403087377548218,,
+Grocery,H1_hybrid,43,Best-F1,within_condition,best_f1_val_ce,0.6266748905181885,,
+Grocery,H1_hybrid,44,Best-F1,within_condition,best_f1_val_ce,0.7337175011634827,,
+Grocery,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_ce,0.6403087377548218,0.6665888428688049,-0.026280105113983154
+Grocery,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_ce,0.6266748905181885,0.6060296893119812,0.020645201206207275
+Grocery,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_ce,0.7337175011634827,0.7347506284713745,-0.0010331273078918457
+Grocery,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_ce,0.6403087377548218,0.6767560839653015,-0.036447346210479736
+Grocery,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_ce,0.6266748905181885,0.6349906325340271,-0.008315742015838623
+Grocery,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_ce,0.7337175011634827,0.7746177911758423,-0.04090029001235962
+Grocery,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_acc,0.8357247710227966,,
+Grocery,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_acc,0.8430454134941101,,
+Grocery,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_acc,0.8368960618972778,,
+Grocery,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_acc,0.8357247710227966,0.8357247710227966,0.0
+Grocery,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_acc,0.8430454134941101,0.8409956097602844,0.0020498037338256836
+Grocery,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_acc,0.8368960618972778,0.8322108387947083,0.00468522310256958
+Grocery,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_acc,0.8357247710227966,0.8325036764144897,0.0032210946083068848
+Grocery,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_acc,0.8430454134941101,0.8404099345207214,0.002635478973388672
+Grocery,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_acc,0.8368960618972778,0.8325036764144897,0.004392385482788086
+Grocery,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_macro_f1,0.7535338622822272,,
+Grocery,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_macro_f1,0.7725659941875205,,
+Grocery,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_macro_f1,0.7530651000772597,,
+Grocery,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7535338622822272,0.7705893602961575,-0.01705549801393036
+Grocery,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7725659941875205,0.7683212481542206,0.004244746033299829
+Grocery,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7530651000772597,0.7535828948271555,-0.0005177947498957725
+Grocery,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_macro_f1,0.7535338622822272,0.7587968729451793,-0.0052630106629520945
+Grocery,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_macro_f1,0.7725659941875205,0.7735177207332036,-0.0009517265456830959
+Grocery,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_macro_f1,0.7530651000772597,0.7559734508718391,-0.0029083507945794063
+Grocery,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_ce,0.6249127388000488,,
+Grocery,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_ce,0.6049320101737976,,
+Grocery,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_ce,0.6879338026046753,,
+Grocery,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_ce,0.6249127388000488,0.6345722675323486,-0.009659528732299805
+Grocery,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_ce,0.6049320101737976,0.6014862656593323,0.003445744514465332
+Grocery,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_ce,0.6879338026046753,0.707061231136322,-0.01912742853164673
+Grocery,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_ce,0.6249127388000488,0.6356641054153442,-0.01075136661529541
+Grocery,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_ce,0.6049320101737976,0.6329221129417419,-0.027990102767944336
+Grocery,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_ce,0.6879338026046753,0.7290778756141663,-0.04114407300949097
+Grocery,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_acc,0.8339678049087524,,
+Grocery,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_acc,0.8392386436462402,,
+Grocery,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_acc,0.8298682570457458,,
+Grocery,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_acc,0.8339678049087524,0.8301610350608826,0.003806769847869873
+Grocery,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_acc,0.8392386436462402,0.838067352771759,0.0011712908744812012
+Grocery,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_acc,0.8298682570457458,0.8263543248176575,0.003513932228088379
+Grocery,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_acc,0.8339678049087524,0.8319180011749268,0.0020498037338256836
+Grocery,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_acc,0.8392386436462402,0.838067352771759,0.0011712908744812012
+Grocery,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_acc,0.8298682570457458,0.8286969065666199,0.0011713504791259766
+Grocery,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_macro_f1,0.7770540540558079,,
+Grocery,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_macro_f1,0.776415509279796,,
+Grocery,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_macro_f1,0.7577949115008813,,
+Grocery,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7770540540558079,0.7741616326008687,0.002892421454939176
+Grocery,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.776415509279796,0.7720183969088763,0.004397112370919665
+Grocery,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7577949115008813,0.7585685648825388,-0.0007736533816574687
+Grocery,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7770540540558079,0.7834218682717523,-0.006367814215944456
+Grocery,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.776415509279796,0.7740133567067649,0.0024021525730311133
+Grocery,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7577949115008813,0.7576182620859109,0.00017664941497042008
+Grocery,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_ce,0.6688576936721802,,
+Grocery,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_ce,0.6446682214736938,,
+Grocery,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_ce,0.748619019985199,,
+Grocery,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_ce,0.6688576936721802,0.6665888428688049,0.002268850803375244
+Grocery,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_ce,0.6446682214736938,0.6060296893119812,0.038638532161712646
+Grocery,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_ce,0.748619019985199,0.7347506284713745,0.013868391513824463
+Grocery,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_ce,0.6688576936721802,0.6767560839653015,-0.007898390293121338
+Grocery,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_ce,0.6446682214736938,0.6349906325340271,0.009677588939666748
+Grocery,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_ce,0.748619019985199,0.7746177911758423,-0.02599877119064331
+Grocery,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_acc,0.8357247710227966,0.8360175490379333,-0.00029277801513671875
+Grocery,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_acc,0.8430454134941101,0.8404099345207214,0.002635478973388672
+Grocery,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_acc,0.8368960618972778,0.8316251635551453,0.005270898342132568
+Grocery,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_macro_f1,0.7535338622822272,0.768572301583857,-0.015038439301629847
+Grocery,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_macro_f1,0.7725659941875205,0.7735374051315097,-0.000971410943989226
+Grocery,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_macro_f1,0.7530651000772597,0.7506411551616169,0.002423944915642795
+Grocery,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_ce,0.6249127388000488,0.6508293747901917,-0.025916635990142822
+Grocery,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_ce,0.6049320101737976,0.6165319085121155,-0.011599898338317871
+Grocery,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_ce,0.6879338026046753,0.6866210699081421,0.0013127326965332031
+Grocery,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_acc,0.8339678049087524,0.8348462581634521,-0.000878453254699707
+Grocery,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_acc,0.8392386436462402,0.838653028011322,0.0005856156349182129
+Grocery,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_acc,0.8298682570457458,0.826061487197876,0.003806769847869873
+Grocery,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_macro_f1,0.7770540540558079,0.77585258850862,0.0012014655471878077
+Grocery,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_macro_f1,0.776415509279796,0.7787401515836075,-0.002324642303811575
+Grocery,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_macro_f1,0.7577949115008813,0.75318852916643,0.00460638233445132
+Grocery,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_ce,0.6688576936721802,0.6403087377548218,0.0285489559173584
+Grocery,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_ce,0.6446682214736938,0.6266748905181885,0.01799333095550537
+Grocery,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_ce,0.748619019985199,0.7337175011634827,0.014901518821716309
+ele-fashion,H1_hybrid,42,Best-Accuracy,within_condition,val_acc,0.8746036887168884,,
+ele-fashion,H1_hybrid,43,Best-Accuracy,within_condition,val_acc,0.8767515420913696,,
+ele-fashion,H1_hybrid,44,Best-Accuracy,within_condition,val_acc,0.8745014071464539,,
+ele-fashion,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_acc,0.8746036887168884,0.877365231513977,-0.002761542797088623
+ele-fashion,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_acc,0.8767515420913696,0.8762401342391968,0.0005114078521728516
+ele-fashion,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_acc,0.8745014071464539,0.8736831545829773,0.0008182525634765625
+ele-fashion,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_acc,0.8746036887168884,0.8759332895278931,-0.0013296008110046387
+ele-fashion,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_acc,0.8767515420913696,0.8762401342391968,0.0005114078521728516
+ele-fashion,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_acc,0.8745014071464539,0.8777743577957153,-0.0032729506492614746
+ele-fashion,H1_hybrid,42,Best-Accuracy,within_condition,val_macro_f1,0.7398517030985375,,
+ele-fashion,H1_hybrid,43,Best-Accuracy,within_condition,val_macro_f1,0.7439404681106786,,
+ele-fashion,H1_hybrid,44,Best-Accuracy,within_condition,val_macro_f1,0.736926697684736,,
+ele-fashion,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7398517030985375,0.744572728524771,-0.004721025426233427
+ele-fashion,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7439404681106786,0.7399671898637866,0.003973278246891976
+ele-fashion,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_macro_f1,0.736926697684736,0.7449322620488648,-0.008005564364128803
+ele-fashion,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_macro_f1,0.7398517030985375,0.7487457014719329,-0.008893998373395329
+ele-fashion,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_macro_f1,0.7439404681106786,0.7433441180816172,0.0005963500290614432
+ele-fashion,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_macro_f1,0.736926697684736,0.7616264335465707,-0.024699735861834715
+ele-fashion,H1_hybrid,42,Best-Accuracy,within_condition,val_ce,0.40562182664871216,,
+ele-fashion,H1_hybrid,43,Best-Accuracy,within_condition,val_ce,0.41554224491119385,,
+ele-fashion,H1_hybrid,44,Best-Accuracy,within_condition,val_ce,0.4027200937271118,,
+ele-fashion,H1_hybrid,42,Best-Accuracy,CG-CGE B1,val_ce,0.40562182664871216,0.41576239466667175,-0.010140568017959595
+ele-fashion,H1_hybrid,43,Best-Accuracy,CG-CGE B1,val_ce,0.41554224491119385,0.4169701337814331,-0.0014278888702392578
+ele-fashion,H1_hybrid,44,Best-Accuracy,CG-CGE B1,val_ce,0.4027200937271118,0.4080759286880493,-0.0053558349609375
+ele-fashion,H1_hybrid,42,Best-Accuracy,View-CGE A2,val_ce,0.40562182664871216,0.4085772931575775,-0.0029554665088653564
+ele-fashion,H1_hybrid,43,Best-Accuracy,View-CGE A2,val_ce,0.41554224491119385,0.4562722444534302,-0.04072999954223633
+ele-fashion,H1_hybrid,44,Best-Accuracy,View-CGE A2,val_ce,0.4027200937271118,0.42591243982315063,-0.02319234609603882
+ele-fashion,H1_hybrid,42,Best-F1,within_condition,best_f1_val_acc,0.8710238337516785,,
+ele-fashion,H1_hybrid,43,Best-F1,within_condition,best_f1_val_acc,0.8673416972160339,,
+ele-fashion,H1_hybrid,44,Best-F1,within_condition,best_f1_val_acc,0.8716375231742859,,
+ele-fashion,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_acc,0.8710238337516785,0.8658075332641602,0.0052163004875183105
+ele-fashion,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_acc,0.8673416972160339,0.858954668045044,0.00838702917098999
+ele-fashion,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_acc,0.8716375231742859,0.871126115322113,0.0005114078521728516
+ele-fashion,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_acc,0.8710238337516785,0.8674439787864685,0.003579854965209961
+ele-fashion,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_acc,0.8673416972160339,0.8665234446525574,0.0008182525634765625
+ele-fashion,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_acc,0.8716375231742859,0.8735808730125427,-0.001943349838256836
+ele-fashion,H1_hybrid,42,Best-F1,within_condition,best_f1_val_macro_f1,0.7534414151977707,,
+ele-fashion,H1_hybrid,43,Best-F1,within_condition,best_f1_val_macro_f1,0.7668495734807386,,
+ele-fashion,H1_hybrid,44,Best-F1,within_condition,best_f1_val_macro_f1,0.7565073143795044,,
+ele-fashion,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7534414151977707,0.7624609390303081,-0.009019523832537346
+ele-fashion,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7668495734807386,0.7552117960953385,0.011637777385400061
+ele-fashion,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7565073143795044,0.7596370258900051,-0.0031297115105007878
+ele-fashion,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7534414151977707,0.7619419618729211,-0.008500546675150322
+ele-fashion,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7668495734807386,0.7659249303078636,0.0009246431728749949
+ele-fashion,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7565073143795044,0.7665645349616075,-0.010057220582103121
+ele-fashion,H1_hybrid,42,Best-F1,within_condition,best_f1_val_ce,0.40343528985977173,,
+ele-fashion,H1_hybrid,43,Best-F1,within_condition,best_f1_val_ce,0.4129071533679962,,
+ele-fashion,H1_hybrid,44,Best-F1,within_condition,best_f1_val_ce,0.41899344325065613,,
+ele-fashion,H1_hybrid,42,Best-F1,CG-CGE B1,best_f1_val_ce,0.40343528985977173,0.41327255964279175,-0.00983726978302002
+ele-fashion,H1_hybrid,43,Best-F1,CG-CGE B1,best_f1_val_ce,0.4129071533679962,0.4410665035247803,-0.028159350156784058
+ele-fashion,H1_hybrid,44,Best-F1,CG-CGE B1,best_f1_val_ce,0.41899344325065613,0.41044050455093384,0.00855293869972229
+ele-fashion,H1_hybrid,42,Best-F1,View-CGE A2,best_f1_val_ce,0.40343528985977173,0.42854073643684387,-0.025105446577072144
+ele-fashion,H1_hybrid,43,Best-F1,View-CGE A2,best_f1_val_ce,0.4129071533679962,0.42356157302856445,-0.010654419660568237
+ele-fashion,H1_hybrid,44,Best-F1,View-CGE A2,best_f1_val_ce,0.41899344325065613,0.45335623621940613,-0.03436279296875
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_acc,0.8766492605209351,,
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_acc,0.8778766393661499,,
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_acc,0.8770583868026733,,
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_acc,0.8766492605209351,0.877365231513977,-0.0007159709930419922
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_acc,0.8778766393661499,0.8762401342391968,0.001636505126953125
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_acc,0.8770583868026733,0.8736831545829773,0.003375232219696045
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_acc,0.8766492605209351,0.8759332895278931,0.0007159709930419922
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_acc,0.8778766393661499,0.8762401342391968,0.001636505126953125
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_acc,0.8770583868026733,0.8777743577957153,-0.0007159709930419922
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_macro_f1,0.7504402950022027,,
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_macro_f1,0.7454070109913541,,
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_macro_f1,0.7437303270569583,,
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7504402950022027,0.744572728524771,0.005867566477431696
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7454070109913541,0.7399671898637866,0.005439821127567468
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_macro_f1,0.7437303270569583,0.7449322620488648,-0.0012019349919064615
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_macro_f1,0.7504402950022027,0.7487457014719329,0.0016945935302697945
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_macro_f1,0.7454070109913541,0.7433441180816172,0.0020628929097369353
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_macro_f1,0.7437303270569583,0.7616264335465707,-0.017896106489612373
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,within_condition,val_ce,0.4092547297477722,,
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,within_condition,val_ce,0.4092244505882263,,
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,within_condition,val_ce,0.4153553545475006,,
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,CG-CGE B1,val_ce,0.4092547297477722,0.41576239466667175,-0.006507664918899536
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,CG-CGE B1,val_ce,0.4092244505882263,0.4169701337814331,-0.007745683193206787
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,CG-CGE B1,val_ce,0.4153553545475006,0.4080759286880493,0.007279425859451294
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,View-CGE A2,val_ce,0.4092547297477722,0.4085772931575775,0.0006774365901947021
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,View-CGE A2,val_ce,0.4092244505882263,0.4562722444534302,-0.04704779386520386
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,View-CGE A2,val_ce,0.4153553545475006,0.42591243982315063,-0.010557085275650024
+ele-fashion,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_acc,0.8721489310264587,,
+ele-fashion,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_acc,0.8700010180473328,,
+ele-fashion,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_acc,0.864171028137207,,
+ele-fashion,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_acc,0.8721489310264587,0.8658075332641602,0.006341397762298584
+ele-fashion,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_acc,0.8700010180473328,0.858954668045044,0.011046350002288818
+ele-fashion,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_acc,0.864171028137207,0.871126115322113,-0.006955087184906006
+ele-fashion,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_acc,0.8721489310264587,0.8674439787864685,0.004704952239990234
+ele-fashion,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_acc,0.8700010180473328,0.8665234446525574,0.0034775733947753906
+ele-fashion,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_acc,0.864171028137207,0.8735808730125427,-0.009409844875335693
+ele-fashion,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_macro_f1,0.7592382652970471,,
+ele-fashion,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_macro_f1,0.7635709839722097,,
+ele-fashion,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_macro_f1,0.7621073924281951,,
+ele-fashion,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7592382652970471,0.7624609390303081,-0.0032226737332610167
+ele-fashion,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7635709839722097,0.7552117960953385,0.008359187876871177
+ele-fashion,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_macro_f1,0.7621073924281951,0.7596370258900051,0.002470366538189994
+ele-fashion,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7592382652970471,0.7619419618729211,-0.002703696575873993
+ele-fashion,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7635709839722097,0.7659249303078636,-0.0023539463356538892
+ele-fashion,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_macro_f1,0.7621073924281951,0.7665645349616075,-0.004457142533412339
+ele-fashion,H2_hybrid_plus,42,Best-F1,within_condition,best_f1_val_ce,0.41396090388298035,,
+ele-fashion,H2_hybrid_plus,43,Best-F1,within_condition,best_f1_val_ce,0.40896937251091003,,
+ele-fashion,H2_hybrid_plus,44,Best-F1,within_condition,best_f1_val_ce,0.4465216398239136,,
+ele-fashion,H2_hybrid_plus,42,Best-F1,CG-CGE B1,best_f1_val_ce,0.41396090388298035,0.41327255964279175,0.0006883442401885986
+ele-fashion,H2_hybrid_plus,43,Best-F1,CG-CGE B1,best_f1_val_ce,0.40896937251091003,0.4410665035247803,-0.03209713101387024
+ele-fashion,H2_hybrid_plus,44,Best-F1,CG-CGE B1,best_f1_val_ce,0.4465216398239136,0.41044050455093384,0.036081135272979736
+ele-fashion,H2_hybrid_plus,42,Best-F1,View-CGE A2,best_f1_val_ce,0.41396090388298035,0.42854073643684387,-0.014579832553863525
+ele-fashion,H2_hybrid_plus,43,Best-F1,View-CGE A2,best_f1_val_ce,0.40896937251091003,0.42356157302856445,-0.014592200517654419
+ele-fashion,H2_hybrid_plus,44,Best-F1,View-CGE A2,best_f1_val_ce,0.4465216398239136,0.45335623621940613,-0.006834596395492554
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_acc,0.8766492605209351,0.8746036887168884,0.002045571804046631
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_acc,0.8778766393661499,0.8767515420913696,0.0011250972747802734
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_acc,0.8770583868026733,0.8745014071464539,0.0025569796562194824
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_macro_f1,0.7504402950022027,0.7398517030985375,0.010588591903665123
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_macro_f1,0.7454070109913541,0.7439404681106786,0.001466542880675492
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_macro_f1,0.7437303270569583,0.736926697684736,0.006803629372222342
+ele-fashion,H2_hybrid_plus,42,Best-Accuracy,within-study H1,val_ce,0.4092547297477722,0.40562182664871216,0.0036329030990600586
+ele-fashion,H2_hybrid_plus,43,Best-Accuracy,within-study H1,val_ce,0.4092244505882263,0.41554224491119385,-0.006317794322967529
+ele-fashion,H2_hybrid_plus,44,Best-Accuracy,within-study H1,val_ce,0.4153553545475006,0.4027200937271118,0.012635260820388794
+ele-fashion,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_acc,0.8721489310264587,0.8710238337516785,0.0011250972747802734
+ele-fashion,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_acc,0.8700010180473328,0.8673416972160339,0.002659320831298828
+ele-fashion,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_acc,0.864171028137207,0.8716375231742859,-0.007466495037078857
+ele-fashion,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_macro_f1,0.7592382652970471,0.7534414151977707,0.0057968500992763294
+ele-fashion,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_macro_f1,0.7635709839722097,0.7668495734807386,-0.003278589508528884
+ele-fashion,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_macro_f1,0.7621073924281951,0.7565073143795044,0.005600078048690782
+ele-fashion,H2_hybrid_plus,42,Best-F1,within-study H1,best_f1_val_ce,0.41396090388298035,0.40343528985977173,0.010525614023208618
+ele-fashion,H2_hybrid_plus,43,Best-F1,within-study H1,best_f1_val_ce,0.40896937251091003,0.4129071533679962,-0.003937780857086182
+ele-fashion,H2_hybrid_plus,44,Best-F1,within-study H1,best_f1_val_ce,0.4465216398239136,0.41899344325065613,0.027528196573257446
