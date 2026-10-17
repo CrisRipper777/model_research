@@ -1,0 +1,52 @@
+{
+  "checks": [
+    {
+      "dataset": "Movies",
+      "historical_dataset_provenance": {
+        "candidate_fingerprint": true,
+        "physical_edge_index": true,
+        "raw_feature_tensor": true,
+        "semantic_cache_sha256": true,
+        "semantic_feature": true,
+        "v7b_fingerprint": true
+      },
+      "paired_initialization": true,
+      "split_cache_feature_match": true
+    },
+    {
+      "dataset": "Grocery",
+      "historical_dataset_provenance": {
+        "candidate_fingerprint": true,
+        "physical_edge_index": true,
+        "raw_feature_tensor": true,
+        "semantic_cache_sha256": true,
+        "semantic_feature": true,
+        "v7b_fingerprint": true
+      },
+      "paired_initialization": true,
+      "split_cache_feature_match": true
+    },
+    {
+      "dataset": "ele-fashion",
+      "historical_dataset_provenance": {
+        "candidate_fingerprint": true,
+        "physical_edge_index": true,
+        "raw_feature_tensor": true,
+        "semantic_cache_sha256": true,
+        "semantic_feature": true,
+        "v7b_fingerprint": true
+      },
+      "paired_initialization": true,
+      "split_cache_feature_match": true
+    },
+    "finite train/validation metrics",
+    "Test disabled and masked",
+    "checkpoint hash/reload verified",
+    "validation RNG unchanged"
+  ],
+  "completed_runs": 6,
+  "created_utc": "2026-10-17T16:34:34+00:00",
+  "performance_threshold_used": false,
+  "seed": 42,
+  "status": "pass"
+}

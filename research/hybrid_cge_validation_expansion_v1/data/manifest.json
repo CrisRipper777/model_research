@@ -6,8 +6,9 @@
     "rolemag"
   ],
   "branch": "exp/hybrid_cge_validation_expansion_v1",
-  "completed_runs": 0,
-  "created_utc": "2026-10-17T16:15:22+00:00",
+  "completed_run_rows": 84,
+  "completed_runs": 84,
+  "created_utc": "2026-10-17T17:55:42+00:00",
   "datasets": [
     "Grocery",
     "Movies",
@@ -64,8 +65,28 @@
     "torch_geometric": "2.7.0",
     "visible_devices": null
   },
-  "formal_training_started": false,
-  "generalization_condition_selected": null,
+  "formal_run_audit": {
+    "baseline_grid_cells": 60,
+    "best_accuracy_checkpoint_hashes_verified": 84,
+    "best_f1_checkpoint_hashes_verified": 69,
+    "complete_rows": 84,
+    "finite_train_validation_metric_rows": 84,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "note": "GPU 1 was occupied by another user and left untouched.",
+    "optimization_initial_model_and_classifier_pairs_matched": 18,
+    "physical_gpu_index": 0,
+    "raw_feature_physical_graph_and_split_fingerprint_groups_checked": 15,
+    "run_rows": 84,
+    "source_git_sha": "2f585c745fa88b55a87f07eb3260a2b49b133f0c",
+    "status": "pass",
+    "test_evaluation_disabled_rows": 84,
+    "test_labels_used": false,
+    "validation_rng_unchanged_rows": 84
+  },
+  "formal_training_completed": true,
+  "formal_training_source_commit": "2f585c745fa88b55a87f07eb3260a2b49b133f0c",
+  "formal_training_started": true,
+  "generalization_condition_selected": "H2-Frozen",
   "historical_H2_data_provenance": {
     "checked_utc": "2026-10-17T16:18:33+00:00",
     "datasets": {
@@ -104,7 +125,8 @@
   },
   "historical_H2_rerun": false,
   "hybrid_implementation_freeze_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
-  "implementation_freeze_status": "preparing",
+  "implementation_freeze_commit": "2f585c745fa88b55a87f07eb3260a2b49b133f0c",
+  "implementation_freeze_status": "frozen_before_formal_training",
   "optimization_conditions": [
     "H2-R1",
     "H2-R2"
@@ -115,6 +137,12 @@
   "preflight_passed": 24,
   "preparation_failures": 2,
   "protocol_version": "unified_full_graph_nc_v1",
+  "run_status_counts": {
+    "baselines": 60,
+    "generalization": 6,
+    "optimization": 18
+  },
+  "selected_global_config": "H2-Frozen",
   "study": "Hybrid-CGE V1.1 Validation Expansion V1",
   "test_evaluation": false,
   "tests": {
@@ -139,5 +167,6 @@
     "full_skipped": 0,
     "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
     "warnings": 24
-  }
+  },
+  "training_failures": 0
 }

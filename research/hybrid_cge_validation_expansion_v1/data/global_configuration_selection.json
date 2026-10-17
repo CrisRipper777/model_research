@@ -1,0 +1,95 @@
+{
+  "created_utc": "2026-10-17T17:02:50+00:00",
+  "historical_H2_frozen_rerun": false,
+  "primary_metric": "mean Validation Accuracy over 9 dataset-seed cells",
+  "secondary_metrics": [
+    "same Accuracy checkpoint Macro-F1",
+    "Best-F1 checkpoint Macro-F1",
+    "Validation CE",
+    "Train-Validation gaps"
+  ],
+  "selected_global_config": "H2-Frozen",
+  "selection_rule": "choose higher-mean-Accuracy new configuration only if it exceeds historical H2-Frozen; otherwise keep H2-Frozen; ties among new configs break by mean Macro-F1 then lower CE",
+  "selection_scope": "Movies/Grocery/ele-fashion Validation only; paired seeds 42/43/44",
+  "summaries": {
+    "H2-Frozen": {
+      "mean_best_f1_macro_f1": 0.6802012790129234,
+      "mean_train_val_accuracy_gap": 0.08488268322414821,
+      "mean_train_val_macro_f1_gap": 0.13900235143414685,
+      "mean_val_accuracy": 0.7611788709958395,
+      "mean_val_ce": 0.8000680969821082,
+      "mean_val_macro_f1": 0.6680145085741385,
+      "n": 9,
+      "per_dataset": {
+        "Grocery": {
+          "val_acc": 0.8385554154713949,
+          "val_ce": 0.6392595171928406,
+          "val_macro_f1": 0.7597216521823359
+        },
+        "Movies": {
+          "val_acc": 0.567786435286204,
+          "val_ce": 1.3496665954589844,
+          "val_macro_f1": 0.4977959958565745
+        },
+        "ele-fashion": {
+          "val_acc": 0.8771947622299194,
+          "val_ce": 0.4112781782944997,
+          "val_macro_f1": 0.746525877683505
+        }
+      }
+    },
+    "H2-R1": {
+      "mean_best_f1_macro_f1": 0.6799233088147068,
+      "mean_train_val_accuracy_gap": 0.09193607833650377,
+      "mean_train_val_macro_f1_gap": 0.14581269546447762,
+      "mean_val_accuracy": 0.7593640817536248,
+      "mean_val_ce": 0.8077232241630554,
+      "mean_val_macro_f1": 0.67027085581863,
+      "n": 9,
+      "per_dataset": {
+        "Grocery": {
+          "val_acc": 0.8363104065259298,
+          "val_ce": 0.6366972923278809,
+          "val_macro_f1": 0.7659434618902926
+        },
+        "Movies": {
+          "val_acc": 0.5645870765050253,
+          "val_ce": 1.353266954421997,
+          "val_macro_f1": 0.4935299061996794
+        },
+        "ele-fashion": {
+          "val_acc": 0.8771947622299194,
+          "val_ce": 0.43320542573928833,
+          "val_macro_f1": 0.7513391993659181
+        }
+      }
+    },
+    "H2-R2": {
+      "mean_best_f1_macro_f1": 0.6761712721854112,
+      "mean_train_val_accuracy_gap": 0.09405601024627686,
+      "mean_train_val_macro_f1_gap": 0.1510376207538194,
+      "mean_val_accuracy": 0.7591139276822408,
+      "mean_val_ce": 0.8152002096176147,
+      "mean_val_macro_f1": 0.6698352582792921,
+      "n": 9,
+      "per_dataset": {
+        "Grocery": {
+          "val_acc": 0.8368960618972778,
+          "val_ce": 0.6509803732236227,
+          "val_macro_f1": 0.7657051706091238
+        },
+        "Movies": {
+          "val_acc": 0.5633873343467712,
+          "val_ce": 1.3719487190246582,
+          "val_macro_f1": 0.49123032132137673
+        },
+        "ele-fashion": {
+          "val_acc": 0.8770583868026733,
+          "val_ce": 0.4226715366045634,
+          "val_macro_f1": 0.7525702829073758
+        }
+      }
+    }
+  },
+  "test_used": false
+}
