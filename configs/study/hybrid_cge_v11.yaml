@@ -1,0 +1,21 @@
+name: hybrid_cge_v11
+source_branch: exp/cg_cge_v1_complementary_experts
+source_commit: a7040189ee1237c80ebe2203ca3d204be4c43462
+protocol: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+conditions: [H1_hybrid, H2_hybrid_plus]
+seeds: [42, 43, 44]
+optimizer: AdamW
+learning_rate: 0.001
+weight_decay: 0.0001
+dropout: 0.2
+epochs: 300
+patience: 30
+early_stop_min_epoch: 30
+early_stop_min_delta: 0.0001
+grad_clip: 1.0
+checkpoint_selection: validation_accuracy
+save_best_validation_macro_f1: true
+private_auxiliary_ce_weight: 0.3
+evaluate_test: false
+first_batch_seed: 42

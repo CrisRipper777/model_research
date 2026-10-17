@@ -1,0 +1,1322 @@
+{
+  "branch": "exp/hybrid_cge_v11",
+  "completed_utc": "2026-10-17T07:50:04Z",
+  "conditions": [
+    "H1_hybrid",
+    "H2_hybrid_plus"
+  ],
+  "datasets": {
+    "Grocery": {
+      "cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "seeds": {
+        "42": {
+          "fingerprints": {
+            "features": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+            "physical_edge_index": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+            "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+            "train_val_split": {
+              "test_idx": "e5317f83fc623b24ef510b85f9a90a3d8ff414a6b5927457278f2aa0d784ef33",
+              "train_idx": "b3167848262ee4f9541843d4080a0d8834c1de5251e710b34cef8ef3c6ddcca0",
+              "train_val_labels": "e7f814b5dccd34fd262a88cffdd1f46c7874bafadc06aa5f404965a5563fc254",
+              "val_idx": "0e84f61879f9bd0baa2a24a373dc579cef85a6e112e1f3dc75783448eaa851de"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_42/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "9187217",
+                "best_accuracy_checkpoint_sha256": "50cfcc0118e7d9a8fec867b3969828a4b2d92430b8aed8bd2e7d4a9a56fa611b",
+                "best_accuracy_epoch": "78",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_42/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "9186099",
+                "best_f1_checkpoint_sha256": "3c264ade21034b6f7c2780293f61dd3f83d114a9c35f4cb9e3981c7b8f5ff092",
+                "best_f1_epoch": "94",
+                "best_f1_train_acc": "0.9500195384025574",
+                "best_f1_train_ce": "0.1822155863046646",
+                "best_f1_train_macro_f1": "0.9353958392676116",
+                "best_f1_train_val_acc_gap": "0.1198585033416748",
+                "best_f1_train_val_ce_gap": "-0.4843732565641403",
+                "best_f1_train_val_macro_f1_gap": "0.16123420666674293",
+                "best_f1_val_acc": "0.8301610350608826",
+                "best_f1_val_ce": "0.6665888428688049",
+                "best_f1_val_macro_f1": "0.7741616326008687",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "Grocery",
+                "epochs_completed": "108",
+                "error": "",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+                "initial_model_sha256": "2d4f4579bdca17bf132dc48accd6fafd98e3d92005cfcd9a838d1cf3b3905320",
+                "mean_epoch_wall_seconds": "0.27149994279413175",
+                "model_parameters": "2268128",
+                "model_total_parameters": "2276320",
+                "peak_allocated_bytes": "3833776640",
+                "peak_reserved_bytes": "4395630592",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_42/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_42/attempt_01/run_metrics.json",
+                "seed": "42",
+                "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.9329363703727722",
+                "train_ce": "0.2650739252567291",
+                "train_ce_eval": "0.23801463842391968",
+                "train_macro_f1": "0.9080856802537985",
+                "train_val_acc_gap": "0.09721159934997559",
+                "train_val_ce_gap": "-0.39655762910842896",
+                "train_val_macro_f1_gap": "0.137496319957641",
+                "trainable_optimizer_parameters": "2273268",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+                "val_acc": "0.8357247710227966",
+                "val_ce": "0.6345722675323486",
+                "val_macro_f1": "0.7705893602961575",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "37.81542158080265"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+              "model_parameters": 2268134,
+              "model_sha256": "fc969013e646ae9027b4d445a255ce08351f6cccb4d5efa337ea76cd79d8bc1a",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+              "model_parameters": 2268134,
+              "model_sha256": "fc969013e646ae9027b4d445a255ce08351f6cccb4d5efa337ea76cd79d8bc1a",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 3415,
+          "test_labels_masked": true,
+          "train_count": 10244,
+          "validation_count": 3415
+        },
+        "43": {
+          "fingerprints": {
+            "features": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+            "physical_edge_index": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+            "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7",
+            "train_val_split": {
+              "test_idx": "0bf673563075ef034aa7e0e60f13afe6e81c0b8259647b09abd3e1d5dae73a15",
+              "train_idx": "4982af6a8f9e0176a4362e632713bafaa84a7c966ab0976be7de3f1143edca03",
+              "train_val_labels": "947b1ce4f6852aafba73192c1592f3c2f941a7120840486cacf790fb009194ac",
+              "val_idx": "8dba12f515332e6dc6e9f9546d21b434c3522ba5e9e8168c4b6e2a97ced29608"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_43/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "9184145",
+                "best_accuracy_checkpoint_sha256": "ae6af0490b9e9b793741f3738e9397e85d367b3b3c189c6ea1738056f45c4999",
+                "best_accuracy_epoch": "58",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_43/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "9183027",
+                "best_f1_checkpoint_sha256": "883395a154a5bb9c46d266cb0686c47de4ee670c9bdf23fb5e4f3c40abe06669",
+                "best_f1_epoch": "57",
+                "best_f1_train_acc": "0.8966224193572998",
+                "best_f1_train_ce": "0.3455914556980133",
+                "best_f1_train_macro_f1": "0.8529838254106922",
+                "best_f1_train_val_acc_gap": "0.05855506658554077",
+                "best_f1_train_val_ce_gap": "-0.2604382336139679",
+                "best_f1_train_val_macro_f1_gap": "0.08096542850181587",
+                "best_f1_val_acc": "0.838067352771759",
+                "best_f1_val_ce": "0.6060296893119812",
+                "best_f1_val_macro_f1": "0.7720183969088763",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "Grocery",
+                "epochs_completed": "88",
+                "error": "",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+                "initial_model_sha256": "ed78d8ed593dbbb30c0a7e7c60a552c490c3c3ad4445924139e8184c3de80aa7",
+                "mean_epoch_wall_seconds": "0.27960806333100086",
+                "model_parameters": "2268128",
+                "model_total_parameters": "2276320",
+                "peak_allocated_bytes": "3833776640",
+                "peak_reserved_bytes": "4395630592",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_43/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_43/attempt_01/run_metrics.json",
+                "seed": "43",
+                "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.8975985646247864",
+                "train_ce": "0.3497960567474365",
+                "train_ce_eval": "0.3396134674549103",
+                "train_macro_f1": "0.8522736130925379",
+                "train_val_acc_gap": "0.05660295486450195",
+                "train_val_ce_gap": "-0.261872798204422",
+                "train_val_macro_f1_gap": "0.08395236493831726",
+                "trainable_optimizer_parameters": "2273268",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+                "val_acc": "0.8409956097602844",
+                "val_ce": "0.6014862656593323",
+                "val_macro_f1": "0.7683212481542206",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "31.71176504297182"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+              "model_parameters": 2268134,
+              "model_sha256": "33eedb97a4ef10686c25e097769f5a1af8dc285a487180c7a02f3dbff789910b",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+              "model_parameters": 2268134,
+              "model_sha256": "33eedb97a4ef10686c25e097769f5a1af8dc285a487180c7a02f3dbff789910b",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 3415,
+          "test_labels_masked": true,
+          "train_count": 10244,
+          "validation_count": 3415
+        },
+        "44": {
+          "fingerprints": {
+            "features": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+            "physical_edge_index": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+            "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783",
+            "train_val_split": {
+              "test_idx": "6ae29cec6bf132f3975a8de104d712d7e048dec555e73838479631f81a6a8326",
+              "train_idx": "4bc2b59314efa0b4f0d520ae8568c1c05091e8d0426c4c602b864d34608f63f5",
+              "train_val_labels": "e761fbf1efdc1d1a43d487618d89442d4511ba1267975db99a8cac743aab9197",
+              "val_idx": "0c85df0b875aef935e3327ebe8a379f2d429f0a48f02706b0da29fde3c029138"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+                "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_44/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "9190801",
+                "best_accuracy_checkpoint_sha256": "a445838b2ce8d946ca2b3207e1633b5df206dfb5e48d8c9f3d7cd8fd6b71121a",
+                "best_accuracy_epoch": "101",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_44/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "9189683",
+                "best_f1_checkpoint_sha256": "474cf9cedc7b117fcf7408df5323e2c3f4aed6a8cc44aec5870c974b30d972c7",
+                "best_f1_epoch": "119",
+                "best_f1_train_acc": "0.9672979116439819",
+                "best_f1_train_ce": "0.11569006741046906",
+                "best_f1_train_macro_f1": "0.95861129265841",
+                "best_f1_train_val_acc_gap": "0.14094358682632446",
+                "best_f1_train_val_ce_gap": "-0.6190605610609055",
+                "best_f1_train_val_macro_f1_gap": "0.2000427277758713",
+                "best_f1_val_acc": "0.8263543248176575",
+                "best_f1_val_ce": "0.7347506284713745",
+                "best_f1_val_macro_f1": "0.7585685648825388",
+                "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "Grocery",
+                "epochs_completed": "131",
+                "error": "",
+                "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+                "initial_model_sha256": "a9d0bf12612b2697e9840bac7d19cd67707405fe40cb7e5cc2d4ac05351995b2",
+                "mean_epoch_wall_seconds": "0.31707443597278634",
+                "model_parameters": "2268128",
+                "model_total_parameters": "2276320",
+                "peak_allocated_bytes": "3833776640",
+                "peak_reserved_bytes": "4395630592",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_44/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Grocery/B1_complementary/seed_44/attempt_01/run_metrics.json",
+                "seed": "44",
+                "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+                "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.9593908786773682",
+                "train_ce": "0.17747226357460022",
+                "train_ce_eval": "0.1498682200908661",
+                "train_macro_f1": "0.9482984261079963",
+                "train_val_acc_gap": "0.1271800398826599",
+                "train_val_ce_gap": "-0.5571930110454559",
+                "train_val_macro_f1_gap": "0.19471553128084085",
+                "trainable_optimizer_parameters": "2273268",
+                "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+                "val_acc": "0.8322108387947083",
+                "val_ce": "0.707061231136322",
+                "val_macro_f1": "0.7535828948271555",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "52.10615461226553"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+              "model_parameters": 2268134,
+              "model_sha256": "019bd70e32174f817e3977f66e379cc744faf38a16a918f09116f37701bb37cc",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+              "model_parameters": 2268134,
+              "model_sha256": "019bd70e32174f817e3977f66e379cc744faf38a16a918f09116f37701bb37cc",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 3415,
+          "test_labels_masked": true,
+          "train_count": 10244,
+          "validation_count": 3415
+        }
+      },
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "Movies": {
+      "cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "seeds": {
+        "42": {
+          "fingerprints": {
+            "features": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+            "physical_edge_index": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+            "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+            "train_val_split": {
+              "test_idx": "abc60824e43fd59741e117b3bd9eb3048ab24df0fde2a9f352b216935efad74a",
+              "train_idx": "9785bafabb1328d47db953f89bf7a3384e6f3edeb0b31b06338cf6ca8f225330",
+              "train_val_labels": "9da188886ea7d8c181be5e5c79f042ef1ae95d78996c346396a14acf2a0db101",
+              "val_idx": "15d61cf932cb045c6af6c633e7a5ca628cb0f858e2ba4195ab602c295b70c092"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_04/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "9190353",
+                "best_accuracy_checkpoint_sha256": "f52d7ba9be35572dc08b19a22ecce1470bf1c655d036db8062f2e53e45944163",
+                "best_accuracy_epoch": "98",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_04/best_f1.pt",
+                "best_f1_checkpoint_bytes": "9189171",
+                "best_f1_checkpoint_sha256": "13dbfbfa6c6b53329ed283870d1c2f8da4460814269572e76c8eff35c5b51934",
+                "best_f1_epoch": "73",
+                "best_f1_train_acc": "0.7218834161758423",
+                "best_f1_train_ce": "0.8110960125923157",
+                "best_f1_train_macro_f1": "0.7166800699710894",
+                "best_f1_train_val_acc_gap": "0.16189539432525635",
+                "best_f1_train_val_ce_gap": "-0.5668988823890686",
+                "best_f1_train_val_macro_f1_gap": "0.2139566700660629",
+                "best_f1_val_acc": "0.5599880218505859",
+                "best_f1_val_ce": "1.3779948949813843",
+                "best_f1_val_macro_f1": "0.5027233999050265",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "Movies",
+                "epochs_completed": "128",
+                "error": "",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+                "initial_model_sha256": "21937c62a947eae60a5fb2f0872fe4111d55345dd94ea1fffef146cb56a32de3",
+                "mean_epoch_wall_seconds": "0.2897926685254788",
+                "model_parameters": "2268128",
+                "model_total_parameters": "2276320",
+                "peak_allocated_bytes": "3932990464",
+                "peak_reserved_bytes": "4529848320",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_04",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_42/attempt_04/run_metrics.json",
+                "seed": "42",
+                "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.794761598110199",
+                "train_ce": "0.6609464883804321",
+                "train_ce_eval": "0.6120328307151794",
+                "train_macro_f1": "0.7966253887768148",
+                "train_val_acc_gap": "0.22937464714050293",
+                "train_val_ce_gap": "-0.7986891865730286",
+                "train_val_macro_f1_gap": "0.3022309368470626",
+                "trainable_optimizer_parameters": "2273268",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+                "val_acc": "0.565386950969696",
+                "val_ce": "1.410722017288208",
+                "val_macro_f1": "0.4943944519297522",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "46.30275966785848"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+              "model_parameters": 2268134,
+              "model_sha256": "c367d9dd049c61d7b83a82af93d67b2906af38a3917488c03cc55d7d385c256e",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+              "model_parameters": 2268134,
+              "model_sha256": "c367d9dd049c61d7b83a82af93d67b2906af38a3917488c03cc55d7d385c256e",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 3335,
+          "test_labels_masked": true,
+          "train_count": 10003,
+          "validation_count": 3334
+        },
+        "43": {
+          "fingerprints": {
+            "features": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+            "physical_edge_index": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+            "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c",
+            "train_val_split": {
+              "test_idx": "06525e210ba32dea088c4731dbb88354555b570b03027dda6ac0d8d15fe7376c",
+              "train_idx": "d8abc1b351bd26f01554f246745b231b1f383bd7abcca03183f1fcc68aa668f0",
+              "train_val_labels": "9779fe0f56a764dc9e9ea17edaaa3de4564395b30963f341444fbd082310e2af",
+              "val_idx": "40ed0ad641d19cbd6bf992a18e700e6f6b90c0a73f3db15e60205fadf00872b1"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_43/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "9187857",
+                "best_accuracy_checkpoint_sha256": "ca6d3cf16a2152ffdd94903c3cbab9e3f3b5693e832872c3667739408929d31d",
+                "best_accuracy_epoch": "82",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_43/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "9186739",
+                "best_f1_checkpoint_sha256": "b512747b63aa4bc2dc2b1839bc3fe1e18d9deb3c543f3ecfa5e3a39df102925f",
+                "best_f1_epoch": "100",
+                "best_f1_train_acc": "0.7842647433280945",
+                "best_f1_train_ce": "0.645397424697876",
+                "best_f1_train_macro_f1": "0.7940183779169018",
+                "best_f1_train_val_acc_gap": "0.23747408390045166",
+                "best_f1_train_val_ce_gap": "-0.8243257999420166",
+                "best_f1_train_val_macro_f1_gap": "0.28263405795771845",
+                "best_f1_val_acc": "0.5467906594276428",
+                "best_f1_val_ce": "1.4697232246398926",
+                "best_f1_val_macro_f1": "0.5113843199591833",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "Movies",
+                "epochs_completed": "112",
+                "error": "",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+                "initial_model_sha256": "093d49ae41bcaf08db0f908167dd60d5ff6374ed8325e327126f59bf95917340",
+                "mean_epoch_wall_seconds": "0.2794423968381515",
+                "model_parameters": "2268128",
+                "model_total_parameters": "2276320",
+                "peak_allocated_bytes": "3932990464",
+                "peak_reserved_bytes": "4529848320",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_43/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_43/attempt_01/run_metrics.json",
+                "seed": "43",
+                "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.7313805818557739",
+                "train_ce": "0.7910550236701965",
+                "train_ce_eval": "0.7614045143127441",
+                "train_macro_f1": "0.7282548658816455",
+                "train_val_acc_gap": "0.16989290714263916",
+                "train_val_ce_gap": "-0.628570556640625",
+                "train_val_macro_f1_gap": "0.2434617519480693",
+                "trainable_optimizer_parameters": "2273268",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+                "val_acc": "0.5614876747131348",
+                "val_ce": "1.3899750709533691",
+                "val_macro_f1": "0.48479311393357616",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "39.343051408883184"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+              "model_parameters": 2268134,
+              "model_sha256": "905fdb88e13366102412db97d2c666b05e64081833023b67e9ec4a7354af4b0d",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+              "model_parameters": 2268134,
+              "model_sha256": "905fdb88e13366102412db97d2c666b05e64081833023b67e9ec4a7354af4b0d",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 3335,
+          "test_labels_masked": true,
+          "train_count": 10003,
+          "validation_count": 3334
+        },
+        "44": {
+          "fingerprints": {
+            "features": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+            "physical_edge_index": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+            "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563",
+            "train_val_split": {
+              "test_idx": "ae00417f686fdb2fd3962416e030d6c66ce8148572e49e53efc7e5aff40ec131",
+              "train_idx": "fb698803a4a039f0885b8d52e42376a6564f185e793e61bb7e3a1758b6d02d16",
+              "train_val_labels": "32a71e2cc2d7979a02ce3850873fb3b9e9957265fd41d9931bae6c71d3de8653",
+              "val_idx": "928d23550082d94a9839b188bec88c10435298b2d86dec17797655a6448b8018"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+                "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_44/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "9185041",
+                "best_accuracy_checkpoint_sha256": "3c674ed4f14fad1ee3b7398d18a66b93d10d83de5760ba7845cee534a59982d5",
+                "best_accuracy_epoch": "64",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_44/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "9183923",
+                "best_f1_checkpoint_sha256": "af980dd6a80d127cf487f4513ebcc9e8f49726ef73a58f12fa5f11549c66bde2",
+                "best_f1_epoch": "71",
+                "best_f1_train_acc": "0.7056882977485657",
+                "best_f1_train_ce": "0.8425619006156921",
+                "best_f1_train_macro_f1": "0.6829418171620663",
+                "best_f1_train_val_acc_gap": "0.1427009105682373",
+                "best_f1_train_val_ce_gap": "-0.49044400453567505",
+                "best_f1_train_val_macro_f1_gap": "0.16965939035046818",
+                "best_f1_val_acc": "0.5629873871803284",
+                "best_f1_val_ce": "1.3330059051513672",
+                "best_f1_val_macro_f1": "0.5132824268115981",
+                "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "Movies",
+                "epochs_completed": "94",
+                "error": "",
+                "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+                "initial_model_sha256": "b48e5559d7ed763878ae0384ef163095b1c2dca537e33d9113c001185fb4ca37",
+                "mean_epoch_wall_seconds": "0.28858772178794795",
+                "model_parameters": "2268128",
+                "model_total_parameters": "2276320",
+                "peak_allocated_bytes": "3933955072",
+                "peak_reserved_bytes": "4527751168",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_44/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/Movies/B1_complementary/seed_44/attempt_01/run_metrics.json",
+                "seed": "44",
+                "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+                "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.6907927393913269",
+                "train_ce": "0.9205769300460815",
+                "train_ce_eval": "0.8866777420043945",
+                "train_macro_f1": "0.6555121557827259",
+                "train_val_acc_gap": "0.12210649251937866",
+                "train_val_ce_gap": "-0.4385228157043457",
+                "train_val_macro_f1_gap": "0.14637969481384527",
+                "trainable_optimizer_parameters": "2273268",
+                "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+                "val_acc": "0.5686862468719482",
+                "val_ce": "1.3252005577087402",
+                "val_macro_f1": "0.5091324609688807",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "34.233234707731754"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+              "model_parameters": 2268134,
+              "model_sha256": "72b15031537916cbd58cb7fc9c12ea9f7835c84daf83b5f198e581a7f4ddc780",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+              "model_parameters": 2268134,
+              "model_sha256": "72b15031537916cbd58cb7fc9c12ea9f7835c84daf83b5f198e581a7f4ddc780",
+              "model_trainable_parameters": 2268134,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 3335,
+          "test_labels_masked": true,
+          "train_count": 10003,
+          "validation_count": 3334
+        }
+      },
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "ele-fashion": {
+      "cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+      "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "seeds": {
+        "42": {
+          "fingerprints": {
+            "features": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+            "physical_edge_index": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+            "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+            "train_val_split": {
+              "test_idx": "291f9506dd9017adb90e88b0fd8123286d2875ca963d2551bf67a042fbc99f1a",
+              "train_idx": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+              "train_val_labels": "8b731095b5e140750034b5bdd921b560c757e29c2584add11b8e98b276e6f0a5",
+              "val_idx": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_42/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "8124305",
+                "best_accuracy_checkpoint_sha256": "ffb79a602464e87d3d754869f362d32854d84e399fb096bb5656df85d58e4bd6",
+                "best_accuracy_epoch": "145",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_42/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "8123187",
+                "best_f1_checkpoint_sha256": "18b248d071fd0c173d150505a1163b5c8400e68957d5c44b784f4fe5f44a8c15",
+                "best_f1_epoch": "154",
+                "best_f1_train_acc": "0.9062036275863647",
+                "best_f1_train_ce": "0.2578710913658142",
+                "best_f1_train_macro_f1": "0.8609075798523521",
+                "best_f1_train_val_acc_gap": "0.04039609432220459",
+                "best_f1_train_val_ce_gap": "-0.15540146827697754",
+                "best_f1_train_val_macro_f1_gap": "0.09844664082204402",
+                "best_f1_val_acc": "0.8658075332641602",
+                "best_f1_val_ce": "0.41327255964279175",
+                "best_f1_val_macro_f1": "0.7624609390303081",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "ele-fashion",
+                "epochs_completed": "175",
+                "error": "",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "fea9c6599a95b8ac074339169baf05ac0afbec4ce9209baf4c7a856a26614aa5",
+                "initial_model_sha256": "72c06fcf9960dd28f1348b5fb701e2fa3c0233723e938a77b4dd9e80df3c56b9",
+                "mean_epoch_wall_seconds": "1.2207853503684913",
+                "model_parameters": "2001872",
+                "model_total_parameters": "2010064",
+                "peak_allocated_bytes": "17952289792",
+                "peak_reserved_bytes": "19612565504",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_42/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_42/attempt_01/run_metrics.json",
+                "seed": "42",
+                "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.9006631374359131",
+                "train_ce": "0.2998836040496826",
+                "train_ce_eval": "0.27882373332977295",
+                "train_macro_f1": "0.8226291326637264",
+                "train_val_acc_gap": "0.023297905921936035",
+                "train_val_ce_gap": "-0.1369386613368988",
+                "train_val_macro_f1_gap": "0.07805640413895543",
+                "trainable_optimizer_parameters": "2004956",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+                "val_acc": "0.877365231513977",
+                "val_ce": "0.41576239466667175",
+                "val_macro_f1": "0.744572728524771",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "246.98244104580954"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "fea9c6599a95b8ac074339169baf05ac0afbec4ce9209baf4c7a856a26614aa5",
+              "model_parameters": 2001878,
+              "model_sha256": "f50fc4ddb329fa4c53ea3bea038a38e0f917d31ecd6e4ab64c76f0af10066f0b",
+              "model_trainable_parameters": 2001878,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "fea9c6599a95b8ac074339169baf05ac0afbec4ce9209baf4c7a856a26614aa5",
+              "model_parameters": 2001878,
+              "model_sha256": "f50fc4ddb329fa4c53ea3bea038a38e0f917d31ecd6e4ab64c76f0af10066f0b",
+              "model_trainable_parameters": 2001878,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 29330,
+          "test_labels_masked": true,
+          "train_count": 58659,
+          "validation_count": 9777
+        },
+        "43": {
+          "fingerprints": {
+            "features": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+            "physical_edge_index": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+            "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+            "train_val_split": {
+              "test_idx": "291f9506dd9017adb90e88b0fd8123286d2875ca963d2551bf67a042fbc99f1a",
+              "train_idx": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+              "train_val_labels": "8b731095b5e140750034b5bdd921b560c757e29c2584add11b8e98b276e6f0a5",
+              "val_idx": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_43/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "8123857",
+                "best_accuracy_checkpoint_sha256": "e818a36afb060b0a51a31870b39af3fde855ac6931130cefa90fd580203dab63",
+                "best_accuracy_epoch": "142",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_43/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "8122739",
+                "best_f1_checkpoint_sha256": "9c76120bb1f88c65d00f70e6d73cfcfb7cb2c16d2937784af7419fac2b042969",
+                "best_f1_epoch": "169",
+                "best_f1_train_acc": "0.9202339053153992",
+                "best_f1_train_ce": "0.22144731879234314",
+                "best_f1_train_macro_f1": "0.8958762431771444",
+                "best_f1_train_val_acc_gap": "0.061279237270355225",
+                "best_f1_train_val_ce_gap": "-0.21961918473243713",
+                "best_f1_train_val_macro_f1_gap": "0.14066444708180592",
+                "best_f1_val_acc": "0.858954668045044",
+                "best_f1_val_ce": "0.4410665035247803",
+                "best_f1_val_macro_f1": "0.7552117960953385",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "ele-fashion",
+                "epochs_completed": "172",
+                "error": "",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "5b4df115533d26e008a457f845098f5d404800f0a9837b527fad71d7f9a9b098",
+                "initial_model_sha256": "837cec0d86f6ea542ebddc99de88c91625685bda4668ef54bbebb7c58c925990",
+                "mean_epoch_wall_seconds": "1.2520024707259307",
+                "model_parameters": "2001872",
+                "model_total_parameters": "2010064",
+                "peak_allocated_bytes": "17952289792",
+                "peak_reserved_bytes": "19612565504",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_43/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_43/attempt_01/run_metrics.json",
+                "seed": "43",
+                "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.901651918888092",
+                "train_ce": "0.287481427192688",
+                "train_ce_eval": "0.27704930305480957",
+                "train_macro_f1": "0.8303680472045503",
+                "train_val_acc_gap": "0.025411784648895264",
+                "train_val_ce_gap": "-0.13992083072662354",
+                "train_val_macro_f1_gap": "0.09040085734076364",
+                "trainable_optimizer_parameters": "2004956",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+                "val_acc": "0.8762401342391968",
+                "val_ce": "0.4169701337814331",
+                "val_macro_f1": "0.7399671898637866",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "247.32125463802367"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "5b4df115533d26e008a457f845098f5d404800f0a9837b527fad71d7f9a9b098",
+              "model_parameters": 2001878,
+              "model_sha256": "87b0531f06fc9fb9226aae3e0cc9fa6f1fabda3628b0c4b4015884fa05a94e3c",
+              "model_trainable_parameters": 2001878,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "5b4df115533d26e008a457f845098f5d404800f0a9837b527fad71d7f9a9b098",
+              "model_parameters": 2001878,
+              "model_sha256": "87b0531f06fc9fb9226aae3e0cc9fa6f1fabda3628b0c4b4015884fa05a94e3c",
+              "model_trainable_parameters": 2001878,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 29330,
+          "test_labels_masked": true,
+          "train_count": 58659,
+          "validation_count": 9777
+        },
+        "44": {
+          "fingerprints": {
+            "features": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+            "physical_edge_index": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+            "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+            "train_val_split": {
+              "test_idx": "291f9506dd9017adb90e88b0fd8123286d2875ca963d2551bf67a042fbc99f1a",
+              "train_idx": "2b59f09405dd0eea809e7b6c9b1242a2a98d623b623da6f1063075cd9178a5c9",
+              "train_val_labels": "8b731095b5e140750034b5bdd921b560c757e29c2584add11b8e98b276e6f0a5",
+              "val_idx": "35b200b60e37d3bb1695f4f1bf6d95a79b1bd1b1149ea7ebf64a919439cd0d8c"
+            }
+          },
+          "historical_reference_match": {
+            "A2_cross_source": {
+              "actual": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "eligible": true,
+              "expected": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "manifest_match": true,
+              "run_row_match": true
+            },
+            "B1_complementary": {
+              "actual": {
+                "cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+                "protocol": "unified_full_graph_nc_v1",
+                "raw_features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+              },
+              "eligible": true,
+              "protocol_match": true,
+              "reference_row": {
+                "best_accuracy_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_44/attempt_01/best_accuracy.pt",
+                "best_accuracy_checkpoint_bytes": "8121809",
+                "best_accuracy_checkpoint_sha256": "65b17b14f586ac21ce20d1db97ddbc6c2657211993c21b2fd35260668242be5f",
+                "best_accuracy_epoch": "129",
+                "best_f1_checkpoint": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_44/attempt_01/best_f1.pt",
+                "best_f1_checkpoint_bytes": "8120691",
+                "best_f1_checkpoint_sha256": "9f1f54a34a93195a17c3e6e2dbf4d56b8d63b710c204dd5a07447ded2568bcd8",
+                "best_f1_epoch": "144",
+                "best_f1_train_acc": "0.9103803634643555",
+                "best_f1_train_ce": "0.2511729300022125",
+                "best_f1_train_macro_f1": "0.860364353393503",
+                "best_f1_train_val_acc_gap": "0.03925424814224243",
+                "best_f1_train_val_ce_gap": "-0.1592675745487213",
+                "best_f1_train_val_macro_f1_gap": "0.10072732750349789",
+                "best_f1_val_acc": "0.871126115322113",
+                "best_f1_val_ce": "0.41044050455093384",
+                "best_f1_val_macro_f1": "0.7596370258900051",
+                "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+                "condition": "B1_complementary",
+                "cuda_device_name": "NVIDIA GeForce RTX 3090",
+                "dataset": "ele-fashion",
+                "epochs_completed": "159",
+                "error": "",
+                "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+                "formal_source_commit": "c3d32ae3b32e331cb4390b05823dbd36a50d8162",
+                "implementation_freeze_commit": "aac21ef7d4f8d4e25b2dd61cf1ed5fd6b8a67556",
+                "initial_classifier_sha256": "3badd39cca394ffd8377339f812b430b8063d42b394557d7d6ce81d2428f2f4e",
+                "initial_model_sha256": "979840e40dfdc9a9b3793d7fffd89717fa6e219f83b4e57dc03b6975402d4dc8",
+                "mean_epoch_wall_seconds": "1.3185358694900975",
+                "model_parameters": "2001872",
+                "model_total_parameters": "2010064",
+                "peak_allocated_bytes": "17952289792",
+                "peak_reserved_bytes": "19612565504",
+                "role_film_best_accuracy_scale_update_norm": "0.0",
+                "role_film_best_accuracy_shift_update_norm": "0.0",
+                "role_film_parameters": "8192",
+                "role_film_trainable_parameters": "0",
+                "run_dir": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_44/attempt_01",
+                "run_metrics_path": "/hdd1/DataInHere/YHF/model_research/outputs/cg_cge_v1/runs/ele-fashion/B1_complementary/seed_44/attempt_01/run_metrics.json",
+                "seed": "44",
+                "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+                "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+                "status": "complete",
+                "test_evaluation": "False",
+                "train_acc": "0.9019246697425842",
+                "train_ce": "0.28796765208244324",
+                "train_ce_eval": "0.2785322666168213",
+                "train_macro_f1": "0.8312589987121931",
+                "train_val_acc_gap": "0.028241515159606934",
+                "train_val_ce_gap": "-0.12954366207122803",
+                "train_val_macro_f1_gap": "0.08632673666332835",
+                "trainable_optimizer_parameters": "2004956",
+                "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+                "val_acc": "0.8736831545829773",
+                "val_ce": "0.4080759286880493",
+                "val_macro_f1": "0.7449322620488648",
+                "validation_rng_unchanged": "True",
+                "wall_seconds": "241.02922173775733"
+              },
+              "run_row_match": true
+            }
+          },
+          "initialization": {
+            "H1_hybrid": {
+              "classifier_sha256": "3badd39cca394ffd8377339f812b430b8063d42b394557d7d6ce81d2428f2f4e",
+              "model_parameters": 2001878,
+              "model_sha256": "65bde0f6b8bd6623ff468c55e02fcb373ae63227be769145578e639d2af71d69",
+              "model_trainable_parameters": 2001878,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            },
+            "H2_hybrid_plus": {
+              "classifier_sha256": "3badd39cca394ffd8377339f812b430b8063d42b394557d7d6ce81d2428f2f4e",
+              "model_parameters": 2001878,
+              "model_sha256": "65bde0f6b8bd6623ff468c55e02fcb373ae63227be769145578e639d2af71d69",
+              "model_trainable_parameters": 2001878,
+              "role_film_parameter_count": 0,
+              "shared_expert_objects": 4
+            }
+          },
+          "test_count_masked": 29330,
+          "test_labels_masked": true,
+          "train_count": 58659,
+          "validation_count": 9777
+        }
+      },
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    }
+  },
+  "environment": {
+    "cublas_workspace_config": null,
+    "cuda_available": true,
+    "cuda_build": "12.1",
+    "cudnn": 90100,
+    "cudnn_tf32": true,
+    "deterministic_algorithms": false,
+    "device_count": 0,
+    "devices": [],
+    "matmul_tf32": false,
+    "numpy": "2.4.3",
+    "physical_gpu_snapshot": {
+      "available": true,
+      "devices": [
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 231,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 0,
+          "utilization_percent": 0,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 7397,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 1,
+          "utilization_percent": 60,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      ],
+      "error": null
+    },
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "timestamp_utc": "2026-10-17T07:49:27+00:00",
+    "visible_devices": ""
+  },
+  "gpu_training_preflight": null,
+  "parent_commit": "a7040189ee1237c80ebe2203ca3d204be4c43462",
+  "physical_gpu": null,
+  "protocol": "unified_full_graph_nc_v1",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "status": "cpu_data_and_init_pass",
+  "study": "Hybrid-CGE V1.1"
+}
