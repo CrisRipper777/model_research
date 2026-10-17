@@ -1,0 +1,28 @@
+{
+  "executed_utc": "2026-10-17T16:15:22+00:00",
+  "exit_code": 0,
+  "focused_command": "python -m pytest -q tests/test_hybrid_cge_validation_expansion_v1.py",
+  "focused_failed": 0,
+  "focused_passed": 3,
+  "full_command": "python -m pytest -q",
+  "full_failed": 0,
+  "full_passed": 567,
+  "full_skipped": 0,
+  "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
+  "reruns": [
+    {
+      "executed_utc": "2026-10-17T16:19:24+00:00",
+      "focused_command": "conda run --no-capture-output -n yhf_env python -m pytest -q tests/test_hybrid_cge_validation_expansion_v1.py",
+      "focused_failed": 0,
+      "focused_passed": 4,
+      "full_command": "conda run --no-capture-output -n yhf_env python -m pytest -q",
+      "full_duration_seconds": 33.1,
+      "full_failed": 0,
+      "full_passed": 568,
+      "full_skipped": 0,
+      "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
+      "warnings": 24
+    }
+  ],
+  "warnings": 24
+}

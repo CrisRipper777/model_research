@@ -1,0 +1,698 @@
+{
+  "runs": [
+    {
+      "checkpoint_roundtrip": true,
+      "condition": "H2-R1",
+      "created_utc": "2026-10-17T16:10:07+00:00",
+      "cuda_peak_allocated_bytes": 4841227776,
+      "cuda_peak_reserved_bytes": 5282725888,
+      "dataset": "Toys",
+      "dropout_audit": {
+        "custom_late_cross_dropout": 0.15,
+        "nn_dropout_modules": {
+          "comp_router.2": 0.35,
+          "context_encoder.2": 0.35,
+          "experts.0.dropout": 0.35,
+          "experts.1.dropout": 0.35,
+          "experts.2.dropout": 0.35,
+          "experts.3.dropout": 0.35,
+          "fusion_dropout": 0.35,
+          "node_router.2": 0.35,
+          "projectors.text.dropout": 0.35,
+          "projectors.visual.dropout": 0.35
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 4.096553802490234,
+      "loss_finite": true,
+      "model": "hybrid_cge_v11",
+      "node_index_alignment": true,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": "H2-R2",
+      "created_utc": "2026-10-17T16:10:14+00:00",
+      "cuda_peak_allocated_bytes": 4841227776,
+      "cuda_peak_reserved_bytes": 5282725888,
+      "dataset": "Toys",
+      "dropout_audit": {
+        "custom_late_cross_dropout": 0.15,
+        "nn_dropout_modules": {
+          "comp_router.2": 0.3,
+          "context_encoder.2": 0.3,
+          "experts.0.dropout": 0.3,
+          "experts.1.dropout": 0.3,
+          "experts.2.dropout": 0.3,
+          "experts.3.dropout": 0.3,
+          "fusion_dropout": 0.3,
+          "node_router.2": 0.3,
+          "projectors.text.dropout": 0.3,
+          "projectors.visual.dropout": 0.3
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.4799270629882812,
+      "loss_finite": true,
+      "model": "hybrid_cge_v11",
+      "node_index_alignment": true,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": "H2-R1",
+      "created_utc": "2026-10-17T16:10:21+00:00",
+      "cuda_peak_allocated_bytes": 5382871040,
+      "cuda_peak_reserved_bytes": 5905580032,
+      "dataset": "Reddit-S",
+      "dropout_audit": {
+        "custom_late_cross_dropout": 0.15,
+        "nn_dropout_modules": {
+          "comp_router.2": 0.35,
+          "context_encoder.2": 0.35,
+          "experts.0.dropout": 0.35,
+          "experts.1.dropout": 0.35,
+          "experts.2.dropout": 0.35,
+          "experts.3.dropout": 0.35,
+          "fusion_dropout": 0.35,
+          "node_router.2": 0.35,
+          "projectors.text.dropout": 0.35,
+          "projectors.visual.dropout": 0.35
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 4.134152889251709,
+      "loss_finite": true,
+      "model": "hybrid_cge_v11",
+      "node_index_alignment": true,
+      "num_edges": 283080,
+      "num_nodes": 15894,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": "H2-R2",
+      "created_utc": "2026-10-17T16:10:27+00:00",
+      "cuda_peak_allocated_bytes": 5382871040,
+      "cuda_peak_reserved_bytes": 5905580032,
+      "dataset": "Reddit-S",
+      "dropout_audit": {
+        "custom_late_cross_dropout": 0.15,
+        "nn_dropout_modules": {
+          "comp_router.2": 0.3,
+          "context_encoder.2": 0.3,
+          "experts.0.dropout": 0.3,
+          "experts.1.dropout": 0.3,
+          "experts.2.dropout": 0.3,
+          "experts.3.dropout": 0.3,
+          "fusion_dropout": 0.3,
+          "node_router.2": 0.3,
+          "projectors.text.dropout": 0.3,
+          "projectors.visual.dropout": 0.3
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.5084779262542725,
+      "loss_finite": true,
+      "model": "hybrid_cge_v11",
+      "node_index_alignment": true,
+      "num_edges": 283080,
+      "num_nodes": 15894,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:10:49+00:00",
+      "cuda_peak_allocated_bytes": 265568256,
+      "cuda_peak_reserved_bytes": 299892736,
+      "dataset": "Movies",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "encoder.3": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.0201809406280518,
+      "loss_finite": true,
+      "model": "mlp",
+      "node_index_alignment": true,
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:10:54+00:00",
+      "cuda_peak_allocated_bytes": 1303250432,
+      "cuda_peak_reserved_bytes": 1325400064,
+      "dataset": "Movies",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "dropout": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.1045265197753906,
+      "loss_finite": true,
+      "model": "sage",
+      "node_index_alignment": true,
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:10:59+00:00",
+      "cuda_peak_allocated_bytes": 974770688,
+      "cuda_peak_reserved_bytes": 1065353216,
+      "dataset": "Movies",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "t_branch.dropout": 0.5,
+          "v_branch.dropout": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.919104814529419,
+      "loss_finite": true,
+      "model": "mmgcn",
+      "node_index_alignment": true,
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:05+00:00",
+      "cuda_peak_allocated_bytes": 7457180672,
+      "cuda_peak_reserved_bytes": 8411676672,
+      "dataset": "Movies",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "core.base_fuse.2": 0.2,
+          "core.comp_expert.merge.2": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.977102279663086,
+      "loss_finite": true,
+      "model": "rolemag",
+      "node_index_alignment": true,
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:11+00:00",
+      "cuda_peak_allocated_bytes": 271431168,
+      "cuda_peak_reserved_bytes": 327155712,
+      "dataset": "Grocery",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "encoder.3": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.0397233963012695,
+      "loss_finite": true,
+      "model": "mlp",
+      "node_index_alignment": true,
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:17+00:00",
+      "cuda_peak_allocated_bytes": 1195929600,
+      "cuda_peak_reserved_bytes": 1222639616,
+      "dataset": "Grocery",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "dropout": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.0004029273986816,
+      "loss_finite": true,
+      "model": "sage",
+      "node_index_alignment": true,
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:23+00:00",
+      "cuda_peak_allocated_bytes": 927424000,
+      "cuda_peak_reserved_bytes": 1438646272,
+      "dataset": "Grocery",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "t_branch.dropout": 0.5,
+          "v_branch.dropout": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.092639446258545,
+      "loss_finite": true,
+      "model": "mmgcn",
+      "node_index_alignment": true,
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:30+00:00",
+      "cuda_peak_allocated_bytes": 6714199552,
+      "cuda_peak_reserved_bytes": 7486832640,
+      "dataset": "Grocery",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "core.base_fuse.2": 0.2,
+          "core.comp_expert.merge.2": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.020385503768921,
+      "loss_finite": true,
+      "model": "rolemag",
+      "node_index_alignment": true,
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:36+00:00",
+      "cuda_peak_allocated_bytes": 1120394752,
+      "cuda_peak_reserved_bytes": 1258291200,
+      "dataset": "ele-fashion",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "encoder.3": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.528482675552368,
+      "loss_finite": true,
+      "model": "mlp",
+      "node_index_alignment": true,
+      "num_edges": 399172,
+      "num_nodes": 97766,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:43+00:00",
+      "cuda_peak_allocated_bytes": 2848178176,
+      "cuda_peak_reserved_bytes": 2868903936,
+      "dataset": "ele-fashion",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "dropout": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.5889759063720703,
+      "loss_finite": true,
+      "model": "sage",
+      "node_index_alignment": true,
+      "num_edges": 399172,
+      "num_nodes": 97766,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:49+00:00",
+      "cuda_peak_allocated_bytes": 2956577792,
+      "cuda_peak_reserved_bytes": 3841982464,
+      "dataset": "ele-fashion",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "t_branch.dropout": 0.5,
+          "v_branch.dropout": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.6172561645507812,
+      "loss_finite": true,
+      "model": "mmgcn",
+      "node_index_alignment": true,
+      "num_edges": 399172,
+      "num_nodes": 97766,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:11:56+00:00",
+      "cuda_peak_allocated_bytes": 21740072448,
+      "cuda_peak_reserved_bytes": 24385683456,
+      "dataset": "ele-fashion",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "core.base_fuse.2": 0.2,
+          "core.comp_expert.merge.2": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.5057601928710938,
+      "loss_finite": true,
+      "model": "rolemag",
+      "node_index_alignment": true,
+      "num_edges": 399172,
+      "num_nodes": 97766,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:02+00:00",
+      "cuda_peak_allocated_bytes": 324008448,
+      "cuda_peak_reserved_bytes": 385875968,
+      "dataset": "Toys",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "encoder.3": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.943464517593384,
+      "loss_finite": true,
+      "model": "mlp",
+      "node_index_alignment": true,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:07+00:00",
+      "cuda_peak_allocated_bytes": 1086809600,
+      "cuda_peak_reserved_bytes": 1109393408,
+      "dataset": "Toys",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "dropout": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.9639883041381836,
+      "loss_finite": true,
+      "model": "sage",
+      "node_index_alignment": true,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:13+00:00",
+      "cuda_peak_allocated_bytes": 939757056,
+      "cuda_peak_reserved_bytes": 1371537408,
+      "dataset": "Toys",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "t_branch.dropout": 0.5,
+          "v_branch.dropout": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.9581146240234375,
+      "loss_finite": true,
+      "model": "mmgcn",
+      "node_index_alignment": true,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:19+00:00",
+      "cuda_peak_allocated_bytes": 5908874752,
+      "cuda_peak_reserved_bytes": 6736052224,
+      "dataset": "Toys",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "core.base_fuse.2": 0.2,
+          "core.comp_expert.merge.2": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.897416114807129,
+      "loss_finite": true,
+      "model": "rolemag",
+      "node_index_alignment": true,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:25+00:00",
+      "cuda_peak_allocated_bytes": 260198400,
+      "cuda_peak_reserved_bytes": 283115520,
+      "dataset": "Reddit-S",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "encoder.3": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.0411794185638428,
+      "loss_finite": true,
+      "model": "mlp",
+      "node_index_alignment": true,
+      "num_edges": 283080,
+      "num_nodes": 15894,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:30+00:00",
+      "cuda_peak_allocated_bytes": 2043890688,
+      "cuda_peak_reserved_bytes": 2063597568,
+      "dataset": "Reddit-S",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "dropout": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 2.9871325492858887,
+      "loss_finite": true,
+      "model": "sage",
+      "node_index_alignment": true,
+      "num_edges": 283080,
+      "num_nodes": 15894,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:36+00:00",
+      "cuda_peak_allocated_bytes": 1333580800,
+      "cuda_peak_reserved_bytes": 2264924160,
+      "dataset": "Reddit-S",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "t_branch.dropout": 0.5,
+          "v_branch.dropout": 0.5
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.1221444606781006,
+      "loss_finite": true,
+      "model": "mmgcn",
+      "node_index_alignment": true,
+      "num_edges": 283080,
+      "num_nodes": 15894,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    },
+    {
+      "checkpoint_roundtrip": true,
+      "condition": null,
+      "created_utc": "2026-10-17T16:12:42+00:00",
+      "cuda_peak_allocated_bytes": 12211461632,
+      "cuda_peak_reserved_bytes": 13205766144,
+      "dataset": "Reddit-S",
+      "dropout_audit": {
+        "custom_late_cross_dropout": null,
+        "nn_dropout_modules": {
+          "core.base_fuse.2": 0.2,
+          "core.comp_expert.merge.2": 0.2
+        }
+      },
+      "forward_finite": true,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradients_finite": true,
+      "loss": 3.0145182609558105,
+      "loss_finite": true,
+      "model": "rolemag",
+      "node_index_alignment": true,
+      "num_edges": 283080,
+      "num_nodes": 15894,
+      "seed": 42,
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true
+    }
+  ]
+}

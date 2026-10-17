@@ -1,0 +1,61 @@
+study: hybrid_cge_validation_expansion_v1
+protocol_version: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion, Toys, Reddit-S]
+optimization_datasets: [Movies, Grocery, ele-fashion]
+generalization_datasets: [Toys, Reddit-S]
+baselines: [mlp, sage, mmgcn, rolemag]
+seeds: [42, 43, 44]
+
+training:
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  grad_clip: 1.0
+  eval_every: 1
+  evaluate_test: false
+  batch_size: 1024
+  inference_mode: full
+  inference_batch_size: 4096
+  aux_weight: 1.0
+  private_auxiliary_ce:
+    H2-Frozen: 0.30
+    H2-R1: 0.30
+    H2-R2: 0.10
+
+conditions:
+  H2-Frozen:
+    model: hybrid_cge_v11
+    condition: H2_hybrid_plus
+    dropout: 0.20
+    weight_decay: 0.0001
+    late_cross_dropout: 0.15
+    source: historical_research_hybrid_cge_v11
+  H2-R1:
+    model: hybrid_cge_v11
+    condition: H2_hybrid_plus
+    dropout: 0.35
+    weight_decay: 0.0001
+    late_cross_dropout: 0.15
+    source: newly_trained
+  H2-R2:
+    model: hybrid_cge_v11
+    condition: H2_hybrid_plus
+    dropout: 0.30
+    weight_decay: 0.001
+    late_cross_dropout: 0.15
+    source: newly_trained
+
+cache:
+  semantic: V7B.1
+  k: 8
+  normalization: mean_center_then_row_l2
+  candidate_features_only: true
+
+selection:
+  primary_metric: validation_accuracy
+  secondary_metrics: [validation_macro_f1, validation_cross_entropy, train_validation_gap]
+  rule: one_global_configuration_across_Movies_Grocery_ele-fashion; retain_H2-Frozen_if_no_new_condition_improves_mean_validation_accuracy

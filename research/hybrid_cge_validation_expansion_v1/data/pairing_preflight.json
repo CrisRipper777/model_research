@@ -1,0 +1,576 @@
+{
+  "cells": [
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "Movies",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+      "initial_model_sha256": "c367d9dd049c61d7b83a82af93d67b2906af38a3917488c03cc55d7d385c256e",
+      "seed": 42,
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "Movies",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+      "initial_model_sha256": "c367d9dd049c61d7b83a82af93d67b2906af38a3917488c03cc55d7d385c256e",
+      "seed": 42,
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "Movies",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+      "initial_model_sha256": "905fdb88e13366102412db97d2c666b05e64081833023b67e9ec4a7354af4b0d",
+      "seed": 43,
+      "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "Movies",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+      "initial_model_sha256": "905fdb88e13366102412db97d2c666b05e64081833023b67e9ec4a7354af4b0d",
+      "seed": 43,
+      "split_fingerprint": "7e43f96b5b62efd2ed6d3149adb1a2183d7a60a762ba66bfb5c7748e9d9c811c"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "Movies",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+      "initial_model_sha256": "72b15031537916cbd58cb7fc9c12ea9f7835c84daf83b5f198e581a7f4ddc780",
+      "seed": 44,
+      "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "Movies",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+      "initial_model_sha256": "72b15031537916cbd58cb7fc9c12ea9f7835c84daf83b5f198e581a7f4ddc780",
+      "seed": 44,
+      "split_fingerprint": "1df4aa6effdf5be80fa0510314eaa71ee90fed5f8a9aa272e40411b9079d7563"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "Grocery",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+      "initial_model_sha256": "fc969013e646ae9027b4d445a255ce08351f6cccb4d5efa337ea76cd79d8bc1a",
+      "seed": 42,
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "Grocery",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "97d4e32b00e525bc5177dab0ee2a3100cd467e324af37069b962b066e33a24ca",
+      "initial_model_sha256": "fc969013e646ae9027b4d445a255ce08351f6cccb4d5efa337ea76cd79d8bc1a",
+      "seed": 42,
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "Grocery",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+      "initial_model_sha256": "33eedb97a4ef10686c25e097769f5a1af8dc285a487180c7a02f3dbff789910b",
+      "seed": 43,
+      "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "Grocery",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "7d5c235cc9c64ea5be9dc9a88b35c3918d41f0fd8209fbfea95bf2bddc28b8d4",
+      "initial_model_sha256": "33eedb97a4ef10686c25e097769f5a1af8dc285a487180c7a02f3dbff789910b",
+      "seed": 43,
+      "split_fingerprint": "1eb460664bc025a0744a671cd8e552e2e5c55c56760678d7da8a8c876c7206e7"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "Grocery",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+      "initial_model_sha256": "019bd70e32174f817e3977f66e379cc744faf38a16a918f09116f37701bb37cc",
+      "seed": 44,
+      "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "Grocery",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "80ab065e531734a611315f06c5c23033852dc29c90a512c36b1eb174ca7c3e88",
+      "initial_model_sha256": "019bd70e32174f817e3977f66e379cc744faf38a16a918f09116f37701bb37cc",
+      "seed": 44,
+      "split_fingerprint": "07d9a7f15949bd1e7a0fa75382078c5037456721176b78a54a7ab47f1960b783"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "ele-fashion",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "fea9c6599a95b8ac074339169baf05ac0afbec4ce9209baf4c7a856a26614aa5",
+      "initial_model_sha256": "f50fc4ddb329fa4c53ea3bea038a38e0f917d31ecd6e4ab64c76f0af10066f0b",
+      "seed": 42,
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "ele-fashion",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "fea9c6599a95b8ac074339169baf05ac0afbec4ce9209baf4c7a856a26614aa5",
+      "initial_model_sha256": "f50fc4ddb329fa4c53ea3bea038a38e0f917d31ecd6e4ab64c76f0af10066f0b",
+      "seed": 42,
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "ele-fashion",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "5b4df115533d26e008a457f845098f5d404800f0a9837b527fad71d7f9a9b098",
+      "initial_model_sha256": "87b0531f06fc9fb9226aae3e0cc9fa6f1fabda3628b0c4b4015884fa05a94e3c",
+      "seed": 43,
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "ele-fashion",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "5b4df115533d26e008a457f845098f5d404800f0a9837b527fad71d7f9a9b098",
+      "initial_model_sha256": "87b0531f06fc9fb9226aae3e0cc9fa6f1fabda3628b0c4b4015884fa05a94e3c",
+      "seed": 43,
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R1",
+      "dataset": "ele-fashion",
+      "dropout_modules": {
+        "comp_router.2": 0.35,
+        "context_encoder.2": 0.35,
+        "experts.0.dropout": 0.35,
+        "experts.1.dropout": 0.35,
+        "experts.2.dropout": 0.35,
+        "experts.3.dropout": 0.35,
+        "fusion_dropout": 0.35,
+        "node_router.2": 0.35,
+        "projectors.text.dropout": 0.35,
+        "projectors.visual.dropout": 0.35
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "3badd39cca394ffd8377339f812b430b8063d42b394557d7d6ce81d2428f2f4e",
+      "initial_model_sha256": "65bde0f6b8bd6623ff468c55e02fcb373ae63227be769145578e639d2af71d69",
+      "seed": 44,
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+    },
+    {
+      "checks": {
+        "cache": true,
+        "candidate": true,
+        "classifier": true,
+        "feature": true,
+        "model": true,
+        "split": true,
+        "v7b": true
+      },
+      "condition": "H2-R2",
+      "dataset": "ele-fashion",
+      "dropout_modules": {
+        "comp_router.2": 0.3,
+        "context_encoder.2": 0.3,
+        "experts.0.dropout": 0.3,
+        "experts.1.dropout": 0.3,
+        "experts.2.dropout": 0.3,
+        "experts.3.dropout": 0.3,
+        "fusion_dropout": 0.3,
+        "node_router.2": 0.3,
+        "projectors.text.dropout": 0.3,
+        "projectors.visual.dropout": 0.3
+      },
+      "historical_h2_pairing": "pass",
+      "initial_classifier_sha256": "3badd39cca394ffd8377339f812b430b8063d42b394557d7d6ce81d2428f2f4e",
+      "initial_model_sha256": "65bde0f6b8bd6623ff468c55e02fcb373ae63227be769145578e639d2af71d69",
+      "seed": 44,
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5"
+    }
+  ],
+  "count": 18,
+  "dataset_input_provenance": {
+    "Grocery": {
+      "candidate_fingerprint": true,
+      "physical_edge_index": true,
+      "raw_feature_tensor": true,
+      "semantic_cache_sha256": true,
+      "semantic_feature": true,
+      "v7b_fingerprint": true
+    },
+    "Movies": {
+      "candidate_fingerprint": true,
+      "physical_edge_index": true,
+      "raw_feature_tensor": true,
+      "semantic_cache_sha256": true,
+      "semantic_feature": true,
+      "v7b_fingerprint": true
+    },
+    "ele-fashion": {
+      "candidate_fingerprint": true,
+      "physical_edge_index": true,
+      "raw_feature_tensor": true,
+      "semantic_cache_sha256": true,
+      "semantic_feature": true,
+      "v7b_fingerprint": true
+    }
+  },
+  "historical_data_source": "research/mag_view_cge_v1/data/manifest.json",
+  "historical_h2_initialization_pairing": true,
+  "provenance_checked_utc": "2026-10-17T16:18:33+00:00",
+  "status": "pass",
+  "test_evaluation": false
+}

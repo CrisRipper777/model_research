@@ -1,0 +1,143 @@
+{
+  "baseline_models": [
+    "mlp",
+    "sage",
+    "mmgcn",
+    "rolemag"
+  ],
+  "branch": "exp/hybrid_cge_validation_expansion_v1",
+  "completed_runs": 0,
+  "created_utc": "2026-10-17T16:15:22+00:00",
+  "datasets": [
+    "Grocery",
+    "Movies",
+    "Reddit-S",
+    "Toys",
+    "ele-fashion"
+  ],
+  "environment": {
+    "cublas_workspace_config": null,
+    "cuda_available": true,
+    "cuda_build": "12.1",
+    "cudnn": 90100,
+    "cudnn_tf32": true,
+    "deterministic_algorithms": false,
+    "device_count": 2,
+    "devices": [
+      "NVIDIA GeForce RTX 3090",
+      "NVIDIA GeForce RTX 3090"
+    ],
+    "dgl": "2.4.0+cu121",
+    "faiss": "1.15.1",
+    "matmul_tf32": false,
+    "numpy": "2.4.3",
+    "physical_gpu_snapshot": {
+      "available": true,
+      "devices": [
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 112,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 0,
+          "utilization_percent": 0,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        {
+          "driver_version": "535.309.01",
+          "memory_total_mib": 24576,
+          "memory_used_mib": 7405,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 1,
+          "utilization_percent": 92,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      ],
+      "error": null
+    },
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.12.13",
+    "pytorch": "2.4.0+cu121",
+    "recorded_utc": "2026-10-17T16:09:49+00:00",
+    "sklearn": "1.8.0",
+    "timestamp_utc": "2026-10-17T16:09:49+00:00",
+    "torch_geometric": "2.7.0",
+    "visible_devices": null
+  },
+  "formal_training_started": false,
+  "generalization_condition_selected": null,
+  "historical_H2_data_provenance": {
+    "checked_utc": "2026-10-17T16:18:33+00:00",
+    "datasets": {
+      "Grocery": {
+        "candidate_fingerprint": true,
+        "physical_edge_index": true,
+        "raw_feature_tensor": true,
+        "semantic_cache_sha256": true,
+        "semantic_feature": true,
+        "v7b_fingerprint": true
+      },
+      "Movies": {
+        "candidate_fingerprint": true,
+        "physical_edge_index": true,
+        "raw_feature_tensor": true,
+        "semantic_cache_sha256": true,
+        "semantic_feature": true,
+        "v7b_fingerprint": true
+      },
+      "ele-fashion": {
+        "candidate_fingerprint": true,
+        "physical_edge_index": true,
+        "raw_feature_tensor": true,
+        "semantic_cache_sha256": true,
+        "semantic_feature": true,
+        "v7b_fingerprint": true
+      }
+    },
+    "source": "research/mag_view_cge_v1/data/manifest.json",
+    "status": "pass"
+  },
+  "historical_H2_pairing_preflight": {
+    "cells": 18,
+    "data_provenance_status": "pass",
+    "status": "pass"
+  },
+  "historical_H2_rerun": false,
+  "hybrid_implementation_freeze_commit": "affc45b94f4298eb4c524e6fd7d9f55591481c8a",
+  "implementation_freeze_status": "preparing",
+  "optimization_conditions": [
+    "H2-R1",
+    "H2-R2"
+  ],
+  "parent_branch": "exp/hybrid_cge_v11",
+  "parent_commit": "b726d4ef1bebd9a94a0b3a21e2d52ee7f2b79f2b",
+  "preflight_expected": 24,
+  "preflight_passed": 24,
+  "preparation_failures": 2,
+  "protocol_version": "unified_full_graph_nc_v1",
+  "study": "Hybrid-CGE V1.1 Validation Expansion V1",
+  "test_evaluation": false,
+  "tests": {
+    "executed_utc": "2026-10-17T16:15:22+00:00",
+    "exit_code": 0,
+    "focused_command": "python -m pytest -q tests/test_hybrid_cge_validation_expansion_v1.py",
+    "focused_failed": 0,
+    "focused_passed": 3,
+    "freeze_validation_rerun": {
+      "executed_utc": "2026-10-17T16:19:24+00:00",
+      "focused_failed": 0,
+      "focused_passed": 4,
+      "full_duration_seconds": 33.1,
+      "full_failed": 0,
+      "full_passed": 568,
+      "full_skipped": 0,
+      "warnings": 24
+    },
+    "full_command": "python -m pytest -q",
+    "full_failed": 0,
+    "full_passed": 567,
+    "full_skipped": 0,
+    "python_executable": "/home/m3/miniconda3/envs/yhf_env/bin/python",
+    "warnings": 24
+  }
+}

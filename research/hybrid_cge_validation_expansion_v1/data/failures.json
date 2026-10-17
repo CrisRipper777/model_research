@@ -1,0 +1,26 @@
+{
+  "failures": [
+    {
+      "attempt": 1,
+      "dataset": "Toys",
+      "error": "OmegaConf path interpolation failed because the cache builder resolved a dataset config without nesting it under paths.",
+      "resolution": "Nest dataset config under root paths before OmegaConf.resolve; no cache was created and no training started.",
+      "stage": "semantic_cache_preparation",
+      "status": "resolved_by_code_fix",
+      "test_evaluation": false,
+      "time_utc": "2026-10-18T00:05:00+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "dataset": "Toys/Reddit-S",
+      "error": "The V7B caches were built, but the data-audit path manifest read unresolved OmegaConf dataset paths.",
+      "resolution": "Resolve dataset paths from the nested paths+dataset config before hashing. The already-built caches were preserved and will be reloaded and verified.",
+      "stage": "post_cache_data_audit",
+      "status": "resolved_by_code_fix",
+      "test_evaluation": false,
+      "time_utc": "2026-10-17T16:07:00+00:00",
+      "training_started": false
+    }
+  ]
+}
