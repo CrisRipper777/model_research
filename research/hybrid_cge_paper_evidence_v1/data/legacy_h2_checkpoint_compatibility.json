@@ -1,0 +1,54 @@
+{
+  "checked_rows": 5,
+  "created_utc": "2026-10-18T11:33:36+00:00",
+  "datasets": [
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_v11/runs/Movies/H2_hybrid_plus/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "2f3b367ee39f1bba268ca8e25e55cd9c6916ebfc27a888215dc3f5fd6640956c",
+      "dataset": "Movies",
+      "legacy_condition": "H2_hybrid_plus",
+      "seed": 42,
+      "strict_model_and_head_load": true,
+      "test_evaluation": false
+    },
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_v11/runs/Grocery/H2_hybrid_plus/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "92d7dac5f45217dc8e40dc1c87f24441d5cb9ababad76e146bf4c7be85573f1f",
+      "dataset": "Grocery",
+      "legacy_condition": "H2_hybrid_plus",
+      "seed": 42,
+      "strict_model_and_head_load": true,
+      "test_evaluation": false
+    },
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_v11/runs/ele-fashion/H2_hybrid_plus/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "970e8c9fe69a89e9ed8fbef4a381466d2dbfc8bdeaae4488eb18018fbc59a124",
+      "dataset": "ele-fashion",
+      "legacy_condition": "H2_hybrid_plus",
+      "seed": 42,
+      "strict_model_and_head_load": true,
+      "test_evaluation": false
+    },
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_validation_expansion_v1/runs/Toys/H2-Frozen/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "6831aa0c64ddd2b705e4aa9e78c025f9c2ace60acb5cc010cf4b87f83ab7da45",
+      "dataset": "Toys",
+      "legacy_condition": "H2-Frozen",
+      "seed": 42,
+      "strict_model_and_head_load": true,
+      "test_evaluation": false
+    },
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_validation_expansion_v1/runs/Reddit-S/H2-Frozen/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "d0bee25f2ef614a8f17bbaa4c7b4f625e441a478ce84a95aa51043f150a58e1d",
+      "dataset": "Reddit-S",
+      "legacy_condition": "H2-Frozen",
+      "seed": 42,
+      "strict_model_and_head_load": true,
+      "test_evaluation": false
+    }
+  ],
+  "preserved_checkpoint_files": true,
+  "status": "pass",
+  "test_evaluation": false
+}

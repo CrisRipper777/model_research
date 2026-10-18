@@ -26,6 +26,7 @@ scheduler_min_lr: 1.0e-5
 
 loss:
   aux_weight: 1.0
+  class_balanced_main_ce: false
 
 evaluate_test: true
 

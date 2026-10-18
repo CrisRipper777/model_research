@@ -1,0 +1,17 @@
+{
+  "failures": [
+    {
+      "condition": null,
+      "dataset": "Toys",
+      "error": "RuntimeError(\"physical GPU 0 has other compute processes [{'pid': 1935153, 'used_memory_mib': 298}]; refusing to share it\")",
+      "model": "dgf",
+      "physical_gpu": 0,
+      "seed": 42,
+      "stage": "gpu_preflight",
+      "test_evaluation": false,
+      "time_utc": "2026-10-18T11:39:27+00:00",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_hybrid_cge_paper_evidence_v1.py\", line 795, in worker_command\n    worker_preflight(args.dataset, args.model, args.condition, args.seed, args.physical_gpu)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_hybrid_cge_paper_evidence_v1.py\", line 550, in worker_preflight\n    gpu_guard._assert_physical_gpu_idle(physical_gpu)\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_rmcge_v22.py\", line 867, in _assert_physical_gpu_idle\n    raise RuntimeError(\nRuntimeError: physical GPU 0 has other compute processes [{'pid': 1935153, 'used_memory_mib': 298}]; refusing to share it\n",
+      "training_started": false
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "stage": "pre_implementation_freeze",
+  "created_utc": "2026-10-18T11:44:26+00:00",
+  "repository_tests": {
+    "command": "conda run -n yhf_env python -m pytest -q",
+    "status": "pass",
+    "passed": 579,
+    "skipped": 0,
+    "warnings": 26,
+    "wall_seconds": 25.2
+  },
+  "static_checks": {
+    "git_diff_check": "pass",
+    "python_compile": "pass"
+  },
+  "real_data_preflights": {
+    "ablations": {"status": "pass", "cells": 20},
+    "hop": {"status": "pass", "cells": 5},
+    "baselines": {"status": "pass", "cells": 30},
+    "fashion": {"status": "pass", "cells": 3},
+    "test_evaluation": false
+  },
+  "gpu_scope": {
+    "physical_gpu": 0,
+    "device": "NVIDIA GeForce RTX 3090",
+    "other_device_touched": false
+  },
+  "preserved_preflight_failure": {
+    "stage": "gpu_preflight",
+    "reason": "the physical-GPU ownership guard observed another compute PID while starting a child",
+    "training_started": false,
+    "resolution": "left the process untouched; resumed only missing preflight cells after GPU 0 became idle",
+    "record": "data/failures.json"
+  },
+  "scope_audit": {
+    "frozen_hybrid_cge_v11_modified": false,
+    "historical_checkpoints_modified": false,
+    "test_labels_used": false
+  }
+}

@@ -1,0 +1,464 @@
+{
+  "configured_feature_sources": "RoBERTa text + OpenAI CLIP image for MAGB; fixed CLIP joint tensor split into text/visual for ele-fashion",
+  "created_utc": "2026-10-18T11:33:27+00:00",
+  "datasets": {
+    "Grocery": {
+      "feature_dims": {
+        "text": 768,
+        "visual": 768
+      },
+      "feature_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "masked_test_count": 3415,
+      "nonzero_feature_rows": {
+        "text": 17074,
+        "visual": 17074
+      },
+      "num_classes_configured": 20,
+      "num_edges_directed_after_preprocessing": 142262,
+      "num_nodes": 17074,
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache": {
+        "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+        "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+        "path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+        "sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+        "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+      },
+      "source_files": {
+        "dataset_config": {
+          "bytes": 766,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/model_research/configs/dataset/Grocery.yaml",
+          "sha256": "18969c97a0f06ab33fd3094624d524f03de48139405159bb06d19cf107105e56"
+        },
+        "graph_path": {
+          "bytes": 1512229,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Grocery/GroceryGraph.pt",
+          "sha256": "af203035d655275a20da353f481e67f4b595eeb73ef1d397d0d9b603cefc70d7"
+        },
+        "image_feat_path": {
+          "bytes": 104902784,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Grocery/ImageFeature/Grocery_openai_clip-vit-large-patch14.npy",
+          "sha256": "ac50f63312488f3e94271532e7fd863c27a332c6ca8a4b9cc801afb9ce0b2470"
+        },
+        "text_feat_path": {
+          "bytes": 52451456,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Grocery/TextFeature/Grocery_roberta_base_256_mean.npy",
+          "sha256": "b67ab7600b842807b53805e31b9d969d860e9c48b1a56f76799d44367f33c516"
+        }
+      },
+      "split_files": {
+        "42": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+          "sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+          "source": "reused_project_split"
+        },
+        "43": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed43_train0.6_val0.2.pt",
+          "sha256": "2265d454026b75d55df2d152219fc90c7b431e2e09f9f7875417620bb236d655",
+          "source": "reused_project_split"
+        },
+        "44": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed44_train0.6_val0.2.pt",
+          "sha256": "f443dfc90fa6e7f2ee7cb9fb317074dd7c559bb4c7b6608b68193d25c6f7625b",
+          "source": "reused_project_split"
+        }
+      },
+      "split_fingerprints": {
+        "42": {
+          "test_indices_only": "e5317f83fc623b24ef510b85f9a90a3d8ff414a6b5927457278f2aa0d784ef33",
+          "train": "b3167848262ee4f9541843d4080a0d8834c1de5251e710b34cef8ef3c6ddcca0",
+          "validation": "0e84f61879f9bd0baa2a24a373dc579cef85a6e112e1f3dc75783448eaa851de"
+        },
+        "43": {
+          "test_indices_only": "0bf673563075ef034aa7e0e60f13afe6e81c0b8259647b09abd3e1d5dae73a15",
+          "train": "4982af6a8f9e0176a4362e632713bafaa84a7c966ab0976be7de3f1143edca03",
+          "validation": "8dba12f515332e6dc6e9f9546d21b434c3522ba5e9e8168c4b6e2a97ced29608"
+        },
+        "44": {
+          "test_indices_only": "6ae29cec6bf132f3975a8de104d712d7e048dec555e73838479631f81a6a8326",
+          "train": "4bc2b59314efa0b4f0d520ae8568c1c05091e8d0426c4c602b864d34608f63f5",
+          "validation": "0c85df0b875aef935e3327ebe8a379f2d429f0a48f02706b0da29fde3c029138"
+        }
+      },
+      "test_label_values_serialized": false,
+      "text_visual_alignment": true,
+      "train_count": 10244,
+      "train_val_labels_valid": true,
+      "validation_count": 3415
+    },
+    "Movies": {
+      "feature_dims": {
+        "text": 768,
+        "visual": 768
+      },
+      "feature_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "masked_test_count": 3335,
+      "nonzero_feature_rows": {
+        "text": 16672,
+        "visual": 16672
+      },
+      "num_classes_configured": 20,
+      "num_edges_directed_after_preprocessing": 160802,
+      "num_nodes": 16672,
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache": {
+        "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+        "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+        "path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+        "sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+        "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+      },
+      "source_files": {
+        "dataset_config": {
+          "bytes": 757,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/model_research/configs/dataset/Movies.yaml",
+          "sha256": "81b803b0ed79ad86d483aee5dceadac149ca9ba2263e31160b22951a7812f5c8"
+        },
+        "graph_path": {
+          "bytes": 1885413,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Movies/MoviesGraph.pt",
+          "sha256": "f6798e6951f29b1d76aa7938684f44d502600c31f3a5987722f5bc450511700f"
+        },
+        "image_feat_path": {
+          "bytes": 102432896,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Movies/ImageFeature/Movies_openai_clip-vit-large-patch14.npy",
+          "sha256": "c422191f1a7cdc85598f00b52e0f60a02f65d6a48548e9c42a8530b3e572dfeb"
+        },
+        "text_feat_path": {
+          "bytes": 51216512,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Movies/TextFeature/Movies_roberta_base_512_mean.npy",
+          "sha256": "38cc09ef3192eac8a022303fd48a9954bea9c3064078846aa5d2db31e137eece"
+        }
+      },
+      "split_files": {
+        "42": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+          "sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+          "source": "reused_project_split"
+        },
+        "43": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed43_train0.6_val0.2.pt",
+          "sha256": "c6e07c4e990c429df3438649a44b4c95a44f423248bc364162c5e3e45892ba64",
+          "source": "reused_project_split"
+        },
+        "44": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed44_train0.6_val0.2.pt",
+          "sha256": "a9d9de39dc6777daaebee7d1fd179db4dfa9cd397fc6b6b167410eecc067381d",
+          "source": "reused_project_split"
+        }
+      },
+      "split_fingerprints": {
+        "42": {
+          "test_indices_only": "abc60824e43fd59741e117b3bd9eb3048ab24df0fde2a9f352b216935efad74a",
+          "train": "9785bafabb1328d47db953f89bf7a3384e6f3edeb0b31b06338cf6ca8f225330",
+          "validation": "15d61cf932cb045c6af6c633e7a5ca628cb0f858e2ba4195ab602c295b70c092"
+        },
+        "43": {
+          "test_indices_only": "06525e210ba32dea088c4731dbb88354555b570b03027dda6ac0d8d15fe7376c",
+          "train": "d8abc1b351bd26f01554f246745b231b1f383bd7abcca03183f1fcc68aa668f0",
+          "validation": "40ed0ad641d19cbd6bf992a18e700e6f6b90c0a73f3db15e60205fadf00872b1"
+        },
+        "44": {
+          "test_indices_only": "ae00417f686fdb2fd3962416e030d6c66ce8148572e49e53efc7e5aff40ec131",
+          "train": "fb698803a4a039f0885b8d52e42376a6564f185e793e61bb7e3a1758b6d02d16",
+          "validation": "928d23550082d94a9839b188bec88c10435298b2d86dec17797655a6448b8018"
+        }
+      },
+      "test_label_values_serialized": false,
+      "text_visual_alignment": true,
+      "train_count": 10003,
+      "train_val_labels_valid": true,
+      "validation_count": 3334
+    },
+    "Reddit-S": {
+      "feature_dims": {
+        "text": 768,
+        "visual": 768
+      },
+      "feature_fingerprint": "1bb58da5d2dac5321112be2d06f0db0af70439c7aee4ac774a37c8e55ffa16c8",
+      "masked_test_count": 3179,
+      "nonzero_feature_rows": {
+        "text": 15894,
+        "visual": 15894
+      },
+      "num_classes_configured": 20,
+      "num_edges_directed_after_preprocessing": 283080,
+      "num_nodes": 15894,
+      "physical_edge_fingerprint": "67c31a841618caefdb2b7df15a4eb1e1a853e66dc7ab12c9f2e7d22c217eba1d",
+      "semantic_cache": {
+        "candidate_fingerprint": "908f636ae1add0cc99e4a08b55df70b3abb3c6e519e0a5d0d147f2d0f587d587",
+        "feature_fingerprint": "f0a945c36bd2548a8131a22e707cbf1dd299243b53cae9e77efd4041c6537dcd",
+        "path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_validation_expansion_v1/semantic_cache/Reddit-S_f0a945c36bd2_908f636ae1ad_v7b.pt",
+        "sha256": "7ba9f372e9f906a3551f1511f58ffac7d41ee4dc131cd1deb932d701cb56b4b5",
+        "v7b_fingerprint": "8bc381bc82598ebd736009582c1547207b56b9c193c58e31b3d9ab649a5bd79b"
+      },
+      "source_files": {
+        "dataset_config": {
+          "bytes": 772,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/model_research/configs/dataset/Reddit-S.yaml",
+          "sha256": "010129b2a4b7de2969286de9a74108a7cd08a481feaac067dc5cae62db36246a"
+        },
+        "graph_path": {
+          "bytes": 4661349,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Reddit-S/RedditSGraph.pt",
+          "sha256": "06af9e010df31f5a6537afa5c96f5cbdb9687b5722c1a1acc80d094bd216309b"
+        },
+        "image_feat_path": {
+          "bytes": 97652864,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Reddit-S/ImageFeature/RedditS_openai_clip-vit-large-patch14.npy",
+          "sha256": "936191dcf3c06e367674cfedd2e80fd87e3120485a9f45acb8ff48e7b3bad58b"
+        },
+        "text_feat_path": {
+          "bytes": 48826496,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Reddit-S/TextFeature/RedditS_roberta_base_100_mean.npy",
+          "sha256": "da41d78a8b65902ee902295949da437228d7b6d6de303a748f6c324072d65abd"
+        }
+      },
+      "split_files": {
+        "42": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Reddit-S_nc_seed42_train0.6_val0.2.pt",
+          "sha256": "2154e82ef061de9d3c018aa19674ea6e2220953f272bedebb1559396e43750a5",
+          "source": "reused_project_split"
+        },
+        "43": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Reddit-S_nc_seed43_train0.6_val0.2.pt",
+          "sha256": "3bc2fefd5f5140202ed99d48d42e65772fce0d1564d963f2c20cd5bc946c8f79",
+          "source": "reused_project_split"
+        },
+        "44": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Reddit-S_nc_seed44_train0.6_val0.2.pt",
+          "sha256": "ced82330935d953511f6f8ca1d22248b6588124e5ee83c5d764ed4564727d02c",
+          "source": "reused_project_split"
+        }
+      },
+      "split_fingerprints": {
+        "42": {
+          "test_indices_only": "0b9aab84d6e37140eb1081b0932fd735aa0c0fa6c783e13d52730d0c6ceb758d",
+          "train": "54ec185f92d14a6553d92e2c7b64ec30e68fec5e3ba98d8122b57a47ac6be5ce",
+          "validation": "9a5233885b78835edf6232296d69ba09dae8862a0da8c6e15513a765893bef46"
+        },
+        "43": {
+          "test_indices_only": "956ff4d2af472ba6a4f2ca2adca82c4d31c26fb0b37de9efee573830ceff210e",
+          "train": "69f66f637bb7ea0b1360b9d776e0940a6f4915f8ebc62fc7e05af4fb45e3a37e",
+          "validation": "6dae6e02e97320a73dc570578ea8c5d88fb60ea32778cf7f57e30d5e6a02e7fe"
+        },
+        "44": {
+          "test_indices_only": "17f993a683bd70105af68a7d82603a422462679a576da48abededd52837d8cfc",
+          "train": "da30a543d1c7c4d469c0e855fda8a4eff60b45ed0b8f1734d257f2e65836116e",
+          "validation": "c729a38fa983aa2bda674ef290c3bf5a2e7e3aed26531941ce74b7d3e013e3ed"
+        }
+      },
+      "test_label_values_serialized": false,
+      "text_visual_alignment": true,
+      "train_count": 9536,
+      "train_val_labels_valid": true,
+      "validation_count": 3179
+    },
+    "Toys": {
+      "feature_dims": {
+        "text": 768,
+        "visual": 768
+      },
+      "feature_fingerprint": "cf8514296e0f409894a053415e3120be04b0acb482b897b49df763a6344021a4",
+      "masked_test_count": 4139,
+      "nonzero_feature_rows": {
+        "text": 20695,
+        "visual": 20695
+      },
+      "num_classes_configured": 18,
+      "num_edges_directed_after_preprocessing": 113402,
+      "num_nodes": 20695,
+      "physical_edge_fingerprint": "85d171974a0d28b8434963d0b8a421c84a2b6742d9b777c43a06211435d0db63",
+      "semantic_cache": {
+        "candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+        "feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+        "path": "/hdd1/DataInHere/YHF/model_research/outputs/hybrid_cge_validation_expansion_v1/semantic_cache/Toys_969ac25017a2_1235db05c59f_v7b.pt",
+        "sha256": "03afd66b0b4062e09efe8678277b49dee92863837f57c76d0cb6b2a834053b09",
+        "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7"
+      },
+      "source_files": {
+        "dataset_config": {
+          "bytes": 739,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/model_research/configs/dataset/Toys.yaml",
+          "sha256": "d27227abdd6a9f4f4b8138e506deaadbf613b52d50cf5847fe9d8f3714856a73"
+        },
+        "graph_path": {
+          "bytes": 1185565,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Toys/ToysGraph.pt",
+          "sha256": "13481ffe2d425085711ef21d8b738e035bde7293070cfc590a653c58ace87535"
+        },
+        "image_feat_path": {
+          "bytes": 127150208,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Toys/ImageFeature/Toys_openai_clip-vit-large-patch14.npy",
+          "sha256": "92bfa68be36f0b7d5c757ca18bf505173bc79eb2d5094600d7d03b22c2716552"
+        },
+        "text_feat_path": {
+          "bytes": 63575168,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/Toys/TextFeature/Toys_roberta_base_512_mean.npy",
+          "sha256": "f799f191efc5a70a306c263b802aa450e55c31f623e29f9360fc45627de9c1f7"
+        }
+      },
+      "split_files": {
+        "42": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Toys_nc_seed42_train0.6_val0.2.pt",
+          "sha256": "cc0633526581d9281d0a92fa50d989309f8b81b982305409d3034f10a28e41d2",
+          "source": "reused_project_split"
+        },
+        "43": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Toys_nc_seed43_train0.6_val0.2.pt",
+          "sha256": "0891882159e15bfb31ec6dc1853546aa17b7f65f17898f810748a50ef76bbce5",
+          "source": "reused_project_split"
+        },
+        "44": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/MAGB_split/Toys_nc_seed44_train0.6_val0.2.pt",
+          "sha256": "85cc2bece3e0ee379eb0cfebddb50170af5c3421a7404adff77f9a71e5edc626",
+          "source": "reused_project_split"
+        }
+      },
+      "split_fingerprints": {
+        "42": {
+          "test_indices_only": "4e53796c0764a73b4e15808a0b084ecdc0fc779f8a4e0930e984eab6f1e9e9e0",
+          "train": "3f24e3c8779dc25421c816c03c851baf320d7b6a0099d57e6c7a3bd35086354b",
+          "validation": "8c92055b6934578ee50c68a9fc652d38dd9b0ea0fb302ba233f64c093f06639b"
+        },
+        "43": {
+          "test_indices_only": "638fe45e28302f56dcf8a1997d602f8273f9133584c4e6c2cbc505869c4cddd6",
+          "train": "b054b74d983d7416c03a73df0d2b9466bf6858ba4e44bafa412ff33effc80783",
+          "validation": "c558957025a9e2c24eb53e7a0acb2b7fe8fe483045a4672bd788d89b0788bad6"
+        },
+        "44": {
+          "test_indices_only": "c3825cb6bd8e4ece268f9ae4220ecb3cdb9745eec0c0aa52ae9fba0bf183d8b3",
+          "train": "0cd55520516d9515a8602ea6a8d42099ae6082c3c6b81018f782423ea8915f50",
+          "validation": "d6da35bbfef39c7000998067f51056bd5aa9c36f72c91b856d961fe87bf03f0f"
+        }
+      },
+      "test_label_values_serialized": false,
+      "text_visual_alignment": true,
+      "train_count": 12417,
+      "train_val_labels_valid": true,
+      "validation_count": 4139
+    },
+    "ele-fashion": {
+      "feature_dims": {
+        "text": 512,
+        "visual": 512
+      },
+      "feature_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "masked_test_count": 29330,
+      "nonzero_feature_rows": {
+        "text": 97766,
+        "visual": 97766
+      },
+      "num_classes_configured": 12,
+      "num_edges_directed_after_preprocessing": 399172,
+      "num_nodes": 97766,
+      "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache": {
+        "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+        "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+        "path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+        "sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+        "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+      },
+      "source_files": {
+        "dataset_config": {
+          "bytes": 545,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/model_research/configs/dataset/ele-fashion.yaml",
+          "sha256": "50e683dcae43c505c999ecbc22a6b5b380a8b897d4942933c01f266f8169b917"
+        },
+        "edge_path": {
+          "bytes": 2923007,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/nc_edges-nodeid.pt",
+          "sha256": "6c732c72ea8e1c8e2a5ae1a53a81a80d0b122ea8bb2475801ed20776f3fdcff2"
+        },
+        "joint_feat_path": {
+          "bytes": 400450289,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/clip_feat.pt",
+          "sha256": "b2bd3cc6d9c4c2581a70567ee282580c44e486f0e55a83e62abf8935116a86c6"
+        },
+        "label_path": {
+          "bytes": 196161,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/labels-w-missing.pt",
+          "sha256": "888e80c154a18d61a6b8f75ed2f02f0cb9440613e631810432362857b6a33065"
+        },
+        "node_split_path": {
+          "bytes": 358187,
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+          "sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f"
+        }
+      },
+      "split_files": {
+        "42": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+          "sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f",
+          "source": "fixed_ele-fashion_split.pt"
+        },
+        "43": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+          "sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f",
+          "source": "fixed_ele-fashion_split.pt"
+        },
+        "44": {
+          "exists": true,
+          "path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+          "sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f",
+          "source": "fixed_ele-fashion_split.pt"
+        }
+      },
+      "split_fingerprints": {
+        "42": {
+          "fixed_split_file_sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f"
+        },
+        "43": {
+          "fixed_split_file_sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f"
+        },
+        "44": {
+          "fixed_split_file_sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f"
+        }
+      },
+      "test_label_values_serialized": false,
+      "text_visual_alignment": true,
+      "train_count": 58659,
+      "train_val_labels_valid": true,
+      "validation_count": 9777
+    }
+  },
+  "protocol_version": "unified_full_graph_nc_v1",
+  "test_evaluation": false,
+  "test_labels_inspected": false
+}

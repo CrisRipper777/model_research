@@ -1,0 +1,76 @@
+study: hybrid_cge_paper_evidence_v1
+protocol_version: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion, Toys, Reddit-S]
+seeds: [42, 43, 44]
+evaluate_test: false
+semantic_cache: V7B.1
+semantic_knn_k: 8
+main_training:
+  optimizer: AdamW
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  grad_clip: 1.0
+  inference_mode: full
+  auxiliary_ce_weight: 0.3
+conditions:
+  H2_full:
+    physical_hops: 4
+    dropout: 0.2
+    late_cross_dropout: 0.15
+    auxiliary_ce_weight: 0.3
+  A1_no_early_physical_cross:
+    physical_hops: 4
+    dropout: 0.2
+    late_cross_dropout: 0.15
+    auxiliary_ce_weight: 0.3
+  A2_no_late_completion:
+    physical_hops: 4
+    dropout: 0.2
+    late_cross_dropout: 0.15
+    auxiliary_ce_weight: 0.3
+  A3_no_moe:
+    physical_hops: 4
+    dropout: 0.2
+    late_cross_dropout: 0.15
+    auxiliary_ce_weight: 0.3
+  A4_no_same_node:
+    physical_hops: 4
+    dropout: 0.2
+    late_cross_dropout: 0.15
+    auxiliary_ce_weight: 0.3
+  H2_physical_3hop:
+    physical_hops: 3
+    dropout: 0.2
+    late_cross_dropout: 0.15
+    auxiliary_ce_weight: 0.3
+fashion_candidates:
+  F1_fashion_dropout_aux:
+    base: H2_full
+    dropout: 0.3
+    private_auxiliary_ce_weight: 0.1
+  F2_fashion_class_balanced_4hop:
+    base: H2_full
+    physical_hops: 4
+    class_balanced_main_ce: true
+  F3_fashion_3hop_original:
+    reuse_condition: H2_physical_3hop
+  F4_fashion_class_balanced_3hop:
+    base: H2_physical_3hop
+    physical_hops: 3
+    class_balanced_main_ce: true
+run_counts:
+  ablations: 60
+  three_hop: 15
+  new_baselines: 90
+  fashion_candidates: 9
+  new_training_total: 174
+  reused_baselines: 45
+test_policy:
+  evaluate_test: false
+  test_labels_masked: true
+  final_test_runner_default: deny
+  final_lock_status: pending_review

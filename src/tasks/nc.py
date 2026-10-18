@@ -81,6 +81,30 @@ def _compose_full_graph_loss(
     return main_ce + unimodal_weight * unimodal_ce + aux_weight * aux_loss, unimodal_ce
 
 
+def _training_class_weights(
+    labels: torch.Tensor,
+    train_idx: torch.Tensor,
+    num_classes: int,
+    *,
+    enabled: bool,
+) -> torch.Tensor | None:
+    """Return Train-only, clipped inverse-square-root weights when opted in."""
+    if not enabled:
+        return None
+    target = labels[train_idx]
+    if target.numel() == 0 or bool((target < 0).any()) or bool((target >= num_classes).any()):
+        raise ValueError("class-balanced main CE requires valid Train labels only")
+    counts = torch.bincount(target.long(), minlength=int(num_classes)).to(torch.float32)
+    observed = counts > 0
+    if not bool(observed.any()):
+        raise ValueError("class-balanced main CE found no observed Train classes")
+    weights = torch.zeros_like(counts)
+    inverse_sqrt = counts[observed].rsqrt()
+    inverse_sqrt = inverse_sqrt / inverse_sqrt.mean()
+    weights[observed] = inverse_sqrt.clamp(0.5, 2.0)
+    return weights
+
+
 def _resolve_nc_eval_labels(data: MAGData, *, include_test: bool = True) -> list[int]:
     """Use one stable Macro-F1 label set across the supervised task splits."""
     if data.y is None:
@@ -310,6 +334,12 @@ def _run_single_nc(
     y_all = data.y.to(device)
     edge_index_all = data.edge_index.to(device) if uses_graph else None
     train_idx_all = data.train_idx.to(device)
+    class_balanced_main_ce = bool(cfg.task.loss.get("class_balanced_main_ce", False))
+    main_ce_weights = _training_class_weights(
+        y_all, train_idx_all, int(data.num_classes), enabled=class_balanced_main_ce
+    )
+    if class_balanced_main_ce and not full_graph_training:
+        raise ValueError("class-balanced main CE is currently scoped to full-graph NC")
     train_loader = None
     if not uses_graph:
         train_loader = TorchDataLoader(
@@ -406,7 +436,7 @@ def _run_single_nc(
             z, _, _, aux_loss, forward_info = model(x_all, edge_index_all)
             logits = classifier(z[train_idx_all])
             labels = y_all[train_idx_all]
-            train_ce_tensor = nn.functional.cross_entropy(logits, labels)
+            train_ce_tensor = nn.functional.cross_entropy(logits, labels, weight=main_ce_weights)
             if unimodal_weight > 0:
                 loss, unimodal_ce_tensor = _compose_full_graph_loss(
                     model=model,
@@ -444,7 +474,7 @@ def _run_single_nc(
                 labels = y_all[batch_idx]
                 z, _, _, aux_loss, _ = model(x_all[batch_idx], None)
                 logits = classifier(z)
-                loss = nn.functional.cross_entropy(logits, labels) + aux_weight * aux_loss
+                loss = nn.functional.cross_entropy(logits, labels, weight=main_ce_weights) + aux_weight * aux_loss
                 optimizer.zero_grad(set_to_none=True)
                 loss.backward()
                 if epoch == 1 and hasattr(model, "capture_gradient_diagnostics"):
@@ -727,6 +757,12 @@ def _run_single_nc(
                 "accuracy_stopping_horizon_epochs": len(epoch_wall_seconds),
                 "optimizer_update_count": optimizer_update_count,
                 "unimodal_auxiliary_weight": unimodal_weight,
+                "class_balanced_main_ce": class_balanced_main_ce,
+                "main_ce_class_weights": (
+                    main_ce_weights.detach().cpu().tolist() if main_ce_weights is not None else None
+                ),
+                "main_ce_class_weights_source": "train_idx label counts: normalized inverse square-root, clipped [0.5,2.0]"
+                if main_ce_weights is not None else None,
                 "unimodal_auxiliary_loss": (
                     "0.5 * (Text CE + Visual CE) on global train_idx only"
                     if unimodal_weight > 0
