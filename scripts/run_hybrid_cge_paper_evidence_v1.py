@@ -625,7 +625,7 @@ def worker_preflight(dataset: str, model_name: str, condition: str | None, seed:
         "cuda_peak_reserved_bytes": int(torch.cuda.max_memory_reserved(device)),
         "gpu_name": torch.cuda.get_device_name(device), "created_utc": now(),
     }
-    path = DATA / "preflight.json"
+    path = DATA / os.environ.get("HYBRID_EXP_PREFLIGHT_RECORD_FILE", "preflight.json")
     full = json.loads(path.read_text()) if path.is_file() else {"runs": []}
     key = (dataset, model_name, condition or "", seed)
     full["runs"] = [r for r in full["runs"] if (r["dataset"], r["model"], r.get("condition") or "", int(r["seed"])) != key]
@@ -784,7 +784,9 @@ def worker_train(dataset: str, model_name: str, condition: str | None, seed: int
             history_rows_path = DATA / "epoch_history.csv"
             previous = csv_rows(history_rows_path)
             for item in history:
-                previous.append({"dataset": dataset, "model": model_name, "condition": condition or model_name, "seed": seed, **item})
+                previous.append({"dataset": dataset, "model": model_name,
+                                 "condition": condition or model_name, "seed": seed,
+                                 "attempt": attempt, "source_git_sha": run_row["source_git_sha"], **item})
             fields = list(dict.fromkeys([*(previous[0].keys() if previous else []), *(k for row in previous for k in row)]))
             history_rows_path.parent.mkdir(parents=True, exist_ok=True)
             with history_rows_path.open("w", encoding="utf-8", newline="") as stream:
@@ -840,7 +842,7 @@ def worker_command(args: argparse.Namespace) -> int:
 
 
 def guarded_child(action: str, dataset: str, model_name: str, condition: str | None,
-                  seed: int, physical_gpu: int) -> None:
+                  seed: int, physical_gpu: int, *, preflight_record_file: str | None = None) -> None:
     try:
         gpu_guard._assert_physical_gpu_idle(physical_gpu)
     except Exception as exc:
@@ -851,6 +853,8 @@ def guarded_child(action: str, dataset: str, model_name: str, condition: str | N
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(physical_gpu)
     env["HYBRID_EXP_GUARDED_CELL"] = "1"
+    if preflight_record_file is not None:
+        env["HYBRID_EXP_PREFLIGHT_RECORD_FILE"] = preflight_record_file
     command = [sys.executable, str(Path(__file__).resolve()), "--action", action,
                "--dataset", dataset, "--model", model_name, "--seed", str(seed),
                "--physical-gpu", str(physical_gpu)]
@@ -1042,20 +1046,29 @@ def preflight_stage(stage: str, physical_gpu: int) -> None:
         cells = [(d, model, None) for d in DATASETS for model in BASELINES]
     elif stage == "fashion":
         cells = [("ele-fashion", PAPER_MODEL, c) for c in FASHION_CONDITIONS]
+    elif stage == "correction":
+        cells = list(dict.fromkeys(
+            [(d, PAPER_MODEL, "A1_no_early_physical_cross") for d in DATASETS]
+            + [(d, PAPER_MODEL, HOP_CONDITION) for d in DATASETS]
+            + [("ele-fashion", PAPER_MODEL, c) for c in FASHION_CONDITIONS]
+        ))
     else:
         raise ValueError(f"unknown preflight stage {stage}")
-    prior_records = json.loads((DATA / "preflight.json").read_text()).get("runs", [])
+    record_file = "preflight_correction.json" if stage == "correction" else "preflight.json"
+    record_path = DATA / record_file
+    prior_records = json.loads(record_path.read_text()).get("runs", []) if record_path.is_file() else []
     already_passed = {
         (r["dataset"], r["model"], r.get("condition") or "", int(r["seed"]))
         for r in prior_records if r.get("status") == "pass"
     }
     pending = [
         cell for cell in cells
-        if (cell[0], cell[1], cell[2] or "", 42) not in already_passed
+        if stage == "correction" or (cell[0], cell[1], cell[2] or "", 42) not in already_passed
     ]
     for dataset, model_name, condition in pending:
-        guarded_child("worker-preflight", dataset, model_name, condition, 42, physical_gpu)
-    records = json.loads((DATA / "preflight.json").read_text()).get("runs", [])
+        guarded_child("worker-preflight", dataset, model_name, condition, 42, physical_gpu,
+                      preflight_record_file=record_file if stage == "correction" else None)
+    records = json.loads(record_path.read_text()).get("runs", [])
     wanted = {(d, m, c or "", 42) for d, m, c in cells}
     present = {(r["dataset"], r["model"], r.get("condition") or "", int(r["seed"]))
                for r in records if r.get("status") == "pass"}
@@ -1076,6 +1089,12 @@ def training_cells(stage: str):
         return [(d, m, None, s) for d in DATASETS for m in BASELINES for s in SEEDS]
     if stage == "fashion":
         return [("ele-fashion", PAPER_MODEL, c, s) for c in FASHION_CONDITIONS for s in SEEDS]
+    if stage == "correction":
+        return (
+            [(d, PAPER_MODEL, "A1_no_early_physical_cross", s) for d in DATASETS for s in SEEDS]
+            + [(d, PAPER_MODEL, HOP_CONDITION, s) for d in DATASETS for s in SEEDS]
+            + [("ele-fashion", PAPER_MODEL, c, s) for c in FASHION_CONDITIONS for s in SEEDS]
+        )
     raise ValueError(f"unknown training stage {stage}")
 
 
@@ -1083,7 +1102,21 @@ def run_training_stage(stage: str, physical_gpu: int) -> None:
     gate_path = DATA / f"preflight_{stage}_gate.json"
     if not gate_path.is_file() or json.loads(gate_path.read_text()).get("status") != "pass":
         raise RuntimeError(f"training stage {stage} requires its successful real-data preflight gate")
-    completed = load_completed()
+    if stage == "correction":
+        # Preserve older attempts and rerun only cells lacking a completed
+        # result from the corrected frozen implementation source.
+        source_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+        latest = {}
+        for row in csv_rows(DATA / "runs.csv"):
+            if row.get("status") == "complete":
+                key = (row["dataset"], row["model"], row["condition"], int(row["seed"]))
+                latest[key] = row
+        completed = {key for key, row in latest.items() if row.get("source_git_sha") == source_sha}
+    else:
+        completed = load_completed()
     for dataset, model_name, condition, seed in training_cells(stage):
         key = (dataset, model_name, condition or model_name, seed)
         if key in completed:
@@ -1116,6 +1149,18 @@ def verify_stage(stage: str) -> dict[str, Any]:
         if row.get("validation_rng_unchanged", "").lower() != "true":
             raise RuntimeError(f"stage {stage} Validation RNG audit failed for {key}")
         selected.append(row)
+    if stage == "correction":
+        source_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
+            capture_output=True, text=True,
+        ).stdout.strip()
+        if any(row.get("source_git_sha") != source_sha for row in selected):
+            raise RuntimeError("corrected stage contains a cell from a different source commit")
+        for dataset in DATASETS:
+            for seed in SEEDS:
+                pair = [r for r in selected if r["dataset"] == dataset and int(r["seed"]) == seed]
+                if len({r["initial_classifier_sha256"] for r in pair}) != 1:
+                    raise RuntimeError(f"corrected classifier initialization is not matched for {dataset}/seed{seed}")
     if stage == "ablations":
         for dataset in DATASETS:
             for seed in SEEDS:
@@ -1147,13 +1192,16 @@ def parent_run(args: argparse.Namespace) -> None:
         stage = args.action.removeprefix("train-")
         run_training_stage(stage, args.physical_gpu)
         verify_stage(stage)
+        if stage == "correction":
+            for affected_stage in ("ablations", "hop", "fashion"):
+                verify_stage(affected_stage)
         return
     raise ValueError(args.action)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--action", required=True, choices=("prepare", "preflight-ablations", "preflight-hop", "preflight-baselines", "preflight-fashion", "train-ablations", "train-hop", "train-baselines", "train-fashion", "worker-preflight", "worker-train"))
+    parser.add_argument("--action", required=True, choices=("prepare", "preflight-ablations", "preflight-hop", "preflight-baselines", "preflight-fashion", "preflight-correction", "train-ablations", "train-hop", "train-baselines", "train-fashion", "train-correction", "worker-preflight", "worker-train"))
     parser.add_argument("--dataset", choices=DATASETS)
     parser.add_argument("--model", choices=MODEL_CONFIGS)
     parser.add_argument("--condition", choices=CONFIG_CONDITIONS)

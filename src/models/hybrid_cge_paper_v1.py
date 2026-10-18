@@ -186,6 +186,8 @@ class Model(FrozenHybridModel):
         residual, keep = self._apply_late_cross_dropout(controlled)
         diagnostics = {}
         if collect_details:
+            all_nodes = torch.ones_like(any_support)
+            collaborative_rms = self._masked_rms(u_collaborative_target, all_nodes)
             diagnostics = {
                 "semantic_support_nodes": int(semantic_mask.sum().detach().cpu()),
                 "same_node_support_nodes": int(same_mask.sum().detach().cpu()),
@@ -193,32 +195,53 @@ class Model(FrozenHybridModel):
                 "same_node_source_weight": float(source_weights[:, 1].detach().mean().cpu()),
                 "none_source_weight": float(source_weights[:, 2].detach().mean().cpu()),
                 "p_accept_mean": float(p_accept.detach().mean().cpu()),
+                "semantic_candidate_rms": float(self._masked_rms(semantic_candidate, semantic_mask).cpu()),
+                "same_node_candidate_rms": float(self._masked_rms(same_candidate, same_mask).cpu()),
                 "candidate_rms": float(self._masked_rms(candidate, any_support).cpu()),
                 "channel_gate_mean": float(gate.detach().mean().cpu()),
                 "late_moe_enabled": use_moe,
+                "complementary_expert_rms": float(self._masked_rms(comp_expert, any_support).cpu()) if use_moe else 0.0,
                 "complementary_expert_selection_share": (
                     comp_share.detach().cpu().tolist() if comp_share is not None else None
                 ),
                 "late_cross_dropout_probability": self.cross_dropout_p,
                 "late_cross_dropout_realized_fraction": float((~keep).float().mean().detach().cpu()),
+                "uncontrolled_residual_rms": float(self._masked_rms(unbounded, all_nodes).cpu()),
+                "controlled_residual_rms": float(self._masked_rms(controlled, all_nodes).cpu()),
+                "final_residual_rms": float(self._masked_rms(residual, all_nodes).cpu()),
+                "residual_to_collaborative_rms": float(
+                    (self._masked_rms(controlled, all_nodes) / collaborative_rms.clamp_min(1.0e-8)).cpu()
+                ),
                 "relative_control_trigger_fraction": float((control_scale.detach() < 1.0).float().mean().cpu()),
+                "relative_control_trigger_fraction_supported": float(
+                    (control_scale.detach()[any_support] < 1.0).float().mean().cpu()
+                ) if bool(any_support.any()) else 0.0,
+                "tau": float(self.tau[target_index].detach().cpu()),
             }
             if attention.numel():
                 diagnostics["semantic_attention_edges"] = int(attention.numel())
         return u_collaborative_target + residual, residual, source_weights, diagnostics, comp_balance
 
     def _late_completion(self, *args, **kwargs):
-        if self.paper_condition == "A4_no_same_node":
-            if len(args) == 7:
-                positional, collect_details = args[:-1], bool(args[-1])
-            else:
-                positional = args
-                collect_details = bool(kwargs.pop("collect_details", False))
-            return self._late_completion_controlled(
-                *positional, allow_same_node=False, use_moe=True,
-                collect_details=collect_details,
-            )
-        return super()._late_completion(*args, **kwargs)
+        # The frozen parent enables its same-node path only when its internal
+        # condition is exactly "H2_hybrid_plus". This paper wrapper replaces
+        # that name with controlled condition IDs (H2_full, H2_physical_3hop,
+        # F1, ...), so delegating to the parent silently masks SameNode for
+        # every arm. Route all paper conditions through the explicit helper;
+        # only A4 is permitted to skip the projection and mask that logit.
+        if len(args) == 7:
+            positional, collect_details = args[:-1], bool(args[-1])
+        else:
+            positional = args
+            collect_details = bool(kwargs.pop("collect_details", False))
+        if kwargs:
+            raise TypeError(f"unexpected _late_completion keyword arguments: {sorted(kwargs)}")
+        return self._late_completion_controlled(
+            *positional,
+            allow_same_node=self.paper_condition != "A4_no_same_node",
+            use_moe=True,
+            collect_details=collect_details,
+        )
 
     def _private_without_early_cross(
         self, modality: str, modality_index: int, prior: torch.Tensor,

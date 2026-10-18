@@ -10,7 +10,7 @@ The complete H2 reference is Hidden=256, four physical hops, four shared experts
 
 Every newly trained model uses the repository's existing features, global node order, physical graph, Train/Validation/Test split, and per-dataset V7B.1 semantic cache. All semantic caches are feature-only and use independent Text and Visual K=8 searches. Split, feature, graph, and cache fingerprints are stored for each run. Graph models use full-graph transductive supervised node classification. Test labels are masked to `-100` before the trainer; Test evaluation is disabled throughout.
 
-Training uses the existing unified full-graph NC budget: AdamW, LR 1e-3, weight decay 1e-4 except where a candidate explicitly changes it (none in this study), at most 300 epochs, patience 30, minimum epoch 30, minimum accuracy improvement 1e-4, gradient clip 1.0, evaluation every epoch, Validation Accuracy stopping/checkpoint selection, and a secondary Best Validation Macro-F1 checkpoint. Private Text/Visual auxiliary CE is Train-only and unweighted. Fashion class weights are computed only from Train label counts using normalized `1/sqrt(n_c)` and clipped to [0.5, 2.0]; only the main CE receives them.
+Training uses the existing unified full-graph NC budget: AdamW, LR 1e-3, weight decay 1e-4 except where a candidate explicitly changes it (none in this study), at most 300 epochs, patience 30, minimum epoch 30, minimum accuracy improvement 1e-4, gradient clip 1.0, evaluation every epoch, Validation Accuracy stopping/checkpoint selection, and a secondary Best Validation Macro-F1 checkpoint. Private Text/Visual auxiliary CE is Train-only and unweighted. Fashion class weights are computed only from Train label counts using normalized `1/sqrt(n_c)` and clipped to [0.5, 2.0] for classes observed in Train; zero-Train-support output classes receive weight zero because they can never be a Train target. Only the main CE receives weights.
 
 ## Formal run matrix
 
@@ -21,6 +21,8 @@ Training uses the existing unified full-graph NC budget: AdamW, LR 1e-3, weight 
 - Fashion candidates: F1, F2 and F4 × three seeds = 9. F3 aliases the matching three-hop result and is not trained twice. F0 is the historical H2-Frozen reference.
 
 Formal new training total is 174, with 45 separately marked reused baseline rows. No fresh full H2 4-hop training cells are added to this count. A new cell is complete only after finite metrics, masked-Test verification, checkpoint hash/reload validation, and Validation RNG audit.
+
+The first freeze (`0db724e5eec704a1f3db92329bfbbac056df7202`) contained a SameNode condition-name mismatch in the paper wrapper. Before finalizing the evidence, the exact source error was corrected, the affected 39 attempts were rerun as new attempts (A1: 15, 3-hop: 15, Fashion F1/F2/F4: 9), and the originals were preserved. The final analysis selects the highest completed attempt for each Dataset × Model × Seed; superseded attempts remain in `data/runs.csv` and are listed in `data/superseded_runs.csv`. The corrected implementation/training source SHA is recorded in `data/analysis_manifest.json` and the source metadata of those 39 reruns. Unaffected runs retain their original freeze source SHA.
 
 ## Matching and checkpoints
 

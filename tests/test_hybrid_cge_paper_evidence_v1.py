@@ -9,6 +9,7 @@ from scripts.run_hybrid_cge_paper_evidence_v1 import (
     module_hash,
 )
 from src.models import build_model
+from src.models.hybrid_cge_v11 import Model as FrozenHybridModel
 from src.models.rmcge_v2 import build_modality_knn_operators
 from src.tasks.nc import _training_class_weights
 
@@ -176,6 +177,77 @@ def test_a4_skips_same_node_projection_and_retains_late_dropout():
         late = info["details"]["modalities"][modality]["late_completion"]
         assert late["same_node_support_nodes"] == 0
         assert late["same_node_source_weight"] == 0.0
+
+
+def test_full_late_completion_arms_keep_same_node_path_active():
+    # The wrapper uses paper-specific condition names, unlike the frozen
+    # parent's "H2_hybrid_plus" identifier. Every arm that retains late
+    # completion must explicitly preserve SameNode; A4 is covered above.
+    for condition in (
+        "H2_full", "A1_no_early_physical_cross", "H2_physical_3hop",
+        "F1_fashion_dropout_aux", "F2_fashion_class_balanced_4hop",
+        "F4_fashion_class_balanced_3hop",
+    ):
+        model, edges = _make_model(condition)
+        calls = {"visual_to_text": 0, "text_to_visual": 0}
+        handles = [
+            model.cross_projections[name].register_forward_pre_hook(
+                lambda module, args, key=name: calls.__setitem__(key, calls[key] + 1)
+            )
+            for name in calls
+        ]
+        model.eval()
+        with torch.no_grad():
+            _, _, _, _, info = model(torch.randn(6, 7), edges, return_details=True)
+        for handle in handles:
+            handle.remove()
+        late_calls = 2 if condition == "A1_no_early_physical_cross" else 3
+        assert calls == {
+            "visual_to_text": late_calls, "text_to_visual": late_calls
+        }, condition
+        if condition == "A1_no_early_physical_cross":
+            # A1's purpose-built forward reports that Early Cross did not run;
+            # its late projection-call count above is the SameNode path audit.
+            continue
+        for modality in ("text", "visual"):
+            late = info["details"]["modalities"][modality]["late_completion"]
+            assert late["same_node_support_nodes"] == 6, condition
+            assert late["same_node_source_weight"] > 0.0, condition
+            assert late["same_node_candidate_rms"] > 0.0, condition
+
+
+def test_corrected_h2_wrapper_matches_frozen_h2_forward():
+    wrapper, edges = _make_model("H2_full", seed=29)
+    cfg = OmegaConf.create({
+        "model": OmegaConf.load("configs/model/hybrid_cge_v11.yaml"),
+        "seed": 29,
+    })
+    cfg.model.condition = "H2_hybrid_plus"
+    cfg.model.dropout = 0.2
+    cfg.model.late_cross_dropout = 0.15
+    frozen = FrozenHybridModel(
+        cfg,
+        {"input_dim": 7, "text_dim": 3, "visual_dim": 4, "num_nodes": 6, "num_classes": 3},
+    )
+    frozen.load_state_dict(wrapper.state_dict(), strict=True)
+    for modality in ("text", "visual"):
+        for suffix in ("edge_index_v2", "weight_v2"):
+            name = f"semantic_{modality}_{suffix}"
+            setattr(frozen, name, getattr(wrapper, name))
+    frozen.semantic_candidate_fingerprint = wrapper.semantic_candidate_fingerprint
+    frozen.semantic_v7b_fingerprint = wrapper.semantic_v7b_fingerprint
+    wrapper.eval(); frozen.eval()
+    x = torch.randn(6, 7)
+    with torch.no_grad():
+        wrapped = wrapper(x, edges, return_details=True)
+        legacy = frozen(x, edges, return_details=True)
+    torch.testing.assert_close(wrapped[0], legacy[0], atol=1.0e-6, rtol=1.0e-6)
+    torch.testing.assert_close(wrapped[3], legacy[3], atol=1.0e-7, rtol=1.0e-6)
+    for modality in ("text", "visual"):
+        wrapped_late = wrapped[-1]["details"]["modalities"][modality]["late_completion"]
+        legacy_late = legacy[-1]["details"]["modalities"][modality]["late_completion"]
+        assert wrapped_late["same_node_support_nodes"] == legacy_late["same_node_support_nodes"] == 6
+        assert abs(wrapped_late["same_node_source_weight"] - legacy_late["same_node_source_weight"]) < 1.0e-7
 
 
 def test_three_hop_forward_never_runs_fourth_physical_propagation(monkeypatch):
