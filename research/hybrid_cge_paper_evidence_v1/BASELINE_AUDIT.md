@@ -20,4 +20,4 @@ No MLP or MvCGE-MAG result is included. Published scores under different data, f
 
 ## Results
 
-The table is populated from `data/runs.csv` and generated after all six new baseline models finish. The first three families above are counted as inherited only when `baseline_reuse_audit.json` remains `pass`.
+The final comparison is in `BASELINE_REPORT.md`; it includes all 90 new baseline cells and the 45 inherited rows only while `data/baseline_reuse_audit.json` remains `pass`. Baseline models do not use the Hybrid-CGE paper wrapper, so the later SameNode condition-dispatch correction does not invalidate these rows.

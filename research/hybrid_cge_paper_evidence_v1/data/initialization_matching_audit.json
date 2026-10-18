@@ -1,0 +1,310 @@
+{
+  "all_classifier_tensors_exact": true,
+  "all_non_alpha_tensors_exact": true,
+  "audit": "CPU constructor-level H2_full versus H2_physical_3hop initialization comparison",
+  "only_expected_alpha_shape_change": true,
+  "pairs": 15,
+  "pairs_detail": [
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Movies",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 42,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Movies",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 43,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Movies",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 44,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Grocery",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 42,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Grocery",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 43,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Grocery",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 44,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "ele-fashion",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 42,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "ele-fashion",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 43,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "ele-fashion",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 44,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Toys",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 42,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Toys",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 43,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Toys",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 44,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Reddit-S",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 42,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Reddit-S",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 43,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    },
+    {
+      "alpha_raw_shapes": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "classifier_equal": true,
+      "dataset": "Reddit-S",
+      "non_alpha_common_tensor_count": 94,
+      "non_alpha_mismatch_keys": [],
+      "seed": 44,
+      "state_keys_added": [],
+      "state_keys_removed": [],
+      "test_evaluation": false
+    }
+  ],
+  "test_evaluation": false
+}

@@ -25,3 +25,11 @@ After the correction, all ten focused paper-study tests pass and the full reposi
 ## Evidence boundary
 
 The correction does not change historical H2 checkpoints, reused baselines or unaffected attempt records. The three-hop and Fashion outcomes are recomputed from their corrected checkpoints. Historical H2 checkpoint diagnostics are also rerun through the corrected compatibility wrapper so the same-node source summaries describe the checkpoint's actual H2 path. No Test labels or metrics are used.
+
+## Corrected rerun and post-correction diagnostics
+
+The corrective stage completed 39/39 cells at attempt 02 from the corrected freeze. For all 39 superseded-to-corrected pairs, the recorded feature, raw-feature, physical-edge, split, semantic-cache, candidate, V7B and initial model/classifier/shared-parameter fingerprints are identical; only the intended implementation source revision and resulting training trajectory differ. The preflight stage passed 13/13 affected representative cells. The new stage audit is `data/final_evidence_audit.json`.
+
+A fresh Train/Validation-only checkpoint audit reloaded 39 checkpoints and recorded 1,280 aggregated cross-modal scalar summaries. Unlike the initial disabled-path report, the corrected `PHYSICAL_SEMANTIC_DIAGNOSTICS.md` has nonzero SameNode selector weights for both modalities across the five datasets for H2 4-hop and corrected 3-hop. The per-seed table keeps dataset/modality variation visible. These are forward-path diagnostics, not causal utility estimates. The Fashion F1/F2/F4 candidate paths are also included in the detailed CSV/JSON. Test labels were masked and Test metrics were not computed.
+
+All corrected cells have finite Train/Validation metrics, intact checkpoint records, unchanged Validation RNG, and Test evaluation disabled. The original attempt-01 rows, checkpoints, failure log and initial zero-support diagnostic remain preserved. The current implementation and reports do not attribute the initial issue to CUDA; the exact condition-name dispatch was found in source and covered by added positive-path tests.
