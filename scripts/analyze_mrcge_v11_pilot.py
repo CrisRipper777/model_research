@@ -46,6 +46,24 @@ def compact(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":")) if value not in (None, "") else ""
 
 
+def gpu_device_snapshot(snapshot: dict[str, Any], physical_gpu: int) -> dict[str, Any]:
+    direct = snapshot.get(f"GPU{physical_gpu}")
+    if isinstance(direct, dict):
+        return direct
+    return next(
+        (row for row in snapshot.get("devices", []) if row.get("physical_index") == physical_gpu),
+        {},
+    )
+
+
+def gpu_compute_pids(snapshot: dict[str, Any], device: dict[str, Any]) -> list[int]:
+    uuid = device.get("uuid")
+    return [
+        int(row["pid"]) for row in snapshot.get("compute_processes", [])
+        if row.get("gpu_uuid") == uuid and row.get("pid") is not None
+    ]
+
+
 def pytest_summary(output: str) -> str:
     for line in reversed(output.splitlines()):
         if " passed" in line or " failed" in line or " error" in line:
@@ -110,23 +128,24 @@ def main() -> None:
         if gpu_block is None:
             blocked_rows = [row for row in preflight.get("gpu_single_step", []) if row.get("status") == "blocked"]
             gpu_block = blocked_rows[-1] if blocked_rows else None
-    resource_rows = pilot.read_rows(DATA / "resource_summary.csv")
-    if preflight.get("gpu_single_step_status") == "pass":
-        resource_rows = [row for row in resource_rows if row.get("phase") != "gpu_single_step_preflight_blocked"]
-    if not resource_rows and gpu_block:
+    resource_rows = [
+        row for row in pilot.read_rows(DATA / "resource_summary.csv")
+        if row.get("phase") != "gpu_single_step_preflight_blocked"
+    ]
+    if gpu_block:
         snapshot = gpu_block.get("gpu_snapshot", {})
-        gpu0, gpu1 = snapshot.get("GPU0", {}), snapshot.get("GPU1", {})
+        gpu0, gpu1 = gpu_device_snapshot(snapshot, 0), gpu_device_snapshot(snapshot, 1)
         resource_rows.append({
             "dataset": gpu_block.get("dataset", ""), "condition": gpu_block.get("condition", ""),
             "seed": pilot.SEED, "attempt": "", "phase": "gpu_single_step_preflight_blocked",
             "physical_gpu": 0, "gpu0_free_mib": gpu0.get("memory_free_mib", ""),
             "gpu0_utilization_percent": gpu0.get("utilization_percent", ""),
             "gpu0_temperature_c": gpu0.get("temperature_c", ""),
-            "gpu0_compute_pids": compact(gpu0.get("compute_pids")),
+            "gpu0_compute_pids": compact(gpu0.get("compute_pids", gpu_compute_pids(snapshot, gpu0))),
             "gpu1_free_mib": gpu1.get("memory_free_mib", ""),
             "gpu1_utilization_percent": gpu1.get("utilization_percent", ""),
             "gpu1_temperature_c": gpu1.get("temperature_c", ""),
-            "gpu1_compute_pids": compact(gpu1.get("compute_pids")),
+            "gpu1_compute_pids": compact(gpu1.get("compute_pids", gpu_compute_pids(snapshot, gpu1))),
             "status": "blocked_before_training", "reason": gpu_block.get("reason", ""),
             "test_evaluation": False,
         })
