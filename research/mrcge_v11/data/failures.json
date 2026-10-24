@@ -1,0 +1,47 @@
+{
+  "failures": [
+    {
+      "dataset": "Movies",
+      "error": "KeyError('physical_edge_fingerprint') while serializing fingerprint record; the legacy helper returns physical_edge_index",
+      "recorded_utc": "2026-10-24T13:15:02+00:00",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "source_state_note": "Initial implementation was uncommitted. Corrected the key mapping and preflight exception handler; attempt 1 is preserved in data/preflight.json.",
+      "stage": "cpu_preflight_attempt_1",
+      "test_evaluation": false,
+      "training_started": false
+    },
+    {
+      "action": "worker-gpu-preflight",
+      "attempt": null,
+      "condition": "S",
+      "dataset": "Movies",
+      "error": "RuntimeError('GPU0 free memory 7882 MiB below 8192 MiB guard threshold')",
+      "physical_gpu": 0,
+      "seed": 42,
+      "stage": "pre_run_gpu_guard",
+      "test_evaluation": false,
+      "time_utc": "2026-10-24T13:15:41+00:00",
+      "training_started": false
+    },
+    {
+      "error": "Two focused tests failed: expert parameter-count expectation was 16 but actual count was 8; a support-mask fixture had length 8 while the test graph had 12 nodes.",
+      "recorded_utc": "2026-10-24T13:23:15+00:00",
+      "repair": "Corrected the expected parameter count and aligned the support fixture to the 12-node graph; subsequent focused suite passed.",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "source_state_note": "Recorded retrospectively from the test run during this implementation session; exact event time was not captured.",
+      "stage": "focused_unit_tests_attempt_1",
+      "test_evaluation": false,
+      "training_started": false
+    },
+    {
+      "error": "One test failed because its expected error regex said feature fingerprint while the implementation correctly raised an input-features fingerprint mismatch.",
+      "recorded_utc": "2026-10-24T13:23:15+00:00",
+      "repair": "Updated the test regex to match the implementation error. The rerun passed 19 focused tests.",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "source_state_note": "Recorded retrospectively from the test run during this implementation session; exact event time was not captured.",
+      "stage": "focused_unit_tests_attempt_after_checkpoint_fingerprint_test",
+      "test_evaluation": false,
+      "training_started": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+study: mrcge_v11
+protocol_version: unified_full_graph_nc_v1
+datasets: [Movies, Grocery, ele-fashion]
+conditions: [S, F, M]
+seeds: [42]
+evaluate_test: false
+semantic_cache: V7B.1
+semantic_knn_k: 8
+training:
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  dropout: 0.2
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  grad_clip: 1.0
+  eval_every: 1
+  inference_mode: full
+  unimodal_weight: 0.3
+  aux_weight: 1.0
+  balance_weight: 0.01

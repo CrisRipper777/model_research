@@ -573,6 +573,8 @@ def _run_single_nc(
             }
             if extended_epoch_metrics is not None:
                 history_row.update(extended_epoch_metrics)
+            if hasattr(model, "collect_epoch_diagnostics"):
+                history_row.update(model.collect_epoch_diagnostics())
             epoch_history.append(history_row)
 
         improved = val_metrics["acc"] > best_val + min_delta
