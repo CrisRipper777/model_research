@@ -76,6 +76,21 @@
       "test_evaluation": false,
       "time_utc": "2026-10-24T15:31:53+00:00",
       "training_started": false
+    },
+    {
+      "action": "worker-gpu-preflight",
+      "attempt": null,
+      "condition": "S",
+      "dataset": "Movies",
+      "error": "RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run')",
+      "failure_kind": "guard_refused_before_child_launch_due_to_100_percent_baseline_utilization",
+      "physical_gpu": 0,
+      "seed": 42,
+      "source_git_sha": "9f369ea505fcf9ad4508f5af35a7fa8480dbd6f0",
+      "stage": "pre_run_gpu_guard",
+      "test_evaluation": false,
+      "time_utc": "2026-10-24T15:36:24+00:00",
+      "training_started": false
     }
   ]
 }

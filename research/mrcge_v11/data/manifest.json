@@ -1,18 +1,20 @@
 {
   "branch": "exp/mrcge_v11_shared_filter_pilot",
-  "code_commit_sha": "42f74a2caafe55832e1675d2c8efd4fd553ec93a",
+  "code_commit_sha": "1d462d9f46a880b27bfd93477fca7dae15b2f5f6",
   "completed_formal_cells": 0,
   "data_file_sha256": {
     "condition_differences.csv": "0cca7be0f3b3e15678be025809176c313edbbd143be593ab69c6c4db401f35c3",
     "condition_summary.csv": "7fa3082774e8ca62e05349d32c5679d32430f20957635d09ad624f659fd804eb",
-    "environment.json": "ff26d1ccd0f0658596f1a979ef6f3dc712ebf5c196d316168528310639fb50fa",
+    "environment.json": "c9749b326e4216ca987c02d847f5920da6627a2b8efdcf0ea85ced1bb2760cdc",
     "epoch_history.csv": "39531a8fed3f451c62620d88b8bef001af7bed07b81b2e3ea17dabfe76fc28ab",
     "expert_diagnostics.csv": "9a0cdc512c2fd3e4ca071135f8338f5615366f01124098d807950f50089d6c25",
-    "failures.json": "fda3e242aa59e2258e5c7a48c311a227b5d057a2591db9a1874e2400bf833f2b",
-    "gpu_baseline.json": "246e3c16b4c0f3e90f89d31fcae61598b1cf5f0b16a7fe0552a78f05d9c66755",
+    "failures.json": "2f17d897b0e8f4b7963784b5625c5cf2aac4ad6befe142e527ca05fcda985cb5",
+    "gpu_baseline.json": "9a35f0730e1544750a4e6317b78cf23b4c0711769710ea8d8c2cc3d8a8e61626",
+    "gpu_preflight_Movies_S_seed42_attempt2.log": "ad88fa583c11ac48232049aee73ec91bf7c327d0da238703c48c306485329a15",
+    "gpu_preflight_ele-fashion_M_seed42_attempt3.log": "52340982c3c5aed200464d5b11d060ab899c991371fd9ee0a11911b48970a870",
     "loss_gradient_diagnostics.csv": "711ee3649ab95df2deb0b112d71d7ddd40cd4b0550db321c5c25fe85512a1450",
-    "preflight.json": "06e44857a911a67f2c2152dab91ded512b14cdd3c51324916da65d6a1734c640",
-    "resource_summary.csv": "f9b29e121c88e7bbf23260b25d6298c0d0fdb3931042d34df266762a5679dcf6",
+    "preflight.json": "0bb88e1330c7adbb0d5f58b645150be3b69f0d001295f8e1ada6af1f7c75416d",
+    "resource_summary.csv": "5d905b5abff0db4e2128c30c083e0e232977593f0346fc2f3c55677e90017fae",
     "response_diagnostics.csv": "f2722f76063653064879bb78daf87179033e9a82a3f7d29d0a51c0aafc7300d5",
     "route_diagnostics.csv": "4b830d4a6eed6f75c8c267064af5643928821fe62bc6019edb1a207bf57a5325",
     "runs.csv": "69738bce8b6a6efee7604ea5b23f86ac4486206e1bee25901a4ef2eba6613080"
@@ -40,64 +42,79 @@
       "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
     }
   },
-  "failures_count": 4,
+  "failures_count": 7,
   "formal_pilot_status": "blocked_before_training",
   "gpu_block": {
-    "baseline_gpu_processes": [
-      3717674,
-      3769512
-    ],
+    "baseline_path": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v11/data/gpu_baseline.json",
     "condition": "S",
     "dataset": "Movies",
+    "failure_kind": "guard_refused_before_child_launch_due_to_100_percent_baseline_utilization",
     "gpu_snapshot": {
-      "GPU0": {
-        "compute_pids": [
-          3717674,
-          3769512
-        ],
-        "memory_free_mib": 7882,
-        "memory_total_mib": 24576,
-        "memory_used_mib": 16370,
-        "temperature_c": 86,
-        "utilization_percent": 100,
-        "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
-      },
-      "GPU1": {
-        "compute_pids": [
-          2537427
-        ],
-        "memory_free_mib": 8845,
-        "memory_total_mib": 24576,
-        "memory_used_mib": 15413,
-        "temperature_c": 77,
-        "utilization_percent": 99,
-        "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
-      }
+      "captured_utc": "2026-10-24T15:36:25+00:00",
+      "compute_processes": [
+        {
+          "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+          "pid": 3815405,
+          "used_memory_mib": 1756
+        },
+        {
+          "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+          "pid": 3842120,
+          "used_memory_mib": 9108
+        },
+        {
+          "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+          "pid": 2537427,
+          "used_memory_mib": 15398
+        }
+      ],
+      "devices": [
+        {
+          "memory_free_mib": 13278,
+          "memory_total_mib": 24576,
+          "memory_used_mib": 10974,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 0,
+          "temperature_c": 85,
+          "utilization_percent": 100,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        {
+          "memory_free_mib": 8845,
+          "memory_total_mib": 24576,
+          "memory_used_mib": 15413,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 1,
+          "temperature_c": 77,
+          "utilization_percent": 100,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      ]
     },
     "physical_gpu": 0,
-    "reason": "RuntimeError('GPU0 free memory 7882 MiB below 8192 MiB guard threshold')",
-    "recorded_utc": "2026-10-24T13:15:41+00:00",
+    "reason": "RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run')",
+    "recorded_utc": "2026-10-24T15:36:25+00:00",
     "seed": 42,
-    "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
-    "stage": "pre_run_gpu_guard",
+    "source_git_sha": "9f369ea505fcf9ad4508f5af35a7fa8480dbd6f0",
+    "stage": "gpu_single_step_attempt_failed",
     "status": "blocked",
     "test_evaluation": false,
     "training_started": false
   },
   "gpu_single_step_status": "blocked",
   "planned_formal_cells": 9,
-  "recorded_utc": "2026-10-24T13:25:50+00:00",
+  "recorded_utc": "2026-10-24T15:39:25+00:00",
   "schema_version": 1,
   "seeds_43_44_run": false,
   "source_file_sha256": {
     "configs/model/mrcge_v11.yaml": "1743a0e34916046cafd5c4ac508d7b36f2eaa151f2c8a946773b70ace8f50383",
     "configs/study/mrcge_v11_pilot.yaml": "a3ebe3baa7f937516b30a65a325ec346e533144c2057d08ce9c8ebcdd921276b",
-    "scripts/analyze_mrcge_v11_pilot.py": "dde01a53dddfa1401e7e62824d8d5aa6998d8739efedab116b2318e4a882b230",
+    "scripts/analyze_mrcge_v11_pilot.py": "1207cb2b240e374a8183e219ed45b1f41c3a42debe8bf45f8ca17a80bf39fac3",
     "scripts/preflight_mrcge_v11.py": "9bf8749ad1e6800b32bcdc28f3f2838cf9c598866ed66b8b72c60535837e271f",
-    "scripts/run_mrcge_v11_pilot.py": "87d7251c8888a9d9d6e8526c7b57aa2a9e1963d2e9f3f1086e6fe67843b999a6",
-    "src/models/mrcge_v11.py": "bb45c1c0e163482db5494a367c883f2f9dc2fd12778b0cd1d4a7619920ffdd0b",
+    "scripts/run_mrcge_v11_pilot.py": "80df1c7e23ebe3e98325481741e692f43cf1a7d953bbe3f193b51dc780ff018b",
+    "src/models/mrcge_v11.py": "5b5ce23cf5ae120ddd3a740d8d415020218aa920b99fd5cd04be1a52059a31da",
     "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
-    "tests/test_mrcge_v11.py": "d5393ec1ad2661f87568e0c57cf050ca1216ed33e8f3fa3d69a9bc2b77f7a686"
+    "tests/test_mrcge_v11.py": "681faa19caa1489738c07895a1f10f8587a05449a1b64176b8a6fd1acb3d9549"
   },
   "study": "MR-CGE V1.1",
   "test_evaluation": false,

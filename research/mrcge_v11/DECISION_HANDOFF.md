@@ -1,8 +1,8 @@
 # MR-CGE V1.1 Decision Handoff
 
-Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit: `42f74a2caafe55832e1675d2c8efd4fd553ec93a`.
+Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit: `1d462d9f46a880b27bfd93477fca7dae15b2f5f6`.
 
-The implementation and CPU checks are ready for independent review. The nine-cell GPU single-step gate is blocked by the shared CUDA 0 resource guard; no formal Pilot training started.
+Stage-A status: blocked_before_training; GPU single-step gate: blocked; completed formal cells: 0/9.
 
 ## Review materials
 
@@ -14,4 +14,4 @@ The implementation and CPU checks are ready for independent review. The nine-cel
 
 ## Requested decision
 
-First review the implementation and CPU evidence, then decide whether to resume with the nine isolated GPU preflights when the registered CUDA 0 guard thresholds pass. The 9 Pilot cells remain the only authorized training stage in this branch; do not infer authorization for seeds 43/44 or Test evaluation from this handoff.
+Resume only the remaining authorized seed-42 cells after the GPU single-step gate passes. Do not infer authorization for seeds 43/44 or Test evaluation from this handoff.

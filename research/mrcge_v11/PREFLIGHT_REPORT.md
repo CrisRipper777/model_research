@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Preflight Report
 
-- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `42f74a2caafe55832e1675d2c8efd4fd553ec93a`.
+- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `1d462d9f46a880b27bfd93477fca7dae15b2f5f6`.
 - CPU/data/cache/init preflight: **pass**.
 - GPU single-step preflight: **blocked**.
 - Formal Pilot cells started: **0/9**.
@@ -18,25 +18,25 @@
 ## Focused tests
 
 Command: `PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py`
-Result: passed; 19 passed, 1 warning in 3.54s.
+Result: passed; 23 passed, 1 warning in 3.62s.
 
 ```text
-...................                                                      [100%]
+.......................                                                  [100%]
 =============================== warnings summary ===============================
 ../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26
   /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples
     from torch_geometric.distributed import (
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-19 passed, 1 warning in 3.54s
+23 passed, 1 warning in 3.62s
 ```
 
 ## GPU guard outcome
 
-The first requested GPU preflight (Movies/S/seed42) was refused **before CUDA work**. CUDA 0 had 7882 MiB free, 100% utilization, and 86 °C; the guard threshold was 8192 MiB free, below 90% baseline utilization, and below 88 °C. Observed CUDA 0 compute PIDs: `[3717674, 3769512]`.
-CUDA 1 was not selected; it showed 8845 MiB free and 99% utilization.
-No GPU process was stopped or modified. The remaining eight GPU preflight cells and all nine formal Pilot cells were not launched.
+The guarded GPU single-step attempt for Movies/S/seed42 did not pass.
+Recorded stage: `gpu_single_step_attempt_failed`; reason: `RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run')`.
+See `data/failures.json` and the referenced worker log for the full trace. Formal Pilot training remains gated until all nine GPU single-step checks pass.
 
 ## Preserved failures
 
-`data/failures.json` contains 4 recorded events.
+`data/failures.json` contains 7 recorded events.
