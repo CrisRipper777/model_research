@@ -368,6 +368,41 @@ def test_single_filter_gradient_diagnostics_match_trainable_parameters(condition
         assert "single_filter.theta" not in diagnostics
 
 
+def test_late_mlp_split_linear_matches_concatenated_form(graph_bundle):
+    model = build_model("S", graph_bundle)
+    torch.manual_seed(404)
+    selector_parts = (
+        torch.randn(9, 256), torch.randn(9, 256), torch.randn(9, 256),
+        torch.randn(9, 1), torch.randn(9, 1), torch.randn(9, 1),
+    )
+    gate_parts = tuple(torch.randn(9, 256) for _ in range(4))
+    for module, parts in ((model.source_selector, selector_parts), (model.channel_gate, gate_parts)):
+        expected = module(torch.cat(parts, dim=-1))
+        actual = model._sequential_from_parts(module, parts)
+        assert torch.allclose(actual, expected, atol=1e-6, rtol=1e-6)
+
+
+def test_filter_summary_chunked_statistics_match_direct_calculation(graph_bundle):
+    model = build_model("M", graph_bundle)
+    torch.manual_seed(505)
+    values = torch.randn(3, 8203, 5)
+    support = torch.rand(8203) > 0.2
+    summary = model._filter_summary(
+        {"G": values, "E": values * 1.7, "residual": values * 0.1, "coefficients": []},
+        support,
+    )
+    selected = values[:, support]
+    expected_rms = selected.square().mean(dim=(1, 2)).sqrt()
+    normalized = F.normalize(selected.flatten(start_dim=1), dim=-1, eps=1e-12)
+    expected_cosine = {
+        f"{left}_{right}": float((normalized[left] * normalized[right]).sum())
+        for left in range(3) for right in range(left + 1, 3)
+    }
+    assert torch.allclose(torch.tensor(summary["G_expert_rms"]), expected_rms, atol=1e-6, rtol=1e-6)
+    for key, expected in expected_cosine.items():
+        assert summary["G_pairwise_cosine"][key] == pytest.approx(expected, abs=1e-6)
+
+
 def test_filter_and_route_telemetry_contains_expert_and_view_metrics(graph_bundle):
     model = build_model("M", graph_bundle)
     started = time.perf_counter()

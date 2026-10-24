@@ -405,11 +405,13 @@ class Model(nn.Module):
         max_order = len(basis) - 1
         if self.condition != "M":
             output, filtered, coefficients, residual = self.single_filter(basis, support, max_order)
-            return output, None, torch.zeros((), device=output.device), {
+            detail = self._filter_summary({
                 "G": filtered.unsqueeze(0), "E": output.unsqueeze(0),
                 "residual": residual.unsqueeze(0),
                 "coefficients": coefficients.detach().cpu().tolist(),
-                "route": None,
+            }, support) if collect else {}
+            return output, None, torch.zeros((), device=output.device), {
+                **detail,
             }
         outputs, filtered, coefficients, residual = self.filter_bank(basis, support, max_order)
         first = basis[1] if len(basis) > 1 else basis[0]
@@ -434,10 +436,10 @@ class Model(nn.Module):
             "selected": selected, "importance": importance, "share": selected_share,
             "balance": balance,
         }
-        detail = {
+        detail = self._filter_summary({
             "G": filtered, "E": outputs, "residual": residual,
-            "coefficients": coefficients.detach().cpu().tolist(), "route": route,
-        }
+            "coefficients": coefficients.detach().cpu().tolist(),
+        }, support) if collect else {}
         return response, route, balance, detail
 
     @staticmethod
@@ -470,19 +472,47 @@ class Model(nn.Module):
     def _filter_summary(cls, detail: dict[str, Any], support: torch.Tensor) -> dict[str, Any]:
         g, e, residual = detail["G"], detail["E"], detail["residual"]
         mask = support
+        chunk_size = 8192
 
         def per_expert_rms(values: torch.Tensor) -> list[float]:
-            return [float(cls._rms(value, mask).cpu()) for value in values]
+            values = values.detach()
+            result = []
+            for value in values:
+                total = torch.zeros((), dtype=torch.float32, device=value.device)
+                count = 0
+                for start in range(0, value.size(0), chunk_size):
+                    stop = min(start + chunk_size, value.size(0))
+                    part = value[start:stop]
+                    if mask is not None:
+                        part = part[mask[start:stop]]
+                    if part.numel():
+                        total = total + part.float().square().sum()
+                        count += part.numel()
+                result.append(float((total / max(count, 1)).sqrt().cpu()))
+            return result
 
         def pairwise(values: torch.Tensor) -> dict[str, float]:
             if values.size(0) < 2 or not bool(mask.any()):
                 return {}
-            flat = values[:, mask].detach().float().flatten(start_dim=1)
-            flat = F.normalize(flat, dim=-1, eps=1.0e-12)
+            values = values.detach()
             result = {}
             for left in range(values.size(0)):
                 for right in range(left + 1, values.size(0)):
-                    result[f"{left}_{right}"] = float((flat[left] * flat[right]).sum().cpu())
+                    dot = torch.zeros((), dtype=torch.float32, device=values.device)
+                    left_sq = torch.zeros_like(dot)
+                    right_sq = torch.zeros_like(dot)
+                    for start in range(0, values.size(1), chunk_size):
+                        stop = min(start + chunk_size, values.size(1))
+                        valid = mask[start:stop]
+                        if not bool(valid.any()):
+                            continue
+                        a = values[left, start:stop][valid].float()
+                        b = values[right, start:stop][valid].float()
+                        dot = dot + (a * b).sum()
+                        left_sq = left_sq + a.square().sum()
+                        right_sq = right_sq + b.square().sum()
+                    denom = left_sq.sqrt().clamp_min(1.0e-12) * right_sq.sqrt().clamp_min(1.0e-12)
+                    result[f"{left}_{right}"] = float((dot / denom).cpu())
             return result
 
         return {
@@ -560,6 +590,28 @@ class Model(nn.Module):
             calibrated = raw * scale.to(raw.dtype)
         return raw, calibrated, scale
 
+    @staticmethod
+    def _sequential_from_parts(module: nn.Sequential, parts: tuple[torch.Tensor, ...]) -> torch.Tensor:
+        """Evaluate a Sequential MLP without materializing its wide concatenated input."""
+        first = module[0]
+        if not isinstance(first, nn.Linear):
+            return module(torch.cat(parts, dim=-1))
+        offset = 0
+        pre_activation = None
+        for part in parts:
+            width = part.size(-1)
+            contribution = F.linear(part, first.weight[:, offset:offset + width], bias=None)
+            pre_activation = contribution if pre_activation is None else pre_activation + contribution
+            offset += width
+        if offset != first.in_features:
+            raise ValueError(f"MLP input parts have width {offset}; expected {first.in_features}")
+        if first.bias is not None:
+            pre_activation = pre_activation + first.bias
+        value = pre_activation
+        for layer in list(module.children())[1:]:
+            value = layer(value)
+        return value
+
     def _late(
         self,
         target: str,
@@ -587,11 +639,11 @@ class Model(nn.Module):
             c_self = torch.zeros_like(c_sem)
             support_self = torch.zeros_like(support_sem)
         cosine = F.cosine_similarity(c_sem.detach(), c_self.detach(), dim=-1, eps=1.0e-8)
-        selector_input = torch.cat((
+        selector_parts = (
             u_collaborative_target, c_sem, c_self, cosine[:, None],
             support_sem.to(c_sem.dtype)[:, None], support_self.to(c_sem.dtype)[:, None],
-        ), dim=-1)
-        logits = self.source_selector(selector_input).clone()
+        )
+        logits = self._sequential_from_parts(self.source_selector, selector_parts).clone()
         logits[~support_sem, 0] = -torch.inf
         logits[~support_self, 1] = -torch.inf
         source_weights = torch.softmax(logits, dim=-1)
@@ -604,12 +656,12 @@ class Model(nn.Module):
             source_weights[:, 0:1] * c_sem + source_weights[:, 1:2] * c_self
         ) / p_accept.clamp_min(1.0e-8)[:, None]
         candidate_cond = candidate_cond * any_support.to(candidate_cond.dtype).unsqueeze(-1)
-        interaction = torch.cat((
+        interaction_parts = (
             u_collaborative_target, candidate_cond,
             u_collaborative_target * candidate_cond,
             (u_collaborative_target - candidate_cond).abs(),
-        ), dim=-1)
-        gate = torch.sigmoid(self.channel_gate(interaction))
+        )
+        gate = torch.sigmoid(self._sequential_from_parts(self.channel_gate, interaction_parts))
         unbounded = self.cross_lambda[target_id] * p_accept[:, None] * gate * candidate_cond
         unbounded = unbounded * any_support.to(unbounded.dtype).unsqueeze(-1)
         ref_norm = u_collaborative_target.float().norm(dim=-1, keepdim=True)
@@ -757,16 +809,7 @@ class Model(nn.Module):
             "test_evaluation": False,
         }
         if return_details:
-            filter_summaries = {}
-            for key, value in filter_details.items():
-                parts = key.split("_")
-                if parts[0] == "private":
-                    modality, relation = parts[1], parts[2]
-                    support = supports[modality][relation]
-                else:
-                    modality = parts[1]
-                    support = supports[modality]["physical"]
-                filter_summaries[key] = self._filter_summary(value, support)
+            filter_summaries = filter_details
             route_summaries = {}
             for key, value in route_details.items():
                 modality, relation = key.rsplit("_", 2)[1:]

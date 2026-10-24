@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 910, in <module>
+    main()
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 894, in main
+    record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 690, in worker_gpu_preflight
+    logits_z, _, _, aux, info = model(x, edges, return_details=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py", line 718, in forward
+    final[target], late_details[target] = self._late(
+                                          ^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py", line 607, in _late
+    interaction = torch.cat((
+                  ^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 382.00 MiB. GPU 0 has a total capacity of 23.68 GiB of which 12.50 MiB is free. Process 3815405 has 1.71 GiB memory in use. Including non-PyTorch memory, this process has 21.85 GiB memory in use. Of the allocated memory 21.49 GiB is allocated by PyTorch, and 65.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 910, in <module>
+    main()
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 894, in main
+    record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 690, in worker_gpu_preflight
+    logits_z, _, _, aux, info = model(x, edges, return_details=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py", line 718, in forward
+    final[target], late_details[target] = self._late(
+                                          ^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py", line 607, in _late
+    interaction = torch.cat((
+                  ^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 382.00 MiB. GPU 0 has a total capacity of 23.68 GiB of which 12.50 MiB is free. Process 3815405 has 1.71 GiB memory in use. Including non-PyTorch memory, this process has 21.85 GiB memory in use. Of the allocated memory 21.49 GiB is allocated by PyTorch, and 65.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
