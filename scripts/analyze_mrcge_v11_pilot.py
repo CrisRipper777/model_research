@@ -104,11 +104,15 @@ def main() -> None:
     ensure_csv(DATA / "response_diagnostics.csv", ["dataset", "condition", "seed", "attempt", "view", "raw_rms", "calibrated_rms", "scale", "beta", "nonzero_nodes", "private_response_rms", "collaborative_response_rms", "late_delta_rms", "late_delta_ratio", "source_git_sha"])
     ensure_csv(DATA / "loss_gradient_diagnostics.csv", ["dataset", "condition", "seed", "attempt", "parameter", "gradient_present", "gradient_finite", "gradient_norm", "gradient_nonzero", "source_git_sha"])
 
-    gpu_block = preflight.get("gpu_single_step_block")
-    if gpu_block is None:
-        blocked_rows = [row for row in preflight.get("gpu_single_step", []) if row.get("status") == "blocked"]
-        gpu_block = blocked_rows[-1] if blocked_rows else None
+    gpu_block = None
+    if preflight.get("gpu_single_step_status") != "pass":
+        gpu_block = preflight.get("gpu_single_step_block")
+        if gpu_block is None:
+            blocked_rows = [row for row in preflight.get("gpu_single_step", []) if row.get("status") == "blocked"]
+            gpu_block = blocked_rows[-1] if blocked_rows else None
     resource_rows = pilot.read_rows(DATA / "resource_summary.csv")
+    if preflight.get("gpu_single_step_status") == "pass":
+        resource_rows = [row for row in resource_rows if row.get("phase") != "gpu_single_step_preflight_blocked"]
     if not resource_rows and gpu_block:
         snapshot = gpu_block.get("gpu_snapshot", {})
         gpu0, gpu1 = snapshot.get("GPU0", {}), snapshot.get("GPU1", {})
@@ -134,6 +138,24 @@ def main() -> None:
 
     all_planned = len(DATASETS) * len(CONDITIONS)
     complete = len(run_by_key)
+    attempted_cells = {
+        (row.get("dataset"), row.get("condition"), row.get("seed"))
+        for row in runs
+    }
+    if complete == all_planned:
+        formal_status = "complete"
+    elif gpu_block and complete == 0:
+        formal_status = "blocked_before_training"
+    elif gpu_block:
+        formal_status = "partial_blocked"
+    elif complete == 0 and attempted_cells:
+        formal_status = "failed_attempts"
+    elif complete == 0 and preflight.get("gpu_single_step_status") == "pass":
+        formal_status = "preflight_passed_pilot_not_started"
+    elif complete == 0:
+        formal_status = "not_started"
+    else:
+        formal_status = "partial"
     failures = json.loads((DATA / "failures.json").read_text(encoding="utf-8")) if (DATA / "failures.json").is_file() else {"failures": []}
     code_sha = git_text("rev-parse", "HEAD")
     src_files = [
@@ -146,7 +168,7 @@ def main() -> None:
         "schema_version": 1, "study": "MR-CGE V1.1", "branch": git_text("branch", "--show-current"),
         "code_commit_sha": code_sha, "recorded_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "planned_formal_cells": all_planned, "completed_formal_cells": complete,
-        "formal_pilot_status": "blocked_before_training" if complete == 0 and gpu_block else "partial_or_complete",
+        "formal_pilot_status": formal_status,
         "gpu_single_step_status": preflight.get("gpu_single_step_status", "not_run"),
         "test_evaluation": False, "test_labels_masked_before_trainer": True,
         "seeds_43_44_run": False,
@@ -204,15 +226,10 @@ def main() -> None:
         preflight_lines.append("No focused test result was recorded.")
     preflight_lines.extend(["", "## GPU guard outcome", ""])
     if gpu_block:
-        snap = gpu_block.get("gpu_snapshot", {})
-        gpu0, gpu1 = snap.get("GPU0", {}), snap.get("GPU1", {})
         preflight_lines.extend([
-            f"The first requested GPU preflight ({gpu_block.get('dataset')}/{gpu_block.get('condition')}/seed{gpu_block.get('seed')}) was refused **before CUDA work**. "
-            f"CUDA 0 had {gpu0.get('memory_free_mib', 'n/a')} MiB free, {gpu0.get('utilization_percent', 'n/a')}% utilization, and {gpu0.get('temperature_c', 'n/a')} °C; "
-            f"the guard threshold was 8192 MiB free, below 90% baseline utilization, and below 88 °C. "
-            f"Observed CUDA 0 compute PIDs: `{gpu0.get('compute_pids', [])}`.",
-            f"CUDA 1 was not selected; it showed {gpu1.get('memory_free_mib', 'n/a')} MiB free and {gpu1.get('utilization_percent', 'n/a')}% utilization.",
-            "No GPU process was stopped or modified. The remaining eight GPU preflight cells and all nine formal Pilot cells were not launched.",
+            f"The guarded GPU single-step attempt for {gpu_block.get('dataset')}/{gpu_block.get('condition')}/seed{gpu_block.get('seed')} did not pass.",
+            f"Recorded stage: `{gpu_block.get('stage', 'unknown')}`; reason: `{gpu_block.get('reason', 'not recorded')}`.",
+            "See `data/failures.json` and the referenced worker log for the full trace. Formal Pilot training remains gated until all nine GPU single-step checks pass.",
         ])
     else:
         preflight_lines.append("No GPU guard refusal was recorded.")
@@ -223,25 +240,63 @@ def main() -> None:
         "# MR-CGE V1.1 Stage-A Pilot Report", "",
         "## Status", "",
         f"Planned: {all_planned} Dataset × Condition × Seed cells (Movies/Grocery/ele-fashion × S/F/M × seed 42).",
-        f"Completed: {complete}/{all_planned}. **No formal training cell started.**",
-        "The CUDA 0 ownership/resource guard refused the GPU single-step preflight before model execution. "
-        "Per protocol, formal Pilot training remained gated and no thresholds were bypassed.",
-        "",
-        "## Validation metrics", "",
-        "There are no S/F/M Accuracy, Macro-F1, or CE Pilot values. `condition_summary.csv` and "
-        "`condition_differences.csv` retain explicit `not_run` / `not_available` rows; no synthetic or historical score is substituted.",
-        "",
-        "No conclusions about expert specialization, routing collapse, Early Cross activation, Late completion activation, "
-        "or model performance can be drawn from the unrun Pilot. CPU unit tests establish code-path behavior only.",
+        f"Completed: {complete}/{all_planned}; formal cells with a recorded attempt: {len(attempted_cells)}.",
+    ]
+    if complete == all_planned:
+        pilot_lines.append("All nine authorized seed-42 Validation-only cells completed.")
+    elif gpu_block:
+        pilot_lines.append("The guarded GPU single-step gate did not pass; no threshold was bypassed.")
+    elif preflight.get("gpu_single_step_status") == "pass" and not attempted_cells:
+        pilot_lines.append("All nine GPU single-step checks passed; formal Pilot training has not started yet.")
+    elif attempted_cells:
+        pilot_lines.append("Some formal cells have recorded attempts; inspect per-attempt statuses and logs before resuming.")
+    else:
+        pilot_lines.append("Formal Pilot training has not started.")
+    pilot_lines.extend(["", "## Validation metrics", ""])
+    completed_rows = [row for row in summary_rows if row.get("n_completed") == 1]
+    if completed_rows:
+        pilot_lines.extend([
+            "These are one-seed descriptive Validation metrics and do not support inferential claims.",
+            "",
+            "| Dataset | Condition | Val Accuracy | Val Macro-F1 | Val CE |",
+            "|---|---|---:|---:|---:|",
+        ])
+        for row in completed_rows:
+            pilot_lines.append(
+                f"| {row['dataset']} | {row['condition']} | {row['val_acc']} | {row['val_macro_f1']} | {row['val_ce']} |"
+            )
+        pilot_lines.extend(["", "Use the expert, route, response, loss-gradient and resource diagnostics to inspect model behavior."])
+    else:
+        pilot_lines.append(
+            "There are no S/F/M Accuracy, Macro-F1, or CE Pilot values. `condition_summary.csv` and "
+            "`condition_differences.csv` retain explicit `not_run` / `not_available` rows; no synthetic or historical score is substituted."
+        )
+    if not complete:
+        pilot_lines.extend([
+            "",
+            "No conclusions about expert specialization, routing collapse, Early Cross activation, Late completion activation, "
+            "or model performance can be drawn from an unrun Pilot. CPU unit tests establish code-path behavior only.",
+        ])
+    else:
+        pilot_lines.extend([
+            "",
+            "Expert and routing observations are descriptive for this seed. Generalization and statistical claims require later approved seeds.",
+        ])
+    pilot_lines.extend([
         "",
         "## Scope guard", "",
-        "No Test metric or model selection used Test labels. Test labels were masked to `-100` for CPU data checks. "
+        "No Test metric or model selection used Test labels. Test labels were masked to `-100` before Trainer entry. "
         "Seeds 43/44, the remaining 18 formal runs, full 27-run training, tuning and ablations were not started.",
         "",
-        "The next executable step is to repeat the guarded nine-cell GPU single-step preflight only when CUDA 0 has "
-        "at least the registered free-memory headroom, utilization and temperature conditions. Independent review should inspect the source, "
-        "the preflight records and the empty formal-run tables before authorizing any later phase.",
-    ]
+    ])
+    if complete == all_planned:
+        pilot_lines.append("Stage-A is complete. Independently review metrics, failures and diagnostics before authorizing later seeds or Test-lock activity.")
+    elif gpu_block:
+        pilot_lines.append("Repeat the guarded GPU preflight only after resolving the recorded failure; preserve all prior attempts.")
+    elif preflight.get("gpu_single_step_status") == "pass":
+        pilot_lines.append("The GPU preflight gate passed. Continue only the nine authorized seed-42 cells; the runner skips verified completed cells.")
+    else:
+        pilot_lines.append("Review the preflight evidence and resolve blockers before starting the authorized seed-42 cells.")
     (pilot.STUDY / "PILOT_REPORT.md").write_text("\n".join(pilot_lines) + "\n", encoding="utf-8")
 
     code_audit = [
@@ -264,7 +319,10 @@ def main() -> None:
         "## Validation", "",
         f"The focused suite result is recorded in `data/preflight.json` ({pytest_summary(unit_tests.get('stdout', '')) if unit_tests else 'not found'}). "
         "The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.",
-        "GPU forward/backward and training behavior remain unverified because the shared-GPU guard refused before launch.",
+        (
+            f"GPU single-step preflight status: {preflight.get('gpu_single_step_status', 'not run')} "
+            f"({preflight.get('gpu_single_step_count', 0)}/{all_planned} cells). Full-epoch behavior and multi-seed performance remain separate questions."
+        ),
         "",
         "Parameter counts from CPU initialization preflight:", "",
         "| Dataset | S model params | F model params | M model params |",
@@ -274,14 +332,14 @@ def main() -> None:
         conditions = preflight.get("datasets", {}).get(dataset, {}).get("conditions", [])
         by = {item["condition"]: item for item in conditions}
         code_audit.append(f"| {dataset} | {by.get('S', {}).get('model_parameters', 'n/a')} | {by.get('F', {}).get('model_parameters', 'n/a')} | {by.get('M', {}).get('model_parameters', 'n/a')} |")
-    code_audit.extend(["", "## Limits", "", "No GPU execution occurred; CPU results do not establish memory fit, accelerator kernels, training stability, actual expert utilization after optimization, or validation performance."])
+    code_audit.extend(["", "## Limits", "", "A one-step GPU check does not establish full-training stability, long-run resource behavior, multi-seed performance or generalization."])
     (pilot.STUDY / "CODE_AUDIT.md").write_text("\n".join(code_audit) + "\n", encoding="utf-8")
 
     handoff = [
         "# MR-CGE V1.1 Decision Handoff", "",
         f"Branch: `{manifest['branch']}`; code commit: `{code_sha}`.",
         "",
-        "The implementation and CPU checks are ready for independent review. The nine-cell GPU single-step gate is blocked by the shared CUDA 0 resource guard; no formal Pilot training started.",
+        f"Stage-A status: {formal_status}; GPU single-step gate: {preflight.get('gpu_single_step_status', 'not run')}; completed formal cells: {complete}/{all_planned}.",
         "",
         "## Review materials", "",
         "- `IMPLEMENTATION_SPEC.md`: frozen design choices and reviewed interfaces.",
@@ -291,8 +349,11 @@ def main() -> None:
         "- `data/failures.json`: original fingerprint-field preflight error and GPU guard refusal.",
         "",
         "## Requested decision", "",
-        "First review the implementation and CPU evidence, then decide whether to resume with the nine isolated GPU preflights when the registered CUDA 0 guard thresholds pass. "
-        "The 9 Pilot cells remain the only authorized training stage in this branch; do not infer authorization for seeds 43/44 or Test evaluation from this handoff.",
+        (
+            "Review the completed Stage-A Validation-only evidence before deciding on later seeds. "
+            if complete == all_planned else "Resume only the remaining authorized seed-42 cells after the GPU single-step gate passes. "
+        )
+        + "Do not infer authorization for seeds 43/44 or Test evaluation from this handoff.",
     ]
     (pilot.STUDY / "DECISION_HANDOFF.md").write_text("\n".join(handoff) + "\n", encoding="utf-8")
     print(f"Wrote MR-CGE audit reports: {complete}/{all_planned} formal cells complete; GPU gate {preflight.get('gpu_single_step_status', 'not run')}.")

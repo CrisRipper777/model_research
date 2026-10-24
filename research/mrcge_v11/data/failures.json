@@ -42,6 +42,23 @@
       "stage": "focused_unit_tests_attempt_after_checkpoint_fingerprint_test",
       "test_evaluation": false,
       "training_started": false
+    },
+    {
+      "attempt": null,
+      "child_exit_code": 1,
+      "condition": "S",
+      "dataset": "Movies",
+      "error": "child exited 1",
+      "failure_kind": "gradient_diagnostic_key_error_after_forward_backward_before_optimizer_step",
+      "local_log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/preflight_logs/Movies_S_seed42.log",
+      "log_path": "research/mrcge_v11/data/gpu_preflight_Movies_S_seed42_attempt2.log",
+      "seed": 42,
+      "source_git_sha": "b511cd8a80658ca57ac041c70025c697251e01ed",
+      "stage": "worker-gpu-preflight",
+      "tail": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 910, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 894, in main\n    record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 697, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py\", line 834, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.theta'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 910, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 894, in main\n    record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 697, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py\", line 834, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.theta'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-24T15:26:15+00:00",
+      "training_started": false
     }
   ]
 }

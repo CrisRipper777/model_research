@@ -350,6 +350,24 @@ def test_filter_router_and_cross_parameters_receive_gradients(graph_bundle):
     assert any(diag[name]["gradient_nonzero"] for name in required)
 
 
+@pytest.mark.parametrize("condition", ["S", "F"])
+def test_single_filter_gradient_diagnostics_match_trainable_parameters(condition, graph_bundle):
+    model = build_model(condition, graph_bundle)
+    z, _, _, aux, info = model(graph_bundle["x"], graph_bundle["edge_index"])
+    loss = z.square().mean() + aux + sum(v.square().mean() for v in info["unimodal_logits"].values())
+    loss.backward()
+
+    diagnostics = model.capture_gradient_diagnostics()
+    transform_name = "single_filter.transform.net.0.weight"
+    assert diagnostics[transform_name]["gradient_present"]
+    assert diagnostics[transform_name]["gradient_finite"]
+    if condition == "F":
+        assert diagnostics["single_filter.theta"]["gradient_present"]
+        assert diagnostics["single_filter.theta"]["gradient_finite"]
+    else:
+        assert "single_filter.theta" not in diagnostics
+
+
 def test_filter_and_route_telemetry_contains_expert_and_view_metrics(graph_bundle):
     model = build_model("M", graph_bundle)
     started = time.perf_counter()

@@ -826,8 +826,11 @@ class Model(nn.Module):
                     f"filter_bank.experts.{expert_id}.net.0.weight",
                     f"filter_bank.experts.{expert_id}.net.3.weight",
                 ]
-        else:
+        elif self.condition == "F":
             names += ["single_filter.theta", "single_filter.transform.net.0.weight"]
+        else:
+            # S registers theta as a fixed buffer, so it has no gradient to inspect.
+            names += ["single_filter.transform.net.0.weight"]
         params = dict(self.named_parameters())
         result = {}
         for name in names:

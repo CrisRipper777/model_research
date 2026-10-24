@@ -1274,8 +1274,114 @@
       "status": "blocked",
       "test_evaluation": false,
       "training_started": false
+    },
+    {
+      "attempt": 2,
+      "baseline_path": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v11/data/gpu_baseline.json",
+      "condition": "S",
+      "dataset": "Movies",
+      "failure_kind": "gradient_diagnostic_key_error_after_forward_backward_before_optimizer_step",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-24T15:26:15+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3815405,
+            "used_memory_mib": 1756
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 2537427,
+            "used_memory_mib": 19140
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 22389,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 1863,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 50,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 5103,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 19155,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 76,
+            "utilization_percent": 100,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "physical_gpu": 0,
+      "reason": "RuntimeError('guarded worker-gpu-preflight failed for Movies/S/seed42; see /hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/preflight_logs/Movies_S_seed42.log')",
+      "recorded_utc": "2026-10-24T15:26:15+00:00",
+      "seed": 42,
+      "source_git_sha": "b511cd8a80658ca57ac041c70025c697251e01ed",
+      "stage": "gpu_single_step_attempt_failed",
+      "status": "blocked",
+      "test_evaluation": false,
+      "training_started": false
     }
   ],
+  "gpu_single_step_block": {
+    "attempt": 2,
+    "baseline_path": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v11/data/gpu_baseline.json",
+    "condition": "S",
+    "dataset": "Movies",
+    "failure_kind": "gradient_diagnostic_key_error_after_forward_backward_before_optimizer_step",
+    "gpu_snapshot": {
+      "captured_utc": "2026-10-24T15:26:15+00:00",
+      "compute_processes": [
+        {
+          "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+          "pid": 3815405,
+          "used_memory_mib": 1756
+        },
+        {
+          "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+          "pid": 2537427,
+          "used_memory_mib": 19140
+        }
+      ],
+      "devices": [
+        {
+          "memory_free_mib": 22389,
+          "memory_total_mib": 24576,
+          "memory_used_mib": 1863,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 0,
+          "temperature_c": 81,
+          "utilization_percent": 50,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        {
+          "memory_free_mib": 5103,
+          "memory_total_mib": 24576,
+          "memory_used_mib": 19155,
+          "name": "NVIDIA GeForce RTX 3090",
+          "physical_index": 1,
+          "temperature_c": 76,
+          "utilization_percent": 100,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      ]
+    },
+    "physical_gpu": 0,
+    "reason": "RuntimeError('guarded worker-gpu-preflight failed for Movies/S/seed42; see /hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/preflight_logs/Movies_S_seed42.log')",
+    "recorded_utc": "2026-10-24T15:26:15+00:00",
+    "seed": 42,
+    "source_git_sha": "b511cd8a80658ca57ac041c70025c697251e01ed",
+    "stage": "gpu_single_step_attempt_failed",
+    "status": "blocked",
+    "test_evaluation": false,
+    "training_started": false
+  },
   "gpu_single_step_count": 0,
   "gpu_single_step_status": "blocked",
   "schema_version": 1,

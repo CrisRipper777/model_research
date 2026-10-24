@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 910, in <module>
+    main()
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 894, in main
+    record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 697, in worker_gpu_preflight
+    gradients = model.capture_gradient_diagnostics()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py", line 834, in capture_gradient_diagnostics
+    param = params[name]
+            ~~~~~~^^^^^^
+KeyError: 'single_filter.theta'
+Traceback (most recent call last):
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 910, in <module>
+    main()
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 894, in main
+    record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py", line 697, in worker_gpu_preflight
+    gradients = model.capture_gradient_diagnostics()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py", line 834, in capture_gradient_diagnostics
+    param = params[name]
+            ~~~~~~^^^^^^
+KeyError: 'single_filter.theta'

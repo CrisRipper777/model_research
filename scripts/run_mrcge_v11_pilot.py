@@ -831,7 +831,7 @@ def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
                 payload = json.loads((DATA / "preflight.json").read_text(encoding="utf-8"))
                 blocked = {
                     "dataset": dataset, "condition": condition, "seed": SEED,
-                    "status": "blocked", "stage": "pre_run_gpu_guard",
+                    "status": "blocked", "stage": "gpu_single_step_attempt_failed",
                     "physical_gpu": physical_gpu, "reason": repr(exc),
                     "gpu_snapshot": smi_snapshot(), "baseline_path": str(DATA / "gpu_baseline.json"),
                     "training_started": False, "test_evaluation": False, "recorded_utc": now(),
