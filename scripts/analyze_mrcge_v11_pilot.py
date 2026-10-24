@@ -257,7 +257,7 @@ def main() -> None:
         "- The only Trainer change is a guarded optional `collect_epoch_diagnostics()` hook; existing models without that method follow the same code path.",
         "",
         "## Differences from historical H2", "",
-        "MR-CGE removes the H2 late complementary experts/router and its balance calls; it replaces relation/view-specific filter routing with one shared graph-aware router; ",
+        "MR-CGE removes the H2 late complementary experts/router and its balance calls; it replaces relation/view-specific filter routing with one shared graph-aware router;",
         "M's four expert objects are shared across all views and collaborative physical calls; Private/Cross state formulas and support handling are explicit in the new model. "
         "The historical H2 Late Complementary Balance Loss accounting defect remains outside scope. The historical H2 source, old configurations, reports, checkpoints and Final Test Lock remain unchanged.",
         "",
