@@ -1,0 +1,105 @@
+{
+  "branch": "exp/mrcge_v11_shared_filter_pilot",
+  "code_commit_sha": "42f74a2caafe55832e1675d2c8efd4fd553ec93a",
+  "completed_formal_cells": 0,
+  "data_file_sha256": {
+    "condition_differences.csv": "0cca7be0f3b3e15678be025809176c313edbbd143be593ab69c6c4db401f35c3",
+    "condition_summary.csv": "7fa3082774e8ca62e05349d32c5679d32430f20957635d09ad624f659fd804eb",
+    "environment.json": "ff26d1ccd0f0658596f1a979ef6f3dc712ebf5c196d316168528310639fb50fa",
+    "epoch_history.csv": "39531a8fed3f451c62620d88b8bef001af7bed07b81b2e3ea17dabfe76fc28ab",
+    "expert_diagnostics.csv": "9a0cdc512c2fd3e4ca071135f8338f5615366f01124098d807950f50089d6c25",
+    "failures.json": "fda3e242aa59e2258e5c7a48c311a227b5d057a2591db9a1874e2400bf833f2b",
+    "gpu_baseline.json": "246e3c16b4c0f3e90f89d31fcae61598b1cf5f0b16a7fe0552a78f05d9c66755",
+    "loss_gradient_diagnostics.csv": "711ee3649ab95df2deb0b112d71d7ddd40cd4b0550db321c5c25fe85512a1450",
+    "preflight.json": "06e44857a911a67f2c2152dab91ded512b14cdd3c51324916da65d6a1734c640",
+    "resource_summary.csv": "f9b29e121c88e7bbf23260b25d6298c0d0fdb3931042d34df266762a5679dcf6",
+    "response_diagnostics.csv": "f2722f76063653064879bb78daf87179033e9a82a3f7d29d0a51c0aafc7300d5",
+    "route_diagnostics.csv": "4b830d4a6eed6f75c8c267064af5643928821fe62bc6019edb1a207bf57a5325",
+    "runs.csv": "69738bce8b6a6efee7604ea5b23f86ac4486206e1bee25901a4ef2eba6613080"
+  },
+  "dataset_fingerprints": {
+    "Grocery": {
+      "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    "Movies": {
+      "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    "ele-fashion": {
+      "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
+    }
+  },
+  "failures_count": 4,
+  "formal_pilot_status": "blocked_before_training",
+  "gpu_block": {
+    "baseline_gpu_processes": [
+      3717674,
+      3769512
+    ],
+    "condition": "S",
+    "dataset": "Movies",
+    "gpu_snapshot": {
+      "GPU0": {
+        "compute_pids": [
+          3717674,
+          3769512
+        ],
+        "memory_free_mib": 7882,
+        "memory_total_mib": 24576,
+        "memory_used_mib": 16370,
+        "temperature_c": 86,
+        "utilization_percent": 100,
+        "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+      },
+      "GPU1": {
+        "compute_pids": [
+          2537427
+        ],
+        "memory_free_mib": 8845,
+        "memory_total_mib": 24576,
+        "memory_used_mib": 15413,
+        "temperature_c": 77,
+        "utilization_percent": 99,
+        "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+      }
+    },
+    "physical_gpu": 0,
+    "reason": "RuntimeError('GPU0 free memory 7882 MiB below 8192 MiB guard threshold')",
+    "recorded_utc": "2026-10-24T13:15:41+00:00",
+    "seed": 42,
+    "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+    "stage": "pre_run_gpu_guard",
+    "status": "blocked",
+    "test_evaluation": false,
+    "training_started": false
+  },
+  "gpu_single_step_status": "blocked",
+  "planned_formal_cells": 9,
+  "recorded_utc": "2026-10-24T13:25:50+00:00",
+  "schema_version": 1,
+  "seeds_43_44_run": false,
+  "source_file_sha256": {
+    "configs/model/mrcge_v11.yaml": "1743a0e34916046cafd5c4ac508d7b36f2eaa151f2c8a946773b70ace8f50383",
+    "configs/study/mrcge_v11_pilot.yaml": "a3ebe3baa7f937516b30a65a325ec346e533144c2057d08ce9c8ebcdd921276b",
+    "scripts/analyze_mrcge_v11_pilot.py": "dde01a53dddfa1401e7e62824d8d5aa6998d8739efedab116b2318e4a882b230",
+    "scripts/preflight_mrcge_v11.py": "9bf8749ad1e6800b32bcdc28f3f2838cf9c598866ed66b8b72c60535837e271f",
+    "scripts/run_mrcge_v11_pilot.py": "87d7251c8888a9d9d6e8526c7b57aa2a9e1963d2e9f3f1086e6fe67843b999a6",
+    "src/models/mrcge_v11.py": "bb45c1c0e163482db5494a367c883f2f9dc2fd12778b0cd1d4a7619920ffdd0b",
+    "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
+    "tests/test_mrcge_v11.py": "d5393ec1ad2661f87568e0c57cf050ca1216ed33e8f3fa3d69a9bc2b77f7a686"
+  },
+  "study": "MR-CGE V1.1",
+  "test_evaluation": false,
+  "test_labels_masked_before_trainer": true
+}

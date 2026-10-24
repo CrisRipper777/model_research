@@ -1,0 +1,2 @@
+dataset,condition,seed,attempt,phase,physical_gpu,gpu0_free_mib,gpu0_utilization_percent,gpu0_temperature_c,gpu0_compute_pids,gpu1_free_mib,gpu1_utilization_percent,gpu1_temperature_c,gpu1_compute_pids,status,reason,test_evaluation
+Movies,S,42,,gpu_single_step_preflight_blocked,0,7882,100,86,"[3717674,3769512]",8845,99,77,[2537427],blocked_before_training,RuntimeError('GPU0 free memory 7882 MiB below 8192 MiB guard threshold'),False

@@ -1,0 +1,1312 @@
+{
+  "cpu_attempts": [
+    {
+      "attempt": 1,
+      "error": "KeyError('physical_edge_fingerprint') while serializing legacy.dataset_fingerprints output, which uses key physical_edge_index",
+      "recorded_utc": "2026-10-24T13:15:02+00:00",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "source_state_note": "Working tree contained the initial MR-CGE implementation; source was not yet committed. The failure occurred after the Movies V7B cache, label masking, shape checks, and S/F/M construction/hash checks completed.",
+      "stage": "cpu_preflight",
+      "status": "fail",
+      "test_evaluation": false,
+      "traceback_summary": "scripts/preflight_mrcge_v11.py cpu_preflight: KeyError at physical_edge_fingerprint lookup. The exception handler also initially referenced an uninitialized old variable, so this failed attempt had to be recorded explicitly in the follow-up repair."
+    },
+    {
+      "attempt": 2,
+      "completed_utc": "2026-10-24T13:15:26+00:00",
+      "dataset_audits": {
+        "Grocery": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "9b60528fdbbe5be9267ab1ddf4c811c77288155f4f2c1d927dbbce8dac74d869",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "e1d27904f0327ee43369601d3c286b081e4408038a84ff3c1725b2c8f7a9ea85",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "d8c121c48f51d4fdf6c8b61d70fff3f423ac6dd43d41ba85dbe5c9bf38f4f9ea",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            }
+          ],
+          "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 142262,
+          "num_nodes": 17074,
+          "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+          "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "v7b_source_flags_shape": [
+            205557,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "Movies": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "1d61efc073a159e53d8c987232b33a24994b856d9a020ca28a48cd55a2840a52",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "0727e452f9a07ddc34008a52df306311c4ff24dc747e14ecd7d5e2b3af5aa40e",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "3dc3820c2244bf24cd829b2d51f9817a58c8ba227cf14c7b81501f409ea2f1b0",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            }
+          ],
+          "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 160802,
+          "num_nodes": 16672,
+          "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+          "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "v7b_source_flags_shape": [
+            205881,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "ele-fashion": {
+          "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "S",
+              "model_parameters": 1388069,
+              "model_state_sha256": "19ceee833c8706766470a698c89986f0c70251e3c09f7fa209e7e9e3cd9842f1",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391153,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "F",
+              "model_parameters": 1388073,
+              "model_state_sha256": "1f21ec1aea2211613ad15c9d3dffd0569a0ff917d019680980ade7a67df83bd2",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391157,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "M",
+              "model_parameters": 1755481,
+              "model_state_sha256": "bbf84c4e8985ab96da188738edbbab1711e6038652ab466a0d7589a8811957a6",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1758565,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            }
+          ],
+          "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+          "input_dim": 1024,
+          "num_classes": 12,
+          "num_edges": 399172,
+          "num_nodes": 97766,
+          "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+          "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 512,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "v7b_source_flags_shape": [
+            1102200,
+            2
+          ],
+          "visual_dim": 512
+        }
+      },
+      "elapsed_seconds": 9.60845058131963,
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "started_utc": "2026-10-24T13:15:16+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "unit_tests": {
+        "command": "PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py",
+        "passed": true,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "...................                                                      [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n19 passed, 1 warning in 3.53s\n",
+        "wall_seconds": 4.690164954867214
+      }
+    },
+    {
+      "attempt": 3,
+      "completed_utc": "2026-10-24T13:19:07+00:00",
+      "dataset_audits": {
+        "Grocery": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "991bbe0ba096d71421aaa3ebcf37b5839c4e102b6c2db2c03b49da7c40ccd87d",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "e1d27904f0327ee43369601d3c286b081e4408038a84ff3c1725b2c8f7a9ea85",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "d8c121c48f51d4fdf6c8b61d70fff3f423ac6dd43d41ba85dbe5c9bf38f4f9ea",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            }
+          ],
+          "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 142262,
+          "num_nodes": 17074,
+          "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+          "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "v7b_source_flags_shape": [
+            205557,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "Movies": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "10afaa03aea390d87a45ea6b56cdd8223edef3a8ce2eea1e9707b5b03c61d7b4",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "0727e452f9a07ddc34008a52df306311c4ff24dc747e14ecd7d5e2b3af5aa40e",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "3dc3820c2244bf24cd829b2d51f9817a58c8ba227cf14c7b81501f409ea2f1b0",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            }
+          ],
+          "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 160802,
+          "num_nodes": 16672,
+          "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+          "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "v7b_source_flags_shape": [
+            205881,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "ele-fashion": {
+          "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "S",
+              "model_parameters": 1388069,
+              "model_state_sha256": "ee907e04c23dec037f797e973e765a3d5e60da9b4cf41e710e8471188a83335f",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391153,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "F",
+              "model_parameters": 1388073,
+              "model_state_sha256": "1f21ec1aea2211613ad15c9d3dffd0569a0ff917d019680980ade7a67df83bd2",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391157,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "M",
+              "model_parameters": 1755481,
+              "model_state_sha256": "bbf84c4e8985ab96da188738edbbab1711e6038652ab466a0d7589a8811957a6",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1758565,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            }
+          ],
+          "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+          "input_dim": 1024,
+          "num_classes": 12,
+          "num_edges": 399172,
+          "num_nodes": 97766,
+          "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+          "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 512,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "v7b_source_flags_shape": [
+            1102200,
+            2
+          ],
+          "visual_dim": 512
+        }
+      },
+      "elapsed_seconds": 9.52874826779589,
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "started_utc": "2026-10-24T13:18:58+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "unit_tests": {
+        "command": "PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py",
+        "passed": true,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "...................                                                      [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n19 passed, 1 warning in 3.51s\n",
+        "wall_seconds": 4.683287791907787
+      }
+    },
+    {
+      "attempt": 4,
+      "completed_utc": "2026-10-24T13:23:45+00:00",
+      "dataset_audits": {
+        "Grocery": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "92cc220430ef3256d3d29fa4c00bb714c6b7198cfeed6f83d1a3f6f923397dd2",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "3fbe9e4c47ba223c5963ecfc4c481a3160945461a9e9fbca91181de0a4544692",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "d5793262e8c310e8e3c88ea3a31a1fd49ad79a41d59d605934b087fec87be457",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            }
+          ],
+          "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 142262,
+          "num_nodes": 17074,
+          "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+          "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "v7b_source_flags_shape": [
+            205557,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "Movies": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "d003a3b98edd38e8241d3fdd7d6e1ad654798208f67b27fae6758513609f7710",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "28176d146d08b0754070a3fae4f027860bf8544d46928277408f71c6d9661612",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "8906142f21be33d0b9c1b28318b1c843e86b80345aa903502d816a628a736de2",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            }
+          ],
+          "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 160802,
+          "num_nodes": 16672,
+          "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+          "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "v7b_source_flags_shape": [
+            205881,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "ele-fashion": {
+          "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "S",
+              "model_parameters": 1388069,
+              "model_state_sha256": "be1490fa841c2274b3fb7d52b045a9d1feea24e4130a9b80f3404f2ab58b7675",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391153,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "F",
+              "model_parameters": 1388073,
+              "model_state_sha256": "f6b4860dbf8cb2037de83b810215bf85722d23db7e028e3604f2021abdf68e5d",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391157,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "M",
+              "model_parameters": 1755481,
+              "model_state_sha256": "aa9891fd48575c667b0eb71ea741b1147f2539ddec3d1e4b9f0665452df17fa7",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1758565,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            }
+          ],
+          "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+          "input_dim": 1024,
+          "num_classes": 12,
+          "num_edges": 399172,
+          "num_nodes": 97766,
+          "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+          "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 512,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "v7b_source_flags_shape": [
+            1102200,
+            2
+          ],
+          "visual_dim": 512
+        }
+      },
+      "elapsed_seconds": 10.073809813242406,
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "started_utc": "2026-10-24T13:23:35+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "unit_tests": {
+        "command": "PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py",
+        "passed": true,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "...................                                                      [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n19 passed, 1 warning in 3.55s\n",
+        "wall_seconds": 4.700630840845406
+      }
+    },
+    {
+      "attempt": 5,
+      "completed_utc": "2026-10-24T13:24:54+00:00",
+      "dataset_audits": {
+        "Grocery": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "92cc220430ef3256d3d29fa4c00bb714c6b7198cfeed6f83d1a3f6f923397dd2",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "3fbe9e4c47ba223c5963ecfc4c481a3160945461a9e9fbca91181de0a4544692",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "d5793262e8c310e8e3c88ea3a31a1fd49ad79a41d59d605934b087fec87be457",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            }
+          ],
+          "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 142262,
+          "num_nodes": 17074,
+          "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+          "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "v7b_source_flags_shape": [
+            205557,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "Movies": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "d003a3b98edd38e8241d3fdd7d6e1ad654798208f67b27fae6758513609f7710",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "28176d146d08b0754070a3fae4f027860bf8544d46928277408f71c6d9661612",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "8906142f21be33d0b9c1b28318b1c843e86b80345aa903502d816a628a736de2",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            }
+          ],
+          "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 160802,
+          "num_nodes": 16672,
+          "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+          "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "v7b_source_flags_shape": [
+            205881,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "ele-fashion": {
+          "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "S",
+              "model_parameters": 1388069,
+              "model_state_sha256": "be1490fa841c2274b3fb7d52b045a9d1feea24e4130a9b80f3404f2ab58b7675",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391153,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "F",
+              "model_parameters": 1388073,
+              "model_state_sha256": "f6b4860dbf8cb2037de83b810215bf85722d23db7e028e3604f2021abdf68e5d",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391157,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "M",
+              "model_parameters": 1755481,
+              "model_state_sha256": "aa9891fd48575c667b0eb71ea741b1147f2539ddec3d1e4b9f0665452df17fa7",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1758565,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            }
+          ],
+          "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+          "input_dim": 1024,
+          "num_classes": 12,
+          "num_edges": 399172,
+          "num_nodes": 97766,
+          "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+          "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 512,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "v7b_source_flags_shape": [
+            1102200,
+            2
+          ],
+          "visual_dim": 512
+        }
+      },
+      "elapsed_seconds": 9.767656750045717,
+      "source_git_sha": "2c9dac145778f3022b5a475d56dd2267058dcdca",
+      "started_utc": "2026-10-24T13:24:44+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "unit_tests": {
+        "command": "PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py",
+        "passed": true,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "...................                                                      [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n19 passed, 1 warning in 3.54s\n",
+        "wall_seconds": 4.714959331322461
+      }
+    }
+  ],
+  "cpu_completed_utc": "2026-10-24T13:24:54+00:00",
+  "cpu_status": "pass",
+  "datasets": {
+    "Grocery": {
+      "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+      "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+      "conditions": [
+        {
+          "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "condition": "S",
+          "model_parameters": 1654325,
+          "model_state_sha256": "92cc220430ef3256d3d29fa4c00bb714c6b7198cfeed6f83d1a3f6f923397dd2",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "source_flags_shape": [
+            205557,
+            2
+          ],
+          "text_semantic_edges": 218396,
+          "total_parameters": 1659465,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "visual_semantic_edges": 209132
+        },
+        {
+          "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "condition": "F",
+          "model_parameters": 1654329,
+          "model_state_sha256": "3fbe9e4c47ba223c5963ecfc4c481a3160945461a9e9fbca91181de0a4544692",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "source_flags_shape": [
+            205557,
+            2
+          ],
+          "text_semantic_edges": 218396,
+          "total_parameters": 1659469,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "visual_semantic_edges": 209132
+        },
+        {
+          "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "condition": "M",
+          "model_parameters": 2021737,
+          "model_state_sha256": "d5793262e8c310e8e3c88ea3a31a1fd49ad79a41d59d605934b087fec87be457",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "source_flags_shape": [
+            205557,
+            2
+          ],
+          "text_semantic_edges": 218396,
+          "total_parameters": 2026877,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "visual_semantic_edges": 209132
+        }
+      ],
+      "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "input_dim": 1536,
+      "num_classes": 20,
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 768,
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+      "v7b_source_flags_shape": [
+        205557,
+        2
+      ],
+      "visual_dim": 768
+    },
+    "Movies": {
+      "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+      "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+      "conditions": [
+        {
+          "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "condition": "S",
+          "model_parameters": 1654325,
+          "model_state_sha256": "d003a3b98edd38e8241d3fdd7d6e1ad654798208f67b27fae6758513609f7710",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "source_flags_shape": [
+            205881,
+            2
+          ],
+          "text_semantic_edges": 221428,
+          "total_parameters": 1659465,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "visual_semantic_edges": 204322
+        },
+        {
+          "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "condition": "F",
+          "model_parameters": 1654329,
+          "model_state_sha256": "28176d146d08b0754070a3fae4f027860bf8544d46928277408f71c6d9661612",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "source_flags_shape": [
+            205881,
+            2
+          ],
+          "text_semantic_edges": 221428,
+          "total_parameters": 1659469,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "visual_semantic_edges": 204322
+        },
+        {
+          "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "condition": "M",
+          "model_parameters": 2021737,
+          "model_state_sha256": "8906142f21be33d0b9c1b28318b1c843e86b80345aa903502d816a628a736de2",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "source_flags_shape": [
+            205881,
+            2
+          ],
+          "text_semantic_edges": 221428,
+          "total_parameters": 2026877,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "visual_semantic_edges": 204322
+        }
+      ],
+      "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "input_dim": 1536,
+      "num_classes": 20,
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 768,
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+      "v7b_source_flags_shape": [
+        205881,
+        2
+      ],
+      "visual_dim": 768
+    },
+    "ele-fashion": {
+      "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+      "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+      "conditions": [
+        {
+          "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "condition": "S",
+          "model_parameters": 1388069,
+          "model_state_sha256": "be1490fa841c2274b3fb7d52b045a9d1feea24e4130a9b80f3404f2ab58b7675",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "source_flags_shape": [
+            1102200,
+            2
+          ],
+          "text_semantic_edges": 1165446,
+          "total_parameters": 1391153,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "visual_semantic_edges": 1217698
+        },
+        {
+          "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "condition": "F",
+          "model_parameters": 1388073,
+          "model_state_sha256": "f6b4860dbf8cb2037de83b810215bf85722d23db7e028e3604f2021abdf68e5d",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "source_flags_shape": [
+            1102200,
+            2
+          ],
+          "text_semantic_edges": 1165446,
+          "total_parameters": 1391157,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "visual_semantic_edges": 1217698
+        },
+        {
+          "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "condition": "M",
+          "model_parameters": 1755481,
+          "model_state_sha256": "aa9891fd48575c667b0eb71ea741b1147f2539ddec3d1e4b9f0665452df17fa7",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "source_flags_shape": [
+            1102200,
+            2
+          ],
+          "text_semantic_edges": 1165446,
+          "total_parameters": 1758565,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "visual_semantic_edges": 1217698
+        }
+      ],
+      "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "input_dim": 1024,
+      "num_classes": 12,
+      "num_edges": 399172,
+      "num_nodes": 97766,
+      "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 512,
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+      "v7b_source_flags_shape": [
+        1102200,
+        2
+      ],
+      "visual_dim": 512
+    }
+  },
+  "gpu_single_step": [
+    {
+      "baseline_gpu_processes": [
+        3717674,
+        3769512
+      ],
+      "condition": "S",
+      "dataset": "Movies",
+      "gpu_snapshot": {
+        "GPU0": {
+          "compute_pids": [
+            3717674,
+            3769512
+          ],
+          "memory_free_mib": 7882,
+          "memory_total_mib": 24576,
+          "memory_used_mib": 16370,
+          "temperature_c": 86,
+          "utilization_percent": 100,
+          "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+        },
+        "GPU1": {
+          "compute_pids": [
+            2537427
+          ],
+          "memory_free_mib": 8845,
+          "memory_total_mib": 24576,
+          "memory_used_mib": 15413,
+          "temperature_c": 77,
+          "utilization_percent": 99,
+          "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+        }
+      },
+      "physical_gpu": 0,
+      "reason": "RuntimeError('GPU0 free memory 7882 MiB below 8192 MiB guard threshold')",
+      "recorded_utc": "2026-10-24T13:15:41+00:00",
+      "seed": 42,
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "stage": "pre_run_gpu_guard",
+      "status": "blocked",
+      "test_evaluation": false,
+      "training_started": false
+    }
+  ],
+  "gpu_single_step_count": 0,
+  "gpu_single_step_status": "blocked",
+  "schema_version": 1,
+  "source_git_sha": "2c9dac145778f3022b5a475d56dd2267058dcdca",
+  "study": "MR-CGE V1.1",
+  "test_evaluation": false,
+  "test_labels_masked_before_trainer": true,
+  "unit_test_attempts": [
+    {
+      "attempt": 1,
+      "recorded_utc": "2026-10-24T13:23:15+00:00",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "status": "fail",
+      "summary": "Two fixture/assertion issues; details in failures.json.",
+      "test_evaluation": false
+    },
+    {
+      "attempt": "post_fingerprint_guard",
+      "recorded_utc": "2026-10-24T13:23:15+00:00",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "status": "fail_then_repaired",
+      "summary": "Only expected-message regex mismatched; corrected and reran successfully.",
+      "test_evaluation": false
+    },
+    {
+      "attempt": "post_fingerprint_guard_rerun",
+      "recorded_utc": "2026-10-24T13:23:15+00:00",
+      "source_git_sha": "6f5eb322f142c332e6ed63df86224ed9115ee47d",
+      "status": "pass",
+      "summary": "19 passed, 1 PyG deprecation warning.",
+      "test_evaluation": false
+    }
+  ]
+}
