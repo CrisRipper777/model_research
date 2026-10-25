@@ -1,0 +1,26 @@
+{
+  "base_sha": "0e2496efe852c76fcd06c1477de12f41ac085e7c",
+  "branch": "exp/mrcge_v12_anchor_performance_screen",
+  "conditions": [
+    "S_repaired",
+    "F_sinit",
+    "M_repaired",
+    "M_anchor"
+  ],
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "Toys",
+    "ele-fashion"
+  ],
+  "formal_training_started": false,
+  "physical_gpu": 1,
+  "seeds": [
+    42
+  ],
+  "study": "MR-CGE V1.2 Shared Graph Filter Performance Optimization",
+  "test_evaluation": false,
+  "test_label_values_indexed": false,
+  "test_labels_were_not_mutated": true,
+  "training_frozen_sha": null
+}

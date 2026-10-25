@@ -1,0 +1,108 @@
+{
+  "physical_gpu": 1,
+  "recorded_utc": "2026-10-25T05:35:16+00:00",
+  "regression_records": [
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/Movies/M/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "195d2f0d9b24d2ed6141b8a035e99dca82b06b9b3625a3cee363ffb51c70f7a2",
+      "condition": "M_repaired",
+      "dataset": "Movies",
+      "difference_explained_by_repeated_v11_cuda_scatter_variation": true,
+      "embedding_element_count": 4268032,
+      "embedding_elements_outside_atol1e-5_rtol1e-4": 0,
+      "embeddings_allclose_atol1e-5_rtol1e-4": true,
+      "logit_element_count": 333440,
+      "logit_elements_outside_atol1e-5_rtol1e-4": 0,
+      "logits_allclose_atol1e-5_rtol1e-4": true,
+      "max_abs_embedding_error": 1.6689300537109375e-06,
+      "max_abs_validation_logit_error": 2.86102294921875e-06,
+      "new_v12_val": {
+        "acc": 0.5527894496917725,
+        "ce": 1.4057756662368774,
+        "macro_f1": 0.4838016985835905
+      },
+      "old_v11_val": {
+        "acc": 0.5527894496917725,
+        "ce": 1.4057756662368774,
+        "macro_f1": 0.4838016985835905
+      },
+      "state_keys_match": true,
+      "strict_state_dict": true,
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "v11_repeat_max_abs_embedding_variation": 1.3113021850585938e-06,
+      "v11_repeat_max_abs_logit_variation": 2.86102294921875e-06,
+      "validation_metrics_match": true,
+      "validation_rng_unchanged": true
+    },
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/Grocery/M/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "d1412157bd6b29e55823cd82e926bf17ca0c6358cb72199f89de18d17c85d6c7",
+      "condition": "M_repaired",
+      "dataset": "Grocery",
+      "difference_explained_by_repeated_v11_cuda_scatter_variation": true,
+      "embedding_element_count": 4370944,
+      "embedding_elements_outside_atol1e-5_rtol1e-4": 0,
+      "embeddings_allclose_atol1e-5_rtol1e-4": true,
+      "logit_element_count": 341480,
+      "logit_elements_outside_atol1e-5_rtol1e-4": 0,
+      "logits_allclose_atol1e-5_rtol1e-4": true,
+      "max_abs_embedding_error": 1.6689300537109375e-06,
+      "max_abs_validation_logit_error": 3.814697265625e-06,
+      "new_v12_val": {
+        "acc": 0.8269400000572205,
+        "ce": 0.6694358587265015,
+        "macro_f1": 0.7567569553235868
+      },
+      "old_v11_val": {
+        "acc": 0.8269400000572205,
+        "ce": 0.6694358587265015,
+        "macro_f1": 0.7567569553235868
+      },
+      "state_keys_match": true,
+      "strict_state_dict": true,
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "v11_repeat_max_abs_embedding_variation": 1.6689300537109375e-06,
+      "v11_repeat_max_abs_logit_variation": 3.814697265625e-06,
+      "validation_metrics_match": true,
+      "validation_rng_unchanged": true
+    },
+    {
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/Toys/M/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "ec5f0603a4e1e9d0347785f1c9791c91ebf73f32c0cee1c4dfd989bae817f429",
+      "condition": "M_repaired",
+      "dataset": "Toys",
+      "difference_explained_by_repeated_v11_cuda_scatter_variation": true,
+      "embedding_element_count": 5297920,
+      "embedding_elements_outside_atol1e-5_rtol1e-4": 0,
+      "embeddings_allclose_atol1e-5_rtol1e-4": true,
+      "logit_element_count": 372510,
+      "logit_elements_outside_atol1e-5_rtol1e-4": 0,
+      "logits_allclose_atol1e-5_rtol1e-4": true,
+      "max_abs_embedding_error": 1.430511474609375e-06,
+      "max_abs_validation_logit_error": 3.337860107421875e-06,
+      "new_v12_val": {
+        "acc": 0.7953612208366394,
+        "ce": 0.7307162880897522,
+        "macro_f1": 0.7627029105979972
+      },
+      "old_v11_val": {
+        "acc": 0.7953612208366394,
+        "ce": 0.7307164072990417,
+        "macro_f1": 0.7627029105979972
+      },
+      "state_keys_match": true,
+      "strict_state_dict": true,
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "v11_repeat_max_abs_embedding_variation": 1.430511474609375e-06,
+      "v11_repeat_max_abs_logit_variation": 3.814697265625e-06,
+      "validation_metrics_match": true,
+      "validation_rng_unchanged": true
+    }
+  ],
+  "source_git_sha": "0e2496efe852c76fcd06c1477de12f41ac085e7c",
+  "status": "pass",
+  "test_evaluation": false
+}

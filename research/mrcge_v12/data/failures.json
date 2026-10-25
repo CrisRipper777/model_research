@@ -1,0 +1,85 @@
+{
+  "failures": [
+    {
+      "dataset": "all",
+      "error": "regression child exited 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_screen/preflight_logs/v11_checkpoint_regression_gpu1.log",
+      "physical_gpu": 1,
+      "stage": "v11_checkpoint_regression",
+      "tail": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 322, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 312, in main\n    result = regression_worker(args.physical_gpu)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 169, in regression_worker\n    raise RuntimeError(f\"no verified V1.1 M checkpoint row for {dataset}\")\nRuntimeError: no verified V1.1 M checkpoint row for Movies\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:28:50+00:00",
+      "training_started": false
+    },
+    {
+      "dataset": "all",
+      "error": "regression child exited 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_screen/preflight_logs/v11_checkpoint_regression_gpu1.log",
+      "physical_gpu": 1,
+      "stage": "v11_checkpoint_regression",
+      "tail": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 322, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 312, in main\n    result = regression_worker(args.physical_gpu)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 169, in regression_worker\n    raise RuntimeError(f\"no verified V1.1 M checkpoint row for {dataset}\")\nRuntimeError: no verified V1.1 M checkpoint row for Movies\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 327, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 317, in main\n    result = regression_worker(args.physical_gpu)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/preflight_mrcge_v12.py\", line 242, in regression_worker\n    raise RuntimeError(f\"V1.1 M_repaired eval regression failed for {dataset}: {record}\")\nRuntimeError: V1.1 M_repaired eval regression failed for Grocery: {'dataset': 'Grocery', 'condition': 'M_repaired', 'checkpoint_path': '/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/Grocery/M/seed_42/attempt_01/best_accuracy.pt', 'checkpoint_sha256': 'd1412157bd6b29e55823cd82e926bf17ca0c6358cb72199f89de18d17c85d6c7', 'strict_state_dict': True, 'state_keys_match': True, 'old_v11_val': {'acc': 0.8269400000572205, 'macro_f1': 0.7567569553235868, 'ce': 0.6694358587265015}, 'new_v12_val': {'acc': 0.8269400000572205, 'macro_f1': 0.7567569553235868, 'ce': 0.6694358587265015}, 'validation_metrics_match': True, 'max_abs_embedding_error': 7.843971252441406e-05, 'max_abs_validation_logit_error': 0.00010693073272705078, 'embeddings_allclose_atol1e-5_rtol1e-4': False, 'logits_allclose_atol1e-5_rtol1e-4': True, 'validation_rng_unchanged': True, 'test_labels_masked': True, 'test_evaluation': False}\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:29:47+00:00",
+      "training_started": false
+    },
+    {
+      "action": "worker-gpu-preflight",
+      "attempt": 1,
+      "child_pid": 4020927,
+      "condition": "S_repaired",
+      "dataset": "Movies",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [4020537]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T05:38:41+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4020537,
+            "used_memory_mib": 596
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 77,
+            "utilization_percent": 26,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 20682,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 3576,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 67,
+            "utilization_percent": 34,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_screen/preflight_logs/Movies_S_repaired_seed42_gpu1_preflight1_20261025T053815Z.log",
+      "physical_gpu": 1,
+      "seed": 42,
+      "source_git_sha": "0e2496efe852c76fcd06c1477de12f41ac085e7c",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:38:41+00:00",
+      "training_started": false
+    }
+  ]
+}
