@@ -8,6 +8,7 @@ from typing import Any
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.utils.checkpoint import checkpoint
 from torch_geometric.utils import remove_self_loops
 
 from src.data.semantic_candidates_v7b import load_semantic_candidate_cache_v7b
@@ -21,6 +22,12 @@ from src.models.rmcge_v2 import build_modality_knn_operators
 
 
 CONDITIONS = ("S", "F", "M")
+
+
+def _run_bottleneck(module: nn.Module, value: torch.Tensor) -> torch.Tensor:
+    if module.training and torch.is_grad_enabled():
+        return checkpoint(module, value, use_reentrant=False, preserve_rng_state=True)
+    return module(value)
 
 
 class Bottleneck(nn.Module):
@@ -78,7 +85,7 @@ class SharedExpertBank(nn.Module):
         residuals = []
         mask = support.to(filtered.dtype).unsqueeze(-1)
         for index, expert in enumerate(self.experts):
-            residual = self.eta * expert(filtered[index])
+            residual = self.eta * _run_bottleneck(expert, filtered[index])
             value = self.norms[index](filtered[index] + residual)
             outputs.append(value * mask)
             residuals.append(residual * mask)
@@ -115,7 +122,7 @@ class SingleFilter(nn.Module):
     def forward(self, basis: list[torch.Tensor], support: torch.Tensor, max_order: int):
         coefficients = self.coefficients(max_order, basis[0].dtype)
         value = torch.einsum("l,lnd->nd", coefficients[: max_order + 1], torch.stack(basis[: max_order + 1]))
-        residual = self.eta * self.transform(value)
+        residual = self.eta * _run_bottleneck(self.transform, value)
         output = self.norm(value + residual)
         output = output * support.to(output.dtype).unsqueeze(-1)
         return output, value, coefficients, residual

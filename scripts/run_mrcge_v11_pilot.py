@@ -786,6 +786,10 @@ def run_guarded_child(action: str, dataset: str, condition: str, seed: int, phys
                 guard_gpu(physical_gpu, baseline_pids, {process.pid}, phase="during_run")
             except Exception as exc:
                 # Stop only this study's own child; never signal a pre-existing process.
+                try:
+                    failure_snapshot = smi_snapshot()
+                except Exception:
+                    failure_snapshot = None
                 process.terminate()
                 try:
                     process.wait(timeout=20)
@@ -795,7 +799,10 @@ def run_guarded_child(action: str, dataset: str, condition: str, seed: int, phys
                 record = {
                     "stage": "shared_gpu_runtime_guard", "action": action, "dataset": dataset,
                     "condition": condition, "seed": seed, "attempt": attempt,
-                    "child_pid": process.pid, "training_started": action == "worker-train",
+                    "child_pid": process.pid, "physical_gpu": physical_gpu,
+                    "source_git_sha": source_sha(), "log_path": str(log_file),
+                    "gpu_snapshot": failure_snapshot,
+                    "training_started": action == "worker-train",
                     "error": repr(exc), "terminated_own_child_only": True,
                 }
                 append_failure(record)
@@ -860,11 +867,18 @@ def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
                                   baseline_pids, attempt=attempt)
             except Exception as exc:
                 payload = json.loads(preflight_path.read_text(encoding="utf-8"))
+                failure = next((row for row in reversed(json.loads((DATA / "failures.json").read_text(encoding="utf-8")).get("failures", []))
+                                if row.get("stage") == "shared_gpu_runtime_guard"
+                                and row.get("dataset") == dataset and row.get("condition") == condition
+                                and row.get("attempt") == attempt), {})
                 blocked = {
                     "dataset": dataset, "condition": condition, "seed": SEED,
                     "status": "blocked", "stage": "gpu_single_step_attempt_failed",
-                    "physical_gpu": physical_gpu, "attempt": attempt, "reason": repr(exc),
-                    "gpu_snapshot": smi_snapshot(), "baseline_path": str(DATA / "gpu_baseline.json"),
+                    "physical_gpu": physical_gpu, "attempt": attempt,
+                    "reason": failure.get("error", repr(exc)),
+                    "log_path": failure.get("log_path"),
+                    "gpu_snapshot": failure.get("gpu_snapshot") or smi_snapshot(),
+                    "source_git_sha": source_sha(), "baseline_path": str(DATA / "gpu_baseline.json"),
                     "training_started": False, "test_evaluation": False, "recorded_utc": now(),
                 }
                 payload.setdefault("gpu_single_step", []).append(blocked)
