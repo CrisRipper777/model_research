@@ -103,6 +103,21 @@ def test_joint_view_has_gradients_for_both_strength_outputs():
     assert model.supports_link_prediction is False
 
 
+@pytest.mark.parametrize("variant", ["base", "joint_view", "sender_private"])
+def test_gradient_audit_supports_each_m_repaired_variant(variant):
+    model = make_model(variant, ratio=0.3 if variant == "sender_private" else 0.0, seed=75)
+    model.train()
+    output, _, _, aux, _ = model(X, PHYSICAL)
+    (output.square().mean() + aux).backward()
+    diagnostics = model.capture_gradient_diagnostics()
+    assert diagnostics
+    assert all(row["gradient_finite"] for row in diagnostics.values())
+    if variant == "joint_view":
+        assert diagnostics["joint_view.output.weight"]["gradient_nonzero"]
+    else:
+        assert not any(name.startswith("single_filter") for name in diagnostics)
+
+
 @pytest.mark.parametrize("variant", ["joint_view", "sender_private"])
 def test_zero_cross_invariant_holds_with_paired_train_dropout(variant):
     model = make_model(variant, ratio=0.3 if variant == "sender_private" else 0.0, seed=89)

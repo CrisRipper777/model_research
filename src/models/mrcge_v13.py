@@ -1252,11 +1252,6 @@ class Model(nn.Module):
                 ]
         if self.v13_variant == "joint_view":
             names += ["joint_view.input.weight", "joint_view.output.weight", "joint_view.output.bias"]
-        elif self.condition == "F_sinit":
-            names += ["single_filter.theta", "single_filter.transform.net.0.weight"]
-        else:
-            # S registers theta as a fixed buffer, so it has no gradient to inspect.
-            names += ["single_filter.transform.net.0.weight"]
         params = dict(self.named_parameters())
         result = {}
         for name in names:

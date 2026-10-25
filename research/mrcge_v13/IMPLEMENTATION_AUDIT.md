@@ -52,10 +52,20 @@ change model outputs or RNG consumption.
 - The CPU/data preflight above was run before the final diagnostics-only source
   adjustment. It will be rerun after the implementation freeze commit so the
   committed source hashes are authoritative.
+- First GPU-preflight attempt found a V1.3 audit-harness bug in
+  `capture_gradient_diagnostics`: the `sender_private` M_repaired path looked
+  for S/F-only `single_filter` parameters. The forward/backward reached that
+  audit call; no formal training began. The audit branch was corrected, and
+  tests now exercise gradient auditing for all three explicit variants.
+- After correction, the model/V1.2 regression suite passed: 37 tests. The
+  failed first-attempt cells remain in `data/preflight.json` and
+  `data/failures.json`; all GPU preflights will be repeated against the
+  corrected source SHA.
 
 ## Pending audits
 
-Real GPU-1 single-step forward/backward preflight, measured peak memory plus the
-2 GiB margin, the 12 formal Validation runs, dual-checkpoint reload audits,
-same-seed result analysis, and final push are pending. No formal training has
-started. GPU use remains conditional on a fresh ownership guard pass.
+Real GPU-1 single-step forward/backward preflight against the corrected source,
+measured peak memory plus the 2 GiB margin, the 12 formal Validation runs,
+dual-checkpoint reload audits, same-seed result analysis, and final push are
+pending. No formal training has started. GPU use remains conditional on a
+fresh ownership guard pass.
