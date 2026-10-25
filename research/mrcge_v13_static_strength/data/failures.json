@@ -1,0 +1,28 @@
+{
+  "failures": [
+    {
+      "attempt": 1,
+      "condition": "static_strength",
+      "dataset": "Movies",
+      "error": "expected one frozen V1.3-A reference for Movies/seed44; history row is stored in the fixed-split comparison CSV",
+      "model": "mrcge_v13_static_strength",
+      "seed": 44,
+      "source_git_sha": "8bedd9b",
+      "stage": "cpu_preflight",
+      "status": "failed",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T17:56:03+00:00"
+    },
+    {
+      "attempt": 2,
+      "condition": "static_strength",
+      "error": "RuntimeError('V1.2 Movies/seed42 split differs from the frozen study split')",
+      "model": "mrcge_v13_static_strength",
+      "source_git_sha": "8286cb524602b26a4eb5c91d1c17eaa4fa584eaf",
+      "stage": "cpu_preflight",
+      "status": "failed",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T17:56:50+00:00"
+    }
+  ]
+}

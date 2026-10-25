@@ -372,6 +372,7 @@ def write_reports(comparison, paired, summaries, strengths, hybrid, preflight, m
             f1 = [100*float(row["delta_val_macro_f1"]) for row in selected]
             ce = [float(row["delta_val_ce"]) for row in selected]
             lines.append(f"| {contrast} | {','.join(str(row['seed']) for row in selected)} | {statistics.mean(acc):+.2f} ± {statistics.pstdev(acc):.2f} | {statistics.mean(f1):+.2f} ± {statistics.pstdev(f1):.2f} | {statistics.mean(ce):+.4f} ± {statistics.pstdev(ce):.4f} |")
+    lines.extend(["", "Across both Movies and Grocery seeds, Joint View exceeds Static-Strength on Validation Accuracy and Macro-F1, with lower CE. On ele-fashion, Static is slightly higher on Accuracy and Macro-F1 in both seeds, while Joint View has lower CE in both. This is a descriptive small-sample pattern, not a significance claim.", ""])
     lines.extend(["", "## Static mechanism and cost", "",
         "Strengths are evaluated at each Best-Accuracy checkpoint. `sP` and `sS` are global within modality; effective strengths multiply the learned V1.3-A `rho`/`gamma`. Early Cross residual ratios use the frozen model's calibrated Cross-to-physical-neighbor RMS diagnostic.", "",
         "| Dataset | Seed | sP Text/Visual | sS Text/Visual | rho·sP Text/Visual | gamma·sS Text/Visual | Model params | Peak reserved (GiB) |",
@@ -380,15 +381,27 @@ def write_reports(comparison, paired, summaries, strengths, hybrid, preflight, m
         if row.get("model") != runner.STATIC_MODEL:
             continue
         lines.append(f"| {row['dataset']} | {row['seed']} | {float(row['sP_text']):.4f} / {float(row['sP_visual']):.4f} | {float(row['sS_text']):.4f} / {float(row['sS_visual']):.4f} | {float(row['rho_sP_text']):.4f} / {float(row['rho_sP_visual']):.4f} | {float(row['gamma_sS_text']):.4f} / {float(row['gamma_sS_visual']):.4f} | {row['model_parameters']} | {int(row['peak_reserved_bytes'])/1024**3:.2f} |")
-    lines.extend(["", "The companion `strength_diagnostics.csv` includes weighted Private/Collaborative Physical RMS, weighted Semantic RMS, Early Cross residual/delta, Late residual ratio, and the frozen Joint View node-wise mean/SD/quantiles. The result does not identify the pure causal effect of node-wise reliability: Static adds four parameters on top of learned `rho/gamma`, so parameterization and optimization trajectories also differ.",
+    lines.extend(["", "### Mean parameter and peak-memory cost", "",
+        "Means are across the authorized seeds for each dataset; peak memory is peak reserved CUDA memory.", "",
+        "| Dataset | Model | Total parameters | Peak reserved (GiB) |", "|---|---|---:|---:|"])
+    for dataset in DATASETS:
+        for display_name in ("V1.2 M_repaired", "V1.3-A Joint View", "V1.3 Static-Strength"):
+            row = next(item for item in summaries if item.get("dataset") == dataset
+                       and item.get("row_type") == "model" and item.get("model") == display_name)
+            lines.append(f"| {dataset} | {display_name} | {float(row['total_parameters_mean']):.0f} | {float(row['peak_reserved_bytes_mean'])/1024**3:.2f} |")
+    lines.extend(["", "The full per-run Best-F1 metrics, Train metrics/gaps, epochs, wall time, peak allocated/reserved memory and checkpoint hashes are in `data/model_comparison.csv` and `data/runs.csv`. The companion `strength_diagnostics.csv` includes weighted Private/Collaborative Physical RMS, weighted Semantic RMS, Early Cross residual/delta, Late residual ratio, and the frozen Joint View node-wise mean/SD/quantiles. Static strengths remain near 1 in this screen and do not approach the upper bound 2. The result does not identify the pure causal effect of node-wise reliability: Static adds four parameters on top of learned `rho/gamma`, so parameterization and optimization trajectories also differ.",
         "", "## Fixed-split Hybrid-CGE context", "",
         "This is performance context for Movies only and is excluded from Static-vs-Joint architectural attribution.", "",
         "| Seed | Hybrid Acc | Macro-F1 | CE | Total parameters | Peak reserved (GiB) |", "|---:|---:|---:|---:|---:|---:|"])
     for row in hybrid:
         lines.append(f"| {row['seed']} | {100*float(row['val_acc']):.2f}% | {100*float(row['val_macro_f1']):.2f}% | {float(row['val_ce']):.4f} | {row['total_parameters']} | {int(float(row['peak_reserved_bytes']))/1024**3:.2f} |")
     completed = int(manifest.get("completed_cells", 0))
+    failures = runner.read_json(runner.DATA / "failures.json", {}).get("failures", [])
+    cpu_preflight_failures = [row for row in failures
+                              if row.get("stage") == "cpu_preflight" and row.get("status") == "failed"]
     lines.extend(["", "## Status and interpretation", "",
-        f"Successful authorized cells: {completed}/7; failed attempts: {manifest.get('failed_attempts', 0)}; resource-blocked attempts: {manifest.get('blocked_resource_attempts', 0)}; not yet attempted: {manifest.get('unstarted_cells', 7)}.", "",
+        f"Formal training: {completed}/7 successful; failed training attempts: {manifest.get('failed_attempts', 0)}; resource-blocked attempts: {manifest.get('blocked_resource_attempts', 0)}; unstarted cells: {manifest.get('unstarted_cells', 7)}.",
+        f"CPU/data preflight recorded {len(cpu_preflight_failures)} failed software attempts in `data/failures.json`; both lookup/audit issues were corrected before the clean CPU and GPU preflights. No formal run launched until all seven GPU preflights passed.", "",
         "Interpret the paired seed-level pattern across datasets. Do not select a winner from one seed, infer statistical significance, or attribute a Static-vs-Joint difference solely to node-wise reliability. This screen uses two seeds outside Movies and historical reference campaigns; optimization paths and small-sample variation remain limitations.", "",
         "## Audit constraints", "",
         "All data use frozen splits and V7B.1 K=8 semantic caches. Test labels were masked before Trainer entry; no Test metrics or link prediction were run. New training was isolated to physical GPU 1 in one-cell subprocesses with a fresh ownership guard and at least 8 GiB free at launch, plus a 2 GiB margin above the measured peak-reserved memory.", ""])
@@ -397,6 +410,7 @@ def write_reports(comparison, paired, summaries, strengths, hybrid, preflight, m
     preflight_report = ["# Preflight report", "",
         f"CPU/data preflight: `{preflight.get('status')}` at {preflight.get('recorded_utc')}.",
         f"GPU preflight status: `{preflight.get('gpu_preflight_status', 'pending')}`.",
+        f"Failed CPU preflight attempts: {len(cpu_preflight_failures)}; all are retained in `data/failures.json` and were corrected before the clean pass.",
         f"Base: `{runner.BASE_SHA}`; training source: `{train_sha[0] if train_sha else 'not frozen'}`.", "",
         "## Data protocol", ""]
     for dataset, info in preflight.get("dataset_records", {}).items():
@@ -416,7 +430,8 @@ def write_reports(comparison, paired, summaries, strengths, hybrid, preflight, m
     implementation = ["# Implementation audit", "",
         "Static-Strength subclasses the frozen V1.3-A M_repaired backbone and mirrors its Forward locally so modality_id is explicit at both Private and Collaborative scale calls. The only new trainable tensor is `static_logits[2,2]`; it starts at zero and maps through `2*sigmoid`. The inherited Joint View MLP is constructed inside its isolated RNG scope to preserve the common backbone and external classifier initialization, then removed from the parameter tree. Private uses `sP*rho*R_P + sS*gamma*R_S`; Collaborative adds `rho*sP*(R_P_collab-R_P_priv)` and reuses the same modality-level scales. No module hooks, global mutable mode, or dataset-name dispatch is used.", "",
         "The static tests cover factory/config gating, exact shared initialization and external head initialization, initial Eval/Train equivalence, paired-dropout replay, common gradients, nonzero Static task gradients, modality/relation separation, node constancy, identical Private/Collaborative scales, both Early Cross directions, no-support behavior, low-memory checkpointing, strict checkpoint reload, and validation RNG preservation. Historical V1.3-A, NoP0, Hybrid-CGE source and result files are hash-checked and read-only.", "",
-        f"Training source SHA: `{train_sha[0] if train_sha else 'not frozen'}`. Static model parameters: four beyond the V1.3-A common model, with Joint View removed.", ""]
+        f"Training source SHA: `{train_sha[0] if train_sha else 'not frozen'}`. Static model parameters: four beyond the V1.3-A common model, with Joint View removed.", "",
+        "After the seven runs completed, the report generator needed explicit CSV field lists at four write sites. That analysis-only correction did not change the model, training runner, configs or any training artifacts; the frozen training SHA remains the source recorded in every run row.", ""]
     (study / "IMPLEMENTATION_AUDIT.md").write_text("\n".join(implementation), encoding="utf-8")
 
     handoff = ["# Decision handoff", "",
@@ -464,9 +479,12 @@ def analyze() -> dict[str, object]:
     runner.write_rows(runner.DATA / "paired_differences.csv", paired,
                       ("dataset", "seed", "contrast", "model_a", "model_b", "delta_val_acc", "delta_val_acc_pp",
                        "delta_val_macro_f1", "delta_val_macro_f1_pp", "delta_val_ce", "delta_val_ce_pp", "test_evaluation"))
-    runner.write_rows(runner.DATA / "dataset_summary.csv", summaries)
-    runner.write_rows(runner.DATA / "strength_diagnostics.csv", strengths)
-    runner.write_rows(runner.DATA / "hybrid_fixed_split_reference.csv", hybrid)
+    runner.write_rows(runner.DATA / "dataset_summary.csv", summaries,
+                      list(dict.fromkeys(key for row in summaries for key in row)))
+    runner.write_rows(runner.DATA / "strength_diagnostics.csv", strengths,
+                      list(dict.fromkeys(key for row in strengths for key in row)))
+    runner.write_rows(runner.DATA / "hybrid_fixed_split_reference.csv", hybrid,
+                      list(dict.fromkeys(key for row in hybrid for key in row)))
 
     resource_path = runner.DATA / "resource_summary.csv"
     resource_rows = runner.read_rows(resource_path)
@@ -478,17 +496,28 @@ def analyze() -> dict[str, object]:
             "gpu_name": run.get("gpu_name", ""), "peak_allocated_bytes": run.get("peak_allocated_bytes", ""),
             "peak_reserved_bytes": run.get("peak_reserved_bytes", ""), "wall_seconds": run.get("wall_seconds", ""),
             "test_evaluation": False})
-    runner.write_rows(resource_path, resource_rows)
+    runner.write_rows(resource_path, resource_rows,
+                      list(dict.fromkeys(key for row in resource_rows for key in row)))
 
     all_runs = runner.read_rows(runner.DATA / "runs.csv")
     manifest = runner.read_json(runner.DATA / "manifest.json", {})
+    failures = runner.read_json(runner.DATA / "failures.json", {}).get("failures", [])
+    cpu_preflight_failures = [row for row in failures
+                              if row.get("stage") == "cpu_preflight" and row.get("status") == "failed"]
     completed = {(row.get("model"), row.get("condition"), row.get("dataset"), row.get("seed"))
                  for row in all_runs if row.get("status") == "complete"}
-    manifest.update({"completed_cells": len(completed),
+    manifest.update({"status": "pass" if len(completed) == len(TARGETS) else "incomplete",
+        "completed_cells": len(completed),
         "failed_attempts": sum(row.get("status") == "failed" for row in all_runs),
+        "formal_failed_attempts": sum(row.get("status") == "failed" for row in all_runs),
+        "preflight_failed_attempts": len(cpu_preflight_failures),
         "blocked_resource_attempts": sum(row.get("status") == "blocked_resource" for row in all_runs),
         "unstarted_cells": max(0, len(TARGETS) - len(completed)),
         "training_source_sha": preflight.get("training_source_sha"),
+        "analysis_script_sha256": runner.sha256_file(Path(__file__)),
+        "pretraining_analysis_script_sha256": preflight.get("source_file_sha256s", {}).get(
+            "scripts/analyze_mrcge_v13_static_strength_screen.py", ""),
+        "analysis_only_post_training_fix": True,
         "analysis_completed_utc": runner.now(), "test_evaluation": False, "link_prediction": False})
     runner.json_write(runner.DATA / "manifest.json", manifest)
     write_reports(comparison, paired, summaries, strengths, hybrid, preflight, manifest)
