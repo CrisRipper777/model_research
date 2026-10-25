@@ -29,6 +29,8 @@ Test labels are masked to `-100` before Trainer entry, `evaluate_test=false`, an
 
 ## Freeze boundary
 
-The implementation, model/config files, training configuration, and tests are committed before any formal training. Formal rows must name that commit as `source_git_sha`. Any necessary correction to model math, optimizer, or data processing invalidates affected attempts and requires a new source commit and comparable reruns.
+The implementation, model/config files, training configuration, and tests were committed before formal training at `9cfe6e491d2ea2a58de01101af5032199c37cf14`. Any necessary correction to model math, optimizer, or data processing invalidates affected attempts and requires a new source commit and comparable reruns.
 
-The commit SHA is recorded in `data/manifest.json` after the freeze commit is created. The preflight source-file hashes are retained in `data/preflight.json` so the pre-commit GPU validation can be matched byte-for-byte to the frozen implementation.
+After the ownership-guard interruption, the failed attempt and partial audit were committed as `b024ae8dbe94259611fadb0165df55a67db631b6`; the user then authorized resumption after a fresh guard passed. The 12 resumed run rows record this actual repository HEAD. That commit changed only `research/mrcge_v12/` audit data and reports; model, trainer, launcher, and configuration files stayed byte-identical to the freeze commit. Thus the per-run Git SHAs differ, but the implementation source hashes and model/configuration definitions remained frozen. Both facts are retained in `data/runs.csv` and `data/manifest.json`.
+
+The freeze SHA and preflight source-file hashes are retained in `data/manifest.json` and `data/preflight.json`, so the pre-commit GPU validation can be matched byte-for-byte to the frozen implementation.

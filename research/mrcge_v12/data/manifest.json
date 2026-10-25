@@ -1,7 +1,8 @@
 {
   "base_sha": "0e2496efe852c76fcd06c1477de12f41ac085e7c",
   "branch": "exp/mrcge_v12_anchor_performance_screen",
-  "completed_core_cells": 2,
+  "completed_core_cells": 12,
+  "completed_fashion_bonus_cells": 2,
   "conditions": [
     "S_repaired",
     "F_sinit",
@@ -15,10 +16,21 @@
     "ele-fashion"
   ],
   "failed_core_attempts": 1,
-  "fashion_bonus_status": "not_started_stage3_halted",
+  "fashion_bonus_status": "complete",
+  "formal_complete_rows": 14,
   "formal_training_started": true,
   "physical_gpu": 1,
-  "screening_status": "halted_gpu_ownership_guard",
+  "preflight_source_file_sha256s": {
+    "launcher": "563efb9997db76ebf32bb5b537839ae44e23f7326cb9b9fb11f9affc15889b2c",
+    "model": "d9a7632f725a7c742dc083fe7737bc5c7384e9fa3bc91ffa64ead01e4a5d4ca6",
+    "model_config": "c0e5782fee74bda70a6cc42c3cf50b57e169ccf00981e53f595bd68b04750eed",
+    "study_config": "4086b33fde0ca653676199382026b4936f9132b9da599e47a953e991068cf7b9",
+    "trainer": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd"
+  },
+  "resolved_guard_stops": 1,
+  "resume_authorized": true,
+  "resume_guard_passed": true,
+  "screening_status": "complete_core_and_fashion",
   "seeds": [
     42
   ],
@@ -28,5 +40,5 @@
   "test_label_values_indexed": false,
   "test_labels_were_not_mutated": true,
   "training_frozen_sha": "9cfe6e4d0bbd7e6949eb52a76c15caebf3aa12bd",
-  "unstarted_core_cells": 9
+  "unstarted_core_cells": 0
 }
