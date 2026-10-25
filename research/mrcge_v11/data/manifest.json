@@ -1,6 +1,6 @@
 {
   "branch": "exp/mrcge_v11_shared_filter_pilot",
-  "code_commit_sha": "7636cfe354a885befb571b0d638f44f357fc3ce4",
+  "code_commit_sha": "8bdbccdf16077b12f6afe3ae6bede8051ebc92e0",
   "completed_formal_cells": 8,
   "data_file_sha256": {
     "condition_differences.csv": "f42fd8c434c6a3d2b3ebc52eb70242d0b3e9d0e4c8f0b62f7b447b18389d3d8f",
@@ -8,16 +8,17 @@
     "environment.json": "c9749b326e4216ca987c02d847f5920da6627a2b8efdcf0ea85ced1bb2760cdc",
     "epoch_history.csv": "2de9fafa23ec6ff42c4489eeba50c03abfc748fd0cc77ffea39103bf4f2face0",
     "expert_diagnostics.csv": "ac118d153ebe4884c91b8e26198e3321e58b764de35c5a832ee5b57ef58e0cdb",
-    "failures.json": "2dc6a6962cb31bae5f8830f929eeee9a40216629fe14a49fe6c76a04e70792fc",
+    "failures.json": "cc68cdae89408a487d9b8a9fcbbf42976015b7e459cfff7fd56c7ea25d2281c9",
     "gpu_baseline.json": "a3401857f8884a07f768a1a0e1e5956fb09574fc1768133218f7ccf58def1536",
     "gpu_preflight_Movies_S_seed42_attempt2.log": "ad88fa583c11ac48232049aee73ec91bf7c327d0da238703c48c306485329a15",
     "gpu_preflight_ele-fashion_M_seed42_attempt3.log": "52340982c3c5aed200464d5b11d060ab899c991371fd9ee0a11911b48970a870",
+    "guard_overrides.json": "195014f42419acda848bfb2879e6f3ce2fd64176a2a39744737316d4df229233",
     "loss_gradient_diagnostics.csv": "711ee3649ab95df2deb0b112d71d7ddd40cd4b0550db321c5c25fe85512a1450",
     "preflight.json": "d6ac310eec11304a7cb92f0df5cacc5ef2ea171cfa6db4cc1d98106061422257",
-    "resource_summary.csv": "92f4e6749be0729bc974f3ae31faca003b4b237e28fa4e897df2e1a10c538f2f",
+    "resource_summary.csv": "ad3542e6e02ebca2b112643e176ba8433bde95f57fd8306879c3806cd9348740",
     "response_diagnostics.csv": "9e08acc4e7451946e3e0aedeb029150ca762216dbfa67bf3d16f79845b770ae2",
     "route_diagnostics.csv": "86aa9747d0f0f237320b1996aadb17793a0f07ead734ea178958fe84c8b22a58",
-    "runs.csv": "b3bb19e9efe692adfc0c869d3e3866b1dddadbcab40eb00a417d1a3ea3c2a447"
+    "runs.csv": "b485291cec59d40e244b3b726c694c621105ecd1adcfccf799eef8da33367269"
   },
   "dataset_fingerprints": {
     "Grocery": {
@@ -42,12 +43,102 @@
       "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
     }
   },
-  "failures_count": 13,
+  "failures_count": 14,
   "formal_pilot_status": "partial_blocked",
   "gpu_block": null,
   "gpu_single_step_status": "pass",
+  "guard_overrides": [
+    {
+      "attempt": 2,
+      "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/M/seed_42/attempt_02",
+      "baseline_compute_pids_on_selected_gpu": [
+        3949460
+      ],
+      "condition": "M",
+      "dataset": "ele-fashion",
+      "error": "OutOfMemoryError: unable to allocate 96 MiB with 64.88 MiB free; process 3949460 retained 2.89 GiB.",
+      "external_process_action": "none; no foreign PID was signaled, paused, or modified",
+      "gpu_snapshot_before_launch": {
+        "captured_utc": "2026-10-25T03:27:49+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 21281,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 2977,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 70,
+            "utilization_percent": 42,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "guard_checks_bypassed": true,
+      "outcome": "failed_cuda_oom_before_first_epoch_no_valid_metric",
+      "physical_gpu": 1,
+      "post_attempt_gpu_snapshot": {
+        "compute_processes": [
+          {
+            "physical_index": 0,
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "physical_index": 1,
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_used_mib": 15221,
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 98
+          },
+          {
+            "memory_free_mib": 21281,
+            "memory_used_mib": 2977,
+            "physical_index": 1,
+            "temperature_c": 70,
+            "utilization_percent": 49
+          }
+        ],
+        "note": "Attempt PID was absent in the post-attempt snapshot; the pre-existing PID 3949460 remained unchanged."
+      },
+      "post_attempt_snapshot_observed_utc": "2026-10-25T03:29:04+00:00",
+      "recorded_utc": "2026-10-25T03:27:49+00:00",
+      "scope": "single ele-fashion/M seed-42 attempt only; repository guard implementation remains unchanged",
+      "seed": 42,
+      "source_git_sha": "637f8057547e4a1b8cfb6577dff092d5685434b9",
+      "user_instruction": "\u4e0d\u7528\u7ba1\u5b88\u536b\uff0c\u628a ele-fashion/M \u4e5f\u8dd1\u4e86"
+    }
+  ],
   "planned_formal_cells": 9,
-  "recorded_utc": "2026-10-25T03:03:58+00:00",
+  "recorded_utc": "2026-10-25T03:29:12+00:00",
   "runtime_guard_block": {
     "action": "worker-train",
     "attempt": 1,
@@ -112,7 +203,7 @@
   "source_file_sha256": {
     "configs/model/mrcge_v11.yaml": "1743a0e34916046cafd5c4ac508d7b36f2eaa151f2c8a946773b70ace8f50383",
     "configs/study/mrcge_v11_pilot.yaml": "a3ebe3baa7f937516b30a65a325ec346e533144c2057d08ce9c8ebcdd921276b",
-    "scripts/analyze_mrcge_v11_pilot.py": "c69f4a55a00e5095667de3064044ee0efe5e161c344a3ee25189e7c64e391c00",
+    "scripts/analyze_mrcge_v11_pilot.py": "dc42f88cf64d3fa6bb523b16eb17d3b4904547b77a471e230e2f9ba9d03e01ec",
     "scripts/preflight_mrcge_v11.py": "9bf8749ad1e6800b32bcdc28f3f2838cf9c598866ed66b8b72c60535837e271f",
     "scripts/run_mrcge_v11_pilot.py": "ad626286dd8308ba351d70f1edc150562b3ddd6eb8099439c2b306598d1bbf18",
     "src/models/mrcge_v11.py": "bafeb0d9122b07eb87333a9c5efa05f505d50ca9606db4c202468fec42302657",

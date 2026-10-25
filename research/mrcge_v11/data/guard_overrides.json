@@ -1,0 +1,92 @@
+{
+  "overrides": [
+    {
+      "attempt": 2,
+      "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/M/seed_42/attempt_02",
+      "baseline_compute_pids_on_selected_gpu": [
+        3949460
+      ],
+      "condition": "M",
+      "dataset": "ele-fashion",
+      "error": "OutOfMemoryError: unable to allocate 96 MiB with 64.88 MiB free; process 3949460 retained 2.89 GiB.",
+      "external_process_action": "none; no foreign PID was signaled, paused, or modified",
+      "gpu_snapshot_before_launch": {
+        "captured_utc": "2026-10-25T03:27:49+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 21281,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 2977,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 70,
+            "utilization_percent": 42,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "guard_checks_bypassed": true,
+      "outcome": "failed_cuda_oom_before_first_epoch_no_valid_metric",
+      "physical_gpu": 1,
+      "post_attempt_gpu_snapshot": {
+        "compute_processes": [
+          {
+            "physical_index": 0,
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "physical_index": 1,
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_used_mib": 15221,
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 98
+          },
+          {
+            "memory_free_mib": 21281,
+            "memory_used_mib": 2977,
+            "physical_index": 1,
+            "temperature_c": 70,
+            "utilization_percent": 49
+          }
+        ],
+        "note": "Attempt PID was absent in the post-attempt snapshot; the pre-existing PID 3949460 remained unchanged."
+      },
+      "post_attempt_snapshot_observed_utc": "2026-10-25T03:29:04+00:00",
+      "recorded_utc": "2026-10-25T03:27:49+00:00",
+      "scope": "single ele-fashion/M seed-42 attempt only; repository guard implementation remains unchanged",
+      "seed": 42,
+      "source_git_sha": "637f8057547e4a1b8cfb6577dff092d5685434b9",
+      "user_instruction": "\u4e0d\u7528\u7ba1\u5b88\u536b\uff0c\u628a ele-fashion/M \u4e5f\u8dd1\u4e86"
+    }
+  ]
+}

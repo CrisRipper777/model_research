@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Code Audit
 
-Source commit audited: `7636cfe354a885befb571b0d638f44f357fc3ce4`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
+Source commit audited: `8bdbccdf16077b12f6afe3ae6bede8051ebc92e0`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
 
 ## Implemented paths
 

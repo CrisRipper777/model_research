@@ -5,6 +5,8 @@
 Planned: 9 Dataset × Condition × Seed cells (Movies/Grocery/ele-fashion × S/F/M × seed 42).
 Completed: 8/9; formal cells with a recorded attempt: 9.
 The runtime GPU ownership guard interrupted ele-fashion/M/seed42 attempt 1 because `RuntimeError('GPU1 free memory 160 MiB below 1536 MiB guard threshold')`. The guard stopped only its own child. 8 cells completed; the interrupted attempt has no valid metric, and 1 authorized cell(s) remain incomplete.
+A user-directed override disabled GPU guard checks for ele-fashion/M/seed42 attempt 2; see `data/guard_overrides.json` for the device snapshot and scope.
+That overridden attempt ended without a valid metric: `OutOfMemoryError('CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 64.88 MiB is free. Process 3949460 has 2.89 GiB memory in use. Including non-PyTorch memory, this process has 20.72 GiB memory in use. Of the allocated memory 20.39 GiB is allocated by PyTorch, and 32.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)')`.
 
 ## Validation metrics
 
