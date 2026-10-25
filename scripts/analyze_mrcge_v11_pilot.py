@@ -375,6 +375,8 @@ def main() -> None:
             f"GPU guard checks were explicitly overridden for formal {override.get('dataset')}/{override.get('condition')}/"
             f"seed{override.get('seed')} attempt {override.get('attempt')}; see `data/guard_overrides.json`."
         )
+        if override.get("allocator_environment"):
+            preflight_lines.append(f"Attempt {override.get('attempt')} allocator environment: `{override['allocator_environment']}`.")
     (pilot.STUDY / "PREFLIGHT_REPORT.md").write_text("\n".join(preflight_lines) + "\n", encoding="utf-8")
 
     pilot_lines = [
@@ -406,6 +408,10 @@ def main() -> None:
             f"A user-directed override disabled GPU guard checks for {override.get('dataset')}/{override.get('condition')}/"
             f"seed{override.get('seed')} attempt {override.get('attempt')}; see `data/guard_overrides.json` for the device snapshot and scope."
         )
+        if override.get("allocator_environment"):
+            pilot_lines.append(
+                f"Attempt {override.get('attempt')} used allocator environment `{override['allocator_environment']}`; model and optimizer settings were unchanged."
+            )
         overridden_attempt = run_by_attempt.get((
             override.get("dataset"), override.get("condition"),
             int(override.get("seed", -1)), int(override.get("attempt", 0)),
