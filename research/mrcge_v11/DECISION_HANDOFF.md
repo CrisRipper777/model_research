@@ -1,15 +1,15 @@
 # MR-CGE V1.1 Decision Handoff
 
-Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit: `df4cf5a2a91c0bbda7c3765d987cc20e8a685237`.
+Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit: `a6c734f366879d53fa16c28be733a58cf91a33eb`.
 
-Stage-A status: partial_blocked; GPU single-step gate: pass; completed formal cells: 8/9.
+Stage-A status: partial_blocked; GPU single-step gate: pass; completed formal cells: 11/12.
 
 ## Review materials
 
 - `IMPLEMENTATION_SPEC.md`: frozen design choices and reviewed interfaces.
 - `PREFLIGHT_REPORT.md`, `data/preflight.json`, `data/environment.json`, `data/gpu_baseline.json`: preflight outcomes and resource evidence.
 - `CODE_AUDIT.md`, `tests/test_mrcge_v11.py`: implementation map and CPU behavior checks.
-- `PILOT_REPORT.md`, `data/runs.csv`, `data/condition_summary.csv`, `data/condition_differences.csv`: 8 completed-cell metrics and explicit missing-metric states for interrupted/unstarted cells.
+- `PILOT_REPORT.md`, `data/runs.csv`, `data/condition_summary.csv`, `data/condition_differences.csv`: 11 completed-cell metrics and explicit missing-metric states for interrupted/unstarted cells.
 - `data/failures.json`, `data/guard_overrides.json`: preserved failures and any explicitly user-directed GPU guard overrides with device snapshots.
 
 ## Requested decision

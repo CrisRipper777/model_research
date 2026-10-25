@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Code Audit
 
-Source commit audited: `df4cf5a2a91c0bbda7c3765d987cc20e8a685237`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
+Source commit audited: `a6c734f366879d53fa16c28be733a58cf91a33eb`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
 
 ## Implemented paths
 
@@ -19,7 +19,7 @@ M's four expert objects are shared across all views and collaborative physical c
 ## Validation
 
 The focused suite result is recorded in `data/preflight.json` (23 passed, 7 warnings in 5.53s). The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.
-GPU single-step preflight status: pass (9/9 cells). Full-epoch behavior and multi-seed performance remain separate questions.
+GPU single-step preflight status: pass (12/12 latest per-cell checks passed). Full-epoch behavior and multi-seed performance remain separate questions.
 Formal runs include per-epoch loss scalars, but `data/loss_gradient_diagnostics.csv` is header-only; single-step preflight gradients do not provide per-run training gradient magnitudes.
 
 Parameter counts from CPU initialization preflight:
@@ -29,6 +29,7 @@ Parameter counts from CPU initialization preflight:
 | Movies | 1654325 | 1654329 | 2021737 |
 | Grocery | 1654325 | 1654329 | 2021737 |
 | ele-fashion | 1388069 | 1388073 | 1755481 |
+| Toys | 1653297 | 1653301 | 2020709 |
 
 ## Limits
 

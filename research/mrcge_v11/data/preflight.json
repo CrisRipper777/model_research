@@ -1491,9 +1491,334 @@
         "recorded_utc": "2026-10-25T03:02:44+00:00",
         "stdout": ".......................                                                  [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\ntests/test_mrcge_v11.py::test_order_truncation_signed_coefficients_and_gradients\ntests/test_mrcge_v11.py::test_trainer_loss_uses_main_private_and_balance_terms\ntests/test_mrcge_v11.py::test_cpu_forward_backward_checkpoint_reload_and_rng_audit\ntests/test_mrcge_v11.py::test_filter_router_and_cross_parameters_receive_gradients\ntests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable_parameters[S]\ntests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable_parameters[F]\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n    with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n23 passed, 7 warnings in 5.53s\n"
       }
+    },
+    {
+      "attempt": 8,
+      "completed_utc": "2026-10-25T03:46:15+00:00",
+      "dataset_audits": {
+        "Grocery": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "92cc220430ef3256d3d29fa4c00bb714c6b7198cfeed6f83d1a3f6f923397dd2",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "3fbe9e4c47ba223c5963ecfc4c481a3160945461a9e9fbca91181de0a4544692",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "d5793262e8c310e8e3c88ea3a31a1fd49ad79a41d59d605934b087fec87be457",
+              "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+              "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+              "source_flags_shape": [
+                205557,
+                2
+              ],
+              "text_semantic_edges": 218396,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+              "visual_semantic_edges": 209132
+            }
+          ],
+          "features_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 142262,
+          "num_nodes": 17074,
+          "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+          "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+          "semantic_candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+          "semantic_feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+          "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+          "v7b_source_flags_shape": [
+            205557,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "Movies": {
+          "classifier_initialization_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+          "common_initialization_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "S",
+              "model_parameters": 1654325,
+              "model_state_sha256": "d003a3b98edd38e8241d3fdd7d6e1ad654798208f67b27fae6758513609f7710",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659465,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "F",
+              "model_parameters": 1654329,
+              "model_state_sha256": "28176d146d08b0754070a3fae4f027860bf8544d46928277408f71c6d9661612",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 1659469,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            },
+            {
+              "classifier_state_sha256": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+              "common_state_sha256": "58aac40ea22e15a05c71a4aff50596aef7a150c54827b3baa99658ed3ee9218f",
+              "condition": "M",
+              "model_parameters": 2021737,
+              "model_state_sha256": "8906142f21be33d0b9c1b28318b1c843e86b80345aa903502d816a628a736de2",
+              "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+              "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+              "source_flags_shape": [
+                205881,
+                2
+              ],
+              "text_semantic_edges": 221428,
+              "total_parameters": 2026877,
+              "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+              "visual_semantic_edges": 204322
+            }
+          ],
+          "features_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+          "input_dim": 1536,
+          "num_classes": 20,
+          "num_edges": 160802,
+          "num_nodes": 16672,
+          "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+          "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+          "semantic_candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+          "semantic_feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+          "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+          "v7b_source_flags_shape": [
+            205881,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "Toys": {
+          "classifier_initialization_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+          "common_initialization_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+          "conditions": [
+            {
+              "classifier_state_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+              "common_state_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+              "condition": "S",
+              "model_parameters": 1653297,
+              "model_state_sha256": "a1bef8c78ddeead764a6ba9474c2c639ed9de392e8b7c5b9a01690e574370f10",
+              "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+              "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+              "source_flags_shape": [
+                248217,
+                2
+              ],
+              "text_semantic_edges": 267240,
+              "total_parameters": 1657923,
+              "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+              "visual_semantic_edges": 251322
+            },
+            {
+              "classifier_state_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+              "common_state_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+              "condition": "F",
+              "model_parameters": 1653301,
+              "model_state_sha256": "0bdb43d7e6810c458f9dc503b3784bae79670db4556081bdec821d19a3a51134",
+              "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+              "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+              "source_flags_shape": [
+                248217,
+                2
+              ],
+              "text_semantic_edges": 267240,
+              "total_parameters": 1657927,
+              "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+              "visual_semantic_edges": 251322
+            },
+            {
+              "classifier_state_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+              "common_state_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+              "condition": "M",
+              "model_parameters": 2020709,
+              "model_state_sha256": "aa701dce9b330d17cb9d9656d6b7b3f72226c4522d5647a1677437748eb68271",
+              "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+              "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+              "source_flags_shape": [
+                248217,
+                2
+              ],
+              "text_semantic_edges": 267240,
+              "total_parameters": 2025335,
+              "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+              "visual_semantic_edges": 251322
+            }
+          ],
+          "features_fingerprint": "cf8514296e0f409894a053415e3120be04b0acb482b897b49df763a6344021a4",
+          "input_dim": 1536,
+          "num_classes": 18,
+          "num_edges": 113402,
+          "num_nodes": 20695,
+          "physical_edge_fingerprint": "85d171974a0d28b8434963d0b8a421c84a2b6742d9b777c43a06211435d0db63",
+          "semantic_cache_sha256": "03afd66b0b4062e09efe8678277b49dee92863837f57c76d0cb6b2a834053b09",
+          "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+          "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+          "split_fingerprint": "bc29ceb8378cd130a5e8bd7e2c4630e20cf65915c5028b033bc2cab594d80b93",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 768,
+          "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+          "v7b_source_flags_shape": [
+            248217,
+            2
+          ],
+          "visual_dim": 768
+        },
+        "ele-fashion": {
+          "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+          "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+          "conditions": [
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "S",
+              "model_parameters": 1388069,
+              "model_state_sha256": "be1490fa841c2274b3fb7d52b045a9d1feea24e4130a9b80f3404f2ab58b7675",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391153,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "F",
+              "model_parameters": 1388073,
+              "model_state_sha256": "f6b4860dbf8cb2037de83b810215bf85722d23db7e028e3604f2021abdf68e5d",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1391157,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            },
+            {
+              "classifier_state_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
+              "common_state_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
+              "condition": "M",
+              "model_parameters": 1755481,
+              "model_state_sha256": "aa9891fd48575c667b0eb71ea741b1147f2539ddec3d1e4b9f0665452df17fa7",
+              "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+              "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+              "source_flags_shape": [
+                1102200,
+                2
+              ],
+              "text_semantic_edges": 1165446,
+              "total_parameters": 1758565,
+              "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+              "visual_semantic_edges": 1217698
+            }
+          ],
+          "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+          "input_dim": 1024,
+          "num_classes": 12,
+          "num_edges": 399172,
+          "num_nodes": 97766,
+          "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+          "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+          "semantic_candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+          "semantic_feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+          "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+          "test_evaluation": false,
+          "test_labels_masked": true,
+          "text_dim": 512,
+          "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+          "v7b_source_flags_shape": [
+            1102200,
+            2
+          ],
+          "visual_dim": 512
+        }
+      },
+      "elapsed_seconds": 18.23027186281979,
+      "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
+      "started_utc": "2026-10-25T03:45:57+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "unit_tests": {
+        "command": "PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py",
+        "exit_code": 0,
+        "passed": true,
+        "recorded_utc": "2026-10-25T03:02:44+00:00",
+        "reuse_basis": "MR-CGE model, NC task runner, and focused test sources are unchanged; this update adds Toys data/cache coverage.",
+        "reused": true,
+        "reused_from_cpu_attempt": 7,
+        "stdout": ".......................                                                  [100%]\n=============================== warnings summary ===============================\n../../../../home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples\n    from torch_geometric.distributed import (\n\ntests/test_mrcge_v11.py::test_order_truncation_signed_coefficients_and_gradients\ntests/test_mrcge_v11.py::test_trainer_loss_uses_main_private_and_balance_terms\ntests/test_mrcge_v11.py::test_cpu_forward_backward_checkpoint_reload_and_rng_audit\ntests/test_mrcge_v11.py::test_filter_router_and_cross_parameters_receive_gradients\ntests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable_parameters[S]\ntests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable_parameters[F]\n  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n    with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n23 passed, 7 warnings in 5.53s\n"
+      }
     }
   ],
-  "cpu_completed_utc": "2026-10-24T15:36:13+00:00",
+  "cpu_completed_utc": "2026-10-25T03:46:15+00:00",
   "cpu_status": "pass",
   "datasets": {
     "Grocery": {
@@ -1648,6 +1973,82 @@
       ],
       "visual_dim": 768
     },
+    "Toys": {
+      "classifier_initialization_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+      "common_initialization_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+      "conditions": [
+        {
+          "classifier_state_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+          "common_state_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+          "condition": "S",
+          "model_parameters": 1653297,
+          "model_state_sha256": "a1bef8c78ddeead764a6ba9474c2c639ed9de392e8b7c5b9a01690e574370f10",
+          "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+          "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+          "source_flags_shape": [
+            248217,
+            2
+          ],
+          "text_semantic_edges": 267240,
+          "total_parameters": 1657923,
+          "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+          "visual_semantic_edges": 251322
+        },
+        {
+          "classifier_state_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+          "common_state_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+          "condition": "F",
+          "model_parameters": 1653301,
+          "model_state_sha256": "0bdb43d7e6810c458f9dc503b3784bae79670db4556081bdec821d19a3a51134",
+          "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+          "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+          "source_flags_shape": [
+            248217,
+            2
+          ],
+          "text_semantic_edges": 267240,
+          "total_parameters": 1657927,
+          "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+          "visual_semantic_edges": 251322
+        },
+        {
+          "classifier_state_sha256": "786fa60d14d5b5c262866cfe179d306af99dc2d2f8d536dd5baa38feec8d672e",
+          "common_state_sha256": "88890b7b608dc931f27d2bfe8f366c24d51f163ed349fe4e618a6806763f6180",
+          "condition": "M",
+          "model_parameters": 2020709,
+          "model_state_sha256": "aa701dce9b330d17cb9d9656d6b7b3f72226c4522d5647a1677437748eb68271",
+          "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+          "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+          "source_flags_shape": [
+            248217,
+            2
+          ],
+          "text_semantic_edges": 267240,
+          "total_parameters": 2025335,
+          "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+          "visual_semantic_edges": 251322
+        }
+      ],
+      "features_fingerprint": "cf8514296e0f409894a053415e3120be04b0acb482b897b49df763a6344021a4",
+      "input_dim": 1536,
+      "num_classes": 18,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "physical_edge_fingerprint": "85d171974a0d28b8434963d0b8a421c84a2b6742d9b777c43a06211435d0db63",
+      "semantic_cache_sha256": "03afd66b0b4062e09efe8678277b49dee92863837f57c76d0cb6b2a834053b09",
+      "semantic_candidate_fingerprint": "1235db05c59fbba08c0e29aff1a996c4e966568d4ce944ebef3ab22271ce6e90",
+      "semantic_feature_fingerprint": "969ac25017a2a60384eedf9aedef431e08b0cf029e538d1fcbb8aa81f74c4375",
+      "split_fingerprint": "bc29ceb8378cd130a5e8bd7e2c4630e20cf65915c5028b033bc2cab594d80b93",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 768,
+      "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
+      "v7b_source_flags_shape": [
+        248217,
+        2
+      ],
+      "visual_dim": 768
+    },
     "ele-fashion": {
       "classifier_initialization_sha256": "9745fd034afee26f9e6e6f1bda69cee40d4d7db11a19a9386e4f1f577a65d046",
       "common_initialization_sha256": "28d4889e8e7e272a8235d2f1581189134e6e95f47f238566f91ca1aa18e79c8f",
@@ -1746,6 +2147,21 @@
       "physical_gpu": 1,
       "source_git_sha": "009305f67c455643c6cb0812e1b1ec35f2febf4c",
       "started_utc": "2026-10-25T02:26:41+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "training_started": false
+    },
+    {
+      "attempt": 6,
+      "completed_cells": 3,
+      "completed_utc": "2026-10-25T03:47:28+00:00",
+      "datasets": [
+        "Toys"
+      ],
+      "physical_gpu": 1,
+      "scoped": true,
+      "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
+      "started_utc": "2026-10-25T03:46:32+00:00",
       "status": "pass",
       "test_evaluation": false,
       "training_started": false
@@ -15785,6 +16201,1752 @@
       "test_labels_masked": true,
       "total_loss": 3.5015504360198975,
       "wall_seconds": 1.9835901972837746
+    },
+    {
+      "all_gradients_finite": true,
+      "attempt": 6,
+      "aux_loss_scaled": 0.0,
+      "balance_loss_raw": 0.0,
+      "completed_utc": "2026-10-25T03:46:46+00:00",
+      "condition": "S",
+      "dataset": "Toys",
+      "feature_dim": 1536,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradient_diagnostics": {
+        "beta_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00010311347432434559,
+          "gradient_present": true
+        },
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.001782289589755237,
+          "gradient_present": true
+        },
+        "cross_lambda_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0002546734467614442,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05137636885046959,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03888193145394325,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.063383936882019,
+          "gradient_present": true
+        },
+        "gamma_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0072288503870368,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.6256086382782087e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.285808972781524e-05,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.7313850522041321,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.2844148576259613,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.146207356825471e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.2271679224795662e-05,
+          "gradient_present": true
+        },
+        "rho_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.018343785777688026,
+          "gradient_present": true
+        },
+        "single_filter.transform.net.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.011966362595558167,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00046965625369921327,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6870772838592529,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6153509020805359,
+          "gradient_present": true
+        }
+      },
+      "guard_snapshot": {
+        "captured_utc": "2026-10-25T03:46:46+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3979539,
+            "used_memory_mib": 2840
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 18438,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 5820,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 69,
+            "utilization_percent": 62,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ],
+        "guard": {
+          "allowed_process_pids": [
+            3979539
+          ],
+          "baseline_compute_pids": [
+            3949460
+          ],
+          "current_compute_pids": [
+            3949460,
+            3979539
+          ],
+          "phase": "during_run",
+          "physical_gpu": 1,
+          "status": "pass",
+          "unexpected_compute_pids": []
+        }
+      },
+      "initial_forward_diagnostics": {
+        "actual_experts_executed_per_filter_call": 1,
+        "aux_loss": 0.0,
+        "balance_loss": 0.0,
+        "beta": [
+          0.25,
+          0.25
+        ],
+        "collaborative_routes": {
+          "text": null,
+          "visual": null
+        },
+        "early_physical_cross": {
+          "text": {
+            "beta": 0.25,
+            "calibrated_rms": 0.9219706654548645,
+            "collaborative_response_rms": 0.9999913573265076,
+            "nonzero_nodes": 20685,
+            "private_response_rms": 0.9999912977218628,
+            "raw_rms": 0.1752040535211563,
+            "scale": 5.262267589569092
+          },
+          "visual": {
+            "beta": 0.25,
+            "calibrated_rms": 0.9092117547988892,
+            "collaborative_response_rms": 0.9999910593032837,
+            "nonzero_nodes": 20685,
+            "private_response_rms": 0.9999910593032837,
+            "raw_rms": 0.19398808479309082,
+            "scale": 4.686946392059326
+          }
+        },
+        "filters": {
+          "collaborative_text_physical": {
+            "E_expert_rms": [
+              0.9999913573265076
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.9114328026771545
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "expert_residual_rms": [
+              0.01802567020058632
+            ]
+          },
+          "collaborative_visual_physical": {
+            "E_expert_rms": [
+              0.9999910593032837
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.8929627537727356
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "expert_residual_rms": [
+              0.019881783053278923
+            ]
+          },
+          "private_text_physical": {
+            "E_expert_rms": [
+              0.999991238117218
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.9070017337799072
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "expert_residual_rms": [
+              0.01811215840280056
+            ]
+          },
+          "private_text_semantic": {
+            "E_expert_rms": [
+              0.9999948740005493
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.9901144504547119
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.5,
+              0.5,
+              0.0,
+              0.0
+            ],
+            "expert_residual_rms": [
+              0.019651098176836967
+            ]
+          },
+          "private_visual_physical": {
+            "E_expert_rms": [
+              0.9999910593032837
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.8925063610076904
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "expert_residual_rms": [
+              0.019867055118083954
+            ]
+          },
+          "private_visual_semantic": {
+            "E_expert_rms": [
+              0.9999948143959045
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.9775012731552124
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.5,
+              0.5,
+              0.0,
+              0.0
+            ],
+            "expert_residual_rms": [
+              0.021686192601919174
+            ]
+          }
+        },
+        "fused_output_rms": 0.9999927282333374,
+        "fusion_input_rms": 1.3266758918762207,
+        "gamma": [
+          0.07999999076128006,
+          0.07999999076128006
+        ],
+        "late": {
+          "text": {
+            "attention_entropy": 0.20023687183856964,
+            "candidate_rms": 0.23331783711910248,
+            "gate_mean": 0.7300000786781311,
+            "late_delta_ratio": 0.023716142401099205,
+            "late_delta_rms": 0.03148255869746208,
+            "p_accept_mean": 0.8000000715255737,
+            "relative_cap_fraction": 0.0,
+            "same_node_support_nodes": 20695,
+            "selector_share": [
+              0.44999995827674866,
+              0.3500000238418579,
+              0.20000000298023224
+            ],
+            "semantic_support_nodes": 20695,
+            "unbounded_rms": 0.034064408391714096
+          },
+          "visual": {
+            "attention_entropy": 0.1920565813779831,
+            "candidate_rms": 0.25771474838256836,
+            "gate_mean": 0.7300000786781311,
+            "late_delta_ratio": 0.026164576411247253,
+            "late_delta_rms": 0.03463434800505638,
+            "p_accept_mean": 0.8000000715255737,
+            "relative_cap_fraction": 0.0,
+            "same_node_support_nodes": 20695,
+            "selector_share": [
+              0.44999995827674866,
+              0.3500000238418579,
+              0.20000000298023224
+            ],
+            "semantic_support_nodes": 20695,
+            "unbounded_rms": 0.03762635588645935
+          }
+        },
+        "physical_response_rms": {
+          "text": 0.9999912977218628,
+          "visual": 0.9999910593032837
+        },
+        "physical_support_nodes": 20685,
+        "private_collaborative_route_changes": {},
+        "private_rms": {
+          "text": 1.3277829885482788,
+          "visual": 1.3240423202514648
+        },
+        "rho": [
+          0.25,
+          0.25
+        ],
+        "routes": {
+          "private_text_physical": null,
+          "private_text_semantic": null,
+          "private_visual_physical": null,
+          "private_visual_semantic": null
+        },
+        "semantic_response_rms": {
+          "text": 0.9999948740005493,
+          "visual": 0.9999948143959045
+        },
+        "semantic_support_nodes": {
+          "text": 20695,
+          "visual": 20695
+        },
+        "shared_expert_objects": 0,
+        "theta_actual": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "main_ce": 2.9051878452301025,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "peak_allocated_bytes": 2233468416,
+      "peak_reserved_bytes": 2648702976,
+      "physical_gpu": 1,
+      "private_ce": 3.213711977005005,
+      "seed": 42,
+      "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
+      "stage": "gpu_single_step",
+      "started_utc": "2026-10-25T03:46:38+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "total_loss": 3.8693015575408936,
+      "wall_seconds": 1.1897745081223547
+    },
+    {
+      "all_gradients_finite": true,
+      "attempt": 6,
+      "aux_loss_scaled": 0.0,
+      "balance_loss_raw": 0.0,
+      "completed_utc": "2026-10-25T03:47:05+00:00",
+      "condition": "F",
+      "dataset": "Toys",
+      "feature_dim": 1536,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradient_diagnostics": {
+        "beta_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00015787704614922404,
+          "gradient_present": true
+        },
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.001706284354440868,
+          "gradient_present": true
+        },
+        "cross_lambda_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00013513163139577955,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.006460531149059534,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009761416353285313,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.0248618125915527,
+          "gradient_present": true
+        },
+        "gamma_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00730555597692728,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 2.1210260456427932e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.391029117163271e-05,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.7091628909111023,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.2743651866912842,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 5.409146979218349e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.6211466572713107e-05,
+          "gradient_present": true
+        },
+        "rho_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.018123779445886612,
+          "gradient_present": true
+        },
+        "single_filter.theta": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.022438110783696175,
+          "gradient_present": true
+        },
+        "single_filter.transform.net.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.009303675964474678,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00032468308927491307,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6664050221443176,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5927687883377075,
+          "gradient_present": true
+        }
+      },
+      "guard_snapshot": {
+        "captured_utc": "2026-10-25T03:47:05+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3979735,
+            "used_memory_mib": 3278
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 82,
+            "utilization_percent": 98,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 18000,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 6258,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 72,
+            "utilization_percent": 82,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ],
+        "guard": {
+          "allowed_process_pids": [
+            3979735
+          ],
+          "baseline_compute_pids": [
+            3949460
+          ],
+          "current_compute_pids": [
+            3949460,
+            3979735
+          ],
+          "phase": "during_run",
+          "physical_gpu": 1,
+          "status": "pass",
+          "unexpected_compute_pids": []
+        }
+      },
+      "initial_forward_diagnostics": {
+        "actual_experts_executed_per_filter_call": 1,
+        "aux_loss": 0.0,
+        "balance_loss": 0.0,
+        "beta": [
+          0.25,
+          0.25
+        ],
+        "collaborative_routes": {
+          "text": null,
+          "visual": null
+        },
+        "early_physical_cross": {
+          "text": {
+            "beta": 0.25,
+            "calibrated_rms": 0.9219706654548645,
+            "collaborative_response_rms": 0.9999575614929199,
+            "nonzero_nodes": 20685,
+            "private_response_rms": 0.9999520778656006,
+            "raw_rms": 0.1752040535211563,
+            "scale": 5.262267589569092
+          },
+          "visual": {
+            "beta": 0.25,
+            "calibrated_rms": 0.9092117547988892,
+            "collaborative_response_rms": 0.9999616146087646,
+            "nonzero_nodes": 20685,
+            "private_response_rms": 0.9999578595161438,
+            "raw_rms": 0.19398808479309082,
+            "scale": 4.686946392059326
+          }
+        },
+        "filters": {
+          "collaborative_text_physical": {
+            "E_expert_rms": [
+              0.9999576210975647
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.3840778172016144
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.47999998927116394,
+              -0.23999999463558197,
+              0.18000000715255737,
+              -0.10000000149011612
+            ],
+            "expert_residual_rms": [
+              0.007211454212665558
+            ]
+          },
+          "collaborative_visual_physical": {
+            "E_expert_rms": [
+              0.9999615550041199
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.3928873836994171
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.47999998927116394,
+              -0.23999999463558197,
+              0.18000000715255737,
+              -0.10000000149011612
+            ],
+            "expert_residual_rms": [
+              0.007652153726667166
+            ]
+          },
+          "private_text_physical": {
+            "E_expert_rms": [
+              0.9999520182609558
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.38180217146873474
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.47999998927116394,
+              -0.23999999463558197,
+              0.18000000715255737,
+              -0.10000000149011612
+            ],
+            "expert_residual_rms": [
+              0.007098477333784103
+            ]
+          },
+          "private_text_semantic": {
+            "E_expert_rms": [
+              0.9999582171440125
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.34622722864151
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.6666666865348816,
+              -0.3333333432674408,
+              0.0,
+              -0.0
+            ],
+            "expert_residual_rms": [
+              0.006425946019589901
+            ]
+          },
+          "private_visual_physical": {
+            "E_expert_rms": [
+              0.9999578595161438
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.3882201313972473
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.47999998927116394,
+              -0.23999999463558197,
+              0.18000000715255737,
+              -0.10000000149011612
+            ],
+            "expert_residual_rms": [
+              0.007559961639344692
+            ]
+          },
+          "private_visual_semantic": {
+            "E_expert_rms": [
+              0.9999615550041199
+            ],
+            "E_pairwise_cosine": {},
+            "G_expert_rms": [
+              0.3606463670730591
+            ],
+            "G_pairwise_cosine": {},
+            "coefficients": [
+              0.6666666865348816,
+              -0.3333333432674408,
+              0.0,
+              -0.0
+            ],
+            "expert_residual_rms": [
+              0.006930366158485413
+            ]
+          }
+        },
+        "fused_output_rms": 0.9999926090240479,
+        "fusion_input_rms": 1.3175121545791626,
+        "gamma": [
+          0.07999999076128006,
+          0.07999999076128006
+        ],
+        "late": {
+          "text": {
+            "attention_entropy": 0.19998887181282043,
+            "candidate_rms": 0.2304541915655136,
+            "gate_mean": 0.7300000786781311,
+            "late_delta_ratio": 0.023577941581606865,
+            "late_delta_rms": 0.031098606064915657,
+            "p_accept_mean": 0.8000000715255737,
+            "relative_cap_fraction": 0.0,
+            "same_node_support_nodes": 20695,
+            "selector_share": [
+              0.44999995827674866,
+              0.3500000238418579,
+              0.20000000298023224
+            ],
+            "semantic_support_nodes": 20695,
+            "unbounded_rms": 0.03364631533622742
+          },
+          "visual": {
+            "attention_entropy": 0.19199411571025848,
+            "candidate_rms": 0.2557177245616913,
+            "gate_mean": 0.7300000786781311,
+            "late_delta_ratio": 0.026109762489795685,
+            "late_delta_rms": 0.034365322440862656,
+            "p_accept_mean": 0.8000000715255737,
+            "relative_cap_fraction": 0.0,
+            "same_node_support_nodes": 20695,
+            "selector_share": [
+              0.44999995827674866,
+              0.3500000238418579,
+              0.20000000298023224
+            ],
+            "semantic_support_nodes": 20695,
+            "unbounded_rms": 0.037334784865379333
+          }
+        },
+        "physical_response_rms": {
+          "text": 0.9999520778656006,
+          "visual": 0.9999578595161438
+        },
+        "physical_support_nodes": 20685,
+        "private_collaborative_route_changes": {},
+        "private_rms": {
+          "text": 1.3225067853927612,
+          "visual": 1.3187589645385742
+        },
+        "rho": [
+          0.25,
+          0.25
+        ],
+        "routes": {
+          "private_text_physical": null,
+          "private_text_semantic": null,
+          "private_visual_physical": null,
+          "private_visual_semantic": null
+        },
+        "semantic_response_rms": {
+          "text": 0.9999582171440125,
+          "visual": 0.9999615550041199
+        },
+        "semantic_support_nodes": {
+          "text": 20695,
+          "visual": 20695
+        },
+        "shared_expert_objects": 0,
+        "theta_actual": [
+          0.47999998927116394,
+          -0.23999999463558197,
+          0.18000000715255737,
+          -0.10000000149011612
+        ]
+      },
+      "main_ce": 2.9063730239868164,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "peak_allocated_bytes": 2657201664,
+      "peak_reserved_bytes": 3105882112,
+      "physical_gpu": 1,
+      "private_ce": 3.2099556922912598,
+      "seed": 42,
+      "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
+      "stage": "gpu_single_step",
+      "started_utc": "2026-10-25T03:46:57+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "total_loss": 3.8693597316741943,
+      "wall_seconds": 1.2436956949532032
+    },
+    {
+      "all_gradients_finite": true,
+      "attempt": 6,
+      "aux_loss_scaled": 0.010220502503216267,
+      "balance_loss_raw": 1.0220502614974976,
+      "completed_utc": "2026-10-25T03:47:22+00:00",
+      "condition": "M",
+      "dataset": "Toys",
+      "feature_dim": 1536,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gradient_diagnostics": {
+        "beta_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00035191915230825543,
+          "gradient_present": true
+        },
+        "channel_gate.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0016567845596000552,
+          "gradient_present": true
+        },
+        "cross_lambda_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.000290292693534866,
+          "gradient_present": true
+        },
+        "cross_projections.text_to_visual.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03152068331837654,
+          "gradient_present": true
+        },
+        "cross_projections.visual_to_text.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.05797014757990837,
+          "gradient_present": true
+        },
+        "filter_bank.experts.0.net.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.003159845480695367,
+          "gradient_present": true
+        },
+        "filter_bank.experts.0.net.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0014333002036437392,
+          "gradient_present": true
+        },
+        "filter_bank.experts.1.net.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0016316112596541643,
+          "gradient_present": true
+        },
+        "filter_bank.experts.1.net.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0008179763099178672,
+          "gradient_present": true
+        },
+        "filter_bank.experts.2.net.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0022406834177672863,
+          "gradient_present": true
+        },
+        "filter_bank.experts.2.net.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0011012749746441841,
+          "gradient_present": true
+        },
+        "filter_bank.experts.3.net.0.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.002346640219911933,
+          "gradient_present": true
+        },
+        "filter_bank.experts.3.net.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0009538308368064463,
+          "gradient_present": true
+        },
+        "filter_bank.theta": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.03687182068824768,
+          "gradient_present": true
+        },
+        "fusion_linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.0409351587295532,
+          "gradient_present": true
+        },
+        "gamma_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.0043685706332325935,
+          "gradient_present": true
+        },
+        "key_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.9715896996785887e-05,
+          "gradient_present": true
+        },
+        "key_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.390253161545843e-05,
+          "gradient_present": true
+        },
+        "projectors.text.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.7367240190505981,
+          "gradient_present": true
+        },
+        "projectors.visual.linear1.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.27331653237342834,
+          "gradient_present": true
+        },
+        "query_projections.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 4.142049510846846e-05,
+          "gradient_present": true
+        },
+        "query_projections.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 1.532983333163429e-05,
+          "gradient_present": true
+        },
+        "rho_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.01607510633766651,
+          "gradient_present": true
+        },
+        "router.net.3.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.012218700721859932,
+          "gradient_present": true
+        },
+        "source_selector.2.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.00047456257743760943,
+          "gradient_present": true
+        },
+        "tau_raw": {
+          "gradient_finite": true,
+          "gradient_nonzero": false,
+          "gradient_norm": 0.0,
+          "gradient_present": true
+        },
+        "unimodal_heads.text.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.6409458518028259,
+          "gradient_present": true
+        },
+        "unimodal_heads.visual.weight": {
+          "gradient_finite": true,
+          "gradient_nonzero": true,
+          "gradient_norm": 0.5388716459274292,
+          "gradient_present": true
+        }
+      },
+      "guard_snapshot": {
+        "captured_utc": "2026-10-25T03:47:22+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3979904,
+            "used_memory_mib": 5298
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 82,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 15980,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 8278,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 72,
+            "utilization_percent": 69,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ],
+        "guard": {
+          "allowed_process_pids": [
+            3979904
+          ],
+          "baseline_compute_pids": [
+            3949460
+          ],
+          "current_compute_pids": [
+            3949460,
+            3979904
+          ],
+          "phase": "during_run",
+          "physical_gpu": 1,
+          "status": "pass",
+          "unexpected_compute_pids": []
+        }
+      },
+      "initial_forward_diagnostics": {
+        "actual_experts_executed_per_filter_call": 4,
+        "aux_loss": 0.010220502503216267,
+        "balance_loss": 1.0220502614974976,
+        "beta": [
+          0.25,
+          0.25
+        ],
+        "collaborative_routes": {
+          "text": {
+            "active_nodes": 20685,
+            "dense_entropy": 1.3855012655258179,
+            "dense_importance": [
+              0.2446775734424591,
+              0.2507021129131317,
+              0.2554212808609009,
+              0.24919898808002472
+            ],
+            "selected_weight_entropy": 0.6929659843444824,
+            "top2_selection_share": [
+              0.17824509739875793,
+              0.21996615827083588,
+              0.39983078837394714,
+              0.20195792615413666
+            ]
+          },
+          "visual": {
+            "active_nodes": 20685,
+            "dense_entropy": 1.3847490549087524,
+            "dense_importance": [
+              0.2538467049598694,
+              0.2515064477920532,
+              0.2319597452878952,
+              0.262687087059021
+            ],
+            "selected_weight_entropy": 0.6929296255111694,
+            "top2_selection_share": [
+              0.31065988540649414,
+              0.20814599096775055,
+              0.007952622137963772,
+              0.4732414484024048
+            ]
+          }
+        },
+        "early_physical_cross": {
+          "text": {
+            "beta": 0.25,
+            "calibrated_rms": 0.9219706654548645,
+            "collaborative_response_rms": 0.9284744262695312,
+            "nonzero_nodes": 20685,
+            "private_response_rms": 0.9365983605384827,
+            "raw_rms": 0.1752040535211563,
+            "scale": 5.262267589569092
+          },
+          "visual": {
+            "beta": 0.25,
+            "calibrated_rms": 0.9092117547988892,
+            "collaborative_response_rms": 0.9165098071098328,
+            "nonzero_nodes": 20685,
+            "private_response_rms": 0.9302416443824768,
+            "raw_rms": 0.19398808479309082,
+            "scale": 4.686946392059326
+          }
+        },
+        "filters": {
+          "collaborative_text_physical": {
+            "E_expert_rms": [
+              0.9999686479568481,
+              0.9997867345809937,
+              0.9993482232093811,
+              0.9997121095657349
+            ],
+            "E_pairwise_cosine": {
+              "0_1": 0.23149628937244415,
+              "0_2": 0.7304676175117493,
+              "0_3": 0.8854236006736755,
+              "1_2": 0.46718791127204895,
+              "1_3": 0.4150715172290802,
+              "2_3": 0.6801189184188843
+            },
+            "G_expert_rms": [
+              0.43630096316337585,
+              0.34373489022254944,
+              0.13766343891620636,
+              0.3054349720478058
+            ],
+            "G_pairwise_cosine": {
+              "0_1": 0.24239061772823334,
+              "0_2": 0.6022868156433105,
+              "0_3": 0.7232481241226196,
+              "1_2": 0.751915454864502,
+              "1_3": 0.7372716069221497,
+              "2_3": 0.6766589283943176
+            },
+            "coefficients": [
+              [
+                0.5344827771186829,
+                -0.23275864124298096,
+                0.1551724225282669,
+                -0.07758621126413345
+              ],
+              [
+                -0.26271185278892517,
+                0.4830508232116699,
+                -0.09322033077478409,
+                0.16101694107055664
+              ],
+              [
+                0.18333333730697632,
+                0.13333334028720856,
+                -0.4416666626930237,
+                0.24166667461395264
+              ],
+              [
+                -0.14516130089759827,
+                -0.1854838728904724,
+                0.2983871102333069,
+                0.3709677457809448
+              ]
+            ],
+            "expert_residual_rms": [
+              0.00818919949233532,
+              0.007827089168131351,
+              0.002784829819574952,
+              0.005650806240737438
+            ]
+          },
+          "collaborative_visual_physical": {
+            "E_expert_rms": [
+              0.9999710917472839,
+              0.9998296499252319,
+              0.9994686841964722,
+              0.9997631907463074
+            ],
+            "E_pairwise_cosine": {
+              "0_1": 0.14052513241767883,
+              "0_2": 0.6944259405136108,
+              "0_3": 0.8251531720161438,
+              "1_2": 0.4079541862010956,
+              "1_3": 0.4243141710758209,
+              "2_3": 0.5993415117263794
+            },
+            "G_expert_rms": [
+              0.4446975886821747,
+              0.3384878635406494,
+              0.13890044391155243,
+              0.30275243520736694
+            ],
+            "G_pairwise_cosine": {
+              "0_1": 0.1794651597738266,
+              "0_2": 0.5769016742706299,
+              "0_3": 0.6910523772239685,
+              "1_2": 0.7106072902679443,
+              "1_3": 0.7180444598197937,
+              "2_3": 0.6314024925231934
+            },
+            "coefficients": [
+              [
+                0.5344827771186829,
+                -0.23275864124298096,
+                0.1551724225282669,
+                -0.07758621126413345
+              ],
+              [
+                -0.26271185278892517,
+                0.4830508232116699,
+                -0.09322033077478409,
+                0.16101694107055664
+              ],
+              [
+                0.18333333730697632,
+                0.13333334028720856,
+                -0.4416666626930237,
+                0.24166667461395264
+              ],
+              [
+                -0.14516130089759827,
+                -0.1854838728904724,
+                0.2983871102333069,
+                0.3709677457809448
+              ]
+            ],
+            "expert_residual_rms": [
+              0.008744721300899982,
+              0.007062023971229792,
+              0.0024803350679576397,
+              0.005078618414700031
+            ]
+          },
+          "private_text_physical": {
+            "E_expert_rms": [
+              0.9999659657478333,
+              0.9996787309646606,
+              0.9992401003837585,
+              0.999687135219574
+            ],
+            "E_pairwise_cosine": {
+              "0_1": 0.31429874897003174,
+              "0_2": 0.799720823764801,
+              "0_3": 0.8889965415000916,
+              "1_2": 0.41416749358177185,
+              "1_3": 0.531407356262207,
+              "2_3": 0.7457238435745239
+            },
+            "G_expert_rms": [
+              0.4347600042819977,
+              0.3206615447998047,
+              0.13297908008098602,
+              0.3043612539768219
+            ],
+            "G_pairwise_cosine": {
+              "0_1": 0.29723626375198364,
+              "0_2": 0.651503324508667,
+              "0_3": 0.7212257385253906,
+              "1_2": 0.730940043926239,
+              "1_3": 0.8320027589797974,
+              "2_3": 0.7305683493614197
+            },
+            "coefficients": [
+              [
+                0.5344827771186829,
+                -0.23275864124298096,
+                0.1551724225282669,
+                -0.07758621126413345
+              ],
+              [
+                -0.26271185278892517,
+                0.4830508232116699,
+                -0.09322033077478409,
+                0.16101694107055664
+              ],
+              [
+                0.18333333730697632,
+                0.13333334028720856,
+                -0.4416666626930237,
+                0.24166667461395264
+              ],
+              [
+                -0.14516130089759827,
+                -0.1854838728904724,
+                0.2983871102333069,
+                0.3709677457809448
+              ]
+            ],
+            "expert_residual_rms": [
+              0.008084685541689396,
+              0.0072653815150260925,
+              0.002671796828508377,
+              0.005558072589337826
+            ]
+          },
+          "private_text_semantic": {
+            "E_expert_rms": [
+              0.9999693036079407,
+              0.9999432563781738,
+              0.9999948740005493,
+              0.9999948740005493
+            ],
+            "E_pairwise_cosine": {
+              "0_1": 0.8878603577613831,
+              "0_2": 0.9818119406700134,
+              "0_3": -0.9772584438323975,
+              "1_2": 0.9581787586212158,
+              "1_3": -0.9644031524658203,
+              "2_3": -0.9992026686668396
+            },
+            "G_expert_rms": [
+              0.40415486693382263,
+              0.2971601188182831,
+              0.9912391304969788,
+              0.9893585443496704
+            ],
+            "G_pairwise_cosine": {
+              "0_1": 0.8882220983505249,
+              "0_2": 0.9822533130645752,
+              "0_3": -0.9777089357376099,
+              "1_2": 0.9586264491081238,
+              "1_3": -0.9648835062980652,
+              "2_3": -0.9997385144233704
+            },
+            "coefficients": [
+              [
+                0.6966292262077332,
+                -0.30337080359458923,
+                0.0,
+                -0.0
+              ],
+              [
+                -0.35227271914482117,
+                0.6477272510528564,
+                -0.0,
+                0.0
+              ],
+              [
+                0.5789473652839661,
+                0.42105263471603394,
+                -0.0,
+                0.0
+              ],
+              [
+                -0.4390243887901306,
+                -0.5609756112098694,
+                0.0,
+                0.0
+              ]
+            ],
+            "expert_residual_rms": [
+              0.0074918013997375965,
+              0.006356929428875446,
+              0.022164948284626007,
+              0.022746197879314423
+            ]
+          },
+          "private_visual_physical": {
+            "E_expert_rms": [
+              0.9999690651893616,
+              0.9997763633728027,
+              0.9994209408760071,
+              0.999747097492218
+            ],
+            "E_pairwise_cosine": {
+              "0_1": 0.2169143408536911,
+              "0_2": 0.7564881443977356,
+              "0_3": 0.8232993483543396,
+              "1_2": 0.3679012060165405,
+              "1_3": 0.5434386134147644,
+              "2_3": 0.6616286635398865
+            },
+            "G_expert_rms": [
+              0.44065365195274353,
+              0.3225180208683014,
+              0.13616296648979187,
+              0.2988061010837555
+            ],
+            "G_pairwise_cosine": {
+              "0_1": 0.23411642014980316,
+              "0_2": 0.6219452023506165,
+              "0_3": 0.6844580173492432,
+              "1_2": 0.6965532898902893,
+              "1_3": 0.8166584372520447,
+              "2_3": 0.6864469647407532
+            },
+            "coefficients": [
+              [
+                0.5344827771186829,
+                -0.23275864124298096,
+                0.1551724225282669,
+                -0.07758621126413345
+              ],
+              [
+                -0.26271185278892517,
+                0.4830508232116699,
+                -0.09322033077478409,
+                0.16101694107055664
+              ],
+              [
+                0.18333333730697632,
+                0.13333334028720856,
+                -0.4416666626930237,
+                0.24166667461395264
+              ],
+              [
+                -0.14516130089759827,
+                -0.1854838728904724,
+                0.2983871102333069,
+                0.3709677457809448
+              ]
+            ],
+            "expert_residual_rms": [
+              0.008659811690449715,
+              0.006378634832799435,
+              0.0024918417911976576,
+              0.005064350087195635
+            ]
+          },
+          "private_visual_semantic": {
+            "E_expert_rms": [
+              0.9999712109565735,
+              0.99994295835495,
+              0.9999948143959045,
+              0.999994695186615
+            ],
+            "E_pairwise_cosine": {
+              "0_1": 0.7790395617485046,
+              "0_2": 0.9658641219139099,
+              "0_3": -0.9567241668701172,
+              "1_2": 0.9136630296707153,
+              "1_3": -0.9264765381813049,
+              "2_3": -0.9989546537399292
+            },
+            "G_expert_rms": [
+              0.4165571331977844,
+              0.2964695394039154,
+              0.9801647663116455,
+              0.9756771922111511
+            ],
+            "G_pairwise_cosine": {
+              "0_1": 0.7765734195709229,
+              "0_2": 0.965739369392395,
+              "0_3": -0.956632137298584,
+              "1_2": 0.9134684205055237,
+              "1_3": -0.9264209866523743,
+              "2_3": -0.9994533658027649
+            },
+            "coefficients": [
+              [
+                0.6966292262077332,
+                -0.30337080359458923,
+                0.0,
+                -0.0
+              ],
+              [
+                -0.35227271914482117,
+                0.6477272510528564,
+                -0.0,
+                0.0
+              ],
+              [
+                0.5789473652839661,
+                0.42105263471603394,
+                -0.0,
+                0.0
+              ],
+              [
+                -0.4390243887901306,
+                -0.5609756112098694,
+                0.0,
+                0.0
+              ]
+            ],
+            "expert_residual_rms": [
+              0.008106546476483345,
+              0.005353464744985104,
+              0.01999947428703308,
+              0.02423747256398201
+            ]
+          }
+        },
+        "fused_output_rms": 0.9999915957450867,
+        "fusion_input_rms": 1.2384326457977295,
+        "gamma": [
+          0.07999999076128006,
+          0.07999999076128006
+        ],
+        "late": {
+          "text": {
+            "attention_entropy": 0.20024774968624115,
+            "candidate_rms": 0.21679647266864777,
+            "gate_mean": 0.7300000786781311,
+            "late_delta_ratio": 0.02291746251285076,
+            "late_delta_rms": 0.029165664687752724,
+            "p_accept_mean": 0.8000000715255737,
+            "relative_cap_fraction": 0.0,
+            "same_node_support_nodes": 20695,
+            "selector_share": [
+              0.44999995827674866,
+              0.3500000238418579,
+              0.20000000298023224
+            ],
+            "semantic_support_nodes": 20695,
+            "unbounded_rms": 0.031652286648750305
+          },
+          "visual": {
+            "attention_entropy": 0.19203490018844604,
+            "candidate_rms": 0.24992772936820984,
+            "gate_mean": 0.7300000786781311,
+            "late_delta_ratio": 0.02807530388236046,
+            "late_delta_rms": 0.03372254595160484,
+            "p_accept_mean": 0.8000000715255737,
+            "relative_cap_fraction": 0.0,
+            "same_node_support_nodes": 20695,
+            "selector_share": [
+              0.44999995827674866,
+              0.3500000238418579,
+              0.20000000298023224
+            ],
+            "semantic_support_nodes": 20695,
+            "unbounded_rms": 0.03648945316672325
+          }
+        },
+        "physical_response_rms": {
+          "text": 0.9365983605384827,
+          "visual": 0.9302416443824768
+        },
+        "physical_support_nodes": 20685,
+        "private_collaborative_route_changes": {
+          "text": {
+            "dense_importance_delta": [
+              -0.007509082555770874,
+              0.0011320710182189941,
+              0.0016379058361053467,
+              0.004739105701446533
+            ],
+            "node_top2_changed_fraction": 0.6434130668640137,
+            "top2_selection_share_delta": [
+              -0.15774714946746826,
+              0.028329715132713318,
+              0.017645657062530518,
+              0.11177180707454681
+            ]
+          },
+          "visual": {
+            "dense_importance_delta": [
+              0.0013997554779052734,
+              0.0028275400400161743,
+              0.0016880929470062256,
+              -0.005915403366088867
+            ],
+            "node_top2_changed_fraction": 0.4151800572872162,
+            "top2_selection_share_delta": [
+              -0.016146957874298096,
+              0.03323663771152496,
+              0.004133429378271103,
+              -0.021223127841949463
+            ]
+          }
+        },
+        "private_rms": {
+          "text": 1.2803219556808472,
+          "visual": 1.2049351930618286
+        },
+        "rho": [
+          0.25,
+          0.25
+        ],
+        "routes": {
+          "private_text_physical": {
+            "active_nodes": 20685,
+            "dense_entropy": 1.385805368423462,
+            "dense_importance": [
+              0.25218665599823,
+              0.24957004189491272,
+              0.25378337502479553,
+              0.24445988237857819
+            ],
+            "selected_weight_entropy": 0.6930212378501892,
+            "top2_selection_share": [
+              0.3359922468662262,
+              0.19163644313812256,
+              0.3821851313114166,
+              0.09018611907958984
+            ]
+          },
+          "private_text_semantic": {
+            "active_nodes": 20695,
+            "dense_entropy": 1.385988473892212,
+            "dense_importance": [
+              0.25278928875923157,
+              0.2497202605009079,
+              0.25157102942466736,
+              0.24591940641403198
+            ],
+            "selected_weight_entropy": 0.6930685043334961,
+            "top2_selection_share": [
+              0.34658128023147583,
+              0.22551339864730835,
+              0.3046388030052185,
+              0.12326648831367493
+            ]
+          },
+          "private_visual_physical": {
+            "active_nodes": 20685,
+            "dense_entropy": 1.3843330144882202,
+            "dense_importance": [
+              0.2524469494819641,
+              0.24867890775203705,
+              0.23027165234088898,
+              0.26860249042510986
+            ],
+            "selected_weight_entropy": 0.6926022171974182,
+            "top2_selection_share": [
+              0.32680684328079224,
+              0.17490935325622559,
+              0.0038191925268620253,
+              0.49446457624435425
+            ]
+          },
+          "private_visual_semantic": {
+            "active_nodes": 20695,
+            "dense_entropy": 1.3837828636169434,
+            "dense_importance": [
+              0.2548627257347107,
+              0.24855470657348633,
+              0.22511683404445648,
+              0.2714656889438629
+            ],
+            "selected_weight_entropy": 0.6926193237304688,
+            "top2_selection_share": [
+              0.3689538538455963,
+              0.13109447062015533,
+              0.00024160425527952611,
+              0.4997100532054901
+            ]
+          }
+        },
+        "semantic_response_rms": {
+          "text": 0.8585171103477478,
+          "visual": 0.16448286175727844
+        },
+        "semantic_support_nodes": {
+          "text": 20695,
+          "visual": 20695
+        },
+        "shared_expert_objects": 4,
+        "theta_actual": [
+          [
+            0.6200000047683716,
+            -0.27000001072883606,
+            0.18000000715255737,
+            -0.09000000357627869
+          ],
+          [
+            -0.3100000023841858,
+            0.5699999928474426,
+            -0.10999999940395355,
+            0.1899999976158142
+          ],
+          [
+            0.2199999988079071,
+            0.1599999964237213,
+            -0.5299999713897705,
+            0.28999999165534973
+          ],
+          [
+            -0.18000000715255737,
+            -0.23000000417232513,
+            0.3700000047683716,
+            0.46000000834465027
+          ]
+        ]
+      },
+      "main_ce": 2.906881332397461,
+      "num_edges": 113402,
+      "num_nodes": 20695,
+      "peak_allocated_bytes": 4745561088,
+      "peak_reserved_bytes": 5224005632,
+      "physical_gpu": 1,
+      "private_ce": 3.1786885261535645,
+      "seed": 42,
+      "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
+      "stage": "gpu_single_step",
+      "started_utc": "2026-10-25T03:47:13+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "total_loss": 3.870708465576172,
+      "wall_seconds": 1.6351661048829556
     }
   ],
   "gpu_single_step_attempt": 5,
@@ -15793,7 +17955,7 @@
   "gpu_single_step_physical_gpu": 1,
   "gpu_single_step_status": "pass",
   "schema_version": 1,
-  "source_git_sha": "9f369ea505fcf9ad4508f5af35a7fa8480dbd6f0",
+  "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
   "study": "MR-CGE V1.1",
   "test_evaluation": false,
   "test_labels_masked_before_trainer": true,

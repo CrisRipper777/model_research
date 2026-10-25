@@ -1,24 +1,25 @@
 {
   "branch": "exp/mrcge_v11_shared_filter_pilot",
-  "code_commit_sha": "df4cf5a2a91c0bbda7c3765d987cc20e8a685237",
-  "completed_formal_cells": 8,
+  "code_commit_sha": "a6c734f366879d53fa16c28be733a58cf91a33eb",
+  "completed_formal_cells": 11,
   "data_file_sha256": {
-    "condition_differences.csv": "f42fd8c434c6a3d2b3ebc52eb70242d0b3e9d0e4c8f0b62f7b447b18389d3d8f",
-    "condition_summary.csv": "7e871e68e95123aa49461f6dc6fdce28c1310150680c9ecad967e03d5408ab68",
-    "environment.json": "c9749b326e4216ca987c02d847f5920da6627a2b8efdcf0ea85ced1bb2760cdc",
-    "epoch_history.csv": "2de9fafa23ec6ff42c4489eeba50c03abfc748fd0cc77ffea39103bf4f2face0",
-    "expert_diagnostics.csv": "ac118d153ebe4884c91b8e26198e3321e58b764de35c5a832ee5b57ef58e0cdb",
+    "condition_differences.csv": "14005f2d2dbd05c08d18e704a5443a627010cdbfcb5e5475f49926918a67e267",
+    "condition_summary.csv": "c255c8dfd787d12b1a35133309c30c8940f0fdbb7a27e5393b107c0299d231b6",
+    "environment.json": "61234da0c60945cd408fc6ead82071d260dd5704f13a1930df935ec1b119d72e",
+    "epoch_history.csv": "6d94d179972fe09223c76f7ebf3e8c6fc7d5b6c9038148853d6938bb13a074eb",
+    "expert_diagnostics.csv": "e9179418781abfb02b259debfff0550f453951e1d2d3d6a52002c133b5270162",
     "failures.json": "2723b373918eba5441c0b2e6642cdd58d38ab5efd585e8577c2b08a3b9ad1520",
-    "gpu_baseline.json": "a3401857f8884a07f768a1a0e1e5956fb09574fc1768133218f7ccf58def1536",
+    "gpu_baseline.json": "97018943ef2c0daeade5faa9eaa649aaf7bc38954a86056498fd5195b4965a72",
+    "gpu_postrun_snapshot.json": "aada4c379aeb35267ae80c02ff28d562483ee96403dbffdb565a2aa8a8d1c4c5",
     "gpu_preflight_Movies_S_seed42_attempt2.log": "ad88fa583c11ac48232049aee73ec91bf7c327d0da238703c48c306485329a15",
     "gpu_preflight_ele-fashion_M_seed42_attempt3.log": "52340982c3c5aed200464d5b11d060ab899c991371fd9ee0a11911b48970a870",
     "guard_overrides.json": "bc03183f9157a9fcf529827081f3a28e53c5493a98e1adb2223f2a7a93a21ed2",
     "loss_gradient_diagnostics.csv": "711ee3649ab95df2deb0b112d71d7ddd40cd4b0550db321c5c25fe85512a1450",
-    "preflight.json": "d6ac310eec11304a7cb92f0df5cacc5ef2ea171cfa6db4cc1d98106061422257",
-    "resource_summary.csv": "a2f767f2665ccf0b5d73568b59bdc168385097af3fe4f54ff8b5536848e6c2ca",
-    "response_diagnostics.csv": "9e08acc4e7451946e3e0aedeb029150ca762216dbfa67bf3d16f79845b770ae2",
-    "route_diagnostics.csv": "86aa9747d0f0f237320b1996aadb17793a0f07ead734ea178958fe84c8b22a58",
-    "runs.csv": "5f485aeba9bf75e0045c9e5099df3bdf8059575b2e87137226ad6312a70aba62"
+    "preflight.json": "57b69583c25232072610b9b72f9ab42fa8c0e07123f9a657bcfb91e42e9cec6d",
+    "resource_summary.csv": "a5e1c196d62582c843ef327577e2957b657fa9d83bcc48ff3fd69893fee5f7c1",
+    "response_diagnostics.csv": "b9a1ac623ec501aa57b41cdcc98261b78c7691cc34fafb5a5352af59f9f5ea31",
+    "route_diagnostics.csv": "27f14ee931d65ed114aace3584e3f1c42df0a3b4639f37f58cf9d47fb7599f91",
+    "runs.csv": "45d3c3f5e3a131b52be1787080c5308538b9019b7caebac80d1e2bb135e5a39e"
   },
   "dataset_fingerprints": {
     "Grocery": {
@@ -35,6 +36,13 @@
       "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
       "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
     },
+    "Toys": {
+      "features_fingerprint": "cf8514296e0f409894a053415e3120be04b0acb482b897b49df763a6344021a4",
+      "physical_edge_fingerprint": "85d171974a0d28b8434963d0b8a421c84a2b6742d9b777c43a06211435d0db63",
+      "semantic_cache_sha256": "03afd66b0b4062e09efe8678277b49dee92863837f57c76d0cb6b2a834053b09",
+      "split_fingerprint": "bc29ceb8378cd130a5e8bd7e2c4630e20cf65915c5028b033bc2cab594d80b93",
+      "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7"
+    },
     "ele-fashion": {
       "features_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
       "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
@@ -46,6 +54,48 @@
   "failures_count": 15,
   "formal_pilot_status": "partial_blocked",
   "gpu_block": null,
+  "gpu_preflight_attempts": [
+    {
+      "attempt": 4,
+      "completed_utc": "2026-10-25T02:23:29+00:00",
+      "error": "RuntimeError('GPU1 free memory 1017 MiB below 1536 MiB guard threshold')",
+      "failed_condition": "M",
+      "failed_dataset": "ele-fashion",
+      "physical_gpu": 1,
+      "source_git_sha": "af37fbacf7c6479e532fa977eee20f93f1d1e7ce",
+      "started_utc": "2026-10-25T02:21:27+00:00",
+      "status": "blocked",
+      "test_evaluation": false,
+      "training_started": false
+    },
+    {
+      "attempt": 5,
+      "completed_cells": 9,
+      "completed_utc": "2026-10-25T02:28:33+00:00",
+      "physical_gpu": 1,
+      "source_git_sha": "009305f67c455643c6cb0812e1b1ec35f2febf4c",
+      "started_utc": "2026-10-25T02:26:41+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "training_started": false
+    },
+    {
+      "attempt": 6,
+      "completed_cells": 3,
+      "completed_utc": "2026-10-25T03:47:28+00:00",
+      "datasets": [
+        "Toys"
+      ],
+      "physical_gpu": 1,
+      "scoped": true,
+      "source_git_sha": "bc29065416ab24574ae5c141515551dc79ad7167",
+      "started_utc": "2026-10-25T03:46:32+00:00",
+      "status": "pass",
+      "test_evaluation": false,
+      "training_started": false
+    }
+  ],
+  "gpu_single_step_cells_passed": 12,
   "gpu_single_step_status": "pass",
   "guard_overrides": [
     {
@@ -229,8 +279,8 @@
       "user_instruction": "\u4e0d\u7528\u7ba1\u5b88\u536b\uff0c\u628a ele-fashion/M \u4e5f\u8dd1\u4e86"
     }
   ],
-  "planned_formal_cells": 9,
-  "recorded_utc": "2026-10-25T03:31:56+00:00",
+  "planned_formal_cells": 12,
+  "recorded_utc": "2026-10-25T03:54:21+00:00",
   "runtime_guard_block": {
     "action": "worker-train",
     "attempt": 1,
@@ -294,10 +344,10 @@
   "seeds_43_44_run": false,
   "source_file_sha256": {
     "configs/model/mrcge_v11.yaml": "1743a0e34916046cafd5c4ac508d7b36f2eaa151f2c8a946773b70ace8f50383",
-    "configs/study/mrcge_v11_pilot.yaml": "a3ebe3baa7f937516b30a65a325ec346e533144c2057d08ce9c8ebcdd921276b",
-    "scripts/analyze_mrcge_v11_pilot.py": "dce96dcc34bad6d96c8138b9c3bbe35921f2f4b09783f9c51ebe0350d1efa860",
-    "scripts/preflight_mrcge_v11.py": "9bf8749ad1e6800b32bcdc28f3f2838cf9c598866ed66b8b72c60535837e271f",
-    "scripts/run_mrcge_v11_pilot.py": "ad626286dd8308ba351d70f1edc150562b3ddd6eb8099439c2b306598d1bbf18",
+    "configs/study/mrcge_v11_pilot.yaml": "766ec7a21194f6ff8c77b4d7fdaf842ded0c73b0dd8b4fe4ef4832fb7d814836",
+    "scripts/analyze_mrcge_v11_pilot.py": "9d1d6c3c9bf1d5f562cf6dca73ab7b7626fe99334d49fac72401219db7c80132",
+    "scripts/preflight_mrcge_v11.py": "bff1d9fe67d76c6e4978285d2f493d2baf3aba34b62294743ab7a60bdffc549e",
+    "scripts/run_mrcge_v11_pilot.py": "70e54c86b3f572e862675f40e9881e84b637d1dcf4d81dd3bcbd893e4e5d8eed",
     "src/models/mrcge_v11.py": "bafeb0d9122b07eb87333a9c5efa05f505d50ca9606db4c202468fec42302657",
     "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
     "tests/test_mrcge_v11.py": "681faa19caa1489738c07895a1f10f8587a05449a1b64176b8a6fd1acb3d9549"

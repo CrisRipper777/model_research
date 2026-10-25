@@ -1,0 +1,77 @@
+{
+  "captured_utc": "2026-10-25T03:54:10+00:00",
+  "compute_processes": [
+    {
+      "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+      "pid": 3842120,
+      "used_memory_mib": 15110
+    },
+    {
+      "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+      "pid": 3949460,
+      "used_memory_mib": 2962
+    }
+  ],
+  "devices": [
+    {
+      "memory_free_mib": 9031,
+      "memory_total_mib": 24576,
+      "memory_used_mib": 15221,
+      "name": "NVIDIA GeForce RTX 3090",
+      "physical_index": 0,
+      "temperature_c": 81,
+      "utilization_percent": 100,
+      "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+    },
+    {
+      "memory_free_mib": 21281,
+      "memory_total_mib": 24576,
+      "memory_used_mib": 2977,
+      "name": "NVIDIA GeForce RTX 3090",
+      "physical_index": 1,
+      "temperature_c": 65,
+      "utilization_percent": 3,
+      "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+    }
+  ],
+  "experiment_closure": {
+    "baseline_gpu1_compute_pids": [
+      3949460
+    ],
+    "baseline_process_memory_mib": {
+      "3949460": 2962
+    },
+    "baseline_processes_still_present": [
+      3949460
+    ],
+    "conditions": [
+      "S",
+      "F",
+      "M"
+    ],
+    "dataset": "Toys",
+    "postrun_gpu1_compute_pids": [
+      3949460
+    ],
+    "postrun_process_memory_mib": {
+      "3949460": 2962
+    },
+    "seed": 42,
+    "study": "MR-CGE V1.1",
+    "test_evaluation": false,
+    "training_complete": true
+  },
+  "guard": {
+    "allowed_process_pids": [],
+    "baseline_compute_pids": [
+      3949460
+    ],
+    "current_compute_pids": [
+      3949460
+    ],
+    "phase": "during_run",
+    "physical_gpu": 1,
+    "status": "pass",
+    "unexpected_compute_pids": []
+  }
+}

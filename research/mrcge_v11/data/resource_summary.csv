@@ -20,4 +20,27 @@ ele-fashion,F,42,2,pilot_train,,,,,,,,,,,,False,312.6826461213641,12253714944,13
 ele-fashion,S,42,1,pilot_train,,,,,,,,,,,,False,478.57312428811565,10242642432,11154751488,NVIDIA GeForce RTX 3090
 ele-fashion,M,42,2,pilot_guard_override,1,9031,100,81,[3842120],21281,42,70,[3949460],guard_bypassed_per_explicit_user_instruction,Explicit user instruction to run ele-fashion/M despite guard; see data/guard_overrides.json,False,,,,
 ele-fashion,M,42,3,pilot_guard_override,1,9031,100,80,[3842120],21281,0,63,[3949460],guard_bypassed_per_explicit_user_instruction,Explicit user instruction; expandable-segments allocator enabled; see guard_overrides.json,False,,,,
+Toys,S,42,1,pilot_train,1,,,,,,,,,,,False,70.68477136874571,2235121152,2841640960,NVIDIA GeForce RTX 3090
+Toys,F,42,1,pilot_train,1,,,,,,,,,,,False,58.5036680707708,2658855424,3223322624,NVIDIA GeForce RTX 3090
+Toys,M,42,1,pilot_train,1,,,,,,,,,,,False,101.91326517984271,4751116288,5351931904,NVIDIA GeForce RTX 3090
+Movies,S,42,,gpu_single_step_preflight_pass,0,19622,69,82,"[3815405,3839607]",5103,100,76,[2537427],passed_single_step,,False,0.8430880741216242,2181558272,2569011200,
+Movies,F,42,,gpu_single_step_preflight_pass,0,19228,71,83,"[3815405,3839759]",5099,72,77,[2537427],passed_single_step,,False,0.8621443030424416,2523010048,2982150144,
+Movies,M,42,,gpu_single_step_preflight_pass,0,17202,81,84,"[3815405,3839910]",5099,70,77,[2537427],passed_single_step,,False,1.1182328001596034,4786628608,5104467968,
+Grocery,S,42,,gpu_single_step_preflight_pass,0,19600,69,82,"[3815405,3840063]",5099,68,76,[2537427],passed_single_step,,False,0.9014413761906326,2227459584,2592079872,
+Grocery,F,42,,gpu_single_step_preflight_pass,0,19206,71,82,"[3815405,3840361]",5099,71,76,[2537427],passed_single_step,,False,0.9109936049208045,2577121792,3005218816,
+Grocery,M,42,,gpu_single_step_preflight_pass,0,17206,74,83,"[3815405,3840506]",5099,22,67,[2537427],passed_single_step,,False,1.133767413906753,4865440256,5100273664,
+ele-fashion,S,42,,gpu_single_step_preflight_pass,0,9572,82,83,"[3815405,3840669]",5099,39,68,[2537427],passed_single_step,,False,1.2022463539615273,12461870592,13107200000,
+ele-fashion,F,42,,gpu_single_step_preflight_pass,0,7412,88,83,"[3815405,3840810]",5099,61,70,[2537427],passed_single_step,,False,1.4437622060067952,14473875456,15372124160,
+Movies,S,42,4,gpu_single_step_preflight_pass,1,9035,100,71,[3842120],21745,33,48,[3938160],passed_single_step,,False,0.791982461232692,1870992384,2290089984,
+Movies,F,42,4,gpu_single_step_preflight_pass,1,9035,100,72,[3842120],21389,34,49,[3938340],passed_single_step,,False,0.9200889677740633,2211854336,2663383040,
+Movies,M,42,4,gpu_single_step_preflight_pass,1,9035,89,73,[3842120],19641,49,51,[3938492],passed_single_step,,False,0.9677232140675187,4094677504,4494196736,
+Grocery,S,42,4,gpu_single_step_preflight_pass,1,9035,97,72,[3842120],21731,31,51,[3938680],passed_single_step,,False,0.7754613799043,1911407104,2304770048,
+Grocery,F,42,4,gpu_single_step_preflight_pass,1,9035,96,73,[3842120],21377,28,51,[3938862],passed_single_step,,False,0.7575489371083677,2262459904,2675965952,
+Grocery,M,42,4,gpu_single_step_preflight_pass,1,9035,92,72,[3842120],19665,47,53,[3939050],passed_single_step,,False,0.9445518380962312,4166888448,4469030912,
+ele-fashion,S,42,4,gpu_single_step_preflight_pass,1,9035,100,72,[3842120],12533,40,55,[3939232],passed_single_step,,False,1.2563512921333313,10658644992,11949572096,
+ele-fashion,F,42,4,gpu_single_step_preflight_pass,1,9035,100,73,[3842120],10995,74,56,[3939438],passed_single_step,,False,1.3079319270327687,12669165568,13562281984,
+Toys,S,42,6,gpu_single_step_preflight_pass,1,9031,100,81,[3842120],18438,62,69,"[3949460,3979539]",passed_single_step,,False,1.1897745081223547,2233468416,2648702976,
+Toys,F,42,6,gpu_single_step_preflight_pass,1,9031,98,82,[3842120],18000,82,72,"[3949460,3979735]",passed_single_step,,False,1.2436956949532032,2657201664,3105882112,
+Toys,M,42,6,gpu_single_step_preflight_pass,1,9031,100,82,[3842120],15980,69,72,"[3949460,3979904]",passed_single_step,,False,1.6351661048829556,4745561088,5224005632,
+Toys,ALL,42,,pilot_postrun_guard_snapshot,1,9031,100,81,[3842120],21281,3,65,[3949460],passed_postrun_guard,final guard passed; baseline PIDs still present: [3949460]; no unexpected GPU1 compute PIDs,False,,,,NVIDIA GeForce RTX 3090
 ele-fashion,M,42,1,pilot_runtime_guard_blocked,1,8912,90,82,[3842120],160,57,70,"[3949460,3956270]",own_child_stopped_by_runtime_guard,RuntimeError('GPU1 free memory 160 MiB below 1536 MiB guard threshold'),False,,,,
