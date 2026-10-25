@@ -1,9 +1,9 @@
 # MR-CGE V1.1 Preflight Report
 
-- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `73a0946d6d8eef89c578e2b70947c57d0340d243`.
+- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `7636cfe354a885befb571b0d638f44f357fc3ce4`.
 - CPU/data/cache/init preflight: **pass**.
 - GPU single-step preflight: **pass**.
-- Formal Pilot cells attempted: **7/9**; completed: **6/9**.
+- Formal Pilot cells attempted: **9/9**; completed: **8/9**.
 - Test evaluation: **disabled**; Test labels are masked to `-100` before Trainer entry.
 
 ## CPU and data checks
@@ -18,7 +18,7 @@
 ## Focused tests
 
 Command: `PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py`
-Result: passed; 23 passed, 7 warnings in 3.75s.
+Result: passed; 23 passed, 7 warnings in 5.53s.
 
 ```text
 .......................                                                  [100%]
@@ -37,14 +37,14 @@ tests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable
     with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-23 passed, 7 warnings in 3.75s
+23 passed, 7 warnings in 5.53s
 ```
 
 ## GPU guard outcome
 
 All nine guarded GPU single-step checks passed on physical GPU 1; maximum measured allocated memory was 21173 MiB. Earlier blocked attempts remain in the audit history.
-During formal Pilot ele-fashion/F/seed42 attempt 1, the runtime guard detected a new foreign compute PID and stopped only its own training child. See the matching `shared_gpu_runtime_guard` failure and `pilot_runtime_guard_blocked` resource row before resuming.
+During formal Pilot ele-fashion/M/seed42 attempt 1, the runtime guard stopped only its own training child because `RuntimeError('GPU1 free memory 160 MiB below 1536 MiB guard threshold')`. See the matching `shared_gpu_runtime_guard` failure and `pilot_runtime_guard_blocked` resource row before resuming.
 
 ## Preserved failures
 
-`data/failures.json` contains 9 recorded events.
+`data/failures.json` contains 13 recorded events.

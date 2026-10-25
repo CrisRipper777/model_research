@@ -168,6 +168,107 @@
       "test_evaluation": false,
       "time_utc": "2026-10-25T02:37:22+00:00",
       "training_started": true
+    },
+    {
+      "action": "run_pilot",
+      "attempt": null,
+      "diagnostic": "Failed command: nvidia-smi --query-gpu=index,uuid,name,memory.used,memory.total,memory.free,utilization.gpu,temperature.gpu --format=csv,noheader,nounits",
+      "error": "nvidia-smi baseline query exited with status 9 (CalledProcessError); a direct nvidia-smi snapshot succeeded immediately afterward at 10:43:16 Asia/Shanghai, so no training child was launched.",
+      "physical_gpu": 1,
+      "recorded_utc": "2026-10-25T02:43:50+00:00",
+      "seed": 42,
+      "source_git_sha": "b90e678947dd1cb9ddbefd0341d35a24d1e3d4f5",
+      "source_state_note": "Recorded retrospectively from the runner traceback. Runner was patched in the next commit to preserve future baseline-snapshot failures.",
+      "stage": "gpu_baseline_snapshot",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T02:43:16+00:00",
+      "training_started": false
+    },
+    {
+      "action": "run_pilot",
+      "attempt": null,
+      "diagnostic": "NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.\n\n",
+      "error": "CalledProcessError(9, ['nvidia-smi', '--query-gpu=index,uuid,name,memory.used,memory.total,memory.free,utilization.gpu,temperature.gpu', '--format=csv,noheader,nounits'])",
+      "physical_gpu": 1,
+      "seed": 42,
+      "source_git_sha": "61d11a834b96dd7e572755351352b9df07bbfb4c",
+      "stage": "gpu_baseline_snapshot",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T02:43:55+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/M/seed_42/attempt_01",
+      "condition": "M",
+      "dataset": "ele-fashion",
+      "error": "OutOfMemoryError('CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 64.88 MiB is free. Process 3949460 has 2.89 GiB memory in use. Including non-PyTorch memory, this process has 20.72 GiB memory in use. Of the allocated memory 20.39 GiB is allocated by PyTorch, and 32.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)')",
+      "seed": 42,
+      "source_git_sha": "61d11a834b96dd7e572755351352b9df07bbfb4c",
+      "stage": "training_worker",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T02:50:49+00:00",
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v11_pilot.py\", line 561, in worker_train\n    run_nc(cfg, safe, device, logger)\n  File \"/hdd1/DataInHere/YHF/model_research/src/tasks/nc.py\", line 895, in run_nc\n    _run_single_nc(cfg, data, device, logger, run_id, seed, eval_labels)\n  File \"/hdd1/DataInHere/YHF/model_research/src/tasks/nc.py\", line 436, in _run_single_nc\n    z, _, _, aux_loss, forward_info = model(x_all, edge_index_all)\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1553, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1562, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v11.py\", line 804, in forward\n    self.fusion_skip(fused) + self.fusion_linear2(self.fusion_dropout(F.gelu(self.fusion_linear1(fused))))\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1553, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1562, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/modules/dropout.py\", line 59, in forward\n    return F.dropout(input, self.p, self.training, self.inplace)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/nn/functional.py\", line 1295, in dropout\n    return _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)\n                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 64.88 MiB is free. Process 3949460 has 2.89 GiB memory in use. Including non-PyTorch memory, this process has 20.72 GiB memory in use. Of the allocated memory 20.39 GiB is allocated by PyTorch, and 32.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n",
+      "training_started": false
+    },
+    {
+      "action": "worker-train",
+      "attempt": 1,
+      "child_pid": 3956270,
+      "condition": "M",
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('GPU1 free memory 160 MiB below 1536 MiB guard threshold')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T02:50:50+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3956270,
+            "used_memory_mib": 21118
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 8912,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15340,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 82,
+            "utilization_percent": 90,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 160,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 24098,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 70,
+            "utilization_percent": 57,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/guard_logs/ele-fashion_M_seed42_attempt01.log",
+      "physical_gpu": 1,
+      "seed": 42,
+      "source_git_sha": "61d11a834b96dd7e572755351352b9df07bbfb4c",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T02:50:50+00:00",
+      "training_started": true
     }
   ]
 }

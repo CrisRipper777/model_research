@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Code Audit
 
-Source commit audited: `73a0946d6d8eef89c578e2b70947c57d0340d243`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
+Source commit audited: `7636cfe354a885befb571b0d638f44f357fc3ce4`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
 
 ## Implemented paths
 
@@ -18,8 +18,9 @@ M's four expert objects are shared across all views and collaborative physical c
 
 ## Validation
 
-The focused suite result is recorded in `data/preflight.json` (23 passed, 7 warnings in 3.75s). The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.
+The focused suite result is recorded in `data/preflight.json` (23 passed, 7 warnings in 5.53s). The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.
 GPU single-step preflight status: pass (9/9 cells). Full-epoch behavior and multi-seed performance remain separate questions.
+Formal runs include per-epoch loss scalars, but `data/loss_gradient_diagnostics.csv` is header-only; single-step preflight gradients do not provide per-run training gradient magnitudes.
 
 Parameter counts from CPU initialization preflight:
 

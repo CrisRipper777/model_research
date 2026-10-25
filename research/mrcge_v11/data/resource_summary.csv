@@ -16,3 +16,6 @@ ele-fashion,S,42,5,gpu_single_step_preflight_pass,1,9035,100,72,[3842120],13223,
 ele-fashion,F,42,5,gpu_single_step_preflight_pass,1,9035,98,72,[3842120],11303,100,59,[3942244],passed_single_step,,False,1.1692127538844943,12331030528,13239320576,
 ele-fashion,M,42,5,gpu_single_step_preflight_pass,1,9035,93,73,[3842120],1907,100,59,[3942445],passed_single_step,,False,1.9835901972837746,22201272320,23089643520,
 ele-fashion,F,42,1,pilot_runtime_guard_blocked,1,8913,98,79,[3842120],21856,57,66,"[3948768,3949460]",own_child_stopped_unexpected_foreign_pid,RuntimeError('shared-GPU guard saw new foreign compute PIDs [3949460]; refusing/aborting this run'),False,,,,
+ele-fashion,F,42,2,pilot_train,,,,,,,,,,,,False,312.6826461213641,12253714944,13168017408,NVIDIA GeForce RTX 3090
+ele-fashion,S,42,1,pilot_train,,,,,,,,,,,,False,478.57312428811565,10242642432,11154751488,NVIDIA GeForce RTX 3090
+ele-fashion,M,42,1,pilot_runtime_guard_blocked,1,8912,90,82,[3842120],160,57,70,"[3949460,3956270]",own_child_stopped_by_runtime_guard,RuntimeError('GPU1 free memory 160 MiB below 1536 MiB guard threshold'),False,,,,
