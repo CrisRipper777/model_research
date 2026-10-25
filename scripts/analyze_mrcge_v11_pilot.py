@@ -80,19 +80,43 @@ def main() -> None:
         (row["dataset"], row["condition"], int(row["seed"])): row
         for row in runs if row.get("status") == "complete"
     }
+    latest_attempt_by_key = {}
+    for row in runs:
+        key = (row["dataset"], row["condition"], int(row["seed"]))
+        previous = latest_attempt_by_key.get(key)
+        if previous is None or int(row.get("attempt", 0)) >= int(previous.get("attempt", 0)):
+            latest_attempt_by_key[key] = row
+    failures = json.loads((DATA / "failures.json").read_text(encoding="utf-8")) if (DATA / "failures.json").is_file() else {"failures": []}
+    runtime_guard_block = None
+    for failure in reversed(failures.get("failures", [])):
+        key = (failure.get("dataset"), failure.get("condition"), int(failure.get("seed", -1)))
+        if (failure.get("stage") == "shared_gpu_runtime_guard"
+                and failure.get("action") == "worker-train"
+                and failure.get("training_started") and key not in run_by_key):
+            runtime_guard_block = failure
+            break
     summary_rows = []
     differences = []
     contrast_defs = (("M-F", "M", "F"), ("F-S", "F", "S"), ("M-S", "M", "S"))
     for dataset in DATASETS:
         for condition in CONDITIONS:
             row = run_by_key.get((dataset, condition, pilot.SEED))
+            latest = latest_attempt_by_key.get((dataset, condition, pilot.SEED))
+            if row:
+                status = "complete"
+                interpretation = "one-seed descriptive validation metric"
+            elif latest and latest.get("status") == "failed":
+                status = "failed_attempt_no_metric"
+                interpretation = "formal attempt was interrupted; incomplete metrics are excluded"
+            else:
+                status = "not_run"
+                interpretation = "formal training cell has not started"
             summary_rows.append({
                 "dataset": dataset, "condition": condition, "n_completed": 1 if row else 0,
                 "seed": pilot.SEED, "val_acc": row.get("val_acc", "") if row else "",
                 "val_macro_f1": row.get("val_macro_f1", "") if row else "",
                 "val_ce": row.get("val_ce", "") if row else "",
-                "status": row.get("status", "not_run") if row else "not_run_gpu_preflight_blocked",
-                "interpretation": "one-seed descriptive validation metric" if row else "no Pilot metric; formal training did not start",
+                "status": status, "interpretation": interpretation,
             })
         for label, left, right in contrast_defs:
             lrow, rrow = run_by_key.get((dataset, left, pilot.SEED)), run_by_key.get((dataset, right, pilot.SEED))
@@ -108,7 +132,7 @@ def main() -> None:
                 differences.append({
                     "dataset": dataset, "seed": pilot.SEED, "contrast": label,
                     "status": "not_available", "delta_val_acc": "", "delta_val_macro_f1": "",
-                    "delta_val_ce": "", "interpretation": "both Pilot cells are required; no formal training started",
+                    "delta_val_ce": "", "interpretation": "both completed Pilot cells are required; one or both cells lack a valid metric",
                 })
 
     pilot.write_rows(DATA / "runs.csv", runs, list(pilot.RUN_FIELDS))
@@ -185,6 +209,35 @@ def main() -> None:
             "status": "blocked_before_training", "reason": gpu_block.get("reason", ""),
             "test_evaluation": False,
         })
+    if runtime_guard_block:
+        snapshot = runtime_guard_block.get("gpu_snapshot") or {}
+        gpu0, gpu1 = gpu_device_snapshot(snapshot, 0), gpu_device_snapshot(snapshot, 1)
+        key = (
+            runtime_guard_block.get("dataset"), runtime_guard_block.get("condition"),
+            str(runtime_guard_block.get("seed", "")), str(runtime_guard_block.get("attempt", "")),
+            "pilot_runtime_guard_blocked",
+        )
+        if key not in resource_keys:
+            resource_rows.append({
+                "dataset": runtime_guard_block.get("dataset", ""),
+                "condition": runtime_guard_block.get("condition", ""),
+                "seed": runtime_guard_block.get("seed", pilot.SEED),
+                "attempt": runtime_guard_block.get("attempt", ""),
+                "phase": "pilot_runtime_guard_blocked",
+                "physical_gpu": runtime_guard_block.get("physical_gpu", ""),
+                "gpu0_free_mib": gpu0.get("memory_free_mib", ""),
+                "gpu0_utilization_percent": gpu0.get("utilization_percent", ""),
+                "gpu0_temperature_c": gpu0.get("temperature_c", ""),
+                "gpu0_compute_pids": compact(gpu_compute_pids(snapshot, gpu0)),
+                "gpu1_free_mib": gpu1.get("memory_free_mib", ""),
+                "gpu1_utilization_percent": gpu1.get("utilization_percent", ""),
+                "gpu1_temperature_c": gpu1.get("temperature_c", ""),
+                "gpu1_compute_pids": compact(gpu_compute_pids(snapshot, gpu1)),
+                "status": "own_child_stopped_unexpected_foreign_pid",
+                "reason": runtime_guard_block.get("error", ""),
+                "wall_seconds": "", "peak_allocated_bytes": "", "peak_reserved_bytes": "",
+                "test_evaluation": False,
+            })
     if resource_rows:
         fields = list(dict.fromkeys(key for row in resource_rows for key in row))
         pilot.write_rows(DATA / "resource_summary.csv", resource_rows, fields)
@@ -199,6 +252,8 @@ def main() -> None:
     }
     if complete == all_planned:
         formal_status = "complete"
+    elif runtime_guard_block:
+        formal_status = "partial_blocked"
     elif gpu_block and complete == 0:
         formal_status = "blocked_before_training"
     elif gpu_block:
@@ -211,7 +266,6 @@ def main() -> None:
         formal_status = "not_started"
     else:
         formal_status = "partial"
-    failures = json.loads((DATA / "failures.json").read_text(encoding="utf-8")) if (DATA / "failures.json").is_file() else {"failures": []}
     code_sha = git_text("rev-parse", "HEAD")
     src_files = [
         "src/models/mrcge_v11.py", "src/tasks/nc.py", "scripts/preflight_mrcge_v11.py",
@@ -239,6 +293,7 @@ def main() -> None:
         },
         "failures_count": len(failures.get("failures", [])),
         "gpu_block": gpu_block,
+        "runtime_guard_block": runtime_guard_block,
     }
     pilot.json_write(DATA / "manifest.json", manifest)
 
@@ -253,7 +308,7 @@ def main() -> None:
         f"- Branch: `{manifest['branch']}`; code commit at report generation: `{code_sha}`.",
         f"- CPU/data/cache/init preflight: **{preflight.get('cpu_status', 'not run')}**.",
         f"- GPU single-step preflight: **{preflight.get('gpu_single_step_status', 'not run')}**.",
-        f"- Formal Pilot cells started: **{complete}/{all_planned}**.",
+        f"- Formal Pilot cells attempted: **{len(attempted_cells)}/{all_planned}**; completed: **{complete}/{all_planned}**.",
         "- Test evaluation: **disabled**; Test labels are masked to `-100` before Trainer entry.", "",
         "## CPU and data checks", "",
     ]
@@ -294,6 +349,12 @@ def main() -> None:
         )
     else:
         preflight_lines.append("No GPU guard refusal was recorded in the current preflight attempt.")
+    if runtime_guard_block:
+        preflight_lines.append(
+            f"During formal Pilot {runtime_guard_block.get('dataset')}/{runtime_guard_block.get('condition')}/seed{runtime_guard_block.get('seed')} "
+            f"attempt {runtime_guard_block.get('attempt')}, the runtime guard detected a new foreign compute PID and stopped only its own training child. "
+            "See the matching `shared_gpu_runtime_guard` failure and `pilot_runtime_guard_blocked` resource row before resuming."
+        )
     preflight_lines.extend(["", "## Preserved failures", "", f"`data/failures.json` contains {len(failures.get('failures', []))} recorded events."])
     (pilot.STUDY / "PREFLIGHT_REPORT.md").write_text("\n".join(preflight_lines) + "\n", encoding="utf-8")
 
@@ -309,6 +370,14 @@ def main() -> None:
         pilot_lines.append("The guarded GPU single-step gate did not pass; no threshold was bypassed.")
     elif preflight.get("gpu_single_step_status") == "pass" and not attempted_cells:
         pilot_lines.append("All nine GPU single-step checks passed; formal Pilot training has not started yet.")
+    elif runtime_guard_block:
+        pilot_lines.append(
+            f"The runtime GPU ownership guard interrupted {runtime_guard_block.get('dataset')}/"
+            f"{runtime_guard_block.get('condition')}/seed{runtime_guard_block.get('seed')} attempt "
+            f"{runtime_guard_block.get('attempt')} after detecting a new foreign compute PID. "
+            "The guard stopped only its own child. Six cells completed; the interrupted attempt has no valid metric, "
+            "and the remaining authorized cells have not started."
+        )
     elif attempted_cells:
         pilot_lines.append("Some formal cells have recorded attempts; inspect per-attempt statuses and logs before resuming.")
     else:
@@ -352,6 +421,11 @@ def main() -> None:
     ])
     if complete == all_planned:
         pilot_lines.append("Stage-A is complete. Independently review metrics, failures and diagnostics before authorizing later seeds or Test-lock activity.")
+    elif runtime_guard_block:
+        pilot_lines.append(
+            "Resume only after the selected GPU is idle and a fresh ownership guard passes. The runner will preserve attempt 01, "
+            "skip the six verified completed cells, and create a new attempt for the interrupted cell before proceeding to the two unstarted cells."
+        )
     elif gpu_block:
         pilot_lines.append("Repeat the guarded GPU preflight only after resolving the recorded failure; preserve all prior attempts.")
     elif preflight.get("gpu_single_step_status") == "pass":
@@ -406,13 +480,16 @@ def main() -> None:
         "- `IMPLEMENTATION_SPEC.md`: frozen design choices and reviewed interfaces.",
         "- `PREFLIGHT_REPORT.md`, `data/preflight.json`, `data/environment.json`, `data/gpu_baseline.json`: preflight outcomes and resource evidence.",
         "- `CODE_AUDIT.md`, `tests/test_mrcge_v11.py`: implementation map and CPU behavior checks.",
-        "- `PILOT_REPORT.md`, `data/runs.csv`, `data/condition_summary.csv`, `data/condition_differences.csv`: explicit record that no Pilot metrics exist.",
-        "- `data/failures.json`: original fingerprint-field preflight error and GPU guard refusal.",
+        "- `PILOT_REPORT.md`, `data/runs.csv`, `data/condition_summary.csv`, `data/condition_differences.csv`: six completed-cell metrics and explicit missing-metric states for interrupted/unstarted cells.",
+        "- `data/failures.json`: preserved preflight failures and the formal runtime-guard interruption, including its GPU snapshot and log path.",
         "",
         "## Requested decision", "",
         (
             "Review the completed Stage-A Validation-only evidence before deciding on later seeds. "
-            if complete == all_planned else "Resume only the remaining authorized seed-42 cells after the GPU single-step gate passes. "
+            if complete == all_planned else (
+                "Resume the remaining authorized seed-42 cells only after a fresh ownership guard passes on an idle GPU. "
+                if runtime_guard_block else "Resume only the remaining authorized seed-42 cells after the GPU single-step gate passes. "
+            )
         )
         + "Do not infer authorization for seeds 43/44 or Test evaluation from this handoff.",
     ]

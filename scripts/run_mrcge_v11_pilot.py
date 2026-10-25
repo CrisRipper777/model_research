@@ -806,6 +806,25 @@ def run_guarded_child(action: str, dataset: str, condition: str, seed: int, phys
                     "error": repr(exc), "terminated_own_child_only": True,
                 }
                 append_failure(record)
+                if action == "worker-train" and attempt_dir is not None:
+                    existing = any(
+                        row.get("dataset") == dataset and row.get("condition") == condition
+                        and row.get("seed") == str(seed) and row.get("attempt") == str(attempt)
+                        for row in read_rows(DATA / "runs.csv")
+                    )
+                    if not existing:
+                        failed = {name: "" for name in RUN_FIELDS}
+                        failed.update({
+                            "dataset": dataset, "condition": condition, "seed": seed,
+                            "attempt": attempt, "status": "failed", "source_git_sha": source_sha(),
+                            "test_evaluation": False,
+                            "error": f"shared GPU runtime guard aborted this attempt; see {log_file}",
+                        })
+                        append_csv(DATA / "runs.csv", failed, RUN_FIELDS,
+                                   ("dataset", "condition", "seed", "attempt"))
+                    json_write(attempt_dir / "status.json", {
+                        "status": "failed", "failed_utc": now(), **record,
+                    })
                 raise RuntimeError(str(exc)) from exc
         code = process.returncode
     if code != 0:
