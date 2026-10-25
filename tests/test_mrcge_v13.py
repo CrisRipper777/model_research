@@ -219,3 +219,28 @@ def test_eval_diagnostics_preserve_rng_and_epoch_collection_returns_scalars():
     assert "train_v13_private_sP_mean_text" in diagnostics
     assert "val_v13_early_cross_to_neighbor_rms_visual" in diagnostics
     assert all(isinstance(value, (float, int)) for value in diagnostics.values())
+
+
+@pytest.mark.parametrize("variant", ["base", "joint_view", "sender_private"])
+def test_weighted_contribution_rms_matches_captured_validation_tensors(variant):
+    model = make_model(variant, ratio=0.3 if variant == "sender_private" else 0.0, seed=157)
+    model.eval()
+    model._capture_state_audit = True
+    with torch.no_grad():
+        _, _, _, _, info = model(X, PHYSICAL, return_details=True)
+    mechanism = info["details"]["v13_mechanism"]
+    physical_support = model._support(PHYSICAL, X.size(0), X.device)
+    audit = model._last_state_audit
+    for modality in ("text", "visual"):
+        semantic_edges = getattr(model, f"semantic_{modality}_edge_index")
+        semantic_support = model._support(semantic_edges, X.size(0), X.device)
+        expected = {
+            f"weighted_physical_private_contribution_rms_{modality}": model._rms(
+                audit["private_contributions"][modality]["physical"], physical_support),
+            f"weighted_semantic_private_contribution_rms_{modality}": model._rms(
+                audit["private_contributions"][modality]["semantic"], semantic_support),
+            f"weighted_physical_collaborative_contribution_rms_{modality}": model._rms(
+                audit["collaborative_contributions"][modality]["physical"], physical_support),
+        }
+        for name, value in expected.items():
+            assert abs(float(mechanism[name]) - float(value)) <= 1e-7

@@ -997,6 +997,7 @@ class Model(nn.Module):
 
         private: dict[str, torch.Tensor] = {}
         private_strengths: dict[str, torch.Tensor] = {}
+        private_contributions: dict[str, dict[str, torch.Tensor]] = {}
         responses: dict[str, dict[str, torch.Tensor]] = {m: {} for m in _MODALITIES}
         route_details: dict[str, Any] = {}
         filter_details: dict[str, Any] = {}
@@ -1021,12 +1022,19 @@ class Model(nn.Module):
             if self.v13_variant == "joint_view":
                 strengths = self.joint_view(h[m], d_physical, d_semantic)
                 private_strengths[m] = strengths
-                private[m] = h[m] + strengths[:, 0:1] * d_physical + strengths[:, 1:2] * d_semantic
+                physical_contribution = strengths[:, 0:1] * d_physical
+                semantic_contribution = strengths[:, 1:2] * d_semantic
             else:
-                private[m] = h[m] + d_physical + d_semantic
+                physical_contribution = d_physical
+                semantic_contribution = d_semantic
+            private_contributions[m] = {
+                "physical": physical_contribution, "semantic": semantic_contribution,
+            }
+            private[m] = h[m] + physical_contribution + semantic_contribution
 
         collaborative: dict[str, torch.Tensor] = {}
         collaborative_strengths: dict[str, torch.Tensor] = {}
+        collaborative_contributions: dict[str, dict[str, torch.Tensor]] = {}
         early_details: dict[str, Any] = {}
         cross_contexts: dict[str, torch.Tensor] = {}
         mechanism_forward: dict[str, float | int | torch.Tensor] = {
@@ -1062,12 +1070,15 @@ class Model(nn.Module):
                 d_semantic_private = self.gamma[modality_id] * responses[m]["semantic"]
                 strengths_collab = self.joint_view(h[m], d_physical_collab, d_semantic_private)
                 collaborative_strengths[m] = strengths_collab
+                collaborative_physical_contribution = strengths_collab[:, 0:1] * d_physical_collab
                 collaborative[m] = private[m] + self.rho[modality_id] * (
                     strengths_collab[:, 0:1] * r_collab
                     - private_strengths[m][:, 0:1] * responses[m]["physical"]
                 )
             else:
+                collaborative_physical_contribution = self.rho[modality_id] * r_collab
                 collaborative[m] = private[m] + self.rho[modality_id] * (r_collab - responses[m]["physical"])
+            collaborative_contributions[m] = {"physical": collaborative_physical_contribution}
             balances.append(balance)
             collab_routes[m] = route
             filter_details[f"collaborative_{m}_physical"] = detail
@@ -1084,6 +1095,12 @@ class Model(nn.Module):
                 self._rms(self.gamma[modality_id] * responses[m]["semantic"], supports[m]["semantic"]), return_details)
             mechanism_forward[f"physical_collaborative_contribution_rms_{m}"] = self._diagnostic_scalar(
                 self._rms(self.rho[modality_id] * r_collab, physical_support), return_details)
+            mechanism_forward[f"weighted_physical_private_contribution_rms_{m}"] = self._diagnostic_scalar(
+                self._rms(private_contributions[m]["physical"], physical_support), return_details)
+            mechanism_forward[f"weighted_semantic_private_contribution_rms_{m}"] = self._diagnostic_scalar(
+                self._rms(private_contributions[m]["semantic"], supports[m]["semantic"]), return_details)
+            mechanism_forward[f"weighted_physical_collaborative_contribution_rms_{m}"] = self._diagnostic_scalar(
+                self._rms(collaborative_physical_contribution, physical_support), return_details)
             if self.v13_variant == "joint_view":
                 support_p = physical_support
                 support_s = supports[m]["semantic"]
@@ -1127,7 +1144,11 @@ class Model(nn.Module):
             final[target], late_details[target] = self._late(
                 target, target_id, source, h[source], private[source], collaborative[target], collect=return_details
             )
-            mechanism_forward[f"late_residual_ratio_{target}"] = float(late_details[target]["late_delta_ratio"])
+            late_ratio = late_details[target]["late_delta_ratio"]
+            mechanism_forward[f"late_residual_ratio_{target}"] = (
+                self._diagnostic_scalar(late_ratio, return_details)
+                if isinstance(late_ratio, torch.Tensor) else late_ratio
+            )
 
         if self.training:
             self._last_train_v13_diagnostics = dict(mechanism_forward)
@@ -1139,6 +1160,10 @@ class Model(nn.Module):
                 "private": private,
                 "collaborative": collaborative,
                 "responses": responses,
+                "private_strengths": private_strengths,
+                "collaborative_strengths": collaborative_strengths,
+                "private_contributions": private_contributions,
+                "collaborative_contributions": collaborative_contributions,
                 "sender_states": {},
                 "early_cross": cross_contexts,
             }
