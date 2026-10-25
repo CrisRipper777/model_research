@@ -80,6 +80,10 @@ def main() -> None:
         (row["dataset"], row["condition"], int(row["seed"])): row
         for row in runs if row.get("status") == "complete"
     }
+    run_by_attempt = {
+        (row["dataset"], row["condition"], int(row["seed"]), int(row.get("attempt", 0))): row
+        for row in runs
+    }
     latest_attempt_by_key = {}
     for row in runs:
         key = (row["dataset"], row["condition"], int(row["seed"]))
@@ -402,10 +406,13 @@ def main() -> None:
             f"A user-directed override disabled GPU guard checks for {override.get('dataset')}/{override.get('condition')}/"
             f"seed{override.get('seed')} attempt {override.get('attempt')}; see `data/guard_overrides.json` for the device snapshot and scope."
         )
-        latest = latest_attempt_by_key.get((override.get("dataset"), override.get("condition"), int(override.get("seed", -1))))
-        if latest and latest.get("status") == "failed":
+        overridden_attempt = run_by_attempt.get((
+            override.get("dataset"), override.get("condition"),
+            int(override.get("seed", -1)), int(override.get("attempt", 0)),
+        ))
+        if overridden_attempt and overridden_attempt.get("status") == "failed":
             pilot_lines.append(
-                f"That overridden attempt ended without a valid metric: `{latest.get('error', 'failure reason not recorded')}`."
+                f"That overridden attempt ended without a valid metric: `{overridden_attempt.get('error', 'failure reason not recorded')}`."
             )
     pilot_lines.extend(["", "## Validation metrics", ""])
     completed_rows = [row for row in summary_rows if row.get("n_completed") == 1]
