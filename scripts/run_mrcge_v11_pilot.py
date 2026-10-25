@@ -314,7 +314,7 @@ def capture_gpu_baseline(physical_gpu: int = PHYSICAL_GPU) -> set[int]:
     payload = {
         **snap, "authorized_shared_physical_gpu": physical_gpu,
         "authorized_baseline_compute_pids": sorted(pids),
-        "authorization_note": "CUDA 0 sharing explicitly authorized by the user; no foreign PID may be added or modified.",
+        "authorization_note": f"Physical CUDA {physical_gpu} use authorized for this MR-CGE run; no foreign PID may be added or modified.",
     }
     json_write(DATA / "gpu_baseline.json", payload)
     return pids
@@ -655,11 +655,14 @@ def worker_train(dataset: str, condition: str, seed: int, attempt: int, attempt_
         torch.cuda.empty_cache()
 
 
-def worker_gpu_preflight(dataset: str, condition: str, seed: int, physical_gpu: int) -> dict[str, Any]:
+def worker_gpu_preflight(dataset: str, condition: str, seed: int, physical_gpu: int,
+                         attempt: int | None = None) -> dict[str, Any]:
     if os.environ.get("MRCGE_GUARDED_PREFLIGHT") != "1" or os.environ.get("CUDA_VISIBLE_DEVICES") != str(physical_gpu):
         raise RuntimeError("GPU preflight worker must be isolated and launched by the guarded parent")
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA unavailable or the physical GPU is not isolated in yhf_env")
+    started_utc = now()
+    source = source_sha()
     baseline_pids = {int(value) for value in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if value}
     guard_gpu(physical_gpu, baseline_pids, {os.getpid()}, phase="before_launch")
     cache = cache_entries()[dataset]
@@ -704,8 +707,9 @@ def worker_gpu_preflight(dataset: str, condition: str, seed: int, physical_gpu: 
     optimizer.step()
     torch.cuda.synchronize(device)
     record = {
-        "dataset": dataset, "condition": condition, "seed": seed, "status": "pass",
+        "dataset": dataset, "condition": condition, "seed": seed, "attempt": attempt, "status": "pass",
         "stage": "gpu_single_step", "physical_gpu": physical_gpu,
+        "started_utc": started_utc, "source_git_sha": source,
         "num_nodes": safe.num_nodes, "num_edges": int(safe.edge_index.size(1)),
         "feature_dim": int(safe.input_dim), "test_labels_masked": True, "test_evaluation": False,
         "main_ce": float(main_ce.detach().cpu()), "private_ce": float(private_ce.detach().cpu()),
@@ -768,9 +772,12 @@ def run_guarded_child(action: str, dataset: str, condition: str, seed: int, phys
         command = [sys.executable, str(Path(__file__).resolve()), "--worker-gpu-preflight",
                    "--dataset", dataset, "--condition", condition, "--seed", str(seed),
                    "--physical-gpu", str(physical_gpu)]
+        if attempt is not None:
+            command.extend(["--attempt", str(attempt)])
         log_dir = OUTPUT / "preflight_logs"
         log_dir.mkdir(parents=True, exist_ok=True)
-        log_file = log_dir / f"{dataset}_{condition}_seed{seed}.log"
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        log_file = log_dir / f"{dataset}_{condition}_seed{seed}_gpu{physical_gpu}_preflight{attempt or 0}_{stamp}.log"
     with log_file.open("a", encoding="utf-8") as log:
         process = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
         while process.poll() is None:
@@ -821,18 +828,42 @@ def run_guarded_child(action: str, dataset: str, condition: str, seed: int, phys
 
 
 def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
+    preflight_path = DATA / "preflight.json"
+    payload = json.loads(preflight_path.read_text(encoding="utf-8"))
+    previous_attempts = [
+        int(row["attempt"]) for row in payload.get("gpu_single_step", [])
+        if row.get("attempt") not in (None, "")
+    ]
+    previous_attempts.extend(
+        int(row["attempt"]) for row in payload.get("gpu_preflight_attempts", [])
+        if row.get("attempt") not in (None, "")
+    )
+    attempt = max(previous_attempts, default=0) + 1
+    payload.setdefault("gpu_preflight_attempts", []).append({
+        "attempt": attempt, "physical_gpu": physical_gpu, "started_utc": now(),
+        "source_git_sha": source_sha(), "status": "running", "training_started": False,
+        "test_evaluation": False,
+    })
+    payload["gpu_single_step_status"] = "running"
+    payload["gpu_single_step_count"] = 0
+    payload["gpu_single_step_attempt"] = attempt
+    payload["gpu_single_step_physical_gpu"] = physical_gpu
+    payload.pop("gpu_single_step_block", None)
+    payload.pop("gpu_single_step_completed_utc", None)
+    json_write(preflight_path, payload)
     baseline_pids = capture_gpu_baseline(physical_gpu)
     records = []
     for dataset in DATASETS:
         for condition in CONDITIONS:
             try:
-                run_guarded_child("worker-gpu-preflight", dataset, condition, SEED, physical_gpu, baseline_pids)
+                run_guarded_child("worker-gpu-preflight", dataset, condition, SEED, physical_gpu,
+                                  baseline_pids, attempt=attempt)
             except Exception as exc:
-                payload = json.loads((DATA / "preflight.json").read_text(encoding="utf-8"))
+                payload = json.loads(preflight_path.read_text(encoding="utf-8"))
                 blocked = {
                     "dataset": dataset, "condition": condition, "seed": SEED,
                     "status": "blocked", "stage": "gpu_single_step_attempt_failed",
-                    "physical_gpu": physical_gpu, "reason": repr(exc),
+                    "physical_gpu": physical_gpu, "attempt": attempt, "reason": repr(exc),
                     "gpu_snapshot": smi_snapshot(), "baseline_path": str(DATA / "gpu_baseline.json"),
                     "training_started": False, "test_evaluation": False, "recorded_utc": now(),
                 }
@@ -840,20 +871,29 @@ def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
                 payload["gpu_single_step_status"] = "blocked"
                 payload["gpu_single_step_count"] = len(records)
                 payload["gpu_single_step_block"] = blocked
-                json_write(DATA / "preflight.json", payload)
+                payload["gpu_preflight_attempts"][-1].update({
+                    "completed_utc": now(), "status": "blocked", "failed_dataset": dataset,
+                    "failed_condition": condition, "error": repr(exc),
+                })
+                json_write(preflight_path, payload)
                 raise
             # Worker results are appended to the structured preflight file.
-            payload = json.loads((DATA / "preflight.json").read_text(encoding="utf-8"))
+            payload = json.loads(preflight_path.read_text(encoding="utf-8"))
             row = next((r for r in reversed(payload.get("gpu_single_step", []))
-                        if r["dataset"] == dataset and r["condition"] == condition and int(r["seed"]) == SEED), None)
+                        if r["dataset"] == dataset and r["condition"] == condition
+                        and int(r["seed"]) == SEED and r.get("attempt") == attempt), None)
             if row is None or row.get("status") != "pass":
                 raise RuntimeError(f"GPU single-step preflight result missing or failed for {dataset}/{condition}")
             records.append(row)
-    payload = json.loads((DATA / "preflight.json").read_text(encoding="utf-8"))
+    payload = json.loads(preflight_path.read_text(encoding="utf-8"))
     payload["gpu_single_step_status"] = "pass" if len(records) == len(DATASETS) * len(CONDITIONS) else "incomplete"
     payload["gpu_single_step_count"] = len(records)
     payload["gpu_single_step_completed_utc"] = now()
-    json_write(DATA / "preflight.json", payload)
+    payload["gpu_preflight_attempts"][-1].update({
+        "completed_utc": payload["gpu_single_step_completed_utc"],
+        "status": payload["gpu_single_step_status"], "completed_cells": len(records),
+    })
+    json_write(preflight_path, payload)
 
 
 def run_pilot(physical_gpu: int = PHYSICAL_GPU) -> None:
@@ -891,7 +931,8 @@ def main() -> None:
     if args.worker_train:
         worker_train(args.dataset, args.condition, args.seed, args.attempt, args.attempt_dir, args.physical_gpu)
     elif args.worker_gpu_preflight:
-        record = worker_gpu_preflight(args.dataset, args.condition, args.seed, args.physical_gpu)
+        record = worker_gpu_preflight(args.dataset, args.condition, args.seed,
+                                      args.physical_gpu, args.attempt)
         path = DATA / "preflight.json"
         payload = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
         payload.setdefault("gpu_single_step", []).append(record)

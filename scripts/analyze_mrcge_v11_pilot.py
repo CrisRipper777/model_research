@@ -128,17 +128,53 @@ def main() -> None:
         if gpu_block is None:
             blocked_rows = [row for row in preflight.get("gpu_single_step", []) if row.get("status") == "blocked"]
             gpu_block = blocked_rows[-1] if blocked_rows else None
-    resource_rows = [
-        row for row in pilot.read_rows(DATA / "resource_summary.csv")
-        if row.get("phase") != "gpu_single_step_preflight_blocked"
+    resource_rows = pilot.read_rows(DATA / "resource_summary.csv")
+    current_gpu_attempt = preflight.get("gpu_single_step_attempt")
+    current_gpu = preflight.get("gpu_single_step_physical_gpu")
+    passing_gpu_rows = [
+        row for row in preflight.get("gpu_single_step", [])
+        if row.get("status") == "pass"
+        and (current_gpu_attempt is None or row.get("attempt") == current_gpu_attempt)
+        and (current_gpu is None or row.get("physical_gpu") == current_gpu)
     ]
+    resource_keys = {
+        (row.get("dataset"), row.get("condition"), str(row.get("seed", "")),
+         str(row.get("attempt", "")), row.get("phase"))
+        for row in resource_rows
+    }
+    for row in passing_gpu_rows:
+        snapshot = row.get("guard_snapshot", {})
+        gpu0, gpu1 = gpu_device_snapshot(snapshot, 0), gpu_device_snapshot(snapshot, 1)
+        key = (row.get("dataset"), row.get("condition"), str(row.get("seed", "")),
+               str(row.get("attempt", "")), "gpu_single_step_preflight_pass")
+        if key in resource_keys:
+            continue
+        resource_rows.append({
+            "dataset": row.get("dataset", ""), "condition": row.get("condition", ""),
+            "seed": row.get("seed", pilot.SEED), "attempt": row.get("attempt", ""),
+            "phase": "gpu_single_step_preflight_pass", "physical_gpu": row.get("physical_gpu", ""),
+            "gpu0_free_mib": gpu0.get("memory_free_mib", ""),
+            "gpu0_utilization_percent": gpu0.get("utilization_percent", ""),
+            "gpu0_temperature_c": gpu0.get("temperature_c", ""),
+            "gpu0_compute_pids": compact(gpu_compute_pids(snapshot, gpu0)),
+            "gpu1_free_mib": gpu1.get("memory_free_mib", ""),
+            "gpu1_utilization_percent": gpu1.get("utilization_percent", ""),
+            "gpu1_temperature_c": gpu1.get("temperature_c", ""),
+            "gpu1_compute_pids": compact(gpu_compute_pids(snapshot, gpu1)),
+            "status": "passed_single_step", "reason": "",
+            "wall_seconds": row.get("wall_seconds", ""),
+            "peak_allocated_bytes": row.get("peak_allocated_bytes", ""),
+            "peak_reserved_bytes": row.get("peak_reserved_bytes", ""),
+            "test_evaluation": False,
+        })
+        resource_keys.add(key)
     if gpu_block:
         snapshot = gpu_block.get("gpu_snapshot", {})
         gpu0, gpu1 = gpu_device_snapshot(snapshot, 0), gpu_device_snapshot(snapshot, 1)
         resource_rows.append({
             "dataset": gpu_block.get("dataset", ""), "condition": gpu_block.get("condition", ""),
             "seed": pilot.SEED, "attempt": "", "phase": "gpu_single_step_preflight_blocked",
-            "physical_gpu": 0, "gpu0_free_mib": gpu0.get("memory_free_mib", ""),
+            "physical_gpu": gpu_block.get("physical_gpu", 0), "gpu0_free_mib": gpu0.get("memory_free_mib", ""),
             "gpu0_utilization_percent": gpu0.get("utilization_percent", ""),
             "gpu0_temperature_c": gpu0.get("temperature_c", ""),
             "gpu0_compute_pids": compact(gpu0.get("compute_pids", gpu_compute_pids(snapshot, gpu0))),
@@ -250,8 +286,14 @@ def main() -> None:
             f"Recorded stage: `{gpu_block.get('stage', 'unknown')}`; reason: `{gpu_block.get('reason', 'not recorded')}`.",
             "See `data/failures.json` and the referenced worker log for the full trace. Formal Pilot training remains gated until all nine GPU single-step checks pass.",
         ])
+    elif preflight.get("gpu_single_step_status") == "pass":
+        peak_mib = max((int(row.get("peak_allocated_bytes", 0)) for row in passing_gpu_rows), default=0) / (1024 ** 2)
+        preflight_lines.append(
+            f"All nine guarded GPU single-step checks passed on physical GPU {current_gpu if current_gpu is not None else 'recorded in each row'}; "
+            f"maximum measured allocated memory was {peak_mib:.0f} MiB. Earlier blocked attempts remain in the audit history."
+        )
     else:
-        preflight_lines.append("No GPU guard refusal was recorded.")
+        preflight_lines.append("No GPU guard refusal was recorded in the current preflight attempt.")
     preflight_lines.extend(["", "## Preserved failures", "", f"`data/failures.json` contains {len(failures.get('failures', []))} recorded events."])
     (pilot.STUDY / "PREFLIGHT_REPORT.md").write_text("\n".join(preflight_lines) + "\n", encoding="utf-8")
 
