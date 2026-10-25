@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Preflight Report
 
-- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `8bdbccdf16077b12f6afe3ae6bede8051ebc92e0`.
+- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `df4cf5a2a91c0bbda7c3765d987cc20e8a685237`.
 - CPU/data/cache/init preflight: **pass**.
 - GPU single-step preflight: **pass**.
 - Formal Pilot cells attempted: **9/9**; completed: **8/9**.
@@ -47,5 +47,7 @@ During formal Pilot ele-fashion/M/seed42 attempt 1, the runtime guard stopped on
 
 ## Preserved failures
 
-`data/failures.json` contains 14 recorded events.
+`data/failures.json` contains 15 recorded events.
 GPU guard checks were explicitly overridden for formal ele-fashion/M/seed42 attempt 2; see `data/guard_overrides.json`.
+GPU guard checks were explicitly overridden for formal ele-fashion/M/seed42 attempt 3; see `data/guard_overrides.json`.
+Attempt 3 allocator environment: `{'PYTORCH_CUDA_ALLOC_CONF': 'expandable_segments:True'}`.

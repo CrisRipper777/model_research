@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Decision Handoff
 
-Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit: `8bdbccdf16077b12f6afe3ae6bede8051ebc92e0`.
+Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit: `df4cf5a2a91c0bbda7c3765d987cc20e8a685237`.
 
 Stage-A status: partial_blocked; GPU single-step gate: pass; completed formal cells: 8/9.
 

@@ -87,6 +87,98 @@
       "seed": 42,
       "source_git_sha": "637f8057547e4a1b8cfb6577dff092d5685434b9",
       "user_instruction": "\u4e0d\u7528\u7ba1\u5b88\u536b\uff0c\u628a ele-fashion/M \u4e5f\u8dd1\u4e86"
+    },
+    {
+      "allocator_environment": {
+        "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+      },
+      "attempt": 3,
+      "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/M/seed_42/attempt_03",
+      "baseline_compute_pids_on_selected_gpu": [
+        3949460
+      ],
+      "completed_utc": "2026-10-25T03:31:00+00:00",
+      "condition": "M",
+      "dataset": "ele-fashion",
+      "error": "OutOfMemoryError('CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 70.88 MiB is free. Process 3949460 has 2.89 GiB memory in use. Including non-PyTorch memory, this process has 20.71 GiB memory in use. Of the allocated memory 20.33 GiB is allocated by PyTorch, and 87.49 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)')",
+      "external_process_action": "none; no foreign PID was signaled, paused, or modified",
+      "gpu_snapshot_before_launch": {
+        "captured_utc": "2026-10-25T03:30:48+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 80,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 21281,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 2977,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 63,
+            "utilization_percent": 0,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "guard_checks_bypassed": true,
+      "outcome": "failed",
+      "physical_gpu": 1,
+      "post_attempt_gpu_snapshot": {
+        "compute_processes": [
+          {
+            "physical_index": 0,
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "physical_index": 1,
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_used_mib": 15221,
+            "physical_index": 0,
+            "temperature_c": 80,
+            "utilization_percent": 87
+          },
+          {
+            "memory_free_mib": 21281,
+            "memory_used_mib": 2977,
+            "physical_index": 1,
+            "temperature_c": 65,
+            "utilization_percent": 3
+          }
+        ],
+        "note": "The attempt process was absent after failure; the pre-existing GPU1 PID 3949460 remained unchanged."
+      },
+      "post_attempt_snapshot_observed_utc": "2026-10-25T03:31:14+00:00",
+      "recorded_utc": "2026-10-25T03:30:48+00:00",
+      "scope": "single ele-fashion/M seed-42 attempt only; repository guard implementation remains unchanged",
+      "seed": 42,
+      "source_git_sha": "e8a5930a5470adc0bee4b9c78c6c3de4226f30be",
+      "user_instruction": "\u4e0d\u7528\u7ba1\u5b88\u536b\uff0c\u628a ele-fashion/M \u4e5f\u8dd1\u4e86"
     }
   ]
 }
