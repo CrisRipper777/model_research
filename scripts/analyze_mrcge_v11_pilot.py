@@ -87,6 +87,7 @@ def main() -> None:
         if previous is None or int(row.get("attempt", 0)) >= int(previous.get("attempt", 0)):
             latest_attempt_by_key[key] = row
     failures = json.loads((DATA / "failures.json").read_text(encoding="utf-8")) if (DATA / "failures.json").is_file() else {"failures": []}
+    guard_overrides = json.loads((DATA / "guard_overrides.json").read_text(encoding="utf-8")) if (DATA / "guard_overrides.json").is_file() else {"overrides": []}
     runtime_guard_block = None
     for failure in reversed(failures.get("failures", [])):
         key = (failure.get("dataset"), failure.get("condition"), int(failure.get("seed", -1)))
@@ -299,6 +300,7 @@ def main() -> None:
             if path.is_file() and path.name != "manifest.json"
         },
         "failures_count": len(failures.get("failures", [])),
+        "guard_overrides": guard_overrides.get("overrides", []),
         "gpu_block": gpu_block,
         "runtime_guard_block": runtime_guard_block,
     }
@@ -364,6 +366,11 @@ def main() -> None:
             "See the matching `shared_gpu_runtime_guard` failure and `pilot_runtime_guard_blocked` resource row before resuming."
         )
     preflight_lines.extend(["", "## Preserved failures", "", f"`data/failures.json` contains {len(failures.get('failures', []))} recorded events."])
+    for override in guard_overrides.get("overrides", []):
+        preflight_lines.append(
+            f"GPU guard checks were explicitly overridden for formal {override.get('dataset')}/{override.get('condition')}/"
+            f"seed{override.get('seed')} attempt {override.get('attempt')}; see `data/guard_overrides.json`."
+        )
     (pilot.STUDY / "PREFLIGHT_REPORT.md").write_text("\n".join(preflight_lines) + "\n", encoding="utf-8")
 
     pilot_lines = [
@@ -390,6 +397,11 @@ def main() -> None:
         pilot_lines.append("Some formal cells have recorded attempts; inspect per-attempt statuses and logs before resuming.")
     else:
         pilot_lines.append("Formal Pilot training has not started.")
+    for override in guard_overrides.get("overrides", []):
+        pilot_lines.append(
+            f"A user-directed override disabled GPU guard checks for {override.get('dataset')}/{override.get('condition')}/"
+            f"seed{override.get('seed')} attempt {override.get('attempt')}; see `data/guard_overrides.json` for the device snapshot and scope."
+        )
     pilot_lines.extend(["", "## Validation metrics", ""])
     completed_rows = [row for row in summary_rows if row.get("n_completed") == 1]
     if completed_rows:
@@ -562,7 +574,7 @@ def main() -> None:
         "- `PREFLIGHT_REPORT.md`, `data/preflight.json`, `data/environment.json`, `data/gpu_baseline.json`: preflight outcomes and resource evidence.",
         "- `CODE_AUDIT.md`, `tests/test_mrcge_v11.py`: implementation map and CPU behavior checks.",
         f"- `PILOT_REPORT.md`, `data/runs.csv`, `data/condition_summary.csv`, `data/condition_differences.csv`: {complete} completed-cell metrics and explicit missing-metric states for interrupted/unstarted cells.",
-        "- `data/failures.json`: preserved preflight failures and the formal runtime-guard interruption, including its GPU snapshot and log path.",
+        "- `data/failures.json`, `data/guard_overrides.json`: preserved failures and any explicitly user-directed GPU guard overrides with device snapshots.",
         "",
         "## Requested decision", "",
         (
