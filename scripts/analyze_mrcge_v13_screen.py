@@ -30,7 +30,7 @@ DATASETS = ("Movies", "Grocery", "ele-fashion")
 VARIANTS = ("joint_view", "sender_private")
 SEEDS = (42, 43)
 BASE_SHA = "a7930442e85ff9450fded54d5869915b434c7431"
-TRAINING_SOURCE_SHA = "169cddd72aaaba00a5ce3fd25657981dd40c5e27"
+MODEL_IMPLEMENTATION_SOURCE_SHA = "169cddd72aaaba00a5ce3fd25657981dd40c5e27"
 FROZEN_HASHES = {
     "src/models/mrcge_v12.py": "d9a7632f725a7c742dc083fe7737bc5c7384e9fa3bc91ffa64ead01e4a5d4ca6",
     "configs/model/mrcge_v12.yaml": "c0e5782fee74bda70a6cc42c3cf50b57e169ccf00981e53f595bd68b04750eed",
@@ -450,7 +450,8 @@ def posthoc_validation_diagnostics(paired: list[dict[str, Any]]) -> tuple[list[d
         if not rng_unchanged:
             raise RuntimeError(f"{dataset}/{variant}/seed{seed} posthoc Validation changed RNG")
         metrics = runner.v12_utils.metric_bundle(
-            logits, safe.y, safe.val_idx, list(range(int(safe.num_classes)))
+            logits, safe.y, safe.val_idx,
+            runner.v12_utils._resolve_nc_eval_labels(safe, include_test=False),
         )
         for metric, field in (("acc", "val_acc"), ("macro_f1", "val_macro_f1"), ("ce", "val_ce")):
             if not close(metrics[metric], float(run[field])):
@@ -531,7 +532,8 @@ def main() -> None:
         "frozen_v12_files_audit": "pass",
         "posthoc_validation_reload_audit": "pass",
         "test_evaluation": False, "link_prediction": False,
-        "implementation_source_git_sha": TRAINING_SOURCE_SHA,
+        "implementation_source_git_sha": MODEL_IMPLEMENTATION_SOURCE_SHA,
+        "training_source_git_sha": audit["source_git_shas"][0] if len(audit["source_git_shas"]) == 1 else audit["source_git_shas"],
         "formal_training_source_git_sha": audit["source_git_shas"][0] if len(audit["source_git_shas"]) == 1 else audit["source_git_shas"],
     })
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
