@@ -1,0 +1,41 @@
+{
+  "backbone_condition": "M_repaired",
+  "base_branch": "exp/mrcge_v12_multiseed_confirmation",
+  "base_sha": "a7930442e85ff9450fded54d5869915b434c7431",
+  "blocked_resource_attempt_rows": 7,
+  "blocked_resource_cells": 0,
+  "branch": "exp/mrcge_v13_view_cross_screen",
+  "checkpoint_sha_and_metadata_audit": "pass",
+  "completed_cells": 12,
+  "cpu_preflight_status": "pass",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "ele-fashion"
+  ],
+  "failed_attempt_rows": 2,
+  "failed_cells": 0,
+  "formal_training_source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+  "formal_training_started": true,
+  "frozen_v12_files_audit": "pass",
+  "implementation_source_git_sha": "169cddd72aaaba00a5ce3fd25657981dd40c5e27",
+  "last_formal_attempt_utc": "2026-10-25T15:14:23+00:00",
+  "link_prediction": false,
+  "new_cells": 12,
+  "physical_gpu": 1,
+  "posthoc_validation_reload_audit": "pass",
+  "same_seed_v12_fingerprint_audit": "pass",
+  "seeds": [
+    42,
+    43
+  ],
+  "study": "MR-CGE V1.3 view collaboration and cross screen",
+  "successful_unique_cells": 12,
+  "test_evaluation": false,
+  "training_source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+  "unstarted_cells": 0,
+  "variants": [
+    "joint_view",
+    "sender_private"
+  ]
+}

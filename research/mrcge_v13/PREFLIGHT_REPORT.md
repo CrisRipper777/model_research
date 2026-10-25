@@ -1,37 +1,32 @@
-# MR-CGE V1.3 Preflight Report
+# MR-CGE V1.3 Preflight and Resource Report
 
-## CPU and data preflight
+## CPU/data and initialization preflight
 
-The first CPU/data preflight passed for six dataset/seed groups: Movies,
-Grocery, and ele-fashion with seeds 42 and 43. It verified the selected V1.2
-same-seed reference rows, V7B.1 cache records, feature and physical graph
-fingerprints, split fingerprints, Test-label masking, and initialization
-compatibility audits. Each dataset reused the same split file and split
-fingerprint for seeds 42 and 43.
+CPU/data preflight passed for Movies, Grocery, and ele-fashion at seeds 42 and
+43. It verified the selected V1.2 same-seed `M_repaired` rows, the V7B.1
+Text/Visual K=8 semantic cache, feature and physical graph fingerprints, split
+fingerprints, model input dimensions, label universe, and Test masking. The
+seed changes did not create a new split: each dataset uses one frozen split
+fingerprint for both seeds. `data/frozen_baseline.json` and
+`data/preflight.json` hold the per-dataset evidence.
 
-The per-group record is in `data/preflight.json`; immutable dataset/cache/split
-details are also in `data/frozen_baseline.json`. The CPU/data preflight was
-rerun after the initial implementation freeze commit. A subsequent correction
-to the gradient-audit harness changed the model source; the CPU/data preflight
-will be refreshed again after that correction commit.
+The first CPU/GPU audit pass also found a V1.3 gradient-capture harness bug for
+`sender_private` on the M backbone. Six initial sender-private GPU preflight
+attempts failed while the audit helper asked for a nonexistent S/F-only
+parameter; no formal training was started from those checks. The helper was
+corrected and regression coverage added. The corrected implementation then
+passed the full 12-cell GPU preflight, one real forward/backward/optimizer step
+per Dataset × Variant × Seed, with finite gradients and unchanged Validation
+RNG. First-attempt failures remain in `data/preflight.json` and
+`data/failures.json`, separately from the corrected pass rows.
 
-## GPU preflight
+## Corrected-source GPU preflight
 
-The first attempt used source commit `be5ec6b45d4ee7125d402b2751baa2169e546e50`.
-All six `joint_view` cells passed the single-step checks. All six
-`sender_private` cells failed in the diagnostic audit because the V1.3
-gradient-capture helper requested nonexistent S/F-only parameters on the frozen
-`M_repaired` backbone. No formal training started. The code has been corrected;
-the first-attempt records remain in `data/preflight.json` and
-`data/failures.json` and will not be counted as passes for the corrected source.
+Preflight used physical GPU 1, NVIDIA GeForce RTX 3090. The peak reserved
+memory measured for each dataset/variant determined its start threshold,
+including the required additional 2 GiB:
 
-The corrected-source GPU preflight passed all 12 cells at source commit
-`169cddd72aaaba00a5ce3fd25657981dd40c5e27`. Each cell completed one actual
-forward/backward/optimizer step, produced finite gradients, passed the
-evaluation RNG check, and passed the live GPU-1 guard. Each seed of the same
-dataset/variant had the same measured peak:
-
-| Dataset | Variant | Peak reserved | Required free memory (peak + 2 GiB) |
+| Dataset | Variant | Peak reserved | Required free memory |
 |---|---|---:|---:|
 | Movies | `joint_view` | 2,586 MiB | 4,634 MiB |
 | Movies | `sender_private` | 2,260 MiB | 4,308 MiB |
@@ -40,13 +35,39 @@ dataset/variant had the same measured peak:
 | ele-fashion | `joint_view` | 13,308 MiB | 15,356 MiB |
 | ele-fashion | `sender_private` | 11,478 MiB | 13,526 MiB |
 
-At the last fresh launch snapshot, GPU 1 was an RTX 3090 with 22,999 MiB free,
+At the last fresh pre-formal launch snapshot, GPU 1 had 22,999 MiB free,
 19% utilization, and 63°C. Existing compute PID 72408 (1,244 MiB) was recorded
-as the shared-device baseline. No process was signaled or changed. The live
-guard will take a new snapshot before each formal cell and monitor during each
-child process.
+as the shared-device baseline. Formal attempts repeated the guard and free
+memory assessment immediately before launch and monitored the device while
+running. The highest formal reserved peak was 13,620 MiB (ele-fashion,
+`joint_view`). Every formal attempt passed a fresh launch guard against the
+measured preflight peak plus 2 GiB before starting; the formal peak and all
+per-attempt samples are recorded in `data/runs.csv` and
+`data/resource_summary.csv`.
 
-The first partial attempt and its six audit-code failures remain recorded and
-are not counted in the corrected 12/12 pass. The corrected-source GPU-preflight
-data, per-attempt resource snapshots, and failures are retained under `data/`
-and `outputs/mrcge_v13_screen/`.
+## Guard interruptions and completed retries
+
+Two formal Attempts were stopped when the live guard detected newly appearing
+external compute PIDs: Grocery/`sender_private`/seed43 attempt 1 detected PID
+87602; ele-fashion/`joint_view`/seed42 attempt 2 detected PID 89011. Seven
+later starts were recorded as `blocked_resource` and not launched while those
+guard snapshots were unresolved. A fresh GPU snapshot established the new
+external PID state before work resumed. Only the V1.3 child process was
+stopped; no external PID was signaled, paused, or modified. Retries succeeded,
+so all 12 authorized unique cells are now complete. The raw attempt ledger,
+snapshots, reasons, and timestamps remain under `data/` and the local
+`outputs/mrcge_v13_screen/` tree.
+
+The formal attempt ledger therefore has 12 successful rows, 2 failed formal
+Attempts, and 7 blocked starts. The 7 blocked starts did not leave blocked
+cells. No guard bypass, threshold change, or external-process intervention was
+used. No Test evaluation or link-prediction work occurred.
+
+## Records
+
+- Per-step corrected and initial GPU preflight: `data/preflight.json`
+- Frozen data/cache/split evidence: `data/frozen_baseline.json`
+- Per-attempt GPU samples: `data/resource_summary.csv`
+- Per-cell resource summary after analysis: `data/resource_by_cell.csv`
+- All failed and blocked reasons: `data/failures.json`
+- Final cell/attempt status counts: `data/manifest.json`

@@ -1,0 +1,42 @@
+{
+  "authorization_note": "CUDA 1 is authorized for this task; only newly appearing foreign PIDs trigger abort.",
+  "authorized_baseline_compute_pids": [
+    89011
+  ],
+  "authorized_shared_physical_gpu": 1,
+  "captured_utc": "2026-10-25T14:54:56+00:00",
+  "compute_processes": [
+    {
+      "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+      "pid": 3842120,
+      "used_memory_mib": 15110
+    },
+    {
+      "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+      "pid": 89011,
+      "used_memory_mib": 738
+    }
+  ],
+  "devices": [
+    {
+      "memory_free_mib": 9020,
+      "memory_total_mib": 24576,
+      "memory_used_mib": 15232,
+      "name": "NVIDIA GeForce RTX 3090",
+      "physical_index": 0,
+      "temperature_c": 83,
+      "utilization_percent": 100,
+      "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+    },
+    {
+      "memory_free_mib": 23505,
+      "memory_total_mib": 24576,
+      "memory_used_mib": 753,
+      "name": "NVIDIA GeForce RTX 3090",
+      "physical_index": 1,
+      "temperature_c": 65,
+      "utilization_percent": 18,
+      "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+    }
+  ]
+}

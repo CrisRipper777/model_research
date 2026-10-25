@@ -1,0 +1,316 @@
+{
+  "failures": [
+    {
+      "attempt": 1,
+      "child_exit_code": 1,
+      "dataset": "Movies",
+      "error": "worker exited with code 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/preflight_logs/Movies_sender_private_seed42_attempt01.log",
+      "seed": 42,
+      "stage": "worker-gpu-preflight",
+      "tail": "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:38:10+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "child_exit_code": 1,
+      "dataset": "Movies",
+      "error": "worker exited with code 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/preflight_logs/Movies_sender_private_seed43_attempt01.log",
+      "seed": 43,
+      "stage": "worker-gpu-preflight",
+      "tail": "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:38:20+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "child_exit_code": 1,
+      "dataset": "Grocery",
+      "error": "worker exited with code 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/preflight_logs/Grocery_sender_private_seed42_attempt01.log",
+      "seed": 42,
+      "stage": "worker-gpu-preflight",
+      "tail": "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:38:51+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "child_exit_code": 1,
+      "dataset": "Grocery",
+      "error": "worker exited with code 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/preflight_logs/Grocery_sender_private_seed43_attempt01.log",
+      "seed": 43,
+      "stage": "worker-gpu-preflight",
+      "tail": "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:39:01+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "child_exit_code": 1,
+      "dataset": "ele-fashion",
+      "error": "worker exited with code 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/preflight_logs/ele-fashion_sender_private_seed42_attempt01.log",
+      "seed": 42,
+      "stage": "worker-gpu-preflight",
+      "tail": "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:39:31+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "child_exit_code": 1,
+      "dataset": "ele-fashion",
+      "error": "worker exited with code 1",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/preflight_logs/ele-fashion_sender_private_seed43_attempt01.log",
+      "seed": 43,
+      "stage": "worker-gpu-preflight",
+      "tail": "/home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.\n  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\nTraceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1221, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 1180, in main\n    worker_gpu_preflight(args.dataset, args.variant, args.seed, args.physical_gpu,\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_screen.py\", line 612, in worker_gpu_preflight\n    gradients = model.capture_gradient_diagnostics()\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/src/models/mrcge_v13.py\", line 1263, in capture_gradient_diagnostics\n    param = params[name]\n            ~~~~~~^^^^^^\nKeyError: 'single_filter.transform.net.0.weight'\n",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:39:41+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "action": "worker-train",
+      "attempt": 1,
+      "child_pid": 87227,
+      "dataset": "Grocery",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [87602]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T14:51:51+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 87227,
+            "used_memory_mib": 1356
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 87602,
+            "used_memory_mib": 436
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9020,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15232,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 84,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 23226,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 1032,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 74,
+            "utilization_percent": 98,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/guard_logs/Grocery_sender_private_seed43_attempt01.log",
+      "physical_gpu": 1,
+      "seed": 43,
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:51:51+00:00",
+      "training_started": true,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "dataset": "Grocery",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [87602]; refusing/aborting this run')",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/guard_logs/Grocery_sender_private_seed43_attempt01.log",
+      "seed": 43,
+      "stage": "formal_worker",
+      "status": "failed",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:51:51+00:00",
+      "training_started": true,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:51:51+00:00",
+      "training_started": false,
+      "variant": "joint_view"
+    },
+    {
+      "attempt": 1,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:51:51+00:00",
+      "training_started": false,
+      "variant": "joint_view"
+    },
+    {
+      "attempt": 1,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:51:51+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 1,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:51:51+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "action": "worker-train",
+      "attempt": 2,
+      "child_pid": 88568,
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [89011]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T14:54:30+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 88568,
+            "used_memory_mib": 13934
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 89011,
+            "used_memory_mib": 276
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9020,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15232,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 84,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 10030,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 14228,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 75,
+            "utilization_percent": 99,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/guard_logs/ele-fashion_joint_view_seed42_attempt02.log",
+      "physical_gpu": 1,
+      "seed": 42,
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:54:30+00:00",
+      "training_started": true,
+      "variant": "joint_view"
+    },
+    {
+      "attempt": 2,
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [89011]; refusing/aborting this run')",
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/guard_logs/ele-fashion_joint_view_seed42_attempt02.log",
+      "seed": 42,
+      "stage": "formal_worker",
+      "status": "failed",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:54:30+00:00",
+      "training_started": true,
+      "variant": "joint_view"
+    },
+    {
+      "attempt": 2,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:54:30+00:00",
+      "training_started": false,
+      "variant": "joint_view"
+    },
+    {
+      "attempt": 2,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:54:30+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    },
+    {
+      "attempt": 2,
+      "dataset": "ele-fashion",
+      "error": "not launched after a new external compute PID appeared",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T14:54:30+00:00",
+      "training_started": false,
+      "variant": "sender_private"
+    }
+  ]
+}

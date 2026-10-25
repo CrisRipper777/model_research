@@ -1,6 +1,6 @@
 # MR-CGE V1.3 Implementation Audit
 
-## Frozen starting point
+## Frozen starting point and protected files
 
 - Base commit: `a7930442e85ff9450fded54d5869915b434c7431`
 - Source branch: `exp/mrcge_v12_multiseed_confirmation`
@@ -13,62 +13,103 @@
   - V1.2 report: `a6b1353c4a1d75bad116dbfb05fbbfc4e44cd422908778176aa01ba3365f3b4b`
   - V1.2 handoff: `2cd18afbcfcab4a15476c180b9057eab7049bdd1230814423f4d8c97d56eec8e`
 
-These files remain unmodified on the V1.3 branch.
+The four model/task/config/runner source files above match the frozen V1.2
+hashes. The reports and result records in the V1.2 campaign were read-only.
 
 ## Implementation surface
 
-- `src/models/mrcge_v13.py` is a V1.2 model copy with the V1.3 additions. The
-  only forward-path changes are the optional shared joint-view contribution,
-  the optional sender-private mixture at Early Cross input, and scalar-only
-  diagnostics. The original V1.2 model source is untouched.
-- `configs/model/mrcge_v13.yaml` fixes `M_repaired`, explicit variant control,
-  and the compatibility ratio default.
-- `configs/study/mrcge_v13_screen.yaml` declares only the 12 authorized
-  Dataset × Variant × Seed cells and the frozen training protocol.
+- `src/models/mrcge_v13.py` is based on the frozen V1.2 model. Its forward-path
+  additions are the optional shared Joint View Contribution module, the
+  optional `0.3` source-private mixture at Early Cross input, and detached
+  scalar diagnostics. `supports_link_prediction=False` remains explicit.
+- `configs/model/mrcge_v13.yaml` uses `M_repaired`, explicit variant control,
+  and ratio zero as the compatibility setting.
+- `configs/study/mrcge_v13_screen.yaml` contains only the authorized 12 formal
+  cells: three datasets × two independent variants × seeds 42/43.
 - `scripts/run_mrcge_v13_screen.py` reuses read-only V1.2 data, masking,
-  checkpoint, and audit utilities. It has a per-cell child process, a physical
-  GPU-1 ownership guard, current free-memory checks, runtime PID monitoring,
-  and separate resource/failure records.
-- `tests/test_mrcge_v13.py` covers initialization and output compatibility,
-  joint-view initial scales and both output gradients, paired-dropout zero-Cross
-  behavior, sender gradient flow, support masks, strict checkpoint reload,
-  exact study matrix, and validation diagnostic RNG behavior.
+  checkpoint, and audit utilities. It gives each cell an independent child
+  process and Attempt directory, records per-attempt resource snapshots, and
+  uses a physical GPU-1 ownership guard with a 2 GiB launch margin and runtime
+  foreign-PID/free-memory checks.
+- `scripts/analyze_mrcge_v13_screen.py` checks the unique-cell matrix, attempt
+  history, frozen source hashes, source/config/data fingerprints, checkpoint
+  hashes and metadata, dual-checkpoint metrics, and historical same-seed
+  alignment. It also strictly reloads all 12 Best-Accuracy checkpoints on CPU
+  and regenerates their Validation metrics and weighted response diagnostics.
+- `tests/test_mrcge_v13.py` covers base/A/B-closed compatibility, A's neutral
+  initialization, both A output gradients, paired-dropout zero-Cross
+  behavior, B's source-private gradient, support masks and isolated nodes,
+  strict checkpoint reload, exact study matrix, and Validation diagnostic RNG.
 
-The new scalar diagnostics are retained as detached device scalars during a
-forward and copied to CPU when epoch diagnostics are collected. This avoids
-adding per-statistic synchronization to every training forward and does not
-change model outputs or RNG consumption.
+The Joint View first linear layer is evaluated as five sliced linear products
+and summed; this is algebraically the specified concatenated projection and
+does not materialize `[N, 5*256]`. The new A module is initialized within an
+isolated CPU RNG context. The detached diagnostic scalars are copied to CPU at
+epoch audit time, not individually synchronized on each training forward.
 
-## Checks completed before source freeze
+## Correctness and source audit
 
-- `python -m py_compile` passed for the V1.3 model, runner, and test file.
-- `conda run -n yhf_env python -m pytest -q tests/test_mrcge_v13.py tests/test_mrcge_v12.py tests/test_mrcge_v12_confirmation.py`
-  passed: 34 tests.
-- The runner CLI help works, including the guarded GPU-preflight worker entry.
-- CPU/data preflight passed for all six dataset/seed groups. Initial parameter
-  audits passed for all six groups; seed 42 and 43 share one frozen split per
-  dataset; V1.2 same-seed cache/data/split fingerprints matched; Test labels
-  were masked and Test evaluation was off.
-- The CPU/data preflight above was run before the final diagnostics-only source
-  adjustment. It will be rerun after the implementation freeze commit so the
-  committed source hashes are authoritative.
-- First GPU-preflight attempt found a V1.3 audit-harness bug in
-  `capture_gradient_diagnostics`: the `sender_private` M_repaired path looked
-  for S/F-only `single_filter` parameters. The forward/backward reached that
-  audit call; no formal training began. The audit branch was corrected, and
-  tests now exercise gradient auditing for all three explicit variants.
-- After correction, the model/V1.2 regression suite passed: 37 tests. The
-  failed first-attempt cells remain in `data/preflight.json` and
-  `data/failures.json`; all GPU preflights will be repeated against the
-  corrected source SHA.
-- Corrected-source GPU preflight passed all 12 cells at source commit
-  `169cddd72aaaba00a5ce3fd25657981dd40c5e27`. All gradients were finite and
-  the eval diagnostic forward preserved RNG state. The maximum measured peak
-  reserved memory was 13,308 MiB; its formal launch threshold is 15,356 MiB
-  including the required 2 GiB margin.
+The final CPU regression command was:
 
-## Pending audits
+```text
+conda run -n yhf_env python -m pytest -q tests/test_mrcge_v13.py tests/test_mrcge_v12.py tests/test_mrcge_v12_confirmation.py
+```
 
-The 12 formal Validation runs, dual-checkpoint reload audits, same-seed result
-analysis, and final push are pending. No formal training has started. GPU use
-remains conditional on a fresh ownership guard pass.
+Result: **40 passed** (13 upstream/library warnings). `py_compile` passed for
+the model, runner, analyzer, and test file. The corrected-source CPU/data
+preflight verified all six dataset/seed groups, frozen split reuse, V7B.1
+cache identity, same-seed historical references, Test-label masking, and
+initialization audits.
+
+The initial GPU-preflight audit exposed a harness bug: `sender_private` on the
+`M_repaired` backbone attempted to inspect S/F-only `single_filter` parameters.
+The first affected preflight attempts failed before formal training. The
+gradient audit branch was corrected, tests were expanded to cover all three
+explicit variants, and the corrected source passed all 12 GPU preflight
+cells. The initial failures remain in `data/preflight.json` and
+`data/failures.json`; they are not counted as successful preflights.
+
+The corrected GPU-preflight model source is commit
+`169cddd72aaaba00a5ce3fd25657981dd40c5e27`, model SHA256
+`a70e2fd4345efe1f658075eb3cb034d85c8ad67454951cea7af02faf96775a37`. The
+formal runs recorded source commit
+`78284c82308b117e98f6c2ef59bf5acbe13369bf`; the V1.3 model SHA, V1.2 trainer
+SHA, and run-specific config SHA are preserved in every successful `runs.csv`
+row. After training, commit `1216376dd234679313c896c61ef3480848b584c8` added
+diagnostics-only weighted Physical/Semantic contribution RMS calculations and
+strict CPU reload auditing. The posthoc model SHA is
+`be9272ad25296927fcb95720776a7fcdaf3f54d00936c96387262159b3770c90`; it does
+not alter forward outputs or training behavior. Per-run provenance continues
+to point at the source actually used by formal training.
+
+## Completed execution audit
+
+- All 12 unique authorized cells completed; there are no incomplete cells.
+- Both Best-Accuracy and Best-F1 checkpoints were reloaded and compared with
+  their selected Validation metrics by the formal runner. Their file hashes,
+  epoch/selection metadata, protocol, provenance, and metric records passed
+  the final analyzer audit (24 checkpoints total).
+- A separate CPU posthoc pass strictly loaded all 12 Best-Accuracy
+  checkpoints. Accuracy, Macro-F1, and CE matched the run rows within the
+  configured tolerance, and each Validation pass preserved CPU RNG state.
+- Train and Validation epoch history is retained for every successful run;
+  every history row was checked for finite losses and metrics.
+- Test labels were masked before trainer entry, `evaluate_test=False`, and no
+  Test metrics were computed. No link-prediction run was performed.
+- The audit found no changed frozen V1.2 source hash, mismatched cache/split
+  fingerprint, duplicate successful cell, orphan epoch-history row, or
+  checkpoint hash mismatch.
+
+The formal training ledger contains 12 completed rows, 2 failed formal
+Attempts, and 7 `blocked_resource` Attempts. The two failures were caused by
+new external GPU compute PIDs (87602 and 89011); seven subsequent cells were
+not launched after those guard trips. Only this task's own child was stopped.
+No external process was signaled, paused, or changed. Each blocked/failed
+Attempt is retained, and the corresponding cells later completed under fresh
+passing GPU snapshots. Six initial preflight harness failures are separately
+retained and excluded from the corrected 12/12 pass.
+
+All values in this audit are Validation-only. Two-seed means are descriptive;
+they do not establish significance, a strict causal module contribution,
+SOTA, or that learned strengths correspond to true graph reliability. This
+screen does not choose A or B as a final model.
