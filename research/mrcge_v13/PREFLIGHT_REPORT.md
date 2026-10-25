@@ -25,8 +25,28 @@ gradient-capture helper requested nonexistent S/F-only parameters on the frozen
 the first-attempt records remain in `data/preflight.json` and
 `data/failures.json` and will not be counted as passes for the corrected source.
 
-The corrected-source GPU preflight has not started yet. It requires a fresh
-GPU-1 ownership and free-memory guard. Each authorized cell must pass one real
-forward/backward/optimizer step, finite-gradient checks, evaluation RNG checks,
-and the measured peak-reserved-memory plus 2 GiB start margin before formal
-training can begin.
+The corrected-source GPU preflight passed all 12 cells at source commit
+`169cddd72aaaba00a5ce3fd25657981dd40c5e27`. Each cell completed one actual
+forward/backward/optimizer step, produced finite gradients, passed the
+evaluation RNG check, and passed the live GPU-1 guard. Each seed of the same
+dataset/variant had the same measured peak:
+
+| Dataset | Variant | Peak reserved | Required free memory (peak + 2 GiB) |
+|---|---|---:|---:|
+| Movies | `joint_view` | 2,586 MiB | 4,634 MiB |
+| Movies | `sender_private` | 2,260 MiB | 4,308 MiB |
+| Grocery | `joint_view` | 2,530 MiB | 4,578 MiB |
+| Grocery | `sender_private` | 2,204 MiB | 4,252 MiB |
+| ele-fashion | `joint_view` | 13,308 MiB | 15,356 MiB |
+| ele-fashion | `sender_private` | 11,478 MiB | 13,526 MiB |
+
+At the last fresh launch snapshot, GPU 1 was an RTX 3090 with 22,999 MiB free,
+19% utilization, and 63°C. Existing compute PID 72408 (1,244 MiB) was recorded
+as the shared-device baseline. No process was signaled or changed. The live
+guard will take a new snapshot before each formal cell and monitor during each
+child process.
+
+The first partial attempt and its six audit-code failures remain recorded and
+are not counted in the corrected 12/12 pass. The corrected-source GPU-preflight
+data, per-attempt resource snapshots, and failures are retained under `data/`
+and `outputs/mrcge_v13_screen/`.

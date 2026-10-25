@@ -61,11 +61,14 @@ change model outputs or RNG consumption.
   failed first-attempt cells remain in `data/preflight.json` and
   `data/failures.json`; all GPU preflights will be repeated against the
   corrected source SHA.
+- Corrected-source GPU preflight passed all 12 cells at source commit
+  `169cddd72aaaba00a5ce3fd25657981dd40c5e27`. All gradients were finite and
+  the eval diagnostic forward preserved RNG state. The maximum measured peak
+  reserved memory was 13,308 MiB; its formal launch threshold is 15,356 MiB
+  including the required 2 GiB margin.
 
 ## Pending audits
 
-Real GPU-1 single-step forward/backward preflight against the corrected source,
-measured peak memory plus the 2 GiB margin, the 12 formal Validation runs,
-dual-checkpoint reload audits, same-seed result analysis, and final push are
-pending. No formal training has started. GPU use remains conditional on a
-fresh ownership guard pass.
+The 12 formal Validation runs, dual-checkpoint reload audits, same-seed result
+analysis, and final push are pending. No formal training has started. GPU use
+remains conditional on a fresh ownership guard pass.
