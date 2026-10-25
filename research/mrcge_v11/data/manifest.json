@@ -1,23 +1,23 @@
 {
   "branch": "exp/mrcge_v11_shared_filter_pilot",
-  "code_commit_sha": "1d462d9f46a880b27bfd93477fca7dae15b2f5f6",
-  "completed_formal_cells": 0,
+  "code_commit_sha": "73a0946d6d8eef89c578e2b70947c57d0340d243",
+  "completed_formal_cells": 6,
   "data_file_sha256": {
-    "condition_differences.csv": "0cca7be0f3b3e15678be025809176c313edbbd143be593ab69c6c4db401f35c3",
-    "condition_summary.csv": "7fa3082774e8ca62e05349d32c5679d32430f20957635d09ad624f659fd804eb",
+    "condition_differences.csv": "b26ba9e31f58a791d2359d144475633889be88915f10b339a09d5990570c68c1",
+    "condition_summary.csv": "0d662f73cc24f1a26a86d0c860c85f7ba825e68a909b44e83b5c85c21017200a",
     "environment.json": "c9749b326e4216ca987c02d847f5920da6627a2b8efdcf0ea85ced1bb2760cdc",
-    "epoch_history.csv": "39531a8fed3f451c62620d88b8bef001af7bed07b81b2e3ea17dabfe76fc28ab",
-    "expert_diagnostics.csv": "9a0cdc512c2fd3e4ca071135f8338f5615366f01124098d807950f50089d6c25",
-    "failures.json": "2f17d897b0e8f4b7963784b5625c5cf2aac4ad6befe142e527ca05fcda985cb5",
-    "gpu_baseline.json": "9a35f0730e1544750a4e6317b78cf23b4c0711769710ea8d8c2cc3d8a8e61626",
+    "epoch_history.csv": "cb41c035bae8e058057f0b370eacfd910854af58827a67fdcbff121e78f031c9",
+    "expert_diagnostics.csv": "4c09f2a427102b55f96117482070cea2a744f51534ab43d8e99c24d3b96d8bad",
+    "failures.json": "34870c9b1fac423ee951a9acc56ef559807c80a1d4b7d65656347a50a10b82a0",
+    "gpu_baseline.json": "a45de7ecc66726228b03d5ff1f7c8f9766667fd0b79b4e3c157efd2d2b5cbba0",
     "gpu_preflight_Movies_S_seed42_attempt2.log": "ad88fa583c11ac48232049aee73ec91bf7c327d0da238703c48c306485329a15",
     "gpu_preflight_ele-fashion_M_seed42_attempt3.log": "52340982c3c5aed200464d5b11d060ab899c991371fd9ee0a11911b48970a870",
     "loss_gradient_diagnostics.csv": "711ee3649ab95df2deb0b112d71d7ddd40cd4b0550db321c5c25fe85512a1450",
-    "preflight.json": "0bb88e1330c7adbb0d5f58b645150be3b69f0d001295f8e1ada6af1f7c75416d",
-    "resource_summary.csv": "5d905b5abff0db4e2128c30c083e0e232977593f0346fc2f3c55677e90017fae",
-    "response_diagnostics.csv": "f2722f76063653064879bb78daf87179033e9a82a3f7d29d0a51c0aafc7300d5",
-    "route_diagnostics.csv": "4b830d4a6eed6f75c8c267064af5643928821fe62bc6019edb1a207bf57a5325",
-    "runs.csv": "69738bce8b6a6efee7604ea5b23f86ac4486206e1bee25901a4ef2eba6613080"
+    "preflight.json": "f062dc2307a0329772319a2c4c6fb08a745c66c8ac576773797f74974bda423e",
+    "resource_summary.csv": "c5844f39ac67e92d82d5c2a17806eedad5cf749795086f69b96a3b362db464f0",
+    "response_diagnostics.csv": "6fd831186ae4f0dc66acbf3639a5efa407ac27c305f983908850fa16f3394136",
+    "route_diagnostics.csv": "86aa9747d0f0f237320b1996aadb17793a0f07ead734ea178958fe84c8b22a58",
+    "runs.csv": "bf8cb45d96c8bba38d1403b5afea8789855089973ed49c3f7088c131b78b065d"
   },
   "dataset_fingerprints": {
     "Grocery": {
@@ -42,77 +42,84 @@
       "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144"
     }
   },
-  "failures_count": 7,
-  "formal_pilot_status": "blocked_before_training",
-  "gpu_block": {
-    "baseline_path": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v11/data/gpu_baseline.json",
-    "condition": "S",
-    "dataset": "Movies",
-    "failure_kind": "guard_refused_before_child_launch_due_to_100_percent_baseline_utilization",
+  "failures_count": 9,
+  "formal_pilot_status": "partial_blocked",
+  "gpu_block": null,
+  "gpu_single_step_status": "pass",
+  "planned_formal_cells": 9,
+  "recorded_utc": "2026-10-25T02:42:18+00:00",
+  "runtime_guard_block": {
+    "action": "worker-train",
+    "attempt": 1,
+    "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/F/seed_42/attempt_01",
+    "attempt_status_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/F/seed_42/attempt_01/status.json",
+    "child_pid": 3948768,
+    "condition": "F",
+    "dataset": "ele-fashion",
+    "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [3949460]; refusing/aborting this run')",
+    "failure_kind": "new_foreign_compute_pid_detected_during_training",
     "gpu_snapshot": {
-      "captured_utc": "2026-10-24T15:36:25+00:00",
+      "captured_utc": "2026-10-25T02:37:22+00:00",
       "compute_processes": [
         {
           "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
-          "pid": 3815405,
-          "used_memory_mib": 1756
-        },
-        {
-          "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
           "pid": 3842120,
-          "used_memory_mib": 9108
+          "used_memory_mib": 15110
         },
         {
           "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
-          "pid": 2537427,
-          "used_memory_mib": 15398
+          "pid": 3948768,
+          "used_memory_mib": 2832
+        },
+        {
+          "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+          "pid": 3949460,
+          "used_memory_mib": 320
         }
       ],
       "devices": [
         {
-          "memory_free_mib": 13278,
+          "memory_free_mib": 8913,
           "memory_total_mib": 24576,
-          "memory_used_mib": 10974,
+          "memory_used_mib": 15339,
           "name": "NVIDIA GeForce RTX 3090",
           "physical_index": 0,
-          "temperature_c": 85,
-          "utilization_percent": 100,
+          "temperature_c": 79,
+          "utilization_percent": 98,
           "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
         },
         {
-          "memory_free_mib": 8845,
+          "memory_free_mib": 21856,
           "memory_total_mib": 24576,
-          "memory_used_mib": 15413,
+          "memory_used_mib": 2402,
           "name": "NVIDIA GeForce RTX 3090",
           "physical_index": 1,
-          "temperature_c": 77,
-          "utilization_percent": 100,
+          "temperature_c": 66,
+          "utilization_percent": 57,
           "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
         }
       ]
     },
-    "physical_gpu": 0,
-    "reason": "RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run')",
-    "recorded_utc": "2026-10-24T15:36:25+00:00",
+    "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/guard_logs/ele-fashion_F_seed42_attempt01.log",
+    "partial_validation_metrics_excluded": true,
+    "physical_gpu": 1,
     "seed": 42,
-    "source_git_sha": "9f369ea505fcf9ad4508f5af35a7fa8480dbd6f0",
-    "stage": "gpu_single_step_attempt_failed",
-    "status": "blocked",
+    "source_git_sha": "009305f67c455643c6cb0812e1b1ec35f2febf4c",
+    "stage": "shared_gpu_runtime_guard",
+    "terminated_own_child_only": true,
     "test_evaluation": false,
-    "training_started": false
+    "time_utc": "2026-10-25T02:37:22+00:00",
+    "training_started": true
   },
-  "gpu_single_step_status": "blocked",
-  "planned_formal_cells": 9,
-  "recorded_utc": "2026-10-24T15:39:25+00:00",
   "schema_version": 1,
   "seeds_43_44_run": false,
   "source_file_sha256": {
     "configs/model/mrcge_v11.yaml": "1743a0e34916046cafd5c4ac508d7b36f2eaa151f2c8a946773b70ace8f50383",
     "configs/study/mrcge_v11_pilot.yaml": "a3ebe3baa7f937516b30a65a325ec346e533144c2057d08ce9c8ebcdd921276b",
-    "scripts/analyze_mrcge_v11_pilot.py": "1207cb2b240e374a8183e219ed45b1f41c3a42debe8bf45f8ca17a80bf39fac3",
+    "scripts/analyze_mrcge_v11_pilot.py": "994fcf561c90e167ba6a4f0fe2b3dcf9e3fc0bcdd6c717ce94820301e91b4d1a",
     "scripts/preflight_mrcge_v11.py": "9bf8749ad1e6800b32bcdc28f3f2838cf9c598866ed66b8b72c60535837e271f",
-    "scripts/run_mrcge_v11_pilot.py": "80df1c7e23ebe3e98325481741e692f43cf1a7d953bbe3f193b51dc780ff018b",
-    "src/models/mrcge_v11.py": "5b5ce23cf5ae120ddd3a740d8d415020218aa920b99fd5cd04be1a52059a31da",
+    "scripts/run_mrcge_v11_pilot.py": "777fbf409581e1e8fc48c0b6f869b92283e4c54205a7237a0b0b3c8f35be1ca8",
+    "src/models/mrcge_v11.py": "bafeb0d9122b07eb87333a9c5efa05f505d50ca9606db4c202468fec42302657",
     "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
     "tests/test_mrcge_v11.py": "681faa19caa1489738c07895a1f10f8587a05449a1b64176b8a6fd1acb3d9549"
   },

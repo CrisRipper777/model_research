@@ -1,9 +1,9 @@
 # MR-CGE V1.1 Preflight Report
 
-- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `1d462d9f46a880b27bfd93477fca7dae15b2f5f6`.
+- Branch: `exp/mrcge_v11_shared_filter_pilot`; code commit at report generation: `73a0946d6d8eef89c578e2b70947c57d0340d243`.
 - CPU/data/cache/init preflight: **pass**.
-- GPU single-step preflight: **blocked**.
-- Formal Pilot cells started: **0/9**.
+- GPU single-step preflight: **pass**.
+- Formal Pilot cells attempted: **7/9**; completed: **6/9**.
 - Test evaluation: **disabled**; Test labels are masked to `-100` before Trainer entry.
 
 ## CPU and data checks
@@ -18,7 +18,7 @@
 ## Focused tests
 
 Command: `PYTHONPATH=. /home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v11.py`
-Result: passed; 23 passed, 1 warning in 3.62s.
+Result: passed; 23 passed, 7 warnings in 3.75s.
 
 ```text
 .......................                                                  [100%]
@@ -27,16 +27,24 @@ Result: passed; 23 passed, 1 warning in 3.62s.
   /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch_geometric/llm/utils/backend_utils.py:26: DeprecationWarning: `torch_geometric.distributed` has been deprecated since 2.7.0 and will no longer be maintained. For distributed training, refer to our tutorials on distributed training at https://pytorch-geometric.readthedocs.io/en/latest/tutorial/distributed.html or cuGraph examples at https://github.com/rapidsai/cugraph-gnn/tree/main/python/cugraph-pyg/cugraph_pyg/examples
     from torch_geometric.distributed import (
 
+tests/test_mrcge_v11.py::test_order_truncation_signed_coefficients_and_gradients
+tests/test_mrcge_v11.py::test_trainer_loss_uses_main_private_and_balance_terms
+tests/test_mrcge_v11.py::test_cpu_forward_backward_checkpoint_reload_and_rng_audit
+tests/test_mrcge_v11.py::test_filter_router_and_cross_parameters_receive_gradients
+tests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable_parameters[S]
+tests/test_mrcge_v11.py::test_single_filter_gradient_diagnostics_match_trainable_parameters[F]
+  /home/m3/miniconda3/envs/yhf_env/lib/python3.12/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+    with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-23 passed, 1 warning in 3.62s
+23 passed, 7 warnings in 3.75s
 ```
 
 ## GPU guard outcome
 
-The guarded GPU single-step attempt for Movies/S/seed42 did not pass.
-Recorded stage: `gpu_single_step_attempt_failed`; reason: `RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run')`.
-See `data/failures.json` and the referenced worker log for the full trace. Formal Pilot training remains gated until all nine GPU single-step checks pass.
+All nine guarded GPU single-step checks passed on physical GPU 1; maximum measured allocated memory was 21173 MiB. Earlier blocked attempts remain in the audit history.
+During formal Pilot ele-fashion/F/seed42 attempt 1, the runtime guard detected a new foreign compute PID and stopped only its own training child. See the matching `shared_gpu_runtime_guard` failure and `pilot_runtime_guard_blocked` resource row before resuming.
 
 ## Preserved failures
 
-`data/failures.json` contains 7 recorded events.
+`data/failures.json` contains 9 recorded events.

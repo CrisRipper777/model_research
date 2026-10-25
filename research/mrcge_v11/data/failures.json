@@ -91,6 +91,83 @@
       "test_evaluation": false,
       "time_utc": "2026-10-24T15:36:24+00:00",
       "training_started": false
+    },
+    {
+      "action": "worker-gpu-preflight",
+      "attempt": 4,
+      "child_pid": 3939618,
+      "condition": "M",
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('GPU1 free memory 1017 MiB below 1536 MiB guard threshold')",
+      "seed": 42,
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T02:23:29+00:00",
+      "training_started": false
+    },
+    {
+      "action": "worker-train",
+      "attempt": 1,
+      "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/F/seed_42/attempt_01",
+      "attempt_status_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/runs/ele-fashion/F/seed_42/attempt_01/status.json",
+      "child_pid": 3948768,
+      "condition": "F",
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [3949460]; refusing/aborting this run')",
+      "failure_kind": "new_foreign_compute_pid_detected_during_training",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T02:37:22+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3948768,
+            "used_memory_mib": 2832
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 320
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 8913,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15339,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 79,
+            "utilization_percent": 98,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 21856,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 2402,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 66,
+            "utilization_percent": 57,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v11_pilot/guard_logs/ele-fashion_F_seed42_attempt01.log",
+      "partial_validation_metrics_excluded": true,
+      "physical_gpu": 1,
+      "seed": 42,
+      "source_git_sha": "009305f67c455643c6cb0812e1b1ec35f2febf4c",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T02:37:22+00:00",
+      "training_started": true
     }
   ]
 }

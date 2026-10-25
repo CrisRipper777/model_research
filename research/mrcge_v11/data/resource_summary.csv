@@ -1,2 +1,18 @@
-dataset,condition,seed,attempt,phase,physical_gpu,gpu0_free_mib,gpu0_utilization_percent,gpu0_temperature_c,gpu0_compute_pids,gpu1_free_mib,gpu1_utilization_percent,gpu1_temperature_c,gpu1_compute_pids,status,reason,test_evaluation
-Movies,S,42,,gpu_single_step_preflight_blocked,0,13278,100,85,"[3815405,3842120]",8845,100,77,[2537427],blocked_before_training,RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run'),False
+dataset,condition,seed,attempt,phase,physical_gpu,gpu0_free_mib,gpu0_utilization_percent,gpu0_temperature_c,gpu0_compute_pids,gpu1_free_mib,gpu1_utilization_percent,gpu1_temperature_c,gpu1_compute_pids,status,reason,test_evaluation,wall_seconds,peak_allocated_bytes,peak_reserved_bytes,gpu_name
+Movies,S,42,,gpu_single_step_preflight_blocked,0,13278,100,85,"[3815405,3842120]",8845,100,77,[2537427],blocked_before_training,RuntimeError('GPU0 baseline utilization 100% is too high to start a shared run'),False,,,,
+Grocery,F,42,1,pilot_train,,,,,,,,,,,,False,35.71845137467608,2204718592,2776629248,NVIDIA GeForce RTX 3090
+Grocery,M,42,1,pilot_train,,,,,,,,,,,,False,36.26287746895105,3933365760,4427087872,NVIDIA GeForce RTX 3090
+Grocery,S,42,1,pilot_train,,,,,,,,,,,,False,21.80363218812272,1853664768,2474639360,NVIDIA GeForce RTX 3090
+Movies,F,42,1,pilot_train,,,,,,,,,,,,False,29.892856852151453,2155875328,2764046336,NVIDIA GeForce RTX 3090
+Movies,M,42,1,pilot_train,,,,,,,,,,,,False,75.87754855118692,3857147392,4448059392,NVIDIA GeForce RTX 3090
+Movies,S,42,1,pilot_train,,,,,,,,,,,,False,49.98392733093351,1814459392,2455764992,NVIDIA GeForce RTX 3090
+Movies,S,42,5,gpu_single_step_preflight_pass,1,9035,97,73,[3842120],21679,16,53,[3941080],passed_single_step,,False,0.7269678181037307,1808962560,2359296000,
+Movies,F,42,5,gpu_single_step_preflight_pass,1,9035,97,72,[3842120],21389,34,53,[3941236],passed_single_step,,False,0.7553779762238264,2150377472,2663383040,
+Movies,M,42,5,gpu_single_step_preflight_pass,1,9035,91,72,[3842120],19853,54,55,[3941394],passed_single_step,,False,1.0296265128999949,3847034368,4271898624,
+Grocery,S,42,5,gpu_single_step_preflight_pass,1,9035,100,72,[3842120],21663,33,54,[3941597],passed_single_step,,False,0.7736964500509202,1849885184,2376073216,
+Grocery,F,42,5,gpu_single_step_preflight_pass,1,9035,99,72,[3842120],21377,33,55,[3941760],passed_single_step,,False,0.7174175917170942,2200937984,2675965952,
+Grocery,M,42,5,gpu_single_step_preflight_pass,1,9035,100,71,[3842120],19809,50,56,[3941913],passed_single_step,,False,1.0488846860826015,3924271104,4318035968,
+ele-fashion,S,42,5,gpu_single_step_preflight_pass,1,9035,100,72,[3842120],13223,85,58,[3942064],passed_single_step,,False,1.223211308941245,10319959040,11226054656,
+ele-fashion,F,42,5,gpu_single_step_preflight_pass,1,9035,98,72,[3842120],11303,100,59,[3942244],passed_single_step,,False,1.1692127538844943,12331030528,13239320576,
+ele-fashion,M,42,5,gpu_single_step_preflight_pass,1,9035,93,73,[3842120],1907,100,59,[3942445],passed_single_step,,False,1.9835901972837746,22201272320,23089643520,
+ele-fashion,F,42,1,pilot_runtime_guard_blocked,1,8913,98,79,[3842120],21856,57,66,"[3948768,3949460]",own_child_stopped_unexpected_foreign_pid,RuntimeError('shared-GPU guard saw new foreign compute PIDs [3949460]; refusing/aborting this run'),False,,,,

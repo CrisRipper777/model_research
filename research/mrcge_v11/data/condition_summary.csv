@@ -1,10 +1,10 @@
 dataset,condition,n_completed,seed,val_acc,val_macro_f1,val_ce,status,interpretation
-Movies,S,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-Movies,F,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-Movies,M,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-Grocery,S,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-Grocery,F,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-Grocery,M,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-ele-fashion,S,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-ele-fashion,F,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
-ele-fashion,M,0,42,,,,not_run_gpu_preflight_blocked,no Pilot metric; formal training did not start
+Movies,S,1,42,0.5302939414978027,0.43265517358409744,1.4439923763275146,complete,one-seed descriptive validation metric
+Movies,F,1,42,0.5107978582382202,0.36692950842054267,1.4827326536178589,complete,one-seed descriptive validation metric
+Movies,M,1,42,0.5527894496917725,0.4838016985835905,1.4057756662368774,complete,one-seed descriptive validation metric
+Grocery,S,1,42,0.8005856275558472,0.7206894206885341,0.7428837418556213,complete,one-seed descriptive validation metric
+Grocery,F,1,42,0.772767186164856,0.7032902155017174,0.8816630840301514,complete,one-seed descriptive validation metric
+Grocery,M,1,42,0.8269400000572205,0.7567569553235868,0.6694358587265015,complete,one-seed descriptive validation metric
+ele-fashion,S,0,42,,,,not_run,formal training cell has not started
+ele-fashion,F,0,42,,,,failed_attempt_no_metric,formal attempt was interrupted; incomplete metrics are excluded
+ele-fashion,M,0,42,,,,not_run,formal training cell has not started

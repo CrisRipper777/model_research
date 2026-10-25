@@ -1,10 +1,10 @@
 dataset,seed,contrast,status,delta_val_acc,delta_val_macro_f1,delta_val_ce,interpretation
-Movies,42,M-F,not_available,,,,both Pilot cells are required; no formal training started
-Movies,42,F-S,not_available,,,,both Pilot cells are required; no formal training started
-Movies,42,M-S,not_available,,,,both Pilot cells are required; no formal training started
-Grocery,42,M-F,not_available,,,,both Pilot cells are required; no formal training started
-Grocery,42,F-S,not_available,,,,both Pilot cells are required; no formal training started
-Grocery,42,M-S,not_available,,,,both Pilot cells are required; no formal training started
-ele-fashion,42,M-F,not_available,,,,both Pilot cells are required; no formal training started
-ele-fashion,42,F-S,not_available,,,,both Pilot cells are required; no formal training started
-ele-fashion,42,M-S,not_available,,,,both Pilot cells are required; no formal training started
+Movies,42,M-F,descriptive,0.041991591453552246,0.11687219016304784,-0.07695698738098145,single-seed descriptive difference; not an inferential claim
+Movies,42,F-S,descriptive,-0.01949608325958252,-0.06572566516355477,0.03874027729034424,single-seed descriptive difference; not an inferential claim
+Movies,42,M-S,descriptive,0.022495508193969727,0.05114652499949307,-0.03821671009063721,single-seed descriptive difference; not an inferential claim
+Grocery,42,M-F,descriptive,0.0541728138923645,0.053466739821869336,-0.2122272253036499,single-seed descriptive difference; not an inferential claim
+Grocery,42,F-S,descriptive,-0.02781844139099121,-0.017399205186816702,0.13877934217453003,single-seed descriptive difference; not an inferential claim
+Grocery,42,M-S,descriptive,0.02635437250137329,0.036067534635052634,-0.07344788312911987,single-seed descriptive difference; not an inferential claim
+ele-fashion,42,M-F,not_available,,,,both completed Pilot cells are required; one or both cells lack a valid metric
+ele-fashion,42,F-S,not_available,,,,both completed Pilot cells are required; one or both cells lack a valid metric
+ele-fashion,42,M-S,not_available,,,,both completed Pilot cells are required; one or both cells lack a valid metric

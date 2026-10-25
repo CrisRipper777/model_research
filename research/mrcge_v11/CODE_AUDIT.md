@@ -1,6 +1,6 @@
 # MR-CGE V1.1 Code Audit
 
-Source commit audited: `1d462d9f46a880b27bfd93477fca7dae15b2f5f6`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
+Source commit audited: `73a0946d6d8eef89c578e2b70947c57d0340d243`. The new model is a standalone `nn.Module`; it does not inherit from the frozen H2 model chain.
 
 ## Implemented paths
 
@@ -18,8 +18,8 @@ M's four expert objects are shared across all views and collaborative physical c
 
 ## Validation
 
-The focused suite result is recorded in `data/preflight.json` (23 passed, 1 warning in 3.62s). The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.
-GPU single-step preflight status: blocked (0/9 cells). Full-epoch behavior and multi-seed performance remain separate questions.
+The focused suite result is recorded in `data/preflight.json` (23 passed, 7 warnings in 3.75s). The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.
+GPU single-step preflight status: pass (9/9 cells). Full-epoch behavior and multi-seed performance remain separate questions.
 
 Parameter counts from CPU initialization preflight:
 
