@@ -26,3 +26,5 @@ The launch preflight additionally checks finite one-step loss/gradients, Test ma
 `conda run -n yhf_env python -m pytest -q tests/test_mrcge_v13_physical_basis_screen.py tests/test_mrcge_v13.py tests/test_hybrid_cge_paper_evidence_v1.py tests/test_hybrid_cge_v11.py tests/test_mrcge_v12.py`: **65 passed**, 21 warnings (PyTorch Geometric/checkpoint deprecation warnings).
 
 No historical source, record, or checkpoint was edited. The CPU preflight records a SHA256 inventory of all files under the three protected historical research directories and rechecks it during final analysis.
+
+Implementation freeze commit: `cb641c4947c13d2305cfe83110cfdf9e35d42517`.

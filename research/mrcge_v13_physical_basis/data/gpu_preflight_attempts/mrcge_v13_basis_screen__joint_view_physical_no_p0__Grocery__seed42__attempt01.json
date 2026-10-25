@@ -1,0 +1,388 @@
+{
+  "all_gradients_finite": true,
+  "attempt": 1,
+  "aux_loss": 0.010215160436928272,
+  "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+  "completed_utc": "2026-10-25T16:51:16+00:00",
+  "condition": "joint_view_physical_no_p0",
+  "config_sha256": "96036b1a8c7ac63b28188c21c45d3e8eaad9e4884b02504d4d509f34c21c62ba",
+  "dataset": "Grocery",
+  "dataset_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+  "eval_peak_allocated_bytes": 1297591808,
+  "eval_peak_reserved_bytes": 2766143488,
+  "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+  "gpu_name": "NVIDIA GeForce RTX 3090",
+  "gradient_diagnostics": {
+    "beta_raw": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.0034645346459001303,
+      "gradient_present": true
+    },
+    "channel_gate.2.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.0031084208749234676,
+      "gradient_present": true
+    },
+    "cross_lambda_raw": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.004439126700162888,
+      "gradient_present": true
+    },
+    "cross_projections.text_to_visual.0.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.11531634628772736,
+      "gradient_present": true
+    },
+    "cross_projections.visual_to_text.0.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.1599157154560089,
+      "gradient_present": true
+    },
+    "filter_bank.experts.0.net.0.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.0021879386622458696,
+      "gradient_present": true
+    },
+    "filter_bank.experts.0.net.3.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.0011135217500850558,
+      "gradient_present": true
+    },
+    "filter_bank.experts.1.net.0.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.002464158460497856,
+      "gradient_present": true
+    },
+    "filter_bank.experts.1.net.3.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.001526620239019394,
+      "gradient_present": true
+    },
+    "filter_bank.experts.2.net.0.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.006326334550976753,
+      "gradient_present": true
+    },
+    "filter_bank.experts.2.net.3.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.0027445880696177483,
+      "gradient_present": true
+    },
+    "filter_bank.experts.3.net.0.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.005856222007423639,
+      "gradient_present": true
+    },
+    "filter_bank.experts.3.net.3.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.003199687460437417,
+      "gradient_present": true
+    },
+    "filter_bank.theta": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.27913254499435425,
+      "gradient_present": true
+    },
+    "fusion_linear1.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 2.285388946533203,
+      "gradient_present": true
+    },
+    "gamma_raw": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.005809575319290161,
+      "gradient_present": true
+    },
+    "joint_view.input.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": false,
+      "gradient_norm": 0.0,
+      "gradient_present": true
+    },
+    "joint_view.output.bias": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.007056377362459898,
+      "gradient_present": true
+    },
+    "joint_view.output.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.005175990518182516,
+      "gradient_present": true
+    },
+    "key_projections.text.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 3.8867070543346927e-05,
+      "gradient_present": true
+    },
+    "key_projections.visual.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 8.514754881616682e-05,
+      "gradient_present": true
+    },
+    "projectors.text.linear1.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 1.6601754426956177,
+      "gradient_present": true
+    },
+    "projectors.visual.linear1.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.5236929655075073,
+      "gradient_present": true
+    },
+    "query_projections.text.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 8.77219281392172e-05,
+      "gradient_present": true
+    },
+    "query_projections.visual.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 3.509721500449814e-05,
+      "gradient_present": true
+    },
+    "rho_raw": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.009099651128053665,
+      "gradient_present": true
+    },
+    "router.net.3.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.10965826362371445,
+      "gradient_present": true
+    },
+    "source_selector.2.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.005206633359193802,
+      "gradient_present": true
+    },
+    "tau_raw": {
+      "gradient_finite": true,
+      "gradient_nonzero": false,
+      "gradient_norm": 0.0,
+      "gradient_present": true
+    },
+    "unimodal_heads.text.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.46605584025382996,
+      "gradient_present": true
+    },
+    "unimodal_heads.visual.weight": {
+      "gradient_finite": true,
+      "gradient_nonzero": true,
+      "gradient_norm": 0.43862637877464294,
+      "gradient_present": true
+    }
+  },
+  "guard_snapshot": {
+    "captured_utc": "2026-10-25T16:51:16+00:00",
+    "compute_processes": [
+      {
+        "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+        "pid": 3842120,
+        "used_memory_mib": 15110
+      },
+      {
+        "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+        "pid": 102711,
+        "used_memory_mib": 1502
+      },
+      {
+        "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+        "pid": 119988,
+        "used_memory_mib": 1502
+      },
+      {
+        "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+        "pid": 139859,
+        "used_memory_mib": 2954
+      }
+    ],
+    "devices": [
+      {
+        "memory_free_mib": 7515,
+        "memory_total_mib": 24576,
+        "memory_used_mib": 16737,
+        "name": "NVIDIA GeForce RTX 3090",
+        "physical_index": 0,
+        "temperature_c": 86,
+        "utilization_percent": 100,
+        "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+      },
+      {
+        "memory_free_mib": 19784,
+        "memory_total_mib": 24576,
+        "memory_used_mib": 4474,
+        "name": "NVIDIA GeForce RTX 3090",
+        "physical_index": 1,
+        "temperature_c": 76,
+        "utilization_percent": 67,
+        "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+      }
+    ],
+    "guard": {
+      "allowed_process_pids": [
+        139859
+      ],
+      "baseline_compute_pids": [
+        119988
+      ],
+      "current_compute_pids": [
+        119988,
+        139859
+      ],
+      "phase": "during_run",
+      "physical_gpu": 1,
+      "required_free_mib": 2048,
+      "status": "pass",
+      "unexpected_compute_pids": []
+    }
+  },
+  "initial_classifier_sha256": "f7ece777445e94a0fcd38eb846b417a6dec8ecc030226ac04df8bb19bfc1bca6",
+  "initial_model_sha256": "30d542673669daded7093df0e1d57956618ff1a9ecf8d37bd7bb73e876e85d38",
+  "loss": 4.45064115524292,
+  "main_ce": 3.5047767162323,
+  "mechanism_diagnostics": {
+    "no_p0": {
+      "diagnostic_filter_keys": [
+        "private_text_physical",
+        "private_visual_physical",
+        "collaborative_text_physical",
+        "collaborative_visual_physical"
+      ],
+      "physical_alpha": [
+        [
+          0.0,
+          -0.4990723729133606,
+          0.33580705523490906,
+          -0.16512060165405273
+        ],
+        [
+          -0.0,
+          0.6555682420730591,
+          -0.12514354288578033,
+          0.219288170337677
+        ],
+        [
+          0.0,
+          0.16241063177585602,
+          -0.5423901677131653,
+          0.2951992154121399
+        ],
+        [
+          -0.0,
+          -0.21813029050827026,
+          0.3484419882297516,
+          0.4334277808666229
+        ]
+      ],
+      "private_and_collaborative_masks_verified": true,
+      "semantic_alpha": [
+        [
+          0.6970720887184143,
+          -0.3029279112815857,
+          0.0,
+          -0.0
+        ],
+        [
+          -0.35113653540611267,
+          0.6488634943962097,
+          -0.0,
+          0.0
+        ],
+        [
+          0.5815787315368652,
+          0.41842120885849,
+          -0.0,
+          0.0
+        ],
+        [
+          -0.43658557534217834,
+          -0.5634143948554993,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "theta_gradient_norm_before_step": 0.27913254499435425
+  },
+  "model": "mrcge_v13_basis_screen",
+  "num_edges": 142262,
+  "num_nodes": 17074,
+  "peak_allocated_bytes": 2127761408,
+  "peak_reserved_bytes": 2766143488,
+  "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+  "physical_gpu": 1,
+  "private_ce": 3.118831157684326,
+  "required_start_free_mib_with_2gib_margin": 4686,
+  "seed": 42,
+  "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+  "source_file_sha256s": {
+    "configs/config.yaml": "1b06934c68b88e931909de4cb65b1fa51725df94ff6139d127a6ba85355fe399",
+    "configs/dataset/Grocery.yaml": "18969c97a0f06ab33fd3094624d524f03de48139405159bb06d19cf107105e56",
+    "configs/dataset/Movies.yaml": "81b803b0ed79ad86d483aee5dceadac149ca9ba2263e31160b22951a7812f5c8",
+    "configs/model/hybrid_cge_paper_v1.yaml": "5753e3b5a780f12949c46d97c5eab9f585d5f2e6dcff90de1b2ead9d92af2c96",
+    "configs/model/mrcge_v13.yaml": "2fec9ff9b5b901d814a733fa6da47b6b92b1d760c2a00eb15a5ba68434ebe88b",
+    "configs/model/mrcge_v13_basis_screen.yaml": "182335db941103fa67292c7b7933612b365d82c9d00f6882e7bbffdfa5d4cd1a",
+    "configs/study/mrcge_v13_physical_basis_screen.yaml": "73db121e7581b3a2bad1ba3a51318a57fa66a8b8ac35fcbf9f98ba65d8dfee96",
+    "configs/task/nc.yaml": "c8df71f58e707b4c7df429acd62a4c1d91e9cfd80ba24bc6c6d1979307224849",
+    "scripts/analyze_mrcge_v13_physical_basis_screen.py": "65ed1ec982c1f93aea2eb4d71813116af46860f8b7c69d1f07ad0f9238e4b791",
+    "scripts/run_hybrid_cge_paper_evidence_v1.py": "a45a9526bfc7120953635ca08019ab619e48cd6ba29dbe7848e50d7862699f2b",
+    "scripts/run_mrcge_v13_physical_basis_screen.py": "fb1c553f62e2529f98892f00451f0871750dfbf0b144493694bd91ea0b27a488",
+    "scripts/run_mrcge_v13_screen.py": "afc8dd631f4e539c571dd9b3169790cc9461672ea0835684f717fd25eb3316f1",
+    "src/data/graph_utils.py": "8fa1c35c1897e25f2f30628ddc0312598fe9e581692a48cccb131a12a50f10df",
+    "src/data/loaders.py": "08fe47584069a8f690d87d20a2b892d008c43a1dad6bdb3d08bb2f7e22ddd173",
+    "src/data/semantic_candidates_v7b.py": "d79f0f8bb72448701bb490cea57b7095a5b8e99ee2bf9b63fb552038977d9caf",
+    "src/data/splits.py": "b352a1c558752cc82075e7405723d42a408cb416386ad412669f0339aacd1d22",
+    "src/data/types.py": "531968f22725acc211d5906c66bf0189d35857cbbdb972d12ee4ebdd29d3d2f8",
+    "src/models/__init__.py": "ea25cee58d09486940ab91fc9140fb40cf9d7fdf71a9a15a3485c006bcb9ae9c",
+    "src/models/cg_cge_v1.py": "e27cc81fde4b7ab4511f8ff0f563c504f2a11c4f662566b28a6809624cdb4e69",
+    "src/models/hybrid_cge_paper_v1.py": "d957b0732d84e766d4d5506e7f6d2bcb63891cf228bde1a51c034569ef3cfcf4",
+    "src/models/hybrid_cge_v11.py": "132edb6c3106c64b67353bc56983f458f171c93c7b722e9cc2559f4a3837ba26",
+    "src/models/mrcge_v12.py": "d9a7632f725a7c742dc083fe7737bc5c7384e9fa3bc91ffa64ead01e4a5d4ca6",
+    "src/models/mrcge_v13.py": "be9272ad25296927fcb95720776a7fcdaf3f54d00936c96387262159b3770c90",
+    "src/models/mrcge_v13_basis_screen.py": "42e4efb316b4c078bdf91a282f84d36e411e67f81300b1b5b75272675f60d637",
+    "src/tasks/inference.py": "f6e0df653a03a6ab5be98016fdc495fcff7704f42a73bdd546c36f7fc63be0aa",
+    "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
+    "src/utils/seeds.py": "3e423b11a7e59e9b51c48e176d08b05b8fbd6294f364e1895ed2f1413d2e02f4",
+    "tests/test_mrcge_v13_physical_basis_screen.py": "8ad1d019b7bfac16d3a5e95cda4b83bdc99ac75e33c3ec9f40f781a6c240ee6c"
+  },
+  "source_git_sha": "cb641c4947c13d2305cfe83110cfdf9e35d42517",
+  "split_file_sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+  "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+  "stage": "gpu_single_step",
+  "started_utc": "2026-10-25T16:51:16+00:00",
+  "status": "pass",
+  "test_evaluation": false,
+  "test_labels_masked": true,
+  "train_peak_allocated_bytes": 2127761408,
+  "train_peak_reserved_bytes": 2476736512,
+  "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+  "validation_rng_unchanged": true
+}
