@@ -233,7 +233,7 @@ def main() -> None:
                 "gpu1_utilization_percent": gpu1.get("utilization_percent", ""),
                 "gpu1_temperature_c": gpu1.get("temperature_c", ""),
                 "gpu1_compute_pids": compact(gpu_compute_pids(snapshot, gpu1)),
-                "status": "own_child_stopped_unexpected_foreign_pid",
+                "status": "own_child_stopped_by_runtime_guard",
                 "reason": runtime_guard_block.get("error", ""),
                 "wall_seconds": "", "peak_allocated_bytes": "", "peak_reserved_bytes": "",
                 "test_evaluation": False,
@@ -352,7 +352,8 @@ def main() -> None:
     if runtime_guard_block:
         preflight_lines.append(
             f"During formal Pilot {runtime_guard_block.get('dataset')}/{runtime_guard_block.get('condition')}/seed{runtime_guard_block.get('seed')} "
-            f"attempt {runtime_guard_block.get('attempt')}, the runtime guard detected a new foreign compute PID and stopped only its own training child. "
+            f"attempt {runtime_guard_block.get('attempt')}, the runtime guard stopped only its own training child because "
+            f"`{runtime_guard_block.get('error', 'a runtime resource check failed')}`. "
             "See the matching `shared_gpu_runtime_guard` failure and `pilot_runtime_guard_blocked` resource row before resuming."
         )
     preflight_lines.extend(["", "## Preserved failures", "", f"`data/failures.json` contains {len(failures.get('failures', []))} recorded events."])
@@ -374,7 +375,7 @@ def main() -> None:
         pilot_lines.append(
             f"The runtime GPU ownership guard interrupted {runtime_guard_block.get('dataset')}/"
             f"{runtime_guard_block.get('condition')}/seed{runtime_guard_block.get('seed')} attempt "
-            f"{runtime_guard_block.get('attempt')} after detecting a new foreign compute PID. "
+            f"{runtime_guard_block.get('attempt')} because `{runtime_guard_block.get('error', 'a runtime resource check failed')}`. "
             f"The guard stopped only its own child. {complete} cells completed; the interrupted attempt has no valid metric, "
             f"and {all_planned - complete} authorized cell(s) remain incomplete."
         )
