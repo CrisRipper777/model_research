@@ -1,0 +1,68 @@
+study: mrcge_v13_static_strength_screen
+base_sha: 6d94c14d67e511aec34ff5fdcad3ce1a1cfd0701
+base_branch: exp/mrcge_v13_physical_basis_screen
+branch: exp/mrcge_v13_static_strength_screen
+datasets: [Movies, Grocery, ele-fashion]
+physical_gpu: 1
+split_seed: 42
+split_fingerprints:
+  Movies: 2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d
+  Grocery: 7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056
+  ele-fashion: 04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5
+auto_generate_splits: false
+semantic_cache_candidate: V7B.1
+semantic_knn_k: 8
+test_evaluation: false
+link_prediction: false
+training:
+  protocol_version: unified_full_graph_nc_v1
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  gradient_clip: 1.0
+  dropout: 0.2
+  late_dropout: 0.15
+  private_auxiliary_ce_weight: 0.3
+  balance_loss_weight: 0.01
+  checkpoint_primary: best_validation_accuracy
+  checkpoint_secondary: best_validation_macro_f1
+authorized_new_training_cells:
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: Movies, seed: 42}
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: Movies, seed: 43}
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: Movies, seed: 44}
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: Grocery, seed: 42}
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: Grocery, seed: 43}
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: ele-fashion, seed: 42}
+  - {model: mrcge_v13_static_strength, condition: static_strength, dataset: ele-fashion, seed: 43}
+reference_only_conditions:
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 42}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 43}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 44}
+  - {model: mrcge_v13, condition: joint_view, dataset: Grocery, seed: 42}
+  - {model: mrcge_v13, condition: joint_view, dataset: Grocery, seed: 43}
+  - {model: mrcge_v13, condition: joint_view, dataset: ele-fashion, seed: 42}
+  - {model: mrcge_v13, condition: joint_view, dataset: ele-fashion, seed: 43}
+  - {model: mrcge_v12, condition: M_repaired, dataset: Movies, seed: 42}
+  - {model: mrcge_v12, condition: M_repaired, dataset: Movies, seed: 43}
+  - {model: mrcge_v12, condition: M_repaired, dataset: Movies, seed: 44}
+  - {model: mrcge_v12, condition: M_repaired, dataset: Grocery, seed: 42}
+  - {model: mrcge_v12, condition: M_repaired, dataset: Grocery, seed: 43}
+  - {model: mrcge_v12, condition: M_repaired, dataset: ele-fashion, seed: 42}
+  - {model: mrcge_v12, condition: M_repaired, dataset: ele-fashion, seed: 43}
+  - {model: hybrid_cge_paper_v1, condition: H2_physical_3hop, dataset: Movies, seed: 42}
+  - {model: hybrid_cge_paper_v1, condition: H2_physical_3hop, dataset: Movies, seed: 43}
+  - {model: hybrid_cge_paper_v1, condition: H2_physical_3hop, dataset: Movies, seed: 44}
+forbidden:
+  - Test
+  - link_prediction
+  - Early_Cross_decoupling
+  - NoP0
+  - additional_experts
+  - Late_MoE
+  - hyperparameter_search
+  - additional_seed
+  - V1.4
