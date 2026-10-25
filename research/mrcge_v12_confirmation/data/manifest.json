@@ -1,0 +1,50 @@
+{
+  "base_sha": "712bf477085b8e9022a746330e3ae48e12fa0841",
+  "blocked_new_cells": 0,
+  "blocked_resource_cells": 0,
+  "blocked_resource_rows": 18,
+  "branch": "exp/mrcge_v12_multiseed_confirmation",
+  "combined_selected_rows": 26,
+  "completed_cells": 18,
+  "completed_new_cells": 18,
+  "conditions": [
+    "S_repaired",
+    "F_sinit",
+    "M_repaired",
+    "M_anchor"
+  ],
+  "cpu_preflight_status": "pass",
+  "datasets": [
+    "Movies",
+    "Grocery",
+    "Toys",
+    "ele-fashion"
+  ],
+  "expected_combined_rows": 26,
+  "failed_attempt_rows": 3,
+  "failed_cells": 0,
+  "failed_new_cells": 0,
+  "formal_training_started": true,
+  "gpu_preflight_cell_records": 36,
+  "history_checkpoints_reverified": 8,
+  "last_analysis_utc": "2026-10-25T11:28:48.561335+00:00",
+  "last_formal_attempt_utc": "2026-10-25T11:28:36+00:00",
+  "missing_qualified_cells": [],
+  "new_cells": 18,
+  "physical_gpu": 1,
+  "seeds": {
+    "M_confirmation": [
+      43,
+      44
+    ],
+    "ele-fashion_SF": [
+      42
+    ]
+  },
+  "study": "MR-CGE V1.2 multiseed confirmation",
+  "test_evaluation": false,
+  "training_source_git_sha": "74214858914065898920f37ecc8cf592e8ebd5ef",
+  "unstarted_cells": 0,
+  "unstarted_new_cells": 0,
+  "unstarted_requested_cells": 0
+}

@@ -1,0 +1,392 @@
+{
+  "failures": [
+    {
+      "action": "worker-train",
+      "attempt": 1,
+      "child_pid": 4165291,
+      "condition": "M_repaired",
+      "dataset": "Toys",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [4165587]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T10:59:20+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4165291,
+            "used_memory_mib": 3040
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4165587,
+            "used_memory_mib": 296
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9020,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15232,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 83,
+            "utilization_percent": 100,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 21236,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 3022,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 72,
+            "utilization_percent": 82,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_confirmation/guard_logs/Toys_M_repaired_seed43_attempt01.log",
+      "physical_gpu": 1,
+      "seed": 43,
+      "source_git_sha": "74214858914065898920f37ecc8cf592e8ebd5ef",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": true
+    },
+    {
+      "attempt": 1,
+      "condition": "M_repaired",
+      "dataset": "Toys",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "M_anchor",
+      "dataset": "Toys",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "M_anchor",
+      "dataset": "Toys",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "M_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "M_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "S_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 1,
+      "condition": "F_sinit",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T10:59:20+00:00",
+      "training_started": false
+    },
+    {
+      "action": "worker-train",
+      "attempt": 2,
+      "child_pid": 4168203,
+      "condition": "M_anchor",
+      "dataset": "Toys",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [4168336]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T11:03:09+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4168203,
+            "used_memory_mib": 2504
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4168336,
+            "used_memory_mib": 740
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9020,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15232,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 84,
+            "utilization_percent": 96,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 20996,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 3262,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 73,
+            "utilization_percent": 94,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_confirmation/guard_logs/Toys_M_anchor_seed44_attempt02.log",
+      "physical_gpu": 1,
+      "seed": 44,
+      "source_git_sha": "74214858914065898920f37ecc8cf592e8ebd5ef",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": true
+    },
+    {
+      "attempt": 2,
+      "condition": "M_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 2,
+      "condition": "M_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 2,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 43,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 2,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 2,
+      "condition": "S_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 2,
+      "condition": "F_sinit",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:03:09+00:00",
+      "training_started": false
+    },
+    {
+      "action": "worker-train",
+      "attempt": 3,
+      "child_pid": 4174241,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [4174151]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T11:13:06+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4174151,
+            "used_memory_mib": 980
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9020,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15232,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 86,
+            "utilization_percent": 95,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 23263,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 995,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 68,
+            "utilization_percent": 12,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_confirmation/guard_logs/ele-fashion_M_anchor_seed43_attempt03.log",
+      "physical_gpu": 1,
+      "seed": 43,
+      "source_git_sha": "74214858914065898920f37ecc8cf592e8ebd5ef",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:13:06+00:00",
+      "training_started": true
+    },
+    {
+      "attempt": 3,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 44,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:13:06+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 3,
+      "condition": "S_repaired",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:13:06+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 3,
+      "condition": "F_sinit",
+      "dataset": "ele-fashion",
+      "error": "a new external compute PID appeared; remaining cells were not launched",
+      "seed": 42,
+      "stage": "gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T11:13:06+00:00",
+      "training_started": false
+    }
+  ]
+}
