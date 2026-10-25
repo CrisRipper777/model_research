@@ -88,10 +88,29 @@ def _common_audit(dataset: str, condition: str, seed: int, data, cache, cfg) -> 
     }
 
 
-def cpu_preflight() -> dict[str, Any]:
+def cpu_preflight(*, reuse_focused_tests: bool = False) -> dict[str, Any]:
     started = time.perf_counter()
     started_utc = now()
-    test_record = run_unit_tests()
+    old = json.loads((DATA / "preflight.json").read_text(encoding="utf-8")) if (DATA / "preflight.json").is_file() else {}
+    if reuse_focused_tests:
+        source_attempt = next(
+            (
+                attempt for attempt in reversed(old.get("cpu_attempts", []))
+                if attempt.get("status") == "pass"
+                and attempt.get("unit_tests", {}).get("passed") is True
+            ),
+            None,
+        )
+        if source_attempt is None:
+            raise RuntimeError("no prior passing focused test result is available to reuse")
+        test_record = dict(source_attempt["unit_tests"])
+        test_record.update({
+            "reused": True,
+            "reused_from_cpu_attempt": source_attempt.get("attempt"),
+            "reuse_basis": "MR-CGE model, NC task runner, and focused test sources are unchanged; this update adds Toys data/cache coverage.",
+        })
+    else:
+        test_record = run_unit_tests()
     caches = pilot.cache_entries()
     records = {}
     for dataset in pilot.DATASETS:
@@ -149,7 +168,6 @@ def cpu_preflight() -> dict[str, Any]:
         "nvidia_smi": legacy.environment_record().get("physical_gpu_snapshot"),
         "source_git_sha": pilot.source_sha(),
     }
-    old = json.loads((DATA / "preflight.json").read_text(encoding="utf-8")) if (DATA / "preflight.json").is_file() else {}
     attempt = {
         "attempt": len(old.get("cpu_attempts", [])) + 1,
         "started_utc": started_utc,
@@ -170,8 +188,13 @@ def cpu_preflight() -> dict[str, Any]:
 
 def main() -> None:
     DATA.mkdir(parents=True, exist_ok=True)
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--reuse-focused-tests", action="store_true")
+    args = parser.parse_args()
     try:
-        record = cpu_preflight()
+        record = cpu_preflight(reuse_focused_tests=args.reuse_focused_tests)
     except Exception as exc:
         path = DATA / "preflight.json"
         old = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}

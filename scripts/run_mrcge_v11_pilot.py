@@ -44,7 +44,7 @@ STUDY = ROOT / "research/mrcge_v11"
 DATA = STUDY / "data"
 OUTPUT = ROOT / "outputs/mrcge_v11_pilot"
 RUNS = OUTPUT / "runs"
-DATASETS = ("Movies", "Grocery", "ele-fashion")
+DATASETS = ("Movies", "Grocery", "ele-fashion", "Toys")
 CONDITIONS = ("S", "F", "M")
 SEED = 42
 PROTOCOL = "unified_full_graph_nc_v1"
@@ -204,6 +204,44 @@ def build_cfg(dataset: str, condition: str, seed: int, device: str, cache: dict[
 
 def cache_entries() -> dict[str, dict[str, Any]]:
     entries = legacy.verify_cache_entries()
+    # Toys was already covered by the V7B.1 cache used in the validation
+    # expansion. Re-verify that cache against the current raw features before
+    # exposing it to this pilot; the legacy verifier is intentionally limited
+    # to the original three-dataset campaign.
+    toys_audit_path = ROOT / "research/hybrid_cge_validation_expansion_v1/data/data_audit.json"
+    if toys_audit_path.is_file():
+        toys_data_audit = json.loads(toys_audit_path.read_text(encoding="utf-8"))["datasets"]["Toys"]
+        for source in toys_data_audit["source_files"].values():
+            path = Path(source["path"])
+            if not path.is_file() or sha256_file(path) != source["sha256"]:
+                raise RuntimeError(f"Toys source file differs from the existing V7B.1 cache audit: {path}")
+        toys_cache = toys_data_audit["semantic_cache"]
+        cache_path = Path(toys_cache["path"])
+        if not cache_path.is_file() or sha256_file(cache_path) != toys_cache["sha256"]:
+            raise RuntimeError(f"Toys V7B.1 cache differs from its recorded audit: {cache_path}")
+        cache_payload = load_semantic_candidate_cache_v7b(
+            cache_path,
+            expected_dataset="Toys",
+            expected_feature_fingerprint=toys_cache["feature_fingerprint"],
+            expected_candidate_fingerprint=toys_cache["candidate_fingerprint"],
+            expected_v7b_fingerprint=toys_cache["v7b_fingerprint"],
+        )
+        metadata = cache_payload["metadata"]
+        if metadata.get("candidate_phase_label_access") is not False or metadata.get("cache_contains_labels") is not False:
+            raise RuntimeError("Toys V7B.1 cache does not certify label-free candidate construction")
+        entries["Toys"] = {
+            "dataset": "Toys", **toys_cache,
+            "cache_path_abs": str(cache_path.resolve()),
+            "cache_audit": {
+                "dataset": "Toys", "cache_path": str(cache_path.resolve()),
+                "num_nodes": int(metadata["num_nodes"]),
+                "feature_fingerprint": toys_cache["feature_fingerprint"],
+                "candidate_fingerprint": toys_cache["candidate_fingerprint"],
+                "v7b_fingerprint": toys_cache["v7b_fingerprint"],
+                "candidate_phase_label_access": metadata.get("candidate_phase_label_access"),
+                "cache_contains_labels": metadata.get("cache_contains_labels"),
+            },
+        }
     missing = [dataset for dataset in DATASETS if dataset not in entries]
     if missing:
         raise RuntimeError(f"verified V7B.1 semantic caches are missing for {missing}")
@@ -866,7 +904,11 @@ def run_guarded_child(action: str, dataset: str, condition: str, seed: int, phys
         raise RuntimeError(f"guarded {action} failed for {dataset}/{condition}/seed{seed}; see {log_file}")
 
 
-def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
+def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU, datasets: tuple[str, ...] | None = None) -> None:
+    scoped_datasets = tuple(datasets or DATASETS)
+    unknown = set(scoped_datasets) - set(DATASETS)
+    if unknown or not scoped_datasets:
+        raise ValueError(f"invalid GPU preflight dataset scope: {scoped_datasets}")
     preflight_path = DATA / "preflight.json"
     payload = json.loads(preflight_path.read_text(encoding="utf-8"))
     previous_attempts = [
@@ -878,21 +920,24 @@ def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
         if row.get("attempt") not in (None, "")
     )
     attempt = max(previous_attempts, default=0) + 1
+    full_scope = set(scoped_datasets) == set(DATASETS)
     payload.setdefault("gpu_preflight_attempts", []).append({
         "attempt": attempt, "physical_gpu": physical_gpu, "started_utc": now(),
+        "datasets": list(scoped_datasets), "scoped": not full_scope,
         "source_git_sha": source_sha(), "status": "running", "training_started": False,
         "test_evaluation": False,
     })
-    payload["gpu_single_step_status"] = "running"
-    payload["gpu_single_step_count"] = 0
-    payload["gpu_single_step_attempt"] = attempt
-    payload["gpu_single_step_physical_gpu"] = physical_gpu
-    payload.pop("gpu_single_step_block", None)
-    payload.pop("gpu_single_step_completed_utc", None)
+    if full_scope:
+        payload["gpu_single_step_status"] = "running"
+        payload["gpu_single_step_count"] = 0
+        payload["gpu_single_step_attempt"] = attempt
+        payload["gpu_single_step_physical_gpu"] = physical_gpu
+        payload.pop("gpu_single_step_block", None)
+        payload.pop("gpu_single_step_completed_utc", None)
     json_write(preflight_path, payload)
     baseline_pids = capture_gpu_baseline(physical_gpu)
     records = []
-    for dataset in DATASETS:
+    for dataset in scoped_datasets:
         for condition in CONDITIONS:
             try:
                 run_guarded_child("worker-gpu-preflight", dataset, condition, SEED, physical_gpu,
@@ -914,9 +959,10 @@ def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
                     "training_started": False, "test_evaluation": False, "recorded_utc": now(),
                 }
                 payload.setdefault("gpu_single_step", []).append(blocked)
-                payload["gpu_single_step_status"] = "blocked"
-                payload["gpu_single_step_count"] = len(records)
-                payload["gpu_single_step_block"] = blocked
+                if full_scope:
+                    payload["gpu_single_step_status"] = "blocked"
+                    payload["gpu_single_step_count"] = len(records)
+                    payload["gpu_single_step_block"] = blocked
                 payload["gpu_preflight_attempts"][-1].update({
                     "completed_utc": now(), "status": "blocked", "failed_dataset": dataset,
                     "failed_condition": condition, "error": repr(exc),
@@ -932,33 +978,59 @@ def run_gpu_preflight(physical_gpu: int = PHYSICAL_GPU) -> None:
                 raise RuntimeError(f"GPU single-step preflight result missing or failed for {dataset}/{condition}")
             records.append(row)
     payload = json.loads(preflight_path.read_text(encoding="utf-8"))
-    payload["gpu_single_step_status"] = "pass" if len(records) == len(DATASETS) * len(CONDITIONS) else "incomplete"
-    payload["gpu_single_step_count"] = len(records)
-    payload["gpu_single_step_completed_utc"] = now()
+    scope_status = "pass" if len(records) == len(scoped_datasets) * len(CONDITIONS) else "incomplete"
+    if full_scope:
+        payload["gpu_single_step_status"] = scope_status
+        payload["gpu_single_step_count"] = len(records)
+        payload["gpu_single_step_completed_utc"] = now()
     payload["gpu_preflight_attempts"][-1].update({
-        "completed_utc": payload["gpu_single_step_completed_utc"],
-        "status": payload["gpu_single_step_status"], "completed_cells": len(records),
+        "completed_utc": now(), "status": scope_status, "completed_cells": len(records),
     })
     json_write(preflight_path, payload)
 
 
-def run_pilot(physical_gpu: int = PHYSICAL_GPU) -> None:
+def run_pilot(physical_gpu: int = PHYSICAL_GPU, datasets: tuple[str, ...] | None = None) -> None:
+    scoped_datasets = tuple(datasets or DATASETS)
+    unknown = set(scoped_datasets) - set(DATASETS)
+    if unknown or not scoped_datasets:
+        raise ValueError(f"invalid Pilot dataset scope: {scoped_datasets}")
     preflight_path = DATA / "preflight.json"
     if not preflight_path.is_file():
         raise RuntimeError("CPU preflight must complete before formal Pilot training")
     preflight = json.loads(preflight_path.read_text(encoding="utf-8"))
     if preflight.get("cpu_status") != "pass" or preflight.get("gpu_single_step_status") != "pass":
-        raise RuntimeError("CPU/synthetic and nine-cell GPU single-step preflights must all pass")
+        raise RuntimeError("CPU/data preflight and the original GPU single-step gate must pass")
+    scoped_attempt = next(
+        (
+            row for row in reversed(preflight.get("gpu_preflight_attempts", []))
+            if row.get("physical_gpu") == physical_gpu
+            and set(scoped_datasets).issubset(set(row.get("datasets", ("Movies", "Grocery", "ele-fashion"))))
+        ),
+        None,
+    )
+    if scoped_attempt is None or scoped_attempt.get("status") != "pass":
+        raise RuntimeError(f"no passing GPU single-step preflight covers {scoped_datasets} on physical GPU {physical_gpu}")
+    for dataset in scoped_datasets:
+        rows = [
+            row for row in preflight.get("gpu_single_step", [])
+            if row.get("dataset") == dataset
+            and row.get("attempt") == scoped_attempt.get("attempt")
+            and row.get("physical_gpu") == physical_gpu
+            and row.get("status") == "pass"
+        ]
+        if {row.get("condition") for row in rows} != set(CONDITIONS):
+            raise RuntimeError(f"GPU single-step checks are incomplete for {dataset} on physical GPU {physical_gpu}")
     baseline_pids = capture_gpu_baseline(physical_gpu)
     complete = checked_complete_rows()
-    expected = {(dataset, condition, SEED) for dataset in DATASETS for condition in CONDITIONS}
-    for dataset, condition, seed in sorted(expected):
-        if (dataset, condition, seed) in complete:
-            print(f"SKIP verified {dataset}/{condition}/seed{seed}", flush=True)
-            continue
-        attempt, attempt_dir = next_attempt(dataset, condition, seed)
-        run_guarded_child("worker-train", dataset, condition, seed, physical_gpu, baseline_pids,
-                          attempt=attempt, attempt_dir=attempt_dir)
+    for dataset in sorted(scoped_datasets):
+        for condition in CONDITIONS:
+            seed = SEED
+            if (dataset, condition, seed) in complete:
+                print(f"SKIP verified {dataset}/{condition}/seed{seed}", flush=True)
+                continue
+            attempt, attempt_dir = next_attempt(dataset, condition, seed)
+            run_guarded_child("worker-train", dataset, condition, seed, physical_gpu, baseline_pids,
+                              attempt=attempt, attempt_dir=attempt_dir)
 
 
 def main() -> None:
@@ -973,6 +1045,7 @@ def main() -> None:
     parser.add_argument("--attempt", type=int)
     parser.add_argument("--attempt-dir")
     parser.add_argument("--physical-gpu", type=int, default=PHYSICAL_GPU)
+    parser.add_argument("--only-dataset", choices=DATASETS)
     args = parser.parse_args()
     if args.worker_train:
         worker_train(args.dataset, args.condition, args.seed, args.attempt, args.attempt_dir, args.physical_gpu)
@@ -985,9 +1058,9 @@ def main() -> None:
         json_write(path, payload)
         print(f"GPU_PREFLIGHT_PASS {args.dataset}/{args.condition}/seed{args.seed}", flush=True)
     elif args.run_gpu_preflight:
-        run_gpu_preflight(args.physical_gpu)
+        run_gpu_preflight(args.physical_gpu, (args.only_dataset,) if args.only_dataset else None)
     elif args.run_pilot:
-        run_pilot(args.physical_gpu)
+        run_pilot(args.physical_gpu, (args.only_dataset,) if args.only_dataset else None)
     else:
         parser.error("select --run-gpu-preflight, --run-pilot or an internal worker action")
 

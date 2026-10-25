@@ -26,3 +26,10 @@
 ## Training contract
 
 Only Movies, Grocery and ele-fashion, conditions S/F/M, and seed 42 are in Stage A. Each cell runs in its own process. The run configuration fixes AdamW, LR `1e-3`, WD `1e-4`, Dropout `0.2`, up to 300 epochs, patience 30, minimum epoch 30, gradient clip 1.0, every-epoch validation, and Best Validation Accuracy primary selection with a separate Best Validation Macro-F1 checkpoint. Test evaluation is false and Test labels are masked to `-100` before Trainer entry. No seed 43/44 or Test operation is allowed in this phase.
+
+## Authorized Toys extension
+
+- On 2026-10-25, the user added Toys S/F/M at seed 42 to the Validation-only pilot. The combined record therefore covers 12 seed-42 cells; the original nine cells and model/training math remain unchanged.
+- Use physical GPU 1 for this extension. The shared-GPU ownership and resource guard remains enabled; the earlier one-cell ele-fashion/M override does not apply to Toys.
+- Reuse the existing label-free Toys V7B.1 cache from `outputs/hybrid_cge_validation_expansion_v1/semantic_cache/`. Before use, verify its recorded source-file hashes, cache hash, dataset identity and feature/candidate/V7B fingerprints.
+- Do not run seeds 43/44 or Test evaluation, and do not change the historical Final Test Lock.

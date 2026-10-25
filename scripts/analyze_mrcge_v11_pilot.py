@@ -90,6 +90,13 @@ def main() -> None:
         previous = latest_attempt_by_key.get(key)
         if previous is None or int(row.get("attempt", 0)) >= int(previous.get("attempt", 0)):
             latest_attempt_by_key[key] = row
+    latest_gpu_rows = {}
+    for row in preflight.get("gpu_single_step", []):
+        key = (row.get("dataset"), row.get("condition"))
+        previous = latest_gpu_rows.get(key)
+        if previous is None or int(row.get("attempt", 0)) >= int(previous.get("attempt", 0)):
+            latest_gpu_rows[key] = row
+    gpu_passed_cells = sum(row.get("status") == "pass" for row in latest_gpu_rows.values())
     failures = json.loads((DATA / "failures.json").read_text(encoding="utf-8")) if (DATA / "failures.json").is_file() else {"failures": []}
     guard_overrides = json.loads((DATA / "guard_overrides.json").read_text(encoding="utf-8")) if (DATA / "guard_overrides.json").is_file() else {"overrides": []}
     runtime_guard_block = None
@@ -158,13 +165,9 @@ def main() -> None:
             blocked_rows = [row for row in preflight.get("gpu_single_step", []) if row.get("status") == "blocked"]
             gpu_block = blocked_rows[-1] if blocked_rows else None
     resource_rows = pilot.read_rows(DATA / "resource_summary.csv")
-    current_gpu_attempt = preflight.get("gpu_single_step_attempt")
-    current_gpu = preflight.get("gpu_single_step_physical_gpu")
     passing_gpu_rows = [
         row for row in preflight.get("gpu_single_step", [])
         if row.get("status") == "pass"
-        and (current_gpu_attempt is None or row.get("attempt") == current_gpu_attempt)
-        and (current_gpu is None or row.get("physical_gpu") == current_gpu)
     ]
     resource_keys = {
         (row.get("dataset"), row.get("condition"), str(row.get("seed", "")),
@@ -291,6 +294,8 @@ def main() -> None:
         "planned_formal_cells": all_planned, "completed_formal_cells": complete,
         "formal_pilot_status": formal_status,
         "gpu_single_step_status": preflight.get("gpu_single_step_status", "not_run"),
+        "gpu_single_step_cells_passed": gpu_passed_cells,
+        "gpu_preflight_attempts": preflight.get("gpu_preflight_attempts", []),
         "test_evaluation": False, "test_labels_masked_before_trainer": True,
         "seeds_43_44_run": False,
         "dataset_fingerprints": {
@@ -342,6 +347,7 @@ def main() -> None:
         preflight_lines.extend([
             f"Command: `{unit_tests.get('command', '')}`",
             f"Result: {'passed' if unit_tests.get('passed') else 'failed'}; {pytest_summary(unit_tests.get('stdout', ''))}.",
+            *( [f"Focused-test result reused from CPU preflight attempt {unit_tests.get('reused_from_cpu_attempt')}; MR-CGE model, NC task runner, and test sources are unchanged."] if unit_tests.get("reused") else [] ),
             "",
             "```text", unit_tests.get("stdout", "").strip(), "```",
         ])
@@ -352,13 +358,50 @@ def main() -> None:
         preflight_lines.extend([
             f"The guarded GPU single-step attempt for {gpu_block.get('dataset')}/{gpu_block.get('condition')}/seed{gpu_block.get('seed')} did not pass.",
             f"Recorded stage: `{gpu_block.get('stage', 'unknown')}`; reason: `{gpu_block.get('reason', 'not recorded')}`.",
-            "See `data/failures.json` and the referenced worker log for the full trace. Formal Pilot training remains gated until all nine GPU single-step checks pass.",
+            "See `data/failures.json` and the referenced worker log for the full trace. The relevant dataset must pass its guarded single-step checks before training.",
         ])
     elif preflight.get("gpu_single_step_status") == "pass":
         peak_mib = max((int(row.get("peak_allocated_bytes", 0)) for row in passing_gpu_rows), default=0) / (1024 ** 2)
+        completed_by_attempt = {}
+        for row in passing_gpu_rows:
+            completed_by_attempt.setdefault((row.get("attempt"), row.get("physical_gpu")), set()).add(
+                (row.get("dataset"), row.get("condition"))
+            )
+        full_preflights = [
+            (key, cells) for key, cells in completed_by_attempt.items()
+            if cells == {(dataset, condition) for dataset in DATASETS for condition in CONDITIONS}
+        ]
+        scoped_preflights = [
+            attempt for attempt in preflight.get("gpu_preflight_attempts", [])
+            if attempt.get("status") == "pass" and attempt.get("scoped")
+        ]
+        pieces = []
+        if full_preflights:
+            (attempt, physical_gpu), _cells = full_preflights[-1]
+            pieces.append(f"full {len(DATASETS) * len(CONDITIONS)}-cell gate passed on physical GPU {physical_gpu} (attempt {attempt})")
+        prior_nine = next(
+            (
+                (key, cells) for key, cells in completed_by_attempt.items()
+                if len(cells) == 9 and {dataset for dataset, _ in cells} == {"Movies", "Grocery", "ele-fashion"}
+            ),
+            None,
+        )
+        if prior_nine and not full_preflights:
+            (attempt, physical_gpu), _cells = prior_nine
+            pieces.append(f"original nine-cell gate passed on physical GPU {physical_gpu} (attempt {attempt})")
+        for attempt_row in scoped_preflights:
+            datasets = attempt_row.get("datasets", [])
+            cells = completed_by_attempt.get((attempt_row.get("attempt"), attempt_row.get("physical_gpu")), set())
+            if len(cells) == len(datasets) * len(CONDITIONS):
+                pieces.append(
+                    f"scoped {len(cells)}-cell gate for {', '.join(datasets)} passed on physical GPU {attempt_row.get('physical_gpu')} (attempt {attempt_row.get('attempt')})"
+                )
+            else:
+                pieces.append(
+                    f"scoped gate for {', '.join(datasets)} is {attempt_row.get('status')} on physical GPU {attempt_row.get('physical_gpu')} (attempt {attempt_row.get('attempt')})"
+                )
         preflight_lines.append(
-            f"All nine guarded GPU single-step checks passed on physical GPU {current_gpu if current_gpu is not None else 'recorded in each row'}; "
-            f"maximum measured allocated memory was {peak_mib:.0f} MiB. Earlier blocked attempts remain in the audit history."
+            f"{' and '.join(pieces) if pieces else 'Guarded GPU single-step checks passed'}; maximum measured allocated memory was {peak_mib:.0f} MiB. Earlier blocked attempts remain in the audit history."
         )
     else:
         preflight_lines.append("No GPU guard refusal was recorded in the current preflight attempt.")
@@ -382,15 +425,15 @@ def main() -> None:
     pilot_lines = [
         "# MR-CGE V1.1 Stage-A Pilot Report", "",
         "## Status", "",
-        f"Planned: {all_planned} Dataset × Condition × Seed cells (Movies/Grocery/ele-fashion × S/F/M × seed 42).",
+        f"Planned: {all_planned} Dataset × Condition × Seed cells ({'/'.join(DATASETS)} × S/F/M × seed 42).",
         f"Completed: {complete}/{all_planned}; formal cells with a recorded attempt: {len(attempted_cells)}.",
     ]
     if complete == all_planned:
-        pilot_lines.append("All nine authorized seed-42 Validation-only cells completed.")
+        pilot_lines.append(f"All {all_planned} authorized seed-42 Validation-only cells completed.")
     elif gpu_block:
         pilot_lines.append("The guarded GPU single-step gate did not pass; no threshold was bypassed.")
     elif preflight.get("gpu_single_step_status") == "pass" and not attempted_cells:
-        pilot_lines.append("All nine GPU single-step checks passed; formal Pilot training has not started yet.")
+        pilot_lines.append(f"All {len(DATASETS) * len(CONDITIONS)} GPU single-step checks passed; formal Pilot training has not started yet.")
     elif runtime_guard_block:
         pilot_lines.append(
             f"The runtime GPU ownership guard interrupted {runtime_guard_block.get('dataset')}/"
@@ -448,7 +491,7 @@ def main() -> None:
     else:
         pilot_lines.append(
             "- Formal gradient traces: `data/loss_gradient_diagnostics.csv` is header-only, so per-run training gradient magnitudes were not recorded. "
-            "The nine GPU single-step preflights and focused tests checked finite gradients, but do not replace formal-run gradient traces."
+            "The GPU single-step preflights and focused tests checked finite gradients, but do not replace formal-run gradient traces."
         )
     if route_rows and expert_rows and response_rows:
         route_shares = [
@@ -480,7 +523,7 @@ def main() -> None:
             "",
             "## Mechanism diagnostics in completed M cells",
             "",
-            f"Diagnostics are available for {len({row.get('dataset') for row in route_rows})} completed M cells (Movies and Grocery), across {len(route_rows)} recorded private/collaborative router views.",
+            f"Diagnostics are available for {len({row.get('dataset') for row in route_rows})} completed M cells ({', '.join(sorted({row.get('dataset') for row in route_rows}))}), across {len(route_rows)} recorded private/collaborative router views.",
         ])
         if route_shares:
             pilot_lines.append(
@@ -507,7 +550,10 @@ def main() -> None:
                 pilot_lines.append(
                     f"- Late completion: mean p_accept was {min(late_accept):.3f}–{max(late_accept):.3f}, gate mean {min(late_gate):.3f}–{max(late_gate):.3f}, and late delta/RMS ratios {min(late_ratio):.3f}–{max(late_ratio):.3f}; the path was active but its predictive contribution is not isolated by this Pilot."
                 )
-        pilot_lines.append("These are end-of-run descriptive diagnostics for two datasets and one seed; ele-fashion/M has no completed run, and no causal or generalization claim follows.")
+        mechanism_datasets = sorted({row.get("dataset") for row in route_rows})
+        pilot_lines.append(
+            f"These are end-of-run descriptive diagnostics for {len(mechanism_datasets)} completed M dataset(s) ({', '.join(mechanism_datasets) or 'none'}) and one seed; no causal or generalization claim follows."
+        )
     if not complete:
         pilot_lines.extend([
             "",
@@ -523,7 +569,7 @@ def main() -> None:
         "",
         "## Scope guard", "",
         "No Test metric or model selection used Test labels. Test labels were masked to `-100` before Trainer entry. "
-        "Seeds 43/44, the remaining 18 formal runs, full 27-run training, tuning and ablations were not started.",
+        f"Only seed 42 was run for the {len(DATASETS)} listed datasets. Seeds 43/44, Test evaluation, additional training cells, tuning and ablations were not started.",
         "",
     ])
     if complete == all_planned:
@@ -536,7 +582,7 @@ def main() -> None:
     elif gpu_block:
         pilot_lines.append("Repeat the guarded GPU preflight only after resolving the recorded failure; preserve all prior attempts.")
     elif preflight.get("gpu_single_step_status") == "pass":
-        pilot_lines.append("The GPU preflight gate passed. Continue only the nine authorized seed-42 cells; the runner skips verified completed cells.")
+        pilot_lines.append(f"The GPU preflight gate passed. Continue only the {all_planned} authorized seed-42 cells; the runner skips verified completed cells.")
     else:
         pilot_lines.append("Review the preflight evidence and resolve blockers before starting the authorized seed-42 cells.")
     (pilot.STUDY / "PILOT_REPORT.md").write_text("\n".join(pilot_lines) + "\n", encoding="utf-8")
@@ -563,7 +609,7 @@ def main() -> None:
         "The actual-data CPU preflight verifies cache fingerprints, source_flags, global node order, Test masking and condition initialization hashes.",
         (
             f"GPU single-step preflight status: {preflight.get('gpu_single_step_status', 'not run')} "
-            f"({preflight.get('gpu_single_step_count', 0)}/{all_planned} cells). Full-epoch behavior and multi-seed performance remain separate questions."
+            f"({gpu_passed_cells}/{all_planned} latest per-cell checks passed). Full-epoch behavior and multi-seed performance remain separate questions."
         ),
         (
             "Formal runs include per-epoch loss scalars, but `data/loss_gradient_diagnostics.csv` is header-only; "
