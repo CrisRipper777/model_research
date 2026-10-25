@@ -340,12 +340,7 @@ def load_cell_data(model_name: str, condition: str, dataset: str, seed: int,
 def assert_fingerprints_match_v13(dataset: str, seed: int, fp: dict[str, Any],
                                   split_path: Path, cache: dict[str, Any]) -> dict[str, Any]:
     baseline_seed = seed
-    v13_rows = [row for row in read_rows(ROOT / "research/mrcge_v13/data/runs.csv")
-                if row.get("dataset") == dataset and row.get("variant") == "joint_view"
-                and int(row.get("seed", -1)) == baseline_seed and row.get("status") == "complete"]
-    if len(v13_rows) != 1:
-        raise RuntimeError(f"expected one frozen V1.3-A reference for {dataset}/seed{baseline_seed}")
-    reference = v13_rows[0]
+    reference = v13_reference(dataset, baseline_seed)
     expected_fields = {
         "feature_fingerprint": cache["feature_fingerprint"],
         "dataset_fingerprint": fp["features"],
@@ -428,9 +423,19 @@ def v13_reference(dataset: str, seed: int) -> dict[str, str]:
     rows = [row for row in read_rows(ROOT / "research/mrcge_v13/data/runs.csv")
             if row.get("dataset") == dataset and row.get("variant") == "joint_view"
             and row.get("seed") == str(seed) and row.get("status") == "complete"]
-    if len(rows) != 1:
-        raise RuntimeError(f"expected one V1.3-A reference for {dataset}/seed{seed}, found {len(rows)}")
-    return rows[0]
+    if len(rows) == 1:
+        return rows[0]
+    # Movies seed 44 was trained later under the frozen fixed-split comparison
+    # campaign and is intentionally absent from the original V1.3 screen CSV.
+    if not rows and dataset == "Movies" and seed == 44:
+        fixed_rows = [row for row in read_rows(
+            ROOT / "research/mrcge_v13_physical_basis/data/fixed_split_hybrid_comparison.csv")
+            if row.get("model") == V13_MODEL and row.get("condition") == "joint_view"
+            and row.get("dataset") == dataset and row.get("seed") == str(seed)
+            and row.get("status") == "complete"]
+        if len(fixed_rows) == 1:
+            return fixed_rows[0]
+    raise RuntimeError(f"expected one frozen V1.3-A reference for {dataset}/seed{seed}, found {len(rows)}")
 
 
 def verify_checkpoint_record(row: dict[str, str], *, label: str) -> dict[str, Any]:
@@ -1448,7 +1453,15 @@ def main() -> None:
     cells = target_cells(models=args.model, conditions=args.condition,
                          datasets=args.dataset, seeds=args.seed)
     if args.cpu_preflight:
-        result = cpu_preflight()
+        try:
+            result = cpu_preflight()
+        except Exception as exc:
+            prior = read_json(DATA / "failures.json", {"failures": []})
+            attempt = 1 + sum(1 for item in prior.get("failures", []) if item.get("stage") == "cpu_preflight")
+            append_failure({"model": STATIC_MODEL, "condition": STATIC_CONDITION,
+                "attempt": attempt, "stage": "cpu_preflight", "status": "failed",
+                "source_git_sha": source_sha(), "error": repr(exc), "test_evaluation": False})
+            raise
         print(json.dumps({"status": result["status"], "cells": len(result["authorized_training_cells"]),
                           "preflight": str(DATA / "preflight.json")}, ensure_ascii=False))
     elif args.gpu_preflight:
