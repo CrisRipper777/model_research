@@ -217,6 +217,13 @@ def main() -> None:
             str(runtime_guard_block.get("seed", "")), str(runtime_guard_block.get("attempt", "")),
             "pilot_runtime_guard_blocked",
         )
+        if key in resource_keys:
+            resource_rows = [
+                row for row in resource_rows
+                if (row.get("dataset"), row.get("condition"), str(row.get("seed", "")),
+                    str(row.get("attempt", "")), row.get("phase")) != key
+            ]
+            resource_keys.discard(key)
         if key not in resource_keys:
             resource_rows.append({
                 "dataset": runtime_guard_block.get("dataset", ""),
@@ -549,7 +556,7 @@ def main() -> None:
         (
             "Review the completed Stage-A Validation-only evidence before deciding on later seeds. "
             if complete == all_planned else (
-                "Resume the remaining authorized seed-42 cells only after a fresh ownership guard passes on an idle GPU. "
+                "Resume the remaining authorized seed-42 cell only when GPU 1 has enough headroom for M and a fresh ownership guard passes. "
                 if runtime_guard_block else "Resume only the remaining authorized seed-42 cells after the GPU single-step gate passes. "
             )
         )
