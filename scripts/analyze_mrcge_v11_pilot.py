@@ -403,7 +403,7 @@ def main() -> None:
             pilot_lines.append(
                 f"| {row['dataset']} | {row['condition']} | {row['val_acc']} | {row['val_macro_f1']} | {row['val_ce']} |"
             )
-        pilot_lines.extend(["", "Use the expert, route, response, loss-gradient and resource diagnostics to inspect model behavior."])
+        pilot_lines.extend(["", "See the expert, route, response and resource diagnostics alongside epoch-level loss values."])
     else:
         pilot_lines.append(
             "There are no S/F/M Accuracy, Macro-F1, or CE Pilot values. `condition_summary.csv` and "
@@ -412,6 +412,14 @@ def main() -> None:
     expert_rows = [row for row in pilot.read_rows(DATA / "expert_diagnostics.csv") if row.get("condition") == "M"]
     route_rows = [row for row in pilot.read_rows(DATA / "route_diagnostics.csv") if row.get("condition") == "M"]
     response_rows = [row for row in pilot.read_rows(DATA / "response_diagnostics.csv") if row.get("condition") == "M"]
+    gradient_rows = pilot.read_rows(DATA / "loss_gradient_diagnostics.csv")
+    if gradient_rows:
+        pilot_lines.append(f"- Formal gradient traces: `{len(gradient_rows)}` parameter-gradient records are available in `data/loss_gradient_diagnostics.csv`.")
+    else:
+        pilot_lines.append(
+            "- Formal gradient traces: `data/loss_gradient_diagnostics.csv` is header-only, so per-run training gradient magnitudes were not recorded. "
+            "The nine GPU single-step preflights and focused tests checked finite gradients, but do not replace formal-run gradient traces."
+        )
     if route_rows and expert_rows and response_rows:
         route_shares = [
             float(value) for row in route_rows
@@ -469,7 +477,7 @@ def main() -> None:
                 pilot_lines.append(
                     f"- Late completion: mean p_accept was {min(late_accept):.3f}–{max(late_accept):.3f}, gate mean {min(late_gate):.3f}–{max(late_gate):.3f}, and late delta/RMS ratios {min(late_ratio):.3f}–{max(late_ratio):.3f}; the path was active but its predictive contribution is not isolated by this Pilot."
                 )
-        pilot_lines.append("These are end-of-run descriptive diagnostics for two datasets and one seed; ele-fashion/M remains unrun, and no causal or generalization claim follows.")
+        pilot_lines.append("These are end-of-run descriptive diagnostics for two datasets and one seed; ele-fashion/M has no completed run, and no causal or generalization claim follows.")
     if not complete:
         pilot_lines.extend([
             "",
@@ -492,7 +500,7 @@ def main() -> None:
         pilot_lines.append("Stage-A is complete. Independently review metrics, failures and diagnostics before authorizing later seeds or Test-lock activity.")
     elif runtime_guard_block:
         pilot_lines.append(
-            "Resume the remaining cell only when a fresh ownership/resource guard passes. The runner will preserve every failed attempt, "
+            "Resume the remaining M cell only when GPU 1 has enough headroom and a fresh ownership/resource guard passes. The runner will preserve every failed attempt, "
             "skip verified completed cells, and create the next attempt for the interrupted cell."
         )
     elif gpu_block:
@@ -526,6 +534,10 @@ def main() -> None:
         (
             f"GPU single-step preflight status: {preflight.get('gpu_single_step_status', 'not run')} "
             f"({preflight.get('gpu_single_step_count', 0)}/{all_planned} cells). Full-epoch behavior and multi-seed performance remain separate questions."
+        ),
+        (
+            "Formal runs include per-epoch loss scalars, but `data/loss_gradient_diagnostics.csv` is header-only; "
+            "single-step preflight gradients do not provide per-run training gradient magnitudes."
         ),
         "",
         "Parameter counts from CPU initialization preflight:", "",
