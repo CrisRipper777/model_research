@@ -303,10 +303,23 @@ def append_failure(record: dict[str, Any]) -> None:
 
 
 def capture_gpu_baseline(physical_gpu: int = PHYSICAL_GPU) -> set[int]:
-    snap = smi_snapshot()
-    selected = next((item for item in snap["devices"] if item["physical_index"] == physical_gpu), None)
-    if selected is None:
-        raise RuntimeError(f"physical GPU {physical_gpu} is missing")
+    try:
+        snap = smi_snapshot()
+        selected = next((item for item in snap["devices"] if item["physical_index"] == physical_gpu), None)
+        if selected is None:
+            raise RuntimeError(f"physical GPU {physical_gpu} is missing")
+    except Exception as exc:
+        record = {
+            "stage": "gpu_baseline_snapshot", "action": "run_pilot",
+            "physical_gpu": physical_gpu, "seed": SEED, "attempt": None,
+            "training_started": False, "source_git_sha": source_sha(),
+            "error": repr(exc),
+        }
+        diagnostic = getattr(exc, "stderr", None) or getattr(exc, "output", None)
+        if diagnostic:
+            record["diagnostic"] = diagnostic.decode(errors="replace") if isinstance(diagnostic, bytes) else str(diagnostic)
+        append_failure(record)
+        raise
     pids = {
         app["pid"] for app in snap["compute_processes"]
         if app["gpu_uuid"] == selected["uuid"]
