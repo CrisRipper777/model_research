@@ -455,11 +455,27 @@ def verify_checkpoint_record(row: dict[str, str], *, label: str) -> dict[str, An
     return {"best_accuracy": records[0], "best_f1": records[1]}
 
 
+def verify_v12_fixed_split_reference(dataset: str, expected_split: str,
+                                     expected_sha: str) -> dict[str, Any]:
+    """Fill absent per-run V1.2 split SHA from its frozen data preflight audit."""
+    payload = read_json(ROOT / "research/mrcge_v12_confirmation/data/preflight.json", {})
+    matches = [row for row in payload.get("datasets", []) if row.get("dataset") == dataset
+               and row.get("split_fingerprint") == expected_split
+               and row.get("split_file_sha256")]
+    if not matches:
+        raise RuntimeError(f"V1.2 data preflight lacks the fixed split SHA for {dataset}")
+    shas = {row["split_file_sha256"] for row in matches}
+    paths = {str(Path(row["split_file_path"]).resolve()) for row in matches if row.get("split_file_path")}
+    if shas != {expected_sha} or paths != {str(fixed_split_path(dataset).resolve())}:
+        raise RuntimeError(f"V1.2 fixed split preflight audit differs for {dataset}: hashes={shas}, paths={paths}")
+    return {"split_file_sha256": expected_sha, "split_file_path": str(fixed_split_path(dataset)),
+            "verified_from": "research/mrcge_v12_confirmation/data/preflight.json",
+            "reference_seeds": sorted({int(row["seed"]) for row in matches})}
+
+
 def historical_references(cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
     references: dict[str, Any] = {"v13_a": [], "v12_m_repaired": [], "hybrid_fixed_split": []}
     selected_v12 = read_rows(V12_SELECTED)
-    v12_runs = read_rows(ROOT / "research/mrcge_v12_confirmation/data/runs.csv")
-    v13_split_rows = []
     for dataset in DATASETS:
         seeds = (42, 43, 44) if dataset == "Movies" else (42, 43)
         for seed in seeds:
@@ -486,8 +502,6 @@ def historical_references(cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
                     "model_parameters", "total_parameters", "wall_seconds", "peak_reserved_bytes")},
                 "checkpoints": v13_hashes,
             })
-            v13_split_rows.append(v13)
-
             eligible = [row for row in selected_v12 if row.get("dataset") == dataset
                         and row.get("condition") == "M_repaired" and row.get("seed") == str(seed)
                         and row.get("status") == "complete"
@@ -500,8 +514,12 @@ def historical_references(cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
                     and str(v12.get("checkpoint_best_f1_verified", "")).lower() == "true"):
                 raise RuntimeError(f"V1.2 {dataset}/seed{seed} selected record lacks dual checkpoint verification")
             v12_hashes = verify_checkpoint_record(v12, label=f"V1.2 M_repaired {dataset}/seed{seed}")
-            if v12.get("split_fingerprint") != expected_split or v12.get("split_file_sha256") != expected_split_sha:
+            if v12.get("split_fingerprint") != expected_split:
                 raise RuntimeError(f"V1.2 {dataset}/seed{seed} split differs from the frozen study split")
+            recorded_v12_split_sha = str(v12.get("split_file_sha256") or "")
+            if recorded_v12_split_sha and recorded_v12_split_sha != expected_split_sha:
+                raise RuntimeError(f"V1.2 {dataset}/seed{seed} recorded split-file SHA differs")
+            v12_split_audit = verify_v12_fixed_split_reference(dataset, expected_split, expected_split_sha)
             for field, value in (("feature_fingerprint", cache[dataset]["feature_fingerprint"]),
                                  ("semantic_cache_sha256", sha256_file(cache[dataset]["cache_path_abs"])),
                                  ("candidate_fingerprint", cache[dataset]["candidate_fingerprint"]),
@@ -512,6 +530,8 @@ def historical_references(cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
                 "model": "mrcge_v12", "condition": "M_repaired", "dataset": dataset, "seed": seed,
                 "attempt": v12.get("attempt"), "source_git_sha": v12.get("source_git_sha"),
                 "split_fingerprint": v12.get("split_fingerprint"),
+                "split_file_sha256_verified": expected_split_sha,
+                "split_file_audit": v12_split_audit,
                 "metrics": {key: v12.get(key) for key in ("val_acc", "val_macro_f1", "val_ce",
                     "best_f1_val_acc", "best_f1_val_macro_f1", "best_f1_val_ce", "train_acc", "train_ce",
                     "best_acc_epoch", "best_f1_epoch", "model_parameters", "total_parameters", "wall_seconds",
@@ -1459,7 +1479,7 @@ def main() -> None:
             prior = read_json(DATA / "failures.json", {"failures": []})
             attempt = 1 + sum(1 for item in prior.get("failures", []) if item.get("stage") == "cpu_preflight")
             append_failure({"model": STATIC_MODEL, "condition": STATIC_CONDITION,
-                "attempt": attempt, "stage": "cpu_preflight", "status": "failed",
+                "dataset": "all", "attempt": attempt, "stage": "cpu_preflight", "status": "failed",
                 "source_git_sha": source_sha(), "error": repr(exc), "test_evaluation": False})
             raise
         print(json.dumps({"status": result["status"], "cells": len(result["authorized_training_cells"]),

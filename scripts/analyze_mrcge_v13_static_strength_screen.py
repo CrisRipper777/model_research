@@ -67,10 +67,7 @@ def verify_checkpoints(row: dict[str, str], label: str) -> None:
 
 
 def history_refs(dataset: str, seed: int) -> tuple[dict[str, str], dict[str, str]]:
-    v13_rows = runner.read_rows(ROOT / "research/mrcge_v13/data/runs.csv")
-    v13 = match_one(v13_rows, lambda row: row.get("dataset") == dataset
-        and row.get("variant") == "joint_view" and row.get("seed") == str(seed)
-        and row.get("status") == "complete", f"V1.3-A {dataset}/seed{seed}")
+    v13 = runner.v13_reference(dataset, seed)
     verify_checkpoints(v13, f"V1.3-A {dataset}/seed{seed}")
 
     v12_rows = runner.read_rows(ROOT / "research/mrcge_v12_confirmation/data/combined_selected_runs.csv")
@@ -89,8 +86,13 @@ def history_refs(dataset: str, seed: int) -> tuple[dict[str, str], dict[str, str
     for row, name in ((v12, "V1.2"), (v13, "V1.3-A")):
         if row.get("split_fingerprint") != expected_split:
             raise RuntimeError(f"{name} {dataset}/seed{seed} has a different split fingerprint")
-    if v12.get("split_file_sha256") != v13.get("split_file_sha256"):
-        raise RuntimeError(f"V1.2/V1.3-A split file SHA mismatch for {dataset}/seed{seed}")
+    expected_sha = runner.sha256_file(runner.fixed_split_path(dataset))
+    v12_sha = v12.get("split_file_sha256") or ""
+    if v12_sha and v12_sha != expected_sha:
+        raise RuntimeError(f"V1.2 recorded split file SHA mismatch for {dataset}/seed{seed}")
+    runner.verify_v12_fixed_split_reference(dataset, expected_split, expected_sha)
+    if v13.get("split_file_sha256") != expected_sha:
+        raise RuntimeError(f"V1.3-A split file SHA mismatch for {dataset}/seed{seed}")
     return v12, v13
 
 
@@ -126,11 +128,24 @@ def canonical(row: dict[str, str], model: str, condition: str, display: str,
 def get_baseline_view_diagnostics(dataset: str, seed: int, v13: dict[str, str]) -> dict[str, str]:
     path = ROOT / "research/mrcge_v13/data/view_diagnostics.csv"
     rows = runner.read_rows(path)
-    row = match_one(rows, lambda item: item.get("dataset") == dataset
+    candidates = [item for item in rows if item.get("dataset") == dataset
         and item.get("variant") == "joint_view" and item.get("seed") == str(seed)
         and item.get("scope") == "best_accuracy_validation"
-        and item.get("source_git_sha") == v13.get("source_git_sha"),
-        f"V1.3-A best-accuracy view diagnostics {dataset}/seed{seed}")
+        and item.get("source_git_sha") == v13.get("source_git_sha")]
+    if len(candidates) == 1:
+        row = candidates[0]
+    elif not candidates and dataset == "Movies" and seed == 44:
+        fixed = match_one(runner.read_rows(ROOT / "research/mrcge_v13_physical_basis/data/fixed_split_hybrid_comparison.csv"),
+            lambda item: item.get("model") == "mrcge_v13" and item.get("condition") == "joint_view"
+            and item.get("dataset") == dataset and item.get("seed") == str(seed),
+            f"fixed-split V1.3-A Movies/seed{seed}")
+        payload = runner.read_json(Path(fixed["mechanism_diagnostics_path"]), {})
+        view = payload.get("views", {})
+        if view.get("source_git_sha") != v13.get("source_git_sha"):
+            raise RuntimeError("Movies/seed44 mechanism diagnostic source SHA mismatch")
+        row = json.loads(view.get("mechanism", "{}"))
+    else:
+        raise RuntimeError(f"expected one V1.3-A best-accuracy diagnostic for {dataset}/seed{seed}, found {len(candidates)}")
     for modality in ("text", "visual"):
         for relation in ("sP", "sS"):
             for suffix in ("mean", "std", "p10", "p50", "p90"):
