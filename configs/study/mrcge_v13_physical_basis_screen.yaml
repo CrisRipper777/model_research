@@ -1,0 +1,55 @@
+study: mrcge_v13_physical_basis_screen
+base_sha: 4864db09356fb3a426c03dc1e2c097af5342aebb
+base_branch: exp/mrcge_v13_view_cross_screen
+branch: exp/mrcge_v13_physical_basis_screen
+datasets: [Movies, Grocery]
+physical_gpu: 1
+split_seed: 42
+split_fingerprints:
+  Movies: 2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d
+  Grocery: 7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056
+auto_generate_splits: false
+semantic_cache_candidate: V7B.1
+semantic_knn_k: 8
+test_evaluation: false
+link_prediction: false
+training:
+  protocol_version: unified_full_graph_nc_v1
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 300
+  patience: 30
+  early_stop_min_epoch: 30
+  early_stop_min_delta: 0.0001
+  gradient_clip: 1.0
+  dropout: 0.2
+  late_dropout: 0.15
+  private_auxiliary_ce_weight: 0.3
+  balance_loss_weight: 0.01
+  checkpoint_primary: best_validation_accuracy
+  checkpoint_secondary: best_validation_macro_f1
+authorized_new_training_cells:
+  - {model: hybrid_cge_paper_v1, condition: H2_physical_3hop, dataset: Movies, seed: 43}
+  - {model: hybrid_cge_paper_v1, condition: H2_physical_3hop, dataset: Movies, seed: 44}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 44}
+  - {model: mrcge_v13_basis_screen, condition: joint_view_physical_no_p0, dataset: Movies, seed: 42}
+  - {model: mrcge_v13_basis_screen, condition: joint_view_physical_no_p0, dataset: Movies, seed: 43}
+  - {model: mrcge_v13_basis_screen, condition: joint_view_physical_no_p0, dataset: Grocery, seed: 42}
+  - {model: mrcge_v13_basis_screen, condition: joint_view_physical_no_p0, dataset: Grocery, seed: 43}
+reference_only_conditions:
+  - {model: hybrid_cge_paper_v1, condition: H2_physical_3hop, dataset: Movies, seed: 42, source: corrected_attempt_02}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 42}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 43}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 42, baseline_for: no_p0}
+  - {model: mrcge_v13, condition: joint_view, dataset: Movies, seed: 43, baseline_for: no_p0}
+  - {model: mrcge_v13, condition: joint_view, dataset: Grocery, seed: 42, baseline_for: no_p0}
+  - {model: mrcge_v13, condition: joint_view, dataset: Grocery, seed: 43, baseline_for: no_p0}
+forbidden:
+  - Test
+  - link_prediction
+  - static_strength
+  - cross_modification
+  - additional_physical_order_search
+  - seed_45
+  - ele-fashion_no_p0
