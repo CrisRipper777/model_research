@@ -1,6 +1,7 @@
 {
   "base_sha": "0e2496efe852c76fcd06c1477de12f41ac085e7c",
   "branch": "exp/mrcge_v12_anchor_performance_screen",
+  "completed_core_cells": 2,
   "conditions": [
     "S_repaired",
     "F_sinit",
@@ -13,14 +14,19 @@
     "Toys",
     "ele-fashion"
   ],
-  "formal_training_started": false,
+  "failed_core_attempts": 1,
+  "fashion_bonus_status": "not_started_stage3_halted",
+  "formal_training_started": true,
   "physical_gpu": 1,
+  "screening_status": "halted_gpu_ownership_guard",
   "seeds": [
     42
   ],
+  "stage3_guard_event_utc": "2026-10-25T05:57:53+00:00",
   "study": "MR-CGE V1.2 Shared Graph Filter Performance Optimization",
   "test_evaluation": false,
   "test_label_values_indexed": false,
   "test_labels_were_not_mutated": true,
-  "training_frozen_sha": null
+  "training_frozen_sha": "9cfe6e4d0bbd7e6949eb52a76c15caebf3aa12bd",
+  "unstarted_core_cells": 9
 }

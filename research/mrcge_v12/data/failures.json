@@ -80,6 +80,220 @@
       "test_evaluation": false,
       "time_utc": "2026-10-25T05:38:41+00:00",
       "training_started": false
+    },
+    {
+      "action": "worker-train",
+      "attempt": 1,
+      "child_pid": 4030835,
+      "condition": "M_repaired",
+      "dataset": "Movies",
+      "error": "RuntimeError('shared-GPU guard saw new foreign compute PIDs [4030361]; refusing/aborting this run')",
+      "gpu_snapshot": {
+        "captured_utc": "2026-10-25T05:57:53+00:00",
+        "compute_processes": [
+          {
+            "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
+            "pid": 3842120,
+            "used_memory_mib": 15110
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 3949460,
+            "used_memory_mib": 2962
+          },
+          {
+            "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+            "pid": 4030361,
+            "used_memory_mib": 596
+          }
+        ],
+        "devices": [
+          {
+            "memory_free_mib": 9031,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 15221,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 0,
+            "temperature_c": 81,
+            "utilization_percent": 84,
+            "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
+          },
+          {
+            "memory_free_mib": 20682,
+            "memory_total_mib": 24576,
+            "memory_used_mib": 3576,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 66,
+            "utilization_percent": 19,
+            "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+          }
+        ]
+      },
+      "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v12_screen/guard_logs/Movies_M_repaired_seed42_attempt01.log",
+      "physical_gpu": 1,
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "shared_gpu_runtime_guard",
+      "terminated_own_child_only": true,
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": true
+    },
+    {
+      "attempt": 0,
+      "condition": "M_repaired",
+      "dataset": "Movies",
+      "error": "shared-GPU guard saw new foreign compute PIDs [4030361]; refusing/aborting this run",
+      "seed": 42,
+      "stage": "screening_resource_gate",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_anchor",
+      "dataset": "Movies",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "S_repaired",
+      "dataset": "Grocery",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "F_sinit",
+      "dataset": "Grocery",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_repaired",
+      "dataset": "Grocery",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_anchor",
+      "dataset": "Grocery",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "S_repaired",
+      "dataset": "Toys",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "F_sinit",
+      "dataset": "Toys",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_repaired",
+      "dataset": "Toys",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_anchor",
+      "dataset": "Toys",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_repaired",
+      "dataset": "ele-fashion",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
+    },
+    {
+      "attempt": 0,
+      "condition": "M_anchor",
+      "dataset": "ele-fashion",
+      "error": "blocked_resource: Stage 3 halted after the shared-GPU ownership guard detected new external compute PID 4030361 during Movies/M_repaired; no training attempt was started for this cell.",
+      "seed": 42,
+      "source_git_sha": "9cfe6e491d2ea2a58de01101af5032199c37cf14",
+      "stage": "stage3_aborted_after_gpu_ownership_guard",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "time_utc": "2026-10-25T05:57:53+00:00",
+      "training_started": false
     }
   ]
 }

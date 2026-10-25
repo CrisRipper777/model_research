@@ -1,11 +1,10 @@
 {
   "authorization_note": "Physical CUDA 1 use authorized for this MR-CGE run; no foreign PID may be added or modified.",
   "authorized_baseline_compute_pids": [
-    3949460,
-    4020537
+    3949460
   ],
   "authorized_shared_physical_gpu": 1,
-  "captured_utc": "2026-10-25T05:40:08+00:00",
+  "captured_utc": "2026-10-25T05:53:12+00:00",
   "compute_processes": [
     {
       "gpu_uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce",
@@ -16,11 +15,6 @@
       "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
       "pid": 3949460,
       "used_memory_mib": 2962
-    },
-    {
-      "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
-      "pid": 4020537,
-      "used_memory_mib": 4026
     }
   ],
   "devices": [
@@ -30,18 +24,18 @@
       "memory_used_mib": 15221,
       "name": "NVIDIA GeForce RTX 3090",
       "physical_index": 0,
-      "temperature_c": 66,
-      "utilization_percent": 2,
+      "temperature_c": 80,
+      "utilization_percent": 90,
       "uuid": "GPU-28bf6c52-0671-4e90-e88b-4e47457b7cce"
     },
     {
-      "memory_free_mib": 17252,
+      "memory_free_mib": 21281,
       "memory_total_mib": 24576,
-      "memory_used_mib": 7006,
+      "memory_used_mib": 2977,
       "name": "NVIDIA GeForce RTX 3090",
       "physical_index": 1,
-      "temperature_c": 69,
-      "utilization_percent": 54,
+      "temperature_c": 65,
+      "utilization_percent": 2,
       "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
     }
   ]
