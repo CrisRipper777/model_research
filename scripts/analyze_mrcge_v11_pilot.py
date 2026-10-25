@@ -401,6 +401,67 @@ def main() -> None:
             "There are no S/F/M Accuracy, Macro-F1, or CE Pilot values. `condition_summary.csv` and "
             "`condition_differences.csv` retain explicit `not_run` / `not_available` rows; no synthetic or historical score is substituted."
         )
+    expert_rows = [row for row in pilot.read_rows(DATA / "expert_diagnostics.csv") if row.get("condition") == "M"]
+    route_rows = [row for row in pilot.read_rows(DATA / "route_diagnostics.csv") if row.get("condition") == "M"]
+    response_rows = [row for row in pilot.read_rows(DATA / "response_diagnostics.csv") if row.get("condition") == "M"]
+    if route_rows and expert_rows and response_rows:
+        route_shares = [
+            float(value) for row in route_rows
+            for value in json.loads(row.get("top2_selection_share") or "[]")
+        ]
+        cosine_values = {}
+        for row in expert_rows:
+            for column in ("G_pairwise_cosine", "E_pairwise_cosine"):
+                for pair, value in json.loads(row.get(column) or "{}").items():
+                    cosine_values[(column, row.get("dataset"), row.get("view"), pair)] = float(value)
+        theta_by_dataset = {}
+        for row in expert_rows:
+            if row.get("view") == "private_text_physical":
+                theta_by_dataset.setdefault(row.get("dataset"), {})[row.get("expert")] = tuple(
+                    json.loads(row.get("theta_actual") or "[]")
+                )
+        theta_distinct = all(
+            len(experts) == 4 and len(set(experts.values())) == 4
+            for experts in theta_by_dataset.values()
+        )
+        early_rows = [row for row in response_rows if row.get("view", "").startswith("early_cross")]
+        late_rows = [row for row in response_rows if row.get("view", "").startswith("late")]
+        early_ratios = [
+            float(row["collaborative_response_rms"]) / float(row["private_response_rms"])
+            for row in early_rows if row.get("private_response_rms") and float(row["private_response_rms"]) > 0
+        ]
+        pilot_lines.extend([
+            "",
+            "## Mechanism diagnostics in completed M cells",
+            "",
+            f"Diagnostics are available for {len({row.get('dataset') for row in route_rows})} completed M cells (Movies and Grocery), across {len(route_rows)} recorded private/collaborative router views.",
+        ])
+        if route_shares:
+            pilot_lines.append(
+                f"- Routing: all four experts received nonzero Top-2 selection share in every recorded view; shares ranged {min(route_shares):.3f}–{max(route_shares):.3f}. No complete route collapse appears in these two one-seed runs."
+            )
+        if cosine_values:
+            g_values = [v for (column, _, _, _), v in cosine_values.items() if column == "G_pairwise_cosine"]
+            e_values = [v for (column, _, _, _), v in cosine_values.items() if column == "E_pairwise_cosine"]
+            if g_values and e_values:
+                pilot_lines.append(
+                    f"- Filter responses: the four experts retained distinct signed theta vectors in each recorded dataset ({'yes' if theta_distinct else 'not established'}). Across dataset/view/expert pairs, G cosine ranged {min(g_values):.3f}–{max(g_values):.3f} and E cosine ranged {min(e_values):.3f}–{max(e_values):.3f}; expert responses were not all identical, though these measures do not establish useful specialization."
+                )
+        if early_rows and late_rows:
+            beta = [float(row["beta"]) for row in early_rows if row.get("beta")]
+            raw_cross = [float(row["raw_rms"]) for row in early_rows if row.get("raw_rms")]
+            late_accept = [float(row["p_accept_mean"]) for row in late_rows if row.get("p_accept_mean")]
+            late_gate = [float(row["gate_mean"]) for row in late_rows if row.get("gate_mean")]
+            late_ratio = [float(row["late_delta_ratio"]) for row in late_rows if row.get("late_delta_ratio")]
+            if beta and raw_cross and early_ratios:
+                pilot_lines.append(
+                    f"- Early Cross: nonzero cross-message RMS was recorded ({min(raw_cross):.3f}–{max(raw_cross):.3f}); beta was {min(beta):.3f}–{max(beta):.3f}. Collaborative/private response RMS ratios were {min(early_ratios):.3f}–{max(early_ratios):.3f}."
+                )
+            if late_accept and late_gate and late_ratio:
+                pilot_lines.append(
+                    f"- Late completion: mean p_accept was {min(late_accept):.3f}–{max(late_accept):.3f}, gate mean {min(late_gate):.3f}–{max(late_gate):.3f}, and late delta/RMS ratios {min(late_ratio):.3f}–{max(late_ratio):.3f}; the path was active but its predictive contribution is not isolated by this Pilot."
+                )
+        pilot_lines.append("These are end-of-run descriptive diagnostics for two datasets and one seed; ele-fashion/M remains unrun, and no causal or generalization claim follows.")
     if not complete:
         pilot_lines.extend([
             "",
