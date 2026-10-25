@@ -375,8 +375,8 @@ def main() -> None:
             f"The runtime GPU ownership guard interrupted {runtime_guard_block.get('dataset')}/"
             f"{runtime_guard_block.get('condition')}/seed{runtime_guard_block.get('seed')} attempt "
             f"{runtime_guard_block.get('attempt')} after detecting a new foreign compute PID. "
-            "The guard stopped only its own child. Six cells completed; the interrupted attempt has no valid metric, "
-            "and the remaining authorized cells have not started."
+            f"The guard stopped only its own child. {complete} cells completed; the interrupted attempt has no valid metric, "
+            f"and {all_planned - complete} authorized cell(s) remain incomplete."
         )
     elif attempted_cells:
         pilot_lines.append("Some formal cells have recorded attempts; inspect per-attempt statuses and logs before resuming.")
@@ -484,8 +484,8 @@ def main() -> None:
         pilot_lines.append("Stage-A is complete. Independently review metrics, failures and diagnostics before authorizing later seeds or Test-lock activity.")
     elif runtime_guard_block:
         pilot_lines.append(
-            "Resume only after the selected GPU is idle and a fresh ownership guard passes. The runner will preserve attempt 01, "
-            "skip the six verified completed cells, and create a new attempt for the interrupted cell before proceeding to the two unstarted cells."
+            "Resume the remaining cell only when a fresh ownership/resource guard passes. The runner will preserve every failed attempt, "
+            "skip verified completed cells, and create the next attempt for the interrupted cell."
         )
     elif gpu_block:
         pilot_lines.append("Repeat the guarded GPU preflight only after resolving the recorded failure; preserve all prior attempts.")
