@@ -527,7 +527,7 @@ def main() -> None:
         ])
         if route_shares:
             pilot_lines.append(
-                f"- Routing: all four experts received nonzero Top-2 selection share in every recorded view; shares ranged {min(route_shares):.3f}–{max(route_shares):.3f}. No complete route collapse appears in these two one-seed runs."
+                f"- Routing: all four experts received nonzero Top-2 selection share in every recorded view; shares ranged {min(route_shares):.3f}–{max(route_shares):.3f}. No complete route collapse appears in these {len({row.get('dataset') for row in route_rows})} one-seed runs."
             )
         if cosine_values:
             g_values = [v for (column, _, _, _), v in cosine_values.items() if column == "G_pairwise_cosine"]
