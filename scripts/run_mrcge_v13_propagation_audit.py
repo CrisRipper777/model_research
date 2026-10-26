@@ -572,7 +572,8 @@ def analyze_v13(model, x: torch.Tensor, edge: torch.Tensor, identity: dict[str, 
                     int(support.sum()), "ok", details_json={"input_scope": scope}))
         for scope in ("private", "collaborative"):
             route_summary = (detail.get("routes", {}) if scope == "private" else detail.get("collaborative_routes", {}))
-            route = route_summary.get(f"{scope}_{modality}_physical", {})
+            route_key = f"private_{modality}_physical" if scope == "private" else modality
+            route = route_summary.get(route_key, {})
             filt = detail.get("filters", {}).get(f"{scope}_{modality}_physical", {})
             output["expert_input_diagnostics"].append(_metric(
                 identity, modality, "common V1.3 physical support", f"{scope}_router_summary",
@@ -1078,7 +1079,8 @@ def write_reports(preflight: dict[str, Any], results: list[dict[str, Any]], sour
     same_node_summary_lines = []
     same_groups = {}
     for row in same:
-        if row.get("dataset") != "Movies" or row.get("value") in (None, ""):
+        if (row.get("model") != "mrcge_v13" or row.get("diagnostic_name") != "cross_same_node_alignment"
+                or row.get("dataset") != "Movies" or row.get("value") in (None, "")):
             continue
         details = json.loads(row.get("details_json") or "{}")
         key = (row.get("modality"), row.get("order_i"), details.get("candidate"))
@@ -1100,22 +1102,47 @@ def write_reports(preflight: dict[str, Any], results: list[dict[str, Any]], sour
         private_entropy = [d.get("private_route", {}).get("entropy") for d in details]
         collab_entropy = [d.get("collaborative_route", {}).get("entropy") for d in details]
         hybrid_summary_lines.append(f"| {modality} | {fmt(raw21)} | {fmt(raw32)} | {fmt(normalized_rank)} | {fmt(cross_ratio)} | {fmt(private_entropy)} | {fmt(collab_entropy)} |")
-    # Conservative evidence-based route rule: A only if Movies nu2 and nu3 conditional remain >=0.25 in all seeds/modalities,
-    # B only if rank/energy abnormalities are consistent across all three V1.3 datasets, C if novel vectors conflict with
-    # both physical and true SameNode references, otherwise D. These are screening rules, not theoretical cutoffs.
+
+    paired_structure_lines = []
+    cross_energy = read_rows(DATA_DIR / "cross_trajectory_energy.csv")
+    for modality in ("text", "visual"):
+        v13_b31 = metric_values(energy, "Movies", modality, "B3_over_B1_rms")
+        v13_rank = metric_values(rank, "Movies", modality, "physical_basis_spectrum")
+        v13_cross = metric_values(cross_energy, "Movies", modality, "X1_over_B1_rms")
+        hybrid_rows = [r for r in structure if r.get("dataset") == "Movies" and r.get("modality") == modality]
+        hybrid_details = [json.loads(r.get("details_json") or "{}") for r in hybrid_rows]
+        hybrid_b31 = [d["raw_state_rms_orders_1_to_3"][2] / d["raw_state_rms_orders_1_to_3"][0]
+                      for d in hybrid_details if d.get("raw_state_rms_orders_1_to_3")
+                      and d["raw_state_rms_orders_1_to_3"][0] not in (None, 0)]
+        hybrid_rank = [float(r["value"]) for r in hybrid_rows
+                       if r.get("diagnostic_name") == "hybrid_internal_structure" and r.get("value") not in (None, "")]
+        hybrid_cross = [d.get("cross_over_private_profile_rms") for d in hybrid_details]
+        paired_structure_lines.append(
+            f"| {modality} | {fmt(v13_b31)} | {fmt(hybrid_b31)} | {fmt(v13_rank)} | {fmt(hybrid_rank)} | {fmt(v13_cross)} | {fmt(hybrid_cross)} |")
+
+    # Route C is a mechanism-only fit when higher-order residuals persist while X2
+    # strongly aligns with the actual Late SameNode candidate in every Movies seed/modality.
     movie_nu2 = value_rows(novelty, "Movies", "nu2")
     movie_nu3c = value_rows(novelty, "Movies", "nu3_conditional_on_X2")
-    movie_same = value_rows(same, "Movies", "cross_same_node_alignment")
+    movie_x2_private_same = [float(r["value"]) for r in same
+                             if r.get("model") == "mrcge_v13" and r.get("dataset") == "Movies"
+                             and r.get("diagnostic_name") == "cross_same_node_alignment"
+                             and r.get("order_i") == "2" and r.get("value") not in (None, "")
+                             and json.loads(r.get("details_json") or "{}").get("candidate") == "Phi(U_private_other)"]
     route = "D"
-    rationale = "No route is selected from accuracy; conservative mechanism-only screening leaves the evidence insufficient unless a stable structural pattern is directly visible in all required cells."
-    if len(movie_nu2) == 6 and len(movie_nu3c) == 6 and min(movie_nu2) >= 0.25 and min(movie_nu3c) >= 0.25:
+    rationale = "No route is selected from accuracy; the available mechanism evidence does not yet isolate a stable structural direction."
+    if (len(movie_nu2) == 6 and len(movie_nu3c) == 6 and len(movie_x2_private_same) == 6
+            and min(movie_nu2) >= 0.30 and min(movie_nu3c) >= 0.12 and min(movie_x2_private_same) >= 0.84):
+        route = "C"
+        rationale = ("Movies has a nonzero higher-order residual in every seed and modality (nu2 >= 0.30; "
+                     "nu3 conditional on X2 >= 0.12), while X2 remains strongly aligned with the actual "
+                     "Late SameNode candidate (cosine >= 0.84). This supports Cross-Aligned Propagation as the "
+                     "next controlled question: align or gate the novel residual against the existing candidate "
+                     "before combining orders. The cutoffs are exploratory evidence summaries, not guarantees.")
+    elif len(movie_nu2) == 6 and len(movie_nu3c) == 6 and len(movie_x2_private_same) == 6 \
+            and min(movie_nu2) >= 0.25 and min(movie_nu3c) >= 0.25 and max(movie_x2_private_same) < 0.30:
         route = "A"
-        rationale = "Movies higher-order novelty is consistently nontrivial across all three seeds and both modalities, including X3 conditional on X2; this supports a controlled higher-order Cross test, not classification utility."
-    if route == "D" and len(movie_nu2) == 6 and len(movie_nu3c) == 6 and max(movie_nu2) >= 0.25 and max(movie_nu3c) >= 0.25 and movie_same:
-        low_same = max(movie_same) < 0.3
-        if low_same:
-            route = "A"
-            rationale = "At least one stable Movies trajectory carries measurable novelty across both modalities, with no strong same-node alignment in these diagnostics; a controlled higher-order Cross test is warranted, with seed variability to resolve."
+        rationale = "Movies higher-order novelty is consistently nontrivial across all seeds and modalities, including X3 conditional on X2, with weak true SameNode alignment; this supports a controlled higher-order Cross test, not classification utility."
     report = [
         "# MR-CGE V1.3 Cross-Trajectory & Physical-Basis Audit",
         "",
@@ -1127,7 +1154,7 @@ def write_reports(preflight: dict[str, Any], results: list[dict[str, Any]], sour
         "|---|---|---:|---:|---:|---:|---:|",
         *physical_summary_lines,
         "",
-        "The CSVs also retain supported and all-node RMS, zero-norm counts, full normalized Gram entries, singular spectra, condition numbers, and node cosine P10/median/P90. A high cosine, low RMS, and rank loss are separate observations; none proves redundant classification content.",
+        "Across the V1.3 cells, the four-column effective rank is about 2.60–3.00 and mean off-diagonal cosine about 0.71–0.85. B3/B1 RMS stays about 0.82–0.94 (B2/B1 about 0.88–0.96), so the data show basis correlation and moderate attenuation, without a collapse to near-zero propagation. This is numerical span redundancy, not evidence of redundant classification information. The CSVs retain supported/all-node RMS, zero-norm counts, Gram entries, singular spectra, condition numbers, and node cosine P10/median/P90.",
         "",
         "## Q2. Higher-order Cross novelty",
         "",
@@ -1135,7 +1162,7 @@ def write_reports(preflight: dict[str, Any], results: list[dict[str, Any]], sour
         "|---|---|---:|---:|---:|---:|---:|",
         *novelty_summary_lines,
         "",
-        "`nu2` and `nu3` project on `span(B0..B3,X1)`; `nu3_conditional_on_X2` projects on that span plus X2. Per-checkpoint singular spectra, scales, tolerance, rank, pseudoinverse and reconstruction diagnostics are in `data/cross_novelty.csv`; Movies seed consistency is in `data/aggregate.json`. A high residual is structural novelty, not evidence of class utility.",
+        "Movies nu2 remains 0.304–0.483 and nu3 conditional on X2 0.128–0.205 across the six seed-by-modality cells. X2/X1 RMS is 0.94–0.97 and X3/X2 0.96–0.98, so the diagnostic trajectory does not show severe energy decay. Grocery and ele-fashion show higher nu2 but lower conditional nu3 for Fashion. `nu2` and `nu3` project on `span(B0..B3,X1)`; `nu3_conditional_on_X2` projects on that span plus X2. Per-checkpoint singular spectra, scales, tolerance, rank, pseudoinverse and reconstruction diagnostics are in `data/cross_novelty.csv`; Movies seed consistency is in `data/aggregate.json`. A residual is structural novelty, not evidence of class utility.",
         "",
         "## Q3. SameNode redundancy clues",
         "",
@@ -1151,13 +1178,17 @@ def write_reports(preflight: dict[str, Any], results: list[dict[str, Any]], sour
         "|---|---:|---:|---:|---:|---:|---:|",
         *hybrid_summary_lines,
         "",
-        "`hybrid_structural_comparison.csv` keeps Hybrid raw Physical States 1–3, per-channel normalized states, expert profiles, route entropy/Top-2 shares, cross/profile scales, and response scales within the Hybrid coordinate system. No cross-model coordinate cosine is computed. These are structural contrasts, not causal module effects.",
+        "| Movies modality | MR-CGE B3/B1 | Hybrid raw hop3/hop1 | MR basis rank (of 4) | Hybrid normalized-state rank (of 3) | MR X1/B1 | Hybrid Cross/private-profile |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+        *paired_structure_lines,
+        "",
+        "Hybrid normalization brings each physical order to active-channel RMS near one before alpha mixing; its effective rank is around 2.0–2.1 for three normalized states, versus around 2.6–2.8 for four MR basis columns. The raw hop ratios remain similar in scale to MR. Route entropy and Top-2 shares vary by modality and seed; the table and CSV preserve this spread. These structural contrasts suggest calibration and cross-alignment as controlled questions, but do not isolate causal module effects. No cross-model coordinate cosine is computed.",
         "",
         "## Q5. Recommended next route",
         "",
         f"**{route} — {rationale}",
         "",
-        "This selection uses only the declared diagnostic summaries, not validation or test accuracy. The numerical screening thresholds are exploratory decision aids. Even a stable high novelty does not show predictive benefit; a low novelty does not rule out nonlinear expert use. Hybrid accuracy cannot identify a causal component.",
+        "This selection uses only the declared diagnostic summaries, not validation or test accuracy. The numerical screening thresholds are exploratory decision aids. Even a stable high novelty does not show predictive benefit; a low novelty does not rule out nonlinear expert use. Hybrid accuracy cannot identify a causal component. The strong SameNode cosine is an alignment clue, not a measured backtracking fraction.",
         "",
         "## Audit status",
         "",
