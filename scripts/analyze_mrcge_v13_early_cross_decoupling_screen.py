@@ -98,6 +98,12 @@ def canonical(row: dict[str, str], model: str, condition: str, display: str, sou
 def historical_v13(dataset: str, seed: int) -> dict[str, str]:
     row = runner.v13_reference(dataset, seed)
     verify_checkpoint(row, f"V1.3-A {dataset}/seed{seed}")
+    recorded_model_sha = row.get("model_source_sha256", "")
+    if not recorded_model_sha or not row.get("source_git_sha"):
+        raise RuntimeError(f"V1.3-A source provenance is incomplete for {dataset}/seed{seed}")
+    committed_model_sha = runner.git_file_sha(row["source_git_sha"], "src/models/mrcge_v13.py")
+    if recorded_model_sha != committed_model_sha:
+        raise RuntimeError(f"V1.3-A model-source SHA mismatch for {dataset}/seed{seed}")
     study = runner.OmegaConf.load(ROOT / "configs/study/mrcge_v13_early_cross_decoupling_screen.yaml")
     expected_split = str(study.split_fingerprints[dataset])
     if row.get("split_fingerprint") != expected_split:
@@ -106,6 +112,51 @@ def historical_v13(dataset: str, seed: int) -> dict[str, str]:
     if row.get("split_file_sha256") != expected_file_hash:
         raise RuntimeError(f"V1.3-A split-file hash mismatch for {dataset}/seed{seed}")
     return row
+
+
+def historical_source_audit(v13: dict[tuple[str, int], dict[str, str]]) -> list[dict[str, Any]]:
+    output = []
+
+    def verify_record(row: dict[str, str], model: str, condition: str, dataset: str,
+                      seed: int, source_path: str) -> None:
+        commit, recorded = row.get("source_git_sha", ""), row.get("model_source_sha256", "")
+        if not commit or not recorded:
+            raise RuntimeError(f"historical source provenance missing for {model} {dataset}/seed{seed}")
+        actual = runner.git_file_sha(commit, source_path)
+        if actual != recorded:
+            raise RuntimeError(f"historical model-source SHA mismatch for {model} {dataset}/seed{seed}")
+        output.append({"model": model, "condition": condition, "dataset": dataset, "seed": seed,
+            "source_git_sha": commit, "model_source_path": source_path,
+            "recorded_model_source_sha256": recorded, "committed_model_source_sha256": actual,
+            "source_hash_verified": True, "test_evaluation": False})
+
+    for (dataset, seed), row in sorted(v13.items()):
+        verify_record(row, "mrcge_v13", "joint_view", dataset, seed, "src/models/mrcge_v13.py")
+
+    selected_v12 = runner.read_rows(ROOT / "research/mrcge_v12_confirmation/data/combined_selected_runs.csv")
+    for dataset, seed in sorted(v13):
+        row = one(selected_v12, lambda item: item.get("dataset") == dataset
+            and item.get("condition") == "M_repaired" and item.get("seed") == str(seed)
+            and item.get("status") == "complete"
+            and item.get("selected_for_combined", "").lower() == "true"
+            and item.get("eligible_complete", "").lower() == "true",
+            f"selected V1.2 source row {dataset}/seed{seed}")
+        verify_record(row, "mrcge_v12", "M_repaired", dataset, seed, "src/models/mrcge_v12.py")
+
+    fixed = runner.read_rows(ROOT / "research/mrcge_v13_physical_basis/data/fixed_split_hybrid_comparison.csv")
+    baseline = read_json(ROOT / "research/mrcge_v13_physical_basis/data/frozen_baseline.json", {})
+    special = baseline.get("historical_references", {}).get("hybrid_corrected_seed42", {})
+    for seed in (42, 43, 44):
+        if seed == 42:
+            row = {"source_git_sha": special.get("source_git_sha"),
+                   "model_source_sha256": special.get("model_source_sha256")}
+        else:
+            row = one(fixed, lambda item: item.get("model") == runner.HYBRID_MODEL
+                and item.get("condition") == "H2_physical_3hop" and item.get("dataset") == "Movies"
+                and item.get("seed") == str(seed), f"fixed-split Hybrid source row Movies/seed{seed}")
+        verify_record(row, runner.HYBRID_MODEL, "H2_physical_3hop", "Movies", seed,
+                      "src/models/hybrid_cge_paper_v1.py")
+    return output
 
 
 def check_history_unchanged(preflight: dict[str, Any]) -> None:
@@ -176,6 +227,25 @@ def gather_results() -> tuple[dict[tuple[str, int], dict[str, str]],
                 run.get("validation_rng_unchanged", "").lower() != "true":
             raise RuntimeError(f"checkpoint reload or Validation RNG audit failed for {dataset}/seed{seed}")
         verify_checkpoint(run, f"Expert-Decoupled Early Cross {dataset}/seed{seed}")
+        if str(run.get("test_evaluation", "")).lower() != "false":
+            raise RuntimeError(f"Test evaluation is not explicitly disabled for {dataset}/seed{seed}")
+        model_sha = runner.git_file_sha(frozen_sha, "src/models/mrcge_v13_early_cross_decoupled.py")
+        trainer_sha = runner.git_file_sha(frozen_sha, "src/tasks/nc.py")
+        if run.get("model_source_sha256") != model_sha or run.get("trainer_source_sha256") != trainer_sha:
+            raise RuntimeError(f"model/trainer source hash mismatch for {dataset}/seed{seed}")
+        config_path = Path(run.get("config_snapshot_path", ""))
+        if not config_path.is_file() or runner.sha256_file(config_path) != run.get("config_sha256"):
+            raise RuntimeError(f"resolved config hash mismatch for {dataset}/seed{seed}")
+        target_preflight = one(preflight.get("target_protocol_records", []),
+            lambda item: item.get("dataset") == dataset and int(item.get("seed", -1)) == seed,
+            f"CPU data fingerprint record {dataset}/seed{seed}")
+        aligned = target_preflight.get("baseline_alignment", {})
+        fingerprint_keys = ("feature_fingerprint", "dataset_fingerprint", "physical_edge_fingerprint",
+                            "split_fingerprint", "split_file_sha256", "semantic_cache_sha256",
+                            "candidate_fingerprint", "v7b_fingerprint")
+        for field in fingerprint_keys:
+            if not aligned.get(field) or run.get(field) != aligned.get(field):
+                raise RuntimeError(f"{field} differs from CPU preflight for {dataset}/seed{seed}")
         pre = gpu.get((dataset, seed))
         if not pre or pre.get("status") != "pass":
             raise RuntimeError(f"missing same-source passing GPU preflight for {dataset}/seed{seed}")
@@ -223,7 +293,7 @@ def paired_differences(v13: dict[tuple[str, int], dict[str, str]],
 def mean_sd(values: list[float]) -> tuple[float, float]:
     if not values:
         return math.nan, math.nan
-    return statistics.mean(values), statistics.stdev(values) if len(values) > 1 else 0.0
+    return statistics.mean(values), statistics.pstdev(values) if len(values) > 1 else 0.0
 
 
 def dataset_summaries(comparison: list[dict[str, Any]], diffs: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -314,6 +384,7 @@ def run_analysis() -> dict[str, Any]:
     diffs = paired_differences(v13, new)
     summaries = dataset_summaries(comparison, diffs)
     coeff, injections = audit_diagnostics(new)
+    source_audit = historical_source_audit(v13)
     context = historical_context()
     write_rows(runner.DATA / "model_comparison.csv", comparison, COMPARE_FIELDS)
     write_rows(runner.DATA / "paired_differences.csv", diffs,
@@ -327,6 +398,9 @@ def run_analysis() -> dict[str, Any]:
         list(dict.fromkeys(key for row in coeff for key in row)) if coeff else ("dataset", "seed", "expert"))
     write_rows(runner.DATA / "audited_cross_injection.csv", injections,
         list(dict.fromkeys(key for row in injections for key in row)) if injections else ("dataset", "seed", "receiver_modality", "expert"))
+    write_rows(runner.DATA / "historical_source_audit.csv", source_audit,
+        list(dict.fromkeys(key for row in source_audit for key in row)) if source_audit else
+        ("model", "condition", "dataset", "seed", "source_git_sha", "model_source_sha256", "source_hash_verified"))
 
     preflight = read_json(runner.DATA / "preflight.json", {})
     failures = read_json(runner.DATA / "failures.json", {"failures": []}).get("failures", [])
@@ -381,7 +455,7 @@ Acc and Macro-F1 differences are percentage points; CE is raw cross entropy.
 
 ### Paired difference summary by dataset
 
-Entries are mean ± sample SD across seeds. Acc and Macro-F1 are percentage points; CE is raw loss.
+Entries are mean ± population SD across seeds. Acc and Macro-F1 are percentage points; CE is raw loss.
 
 | Dataset | Checkpoint selection | Δ Acc (pp) | Δ Macro-F1 (pp) | Δ CE | n |
 |---|---|---:|---:|---:|---:|
@@ -422,7 +496,8 @@ The learned `b[4]` parameters are shared across modalities. The attached correct
 - Exact authorized training cells: 7; completed and dual-checkpoint verified: {complete}/7.
 - All Test/LP flags are false; test labels were masked before Trainer.
 - Historical source/data/checkpoints were read-only and protected by pre/post hash checks.
-- Report-generator correction was committed after training; the original report-generator file at the frozen training commit and all model/trainer/config/data-pipeline files were hash-verified. The correction did not change training behavior or checkpoint provenance.
+- Historical model-source hashes were checked against their recorded Git commits for {len(source_audit)} references (7 V1.3-A, 7 V1.2 and 3 fixed-split Hybrid); paired checkpoint hashes were verified.
+- Report-generator correction was committed after training; pre-fix SHA256 `{preflight['source_file_sha256s']['scripts/analyze_mrcge_v13_early_cross_decoupling_screen.py']}` and post-fix SHA256 `{runner.sha256_file(ROOT / 'scripts/analyze_mrcge_v13_early_cross_decoupling_screen.py')}` are recorded here. The correction changed report generation and post-training audit only. The frozen model, Trainer, config, data-pipeline hashes and all training/checkpoint provenance were unchanged.
 
 Unit and regression test output is recorded in `research/mrcge_v13_early_cross_decoupling/test_results.txt`.
 """
@@ -434,9 +509,11 @@ Unit and regression test output is recorded in `research/mrcge_v13_early_cross_d
 - Training seeds and authorized cells: Movies 42/43/44; Grocery 42/43; ele-fashion 42/43.
 - CPU preflight status: `{preflight.get('status')}`; GPU preflight status: `{preflight.get('gpu_preflight_status')}`.
 - V7B.1 K=8 semantic cache, feature, candidate and graph fingerprints were checked against paired V1.3-A records for every cell.
+- Historical V1.3-A source commit/model hash, fixed split file, and both checkpoint hashes were rechecked; Movies/44 came from the fixed-split campaign. Hybrid Movies 42–44 model hashes and checkpoints were rechecked.
 - Test labels were masked before Trainer; Test evaluation and Link Prediction stayed disabled.
 - Independent Best-Accuracy and Best-Macro-F1 checkpoints were reloaded and hash-verified for all {complete} completed runs.
 - Historical V1.2 and fixed-split Hybrid records, when included, are context only. Hybrid fixed-split Movies seeds 42–44 are not a paired architecture comparison.
+- Historical model source SHA audit: {len(source_audit)} references pass; see `data/historical_source_audit.csv`.
 - `failures.json` retains all failed and blocked attempts ({len(failures)} entries); no failure was overwritten.
 """
     write_markdown(runner.STUDY / "DATA_PROTOCOL_AUDIT.md", data_audit)
