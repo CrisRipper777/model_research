@@ -445,6 +445,21 @@ def _device_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     return next(row for row in snapshot["devices"] if row["physical_index"] == PHYSICAL_GPU)
 
 
+def launch_guard(baseline: set[int], required_free_mib: int = 8192,
+                allowed_pids: set[int] | None = None) -> dict[str, Any]:
+    """Require a successful fresh guard; retry only failures to query nvidia-smi."""
+    last_error = None
+    for attempt in range(3):
+        try:
+            return v13_runner.guard_gpu(PHYSICAL_GPU, baseline, allowed_pids or set(), phase="before_launch",
+                                        required_free_mib=required_free_mib)
+        except subprocess.CalledProcessError as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(2)
+    raise RuntimeError(f"nvidia-smi status query failed on three fresh launch checks: {last_error}") from last_error
+
+
 def record_resource(snapshot: dict[str, Any], dataset: str, variant: str, seed: int,
                     attempt: int, phase: str) -> None:
     device = _device_snapshot(snapshot)
@@ -476,7 +491,7 @@ def worker_preflight(dataset: str, variant: str, seed: int, attempt: int, record
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA device isolation failed")
     baseline = {int(pid) for pid in os.environ.get("MR_CGE_BASELINE_GPU_PIDS", "").split(",") if pid}
-    v13_runner.guard_gpu(1, baseline, {os.getpid()}, phase="before_launch", required_free_mib=8192)
+    launch_guard(baseline, 8192, {os.getpid()})
     cache = v13_runner.cache_entries()[dataset]
     cfg, raw, safe, fingerprints, split_path = load_safe_data(dataset, variant, seed, cache, "cuda:0")
     device = torch.device("cuda:0")
@@ -545,8 +560,7 @@ def worker_preflight(dataset: str, variant: str, seed: int, attempt: int, record
 def guarded_child(action: str, dataset: str, variant: str, seed: int, attempt: int,
                   baseline: set[int], *, record_path: Path | None = None,
                   attempt_dir: Path | None = None, required_free_mib: int = 8192) -> dict[str, Any]:
-    launch = v13_runner.guard_gpu(1, baseline, set(), phase="before_launch",
-                                  required_free_mib=required_free_mib)
+    launch = launch_guard(baseline, required_free_mib)
     record_resource(launch, dataset, variant, seed, attempt, f"{action}_before_launch")
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = "1"
@@ -586,11 +600,19 @@ def guarded_child(action: str, dataset: str, variant: str, seed: int, attempt: i
 
 
 def current_baseline() -> set[int]:
-    snap = v13_runner.smi_snapshot()
-    device = next((item for item in snap["devices"] if item["physical_index"] == 1), None)
-    if device is None:
-        raise RuntimeError("physical GPU 1 missing")
-    return {int(app["pid"]) for app in snap["compute_processes"] if app["gpu_uuid"] == device["uuid"]}
+    last_error = None
+    for attempt in range(3):
+        try:
+            snap = v13_runner.smi_snapshot()
+            device = next((item for item in snap["devices"] if item["physical_index"] == 1), None)
+            if device is None:
+                raise RuntimeError("physical GPU 1 missing")
+            return {int(app["pid"]) for app in snap["compute_processes"] if app["gpu_uuid"] == device["uuid"]}
+        except subprocess.CalledProcessError as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(2)
+    raise RuntimeError(f"nvidia-smi baseline query failed on three fresh attempts: {last_error}") from last_error
 
 
 def gpu_preflight() -> dict[str, Any]:
@@ -664,7 +686,7 @@ def worker_train(dataset: str, variant: str, seed: int, attempt: int, attempt_di
         raise RuntimeError("CUDA device isolation failed")
     baseline = {int(pid) for pid in os.environ.get("MR_CGE_BASELINE_GPU_PIDS", "").split(",") if pid}
     required = max(8192, int(os.environ.get("MR_CGE_EXPECTED_PEAK_RESERVED_MIB", "0")) + 2048)
-    v13_runner.guard_gpu(1, baseline, {os.getpid()}, phase="before_launch", required_free_mib=required)
+    launch_guard(baseline, required, {os.getpid()})
     if not (attempt_dir / "attempt_started.json").is_file():
         raise RuntimeError("parent has not reserved this formal attempt")
     current = [row for row in read_json(DATA / "gpu_preflight.json", {}).get("cells", [])
