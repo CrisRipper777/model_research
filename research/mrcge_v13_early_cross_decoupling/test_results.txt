@@ -1,0 +1,6 @@
+Command:
+/home/m3/miniconda3/envs/yhf_env/bin/python -m pytest -q tests/test_mrcge_v13_early_cross_decoupling_screen.py tests/test_mrcge_v13.py tests/test_mrcge_v13_physical_basis_screen.py tests/test_mrcge_v13_static_strength_screen.py tests/test_hybrid_cge_paper_evidence_v1.py
+
+Result: 56 passed, 19 warnings in 140.08s (0:02:20).
+Warnings: upstream torch_geometric distributed deprecation and torch checkpoint CPU autocast deprecation.
+Python compilation: run_mrcge_v13_early_cross_decoupling_screen.py, analyze_mrcge_v13_early_cross_decoupling_screen.py, mrcge_v13_early_cross_decoupled.py, and test_mrcge_v13_early_cross_decoupling_screen.py all compiled successfully.
