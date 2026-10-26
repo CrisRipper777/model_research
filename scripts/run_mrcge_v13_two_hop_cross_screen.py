@@ -445,14 +445,54 @@ def _device_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     return next(row for row in snapshot["devices"] if row["physical_index"] == PHYSICAL_GPU)
 
 
+def screen_gpu_guard(physical_gpu: int, baseline_pids: set[int], allowed_pids: set[int], *,
+                    phase: str, required_free_mib: int | None = None) -> dict[str, Any]:
+    """Use the normal owner guard unless the user explicitly authorizes sharing.
+
+    Shared mode skips PID, utilization, and temperature checks, but retains
+    physical-GPU isolation and the registered CUDA free-memory thresholds.
+    """
+    if os.environ.get("MR_CGE_SHARED_GPU_OVERRIDE") != "1":
+        return v13_runner.guard_gpu(physical_gpu, baseline_pids, allowed_pids,
+                                    phase=phase, required_free_mib=required_free_mib)
+    if physical_gpu != PHYSICAL_GPU or os.environ.get("CUDA_VISIBLE_DEVICES") != str(PHYSICAL_GPU):
+        raise RuntimeError("shared-GPU override remains restricted to physical GPU 1")
+    if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
+        raise RuntimeError("CUDA runtime cannot see the isolated physical GPU 1")
+    device = torch.device("cuda:0")
+    free_bytes, total_bytes = torch.cuda.mem_get_info(device)
+    free_mib = int(free_bytes // (1024 * 1024))
+    total_mib = int(total_bytes // (1024 * 1024))
+    minimum = required_free_mib if required_free_mib is not None else (8192 if phase == "before_launch" else 2048)
+    if free_mib < minimum:
+        raise RuntimeError(f"GPU1 CUDA free memory {free_mib} MiB below {minimum} MiB shared-run threshold")
+    return {
+        "captured_utc": now(),
+        "devices": [{"physical_index": PHYSICAL_GPU,
+                     "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+                     "name": torch.cuda.get_device_name(device),
+                     "memory_used_mib": total_mib - free_mib, "memory_total_mib": total_mib,
+                     "memory_free_mib": free_mib,
+                     "utilization_percent": "not_checked_shared_override",
+                     "temperature_c": "not_checked_shared_override"}],
+        "compute_processes": [],
+        "guard": {"phase": phase, "physical_gpu": PHYSICAL_GPU,
+                  "status": "pass_user_authorized_shared_gpu_memory_only",
+                  "required_free_mib": minimum, "cuda_runtime_memory_check": True,
+                  "pid_ownership_check": "overridden_by_user",
+                  "utilization_check": "overridden_by_user",
+                  "temperature_check": "overridden_by_user"},
+    }
+
+
 def launch_guard(baseline: set[int], required_free_mib: int = 8192,
                 allowed_pids: set[int] | None = None) -> dict[str, Any]:
     """Require a successful fresh guard; retry only failures to query nvidia-smi."""
     last_error = None
     for attempt in range(3):
         try:
-            return v13_runner.guard_gpu(PHYSICAL_GPU, baseline, allowed_pids or set(), phase="before_launch",
-                                        required_free_mib=required_free_mib)
+            return screen_gpu_guard(PHYSICAL_GPU, baseline, allowed_pids or set(), phase="before_launch",
+                                   required_free_mib=required_free_mib)
         except subprocess.CalledProcessError as exc:
             last_error = exc
             if attempt < 2:
@@ -533,7 +573,7 @@ def worker_preflight(dataset: str, variant: str, seed: int, attempt: int, record
     if not rng_ok or not bool(torch.isfinite(eval_z).all()) or not bool(torch.isfinite(eval_aux)):
         raise RuntimeError("eval diagnostics are non-finite or changed RNG")
     required = math.ceil(peak_reserved / (1024 * 1024)) + 2048
-    snapshot = v13_runner.guard_gpu(1, baseline, {os.getpid()}, phase="during_run")
+    snapshot = screen_gpu_guard(1, baseline, {os.getpid()}, phase="during_run")
     record = {
         "dataset": dataset, "variant": variant, "seed": seed, "attempt": attempt,
         "status": "pass", "stage": "single_step_forward_backward", "physical_gpu": 1,
@@ -549,6 +589,7 @@ def worker_preflight(dataset: str, variant: str, seed: int, attempt: int, record
         "gradient_diagnostics": grads, "t_gradient": grads["two_hop_raw"],
         "peak_allocated_bytes": peak_allocated, "peak_reserved_bytes": peak_reserved,
         "required_start_free_mib_with_2gib_margin": required,
+        "shared_gpu_override": os.environ.get("MR_CGE_SHARED_GPU_OVERRIDE") == "1",
         "gpu_name": torch.cuda.get_device_name(device), "guard_snapshot": snapshot,
         "validation_rng_unchanged": rng_ok, "test_evaluation_actual": False,
     }
@@ -584,7 +625,7 @@ def guarded_child(action: str, dataset: str, variant: str, seed: int, attempt: i
         while proc.poll() is None:
             time.sleep(4)
             try:
-                snap = v13_runner.guard_gpu(1, baseline, {proc.pid}, phase="during_run")
+                snap = screen_gpu_guard(1, baseline, {proc.pid}, phase="during_run")
                 record_resource(snap, dataset, variant, seed, attempt, f"{action}_during_run")
             except Exception as exc:
                 proc.terminate()
@@ -600,6 +641,8 @@ def guarded_child(action: str, dataset: str, variant: str, seed: int, attempt: i
 
 
 def current_baseline() -> set[int]:
+    if os.environ.get("MR_CGE_SHARED_GPU_OVERRIDE") == "1":
+        return set()
     last_error = None
     for attempt in range(3):
         try:
@@ -625,7 +668,8 @@ def gpu_preflight() -> dict[str, Any]:
     attempt = max([int(row.get("attempt", 0)) for row in attempts["attempts"]] + [0]) + 1
     campaign = {"attempt": attempt, "started_utc": now(), "cells": cells,
                 "source_git_sha": source_sha(), "source_file_sha256s": source_file_hashes(),
-                "status": "running", "training_started": False, "physical_gpu": 1}
+                "status": "running", "training_started": False, "physical_gpu": 1,
+                "shared_gpu_override": os.environ.get("MR_CGE_SHARED_GPU_OVERRIDE") == "1"}
     attempts["attempts"].append(campaign)
     json_write(DATA / "gpu_preflight.json", attempts)
     passed, stopped = 0, False
@@ -721,6 +765,7 @@ def worker_train(dataset: str, variant: str, seed: int, attempt: int, attempt_di
         "semantic_cache_sha256": sha256_file(cache["cache_path_abs"]),
         "candidate_fingerprint": cache["candidate_fingerprint"], "v7b_fingerprint": cache["v7b_fingerprint"],
         "test_evaluation": False, "test_label_values_indexed": False, "link_prediction": False,
+        "shared_gpu_override": os.environ.get("MR_CGE_SHARED_GPU_OVERRIDE") == "1",
     }
     initial_model_sha, initial_classifier_sha, _ = hybrid_runner.init_pair_hashes(cfg, safe, cache, seed)
     log_path = attempt_dir / "train.log"
@@ -733,7 +778,7 @@ def worker_train(dataset: str, variant: str, seed: int, attempt: int, attempt_di
     started = time.perf_counter()
     try:
         run_nc(cfg, safe, device, logger)
-        v13_runner.guard_gpu(1, baseline, {os.getpid()}, phase="during_run")
+        screen_gpu_guard(1, baseline, {os.getpid()}, phase="during_run")
         packed = read_json(Path(cfg.task.run_metrics_path), {})
         if packed.get("protocol_version") != PROTOCOL or packed.get("run_seeds") != [seed]:
             raise RuntimeError("trainer protocol/seed provenance mismatch")
@@ -794,6 +839,7 @@ def worker_train(dataset: str, variant: str, seed: int, attempt: int, attempt_di
             "best_f1_checkpoint_path": str(f1_path), "best_f1_checkpoint_sha256": sha256_file(f1_path),
             "attempt_dir": str(attempt_dir), "test_evaluation": False,
             "validation_rng_unchanged": True, "checkpoint_reload_verified": True, "error": "",
+            "shared_gpu_override": os.environ.get("MR_CGE_SHARED_GPU_OVERRIDE") == "1",
         }
         append_csv(DATA / "runs.csv", record, ("dataset", "variant", "seed", "attempt"))
         hist_rows = [{"dataset": dataset, "variant": variant, "seed": seed, "attempt": attempt, **row} for row in history]
@@ -1081,7 +1127,11 @@ def main() -> None:
     parser.add_argument("--attempt", type=int)
     parser.add_argument("--record-path")
     parser.add_argument("--attempt-dir")
+    parser.add_argument("--allow-shared-gpu1", action="store_true",
+                        help="user-authorized override; keep CUDA free-memory checks only")
     args = parser.parse_args()
+    if args.allow_shared_gpu1:
+        os.environ["MR_CGE_SHARED_GPU_OVERRIDE"] = "1"
     if args.worker_preflight or args.worker_train:
         if not all((args.dataset, args.variant, args.seed is not None, args.attempt is not None)):
             raise SystemExit("worker needs dataset, variant, seed and attempt")
