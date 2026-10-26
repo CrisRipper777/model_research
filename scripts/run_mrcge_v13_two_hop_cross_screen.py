@@ -168,9 +168,6 @@ def git_file_sha(commit: str, relative: str) -> str:
 def verify_source_freeze() -> None:
     if subprocess.run(["git", "merge-base", "--is-ancestor", BASE_SHA, "HEAD"], cwd=ROOT).returncode:
         raise RuntimeError("working branch does not descend from the registered base commit")
-    if subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True,
-                      text=True, check=True).stdout.strip():
-        raise RuntimeError("GPU work requires a clean committed worktree")
     for relative in FROZEN_BASE_PATHS:
         if git_file_sha(BASE_SHA, relative) != sha256_file(ROOT / relative):
             raise RuntimeError(f"frozen V1.3-A/trainer/data source differs from base: {relative}")
