@@ -1,0 +1,3 @@
+# Superseded execution attempt 02
+
+All ten checkpoint forwards completed under source `e8c8f43359148c0f8802d22b2ea432b591511075`. Review found that V1.3 collaborative route summaries are keyed directly by modality in `info.details["collaborative_routes"]`, while the analyzer looked up a private-route key. Thus private routes and all Hybrid route outputs were captured, but V1.3 collaborative route rows were missing. The underlying forward and other metrics were valid; this iteration is archived so the final source can emit complete route diagnostics. The next run repeats all ten checkpoints under one corrected source SHA.

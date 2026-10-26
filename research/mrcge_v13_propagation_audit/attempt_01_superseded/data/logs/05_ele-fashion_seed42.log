@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py", line 1293, in <module>
+    main()
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py", line 1282, in main
+    worker(args.worker_index, Path(args.worker_output))
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py", line 833, in worker
+    metrics = analyze_v13(model, x, edge, identity, info)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py", line 438, in analyze_v13
+    raise RuntimeError(f"{modality}: independent X1 reconstruction failed (relative={relative}, max_abs={max_abs})")
+RuntimeError: text: independent X1 reconstruction failed (relative=1.3230574325007183e-07, max_abs=2.288818359375e-05)

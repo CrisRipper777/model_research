@@ -1,0 +1,17 @@
+{
+  "failures": [
+    {
+      "cell_index": 5,
+      "condition": "joint_view",
+      "dataset": "ele-fashion",
+      "error": "worker exit code 1; log tail: Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 1293, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 1282, in main\n    worker(args.worker_index, Path(args.worker_output))\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 833, in worker\n    metrics = analyze_v13(model, x, edge, identity, info)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 438, in analyze_v13\n    raise RuntimeError(f\"{modality}: independent X1 reconstruction failed (relative={relative}, max_abs={max_abs})\")\nRuntimeError: text: independent X1 reconstruction failed (relative=1.3230574325007183e-07, max_abs=2.288818359375e-05)\n",
+      "model": "mrcge_v13",
+      "seed": 42,
+      "stage": "checkpoint_worker",
+      "status": "failed_or_blocked",
+      "test_evaluation": false,
+      "traceback": "Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 1255, in run_all\n    result = run_worker(index, record, pids, analysis_sha)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 903, in run_worker\n    raise RuntimeError(f\"worker exit code {process.returncode}; log tail: {tail}\")\nRuntimeError: worker exit code 1; log tail: Traceback (most recent call last):\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 1293, in <module>\n    main()\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 1282, in main\n    worker(args.worker_index, Path(args.worker_output))\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 833, in worker\n    metrics = analyze_v13(model, x, edge, identity, info)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/hdd1/DataInHere/YHF/model_research/scripts/run_mrcge_v13_propagation_audit.py\", line 438, in analyze_v13\n    raise RuntimeError(f\"{modality}: independent X1 reconstruction failed (relative={relative}, max_abs={max_abs})\")\nRuntimeError: text: independent X1 reconstruction failed (relative=1.3230574325007183e-07, max_abs=2.288818359375e-05)\n\n"
+    }
+  ],
+  "test_evaluation": false
+}

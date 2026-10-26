@@ -1,0 +1,1354 @@
+{
+  "checkpoint_level": [
+    {
+      "analysis_source_sha": "fe0e390e2d2282f8dcb761ab327b381f942f5933",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Movies/joint_view/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "b9e8a2a5ebee2dfc91529d62203137c0cb03f06e9bd001d4227f97bf5ff9aaaf",
+      "condition": "joint_view",
+      "dataset": "Movies",
+      "dataset_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "model": "mrcge_v13",
+      "model_source_path": "src/models/mrcge_v13.py",
+      "model_source_sha256": "a70e2fd4345efe1f658075eb3cb034d85c8ad67454951cea7af02faf96775a37",
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "seed": 42,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "status": "complete",
+      "test_evaluation": false,
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    {
+      "analysis_source_sha": "fe0e390e2d2282f8dcb761ab327b381f942f5933",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Movies/joint_view/seed_43/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "4cd86fe28afdefa80046a96830febd6593e3a249dfee2c4c80dce34888e339e3",
+      "condition": "joint_view",
+      "dataset": "Movies",
+      "dataset_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "model": "mrcge_v13",
+      "model_source_path": "src/models/mrcge_v13.py",
+      "model_source_sha256": "a70e2fd4345efe1f658075eb3cb034d85c8ad67454951cea7af02faf96775a37",
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "seed": 43,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "status": "complete",
+      "test_evaluation": false,
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    {
+      "analysis_source_sha": "fe0e390e2d2282f8dcb761ab327b381f942f5933",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_physical_basis/runs/Movies/joint_view/seed_44/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "a725d9cdee1ab1a3875f8b9e0515ca515fd9e0951b3893f9020a3150b1c4eb5b",
+      "condition": "joint_view",
+      "dataset": "Movies",
+      "dataset_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "model": "mrcge_v13",
+      "model_source_path": "src/models/mrcge_v13.py",
+      "model_source_sha256": "be9272ad25296927fcb95720776a7fcdaf3f54d00936c96387262159b3770c90",
+      "num_edges": 160802,
+      "num_nodes": 16672,
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "seed": 44,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "source_git_sha": "cb641c4947c13d2305cfe83110cfdf9e35d42517",
+      "split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "status": "complete",
+      "test_evaluation": false,
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb"
+    },
+    {
+      "analysis_source_sha": "fe0e390e2d2282f8dcb761ab327b381f942f5933",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Grocery/joint_view/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "650c740a0e727db442fd7e3bbb2248cb43346d7d8c38dee9effd03989f4ea3fa",
+      "condition": "joint_view",
+      "dataset": "Grocery",
+      "dataset_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "model": "mrcge_v13",
+      "model_source_path": "src/models/mrcge_v13.py",
+      "model_source_sha256": "a70e2fd4345efe1f658075eb3cb034d85c8ad67454951cea7af02faf96775a37",
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "seed": 42,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "split_file_sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "status": "complete",
+      "test_evaluation": false,
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    },
+    {
+      "analysis_source_sha": "fe0e390e2d2282f8dcb761ab327b381f942f5933",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Grocery/joint_view/seed_43/attempt_01/best_accuracy.pt",
+      "checkpoint_sha256": "28b3e836aa6553c996e04fe63a7954180c0f421f464cb6c587d7acee1a6059a4",
+      "condition": "joint_view",
+      "dataset": "Grocery",
+      "dataset_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "model": "mrcge_v13",
+      "model_source_path": "src/models/mrcge_v13.py",
+      "model_source_sha256": "a70e2fd4345efe1f658075eb3cb034d85c8ad67454951cea7af02faf96775a37",
+      "num_edges": 142262,
+      "num_nodes": 17074,
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "seed": 43,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "split_file_sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "status": "complete",
+      "test_evaluation": false,
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37"
+    }
+  ],
+  "dataset_modality_mean_sd": [
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B0_rms_support",
+      "mean": 0.999995083638545,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 1.2343741351500531e-08,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9999950749102018,
+        "43": 0.9999950923668882
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B1_rms_support",
+      "mean": 0.6820561300918098,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0001056714326177853,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.6819814091052281,
+        "43": 0.6821308510783916
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B2_over_B1_rms",
+      "mean": 0.8954480112920371,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 1.794691848624462e-05,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.8954353209042741,
+        "43": 0.8954607016798002
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B2_rms_support",
+      "mean": 0.6107458062284924,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.00010686407995777582,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.610670241912889,
+        "43": 0.6108213705440958
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B3_over_B1_rms",
+      "mean": 0.8376998429011631,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 6.90776879731336e-05,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.8377486882027575,
+        "43": 0.8376509975995685
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B3_over_B2_rms",
+      "mean": 0.9355091900343184,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 9.589299888656675e-05,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9355769966240994,
+        "43": 0.9354413834445374
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B3_rms_support",
+      "mean": 0.5713583093779151,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 4.140608196838787e-05,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5713290308565729,
+        "43": 0.5713875878992574
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "C_raw_rms_support",
+      "mean": 0.357287007455116,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.06305124782700022,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.3127030425543706,
+        "43": 0.40187097235586144
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "Phi_H_other_rms_all_nodes",
+      "mean": 0.49916109098144285,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.07346590975522363,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.4472128480074853,
+        "43": 0.5511093339554004
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X1_calibration_scale",
+      "mean": 1.9391555786132812,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.34191141951020054,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 2.1809234619140625,
+        "43": 1.6973876953125
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X1_over_B1_rms",
+      "mean": 0.9999999895787751,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 2.97253829509159e-10,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9999999897889653,
+        "43": 0.9999999893685849
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X1_rms_support",
+      "mean": 0.6820561229839338,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0001056712287727599,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.6819814021414923,
+        "43": 0.6821308438263753
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X2_over_X1_rms",
+      "mean": 0.9173070228524633,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0074837981522940175,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.912015178429945,
+        "43": 0.9225988672749819
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X2_rms_support",
+      "mean": 0.6256552670037593,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.005201303313214711,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.6219773901599771,
+        "43": 0.6293331438475415
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X3_over_X2_rms",
+      "mean": 0.9521306701049193,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0041587829796874394,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9491899664584991,
+        "43": 0.9550713737513394
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X3_rms_support",
+      "mean": 0.595716384172807,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.007554284884597128,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5903746981038934,
+        "43": 0.6010580702417208
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "beta_X1_rms_support",
+      "mean": 0.17638340300115687,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.000463648957208323,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.17671125232288895,
+        "43": 0.1760555536794248
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "nu2",
+      "mean": 0.527306057419922,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.02262509512183682,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5433044156055635,
+        "43": 0.5113076992342805
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "nu3",
+      "mean": 0.2677751332083886,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.013175794837660728,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.2770918270856212,
+        "43": 0.258458439331156
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "nu3_conditional_on_X2",
+      "mean": 0.21815413511300052,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.01293280508801386,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.227299009290499,
+        "43": 0.20900926093550204
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B0_rms_support",
+      "mean": 0.9999949824350349,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 5.854449361880117e-09,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9999949782953141,
+        "43": 0.9999949865747558
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B1_rms_support",
+      "mean": 0.6396462814779416,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0011184612247440789,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.6404371529944524,
+        "43": 0.6388554099614309
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B2_over_B1_rms",
+      "mean": 0.884195243302913,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0009167305860718582,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.8848434697168455,
+        "43": 0.8835470168889804
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B2_rms_support",
+      "mean": 0.5655727121429992,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.001575321405235451,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5666866325911895,
+        "43": 0.5644587916948088
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B3_over_B1_rms",
+      "mean": 0.8244283486404028,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.001552346628807162,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.8255260234683844,
+        "43": 0.8233306738124212
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B3_over_B2_rms",
+      "mean": 0.9324049108601489,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0007889462578561246,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9329627801090706,
+        "43": 0.931847041611227
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "B3_rms_support",
+      "mean": 0.5273433956725895,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0019150438892153838,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5286975361929236,
+        "43": 0.5259892551522555
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "C_raw_rms_support",
+      "mean": 0.2980959976442642,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.015999412324946585,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.28678270469429484,
+        "43": 0.30940929059423355
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "Phi_H_other_rms_all_nodes",
+      "mean": 0.40595154267864186,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.018380592988653334,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.3929545007341352,
+        "43": 0.41894858462314855
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X1_calibration_scale",
+      "mean": 2.1489686965942383,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.11909148385153452,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 2.2331790924072266,
+        "43": 2.06475830078125
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X1_over_B1_rms",
+      "mean": 0.9999999830127875,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 4.409634501970097e-09,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.999999979894705,
+        "43": 0.9999999861308699
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X1_rms_support",
+      "mean": 0.6396462706096683,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0011184583851382114,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.6404371401182745,
+        "43": 0.6388554011010621
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X2_over_X1_rms",
+      "mean": 0.9182232730252649,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.002448476265682848,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9164919388542262,
+        "43": 0.9199546071963035
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X2_rms_support",
+      "mean": 0.5873367229182088,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0005391641928761733,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5869554762612531,
+        "43": 0.5877179695751645
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X3_over_X2_rms",
+      "mean": 0.9500830127147661,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0013816135764128379,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.9491060643859053,
+        "43": 0.9510599610436271
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "X3_rms_support",
+      "mean": 0.5580190156464341,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.001323723131025341,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.5570830020440726,
+        "43": 0.5589550292487956
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "beta_X1_rms_support",
+      "mean": 0.15816121523426366,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.00018113924762149612,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.15828930002459585,
+        "43": 0.15803313044393147
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "nu2",
+      "mean": 0.4921533515339633,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.009480414533644163,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.49885701693916257,
+        "43": 0.485449686128764
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "nu3",
+      "mean": 0.256618901104567,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.004529614455442975,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.2598218222021713,
+        "43": 0.25341598000696264
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Grocery",
+      "diagnostic_name": "nu3_conditional_on_X2",
+      "mean": 0.20655212611119267,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0055343450120387,
+      "seed_count": 2,
+      "seed_values": {
+        "42": 0.21046549899863118,
+        "43": 0.20263875322375416
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B0_rms_support",
+      "mean": 0.9999949814443672,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 7.004214757149131e-09,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9999949794299935,
+        "43": 0.9999949892350448,
+        "44": 0.9999949756680631
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B1_rms_support",
+      "mean": 0.7894966206492152,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.004623930455133548,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7841666099576351,
+        "43": 0.7918896473659869,
+        "44": 0.7924336046240237
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B2_over_B1_rms",
+      "mean": 0.9561933852794585,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0012427448935909656,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9547584942325359,
+        "43": 0.9569260174135511,
+        "44": 0.9568956441922885
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B2_rms_support",
+      "mean": 0.7549152676039539,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.00539718353915415,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.748689731750584,
+        "43": 0.7577798064849552,
+        "44": 0.7582762645763224
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B3_over_B1_rms",
+      "mean": 0.9373738769294576,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0017949887256031262,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9353018877818803,
+        "43": 0.9384560261810564,
+        "44": 0.9383637168254361
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B3_over_B2_rms",
+      "mean": 0.9803177803160616,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0006039355559388908,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9796214366583924,
+        "43": 0.9806986215272767,
+        "44": 0.9806332827625157
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B3_rms_support",
+      "mean": 0.7400590216140909,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.005742891298256503,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7334325106288935,
+        "43": 0.7431536116410021,
+        "44": 0.7435909425723769
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "C_raw_rms_support",
+      "mean": 0.603431457352896,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.2336994945384916,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.47389981944755555,
+        "43": 0.8732134216056775,
+        "44": 0.46318113100545527
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "Phi_H_other_rms_all_nodes",
+      "mean": 0.7216587869274763,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.2528374449965823,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.5912608113746901,
+        "43": 1.0130745945276858,
+        "44": 0.5606409548800529
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X1_calibration_scale",
+      "mean": 1.4241427381833394,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.44885131232192865,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 1.6547095775604248,
+        "43": 0.9068683981895447,
+        "44": 1.7108502388000488
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X1_over_B1_rms",
+      "mean": 0.9999999634941723,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 4.317112426284501e-08,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.999999949045939,
+        "43": 1.0000000120363526,
+        "44": 0.9999999294002252
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X1_rms_support",
+      "mean": 0.7894965918590005,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.004623938183099082,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7841665700011619,
+        "43": 0.79188965689745,
+        "44": 0.7924335486783897
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X2_over_X1_rms",
+      "mean": 0.9630990553136757,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.008072864367166567,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.955269116008028,
+        "43": 0.9713946843852483,
+        "44": 0.9626333655477507
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X2_rms_support",
+      "mean": 0.7603834944650413,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.010292798026079074,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7490901061280573,
+        "43": 0.769237403329841,
+        "44": 0.7628229739372255
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X3_over_X2_rms",
+      "mean": 0.9826784942234508,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.004314394649019338,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9784838185662917,
+        "43": 0.9871033894167186,
+        "44": 0.9824482746873421
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X3_rms_support",
+      "mean": 0.7472411700746354,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.013308354439816173,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7329725474944102,
+        "43": 0.7593168480930015,
+        "44": 0.7494341146364946
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "beta_X1_rms_support",
+      "mean": 0.20516644351167235,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.0015973092431135689,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.2033252488558071,
+        "43": 0.20618137268759903,
+        "44": 0.20599270899161093
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "nu2",
+      "mean": 0.3455936249469254,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.04070750490083474,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.38476056579693363,
+        "43": 0.30350317752387795,
+        "44": 0.3485171315199647
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "nu3",
+      "mean": 0.19779951660912323,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.019464833551196145,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.21632389519137188,
+        "43": 0.1775139297572685,
+        "44": 0.19956072487872933
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "nu3_conditional_on_X2",
+      "mean": 0.1491440521585799,
+      "modality": "text",
+      "model": "mrcge_v13",
+      "sd": 0.020074230046309212,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.16811005317495162,
+        "43": 0.12812013244794818,
+        "44": 0.15120197085283993
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B0_rms_support",
+      "mean": 0.9999950119775396,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 1.6662167627371738e-09,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9999950138509518,
+        "43": 0.9999950114203378,
+        "44": 0.9999950106613293
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B1_rms_support",
+      "mean": 0.7124324420802581,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.006589382757753526,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7103644248383469,
+        "43": 0.7071251224772886,
+        "44": 0.7198077789251387
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B2_over_B1_rms",
+      "mean": 0.92498612056436,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0022661946390419114,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9239930554026212,
+        "43": 0.9233859880955785,
+        "44": 0.9275793181948804
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B2_rms_support",
+      "mean": 0.6590000113627864,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.007708390888429403,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.6563717953557099,
+        "43": 0.6529494299258981,
+        "44": 0.6676788088067513
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B3_over_B1_rms",
+      "mean": 0.8899106564054111,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0032319068384833167,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.8883376027070935,
+        "43": 0.887766424247198,
+        "44": 0.893627942261942
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B3_over_B2_rms",
+      "mean": 0.9620781618778053,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.001142923350910933,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9614115577091743,
+        "43": 0.961425054844244,
+        "44": 0.9633978730799975
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "B3_rms_support",
+      "mean": 0.6340152386637785,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.008155916419626442,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.6310434302093004,
+        "43": 0.6277619414770245,
+        "44": 0.6432403443050105
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "C_raw_rms_support",
+      "mean": 0.2530181647062873,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.03316065547637521,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.2834601051290823,
+        "43": 0.25791174815869505,
+        "44": 0.21768264083108452
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "Phi_H_other_rms_all_nodes",
+      "mean": 0.3328994630245526,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0369481002182674,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.3580849031503108,
+        "43": 0.3501300947852533,
+        "44": 0.29048339113809374
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X1_calibration_scale",
+      "mean": 2.8514881134033203,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.4114479738432733,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 2.506047248840332,
+        "43": 2.7417330741882324,
+        "44": 3.3066840171813965
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X1_over_B1_rms",
+      "mean": 0.9999999862769464,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 8.215558046685998e-08,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9999999884049819,
+        "43": 1.000000067347836,
+        "44": 0.9999999030780213
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X1_rms_support",
+      "mean": 0.7124324319540796,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0065893258282704,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.7103644166016586,
+        "43": 0.7071251701006355,
+        "44": 0.7198077091599445
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X2_over_X1_rms",
+      "mean": 0.9484365075336657,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.008122504400526044,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9574393681905872,
+        "43": 0.9416576987275235,
+        "44": 0.9462124556828866
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X2_rms_support",
+      "mean": 0.6756972462363814,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.008524295405107078,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.680130858216167,
+        "43": 0.665869860389273,
+        "44": 0.6810910201037041
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X3_over_X2_rms",
+      "mean": 0.9773054736247128,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.003751508623806194,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.9814396906711647,
+        "43": 0.9741180954847819,
+        "44": 0.9763586347181917
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "X3_rms_support",
+      "mean": 0.660377465951326,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.010246175426171632,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.6675074191035887,
+        "43": 0.6486358802431162,
+        "44": 0.6649890985072731
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "beta_X1_rms_support",
+      "mean": 0.17789734502259827,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0016390588820925412,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.17838514645026154,
+        "43": 0.1760697614666724,
+        "44": 0.17923712715086088
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "nu2",
+      "mean": 0.44918467615371555,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.04428616896920427,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.39902986940060337,
+        "43": 0.4829013087573145,
+        "44": 0.4656228503032287
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "nu3",
+      "mean": 0.23970672256743392,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.018611326957709683,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.21894253721032683,
+        "43": 0.2548865174010348,
+        "44": 0.24529111309094015
+      },
+      "test_evaluation": false
+    },
+    {
+      "dataset": "Movies",
+      "diagnostic_name": "nu3_conditional_on_X2",
+      "mean": 0.19007676147450434,
+      "modality": "visual",
+      "model": "mrcge_v13",
+      "sd": 0.0190887919838671,
+      "seed_count": 3,
+      "seed_values": {
+        "42": 0.16862475808755678,
+        "43": 0.20518917883662396,
+        "44": 0.19641634749933226
+      },
+      "test_evaluation": false
+    }
+  ],
+  "movies_cross_novelty_across_seed": {
+    "Movies_text_nu2": {
+      "mean": 0.3455936249469254,
+      "sd": 0.04070750490083474,
+      "seed_count": 3,
+      "seed_values": [
+        0.38476056579693363,
+        0.30350317752387795,
+        0.3485171315199647
+      ]
+    },
+    "Movies_text_nu3": {
+      "mean": 0.19779951660912323,
+      "sd": 0.019464833551196145,
+      "seed_count": 3,
+      "seed_values": [
+        0.21632389519137188,
+        0.1775139297572685,
+        0.19956072487872933
+      ]
+    },
+    "Movies_text_nu3_conditional_on_X2": {
+      "mean": 0.1491440521585799,
+      "sd": 0.020074230046309212,
+      "seed_count": 3,
+      "seed_values": [
+        0.16811005317495162,
+        0.12812013244794818,
+        0.15120197085283993
+      ]
+    },
+    "Movies_visual_nu2": {
+      "mean": 0.44918467615371555,
+      "sd": 0.04428616896920427,
+      "seed_count": 3,
+      "seed_values": [
+        0.39902986940060337,
+        0.4829013087573145,
+        0.4656228503032287
+      ]
+    },
+    "Movies_visual_nu3": {
+      "mean": 0.23970672256743392,
+      "sd": 0.018611326957709683,
+      "seed_count": 3,
+      "seed_values": [
+        0.21894253721032683,
+        0.2548865174010348,
+        0.24529111309094015
+      ]
+    },
+    "Movies_visual_nu3_conditional_on_X2": {
+      "mean": 0.19007676147450434,
+      "sd": 0.0190887919838671,
+      "seed_count": 3,
+      "seed_values": [
+        0.16862475808755678,
+        0.20518917883662396,
+        0.19641634749933226
+      ]
+    }
+  },
+  "test_evaluation": false
+}

@@ -1,0 +1,3 @@
+# Superseded execution attempt 01
+
+Five checkpoints (Movies V1.3 seeds 42/43/44 and Grocery V1.3 seeds 42/43) completed under analysis source `fe0e390e2d2282f8dcb761ab327b381f942f5933`. The next cell, ele-fashion seed 42, was rejected because an additional absolute X1 reconstruction tolerance (1e-5) was stricter than the frozen relative contract: relative Frobenius error was 1.3231e-7, while max absolute error was 2.2888e-5. The failed cell produced no accepted result. The analyzer was corrected to use the predeclared 1e-6 relative Frobenius and 1e-4 absolute maximum bounds, and the full set will be rerun under the new source SHA. Archived attempt-01 values are superseded and must not be combined with final data.

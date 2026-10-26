@@ -1,0 +1,3 @@
+# Superseded execution attempt 03
+
+All ten checkpoint diagnostics completed under source `e8c8f43359148c0f8802d22b2ea432b591511075` and passed the corrected X1 reconstruction tolerance. Audit review found that V1.3 collaborative route summaries were indexed by modality and were not copied because the analyzer used the private route key. This iteration is retained but superseded; the corrected source captures the existing collaborative summaries, fixes the SameNode report filter, adds paired MR/Hybrid structural summaries, and selects the next route from the observed novelty/alignment evidence. All ten checkpoints will be rerun under the final source freeze SHA.
