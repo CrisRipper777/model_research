@@ -31,6 +31,17 @@ The final GPU preflight campaign passed 6/6 cells. Stage 1 completed all six Mov
 | Movies | complementary | 43 | complete | 0.550990 | 0.480209 | 1.357526 | 0.154199 | 63 |
 | Movies | complementary | 44 | complete | 0.554889 | 0.484564 | 1.383626 | 0.197985 | 78 |
 
+## Train–Validation fit summary
+
+Three-seed means are shown below. The CE gap is Train CE minus Validation CE.
+
+| Arm | Train Acc | Train Macro-F1 | Train CE | Val Acc | Val Macro-F1 | Val CE | Acc gap | F1 gap | CE gap |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| raw | 0.7174 | 0.7030 | 0.8153 | 0.5554 | 0.4894 | 1.3714 | 0.1620 | 0.2137 | -0.5561 |
+| complementary | 0.7407 | 0.7338 | 0.7566 | 0.5553 | 0.4792 | 1.3819 | 0.1854 | 0.2546 | -0.6253 |
+
+Complementary increased the mean train–Validation Accuracy gap by 0.0234 and the Macro-F1 gap by 0.0409 versus raw, while Validation Accuracy was essentially unchanged and Validation Macro-F1/CE were worse.
+
 ## Best-Accuracy checkpoint mechanism diagnostics
 
 | Dataset | Arm | Seed | lambda (text, visual) | Calibrated candidate RMS (text, visual) | Scale (text, visual) | Expert addition RMS (text) | Expert addition RMS (visual) |
@@ -51,6 +62,22 @@ The final GPU preflight campaign passed 6/6 cells. Stage 1 completed all six Mov
 
 Selected arm: **none** (no_arm_passed).
 
+## Direct paired comparison: complementary minus raw
+
+| Metric | Seed 42 | Seed 43 | Seed 44 | Mean |
+|---|---:|---:|---:|---:|
+| ΔAccuracy (pp) | +0.0900 | -0.1500 | +0.0300 | -0.0100 |
+| ΔMacro-F1 (pp) | -2.1124 | -0.9071 | -0.0105 | -1.0100 |
+| ΔCE | +0.00595 | +0.00936 | +0.01618 | +0.01050 |
+
+Complementary did not improve over raw on the paired mean: Accuracy was tied within 0.01 pp, while Macro-F1 fell by 1.01 pp and CE rose by 0.0105.
+
+## Mechanism and resource summary
+
+At the Best-Accuracy checkpoints, mean lambda was +0.0461 (text) and −0.0042 (visual) for raw, and +0.0171 (text) and −0.0130 (visual) for complementary. The new terms were learned from zero initialization, but their mean RMS was 0.00145 raw and 0.00122 complementary, about 0.44% and 0.37% of the original expert input RMS. Mean raw X2 RMS was 0.7223; complementary projection reduced the candidate RMS to 0.3213 before calibration, and calibrated RMS was 0.7478. No scale cap or near-zero fallback was triggered. These mechanism changes did not produce a Validation promotion.
+
+Training wall time was 696.8 seconds total (11.6 minutes): 98.5 seconds per raw cell and 133.8 seconds per complementary cell on average. Peak reserved memory was 2.85 GiB for raw and 2.93 GiB for complementary. The higher ele-fashion preflight reservation is recorded separately in the preflight table.
+
 ## Interpretation
 
-This is an exploratory Validation screen, not a significance test or evidence of Test generalization. Stage 2 runs only the single Stage 1 selected arm on Grocery and ele-fashion seeds 42/43. No selection means no Stage 2 runs.
+This is an exploratory Validation screen, not a significance test or evidence of Test generalization. Neither two-hop condition showed the required accuracy gain, and complementary also reduced paired Macro-F1 versus raw. Under the frozen rule, neither condition is retained as a next-generation MR-CGE candidate from this screen, and no Stage 2 Grocery or ele-fashion runs were authorized. Any architecture promotion or follow-up experiment requires independent review.
