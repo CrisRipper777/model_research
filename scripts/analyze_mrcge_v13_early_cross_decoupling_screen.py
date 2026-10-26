@@ -487,7 +487,7 @@ The learned `b[4]` parameters are shared across modalities. The attached correct
     audit = f"""# Implementation audit
 
 - Base commit ancestry: verified from `{runner.BASE_SHA}`.
-- Frozen V1.3-A and trainer/config sources: SHA256 equality checked against the base before CPU preflight.
+- Frozen V1.3-A, Static-Strength, NoP0 basis-screen, Hybrid-CGE, trainer, configs and relevant regression tests: SHA256 equality checked against the base before CPU preflight.
 - New model: subclasses frozen V1.3-A and adds only `cross_coefficients` with shape `[4]`.
 - Initialization: for all dataset/seed cells, V1.3-A common state tensors and external classifier initial state matched; `b` equaled that instance's initial physical `alpha[:,1]`.
 - Mathematical path: `G_old + beta_m * (b - alpha_current[:,1]) * C_m`; alpha remains attached to autograd. Unit tests include analytical theta Cross-path cancellation and finite nonzero b gradients.
@@ -533,7 +533,9 @@ Unit and regression test output is recorded in `research/mrcge_v13_early_cross_d
 
     decision = f"""# Decision handoff
 
-The screen finished {complete}/7 authorized cells. Review the per-seed paired metrics and parameter/resource cost in `SCREENING_REPORT.md`, then decide whether this narrowly scoped change merits a separately authorized follow-up. This screen alone does not establish a general improvement: sample counts are small, optimization trajectories differ, and the changed expert input can affect the router and Joint View downstream.
+The screen finished {complete}/7 authorized cells. On the primary Movies target, Best-Accuracy checkpoint mean differences are Acc -0.170 pp, Macro-F1 -0.634 pp and CE +0.04082; this does not reach the suggested +0.3 pp Acc empirical signal. Grocery and ele-fashion show small positive mean Acc/F1 differences with mixed CE changes, so the overall result is mixed and does not support promoting the condition.
+
+Review the per-seed paired metrics and parameter/resource cost in `SCREENING_REPORT.md` before deciding whether this narrowly scoped change merits a separately authorized follow-up. This screen alone does not establish a general improvement: sample counts are small, optimization trajectories differ, and the changed expert input can affect the router and Joint View downstream.
 
 No default-model change or follow-on run is made by this screen. Test metrics were not computed.
 """
