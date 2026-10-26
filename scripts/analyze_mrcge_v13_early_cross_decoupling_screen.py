@@ -333,7 +333,17 @@ def run_analysis() -> dict[str, Any]:
     manifest = read_json(runner.DATA / "manifest.json", {})
     complete = len(new)
     delta_sections = []
+    delta_summary_lines = []
     for dataset in DATASETS:
+        for selection in ("best_validation_accuracy", "best_validation_macro_f1"):
+            matched = [row for row in diffs if row["dataset"] == dataset and row["selection"] == selection]
+            stats = {}
+            for key in ("delta_acc_pp", "delta_macro_f1_pp", "delta_ce"):
+                stats[key] = mean_sd([float(row[key]) for row in matched])
+            delta_summary_lines.append(
+                f"| {dataset} | {selection} | {stats['delta_acc_pp'][0]:+.3f} ± {stats['delta_acc_pp'][1]:.3f} | "
+                f"{stats['delta_macro_f1_pp'][0]:+.3f} ± {stats['delta_macro_f1_pp'][1]:.3f} | "
+                f"{stats['delta_ce'][0]:+.5f} ± {stats['delta_ce'][1]:.5f} | {len(matched)} |")
         delta_sections.append(f"### {dataset}\n\n" + "\n".join(
             f"- Seed {row['seed']}: Acc {row['delta_acc_pp']:+.3f} pp, Macro-F1 {row['delta_macro_f1_pp']:+.3f} pp, CE {row['delta_ce']:+.5f} ({row['selection']})."
             for row in diffs if row["dataset"] == dataset))
@@ -369,6 +379,14 @@ Acc and Macro-F1 differences are percentage points; CE is raw cross entropy.
 
 {chr(10).join(delta_sections)}
 
+### Paired difference summary by dataset
+
+Entries are mean ± sample SD across seeds. Acc and Macro-F1 are percentage points; CE is raw loss.
+
+| Dataset | Checkpoint selection | Δ Acc (pp) | Δ Macro-F1 (pp) | Δ CE | n |
+|---|---|---:|---:|---:|---:|
+{chr(10).join(delta_summary_lines)}
+
 ## Fixed-split Hybrid context
 
 Hybrid H2 3-hop Movies records are historical context only; they do not isolate the effect of this architecture change.
@@ -383,7 +401,8 @@ Hybrid H2 3-hop Movies records are historical context only; they do not isolate 
 - Each new run has independent Best-Accuracy and Best-F1 checkpoint hashes and reload verification.
 - Paired-dropout Validation RNG checks passed; all Test labels were masked before Trainer entry.
 - Protected historical research/output files were hash-checked against CPU preflight.
-- Recorded failures/blocks: {len(failures)}. The manifest reports {manifest.get('failed_attempts',0)} failed and {manifest.get('blocked_resource_attempts',0)} blocked attempts.
+- Preserved failure/block records: {len(failures)} total, including one first GPU preflight attempt blocked because sandboxed `nvidia-smi` received SIGKILL. Its fresh guarded retry passed; all seven current-source GPU preflights and all seven formal trainings passed.
+- Formal training attempts failed: {manifest.get('failed_attempts',0)}; blocked: {manifest.get('blocked_resource_attempts',0)}.
 
 ## Interpretation boundary
 
@@ -428,8 +447,10 @@ Unit and regression test output is recorded in `research/mrcge_v13_early_cross_d
 - Physical GPU: {runner.PHYSICAL_GPU}; GPU preflight status: `{preflight.get('gpu_preflight_status')}`.
 - GPU preflight passing cells: {sum(r.get('status') == 'pass' for r in preflight.get('gpu_preflight_cells', []))}/7.
 - Required launch free memory: at least 8192 MiB and each formal launch also cleared the measured peak-reserved plus 2048 MiB margin.
-- Current source SHA: `{runner.source_sha()}`.
+- Training source freeze SHA: `{preflight.get('source_git_sha')}`.
+- Audit/report commit: `{runner.source_sha()}`.
 - Test evaluation: disabled.
+- Initial sandbox-only GPU preflight was blocked by `nvidia-smi` SIGKILL and retained in `failures.json`; after authorized device access was available, a fresh ownership guard passed all seven cells.
 """
     write_markdown(runner.STUDY / "PREFLIGHT_REPORT.md", preflight_report)
 
