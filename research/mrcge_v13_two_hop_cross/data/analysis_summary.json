@@ -1,10 +1,10 @@
 {
   "base_sha": "988419283ef8f49c392de954aa739afc95c4c8cc",
   "cpu_preflight": "pass",
-  "failure_count": 5,
-  "failure_summary": "The existing V1.3 GPU ownership guard could not obtain the nvidia-smi GPU snapshot (exit status 9 / driver communication error) during each of five fresh baseline attempts. No preflight worker, GPU forward/backward, or training worker was started.",
+  "failure_count": 6,
+  "failure_summary": "Six GPU 1 preflight campaigns recorded zero passing cells. A standalone guard briefly read 24,246 MiB free and no compute PIDs, but the runner then failed three consecutive fresh nvidia-smi baseline queries with exit status 9; six direct follow-up samples also failed driver communication. No preflight worker, GPU forward/backward, or training worker launched.",
   "gpu_preflight": "blocked_resource",
-  "gpu_preflight_attempts": 5,
+  "gpu_preflight_attempts": 6,
   "gpu_preflight_passed_cells": 0,
   "gpu_preflight_required_cells": 6,
   "link_prediction": false,

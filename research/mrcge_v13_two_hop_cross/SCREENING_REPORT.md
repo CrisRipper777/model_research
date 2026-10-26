@@ -17,7 +17,7 @@ These fixed-split Validation rows are historical context only; their checkpoints
 ## Execution record
 
 - CPU protocol and initialization checks passed; see [PREFLIGHT_REPORT.md](PREFLIGHT_REPORT.md).
-- Five fresh GPU 1 baseline attempts failed in the existing ownership guard because `nvidia-smi` could not reliably communicate with the NVIDIA driver. No GPU model worker launched.
+- Six GPU 1 baseline attempts failed in the existing ownership guard because `nvidia-smi` could not reliably communicate with the NVIDIA driver. A separate pre-launch guard once read GPU 1 at 24,246 MiB free with no compute PID, but the runner could not reproduce a valid baseline and no GPU model worker launched.
 - Training runs: 0/6 Stage 1; 0/4 conditional Stage 2.
 - Delta metrics and promotion decision: not evaluated.
 - Test evaluation and link prediction: disabled and not run.

@@ -189,6 +189,44 @@
       "test_evaluation": false,
       "training_started": false,
       "variant": "raw"
+    },
+    {
+      "attempt": 6,
+      "dataset": "Movies",
+      "reason": "RuntimeError(\"nvidia-smi baseline query failed on three fresh attempts: Command '['nvidia-smi', '--query-gpu=index,uuid,name,memory.used,memory.total,memory.free,utilization.gpu,temperature.gpu', '--format=csv,noheader,nounits']' returned non-zero exit status 9.\")",
+      "seed": 42,
+      "source_file_sha256s": {
+        "configs/config.yaml": "1b06934c68b88e931909de4cb65b1fa51725df94ff6139d127a6ba85355fe399",
+        "configs/dataset/Grocery.yaml": "18969c97a0f06ab33fd3094624d524f03de48139405159bb06d19cf107105e56",
+        "configs/dataset/Movies.yaml": "81b803b0ed79ad86d483aee5dceadac149ca9ba2263e31160b22951a7812f5c8",
+        "configs/dataset/ele-fashion.yaml": "50e683dcae43c505c999ecbc22a6b5b380a8b897d4942933c01f266f8169b917",
+        "configs/model/mrcge_v12.yaml": "c0e5782fee74bda70a6cc42c3cf50b57e169ccf00981e53f595bd68b04750eed",
+        "configs/model/mrcge_v13.yaml": "2fec9ff9b5b901d814a733fa6da47b6b92b1d760c2a00eb15a5ba68434ebe88b",
+        "configs/model/mrcge_v13_two_hop_cross.yaml": "5120025ad9146a66c3afe042d42b8f529bd58c429700846d3586776e8932fad6",
+        "configs/task/nc.yaml": "c8df71f58e707b4c7df429acd62a4c1d91e9cfd80ba24bc6c6d1979307224849",
+        "scripts/run_hybrid_cge_paper_evidence_v1.py": "a45a9526bfc7120953635ca08019ab619e48cd6ba29dbe7848e50d7862699f2b",
+        "scripts/run_mrcge_v12_confirmation.py": "cbf6b6eff5f772f4e3a5d024454fa76294f27774cd667dccce5e8bccab59739e",
+        "scripts/run_mrcge_v13_screen.py": "afc8dd631f4e539c571dd9b3169790cc9461672ea0835684f717fd25eb3316f1",
+        "scripts/run_mrcge_v13_two_hop_cross_screen.py": "8a05b31df2fcb0399ebf67335bf13830ffd6a2bb1c632b23cefdc3efb5df37b8",
+        "src/data/graph_utils.py": "8fa1c35c1897e25f2f30628ddc0312598fe9e581692a48cccb131a12a50f10df",
+        "src/data/loaders.py": "08fe47584069a8f690d87d20a2b892d008c43a1dad6bdb3d08bb2f7e22ddd173",
+        "src/data/semantic_candidates_v7b.py": "d79f0f8bb72448701bb490cea57b7095a5b8e99ee2bf9b63fb552038977d9caf",
+        "src/data/splits.py": "b352a1c558752cc82075e7405723d42a408cb416386ad412669f0339aacd1d22",
+        "src/data/types.py": "531968f22725acc211d5906c66bf0189d35857cbbdb972d12ee4ebdd29d3d2f8",
+        "src/models/__init__.py": "ea25cee58d09486940ab91fc9140fb40cf9d7fdf71a9a15a3485c006bcb9ae9c",
+        "src/models/mrcge_v12.py": "d9a7632f725a7c742dc083fe7737bc5c7384e9fa3bc91ffa64ead01e4a5d4ca6",
+        "src/models/mrcge_v13.py": "be9272ad25296927fcb95720776a7fcdaf3f54d00936c96387262159b3770c90",
+        "src/models/mrcge_v13_two_hop_cross.py": "139a92015b8651be4c27e9d38613020d8e61f36e8aeb514d7287bf5e8810e80f",
+        "src/tasks/inference.py": "f6e0df653a03a6ab5be98016fdc495fcff7704f42a73bdd546c36f7fc63be0aa",
+        "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
+        "src/utils/seeds.py": "3e423b11a7e59e9b51c48e176d08b05b8fbd6294f364e1895ed2f1413d2e02f4",
+        "tests/test_mrcge_v13_two_hop_cross.py": "ce03cf03f0122bdcef6d0907b55563478a55fb9522940d961f4fed9ae7c9130f"
+      },
+      "source_git_sha": "172ef3ada69bf5dbd6a13f9b2c5cf7db2fd8fbf8",
+      "status": "blocked_resource",
+      "test_evaluation": false,
+      "training_started": false,
+      "variant": "raw"
     }
   ]
 }
