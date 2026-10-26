@@ -120,10 +120,26 @@ def gather_results() -> tuple[dict[tuple[str, int], dict[str, str]],
     preflight = read_json(runner.DATA / "preflight.json", {})
     if preflight.get("status") != "pass" or preflight.get("stage") != "cpu_preflight":
         raise RuntimeError("CPU preflight is not recorded as passing")
-    if preflight.get("source_git_sha") != runner.source_sha():
-        raise RuntimeError("source commit differs from CPU preflight source freeze")
-    if preflight.get("source_file_sha256s") != runner.source_file_hashes():
-        raise RuntimeError("working source files differ from the CPU-preflight source hashes")
+    frozen_sha = str(preflight.get("source_git_sha", ""))
+    if not frozen_sha:
+        raise RuntimeError("CPU preflight has no frozen training commit")
+    import subprocess
+    if subprocess.run(["git", "merge-base", "--is-ancestor", frozen_sha, runner.source_sha()],
+                      cwd=ROOT, check=False).returncode != 0:
+        raise RuntimeError("analysis commit is not a descendant of the training source freeze")
+    frozen_hashes = preflight.get("source_file_sha256s", {})
+    actual_hashes = runner.source_file_hashes()
+    differences = {}
+    analyzer_path = "scripts/analyze_mrcge_v13_early_cross_decoupling_screen.py"
+    for path, expected in frozen_hashes.items():
+        # The report generator received a small post-training bug fix. Verify
+        # its frozen copy at the training commit, while requiring every model,
+        # trainer, config, and data-pipeline file to remain byte-identical.
+        actual = runner.git_file_sha(frozen_sha, path) if path == analyzer_path else actual_hashes.get(path)
+        if actual != expected:
+            differences[path] = {"expected_frozen": expected, "actual": actual}
+    if differences:
+        raise RuntimeError(f"training source freeze audit failed: {differences}")
     check_history_unchanged(preflight)
 
     gpu = {}
@@ -152,7 +168,7 @@ def gather_results() -> tuple[dict[tuple[str, int], dict[str, str]],
         if len(complete) != 1:
             raise RuntimeError(f"expected one complete new run for {dataset}/seed{seed}, found {len(complete)}")
         run = complete[0]
-        if run.get("source_git_sha") != preflight.get("source_git_sha"):
+        if run.get("source_git_sha") != frozen_sha:
             raise RuntimeError(f"run source commit mismatch for {dataset}/seed{seed}")
         if run.get("split_fingerprint") != historical.get("split_fingerprint"):
             raise RuntimeError(f"run split differs from paired V1.3-A for {dataset}/seed{seed}")
@@ -319,7 +335,7 @@ def run_analysis() -> dict[str, Any]:
     delta_sections = []
     for dataset in DATASETS:
         delta_sections.append(f"### {dataset}\n\n" + "\n".join(
-            f"- Seed {seed}: Acc {row['delta_acc_pp']:+.3f} pp, Macro-F1 {row['delta_macro_f1_pp']:+.3f} pp, CE {row['delta_ce']:+.5f} ({row['selection']})."
+            f"- Seed {row['seed']}: Acc {row['delta_acc_pp']:+.3f} pp, Macro-F1 {row['delta_macro_f1_pp']:+.3f} pp, CE {row['delta_ce']:+.5f} ({row['selection']})."
             for row in diffs if row["dataset"] == dataset))
     per_seed_rows = []
     for dataset, seed in sorted(new):
@@ -387,6 +403,7 @@ The learned `b[4]` parameters are shared across modalities. The attached correct
 - Exact authorized training cells: 7; completed and dual-checkpoint verified: {complete}/7.
 - All Test/LP flags are false; test labels were masked before Trainer.
 - Historical source/data/checkpoints were read-only and protected by pre/post hash checks.
+- Report-generator correction was committed after training; the original report-generator file at the frozen training commit and all model/trainer/config/data-pipeline files were hash-verified. The correction did not change training behavior or checkpoint provenance.
 
 Unit and regression test output is recorded in `research/mrcge_v13_early_cross_decoupling/test_results.txt`.
 """
@@ -425,6 +442,7 @@ No default-model change or follow-on run is made by this screen. Test metrics we
     write_markdown(runner.STUDY / "DECISION_HANDOFF.md", decision)
 
     manifest.update({"analysis_status": "pass", "analysis_recorded_utc": runner.now(),
+        "analysis_git_sha": runner.source_sha(), "training_source_git_sha": preflight.get("source_git_sha"),
         "completed_cells": complete, "audited_coefficient_rows": len(coeff),
         "audited_cross_injection_rows": len(injections), "test_evaluation": False,
         "link_prediction": False})
