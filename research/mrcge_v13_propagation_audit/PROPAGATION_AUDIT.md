@@ -45,17 +45,19 @@ Movies nu2 remains 0.304–0.483 and nu3 conditional on X2 0.128–0.205 across 
 
 ## Q4. Hybrid and MR-CGE structural differences
 
-| Hybrid receiver | Raw hop2/hop1 RMS | Raw hop3/hop2 RMS | Normalized state effective rank | Cross/private profile RMS | Private route entropy | Collaborative route entropy |
-|---|---:|---:|---:|---:|---:|---:|
-| text | 0.962 ± 0.003 | 0.983 ± 0.001 | 2.020 ± 0.015 | 0.344 ± 0.016 | 0.953 ± 0.053 | 1.005 ± 0.041 |
-| visual | 0.940 ± 0.004 | 0.971 ± 0.002 | 2.101 ± 0.024 | 0.272 ± 0.020 | 0.291 ± 0.095 | 0.220 ± 0.162 |
+| Hybrid receiver | Raw hop2/hop1 RMS | Raw hop3/hop2 RMS | Normalized state effective rank | Cross/private profile RMS | Collaborative/private response RMS | Private route entropy | Collaborative route entropy |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| text | 0.962 ± 0.003 | 0.983 ± 0.001 | 2.020 ± 0.015 | 0.344 ± 0.016 | 0.553 ± 0.072 | 0.953 ± 0.053 | 1.005 ± 0.041 |
+| visual | 0.940 ± 0.004 | 0.971 ± 0.002 | 2.101 ± 0.024 | 0.272 ± 0.020 | 1.015 ± 0.025 | 0.291 ± 0.095 | 0.220 ± 0.162 |
 
 | Movies modality | MR-CGE B3/B1 | Hybrid raw hop3/hop1 | MR basis rank (of 4) | Hybrid normalized-state rank (of 3) | MR X1/B1 | Hybrid Cross/private-profile |
 |---|---:|---:|---:|---:|---:|---:|
 | text | 0.937 ± 0.002 | 0.945 ± 0.004 | 2.604 ± 0.015 | 2.020 ± 0.015 | 1.000 ± 0.000 | 0.344 ± 0.016 |
 | visual | 0.890 ± 0.003 | 0.913 ± 0.006 | 2.838 ± 0.019 | 2.101 ± 0.024 | 1.000 ± 0.000 | 0.272 ± 0.020 |
 
-Hybrid normalization brings each physical order to active-channel RMS near one before alpha mixing; its effective rank is around 2.0–2.1 for three normalized states, versus around 2.6–2.8 for four MR basis columns. The raw hop ratios remain similar in scale to MR. Route entropy and Top-2 shares vary by modality and seed; the table and CSV preserve this spread. These structural contrasts suggest calibration and cross-alignment as controlled questions, but do not isolate causal module effects. No cross-model coordinate cosine is computed.
+Hybrid normalization brings each physical order to active-channel RMS near one before alpha mixing; its effective rank is around 2.0–2.1 for three normalized states, versus around 2.6–2.8 for four MR basis columns. The raw hop ratios remain similar in scale to MR. Hybrid collaborative/private response RMS is 0.553 ± 0.072 for text and 1.015 ± 0.025 for visual, while Cross/private profile RMS is 0.344 ± 0.016 and 0.272 ± 0.020, respectively. This modality difference motivates checking the response path separately from its input scale.
+
+The four MR expert-filter inputs have effective rank 3.06–3.29; their mean off-diagonal cosine is about 0.37–0.53. Hybrid's four alpha-mixed expert profiles have effective rank 2.38 ± 0.03 (text) and 2.46 ± 0.03 (visual). These are model-specific input constructions and should not be treated as coordinate-aligned representations. MR's per-expert input RMS spans about 0.185–0.515 across the Movies seeds; Hybrid private/collaborative profiles are each normalized to RMS near one. Full expert Gram matrices, RMS values, per-seed route entropies, and Top-2 share vectors are in the CSV/JSON evidence.
 
 ### Router entropy and Top-2 selection (Movies, three seeds)
 
