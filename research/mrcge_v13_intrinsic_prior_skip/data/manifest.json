@@ -1,0 +1,59 @@
+{
+  "study": "MR-CGE V1.3 Intrinsic-Prior Fusion Controlled Screen",
+  "branch": "exp/mrcge_v13_intrinsic_prior_skip_screen",
+  "base_sha": "184deaaf12b21c9ee01d3328aef15d86bcc50346",
+  "source_git_sha": "c7f9209c60f18059d330ac23d7b3ab1b13af2e6e",
+  "cpu_preflight_status": "pass",
+  "gpu_preflight_status": "pass",
+  "training_status": "stage1_complete",
+  "authorized_stage1_cells": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "intrinsic_prior_skip"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "intrinsic_prior_skip"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "intrinsic_prior_skip"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "intrinsic_prior_skip"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "intrinsic_prior_skip"
+    }
+  ],
+  "conditional_stage2_cells": [
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "intrinsic_prior_skip"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "intrinsic_prior_skip"
+    }
+  ],
+  "completed_cells": 5,
+  "test_evaluation": false,
+  "link_prediction": false,
+  "updated_utc": "2026-10-26T17:42:11+00:00",
+  "training_source_frozen_sha": "c7f9209c60f18059d330ac23d7b3ab1b13af2e6e",
+  "stage1_status": "no_go",
+  "stage2_status": "not_authorized",
+  "final_recommendation": "NO-GO",
+  "gpu_preflight_passed_datasets": 3,
+  "training_started": true,
+  "training_completed_utc": "2026-10-26T17:41:08+00:00"
+}
