@@ -1,0 +1,98 @@
+{
+  "authorized_stage1_cells": [
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "raw"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "raw"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "raw"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 42,
+      "variant": "complementary"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 43,
+      "variant": "complementary"
+    },
+    {
+      "dataset": "Movies",
+      "seed": 44,
+      "variant": "complementary"
+    }
+  ],
+  "base_sha": "988419283ef8f49c392de954aa739afc95c4c8cc",
+  "branch": "exp/mrcge_v13_two_hop_cross_screen",
+  "completed_cells": 0,
+  "conditional_stage2_cells": [
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "raw"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "raw"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 42,
+      "variant": "complementary"
+    },
+    {
+      "dataset": "Grocery",
+      "seed": 43,
+      "variant": "complementary"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "raw"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "raw"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 42,
+      "variant": "complementary"
+    },
+    {
+      "dataset": "ele-fashion",
+      "seed": 43,
+      "variant": "complementary"
+    }
+  ],
+  "conditional_unstarted_stage2_cells": 4,
+  "cpu_preflight_status": "pass",
+  "gpu_preflight_campaigns": 5,
+  "gpu_preflight_passed": 0,
+  "gpu_preflight_passed_cells": 0,
+  "gpu_preflight_status": "blocked_resource",
+  "link_prediction": false,
+  "source_git_sha": "794ba87ed0b63398376717f956a2ae7169a7824b",
+  "stage1_completed_cells": 0,
+  "stage1_status": "not_started_gpu_preflight_blocked",
+  "stage2_completed_cells": 0,
+  "stage2_status": "not_authorized_stage1_not_run",
+  "stop_reason": "Five GPU 1 preflight campaigns could not obtain a fresh nvidia-smi baseline; first cell blocked before child launch and remaining cells were not launched.",
+  "study": "MR-CGE V1.3 Two-Hop Cross Controlled Screening",
+  "test_evaluation": false,
+  "training_started": false,
+  "training_status": "stopped_before_training",
+  "unstarted_stage1_cells": 6,
+  "updated_utc": "2026-10-26T11:35:30+00:00"
+}

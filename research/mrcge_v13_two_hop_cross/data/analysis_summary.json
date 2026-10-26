@@ -1,0 +1,20 @@
+{
+  "base_sha": "988419283ef8f49c392de954aa739afc95c4c8cc",
+  "cpu_preflight": "pass",
+  "failure_count": 5,
+  "failure_summary": "The existing V1.3 GPU ownership guard could not obtain the nvidia-smi GPU snapshot (exit status 9 / driver communication error) during each of five fresh baseline attempts. No preflight worker, GPU forward/backward, or training worker was started.",
+  "gpu_preflight": "blocked_resource",
+  "gpu_preflight_attempts": 5,
+  "gpu_preflight_passed_cells": 0,
+  "gpu_preflight_required_cells": 6,
+  "link_prediction": false,
+  "next_action": "Resume GPU preflight only after the GPU 1 ownership guard repeatedly obtains a valid fresh snapshot; then run the full registered six-cell matrix before any Stage 1 training.",
+  "promotion_gate_evaluated": false,
+  "selected_variant": null,
+  "source_git_sha": "794ba87ed0b63398376717f956a2ae7169a7824b",
+  "stage1_status": "not_started",
+  "stage2_status": "not_authorized",
+  "study": "MR-CGE V1.3 Two-Hop Cross Controlled Screening",
+  "test_evaluation": false,
+  "training_started": false
+}
