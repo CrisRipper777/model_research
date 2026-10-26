@@ -1,0 +1,80 @@
+{
+  "promotion_gates": {
+    "complementary": {
+      "delta_val_acc_pp_mean": -0.14997124671936035,
+      "delta_val_acc_pp_population_sd": 0.16059143575940912,
+      "delta_val_ce_mean": 0.013805866241455078,
+      "delta_val_ce_population_sd": 0.0256009742544551,
+      "delta_val_macro_f1_pp_mean": -0.5428844384866923,
+      "delta_val_macro_f1_pp_population_sd": 0.6897971157195674,
+      "failures": [],
+      "n": 3,
+      "paired": [
+        {
+          "delta_val_acc_pp": 0.029993057250976562,
+          "delta_val_ce": 0.03429055213928223,
+          "delta_val_macro_f1_pp": -0.9002575549084901,
+          "seed": 42,
+          "variant": "complementary"
+        },
+        {
+          "delta_val_acc_pp": -0.11997818946838379,
+          "delta_val_ce": -0.02228987216949463,
+          "delta_val_macro_f1_pp": -1.1502916615937608,
+          "seed": 43,
+          "variant": "complementary"
+        },
+        {
+          "delta_val_acc_pp": -0.35992860794067383,
+          "delta_val_ce": 0.029416918754577637,
+          "delta_val_macro_f1_pp": 0.4218959010421741,
+          "seed": 44,
+          "variant": "complementary"
+        }
+      ],
+      "positive_accuracy_seeds": 1,
+      "promotion_gate_pass": false
+    },
+    "raw": {
+      "delta_val_acc_pp_mean": -0.13997356096903482,
+      "delta_val_acc_pp_population_sd": 0.18051753766768422,
+      "delta_val_ce_mean": 0.0033104419708251953,
+      "delta_val_ce_population_sd": 0.025475363151783354,
+      "delta_val_macro_f1_pp_mean": 0.467124161598248,
+      "delta_val_macro_f1_pp_population_sd": 0.5946758628560255,
+      "failures": [],
+      "n": 3,
+      "paired": [
+        {
+          "delta_val_acc_pp": -0.059992074966430664,
+          "delta_val_ce": 0.028339862823486328,
+          "delta_val_macro_f1_pp": 1.2121834598956827,
+          "seed": 42,
+          "variant": "raw"
+        },
+        {
+          "delta_val_acc_pp": 0.029993057250976562,
+          "delta_val_ce": -0.031646132469177246,
+          "delta_val_macro_f1_pp": -0.24322800650197207,
+          "seed": 43,
+          "variant": "raw"
+        },
+        {
+          "delta_val_acc_pp": -0.3899216651916504,
+          "delta_val_ce": 0.013237595558166504,
+          "delta_val_macro_f1_pp": 0.4324170314010334,
+          "seed": 44,
+          "variant": "raw"
+        }
+      ],
+      "positive_accuracy_seeds": 1,
+      "promotion_gate_pass": false
+    }
+  },
+  "recorded_utc": "2026-10-26T13:25:03+00:00",
+  "rule": "mean Delta Acc >= +0.30 pp; >=2/3 positive; mean Delta F1 >=0 pp; mean Delta CE <=+0.020; no failures",
+  "selected_variant": null,
+  "selection_tie_break": "no_arm_passed",
+  "stage1_complete": true,
+  "stage2_authorized": false
+}

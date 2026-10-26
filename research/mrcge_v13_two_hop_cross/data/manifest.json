@@ -33,7 +33,7 @@
   ],
   "base_sha": "988419283ef8f49c392de954aa739afc95c4c8cc",
   "branch": "exp/mrcge_v13_two_hop_cross_screen",
-  "completed_cells": 0,
+  "completed_cells": 6,
   "conditional_stage2_cells": [
     {
       "dataset": "Grocery",
@@ -76,23 +76,21 @@
       "variant": "complementary"
     }
   ],
-  "conditional_unstarted_stage2_cells": 4,
   "cpu_preflight_status": "pass",
-  "gpu_preflight_campaigns": 6,
-  "gpu_preflight_passed": 0,
-  "gpu_preflight_passed_cells": 0,
-  "gpu_preflight_status": "blocked_resource",
+  "gpu_preflight_passed": 6,
+  "gpu_preflight_status": "pass",
   "link_prediction": false,
-  "source_git_sha": "794ba87ed0b63398376717f956a2ae7169a7824b",
-  "stage1_completed_cells": 0,
-  "stage1_status": "not_started_gpu_preflight_blocked",
+  "source_git_sha": "cf0859663241ce9e66a6a380152f0b5c2d759bed",
+  "stage1_complete": true,
+  "stage1_completed_cells": 6,
   "stage2_completed_cells": 0,
-  "stage2_status": "not_authorized_stage1_not_run",
-  "stop_reason": "After a fresh standalone guard read GPU 1 with 24,246 MiB free and no compute PID, the next in-process baseline query failed three times (nvidia-smi exit 9). Six subsequent status samples also failed driver communication. No worker was launched.",
+  "stage2_selected_variant": null,
+  "stage2_status": "not_run_no_arm_passed",
   "study": "MR-CGE V1.3 Two-Hop Cross Controlled Screening",
   "test_evaluation": false,
-  "training_started": false,
-  "training_status": "stopped_before_training",
-  "unstarted_stage1_cells": 6,
-  "updated_utc": "2026-10-26T12:15:35+00:00"
+  "training_status": "complete",
+  "updated_utc": "2026-10-26T13:29:00+00:00",
+  "gpu_preflight_attempts": 9,
+  "physical_gpu": 1,
+  "shared_gpu_override": true
 }
