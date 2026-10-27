@@ -1,0 +1,64 @@
+{
+  "cells": [
+    {
+      "dataset": "Grocery",
+      "guard": {
+        "launch_guard": {
+          "captured_utc": "2026-10-27T11:07:39+00:00",
+          "gpu": {
+            "memory_free_mib": 18878,
+            "memory_used_mib": 5381,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 74,
+            "utilization_percent": 72
+          },
+          "guard": {
+            "phase": "before_launch",
+            "physical_gpu": 1,
+            "required_free_mib": 8192,
+            "status": "bypassed_by_user"
+          }
+        },
+        "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_seed44_baseline_completion/guard_logs/preflight_Grocery.log"
+      },
+      "peak_reserved_bytes": 2476736512,
+      "preflight_only": true,
+      "status": "pass"
+    },
+    {
+      "dataset": "ele-fashion",
+      "guard": {
+        "launch_guard": {
+          "captured_utc": "2026-10-27T11:07:51+00:00",
+          "gpu": {
+            "memory_free_mib": 18874,
+            "memory_used_mib": 5385,
+            "name": "NVIDIA GeForce RTX 3090",
+            "physical_index": 1,
+            "temperature_c": 72,
+            "utilization_percent": 92
+          },
+          "guard": {
+            "phase": "before_launch",
+            "physical_gpu": 1,
+            "required_free_mib": 8192,
+            "status": "bypassed_by_user"
+          }
+        },
+        "log_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_seed44_baseline_completion/guard_logs/preflight_ele-fashion.log"
+      },
+      "peak_reserved_bytes": 12421431296,
+      "preflight_only": true,
+      "status": "pass"
+    }
+  ],
+  "completed_utc": "2026-10-27T11:08:06+00:00",
+  "physical_gpu": 1,
+  "resource_guard_override_reason": "explicit user instruction",
+  "resource_guard_status": "bypassed_by_user",
+  "source_git_sha": "14b574eca00788857a357bff3b0d1f98377ca472",
+  "status": "pass",
+  "test_evaluation": false,
+  "training_started": false
+}
