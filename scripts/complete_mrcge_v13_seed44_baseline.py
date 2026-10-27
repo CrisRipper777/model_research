@@ -410,8 +410,20 @@ def gpu_check(phase: str, baseline: set[int], allowed: set[int], required_free_m
     return snapshot
 
 
+def compact_gpu_record(snapshot: dict[str, Any]) -> dict[str, Any]:
+    device = next((row for row in snapshot.get("devices", [])
+                   if int(row.get("physical_index", -1)) == PHYSICAL_GPU), {})
+    guard = snapshot.get("guard", {})
+    return {
+        "captured_utc": snapshot.get("captured_utc"),
+        "guard": {key: guard.get(key) for key in ("status", "phase", "physical_gpu", "required_free_mib")},
+        "gpu": {key: device.get(key) for key in
+                ("physical_index", "name", "memory_free_mib", "memory_used_mib", "utilization_percent", "temperature_c")},
+    }
+
+
 def guarded_child(action: str, dataset: str, baseline: set[int], *, required_free_mib: int = 8192) -> dict[str, Any]:
-    launch = gpu_check("before_launch", baseline, set(), required_free_mib)
+    launch = compact_gpu_record(gpu_check("before_launch", baseline, set(), required_free_mib))
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(PHYSICAL_GPU)
     env["MRCGE_SEED44_BASELINE_ACTION"] = action
