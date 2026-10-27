@@ -1,0 +1,537 @@
+{
+  "backbone_condition": "M_repaired",
+  "backward_preflight": {
+    "no_early_cross": {
+      "balance_aux": 0.010220354422926903,
+      "finite_gradient_tensors": 78,
+      "loss": 4.27601957321167,
+      "main_ce": 3.3079895973205566,
+      "private_ce": 3.1926987171173096,
+      "registered_parameters_without_gradient": 0,
+      "representative_no_gradient_parameters": [],
+      "test_evaluation": false,
+      "weights_updated": false
+    },
+    "no_late_completion": {
+      "balance_aux": 0.010233791545033455,
+      "finite_gradient_tensors": 64,
+      "loss": 4.274233341217041,
+      "main_ce": 3.306189775466919,
+      "private_ce": 3.1926989555358887,
+      "registered_parameters_without_gradient": 14,
+      "representative_no_gradient_parameters": [
+        "cross_lambda_raw",
+        "tau_raw",
+        "query_projections.text.weight",
+        "query_projections.visual.weight",
+        "key_projections.text.weight",
+        "key_projections.visual.weight",
+        "source_selector.0.weight",
+        "source_selector.0.bias",
+        "source_selector.2.weight",
+        "source_selector.2.bias",
+        "channel_gate.0.weight",
+        "channel_gate.0.bias",
+        "channel_gate.2.weight",
+        "channel_gate.2.bias"
+      ],
+      "test_evaluation": false,
+      "weights_updated": false
+    }
+  },
+  "base_branch": "exp/mrcge_v13_route_shuffle_diagnostic",
+  "base_sha": "cd26dafd1439b2c6ec8def79191bbcdc0b62c073",
+  "blocked_resource_cells": 0,
+  "branch": "exp/mrcge_v13_stage_ablation_screen",
+  "completed_cells": 6,
+  "correctness_checks": {
+    "no_early_cross": {
+      "balance_finite": true,
+      "calibration_scales": {
+        "text": 0.0,
+        "visual": 0.0
+      },
+      "collaborative_private_max_abs_difference": {
+        "text": 0.0,
+        "visual": 0.0
+      },
+      "early_cross_nonzero_counts": {
+        "text": 0,
+        "visual": 0
+      },
+      "output_shape": [
+        16672,
+        256
+      ],
+      "private_unimodal_logits_present": true,
+      "strict_load": true
+    },
+    "no_late_completion": {
+      "fusion_input_vs_collaborative_max_abs_difference": 0.0,
+      "late_deltas": {
+        "text": {
+          "late_delta_ratio": 0.0,
+          "late_delta_rms": 0.0
+        },
+        "visual": {
+          "late_delta_ratio": 0.0,
+          "late_delta_rms": 0.0
+        }
+      },
+      "output_shape": [
+        16672,
+        256
+      ],
+      "private_unimodal_logits_present": true,
+      "strict_load": true
+    },
+    "none_compatibility": {
+      "metric_absolute_differences": {
+        "val_acc": 0.0,
+        "val_ce": 0.0,
+        "val_macro_f1": 0.0
+      },
+      "metrics": {
+        "acc": 0.5596880912780762,
+        "ce": 1.3703745603561401,
+        "macro_f1": 0.4819781005636627
+      },
+      "strict_load": true,
+      "test_evaluation": false,
+      "test_labels_masked": true
+    }
+  },
+  "correctness_preflight_source_git_sha": "4d1229da7da5a4ddd3895f3398882b08e4375794",
+  "correctness_preflight_status": "pass",
+  "correctness_preflight_utc": "2026-10-27T15:07:43+00:00",
+  "cpu_preflight_source_git_sha": "4d1229da7da5a4ddd3895f3398882b08e4375794",
+  "cpu_preflight_status": "pass",
+  "cpu_preflight_utc": "2026-10-27T15:07:26+00:00",
+  "datasets": {
+    "Grocery": {
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "dataset_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "full_checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Grocery/joint_view/seed_42/attempt_01/best_accuracy.pt",
+      "full_checkpoint_sha256": "650c740a0e727db442fd7e3bbb2248cb43346d7d8c38dee9effd03989f4ea3fa",
+      "full_metrics": {
+        "val_acc": 0.8351390957832336,
+        "val_ce": 0.6392349600791931,
+        "val_macro_f1": 0.7662137955710915
+      },
+      "input_dim": 1536,
+      "num_classes": 20,
+      "num_nodes": 17074,
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Grocery_5684907da6c9_77ca3e4ed4c9_v7b.pt",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "split_file_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "split_file_sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 768,
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+      "visual_dim": 768
+    },
+    "Movies": {
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "dataset_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "full_checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Movies/joint_view/seed_42/attempt_01/best_accuracy.pt",
+      "full_checkpoint_sha256": "b9e8a2a5ebee2dfc91529d62203137c0cb03f06e9bd001d4227f97bf5ff9aaaf",
+      "full_metrics": {
+        "val_acc": 0.5596880912780762,
+        "val_ce": 1.3703745603561401,
+        "val_macro_f1": 0.4819781005636627
+      },
+      "input_dim": 1536,
+      "num_classes": 20,
+      "num_nodes": 16672,
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/Movies_00be19e20417_99b5f1d73b1c_v7b.pt",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "split_file_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 768,
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+      "visual_dim": 768
+    },
+    "ele-fashion": {
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "dataset_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "full_checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/ele-fashion/joint_view/seed_42/attempt_03/best_accuracy.pt",
+      "full_checkpoint_sha256": "01506139bb66baa649d05871dfc64ee8bce0b547e958001979ea8c7edaffc780",
+      "full_metrics": {
+        "val_acc": 0.8710238337516785,
+        "val_ce": 0.401064932346344,
+        "val_macro_f1": 0.7328425489344791
+      },
+      "input_dim": 1024,
+      "num_classes": 12,
+      "num_nodes": 97766,
+      "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/psce_mag_v7b/semantic_cache/ele-fashion_266b11e2265a_c9ca5402ca64_v7b.pt",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "split_file_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "split_file_sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f",
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+      "test_evaluation": false,
+      "test_labels_masked": true,
+      "text_dim": 512,
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+      "visual_dim": 512
+    }
+  },
+  "failed_cells": 0,
+  "failed_units": [],
+  "finished_utc": "2026-10-27T15:24:03+00:00",
+  "formal_cells": [
+    {
+      "ablation": "no_early_cross",
+      "dataset": "Movies",
+      "seed": 42
+    },
+    {
+      "ablation": "no_late_completion",
+      "dataset": "Movies",
+      "seed": 42
+    },
+    {
+      "ablation": "no_early_cross",
+      "dataset": "Grocery",
+      "seed": 42
+    },
+    {
+      "ablation": "no_late_completion",
+      "dataset": "Grocery",
+      "seed": 42
+    },
+    {
+      "ablation": "no_early_cross",
+      "dataset": "ele-fashion",
+      "seed": 42
+    },
+    {
+      "ablation": "no_late_completion",
+      "dataset": "ele-fashion",
+      "seed": 42
+    }
+  ],
+  "full_reference_rows": {
+    "Grocery": {
+      "best_acc_epoch": "74",
+      "best_f1_checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Grocery/joint_view/seed_42/attempt_01/best_f1.pt",
+      "best_f1_checkpoint_sha256": "af24c6ea11688736e2660c2d7b4e055afce4b1cce1cff92b2dfaf1f3dbb74085",
+      "best_f1_epoch": "73",
+      "best_f1_val_acc": "0.833089292049408",
+      "best_f1_val_ce": "0.6369342803955078",
+      "best_f1_val_macro_f1": "0.7687829554635035",
+      "candidate_fingerprint": "77ca3e4ed4c9fe8901ee288dfdcf5224d2125382f19bd6fda53fda33be280225",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Grocery/joint_view/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_reload_verified": "True",
+      "checkpoint_sha256": "650c740a0e727db442fd7e3bbb2248cb43346d7d8c38dee9effd03989f4ea3fa",
+      "classifier_parameters": "5140",
+      "condition": "M_repaired",
+      "config_sha256": "",
+      "dataset": "Grocery",
+      "dataset_fingerprint": "9cded685e4a43b0f3aa34e578644a4e48e2746e58a54db75e17b5d86876c0f53",
+      "epochs_completed": "104",
+      "feature_fingerprint": "5684907da6c9e3a544626de41930301fdf0b5e4f483f89017f38713bd74a87e8",
+      "initial_classifier_sha256": "",
+      "initial_model_sha256": "",
+      "metrics_source": "Best-Accuracy checkpoint run_metadata.epoch_history at checkpoint epoch",
+      "model": "mrcge_v13",
+      "model_parameters": "2062795",
+      "physical_edge_fingerprint": "c92a92669ed89b3af689aada40fc2a8efb924c58fdaf1429e8703f9156ae2de2",
+      "protocol_deviation": "historical checkpoint reused; not retrained in this task",
+      "record_origin": "reused_historical",
+      "seed": "42",
+      "selection_checkpoint": "best_validation_accuracy",
+      "selection_rule": "Validation Accuracy; min_delta=1e-4; patience=30",
+      "semantic_cache_sha256": "530dec5249874959e46d621e7a651a0f60097238c725a9e4548bf8d695c64bde",
+      "source_base_sha": "a7930442e85ff9450fded54d5869915b434c7431",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "source_record": "research/mrcge_v13/data/runs.csv",
+      "split_file_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Grocery_nc_seed42_train0.6_val0.2.pt",
+      "split_file_sha256": "3ca4581592fcb705b42672b18412375d33bf6109c72e4714786066878a54d58e",
+      "split_fingerprint": "7ae489257ba4aa1e1690f795e93076fa778aa6e9a3e5239b8862eb0d1aec1056",
+      "status": "complete",
+      "test_evaluation": "False",
+      "test_labels_masked": "True",
+      "total_parameters": "2067935",
+      "train_acc": "0.9429910191331511",
+      "train_ce": "0.21494354879609406",
+      "train_macro_f1": "0.9225161069510834",
+      "train_val_acc_gap": "0.10785192334991744",
+      "train_val_ce_gap": "-0.42429141128309905",
+      "train_val_macro_f1_gap": "0.15630231137999195",
+      "v7b_fingerprint": "9c9da367a33a840848d45ff76c2ad66ef0a86a5481f6471ce0cb8f3ff5ec2e37",
+      "val_acc": "0.8351390957832336",
+      "val_ce": "0.6392349600791931",
+      "val_macro_f1": "0.7662137955710915",
+      "validation_rng_unchanged": "True",
+      "variant": "joint_view"
+    },
+    "Movies": {
+      "best_acc_epoch": "74",
+      "best_f1_checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Movies/joint_view/seed_42/attempt_01/best_f1.pt",
+      "best_f1_checkpoint_sha256": "0ce77ddd1744afaf34f0cf2ae863b30477d9b985b3cff1b58179819d7423596f",
+      "best_f1_epoch": "90",
+      "best_f1_val_acc": "0.5521895885467529",
+      "best_f1_val_ce": "1.4371097087860107",
+      "best_f1_val_macro_f1": "0.492910333387774",
+      "candidate_fingerprint": "99b5f1d73b1c0364f12ea023aa1a21366661ebed974e9b15c1174259142e4ba5",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/Movies/joint_view/seed_42/attempt_01/best_accuracy.pt",
+      "checkpoint_reload_verified": "True",
+      "checkpoint_sha256": "b9e8a2a5ebee2dfc91529d62203137c0cb03f06e9bd001d4227f97bf5ff9aaaf",
+      "classifier_parameters": "5140",
+      "condition": "M_repaired",
+      "config_sha256": "",
+      "dataset": "Movies",
+      "dataset_fingerprint": "d914829afd50d0d86bae87580fd844c5912c2c60a47c997aadba99c99fff3c97",
+      "epochs_completed": "104",
+      "feature_fingerprint": "00be19e204173f0208207da407d2db8de7590db2a31815a8508cf1ff0d3bdd1b",
+      "initial_classifier_sha256": "",
+      "initial_model_sha256": "",
+      "metrics_source": "Best-Accuracy checkpoint run_metadata.epoch_history at checkpoint epoch",
+      "model": "mrcge_v13",
+      "model_parameters": "2062795",
+      "physical_edge_fingerprint": "98607c3f0f5ce0562d82d730a38d9523cf2717af68d8fb8e961a97b876b0f154",
+      "protocol_deviation": "historical checkpoint reused; not retrained in this task",
+      "record_origin": "reused_historical",
+      "seed": "42",
+      "selection_checkpoint": "best_validation_accuracy",
+      "selection_rule": "Validation Accuracy; min_delta=1e-4; patience=30",
+      "semantic_cache_sha256": "666c5bfa1524dcbc9c265d14927740c7f05f7684e9289f122c56d49fb277b867",
+      "source_base_sha": "a7930442e85ff9450fded54d5869915b434c7431",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "source_record": "research/mrcge_v13/data/runs.csv",
+      "split_file_path": "/hdd1/DataInHere/YHF/data/MAGB_split/Movies_nc_seed42_train0.6_val0.2.pt",
+      "split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+      "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+      "status": "complete",
+      "test_evaluation": "False",
+      "test_labels_masked": "True",
+      "total_parameters": "2067935",
+      "train_acc": "0.7275817254823553",
+      "train_ce": "0.7879310157148168",
+      "train_macro_f1": "0.7175632709774993",
+      "train_val_acc_gap": "0.16789363420427916",
+      "train_val_ce_gap": "-0.5824435446413233",
+      "train_val_macro_f1_gap": "0.2355851704138366",
+      "v7b_fingerprint": "4d00be6008609847151bf9d02be30a29549284be9aa8d79b5732196e3764aceb",
+      "val_acc": "0.5596880912780762",
+      "val_ce": "1.3703745603561401",
+      "val_macro_f1": "0.4819781005636627",
+      "validation_rng_unchanged": "True",
+      "variant": "joint_view"
+    },
+    "ele-fashion": {
+      "best_acc_epoch": "111",
+      "best_f1_checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/ele-fashion/joint_view/seed_42/attempt_03/best_f1.pt",
+      "best_f1_checkpoint_sha256": "64ca49d1ee2f0f00f9825d07d34eb5e2f915c832eab228cf14e2debfb27df7e8",
+      "best_f1_epoch": "137",
+      "best_f1_val_acc": "0.869694173336029",
+      "best_f1_val_ce": "0.4212439954280853",
+      "best_f1_val_macro_f1": "0.7480107912314924",
+      "candidate_fingerprint": "c9ca5402ca64ccb74676954599ea1cec16cebf9d6b2e3eddc5f76c47d183c589",
+      "checkpoint_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_screen/runs/ele-fashion/joint_view/seed_42/attempt_03/best_accuracy.pt",
+      "checkpoint_reload_verified": "True",
+      "checkpoint_sha256": "01506139bb66baa649d05871dfc64ee8bce0b547e958001979ea8c7edaffc780",
+      "classifier_parameters": "3084",
+      "condition": "M_repaired",
+      "config_sha256": "",
+      "dataset": "ele-fashion",
+      "dataset_fingerprint": "66aed0e2adef6d89832b3c89441eb5dfe5cfe07bad7d0b39fb452c1903ab9dea",
+      "epochs_completed": "141",
+      "feature_fingerprint": "266b11e2265af97724a32bdcd8c6303b69e5cb55839572d82a76872189c6518a",
+      "initial_classifier_sha256": "",
+      "initial_model_sha256": "",
+      "metrics_source": "Best-Accuracy checkpoint run_metadata.epoch_history at checkpoint epoch",
+      "model": "mrcge_v13",
+      "model_parameters": "1796539",
+      "physical_edge_fingerprint": "8e354c68946eb0286ec5ebdab09bfe360f2a96bb6f53d8f3f17b02575b7ced8e",
+      "protocol_deviation": "historical checkpoint reused; not retrained in this task",
+      "record_origin": "reused_historical",
+      "seed": "42",
+      "selection_checkpoint": "best_validation_accuracy",
+      "selection_rule": "Validation Accuracy; min_delta=1e-4; patience=30",
+      "semantic_cache_sha256": "f56216d70489dda7fd41587ddff66a9946d233b75776a033d7f74c8eca4cdab8",
+      "source_base_sha": "a7930442e85ff9450fded54d5869915b434c7431",
+      "source_git_sha": "78284c82308b117e98f6c2ef59bf5acbe13369bf",
+      "source_record": "research/mrcge_v13/data/runs.csv",
+      "split_file_path": "/hdd1/DataInHere/YHF/data/ele-fashion/split.pt",
+      "split_file_sha256": "e48e74afd502df5bc5e4d638e611fc4fbfdecee461aa920f3f47a6446826c52f",
+      "split_fingerprint": "04d43160594823ab35d62b1bde6547225dc816405e55eb1f9c44790eabfae0c5",
+      "status": "complete",
+      "test_evaluation": "False",
+      "test_labels_masked": "True",
+      "total_parameters": "1799623",
+      "train_acc": "0.8969808554527012",
+      "train_ce": "0.29687888057442563",
+      "train_macro_f1": "0.8195531742927534",
+      "train_val_acc_gap": "0.025957021701022764",
+      "train_val_ce_gap": "-0.10418605177191836",
+      "train_val_macro_f1_gap": "0.08671062535827434",
+      "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
+      "val_acc": "0.8710238337516785",
+      "val_ce": "0.401064932346344",
+      "val_macro_f1": "0.7328425489344791",
+      "validation_rng_unchanged": "True",
+      "variant": "joint_view"
+    }
+  },
+  "full_source": "research/mrcge_v13_seed44_completion/data/runs.csv",
+  "gpu": {
+    "baseline_compute_pids": [
+      1178170,
+      1272664
+    ],
+    "guard_bypass_scope": "all launch/runtime ownership and resource checks",
+    "guard_bypassed_by_user": true,
+    "launch_snapshot": {
+      "memory_free_mib": 22320,
+      "memory_total_mib": 24576,
+      "memory_used_mib": 1938,
+      "name": "NVIDIA GeForce RTX 3090",
+      "physical_index": 1,
+      "temperature_c": 69,
+      "utilization_percent": 50,
+      "uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6"
+    },
+    "name": "NVIDIA GeForce RTX 3090",
+    "physical_gpu": 1
+  },
+  "initialization_compatibility": {
+    "conditions": {
+      "no_early_cross": {
+        "classifier": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+        "classifier_initialization_matches_formal": true,
+        "classifier_parameters": 5140,
+        "model": "6aceaa590153e75c1f902c5f62bc19b9a7ce69e4fa38b09841234cbea14dc352",
+        "model_initialization_matches_formal": true,
+        "model_parameters": 2062795
+      },
+      "no_late_completion": {
+        "classifier": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+        "classifier_initialization_matches_formal": true,
+        "classifier_parameters": 5140,
+        "model": "6aceaa590153e75c1f902c5f62bc19b9a7ce69e4fa38b09841234cbea14dc352",
+        "model_initialization_matches_formal": true,
+        "model_parameters": 2062795
+      },
+      "none": {
+        "classifier": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+        "classifier_initialization_matches_formal": true,
+        "classifier_parameters": 5140,
+        "model": "6aceaa590153e75c1f902c5f62bc19b9a7ce69e4fa38b09841234cbea14dc352",
+        "model_initialization_matches_formal": true,
+        "model_parameters": 2062795
+      }
+    },
+    "dataset": "Movies",
+    "formal": {
+      "classifier": "5b006a851b183c23311cf249404b4b5083d891214fd8f15e01336ec353f3606c",
+      "classifier_parameters": 5140,
+      "model": "6aceaa590153e75c1f902c5f62bc19b9a7ce69e4fa38b09841234cbea14dc352",
+      "model_parameters": 2062795
+    },
+    "parameter_initialization_order_unchanged": true,
+    "seed": 42
+  },
+  "last_updated_utc": "2026-10-27T15:25:14+00:00",
+  "link_prediction": false,
+  "recommendations": {
+    "no_early_cross": "INCONCLUSIVE",
+    "no_late_completion": "INCONCLUSIVE"
+  },
+  "requested_cells_this_invocation": [
+    {
+      "ablation": "no_early_cross",
+      "dataset": "Movies"
+    },
+    {
+      "ablation": "no_late_completion",
+      "dataset": "Movies"
+    },
+    {
+      "ablation": "no_early_cross",
+      "dataset": "Grocery"
+    },
+    {
+      "ablation": "no_late_completion",
+      "dataset": "Grocery"
+    },
+    {
+      "ablation": "no_early_cross",
+      "dataset": "ele-fashion"
+    },
+    {
+      "ablation": "no_late_completion",
+      "dataset": "ele-fashion"
+    }
+  ],
+  "run_attempt_rows": 6,
+  "seed": 42,
+  "sender_private_ratio": 0.0,
+  "source_file_sha256s": {
+    "ablation_model": "fde35f347e7ad6693dcb1e68a49b7a938159659ec128afc63abe7563fc371529",
+    "dataset_config:Grocery": "18969c97a0f06ab33fd3094624d524f03de48139405159bb06d19cf107105e56",
+    "dataset_config:Movies": "81b803b0ed79ad86d483aee5dceadac149ca9ba2263e31160b22951a7812f5c8",
+    "dataset_config:ele-fashion": "50e683dcae43c505c999ecbc22a6b5b380a8b897d4942933c01f266f8169b917",
+    "formal_model": "be9272ad25296927fcb95720776a7fcdaf3f54d00936c96387262159b3770c90",
+    "formal_runner": "afc8dd631f4e539c571dd9b3169790cc9461672ea0835684f717fd25eb3316f1",
+    "full_runs": "77f5e1dfe60f140bdfc016f31e8f81caff042ae7b75b92c66a5f106a94fca912",
+    "inference": "f6e0df653a03a6ab5be98016fdc495fcff7704f42a73bdd546c36f7fc63be0aa",
+    "model_factory": "018ed8270319dc179831e598673f89550dca7473d322daf6c14654f9fb9bea0b",
+    "nc_config": "c8df71f58e707b4c7df429acd62a4c1d91e9cfd80ba24bc6c6d1979307224849",
+    "runner": "3c619c7677931a05aff59727818cb44654ff2b07c86cd44988d8aea71f908524",
+    "trainer": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
+    "v13_model_config": "2fec9ff9b5b901d814a733fa6da47b6b92b1d760c2a00eb15a5ba68434ebe88b"
+  },
+  "status": "complete",
+  "study": "MR-CGE V1.3-A Early Cross / Late Completion core ablation screen",
+  "successful_units": [
+    "Grocery/seed42/no_early_cross",
+    "Grocery/seed42/no_late_completion",
+    "Movies/seed42/no_early_cross",
+    "Movies/seed42/no_late_completion",
+    "ele-fashion/seed42/no_early_cross",
+    "ele-fashion/seed42/no_late_completion"
+  ],
+  "test_evaluation": false,
+  "training_protocol": {
+    "backbone_dropout": 0.2,
+    "balance_loss_weight": 0.01,
+    "best_checkpoint": "Best-Validation-Accuracy",
+    "best_f1_checkpoint_saved_separately": true,
+    "early_stop_min_delta": 0.0001,
+    "early_stop_min_epoch": 30,
+    "epochs": 300,
+    "evaluate_test": false,
+    "full_checkpoint_used_for_initialization": false,
+    "hidden_dim": 256,
+    "late_dropout": 0.15,
+    "lr": 0.001,
+    "num_experts": 4,
+    "optimizer": "AdamW",
+    "patience": 30,
+    "physical_hops": 3,
+    "private_ce_weight": 0.3,
+    "seed": 42,
+    "semantic_hops": 1,
+    "semantic_knn_k": 8,
+    "test_label_mask": -100,
+    "top_k": 2,
+    "trainer_aux_weight": 1.0,
+    "weight_decay": 0.0001
+  },
+  "training_source_git_sha": "4d1229da7da5a4ddd3895f3398882b08e4375794",
+  "unstarted_cells": 0,
+  "variant": "joint_view"
+}

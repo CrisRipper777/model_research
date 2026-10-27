@@ -396,6 +396,10 @@ def build_report(manifest: dict[str, Any], comparison: list[dict[str, Any]],
                 for dataset, row in zip(DATASETS, rows)
             )
             lines.append(f"- {label}: {pattern}. 建议：**`{suggestion}`**。这是单 seed 架构筛查，需结合变化方向与幅度解释。")
+            if kind == "no_early_cross":
+                lines.append("  移除后 Movies 的 Acc/F1 下降且 CE 上升；Grocery 变化很小且指标方向混合；ele-fashion 的 Acc/F1 上升但 CE 略升。没有跨数据集的一致收益或损害，结果不足以普遍支持保留或移除 Early Cross。")
+            else:
+                lines.append("  移除后 Movies 与 Grocery 的 F1 下降、CE 上升，Acc 仅小幅下降或持平；ele-fashion 三项指标略有改善。前两者提供有限的保留信号，但总体仍呈数据集依赖，不能据此普遍去留。")
         else:
             lines.append(f"- {label}: 结果尚不完整；建议：**`INCONCLUSIVE`**。")
     lines += [
