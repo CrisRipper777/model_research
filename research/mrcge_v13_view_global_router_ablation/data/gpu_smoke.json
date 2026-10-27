@@ -1,0 +1,32 @@
+{
+  "baseline_processes": [
+    {
+      "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+      "pid": 1045789,
+      "used_memory_mib": 496
+    }
+  ],
+  "completed_utc": "2026-10-27T05:00:06+00:00",
+  "dataset": "Movies",
+  "device": "physical GPU 1",
+  "eval_collect_view_global": true,
+  "expert_gradient_nonzero": true,
+  "gpu_free_before_mib": 23747,
+  "gpu_name": "NVIDIA GeForce RTX 3090",
+  "gpu_uuid": "GPU-84aac143-953d-a98f-a8ff-8ebf88d076b6",
+  "link_prediction": false,
+  "model_source_sha256": "04398ea183233851ff99b4aa056bb1a18049fe0e22128bd5cadc6241a08c1aee",
+  "router_gradient_nonzero": true,
+  "runner_source_sha256": "e24da8de1ba89ae682f256e3a0de50810d6a00037a667e728299004c6a5ba148",
+  "seed": 42,
+  "six_eval_views_verified": 6,
+  "six_train_views_verified": 6,
+  "split_file_sha256": "9089d5eb1d5a3edeae46bd9296e4f85815fccf8e489452bc87a2126a88546211",
+  "split_fingerprint": "2b544e174253b95facf6d91015723b843c240db70dcdfb9b3fe6cc23afa0366d",
+  "status": "pass",
+  "test_evaluation": false,
+  "test_labels_masked": true,
+  "train_loss": 4.110701084136963,
+  "train_low_memory_view_global": true,
+  "unimodal_weight": 0.3
+}
