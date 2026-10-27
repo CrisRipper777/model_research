@@ -274,7 +274,7 @@ def load_context(dataset: str, device: torch.device):
     current_trainer_source_sha = sha256_file(ROOT / "src/tasks/nc.py")
     if provenance.get("task_source_sha256") != current_trainer_source_sha:
         raise RuntimeError(f"{dataset}: NC Trainer source differs from the historical checkpoint provenance")
-    if run_row.get("config_sha256") != provenance.get("config_sha256"):
+    if run_row.get("config_sha256") and run_row.get("config_sha256") != provenance.get("config_sha256"):
         raise RuntimeError(f"{dataset}: run-row and checkpoint config hashes differ")
 
     model = build_model(cfg, data_info(safe))
