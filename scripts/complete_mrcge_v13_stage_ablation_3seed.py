@@ -292,9 +292,16 @@ def assert_alignment_against_full(dataset: str, fingerprints: dict[str, Any], al
     return {**actual, "split_file_path": aligned["split_file_path"]}
 
 
-def initialization_hashes(cfg, data) -> dict[str, str]:
+def initialization_hashes(cfg, data, cache: dict[str, Any]) -> dict[str, str]:
     set_seed(int(cfg.seed))
     model = build_model(cfg, v13.data_info(data))
+    model.load_semantic_cache(
+        cache["cache_path_abs"], expected_dataset=str(cfg.dataset.name),
+        expected_feature_fingerprint=cache["feature_fingerprint"],
+        expected_candidate_fingerprint=cache["candidate_fingerprint"],
+        expected_v7b_fingerprint=cache["v7b_fingerprint"],
+    )
+    model = model.to(torch.device("cpu"))
     classifier = nn.Linear(model.out_dim, int(data.num_classes))
     return {
         "model": v12.state_hash(model),
@@ -329,6 +336,24 @@ def cpu_preflight() -> None:
             if row.get(key) != reference.get(key):
                 raise RuntimeError(f"seed42 ablation {row['dataset']}/{row['ablation']} mismatches Full on {key}")
 
+    full_init_refs: dict[str, Any] = {}
+    for (dataset, seed), row in full.items():
+        payload = torch.load(row["checkpoint_path"], map_location="cpu", weights_only=False)
+        audit = payload.get("run_metadata", {}).get("initial_parameter_audit", {})
+        refs = {
+            "model": row.get("initial_model_sha256") or audit.get("model_state_sha256", ""),
+            "classifier": row.get("initial_classifier_sha256") or audit.get("classifier_state_sha256", ""),
+            "initial_hash_source": "runs.csv" if row.get("initial_model_sha256") else "Best-Accuracy checkpoint run_metadata",
+        }
+        if not refs["model"] or not refs["classifier"]:
+            raise RuntimeError(f"{dataset}/seed{seed}: historical Full initialization hashes unavailable")
+        for csv_key, audit_key in (("initial_model_sha256", "model_state_sha256"),
+                                   ("initial_classifier_sha256", "classifier_state_sha256")):
+            if row.get(csv_key) and row[csv_key] != audit.get(audit_key):
+                raise RuntimeError(f"{dataset}/seed{seed}: runs.csv initialization hash disagrees with checkpoint")
+        full_init_refs[f"{dataset}/seed{seed}"] = refs
+        del payload
+
     caches = v13.cache_entries()
     data_records: dict[str, Any] = {}
     init_records: dict[str, Any] = {}
@@ -343,17 +368,17 @@ def cpu_preflight() -> None:
             current = assert_alignment_against_full(dataset, fingerprints, aligned, cache, full)
             data_records[dataset][str(seed)] = current
             init_records.setdefault(dataset, {})[str(seed)] = {}
-            full_ref = full[(dataset, seed)]
+            full_ref = full_init_refs[f"{dataset}/seed{seed}"]
             for kind in ABLATIONS:
                 cfg_init = init_config(dataset, seed, cache, ablation=kind)
-                observed = initialization_hashes(cfg_init, safe)
-                if full_ref.get("initial_model_sha256") and observed["model"] != full_ref["initial_model_sha256"]:
+                observed = initialization_hashes(cfg_init, safe, cache)
+                if observed["model"] != full_ref["model"]:
                     raise RuntimeError(f"{dataset}/seed{seed}/{kind}: model initialization differs from same-seed Full")
-                if full_ref.get("initial_classifier_sha256") and observed["classifier"] != full_ref["initial_classifier_sha256"]:
+                if observed["classifier"] != full_ref["classifier"]:
                     raise RuntimeError(f"{dataset}/seed{seed}/{kind}: classifier initialization differs from same-seed Full")
                 init_records[dataset][str(seed)][kind] = observed
             cfg_formal = init_config(dataset, seed, cache, ablation=None)
-            formal = initialization_hashes(cfg_formal, safe)
+            formal = initialization_hashes(cfg_formal, safe, cache)
             for kind in ABLATIONS:
                 observed = init_records[dataset][str(seed)][kind]
                 if observed["model"] != formal["model"] or observed["classifier"] != formal["classifier"]:
@@ -379,6 +404,7 @@ def cpu_preflight() -> None:
         "seed42_ablation_rows": len(old), "seed42_checkpoint_hashes_verified": len(old) * 2,
         "data_fingerprints": data_records,
         "initialization_compatibility": init_records,
+        "historical_full_initialization_refs": full_init_refs,
         "formal_cells": [{"dataset": d, "ablation": a, "seed": s}
                          for d in DATASETS for a in ABLATIONS for s in NEW_SEEDS],
         "training_config": {
@@ -401,6 +427,7 @@ def cpu_preflight() -> None:
         "cpu_preflight_status": "pass", "cpu_preflight_utc": now(),
         "source_file_sha256s": source_hashes, "preflight_git_sha": source_sha(),
         "data_fingerprints": data_records, "initialization_compatibility": init_records,
+        "historical_full_initialization_refs": full_init_refs,
         "full_references_verified": 9, "seed42_ablation_references_verified": 6,
         "pending_cells": payload["formal_cells"], "status": "preflight_passed",
     })
