@@ -99,8 +99,9 @@ CONDITION_FIELDS = (
     "delta_acc_pp_mean", "delta_acc_pp_min", "delta_acc_pp_max", "delta_acc_direction",
     "delta_macro_f1_pp_mean", "delta_macro_f1_pp_min", "delta_macro_f1_pp_max", "delta_macro_f1_direction",
     "delta_ce_mean", "delta_ce_min", "delta_ce_max", "delta_ce_direction",
-    "prediction_changed_fraction_mean", "prediction_changed_fraction_min", "prediction_changed_fraction_max",
-    "logits_mean_abs_change_mean", "logits_mean_abs_change_min", "logits_mean_abs_change_max",
+    "validation_prediction_changed_fraction_mean", "validation_prediction_changed_fraction_min",
+    "validation_prediction_changed_fraction_max", "validation_logits_mean_abs_change_mean",
+    "validation_logits_mean_abs_change_min", "validation_logits_mean_abs_change_max",
 )
 EXPERT_FIELDS = (
     "dataset", "seed", "view", "support_nodes", "max_order", "expert_a", "expert_b",
@@ -886,7 +887,7 @@ def build_report(manifest: dict[str, Any], baseline_rows_all: list[dict[str, Any
               "| Dataset | Condition | ΔAcc mean [min,max] pp | ΔMacro-F1 mean [min,max] pp | ΔCE mean [min,max] | 预测改变率 mean | Logit MAE mean |", "|---|---|---:|---:|---:|---:|---:|"]
     for row in summary_rows:
         if row.get("n_permutations", 0):
-            lines.append(f"| {row['dataset']} | {row['condition']} | {float(row['delta_acc_pp_mean']):+.3f} [{float(row['delta_acc_pp_min']):+.3f}, {float(row['delta_acc_pp_max']):+.3f}] | {float(row['delta_macro_f1_pp_mean']):+.3f} [{float(row['delta_macro_f1_pp_min']):+.3f}, {float(row['delta_macro_f1_pp_max']):+.3f}] | {float(row['delta_ce_mean']):+.5f} [{float(row['delta_ce_min']):+.5f}, {float(row['delta_ce_max']):+.5f}] | {100*float(row['validation_prediction_changed_fraction_mean']):.2f}% | {float(row['logits_mean_abs_change_mean']):.5f} |")
+            lines.append(f"| {row['dataset']} | {row['condition']} | {float(row['delta_acc_pp_mean']):+.3f} [{float(row['delta_acc_pp_min']):+.3f}, {float(row['delta_acc_pp_max']):+.3f}] | {float(row['delta_macro_f1_pp_mean']):+.3f} [{float(row['delta_macro_f1_pp_min']):+.3f}, {float(row['delta_macro_f1_pp_max']):+.3f}] | {float(row['delta_ce_mean']):+.5f} [{float(row['delta_ce_min']):+.5f}, {float(row['delta_ce_max']):+.5f}] | {100*float(row['validation_prediction_changed_fraction_mean']):.2f}% | {float(row['validation_logits_mean_abs_change_mean']):.5f} |")
         else:
             lines.append(f"| {row['dataset']} | {row['condition']} | 未运行 | 未运行 | 未运行 | 未运行 | 未运行 |")
     lines += ["", "## 解释与建议", "",
@@ -897,6 +898,9 @@ def build_report(manifest: dict[str, Any], baseline_rows_all: list[dict[str, Any
               "- 每次 Hook 都检查六次调用顺序、实际 modality/relation ID、Physical/Semantic Support Mask 与 hop；Hook 在 `finally` 中移除。",
               "- 每个目标视图检查非恒等节点行置换、Logit 行多重集不变、Top-2 专家计数/组合不变、softmax importance 与 Top-2 权重统计不变；非目标视图 logits 必须逐元素不变。",
               "- checkpoint/model/classifier 哈希与 RNG 在诊断前后核验；Test 标签为 -100，Test evaluation=false。", "",
+              "- 两个 checkpoint 的记录模型源码 SHA 与当前源码不同；strict state-dict load 通过，且两组 Baseline 指标均逐值复现历史记录。源码 provenance 差异仍记录为偏差。",
+              "- 首轮试跑完成 5 个单元后暴露 FP32 汇总容差与失败收尾问题；修复后从头执行全部 26 个单元。首轮部分结果未混入最终 CSV，过程记录见 Manifest。",
+              "- 本轮 GPU 守卫按用户明确指示绕过；GPU、空闲显存与启动快照记录于 Manifest。", "",
               f"实际 GPU：{manifest.get('gpu', {}).get('selected_physical_gpu', '未运行/未通过守卫')}。资源守卫状态：{manifest.get('gpu', {}).get('status', 'not checked')}。执行 Commit：`{manifest.get('execution_sha', '')}`。", "",
               "单元完成/失败/未启动数量及其原因见 `data/manifest.json`；干预逐排列数据见 `data/interventions.csv`。", ""]
     (STUDY / "REPORT.md").write_text("\n".join(lines), encoding="utf-8")
