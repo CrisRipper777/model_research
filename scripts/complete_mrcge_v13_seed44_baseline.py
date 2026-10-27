@@ -396,9 +396,22 @@ def current_gpu_baseline() -> set[int]:
     return {int(app["pid"]) for app in snap["compute_processes"] if app["gpu_uuid"] == device["uuid"]}
 
 
+def gpu_guard_bypassed() -> bool:
+    return os.environ.get("MRCGE_SEED44_BASELINE_SKIP_GPU_GUARD") == "1"
+
+
+def gpu_check(phase: str, baseline: set[int], allowed: set[int], required_free_mib: int) -> dict[str, Any]:
+    if not gpu_guard_bypassed():
+        return v13.guard_gpu(PHYSICAL_GPU, baseline, allowed, phase=phase,
+                             required_free_mib=required_free_mib)
+    snapshot = v13.smi_snapshot()
+    snapshot["guard"] = {"status": "bypassed_by_user", "phase": phase,
+                         "physical_gpu": PHYSICAL_GPU, "required_free_mib": required_free_mib}
+    return snapshot
+
+
 def guarded_child(action: str, dataset: str, baseline: set[int], *, required_free_mib: int = 8192) -> dict[str, Any]:
-    launch = v13.guard_gpu(PHYSICAL_GPU, baseline, set(), phase="before_launch",
-                           required_free_mib=required_free_mib)
+    launch = gpu_check("before_launch", baseline, set(), required_free_mib)
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(PHYSICAL_GPU)
     env["MRCGE_SEED44_BASELINE_ACTION"] = action
@@ -415,15 +428,16 @@ def guarded_child(action: str, dataset: str, baseline: set[int], *, required_fre
         proc = subprocess.Popen(command, cwd=ROOT, env=env, stdout=stream, stderr=subprocess.STDOUT)
         while proc.poll() is None:
             time.sleep(3)
-            try:
-                v13.guard_gpu(PHYSICAL_GPU, baseline, {proc.pid}, phase="during_run", required_free_mib=2048)
-            except Exception as exc:
-                proc.terminate()
+            if not gpu_guard_bypassed():
                 try:
-                    proc.wait(timeout=15)
-                except subprocess.TimeoutExpired:
-                    proc.kill(); proc.wait(timeout=10)
-                raise RuntimeError(f"shared-GPU guard stopped the owned {action} worker: {exc}") from exc
+                    v13.guard_gpu(PHYSICAL_GPU, baseline, {proc.pid}, phase="during_run", required_free_mib=2048)
+                except Exception as exc:
+                    proc.terminate()
+                    try:
+                        proc.wait(timeout=15)
+                    except subprocess.TimeoutExpired:
+                        proc.kill(); proc.wait(timeout=10)
+                    raise RuntimeError(f"shared-GPU guard stopped the owned {action} worker: {exc}") from exc
     if proc.returncode != 0:
         tail = log_path.read_text(encoding="utf-8", errors="replace")[-12000:]
         raise RuntimeError(f"{action} worker exited {proc.returncode}; log={log_path}\n{tail}")
@@ -436,7 +450,7 @@ def worker_preflight(dataset: str) -> None:
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA unavailable or physical GPU isolation failed")
     baseline = {int(pid) for pid in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if pid}
-    v13.guard_gpu(1, baseline, {os.getpid()}, phase="before_launch", required_free_mib=8192)
+    gpu_check("before_launch", baseline, {os.getpid()}, 8192)
     cfg, raw, safe, cache, fingerprints, split, row = cache_and_data(dataset, device="cuda:0")
     device = torch.device("cuda:0")
     model, classifier, model_hash, classifier_hash = init_pair(cfg, safe, cache, 44, device)
@@ -466,6 +480,7 @@ def worker_preflight(dataset: str) -> None:
     peak_reserved = int(torch.cuda.max_memory_reserved(device))
     record = {
         **row, "status": "pass", "preflight_only": True, "recorded_utc": now(),
+        "gpu_guard_status": "bypassed_by_user" if gpu_guard_bypassed() else "active",
         "physical_gpu": 1, "gpu_name": torch.cuda.get_device_name(device),
         "initial_model_sha256": model_hash, "initial_classifier_sha256": classifier_hash,
         "total_loss": float(loss.detach().cpu()), "main_ce": float(main_ce.detach().cpu()),
@@ -490,7 +505,7 @@ def worker_train(dataset: str) -> None:
         raise RuntimeError(f"missing successful GPU initialization preflight for {dataset}")
     baseline = {int(pid) for pid in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if pid}
     required = max(8192, math.ceil(int(pre["peak_reserved_bytes"]) / (1024 * 1024)) + 2048)
-    v13.guard_gpu(1, baseline, {os.getpid()}, phase="before_launch", required_free_mib=required)
+    gpu_check("before_launch", baseline, {os.getpid()}, required)
     cfg, raw, safe, cache, fingerprints, split, row = cache_and_data(dataset, device="cuda:0")
     attempt_dir = RUNS / dataset / "joint_view" / "seed_44" / "attempt_01"
     if attempt_dir.exists():
@@ -535,7 +550,7 @@ def worker_train(dataset: str) -> None:
     started = time.perf_counter()
     try:
         run_nc(cfg, safe, device, logger)
-        v13.guard_gpu(1, baseline, {os.getpid()}, phase="during_run", required_free_mib=2048)
+        gpu_check("during_run", baseline, {os.getpid()}, 2048)
         packed = read_json(Path(cfg.task.run_metrics_path), {})
         if packed.get("protocol_version") != PROTOCOL or packed.get("run_seeds") != [44]:
             raise RuntimeError("Trainer protocol or seed mismatch")
@@ -614,6 +629,7 @@ def worker_train(dataset: str) -> None:
             "peak_reserved_bytes": metadata.get("cuda_peak_reserved_bytes"),
             "gpu_name": metadata.get("cuda_device_name"), "attempt_dir": str(attempt_dir),
             "protocol_deviation": "none",
+            "gpu_guard_status": "bypassed_by_user" if gpu_guard_bypassed() else "active",
         }
         if not all(math.isfinite(float(record[key])) for key in METRIC_NAMES):
             raise RuntimeError("Best-Accuracy metrics contain NaN/Inf")
@@ -649,6 +665,8 @@ def run_gpu_preflights() -> None:
             raise
     json_write(DATA / "gpu_preflight.json", {"status": "pass", "completed_utc": now(),
                 "source_git_sha": source_sha(), "physical_gpu": 1, "cells": results,
+                "resource_guard_status": "bypassed_by_user" if gpu_guard_bypassed() else "active",
+                "resource_guard_override_reason": "explicit user instruction" if gpu_guard_bypassed() else None,
                 "training_started": False, "test_evaluation": False})
 
 
@@ -750,6 +768,7 @@ def finalize() -> None:
              "metrics_source": row["metrics_source"]} for row in histories],
         "data_and_cache_fingerprints": fingerprints,
         "gpu": {"physical_gpu": 1, "preflight": read_json(DATA / "gpu_preflight.json", {})},
+        "resource_guard_status": "bypassed_by_user" if gpu_guard_bypassed() else "active",
         "checkpoint_reloads_verified": True, "finite_metrics": True,
         "test_evaluation": False, "link_prediction": False,
     }
@@ -799,7 +818,10 @@ def write_report(rows: list[dict[str, Any]], summary: list[dict[str, Any]]) -> N
         "", "## 来源、检查与偏差", "",
         "- 本次新训练：Grocery/44、ele-fashion/44；各自的配置快照、run metrics、Best-Accuracy 与 Best-F1 权重保存在服务器 `outputs/mrcge_v13_seed44_baseline_completion/`。权重不纳入 Git。",
         "- 复用历史：Movies/Grocery/ele-fashion 的 seed42/43，来源为 `research/mrcge_v13/data/runs.csv`；Movies/seed44 来自 `research/mrcge_v13_physical_basis/data/fixed_split_hybrid_comparison.csv`。历史 Train 指标从各自 Best-Accuracy checkpoint 的 `epoch_history` 对应 epoch 读取，并与存档 Validation 指标交叉核对。",
-        "- seed44 Grocery 与 ele-fashion 的特征、物理边、固定 Split、V7B.1 Semantic Cache 指纹均与 V1.2 repaired 同 seed 参考记录一致；CPU 配置/数据/初始化检查和 GPU 单步前向反向预检通过。训练期间由原 V1.3 GPU 1 资源守卫监控。",
+        "- seed44 Grocery 与 ele-fashion 的特征、物理边、固定 Split、V7B.1 Semantic Cache 指纹均与 V1.2 repaired 同 seed 参考记录一致；CPU 配置/数据/初始化检查和 GPU 单步前向反向预检通过。",
+        ("- GPU 资源守卫按用户本轮明确指示绕过；此项仅为资源准入偏差，不改变训练/评估协议。"
+         if any(row.get("gpu_guard_status") == "bypassed_by_user" for row in rows)
+         else "- GPU 1 由仓库现有共享资源守卫检查。"),
         "- Test 关闭；Test 标签被掩码；checkpoint 重载后的 Train/Validation 指标与 Trainer 选择元数据一致；Best-Accuracy 与 Best-F1 分别核验；所有报告指标为有限数值。",
         "- 协议偏差：本次两个单元无已知偏差。七个历史单元按其原始研究记录复用；本报告不将它们表述为重新训练。",
         "- 详细来源、文件指纹、checkpoint SHA256 与每个新单元的运行状态见 `data/runs.csv` 和 `data/manifest.json`。", "",
@@ -817,7 +839,11 @@ def main() -> None:
     group.add_argument("--worker-preflight", action="store_true")
     group.add_argument("--worker-train", action="store_true")
     parser.add_argument("--dataset", choices=("Grocery", "ele-fashion"))
+    parser.add_argument("--bypass-gpu-guard", action="store_true",
+                        help="explicitly skip the GPU resource guard and record the override")
     args = parser.parse_args()
+    if args.bypass_gpu_guard:
+        os.environ["MRCGE_SEED44_BASELINE_SKIP_GPU_GUARD"] = "1"
     DATA.mkdir(parents=True, exist_ok=True)
     if args.cpu_preflight:
         result = cpu_preflight()
