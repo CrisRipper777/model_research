@@ -63,6 +63,8 @@ SUMMARY = DATA / "summary.csv"
 GATE_DIAGNOSTICS = DATA / "full_gate_diagnostics.csv"
 MANIFEST = DATA / "manifest.json"
 PREFLIGHT = DATA / "preflight.json"
+ATTEMPT_FAILURES = DATA / "attempt_failures.csv"
+ATTEMPT_FAILURE_FIELDS = ("dataset", "seed", "ablation", "attempt", "status", "attempt_dir", "time_utc", "error")
 
 NEW_FIELDS = (
     "dataset", "seed", "ablation", "attempt", "status", "selection_checkpoint",
@@ -640,11 +642,11 @@ def worker_train(dataset: str, kind: str, seed: int, attempt: int,
         raise RuntimeError("parent did not reserve a unique attempt directory")
 
     cache = v13.cache_entries()[dataset]
-    cfg, safe, fingerprints, aligned = v13.load_safe_data(dataset, "joint_view", seed, cache, "cuda:0")
+    data_cfg, safe, fingerprints, aligned = v13.load_safe_data(dataset, "joint_view", seed, cache, "cuda:0")
+    assert_cfg_protocol(data_cfg, seed, ablation=None)
     cfg = config_for_cell(dataset, kind, seed, cache, "cuda:0")
     if int(cfg.seed) != seed or int(cfg.num_runs) != 1:
         raise RuntimeError("worker configuration did not preserve the explicit seed")
-    assert_cfg_protocol(cfg, seed, ablation=None)
     alignment = assert_alignment_against_full(dataset, fingerprints, aligned, cache, full_reference_rows())
     if cfg.task.evaluate_test is not False or bool((safe.y[safe.test_idx] != -100).any()):
         raise RuntimeError("Test protocol was not disabled/masked before Trainer entry")
@@ -910,38 +912,44 @@ def latest_new_runs() -> dict[tuple[str, str, int], dict[str, str]]:
 
 
 def mark_blocked_or_failed(dataset: str, kind: str, seed: int, attempt: int,
-                           status: str, reason: str) -> None:
-    row = {field: "" for field in NEW_FIELDS}
-    row.update({"dataset": dataset, "seed": seed, "ablation": kind, "attempt": attempt,
-                "status": status, "selection_checkpoint": "best_validation_accuracy",
-                "base_sha": BASE_SHA, "source_git_sha": source_sha(),
-                "test_labels_masked": True, "test_evaluation": False,
-                "trained_from_scratch": True, "full_checkpoint_used_for_initialization": False,
-                "error": reason})
-    append_new_run(row)
+                           status: str, reason: str, attempt_dir: Path,
+                           manifest: dict[str, Any]) -> None:
+    row = {"dataset": dataset, "seed": seed, "ablation": kind, "attempt": attempt,
+           "status": status, "attempt_dir": str(attempt_dir), "time_utc": now(), "error": reason}
+    prior = read_rows(ATTEMPT_FAILURES)
+    write_rows(ATTEMPT_FAILURES, [*prior, row], ATTEMPT_FAILURE_FIELDS)
+    manifest.setdefault("failed_attempts", []).append(row)
+    if status == "blocked_resource":
+        unit = f"{dataset}/seed{seed}/{kind}"
+        manifest.setdefault("blocked_resource_units", [])
+        if unit not in manifest["blocked_resource_units"]:
+            manifest["blocked_resource_units"].append(unit)
 
 
 def update_run_manifest(manifest: dict[str, Any], *, blocked: bool = False) -> dict[str, Any]:
     latest = latest_new_runs()
     complete = [k for k, r in latest.items() if r.get("status") == "complete"]
-    failed = [k for k, r in latest.items() if r.get("status") == "failed"]
-    blocked_keys = [k for k, r in latest.items() if r.get("status") == "blocked_resource"]
     all_cells = [(d, a, s) for d in DATASETS for a in ABLATIONS for s in NEW_SEEDS]
     done = set(complete)
+    failed_attempt_units = {
+        (r["dataset"], r["ablation"], int(r["seed"]))
+        for r in manifest.get("failed_attempts", []) if r.get("status") == "failed"
+    }
+    failed = failed_attempt_units - done
+    blocked_units = set(manifest.get("blocked_resource_units", []))
     pending = [
         {"dataset": d, "ablation": a, "seed": s}
-        for d, a, s in all_cells if (d, a, s) not in done
+        for d, a, s in all_cells if (d, a, s) not in done and f"{d}/seed{s}/{a}" not in blocked_units
     ]
     manifest.update({
         "completed_new_cells": len(complete), "failed_new_cells": len(failed),
-        "blocked_resource_cells": len(blocked_keys), "pending_cells": pending,
+        "blocked_resource_cells": len(blocked_units), "pending_cells": pending,
         "successful_units": [f"{d}/seed{s}/{a}" for d, a, s in sorted(complete)],
         "failed_units": [f"{d}/seed{s}/{a}" for d, a, s in sorted(failed)],
-        "blocked_resource_units": [f"{d}/seed{s}/{a}" for d, a, s in sorted(blocked_keys)],
         "new_run_attempt_rows": len(read_rows(NEW_RUNS)),
         "last_updated_utc": now(), "test_evaluation": False,
     })
-    if blocked or blocked_keys:
+    if blocked or blocked_units:
         manifest["status"] = "blocked_resource"
     elif len(complete) == 12 and not failed:
         manifest["status"] = "training_complete"
@@ -1044,6 +1052,10 @@ def run_training(physical_gpu: int) -> None:
         raise RuntimeError("runner source changed after preflight; rerun preflights")
     if preflight.get("source_file_sha256s") != file_hashes():
         raise RuntimeError("source files changed after CPU preflight")
+    manifest.pop("active_worker", None)
+    manifest.pop("blocked_at_cell", None)
+    manifest.pop("full_audit_blocked_at", None)
+    manifest["blocked_resource_units"] = []
 
     try:
         snapshot = v13.smi_snapshot()
@@ -1092,25 +1104,29 @@ def run_training(physical_gpu: int) -> None:
             log_path=attempt_dir / "launcher.log", manifest=manifest,
         )
         if guard_error:
-            mark_blocked_or_failed(dataset, kind, seed, attempt, "blocked_resource", guard_error)
+            mark_blocked_or_failed(dataset, kind, seed, attempt, "blocked_resource", guard_error,
+                                   attempt_dir, manifest)
             manifest = update_run_manifest(manifest, blocked=True)
             manifest["blocked_at_cell"] = {"dataset": dataset, "ablation": kind, "seed": seed}
-            manifest["pending_cells"] = [
-                {"dataset": d, "ablation": a, "seed": s}
-                for d, a, s in cells[index + 1:]
-            ]
             blocked = True
             json_write(MANIFEST, manifest)
             break
         if rc != 0:
             status_path = attempt_dir / "status.json"
-            reason = json.loads(status_path.read_text()).get("error", f"worker exit code {rc}") if status_path.is_file() else f"worker exit code {rc}"
-            mark_blocked_or_failed(dataset, kind, seed, attempt, "failed", reason)
+            if status_path.is_file():
+                reason = json.loads(status_path.read_text()).get("error", f"worker exit code {rc}")
+            else:
+                try:
+                    reason = (attempt_dir / "launcher.log").read_text(errors="replace")[-2000:]
+                except OSError:
+                    reason = f"worker exit code {rc}"
+            mark_blocked_or_failed(dataset, kind, seed, attempt, "failed", reason, attempt_dir, manifest)
             print(f"FAILED {dataset}/{kind}/seed{seed}: {reason}", flush=True)
         else:
             latest = latest_new_runs().get((dataset, kind, seed), {})
             if latest.get("status") != "complete":
-                mark_blocked_or_failed(dataset, kind, seed, attempt, "failed", "worker exited without a complete result row")
+                mark_blocked_or_failed(dataset, kind, seed, attempt, "failed",
+                                       "worker exited without a complete result row", attempt_dir, manifest)
         manifest = update_run_manifest(manifest)
         manifest["gpu"]["physical_gpu"] = physical_gpu
         json_write(MANIFEST, manifest)
@@ -1478,7 +1494,7 @@ def report_text(manifest: dict[str, Any], paired: list[dict[str, Any]],
         lines.append(f"- {label}: **`{recommendation}`**。结合三数据集、三种子的方向与波动审阅；本报告不做显著性检验，也不自动触发结构删除。")
     lines += [
         "", "## 执行与协议核验", "",
-        f"- 新增训练：{manifest.get('completed_new_cells', 0)}/12；失败 {manifest.get('failed_new_cells', 0)}；资源阻断 {manifest.get('blocked_resource_cells', 0)}；待执行 {len(manifest.get('pending_cells', []))}。",
+        f"- 新增训练：{manifest.get('completed_new_cells', 0)}/12；未解决失败单元 {manifest.get('failed_new_cells', 0)}；历史失败/阻断尝试 {len(manifest.get('failed_attempts', []))}；资源阻断单元 {manifest.get('blocked_resource_cells', 0)}；待执行 {len(manifest.get('pending_cells', []))}。",
         f"- Full 行为审计：{manifest.get('full_gate_audits_completed', 0)}/9；每个 Full checkpoint 均先核验 SHA256、同数据指纹、严格重载和历史 Validation 指标。",
         "- 训练 seed43/44；固定 seed42 Split；每个消融从与相同 seed Full 一致的随机初始化开始。Test 标签为 -100，`evaluate_test=false`；Best-Accuracy 是主结果，Best-F1 单独保存。",
         f"- GPU：{manifest.get('gpu', {}).get('physical_gpu', PHYSICAL_GPU)} ({manifest.get('gpu', {}).get('name', 'not_available')})；资源守卫启用；绕过：{manifest.get('gpu', {}).get('guard_bypassed_by_user', False)}。",
@@ -1495,16 +1511,24 @@ def finalize_outputs() -> dict[str, Any]:
     manifest = json.loads(MANIFEST.read_text()) if MANIFEST.is_file() else initial_manifest()
     latest = latest_new_runs()
     completed = sum(r.get("status") == "complete" for r in latest.values())
-    failed = sum(r.get("status") == "failed" for r in latest.values())
-    blocked = sum(r.get("status") == "blocked_resource" for r in latest.values())
+    completed_keys = {key for key, row in latest.items() if row.get("status") == "complete"}
+    failed_attempt_keys = {
+        (r["dataset"], r["ablation"], int(r["seed"]))
+        for r in manifest.get("failed_attempts", []) if r.get("status") == "failed"
+    }
+    unresolved_failed = failed_attempt_keys - completed_keys
+    failed = len(unresolved_failed)
+    blocked_units = set(manifest.get("blocked_resource_units", []))
+    blocked = len(blocked_units)
     gate_rows = read_rows(GATE_DIAGNOSTICS)
     gate_done = sum(r.get("modality") == "text" and r.get("status") == "complete" for r in gate_rows)
     gate_failed = sum(r.get("modality") == "text" and r.get("status") == "failed" for r in gate_rows)
     gate_blocked = sum(r.get("modality") == "text" and r.get("status") == "blocked_resource" for r in gate_rows)
     pending = [{"dataset": d, "ablation": a, "seed": s}
                for d in DATASETS for a in ABLATIONS for s in NEW_SEEDS
-               if latest.get((d, a, s), {}).get("status") != "complete"]
-    if blocked or gate_blocked or manifest.get("status") == "blocked_resource":
+               if latest.get((d, a, s), {}).get("status") != "complete"
+               and f"{d}/seed{s}/{a}" not in blocked_units]
+    if blocked or gate_blocked or manifest.get("full_audit_blocked_at"):
         status = "blocked_resource"
     elif completed == 12 and failed == 0 and gate_done == 9 and gate_failed == 0:
         status = "complete"
@@ -1516,8 +1540,9 @@ def finalize_outputs() -> dict[str, Any]:
         "status": status, "completed_new_cells": completed, "failed_new_cells": failed,
         "blocked_resource_cells": blocked, "pending_cells": pending,
         "successful_units": [f"{d}/seed{s}/{a}" for (d, a, s), r in sorted(latest.items()) if r.get("status") == "complete"],
-        "failed_units": [f"{d}/seed{s}/{a}" for (d, a, s), r in sorted(latest.items()) if r.get("status") == "failed"],
-        "blocked_resource_units": [f"{d}/seed{s}/{a}" for (d, a, s), r in sorted(latest.items()) if r.get("status") == "blocked_resource"],
+        "failed_units": [f"{d}/seed{s}/{a}" for d, a, s in sorted(unresolved_failed)],
+        "blocked_resource_units": sorted(blocked_units),
+        "failed_attempts_count": len(manifest.get("failed_attempts", [])),
         "full_gate_audits_completed": gate_done, "full_gate_audits_failed": gate_failed,
         "full_gate_audits_blocked": gate_blocked, "full_gate_diagnostics_rows": len(gate_rows),
         "all_ablation_runs_rows": len(read_rows(ALL_RUNS)),
@@ -1532,7 +1557,7 @@ def finalize_outputs() -> dict[str, Any]:
     STUDY.joinpath("REPORT.md").write_text(report_text(manifest, paired, summary), encoding="utf-8")
     manifest["deliverable_sha256"] = {
         path.name: sha256_file(path) for path in (
-            STUDY / "REPORT.md", NEW_RUNS, ALL_RUNS, PAIRED, SUMMARY, GATE_DIAGNOSTICS,
+            STUDY / "REPORT.md", NEW_RUNS, ALL_RUNS, PAIRED, SUMMARY, GATE_DIAGNOSTICS, ATTEMPT_FAILURES,
         ) if path.is_file()
     }
     manifest["last_updated_utc"] = now()
