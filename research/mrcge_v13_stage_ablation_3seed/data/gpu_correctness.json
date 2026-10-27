@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "dataset": "Movies",
+  "seed": 43,
+  "physical_gpu": 1,
+  "conditions": {
+    "no_early_cross": {
+      "output_shape": [
+        16672,
+        256
+      ],
+      "loss": 4.433675765991211,
+      "private_ce": 3.4550371170043945,
+      "balance_aux": 0.010167148895561695,
+      "finite_gradient_tensors": 78,
+      "all_gradients_finite": true,
+      "weights_updated": false,
+      "test_labels_masked": true,
+      "evaluate_test": false
+    },
+    "no_late_completion": {
+      "output_shape": [
+        16672,
+        256
+      ],
+      "loss": 4.427958965301514,
+      "private_ce": 3.4550371170043945,
+      "balance_aux": 0.010180127806961536,
+      "finite_gradient_tensors": 64,
+      "all_gradients_finite": true,
+      "weights_updated": false,
+      "test_labels_masked": true,
+      "evaluate_test": false
+    }
+  },
+  "completed_utc": "2026-10-27T16:39:34+00:00",
+  "test_evaluation": false
+}

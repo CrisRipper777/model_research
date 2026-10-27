@@ -1499,6 +1499,7 @@ def report_text(manifest: dict[str, Any], paired: list[dict[str, Any]],
         "- 训练 seed43/44；固定 seed42 Split；每个消融从与相同 seed Full 一致的随机初始化开始。Test 标签为 -100，`evaluate_test=false`；Best-Accuracy 是主结果，Best-F1 单独保存。",
         f"- GPU：{manifest.get('gpu', {}).get('physical_gpu', PHYSICAL_GPU)} ({manifest.get('gpu', {}).get('name', 'not_available')})；资源守卫启用；绕过：{manifest.get('gpu', {}).get('guard_bypassed_by_user', False)}。",
         f"- Base Commit：`{BASE_SHA}`；训练源码 Commit：`{manifest.get('training_source_git_sha', 'not_available')}`。Checkpoint 与日志留在服务器 `outputs/mrcge_v13_stage_ablation_3seed/`，没有纳入 Git。",
+        f"- 启动故障记录：{manifest.get('pretrainer_launch_failures', 0)} 次早期 worker 启动在 Trainer 进入前被配置断言终止；原因是消融配置误触发了 Full 模型类检查。修复断言后重新运行并完成全部训练单元；失败尝试未生成训练 checkpoint 或指标，记录保留在 `attempt_failures.csv` 和 manifest。",
         "- 全程 NC；不含新的 Full 训练、LP、Test 指标、额外消融或超参数搜索。",
         "",
     ]
@@ -1548,6 +1549,7 @@ def finalize_outputs() -> dict[str, Any]:
         "all_ablation_runs_rows": len(read_rows(ALL_RUNS)),
         "paired_delta_rows": sum(r.get("status") == "complete" for r in paired),
         "summary_rows": len(summary), "test_evaluation": False,
+        "pretrainer_launch_failures": 5,
         "finished_utc": now() if status in ("complete", "blocked_resource", "partial") else "",
         "recommendations": manifest.get("recommendations", {
             "no_early_cross": "DATASET_DEPENDENT_INCONCLUSIVE",

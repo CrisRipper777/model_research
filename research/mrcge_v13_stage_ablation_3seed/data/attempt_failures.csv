@@ -1,0 +1,26 @@
+dataset,seed,ablation,attempt,status,attempt_dir,time_utc,error
+Movies,43,no_early_cross,1,failed,outputs/mrcge_v13_stage_ablation_3seed/Movies/no_early_cross/seed_43/attempt_01,2026-10-27T16:35:07+00:00,worker exit code 1
+Movies,44,no_early_cross,1,failed,outputs/mrcge_v13_stage_ablation_3seed/Movies/no_early_cross/seed_44/attempt_01,2026-10-27T16:35:13+00:00,worker exit code 1
+Movies,43,no_late_completion,1,failed,outputs/mrcge_v13_stage_ablation_3seed/Movies/no_late_completion/seed_43/attempt_01,2026-10-27T16:35:22+00:00,worker exit code 1
+Movies,44,no_late_completion,1,failed,outputs/mrcge_v13_stage_ablation_3seed/Movies/no_late_completion/seed_44/attempt_01,2026-10-27T16:35:32+00:00,worker exit code 1
+Grocery,43,no_early_cross,1,failed,outputs/mrcge_v13_stage_ablation_3seed/Grocery/no_early_cross/seed_43/attempt_01,2026-10-27T16:35:38+00:00,"Traceback (most recent call last):
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 1583, in <module>
+    main()
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 1574, in main
+    worker_train(args.dataset, args.ablation, args.seed, args.attempt, args.attempt_dir, args.physical_gpu)
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 647, in worker_train
+    assert_cfg_protocol(cfg, seed, ablation=None)
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 267, in assert_cfg_protocol
+    raise RuntimeError(""formal configuration selected the wrong Full model class"")
+RuntimeError: formal configuration selected the wrong Full model class
+Traceback (most recent call last):
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 1583, in <module>
+    main()
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 1574, in main
+    worker_train(args.dataset, args.ablation, args.seed, args.attempt, args.attempt_dir, args.physical_gpu)
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 647, in worker_train
+    assert_cfg_protocol(cfg, seed, ablation=None)
+  File ""/hdd1/DataInHere/YHF/model_research/scripts/complete_mrcge_v13_stage_ablation_3seed.py"", line 267, in assert_cfg_protocol
+    raise RuntimeError(""formal configuration selected the wrong Full model class"")
+RuntimeError: formal configuration selected the wrong Full model class
+"
