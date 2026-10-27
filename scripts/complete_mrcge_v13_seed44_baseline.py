@@ -747,11 +747,13 @@ def finalize() -> None:
                                             "split_fingerprint", "split_file_sha256", "semantic_cache_sha256",
                                             "candidate_fingerprint", "v7b_fingerprint")}
         for row in rows}
+    gpu_preflight = read_json(DATA / "gpu_preflight.json", {})
+    resource_guard_status = gpu_preflight.get("resource_guard_status", "active")
     manifest = {
         "study": "MR-CGE V1.3-A Main Model Seed44 Baseline Completion",
         "status": "complete", "created_utc": pre.get("recorded_utc"), "completed_utc": now(),
         "branch": BRANCH, "base_branch": BASE_BRANCH, "base_sha": BASE_SHA,
-        "training_source_commit": pre.get("source_git_sha"), "final_commit_pending": True,
+        "training_source_commit": pre.get("source_git_sha"),
         "training_source_file_sha256s": pre.get("source_file_sha256s"),
         "protocol": protocol_payload(), "new_training_units": [
             {"dataset": row["dataset"], "seed": row["seed"], "status": row["status"],
@@ -767,8 +769,8 @@ def finalize() -> None:
              "best_f1_checkpoint_sha256": row["best_f1_checkpoint_sha256"],
              "metrics_source": row["metrics_source"]} for row in histories],
         "data_and_cache_fingerprints": fingerprints,
-        "gpu": {"physical_gpu": 1, "preflight": read_json(DATA / "gpu_preflight.json", {})},
-        "resource_guard_status": "bypassed_by_user" if gpu_guard_bypassed() else "active",
+        "gpu": {"physical_gpu": 1, "preflight": gpu_preflight},
+        "resource_guard_status": resource_guard_status,
         "checkpoint_reloads_verified": True, "finite_metrics": True,
         "test_evaluation": False, "link_prediction": False,
     }
