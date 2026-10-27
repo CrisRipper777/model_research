@@ -112,64 +112,339 @@
       "test_labels_masked": true
     }
   },
-  "datasets": {},
-  "execution_sha": "272f94894389b06eb9d051051c012b9926f77bb1",
+  "completed_utc": "2026-10-27T14:02:43+00:00",
+  "condition_summary": [
+    {
+      "dataset": "Movies",
+      "condition": "shuffle_private_physical",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -0.03999471664428711,
+      "delta_acc_pp_min": -0.08998513221740723,
+      "delta_acc_pp_max": 0.0,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -0.09938128475596719,
+      "delta_macro_f1_pp_min": -0.12498625127421725,
+      "delta_macro_f1_pp_max": -0.07341640752618339,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": -0.000193635622660319,
+      "delta_ce_min": -0.00032699108123779297,
+      "delta_ce_max": -4.398822784423828e-05,
+      "delta_ce_direction": "improved",
+      "validation_prediction_changed_fraction_mean": 0.005798840274413426,
+      "validation_prediction_changed_fraction_min": 0.004799040034413338,
+      "validation_prediction_changed_fraction_max": 0.007498500403016806,
+      "validation_logits_mean_abs_change_mean": 0.009071231198807558,
+      "validation_logits_mean_abs_change_min": 0.009026320651173592,
+      "validation_logits_mean_abs_change_max": 0.009147074073553085
+    },
+    {
+      "dataset": "Movies",
+      "condition": "shuffle_private_semantic",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -0.09998281796773274,
+      "delta_acc_pp_min": -0.26994943618774414,
+      "delta_acc_pp_max": 0.08997917175292969,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -0.5579384283806962,
+      "delta_macro_f1_pp_min": -0.8955150920517518,
+      "delta_macro_f1_pp_max": -0.3133834081788134,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": 0.0027501185735066733,
+      "delta_ce_min": 0.0013928413391113281,
+      "delta_ce_max": 0.004006385803222656,
+      "delta_ce_direction": "worsened",
+      "validation_prediction_changed_fraction_mean": 0.032893421749273934,
+      "validation_prediction_changed_fraction_min": 0.032093580812215805,
+      "validation_prediction_changed_fraction_max": 0.03359328210353851,
+      "validation_logits_mean_abs_change_mean": 0.08074816316366196,
+      "validation_logits_mean_abs_change_min": 0.0795922502875328,
+      "validation_logits_mean_abs_change_max": 0.08144636452198029
+    },
+    {
+      "dataset": "Movies",
+      "condition": "shuffle_collaborative_physical",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -2.0195980866750083,
+      "delta_acc_pp_min": -2.7294576168060303,
+      "delta_acc_pp_max": -1.4397144317626953,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -2.1833859479563773,
+      "delta_macro_f1_pp_min": -2.594815602940237,
+      "delta_macro_f1_pp_max": -1.5258853807994743,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": 0.04801464080810547,
+      "delta_ce_min": 0.04472529888153076,
+      "delta_ce_max": 0.05090951919555664,
+      "delta_ce_direction": "worsened",
+      "validation_prediction_changed_fraction_mean": 0.1439711997906367,
+      "validation_prediction_changed_fraction_min": 0.13467305898666382,
+      "validation_prediction_changed_fraction_max": 0.14937011897563934,
+      "validation_logits_mean_abs_change_mean": 0.3627254863580068,
+      "validation_logits_mean_abs_change_min": 0.35990309715270996,
+      "validation_logits_mean_abs_change_max": 0.36435428261756897
+    },
+    {
+      "dataset": "Movies",
+      "condition": "shuffle_all_six",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -1.9196192423502605,
+      "delta_acc_pp_min": -2.33953595161438,
+      "delta_acc_pp_max": -1.4097213745117188,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -2.4246113402061122,
+      "delta_macro_f1_pp_min": -2.5078634117481235,
+      "delta_macro_f1_pp_max": -2.2698054051729755,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": 0.05172260602315267,
+      "delta_ce_min": 0.04807758331298828,
+      "delta_ce_max": 0.05406022071838379,
+      "delta_ce_direction": "worsened",
+      "validation_prediction_changed_fraction_mean": 0.1481703668832779,
+      "validation_prediction_changed_fraction_min": 0.1370725780725479,
+      "validation_prediction_changed_fraction_max": 0.1574685126543045,
+      "validation_logits_mean_abs_change_mean": 0.37995342413584393,
+      "validation_logits_mean_abs_change_min": 0.37859928607940674,
+      "validation_logits_mean_abs_change_max": 0.3809622526168823
+    },
+    {
+      "dataset": "Grocery",
+      "condition": "shuffle_private_physical",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": 0.0,
+      "delta_acc_pp_min": -0.0878453254699707,
+      "delta_acc_pp_max": 0.0878453254699707,
+      "delta_acc_pp_direction": "unchanged",
+      "delta_macro_f1_pp_mean": -0.05278915891157402,
+      "delta_macro_f1_pp_min": -0.17466201266028714,
+      "delta_macro_f1_pp_max": 0.0760613762641249,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": -0.000359038511912028,
+      "delta_ce_min": -0.00043517351150512695,
+      "delta_ce_max": -0.0002581477165222168,
+      "delta_ce_direction": "improved",
+      "validation_prediction_changed_fraction_mean": 0.0024402147391811013,
+      "validation_prediction_changed_fraction_min": 0.0017569545889273286,
+      "validation_prediction_changed_fraction_max": 0.0029282576870173216,
+      "validation_logits_mean_abs_change_mean": 0.015794957677523296,
+      "validation_logits_mean_abs_change_min": 0.015712862834334373,
+      "validation_logits_mean_abs_change_max": 0.015898447483778
+    },
+    {
+      "dataset": "Grocery",
+      "condition": "shuffle_private_semantic",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -0.3709117571512858,
+      "delta_acc_pp_min": -0.38067102432250977,
+      "delta_acc_pp_max": -0.3513932228088379,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -0.04011198971547447,
+      "delta_macro_f1_pp_min": -0.0720628105561838,
+      "delta_macro_f1_pp_max": -0.01368139623471043,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": 0.006897966066996257,
+      "delta_ce_min": 0.006564319133758545,
+      "delta_ce_max": 0.007547557353973389,
+      "delta_ce_direction": "worsened",
+      "validation_prediction_changed_fraction_mean": 0.024109321956833202,
+      "validation_prediction_changed_fraction_min": 0.022547584027051926,
+      "validation_prediction_changed_fraction_max": 0.025183016434311867,
+      "validation_logits_mean_abs_change_mean": 0.14337483048439026,
+      "validation_logits_mean_abs_change_min": 0.1427863985300064,
+      "validation_logits_mean_abs_change_max": 0.14451147615909576
+    },
+    {
+      "dataset": "Grocery",
+      "condition": "shuffle_collaborative_physical",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -1.6398251056671143,
+      "delta_acc_pp_min": -1.8155217170715332,
+      "delta_acc_pp_max": -1.4934122562408447,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -1.4121584177599307,
+      "delta_macro_f1_pp_min": -1.8020391374739542,
+      "delta_macro_f1_pp_max": -1.057242504293543,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": 0.034358084201812744,
+      "delta_ce_min": 0.03326910734176636,
+      "delta_ce_max": 0.03635847568511963,
+      "delta_ce_direction": "worsened",
+      "validation_prediction_changed_fraction_mean": 0.05749145895242691,
+      "validation_prediction_changed_fraction_min": 0.055929720401763916,
+      "validation_prediction_changed_fraction_max": 0.059443630278110504,
+      "validation_logits_mean_abs_change_mean": 0.3731440206368764,
+      "validation_logits_mean_abs_change_min": 0.3710411787033081,
+      "validation_logits_mean_abs_change_max": 0.3763717710971832
+    },
+    {
+      "dataset": "Grocery",
+      "condition": "shuffle_all_six",
+      "n_permutations": 3,
+      "permutation_seeds": "1001;1002;1003",
+      "status": "complete",
+      "delta_acc_pp_mean": -1.9814550876617432,
+      "delta_acc_pp_min": -2.284044027328491,
+      "delta_acc_pp_max": -1.7862379550933838,
+      "delta_acc_pp_direction": "worsened",
+      "delta_macro_f1_pp_mean": -1.7127891934088588,
+      "delta_macro_f1_pp_min": -1.999269468533571,
+      "delta_macro_f1_pp_max": -1.5331104941065599,
+      "delta_macro_f1_pp_direction": "worsened",
+      "delta_ce_mean": 0.04503734906514486,
+      "delta_ce_min": 0.042923569679260254,
+      "delta_ce_max": 0.046532273292541504,
+      "delta_ce_direction": "worsened",
+      "validation_prediction_changed_fraction_mean": 0.06871644655863444,
+      "validation_prediction_changed_fraction_min": 0.06647145003080368,
+      "validation_prediction_changed_fraction_max": 0.07027818262577057,
+      "validation_logits_mean_abs_change_mean": 0.41460152467091876,
+      "validation_logits_mean_abs_change_min": 0.4122889041900635,
+      "validation_logits_mean_abs_change_max": 0.4169943034648895
+    }
+  ],
+  "datasets": {
+    "Grocery": {
+      "baseline_metrics": {
+        "val_acc": 0.8351390957832336,
+        "val_ce": 0.6392349600791931,
+        "val_macro_f1": 0.7662137955710915
+      },
+      "baseline_reproduced": true,
+      "checkpoint_sha256": "650c740a0e727db442fd7e3bbb2248cb43346d7d8c38dee9effd03989f4ea3fa",
+      "checkpoint_unchanged": true,
+      "classifier_weights_unchanged": true,
+      "hook_call_order_pass": true,
+      "hook_control_equal": true,
+      "model_weights_unchanged": true,
+      "parameter_gradients_absent": true,
+      "status": "baseline_passed",
+      "support_masks_pass": true
+    },
+    "Movies": {
+      "baseline_metrics": {
+        "val_acc": 0.5596880912780762,
+        "val_ce": 1.3703745603561401,
+        "val_macro_f1": 0.4819781005636627
+      },
+      "baseline_reproduced": true,
+      "checkpoint_sha256": "b9e8a2a5ebee2dfc91529d62203137c0cb03f06e9bd001d4227f97bf5ff9aaaf",
+      "checkpoint_unchanged": true,
+      "classifier_weights_unchanged": true,
+      "hook_call_order_pass": true,
+      "hook_control_equal": true,
+      "model_weights_unchanged": true,
+      "parameter_gradients_absent": true,
+      "status": "baseline_passed",
+      "support_masks_pass": true
+    }
+  },
+  "execution_attempt_history": [
+    {
+      "attempt": 1,
+      "completed_units": [
+        "Movies/seed42/baseline",
+        "Movies/seed42/shuffle_private_physical/perm1001",
+        "Movies/seed42/shuffle_private_physical/perm1002",
+        "Movies/seed42/shuffle_private_physical/perm1003",
+        "Movies/seed42/shuffle_private_semantic/perm1001"
+      ],
+      "failed_unit": "Movies/seed42/shuffle_private_semantic/perm1002",
+      "failure": "FP32 aggregate reduction made softmax importance exceed the 1e-7 permutation-invariance tolerance; all other route preservation checks passed.",
+      "finalization_failure": "Finalize attempted to build a set from dict-valued failed_units and raised TypeError; fixed before rerun.",
+      "gpu": {
+        "guard_bypassed_by_user": true,
+        "memory_free_mib": 19057,
+        "physical_index": 1,
+        "utilization_percent": 81
+      },
+      "rerun_policy": "discard first-run CSVs through fresh preflight and rerun the fixed 26-unit protocol from the start",
+      "resolutions": [
+        "aggregate softmax and Top-2 importance in FP64",
+        "normalize failed_units to unit identifiers during completion accounting"
+      ],
+      "started_utc": "2026-10-27T13:57:08+00:00"
+    }
+  ],
+  "execution_fix_commits": [
+    "9fae080b467a6120373f27172393a528d3f4ae40"
+  ],
+  "execution_sha": "9fae080b467a6120373f27172393a528d3f4ae40",
+  "execution_started_utc": "2026-10-27T13:59:16+00:00",
   "failed_units": [],
   "gpu": {
     "attempts": [
       {
-        "captured_utc": "2026-10-27T13:06:32+00:00",
+        "captured_utc": "2026-10-27T13:59:13+00:00",
         "device": {
-          "memory_free_mib": 18150,
+          "memory_free_mib": 19057,
           "memory_total_mib": 24576,
-          "memory_used_mib": 6109,
+          "memory_used_mib": 5202,
           "name": "NVIDIA GeForce RTX 3090",
           "physical_index": 1,
-          "temperature_c": 73,
-          "utilization_percent": 87
+          "temperature_c": 74,
+          "utilization_percent": 80
         },
         "guard": {
-          "phase": "before_launch",
-          "physical_gpu": 1,
-          "required_free_mib": 8192,
-          "status": "pass"
+          "reason": "explicit_user_instruction",
+          "status": "bypassed_by_user"
         }
       }
     ],
+    "guard_bypass_scope": [
+      "before_launch",
+      "worker_before_launch",
+      "during_run"
+    ],
+    "guard_bypassed_by_user": true,
     "launch": {
-      "captured_utc": "2026-10-27T13:06:32+00:00",
+      "captured_utc": "2026-10-27T13:59:13+00:00",
       "device": {
-        "memory_free_mib": 18150,
+        "memory_free_mib": 19057,
         "memory_total_mib": 24576,
-        "memory_used_mib": 6109,
+        "memory_used_mib": 5202,
         "name": "NVIDIA GeForce RTX 3090",
         "physical_index": 1,
-        "temperature_c": 73,
-        "utilization_percent": 87
+        "temperature_c": 74,
+        "utilization_percent": 80
       },
       "guard": {
-        "phase": "before_launch",
-        "physical_gpu": 1,
-        "required_free_mib": 8192,
-        "status": "pass"
+        "phase": null,
+        "physical_gpu": null,
+        "required_free_mib": null,
+        "status": null
       }
     },
     "physical_gpu_candidates": [
       1
     ],
     "selected_physical_gpu": 1,
-    "status": "blocked_resource",
-    "worker_pid": 1225859,
-    "reason": "The parent guard passed at 87% utilization, but the worker-side launch recheck saw 98% on GPU 1 and stopped before inference; subsequent resource query failed.",
-    "worker_prelaunch_recheck": {
-      "physical_gpu": 1,
-      "utilization_percent": 98,
-      "guard_status": "blocked",
-      "reason": "baseline_utilization_at_or_above_90_percent"
-    }
+    "status": "bypassed_by_user",
+    "worker_device_name": "NVIDIA GeForce RTX 3090",
+    "worker_guard_bypassed_by_user": true,
+    "worker_pid": 1249230
   },
   "hook_removal": "try/finally in each hooked forward",
   "link_prediction": false,
+  "planned_unit_counts": {
+    "baselines": 2,
+    "formal_full_forwards": 26,
+    "hook_controls": 2,
+    "hook_controls_excluded_from_formal_count": true,
+    "interventions": 24
+  },
   "preflight_source_file_sha256s": {
     "configs/config.yaml": "1b06934c68b88e931909de4cb65b1fa51725df94ff6139d127a6ba85355fe399",
     "configs/dataset/Grocery.yaml": "18969c97a0f06ab33fd3094624d524f03de48139405159bb06d19cf107105e56",
@@ -181,7 +456,7 @@
     "research/mrcge_v13_view_global_router_ablation/RESULTS.md": "e40c7f8507d4b5c0da6b1aed5ce8c3f72c48aa79321b98adbfb847b60fda6bdb",
     "scripts/complete_mrcge_v13_seed44_baseline.py": "c3918774e848a1f23461e14df6cc20aadce0280b23ab31161b97d2253bfb6dd1",
     "scripts/run_mrcge_v12_confirmation.py": "cbf6b6eff5f772f4e3a5d024454fa76294f27774cd667dccce5e8bccab59739e",
-    "scripts/run_mrcge_v13_route_shuffle_diagnostic.py": "589fa160ab2e932ae125232ae23dd1618860e39d81deb46e40b25e8f0d44efa8",
+    "scripts/run_mrcge_v13_route_shuffle_diagnostic.py": "3b9e29df4f2aefed0f664ca3a4e8e034b07d716e898ad4c87c5bd5229a52f082",
     "scripts/run_mrcge_v13_screen.py": "afc8dd631f4e539c571dd9b3169790cc9461672ea0835684f717fd25eb3316f1",
     "scripts/run_mrcge_v13_two_hop_cross_screen.py": "7649e314dcffbc2a5f7babf4e5cdc236a79ee9c7311879ef1550555be312cee4",
     "src/data/graph_utils.py": "8fa1c35c1897e25f2f30628ddc0312598fe9e581692a48cccb131a12a50f10df",
@@ -194,8 +469,8 @@
     "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
     "src/utils/seeds.py": "3e423b11a7e59e9b51c48e176d08b05b8fbd6294f364e1895ed2f1413d2e02f4"
   },
-  "preflight_source_sha": "272f94894389b06eb9d051051c012b9926f77bb1",
-  "preflight_utc": "2026-10-27T13:06:18+00:00",
+  "preflight_source_sha": "9fae080b467a6120373f27172393a528d3f4ae40",
+  "preflight_utc": "2026-10-27T13:58:56+00:00",
   "protocol": {
     "additional_pass_through_hook_controls": 2,
     "checkpoint_seed": 42,
@@ -232,7 +507,8 @@
     "top_k": 2,
     "variant": "joint_view"
   },
-  "recorded_utc": "2026-10-27T13:06:05+00:00",
+  "recommendation": "KEEP_CURRENT_ROUTER",
+  "recorded_utc": "2026-10-27T13:58:44+00:00",
   "source_call_order_audit": [
     {
       "filter_bank_precedes_router": true,
@@ -294,7 +570,7 @@
     "research/mrcge_v13_view_global_router_ablation/RESULTS.md": "e40c7f8507d4b5c0da6b1aed5ce8c3f72c48aa79321b98adbfb847b60fda6bdb",
     "scripts/complete_mrcge_v13_seed44_baseline.py": "c3918774e848a1f23461e14df6cc20aadce0280b23ab31161b97d2253bfb6dd1",
     "scripts/run_mrcge_v12_confirmation.py": "cbf6b6eff5f772f4e3a5d024454fa76294f27774cd667dccce5e8bccab59739e",
-    "scripts/run_mrcge_v13_route_shuffle_diagnostic.py": "589fa160ab2e932ae125232ae23dd1618860e39d81deb46e40b25e8f0d44efa8",
+    "scripts/run_mrcge_v13_route_shuffle_diagnostic.py": "3b9e29df4f2aefed0f664ca3a4e8e034b07d716e898ad4c87c5bd5229a52f082",
     "scripts/run_mrcge_v13_screen.py": "afc8dd631f4e539c571dd9b3169790cc9461672ea0835684f717fd25eb3316f1",
     "scripts/run_mrcge_v13_two_hop_cross_screen.py": "7649e314dcffbc2a5f7babf4e5cdc236a79ee9c7311879ef1550555be312cee4",
     "src/data/graph_utils.py": "8fa1c35c1897e25f2f30628ddc0312598fe9e581692a48cccb131a12a50f10df",
@@ -307,75 +583,60 @@
     "src/tasks/nc.py": "362350f07bb2d076b0f4f791872fbf0105ba695681bc15b3f2a09353bc6aacfd",
     "src/utils/seeds.py": "3e423b11a7e59e9b51c48e176d08b05b8fbd6294f364e1895ed2f1413d2e02f4"
   },
-  "status": "blocked_resource",
+  "status": "complete",
   "study": "MR-CGE V1.3-A Frozen Router-Shuffle & Expert Diversity Diagnostic",
-  "successful_units": [],
-  "test_evaluation": false,
-  "test_label_mask": -100,
-  "unstarted_units": [
-    "Movies/seed42/baseline",
-    "Movies/seed42/shuffle_private_physical/perm1001",
-    "Movies/seed42/shuffle_private_physical/perm1002",
-    "Movies/seed42/shuffle_private_physical/perm1003",
-    "Movies/seed42/shuffle_private_semantic/perm1001",
-    "Movies/seed42/shuffle_private_semantic/perm1002",
-    "Movies/seed42/shuffle_private_semantic/perm1003",
-    "Movies/seed42/shuffle_collaborative_physical/perm1001",
-    "Movies/seed42/shuffle_collaborative_physical/perm1002",
-    "Movies/seed42/shuffle_collaborative_physical/perm1003",
-    "Movies/seed42/shuffle_all_six/perm1001",
-    "Movies/seed42/shuffle_all_six/perm1002",
-    "Movies/seed42/shuffle_all_six/perm1003",
+  "successful_units": [
     "Grocery/seed42/baseline",
+    "Grocery/seed42/shuffle_all_six/perm1001",
+    "Grocery/seed42/shuffle_all_six/perm1002",
+    "Grocery/seed42/shuffle_all_six/perm1003",
+    "Grocery/seed42/shuffle_collaborative_physical/perm1001",
+    "Grocery/seed42/shuffle_collaborative_physical/perm1002",
+    "Grocery/seed42/shuffle_collaborative_physical/perm1003",
     "Grocery/seed42/shuffle_private_physical/perm1001",
     "Grocery/seed42/shuffle_private_physical/perm1002",
     "Grocery/seed42/shuffle_private_physical/perm1003",
     "Grocery/seed42/shuffle_private_semantic/perm1001",
     "Grocery/seed42/shuffle_private_semantic/perm1002",
     "Grocery/seed42/shuffle_private_semantic/perm1003",
-    "Grocery/seed42/shuffle_collaborative_physical/perm1001",
-    "Grocery/seed42/shuffle_collaborative_physical/perm1002",
-    "Grocery/seed42/shuffle_collaborative_physical/perm1003",
-    "Grocery/seed42/shuffle_all_six/perm1001",
-    "Grocery/seed42/shuffle_all_six/perm1002",
-    "Grocery/seed42/shuffle_all_six/perm1003"
+    "Movies/seed42/baseline",
+    "Movies/seed42/shuffle_all_six/perm1001",
+    "Movies/seed42/shuffle_all_six/perm1002",
+    "Movies/seed42/shuffle_all_six/perm1003",
+    "Movies/seed42/shuffle_collaborative_physical/perm1001",
+    "Movies/seed42/shuffle_collaborative_physical/perm1002",
+    "Movies/seed42/shuffle_collaborative_physical/perm1003",
+    "Movies/seed42/shuffle_private_physical/perm1001",
+    "Movies/seed42/shuffle_private_physical/perm1002",
+    "Movies/seed42/shuffle_private_physical/perm1003",
+    "Movies/seed42/shuffle_private_semantic/perm1001",
+    "Movies/seed42/shuffle_private_semantic/perm1002",
+    "Movies/seed42/shuffle_private_semantic/perm1003"
   ],
+  "test_evaluation": false,
+  "test_label_mask": -100,
+  "unstarted_units": [],
   "worker_log": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_route_shuffle_diagnostic/diagnostic.log",
-  "recommendation": "INCONCLUSIVE",
-  "completed_utc": "2026-10-27T13:07:31+00:00",
   "baseline_reproduction": {
-    "Grocery": {
-      "status": "not_run_guard_abort",
-      "historical_metrics_verified": false,
-      "checkpoint_strict_state_dict_load": "passed_cpu_preflight",
-      "historical_model_source_matches_current": false
-    },
     "Movies": {
-      "status": "not_run_guard_abort",
-      "historical_metrics_verified": false,
-      "checkpoint_strict_state_dict_load": "passed_cpu_preflight",
-      "historical_model_source_matches_current": false
+      "status": "matched_history_within_3e-6",
+      "max_absolute_metric_difference": 0.0,
+      "hook_control_equal": "True"
+    },
+    "Grocery": {
+      "status": "matched_history_within_3e-6",
+      "max_absolute_metric_difference": 0.0,
+      "hook_control_equal": "True"
     }
   },
-  "inference_started": false,
-  "inference_forward_count": 0,
-  "launch_failures": [
+  "postprocessing_issues": [
     {
-      "phase": "worker_before_launch_guard",
-      "physical_gpu": 1,
-      "observed_utilization_percent": 98,
-      "reason": "worker-side before_launch guard rejected GPU utilization at or above 90%; exited before data loading and model forward",
-      "worker_exit_code": 1,
-      "worker_log": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_route_shuffle_diagnostic/diagnostic.log"
+      "attempt": "final report assembly after completed inference",
+      "reason": "condition summary CSV and report used different names for changed-prediction/logit-mean fields, causing KeyError after all 26 formal cells completed",
+      "resolved_by_commit": "d7eb2de1e021035eb51508f1f81a1313838b10f9",
+      "inference_rerun_required": false
     }
   ],
-  "latest_resource_query": {
-    "captured_utc": "2026-10-27T13:07:31+00:00",
-    "status": "failed",
-    "reason": "nvidia-smi could not communicate with the NVIDIA driver",
-    "last_successful_snapshot": {
-      "gpu0_utilization_percent": 99,
-      "gpu1_utilization_percent": 91
-    }
-  }
+  "report_generation_commit": "d7eb2de1e021035eb51508f1f81a1313838b10f9",
+  "execution_finished_utc": "2026-10-27T14:02:43+00:00"
 }
