@@ -352,9 +352,10 @@ def route_stats(logits: torch.Tensor, support: torch.Tensor) -> dict[str, Any]:
     top_weights = torch.softmax(top_logits, dim=-1)
     weights = torch.zeros_like(dense).scatter(1, top_ids, top_weights)
     selected = torch.zeros_like(dense, dtype=torch.bool).scatter(1, top_ids, True)
-    importance = dense.mean(dim=0)
+    # Preserve permutation-invariant aggregate statistics despite FP32 reduction order.
+    importance = dense.double().mean(dim=0)
     share = selected.float().mean(dim=0) / 2.0
-    weight_mean = weights.mean(dim=0)
+    weight_mean = weights.double().mean(dim=0)
     counts = selected.sum(dim=0)
     combos = torch.sort(top_ids, dim=-1).values.detach().cpu().numpy()
     unique, combo_counts = np.unique(combos, axis=0, return_counts=True)
@@ -917,7 +918,11 @@ def finalize_outputs(manifest: dict[str, Any], baseline: list[dict[str, Any]],
                                      for r in interventions if r.get("status") == "complete"]
     planned = [f"{d}/seed42/{unit}" for d in DATASETS for unit in
                (["baseline"] + [f"{c}/perm{s}" for c in CONDITIONS for s in PERMUTATION_SEEDS])]
-    done = set(manifest["successful_units"]) | set(manifest.get("failed_units", []))
+    failed = {
+        str(item.get("unit")) if isinstance(item, dict) else str(item)
+        for item in manifest.get("failed_units", [])
+    }
+    done = set(manifest["successful_units"]) | failed
     manifest["unstarted_units"] = [unit for unit in planned if unit not in done]
     completed = len(baseline) == 2 and len(interventions) == 24 and all(r.get("status") == "complete" for r in interventions)
     if completed:
@@ -954,7 +959,7 @@ def record_empty_outputs() -> None:
             write_rows(DATA / filename, [], fields)
 
 
-def run_parent() -> None:
+def run_parent(*, bypass_gpu_guard: bool = False, requested_gpu: int = 1) -> None:
     verify_base()
     manifest = read_json(DATA / "manifest.json", {})
     if manifest.get("status") != "preflight_passed" or manifest.get("preflight_source_sha") != source_sha():
@@ -965,16 +970,27 @@ def run_parent() -> None:
     attempts = []
     choices = sorted(snapshot["devices"], key=lambda row: (row["utilization_percent"], -row["memory_free_mib"]))
     selected_gpu, selected_baseline, launch_guard = None, None, None
-    for item in choices:
-        physical = int(item["physical_index"])
-        base = baseline_pids(snapshot, physical)
-        try:
-            guarded = v13.guard_gpu(physical, base, set(), phase="before_launch", required_free_mib=8192)
-            attempts.append(compact_gpu(guarded, physical))
-            selected_gpu, selected_baseline, launch_guard = physical, base, guarded
-            break
-        except Exception as exc:
-            attempts.append({**compact_gpu(snapshot, physical), "guard": {"status": "blocked", "reason": safe_guard_reason(exc)}})
+    if bypass_gpu_guard:
+        if requested_gpu not in {int(row["physical_index"]) for row in snapshot["devices"]}:
+            raise RuntimeError(f"requested physical GPU {requested_gpu} is not present")
+        selected_gpu = requested_gpu
+        selected_baseline = baseline_pids(snapshot, selected_gpu)
+        launch_guard = snapshot
+        attempts.append({**compact_gpu(snapshot, selected_gpu),
+                         "guard": {"status": "bypassed_by_user", "reason": "explicit_user_instruction"}})
+        manifest["gpu"]["guard_bypassed_by_user"] = True
+        manifest["gpu"]["guard_bypass_scope"] = ["before_launch", "worker_before_launch", "during_run"]
+    else:
+        for item in choices:
+            physical = int(item["physical_index"])
+            base = baseline_pids(snapshot, physical)
+            try:
+                guarded = v13.guard_gpu(physical, base, set(), phase="before_launch", required_free_mib=8192)
+                attempts.append(compact_gpu(guarded, physical))
+                selected_gpu, selected_baseline, launch_guard = physical, base, guarded
+                break
+            except Exception as exc:
+                attempts.append({**compact_gpu(snapshot, physical), "guard": {"status": "blocked", "reason": safe_guard_reason(exc)}})
     manifest.setdefault("gpu", {}).update({"attempts": attempts, "physical_gpu_candidates": [x["device"]["physical_index"] for x in attempts]})
     if selected_gpu is None:
         manifest["status"] = "blocked_resource"
@@ -982,13 +998,14 @@ def run_parent() -> None:
         manifest["gpu_guard_blocked_utc"] = now()
         finalize_outputs(manifest, [], [], [], [])
         return
-    manifest["gpu"].update({"status": "guard_passed", "selected_physical_gpu": selected_gpu,
+    manifest["gpu"].update({"status": "bypassed_by_user" if bypass_gpu_guard else "guard_passed", "selected_physical_gpu": selected_gpu,
                             "launch": compact_gpu(launch_guard, selected_gpu)})
     json_write(DATA / "manifest.json", manifest)
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(selected_gpu)
     env["MRCGE_ROUTE_SHUFFLE_PHYSICAL_GPU"] = str(selected_gpu)
     env["MRCGE_ROUTE_SHUFFLE_BASELINE_PIDS"] = ",".join(map(str, sorted(selected_baseline)))
+    env["MRCGE_ROUTE_SHUFFLE_BYPASS_GPU_GUARD"] = "1" if bypass_gpu_guard else "0"
     command = [sys.executable, str(Path(__file__).resolve()), "--worker"]
     log_path = OUTPUT / "diagnostic.log"
     log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -999,16 +1016,17 @@ def run_parent() -> None:
         guard_error = None
         while process.poll() is None:
             time.sleep(3)
-            try:
-                v13.guard_gpu(selected_gpu, selected_baseline, {process.pid}, phase="during_run", required_free_mib=2048)
-            except Exception as exc:
-                guard_error = safe_guard_reason(exc)
-                process.terminate()
+            if not bypass_gpu_guard:
                 try:
-                    process.wait(timeout=15)
-                except subprocess.TimeoutExpired:
-                    process.kill(); process.wait(timeout=10)
-                break
+                    v13.guard_gpu(selected_gpu, selected_baseline, {process.pid}, phase="during_run", required_free_mib=2048)
+                except Exception as exc:
+                    guard_error = safe_guard_reason(exc)
+                    process.terminate()
+                    try:
+                        process.wait(timeout=15)
+                    except subprocess.TimeoutExpired:
+                        process.kill(); process.wait(timeout=10)
+                    break
     if guard_error:
         manifest = read_json(DATA / "manifest.json", manifest)
         manifest["status"] = "blocked_resource"
@@ -1046,7 +1064,13 @@ def worker() -> None:
     device = torch.device("cuda:0")
     torch.cuda.set_device(device)
     baseline = {int(pid) for pid in os.environ.get("MRCGE_ROUTE_SHUFFLE_BASELINE_PIDS", "").split(",") if pid}
-    v13.guard_gpu(physical, baseline, {os.getpid()}, phase="before_launch", required_free_mib=8192)
+    bypass_gpu_guard = os.environ.get("MRCGE_ROUTE_SHUFFLE_BYPASS_GPU_GUARD") == "1"
+    if bypass_gpu_guard:
+        manifest = read_json(DATA / "manifest.json", {})
+        manifest.setdefault("gpu", {})["worker_guard_bypassed_by_user"] = True
+        json_write(DATA / "manifest.json", manifest)
+    else:
+        v13.guard_gpu(physical, baseline, {os.getpid()}, phase="before_launch", required_free_mib=8192)
     contexts, baseline_rows_all, intervention_rows_all, expert_rows_all, router_rows_all = {}, [], [], [], []
     manifest = read_json(DATA / "manifest.json", {})
     manifest["execution_started_utc"] = now()
@@ -1136,6 +1160,10 @@ def main() -> None:
     group.add_argument("--preflight", action="store_true")
     group.add_argument("--run", action="store_true")
     group.add_argument("--worker", action="store_true")
+    parser.add_argument("--bypass-gpu-guard", action="store_true",
+                        help="Explicitly skip all GPU ownership/resource guard checks for this diagnostic run.")
+    parser.add_argument("--gpu", type=int, default=1,
+                        help="Physical GPU index to use with --run (default: 1).")
     args = parser.parse_args()
     DATA.mkdir(parents=True, exist_ok=True)
     OUTPUT.mkdir(parents=True, exist_ok=True)
@@ -1143,7 +1171,7 @@ def main() -> None:
         result = preflight()
         print(json.dumps({"status": result["status"], "checkpoints": list(result["checkpoints"])}, indent=2))
     elif args.run:
-        run_parent()
+        run_parent(bypass_gpu_guard=args.bypass_gpu_guard, requested_gpu=args.gpu)
     elif args.worker:
         worker()
 
