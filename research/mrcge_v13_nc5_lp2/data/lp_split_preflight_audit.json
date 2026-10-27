@@ -1,0 +1,102 @@
+{
+  "datasets": {
+    "cloth-copurchase": {
+      "audit": {
+        "conflicts": [
+          "self-loop positives={'train': 38, 'valid': 7, 'test': 6}",
+          "undirected positive partitions overlap={'train_valid': 21043, 'train_test': 17360, 'valid_test': 5169}"
+        ],
+        "duplicate_positive_count_within_partition": {
+          "test": 2097,
+          "train": 139894,
+          "valid": 3146
+        },
+        "num_nodes": 125839,
+        "positive_counts_raw": {
+          "test": 97456,
+          "train": 951271,
+          "valid": 121323
+        },
+        "positive_counts_undirected_unique": {
+          "test": 95359,
+          "train": 811377,
+          "valid": 118177
+        },
+        "positive_partition_overlap_counts": {
+          "train_test": 17360,
+          "train_valid": 21043,
+          "valid_test": 5169
+        },
+        "protocol_conflict": true,
+        "self_loop_positive_counts": {
+          "test": 6,
+          "train": 38,
+          "valid": 7
+        },
+        "test_negative_candidates_read": false,
+        "validation_negative_evaluation_only": true,
+        "validation_negative_shape": [
+          121323,
+          150
+        ]
+      },
+      "cache_build_skipped": true,
+      "dataset": "cloth-copurchase",
+      "error": "official LP split conflicts with the Train-only edge-holdout contract: self-loop positives={'train': 38, 'valid': 7, 'test': 6}; undirected positive partitions overlap={'train_valid': 21043, 'train_test': 17360, 'valid_test': 5169}",
+      "protocol_conflict": true,
+      "split_path": "/hdd1/DataInHere/YHF/data/cloth-copurchase/lp-edge-split.pt",
+      "split_sha256": "b0a0866c3595b1c4e676db7805b91ccd283ebdda71a4038f37ac9b6593964697"
+    },
+    "sports-copurchase": {
+      "audit": {
+        "conflicts": [
+          "self-loop positives={'train': 26, 'valid': 3, 'test': 5}",
+          "undirected positive partitions overlap={'train_valid': 8264, 'train_test': 6621, 'valid_test': 2035}"
+        ],
+        "duplicate_positive_count_within_partition": {
+          "test": 863,
+          "train": 54328,
+          "valid": 1238
+        },
+        "num_nodes": 50250,
+        "positive_counts_raw": {
+          "test": 37413,
+          "train": 356202,
+          "valid": 45557
+        },
+        "positive_counts_undirected_unique": {
+          "test": 36550,
+          "train": 301874,
+          "valid": 44319
+        },
+        "positive_partition_overlap_counts": {
+          "train_test": 6621,
+          "train_valid": 8264,
+          "valid_test": 2035
+        },
+        "protocol_conflict": true,
+        "self_loop_positive_counts": {
+          "test": 5,
+          "train": 26,
+          "valid": 3
+        },
+        "test_negative_candidates_read": false,
+        "validation_negative_evaluation_only": true,
+        "validation_negative_shape": [
+          45557,
+          150
+        ]
+      },
+      "cache_build_skipped": true,
+      "dataset": "sports-copurchase",
+      "error": "official LP split conflicts with the Train-only edge-holdout contract: self-loop positives={'train': 26, 'valid': 3, 'test': 5}; undirected positive partitions overlap={'train_valid': 8264, 'train_test': 6621, 'valid_test': 2035}",
+      "protocol_conflict": true,
+      "split_path": "/hdd1/DataInHere/YHF/data/sports-copurchase/lp-edge-split.pt",
+      "split_sha256": "6f5ffeb99f1aca5ea05671c6a86e5ee01a33a3673b6c3f0a24c6d482f4fa710a"
+    }
+  },
+  "protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1",
+  "remediation": "No split was modified. Obtain an explicitly authorized, reviewed official split before LP training; do not run the LP phase against this file.",
+  "status": "blocked_official_split_conflict",
+  "test_metrics": "not_evaluated"
+}

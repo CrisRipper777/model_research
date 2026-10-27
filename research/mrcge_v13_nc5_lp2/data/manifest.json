@@ -1,0 +1,102 @@
+{
+  "base_sha": "4bb7253ac9dffeca57686771c139002d6e84a19f",
+  "branch": "exp/mrcge_v13_nc5_lp2_fullgraph",
+  "evaluate_test": false,
+  "failures_or_incomplete_rows": [
+    {
+      "dataset": "Reddit-S",
+      "phase": "nc",
+      "seed": 42,
+      "status": "missing"
+    },
+    {
+      "dataset": "Reddit-S",
+      "phase": "nc",
+      "seed": 43,
+      "status": "missing"
+    },
+    {
+      "dataset": "Reddit-S",
+      "phase": "nc",
+      "seed": 44,
+      "status": "missing"
+    },
+    {
+      "dataset": "Toys",
+      "phase": "nc",
+      "seed": 42,
+      "status": "missing"
+    },
+    {
+      "dataset": "Toys",
+      "phase": "nc",
+      "seed": 43,
+      "status": "missing"
+    },
+    {
+      "dataset": "Toys",
+      "phase": "nc",
+      "seed": 44,
+      "status": "missing"
+    },
+    {
+      "dataset": "cloth-copurchase",
+      "phase": "lp",
+      "seed": 42,
+      "status": "missing"
+    },
+    {
+      "dataset": "cloth-copurchase",
+      "phase": "lp",
+      "seed": 43,
+      "status": "missing"
+    },
+    {
+      "dataset": "cloth-copurchase",
+      "phase": "lp",
+      "seed": 44,
+      "status": "missing"
+    },
+    {
+      "dataset": "sports-copurchase",
+      "phase": "lp",
+      "seed": 42,
+      "status": "missing"
+    },
+    {
+      "dataset": "sports-copurchase",
+      "phase": "lp",
+      "seed": 43,
+      "status": "missing"
+    },
+    {
+      "dataset": "sports-copurchase",
+      "phase": "lp",
+      "seed": 44,
+      "status": "missing"
+    }
+  ],
+  "finalized_utc": "2026-10-27T18:09:54+00:00",
+  "fingerprints_file": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v13_nc5_lp2/data/fingerprints.json",
+  "formal_training_launched_by_collector": false,
+  "historical_integrity_issues": [],
+  "historical_nc_rows_reused": 9,
+  "lp_complete": false,
+  "lp_completed_cells": 0,
+  "lp_expected_cells": 6,
+  "lp_protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1",
+  "lp_rows_expected": 6,
+  "lp_split_preflight_blocked_datasets": [
+    "cloth-copurchase",
+    "sports-copurchase"
+  ],
+  "lp_split_preflight_status": "blocked_official_split_conflict",
+  "nc_complete": false,
+  "nc_completed_cells": 9,
+  "nc_expected_cells": 15,
+  "new_nc_rows_expected": 6,
+  "protocol_audit_issues": [],
+  "status": "partial",
+  "study": "MR-CGE V1.3-A five-dataset NC and two-dataset LP evaluation",
+  "test_metrics": "not_evaluated"
+}

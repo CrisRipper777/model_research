@@ -1,0 +1,27 @@
+{
+  "all_nc_full_model_joint_view_m_repaired": true,
+  "base_sha": "4bb7253ac9dffeca57686771c139002d6e84a19f",
+  "fixed_nc_split_seed": 42,
+  "issues": [],
+  "lp_complete_cells": 0,
+  "lp_expected_cells": 6,
+  "lp_fold_count": 3,
+  "lp_fold_seed": 42,
+  "lp_semantic_source": "global node attributes, V7B.1 K=8; no LP edge labels used for candidate construction",
+  "lp_split_preflight_blocked_datasets": [
+    "cloth-copurchase",
+    "sports-copurchase"
+  ],
+  "lp_split_preflight_status": "blocked_official_split_conflict",
+  "lp_train_graph_source": "LP Train Positive only; both directions; validation/test positives excluded",
+  "nc_complete_cells": 9,
+  "nc_expected_cells": 15,
+  "nc_uses_reused_historical_9_rows": 9,
+  "new_nc_completed_cells": 0,
+  "new_nc_required_cells": 6,
+  "protocol_version_lp": "mrcge_v13_full_graph_edge_holdout_lp_v1",
+  "sampled_lp_protocol_equivalence_claimed": false,
+  "status": "pass",
+  "test_evaluation": false,
+  "test_metrics": "not_evaluated"
+}
