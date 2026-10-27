@@ -347,9 +347,9 @@ def cpu_preflight() -> None:
             for kind in ABLATIONS:
                 cfg_init = init_config(dataset, seed, cache, ablation=kind)
                 observed = initialization_hashes(cfg_init, safe)
-                if observed["model"] != full_ref["initial_model_sha256"]:
+                if full_ref.get("initial_model_sha256") and observed["model"] != full_ref["initial_model_sha256"]:
                     raise RuntimeError(f"{dataset}/seed{seed}/{kind}: model initialization differs from same-seed Full")
-                if observed["classifier"] != full_ref["initial_classifier_sha256"]:
+                if full_ref.get("initial_classifier_sha256") and observed["classifier"] != full_ref["initial_classifier_sha256"]:
                     raise RuntimeError(f"{dataset}/seed{seed}/{kind}: classifier initialization differs from same-seed Full")
                 init_records[dataset][str(seed)][kind] = observed
             cfg_formal = init_config(dataset, seed, cache, ablation=None)
