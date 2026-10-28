@@ -13,6 +13,7 @@ from scripts.mrcge_v13_nc5_lp2_utils import (
     mask_test_labels,
 )
 from scripts.prepare_mrcge_v13_nc5_lp2 import _validate_nc_split
+from scripts import run_mrcge_v13_nc5_lp2 as nc5_runner
 from src.data import EdgeSplit, MAGData
 from src.data.semantic_candidates_v7b import build_semantic_candidate_cache_v7b, load_semantic_candidate_cache_v7b
 from src.models import LinkPredictor, build_model
@@ -101,6 +102,24 @@ def test_lp_split_path_metadata_supports_mmgraph_loader_key():
     assert loaded_lp_split_path({"edge_split_path": "/data/lp-edge-split.pt"}) == "/data/lp-edge-split.pt"
     assert loaded_lp_split_path({"lp_split_path": "/data/lp.pt"}) == "/data/lp.pt"
     assert loaded_lp_split_path({}) is None
+
+
+def test_gpu_baseline_uses_exported_v13_guard_api(monkeypatch):
+    snapshot = {
+        "captured_utc": "synthetic", "devices": [
+            {"physical_index": 0, "uuid": "GPU-0"},
+            {"physical_index": 1, "uuid": "GPU-1"},
+        ],
+        "compute_processes": [
+            {"gpu_uuid": "GPU-0", "pid": 101},
+            {"gpu_uuid": "GPU-1", "pid": 202},
+        ],
+    }
+    monkeypatch.setattr(nc5_runner.guard_impl.v13, "smi_snapshot", lambda: snapshot)
+    baseline, pids = nc5_runner._capture_gpu_baseline(1)
+    assert pids == {202}
+    assert baseline["authorized_baseline_compute_pids"] == [202]
+    assert baseline["guard_bypassed"] is False
 
 
 def test_lp_train_only_graph_and_three_fold_bidirectional_holdout():

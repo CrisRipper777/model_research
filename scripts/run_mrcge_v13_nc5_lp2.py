@@ -109,11 +109,11 @@ def _upsert_attempt_csv(path: Path, row: dict[str, Any], fields: list[str]) -> N
 
 
 def _capture_gpu_baseline(physical_gpu: int) -> tuple[dict[str, Any], set[int]]:
-    snapshot = guard_impl.smi_snapshot()
+    snapshot = guard_impl.v13.smi_snapshot()
     selected = next((row for row in snapshot["devices"] if int(row["physical_index"]) == physical_gpu), None)
     if selected is None:
         raise RuntimeError(f"physical GPU {physical_gpu} not found")
-    pids = {int(row["pid"]) for row in snapshot["compute_processes"] if row["gpu_uuid"] == selected["uuid"]}
+    pids = guard_impl.baseline_gpu_pids(snapshot, physical_gpu)
     snapshot["authorized_baseline_compute_pids"] = sorted(pids)
     snapshot["guard_bypassed"] = False
     return snapshot, pids
@@ -124,7 +124,7 @@ def _guarded_child(
     baseline_pids: set[int], attempt: int, attempt_dir: Path,
 ) -> tuple[int, str | None]:
     unit = f"{phase}/{dataset}/seed{seed}"
-    before = guard_impl.guard_gpu(physical_gpu, baseline_pids, set(), phase="before_launch", required_free_mib=8192)
+    before = guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="before_launch", required_free_mib=8192)
     if attempt_dir.exists():
         raise FileExistsError(f"refusing to reuse existing attempt directory {attempt_dir}")
     attempt_dir.mkdir(parents=True)
@@ -150,7 +150,7 @@ def _guarded_child(
         while process.poll() is None:
             time.sleep(3)
             try:
-                guard_impl.guard_gpu(physical_gpu, baseline_pids, {process.pid}, phase="during_run")
+                guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, {process.pid}, phase="during_run")
             except Exception as exc:
                 guard_error = repr(exc)
                 process.terminate()
@@ -162,7 +162,7 @@ def _guarded_child(
                 break
     rc = process.returncode if process.returncode is not None else -1
     try:
-        after = guard_impl.guard_gpu(physical_gpu, baseline_pids, set(), phase="after_run", required_free_mib=8192)
+        after = guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="after_run", required_free_mib=8192)
         json_write(attempt_dir / "gpu_resource.json", {"before": before, "after": after, "guard_bypassed": False})
     except Exception as exc:
         guard_error = guard_error or f"after-run guard: {exc!r}"
@@ -246,7 +246,7 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA is unavailable or physical GPU isolation failed")
     baseline = {int(value) for value in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if value}
-    guard_impl.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
+    guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
     fingerprints = _load_fingerprints()
     prepared = fingerprints["datasets"][dataset]
     cache = _cache_record(prepared)
@@ -297,7 +297,7 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     try:
         from src.tasks.nc import run_nc
         run_nc(cfg, safe, device, logger)
-        guard_impl.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
+        guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
         packed = json.loads(Path(cfg.task.run_metrics_path).read_text(encoding="utf-8"))
         if packed.get("protocol_version") != PROTOCOL_NC or packed.get("run_seeds") != [seed]:
             raise RuntimeError("NC trainer returned an unexpected protocol or training seed")
@@ -405,7 +405,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA is unavailable or physical GPU isolation failed")
     baseline = {int(value) for value in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if value}
-    guard_impl.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
+    guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
     fingerprints = _load_fingerprints()
     prepared = fingerprints["datasets"][dataset]
     cache = _cache_record(prepared)
@@ -477,7 +477,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
             checkpoint_path=str(cfg.task.save_ckpt_path), fingerprint_record=fingerprint_record,
             source_commit=current_commit(),
         )
-        guard_impl.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
+        guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
         row.update({
             "attempt": attempt, "split_path": prepared["split"]["path"],
             "split_sha256": prepared["split"]["sha256"],
