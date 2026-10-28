@@ -24,7 +24,7 @@
 - The audit canonicalizes positives as undirected endpoint pairs. The official files remain byte-for-byte unchanged; LP preparation records the conflict audit and builds the Train-graph semantic caches.
 - Historical Movies/Grocery/ele-fashion NC records are imported as `reused_historical`. Toys/Reddit-S seeds 42/43/44 were trained on the fixed seed42 split. When the outer runner raised after training, all six existing checkpoints were recovered by strict reloading without retraining; the LP command gates on their checkpoint SHA256s.
 - CPU tests are synthetic only. The V1.3 smoke test uses the actual frozen Full encoder, actual V7B.1 cache builder/loader, global forward/backward, and strict state reload on a 12-node graph. It does not load a formal trainable dataset or perform an official experiment.
-- GPU execution is isolated in per-cell workers. The initial guard-enabled LP attempt saw a new external PID and stopped; following the user's explicit authorization to continue on GPU 1, the resumed run uses `--skip-gpu-guard` and records that bypass in attempt/run artifacts. The collector does not launch a worker.
+- LP worker attempt 1 was stopped by the ownership guard after a new external PID appeared. Following the user's explicit instruction to stop using GPU guards, attempt 2 ran with the guard bypass recorded and was then stopped at epoch 92 when the user requested manual control. No LP checkpoint was finalized and no LP result is marked complete. The single sequential command in `RUNBOOK.md` resumes using fresh attempt numbers and does not run a guard.
 
 ## Self-audit answers
 
