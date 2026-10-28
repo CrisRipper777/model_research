@@ -60,7 +60,7 @@ LP_FIELDS = [
     "train_graph_fingerprint", "feature_fingerprint", "semantic_cache_path",
     "semantic_cache_sha256", "candidate_fingerprint", "v7b_fingerprint",
     "fold_seed", "fold_count", "test_evaluation", "test_metrics", "checkpoint_reload_verified",
-    "split_protocol_deviation", "split_conflict_summary", "source_commit", "wall_seconds",
+    "split_protocol_deviation", "split_conflict_summary", "gpu_guard_bypassed", "source_commit", "wall_seconds",
     "peak_memory_bytes", "gpu_name", "attempt_dir", "error",
 ]
 
@@ -136,9 +136,14 @@ def _reset_cuda_peak_memory_stats(device: torch.device) -> None:
 def _guarded_child(
     *, phase: str, dataset: str, seed: int, physical_gpu: int,
     baseline_pids: set[int], attempt: int, attempt_dir: Path, recover: bool = False,
+    guard_bypassed: bool = False,
 ) -> tuple[int, str | None]:
     unit = f"{phase}/{dataset}/seed{seed}"
-    before = guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="before_launch", required_free_mib=8192)
+    before = (
+        {"guard_bypassed": True, "reason": "explicit user authorization", "physical_gpu": physical_gpu}
+        if guard_bypassed else
+        guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="before_launch", required_free_mib=8192)
+    )
     if recover:
         if phase != "nc" or not attempt_dir.is_dir():
             raise ValueError("recovery is available only for an existing NC attempt directory")
@@ -155,12 +160,13 @@ def _guarded_child(
             "phase": phase, "dataset": dataset, "seed": seed, "attempt": attempt,
             "started_utc": now_utc(), "source_commit": current_commit(),
             "base_sha": BASE_SHA, "test_evaluation": False,
-            "gpu_guard_before_launch": before, "gpu_guard_bypassed": False,
+            "gpu_guard_before_launch": before, "gpu_guard_bypassed": guard_bypassed,
         })
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(physical_gpu)
     env["MRCGE_NC5_LP2_WORKER"] = "1"
     env["MRCGE_BASELINE_GPU_PIDS"] = ",".join(map(str, sorted(baseline_pids)))
+    env["MRCGE_GPU_GUARD_BYPASSED"] = "1" if guard_bypassed else "0"
     command = [
         sys.executable, str(Path(__file__).resolve()), "--worker", "--phase", phase, "--datasets", dataset,
         "--dataset", dataset, "--seed", str(seed), "--attempt", str(attempt),
@@ -174,27 +180,32 @@ def _guarded_child(
         process = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
         while process.poll() is None:
             time.sleep(3)
-            try:
-                guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, {process.pid}, phase="during_run")
-            except Exception as exc:
-                guard_error = repr(exc)
-                process.terminate()
+            if not guard_bypassed:
                 try:
-                    process.wait(timeout=15)
-                except subprocess.TimeoutExpired:
-                    process.kill()
-                    process.wait(timeout=10)
-                break
+                    guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, {process.pid}, phase="during_run")
+                except Exception as exc:
+                    guard_error = repr(exc)
+                    process.terminate()
+                    try:
+                        process.wait(timeout=15)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                        process.wait(timeout=10)
+                    break
     rc = process.returncode if process.returncode is not None else -1
     try:
-        after = guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="after_run", required_free_mib=8192)
+        after = (
+            {"guard_bypassed": True, "physical_gpu": physical_gpu}
+            if guard_bypassed else
+            guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="after_run", required_free_mib=8192)
+        )
         resource_path = attempt_dir / ("recovery_gpu_resource.json" if recover else "gpu_resource.json")
-        json_write(resource_path, {"before": before, "after": after, "guard_bypassed": False})
+        json_write(resource_path, {"before": before, "after": after, "guard_bypassed": guard_bypassed})
     except Exception as exc:
         guard_error = guard_error or f"after-run guard: {exc!r}"
         resource_path = attempt_dir / ("recovery_gpu_resource.json" if recover else "gpu_resource.json")
         json_write(resource_path, {
-            "before": before, "after": None, "after_guard_error": repr(exc), "guard_bypassed": False,
+            "before": before, "after": None, "after_guard_error": repr(exc), "guard_bypassed": guard_bypassed,
         })
     return rc, guard_error
 
@@ -275,7 +286,9 @@ def _nc_worker(
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA is unavailable or physical GPU isolation failed")
     baseline = {int(value) for value in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if value}
-    guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
+    guard_bypassed = os.environ.get("MRCGE_GPU_GUARD_BYPASSED") == "1"
+    if not guard_bypassed:
+        guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
     fingerprints = _load_fingerprints()
     prepared = fingerprints["datasets"][dataset]
     cache = _cache_record(prepared)
@@ -332,7 +345,8 @@ def _nc_worker(
             run_nc(cfg, safe, device, logger)
         elif not Path(cfg.task.run_metrics_path).is_file():
             raise FileNotFoundError(f"cannot recover without completed run metrics: {cfg.task.run_metrics_path}")
-        guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
+        if not guard_bypassed:
+            guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
         packed = json.loads(Path(cfg.task.run_metrics_path).read_text(encoding="utf-8"))
         if packed.get("protocol_version") != PROTOCOL_NC or packed.get("run_seeds") != [seed]:
             raise RuntimeError("NC trainer returned an unexpected protocol or training seed")
@@ -425,6 +439,7 @@ def _nc_worker(
             "wall_seconds": float(run_meta.get("training_wall_seconds", time.perf_counter() - started)),
             "peak_memory_bytes": int(run_meta.get("cuda_peak_reserved_bytes") or torch.cuda.max_memory_reserved(device)),
             "gpu_name": torch.cuda.get_device_name(device), "attempt_dir": str(attempt_dir.resolve()), "error": "",
+            "gpu_guard_bypassed": guard_bypassed,
         }
         json_write(attempt_dir / "worker_result.json", row)
         status_path = attempt_dir / "status.json"
@@ -454,7 +469,9 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError("CUDA is unavailable or physical GPU isolation failed")
     baseline = {int(value) for value in os.environ.get("MRCGE_BASELINE_GPU_PIDS", "").split(",") if value}
-    guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
+    guard_bypassed = os.environ.get("MRCGE_GPU_GUARD_BYPASSED") == "1"
+    if not guard_bypassed:
+        guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_start", required_free_mib=8192)
     fingerprints = _load_fingerprints()
     prepared = fingerprints["datasets"][dataset]
     cache = _cache_record(prepared)
@@ -495,6 +512,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         "train_graph_edge_index_sha256": __import__("scripts.mrcge_v13_nc5_lp2_utils", fromlist=["tensor_sha256"]).tensor_sha256(train_graph),
         "split_audit": split_audit, "loaded_train_graph_audit": graph_audit,
         "protocol_deviation": "official split accepted unchanged; partition overlaps and self-loop handling are recorded",
+        "gpu_guard_bypassed": guard_bypassed,
         "text_dim": int(data.x_t.size(1)), "visual_dim": int(data.x_i.size(1)),
         "feature_order": "global x[:, :512] Text; x[:, 512:1024] Visual",
         "semantic_candidate_source": "global node attributes only; train-only physical graph passed for provenance/overlap statistics",
@@ -510,6 +528,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         "loss": "BCEWithLogitsLoss", "balance_aux_weight": 1.0, "train_negative_ratio": 1,
         "model_semantic_knn_k": 8, "experts": 4, "top_k": 2,
         "evaluate_test": False, "test_metrics": "not_evaluated",
+        "gpu_guard_bypassed": guard_bypassed,
         "protocol_difference": (
             "Full-Graph Three-Fold Edge-Holdout using official lp-edge-split.pt unchanged; "
             "partition overlaps/self-loops are accepted and reported as a protocol deviation; "
@@ -531,7 +550,8 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
             checkpoint_path=str(cfg.task.save_ckpt_path), fingerprint_record=fingerprint_record,
             source_commit=current_commit(),
         )
-        guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
+        if not guard_bypassed:
+            guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
         row.update({
             "attempt": attempt, "split_path": prepared["split"]["path"],
             "split_sha256": prepared["split"]["sha256"],
@@ -541,6 +561,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
             "peak_memory_bytes": int(torch.cuda.max_memory_reserved(device)),
             "gpu_name": torch.cuda.get_device_name(device),
             "attempt_dir": str(attempt_dir.resolve()), "error": "",
+            "gpu_guard_bypassed": guard_bypassed,
         })
         row["checkpoint_sha256"] = sha256_file(row["checkpoint_path"])
         json_write(attempt_dir / "worker_result.json", row)
@@ -645,7 +666,9 @@ def recover_finished_nc(datasets: list[str], seeds: list[int], physical_gpu: int
                 print(f"RECOVERY FAILED nc/{dataset}/seed{seed}: {guard_error or f'worker exit code {code}'}", flush=True)
 
 
-def run_phase(phase: str, datasets: list[str], seeds: list[int], physical_gpu: int) -> None:
+def run_phase(
+    phase: str, datasets: list[str], seeds: list[int], physical_gpu: int, *, skip_gpu_guard: bool = False,
+) -> None:
     allowed_datasets = NEW_NC_DATASETS if phase == "nc" else list(LP_DATASETS)
     if set(datasets) - set(allowed_datasets):
         raise ValueError(f"phase {phase} supports only {allowed_datasets}; got {datasets}")
@@ -656,10 +679,13 @@ def run_phase(phase: str, datasets: list[str], seeds: list[int], physical_gpu: i
     _verify_prepared_phase(phase, datasets)
     if phase == "lp":
         _verify_nc_gate()
-    snapshot, baseline_pids = _capture_gpu_baseline(physical_gpu)
+    if skip_gpu_guard:
+        snapshot, baseline_pids = {"guard_bypassed": True, "reason": "explicit user authorization"}, set()
+    else:
+        snapshot, baseline_pids = _capture_gpu_baseline(physical_gpu)
     json_write(OUTPUT / "gpu_baselines" / f"{phase}_baseline_{now_utc().replace(':', '').replace('-', '')}.json",
                {"snapshot": snapshot, "baseline_pids": sorted(baseline_pids), "physical_gpu": physical_gpu,
-                "bypass": False, "guard_enabled": True})
+                "bypass": skip_gpu_guard, "guard_enabled": not skip_gpu_guard})
     results = DATA_DIR / ("nc_new_runs.csv" if phase == "nc" else "lp_runs.csv")
     for dataset in datasets:
         for seed in seeds:
@@ -669,11 +695,12 @@ def run_phase(phase: str, datasets: list[str], seeds: list[int], physical_gpu: i
                 continue
             attempt, attempt_dir = _next_attempt(phase, dataset, seed)
             label = f"{phase}/{dataset}/seed{seed}/attempt{attempt:02d}"
-            print(f"START {label} gpu={physical_gpu} guard=enabled", flush=True)
+            print(f"START {label} gpu={physical_gpu} guard={'bypassed' if skip_gpu_guard else 'enabled'}", flush=True)
             try:
                 code, guard_error = _guarded_child(
                     phase=phase, dataset=dataset, seed=seed, physical_gpu=physical_gpu,
                     baseline_pids=baseline_pids, attempt=attempt, attempt_dir=attempt_dir,
+                    guard_bypassed=skip_gpu_guard,
                 )
             except Exception as exc:
                 code, guard_error = 125, repr(exc)
@@ -703,6 +730,7 @@ def run_phase(phase: str, datasets: list[str], seeds: list[int], physical_gpu: i
                 "record_origin": "new_training" if phase == "nc" else "new_training",
                 "test_evaluation": False, "test_labels_masked": (phase == "nc"),
                 "checkpoint_reload_verified": False, "source_commit": current_commit(),
+                "gpu_guard_bypassed": skip_gpu_guard,
                 "attempt_dir": str(attempt_dir.resolve()),
                 "error": guard_error or detail.get("error", f"worker exit code {code}"),
             }
@@ -723,6 +751,8 @@ def main() -> None:
     parser.add_argument("--recover-existing-attempt", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--recover-finished-nc", action="store_true",
                         help="strictly validate saved checkpoints from completed NC attempts without retraining")
+    parser.add_argument("--skip-gpu-guard", action="store_true",
+                        help="skip GPU ownership/utilization checks when explicitly authorized")
     parser.add_argument("--dataset", choices=(*NEW_NC_DATASETS, *LP_DATASETS), help=argparse.SUPPRESS)
     parser.add_argument("--seed", type=int, choices=SEEDS, help=argparse.SUPPRESS)
     parser.add_argument("--attempt", type=int, help=argparse.SUPPRESS)
@@ -742,7 +772,8 @@ def main() -> None:
                 parser.error("--recover-finished-nc is available only with --phase nc")
             recover_finished_nc(datasets, list(args.seeds), args.physical_gpu)
         else:
-            run_phase(args.phase, datasets, list(args.seeds), args.physical_gpu)
+            run_phase(args.phase, datasets, list(args.seeds), args.physical_gpu,
+                      skip_gpu_guard=bool(args.skip_gpu_guard))
 
 
 if __name__ == "__main__":

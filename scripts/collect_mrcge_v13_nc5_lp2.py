@@ -399,7 +399,7 @@ def finalize() -> dict[str, Any]:
         "train_graph_fingerprint", "feature_fingerprint", "semantic_cache_path",
         "semantic_cache_sha256", "candidate_fingerprint", "v7b_fingerprint",
         "fold_seed", "fold_count", "test_evaluation", "test_metrics", "checkpoint_reload_verified",
-        "split_protocol_deviation", "split_conflict_summary", "source_commit", "wall_seconds",
+        "split_protocol_deviation", "split_conflict_summary", "gpu_guard_bypassed", "source_commit", "wall_seconds",
         "peak_memory_bytes", "gpu_name", "attempt_dir", "error",
     ]
     csv_write(DATA_DIR / "lp_runs.csv", lp_rows, lp_fields)
@@ -434,6 +434,9 @@ def finalize() -> dict[str, Any]:
         ),
         "lp_split_conflicts_accepted_as_is": lp_preflight.get("status") == "official_split_as_is_conflicts_accepted",
         "lp_validation_leakage_safe_claim": False if lp_preflight.get("status") == "official_split_as_is_conflicts_accepted" else None,
+        "lp_gpu_guard_bypassed_cells": sum(
+            str(row.get("gpu_guard_bypassed", "")).lower() == "true" for row in lp_rows if row.get("status") == "complete"
+        ),
         "test_evaluation": False, "test_metrics": "not_evaluated",
         "sampled_lp_protocol_equivalence_claimed": False,
         "status": "pass" if not historical_problems and not new_nc_problems and not lp_problems else "issues",
@@ -462,6 +465,7 @@ def finalize() -> dict[str, Any]:
         "evaluate_test": False, "test_metrics": "not_evaluated",
         "historical_nc_rows_reused": 9, "new_nc_rows_expected": 6, "lp_rows_expected": 6,
         "lp_protocol_version": LP_PROTOCOL,
+        "lp_gpu_guard_bypassed_cells": protocol_audit["lp_gpu_guard_bypassed_cells"],
         "failures_or_incomplete_rows": [*failures, *missing_cells],
         "lp_split_preflight_status": lp_preflight.get("status", "not_run"),
         "lp_split_conflict_datasets": sorted(

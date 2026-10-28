@@ -5,7 +5,7 @@ Repository: `/hdd1/DataInHere/YHF/model_research`
 Environment: `yhf_env`
 
 Branch: `exp/mrcge_v13_nc5_lp2_fullgraph`
-Physical GPU default: 1 (normal ownership, memory, and utilization guard enabled)
+Physical GPU default: 1 (ownership, memory, and utilization guard enabled unless explicitly bypassed)
 
 Run each command from the repository root. Use `conda activate yhf_env` first, or prefix commands with `conda run --no-capture-output -n yhf_env`.
 
@@ -59,10 +59,10 @@ Counts use raw positive rows; overlap counts compare canonical undirected endpoi
 ## 4. Run the six LP cells
 
 ```bash
-python scripts/run_mrcge_v13_nc5_lp2.py --phase lp --datasets sports-copurchase cloth-copurchase --seeds 42 43 44 --physical-gpu 1
+python scripts/run_mrcge_v13_nc5_lp2.py --phase lp --datasets sports-copurchase cloth-copurchase --seeds 42 43 44 --physical-gpu 1 --skip-gpu-guard
 ```
 
-The runner starts cells sequentially after checking the six new NC checkpoints and the prepared split/cache fingerprints. It does not call the existing sampled LP Trainer and does not evaluate Test metrics. Results include the split-overlap counts and explicit protocol-deviation text.
+The runner starts cells sequentially after checking the six new NC checkpoints and the prepared split/cache fingerprints. `--skip-gpu-guard` is used here under the user's explicit authorization to continue despite another process appearing on GPU 1; each run record marks this bypass. It does not call the existing sampled LP Trainer and does not evaluate Test metrics. Results include the split-overlap counts and explicit protocol-deviation text.
 
 ## 5. Collect final artifacts
 
