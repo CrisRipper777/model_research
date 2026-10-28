@@ -374,23 +374,17 @@
       "val_hits_at_3": "",
       "val_mrr": "",
       "wall_seconds": ""
-    },
-    {
-      "dataset": "cloth-copurchase",
-      "phase": "lp",
-      "seed": 44,
-      "status": "missing"
     }
   ],
-  "finalized_utc": "2026-10-28T06:08:34+00:00",
+  "finalized_utc": "2026-10-28T07:25:25+00:00",
   "fingerprints_file": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v13_nc5_lp2/data/fingerprints.json",
   "formal_training_launched_by_collector": false,
   "historical_integrity_issues": [],
   "historical_nc_rows_reused": 9,
-  "lp_complete": false,
-  "lp_completed_cells": 5,
+  "lp_complete": true,
+  "lp_completed_cells": 6,
   "lp_expected_cells": 6,
-  "lp_gpu_guard_bypassed_cells": 5,
+  "lp_gpu_guard_bypassed_cells": 6,
   "lp_protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is",
   "lp_rows_expected": 6,
   "lp_split_conflict_datasets": [
@@ -403,7 +397,7 @@
   "nc_expected_cells": 15,
   "new_nc_rows_expected": 6,
   "protocol_audit_issues": [],
-  "status": "partial",
+  "status": "complete",
   "study": "MR-CGE V1.3-A five-dataset NC and two-dataset LP evaluation",
   "test_metrics": "not_evaluated"
 }
