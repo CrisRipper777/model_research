@@ -122,6 +122,15 @@ def test_gpu_baseline_uses_exported_v13_guard_api(monkeypatch):
     assert baseline["guard_bypassed"] is False
 
 
+def test_cuda_memory_stats_reset_initializes_context_first(monkeypatch):
+    calls = []
+    monkeypatch.setattr(torch.cuda, "init", lambda: calls.append("init"))
+    monkeypatch.setattr(torch.cuda, "reset_peak_memory_stats", lambda device: calls.append(("reset", device)))
+    device = torch.device("cuda:0")
+    nc5_runner._reset_cuda_peak_memory_stats(device)
+    assert calls == ["init", ("reset", device)]
+
+
 def test_lp_train_only_graph_and_three_fold_bidirectional_holdout():
     split = _synthetic_split()
     audit = validate_lp_split(split, 8)

@@ -119,6 +119,13 @@ def _capture_gpu_baseline(physical_gpu: int) -> tuple[dict[str, Any], set[int]]:
     return snapshot, pids
 
 
+def _reset_cuda_peak_memory_stats(device: torch.device) -> None:
+    # `is_available()` and `device_count()` do not initialize a CUDA context.
+    # PyTorch raises Invalid device argument if peak stats are reset before init.
+    torch.cuda.init()
+    torch.cuda.reset_peak_memory_stats(device)
+
+
 def _guarded_child(
     *, phase: str, dataset: str, seed: int, physical_gpu: int,
     baseline_pids: set[int], attempt: int, attempt_dir: Path,
@@ -285,7 +292,7 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     if cfg.task.evaluate_test is not False or bool((safe.y[safe.test_idx] != -100).any()):
         raise RuntimeError("Test labels were not masked before Trainer entry")
     device = torch.device("cuda:0")
-    torch.cuda.reset_peak_memory_stats(device)
+    _reset_cuda_peak_memory_stats(device)
     logger = logging.getLogger(f"nc5.{dataset}.{seed}.{attempt}")
     logger.handlers.clear(); logger.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
@@ -468,7 +475,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     for handler in (logging.FileHandler(attempt_dir / "train.log", encoding="utf-8"), logging.StreamHandler(sys.stdout)):
         handler.setFormatter(formatter); logger.addHandler(handler)
     device = torch.device("cuda:0")
-    torch.cuda.reset_peak_memory_stats(device)
+    _reset_cuda_peak_memory_stats(device)
     started = time.perf_counter()
     try:
         set_seed(seed)
