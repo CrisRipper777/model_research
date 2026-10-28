@@ -27,7 +27,7 @@ SEEDS = (42, 43, 44)
 NEW_NC_DATASETS = ("Toys", "Reddit-S")
 HISTORICAL_NC_DATASETS = ("Movies", "Grocery", "ele-fashion")
 PROTOCOL_NC = "unified_full_graph_nc_v1"
-PROTOCOL_LP = "mrcge_v13_full_graph_edge_holdout_lp_v1"
+PROTOCOL_LP = "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is"
 
 
 def now_utc() -> str:
@@ -147,6 +147,7 @@ def build_config(dataset: str, phase: str, seed: int):
         cfg.dataset.add_self_loops = False
         cfg.task.protocol_version = PROTOCOL_LP
         cfg.task.training_mode = "full_graph_three_fold_edge_holdout"
+        cfg.task.allow_official_split_conflicts = True
         cfg.task.optimizer = "adam"
         cfg.task.lr = 1.0e-3
         cfg.task.weight_decay = 1.0e-5

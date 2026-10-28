@@ -23,7 +23,7 @@ from src.tasks.inference import infer_all_embeddings
 from src.tasks.lp import _build_forbidden_edge_keys, _evaluate_split, _sample_filtered_negative_targets
 
 
-PROTOCOL_VERSION = "mrcge_v13_full_graph_edge_holdout_lp_v1"
+PROTOCOL_VERSION = "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is"
 FOLD_COUNT = 3
 FOLD_SEED = 42
 
@@ -56,7 +56,9 @@ def _canonical_codes(edges: torch.Tensor, num_nodes: int) -> torch.Tensor:
     return _edge_codes(canonical.t().contiguous(), num_nodes)
 
 
-def validate_lp_split(edge_split: EdgeSplit, num_nodes: int) -> dict[str, Any]:
+def validate_lp_split(
+    edge_split: EdgeSplit, num_nodes: int, *, allow_official_conflicts: bool = False,
+) -> dict[str, Any]:
     """Validate positive partitions and fixed Validation candidates, without reading Test negatives."""
     raw: dict[str, torch.Tensor] = {}
     canonical: dict[str, torch.Tensor] = {}
@@ -110,18 +112,24 @@ def validate_lp_split(edge_split: EdgeSplit, num_nodes: int) -> dict[str, Any]:
         issues.append(f"self-loop positives={self_loop_counts}")
     if any(overlaps.values()):
         issues.append(f"undirected positive partitions overlap={overlaps}")
-    if issues:
+    if issues and not allow_official_conflicts:
         audit["protocol_conflict"] = True
         audit["conflicts"] = issues
         raise LPSplitConflictError("official LP split conflicts with the Train-only edge-holdout contract: " + "; ".join(issues), audit)
-    audit["protocol_conflict"] = False
-    audit["conflicts"] = []
+    audit["protocol_conflict"] = bool(issues)
+    audit["conflicts"] = issues
+    audit["official_split_conflicts_accepted_as_is"] = bool(issues and allow_official_conflicts)
+    audit["leakage_safe_partition_claim"] = not bool(issues)
     return audit
 
 
-def train_only_physical_graph(edge_split: EdgeSplit, num_nodes: int) -> torch.Tensor:
+def train_only_physical_graph(
+    edge_split: EdgeSplit, num_nodes: int, *, allow_official_conflicts: bool = False,
+) -> torch.Tensor:
     """Build a unique bidirectional physical graph from Train positives only."""
-    train = _validate_edge_index(edge_dict_to_index(edge_split.train), num_nodes, "Train positives")
+    train = _validate_edge_index(
+        edge_dict_to_index(edge_split.train), num_nodes, "Train positives", allow_self_loops=True,
+    )
     canonical = canonicalize_edges(train)
     if canonical.numel() == 0:
         raise ValueError("Train positive edge set is empty")
@@ -130,8 +138,8 @@ def train_only_physical_graph(edge_split: EdgeSplit, num_nodes: int) -> torch.Te
 
     forbidden = torch.cat(
         [
-            _validate_edge_index(edge_dict_to_index(edge_split.valid), num_nodes, "Validation positives"),
-            _validate_edge_index(edge_dict_to_index(edge_split.test), num_nodes, "Test positives"),
+            _validate_edge_index(edge_dict_to_index(edge_split.valid), num_nodes, "Validation positives", allow_self_loops=True),
+            _validate_edge_index(edge_dict_to_index(edge_split.test), num_nodes, "Test positives", allow_self_loops=True),
         ], dim=1,
     )
     forbidden_codes = torch.unique(torch.cat((_edge_codes(forbidden, num_nodes), _edge_codes(forbidden.flip(0), num_nodes)))).sort().values
@@ -142,9 +150,16 @@ def train_only_physical_graph(edge_split: EdgeSplit, num_nodes: int) -> torch.Te
         exact = torch.zeros_like(hit)
         exact[hit] = forbidden_codes[positions[hit]] == message_codes[hit]
         hit = exact
-    if bool(hit.any()):
+    if bool(hit.any()) and not allow_official_conflicts:
         raise ValueError("Train-only physical graph contains a Validation/Test positive edge direction")
     return directed
+
+
+def _unique_undirected_positives(edges: torch.Tensor, num_nodes: int, name: str) -> torch.Tensor:
+    """Canonicalize positive endpoint pairs while retaining official self-loop rows."""
+    edges = _validate_edge_index(edges, num_nodes, name, allow_self_loops=True)
+    pairs = torch.stack((torch.minimum(edges[0], edges[1]), torch.maximum(edges[0], edges[1])), dim=1)
+    return torch.unique(pairs, dim=0)
 
 
 def deterministic_train_folds(
@@ -157,7 +172,7 @@ def deterministic_train_folds(
     """Assign unique undirected positives once each; duplicate orientations share one fold."""
     if fold_count < 2:
         raise ValueError("fold_count must be >= 2")
-    edges = canonicalize_edges(_validate_edge_index(train_edges, num_nodes, "Train positives"))
+    edges = _unique_undirected_positives(train_edges, num_nodes, "Train positives")
     if edges.size(0) < fold_count:
         raise ValueError(f"need at least {fold_count} unique Train positives")
     generator = torch.Generator(device="cpu").manual_seed(int(fold_seed))
@@ -166,7 +181,7 @@ def deterministic_train_folds(
     folds = [edges[index].t().contiguous() for index in index_folds]
     seen: set[tuple[int, int]] = set()
     for fold in folds:
-        for edge in canonicalize_edges(fold).tolist():
+        for edge in fold.t().tolist():
             key = tuple(edge)
             if key in seen:
                 raise RuntimeError(f"Train positive assigned to more than one fold: {key}")
@@ -183,12 +198,14 @@ def build_fold_message_graphs(
     num_nodes: int,
 ) -> list[torch.Tensor]:
     """Remove current fold positives and their reverse directions from Train-only propagation."""
-    train_unique = canonicalize_edges(_validate_edge_index(train_edges, num_nodes, "Train positives"))
+    train_unique = _unique_undirected_positives(train_edges, num_nodes, "Train positives")
+    # The repository's graph preprocessing removes self-loops from message passing.
+    train_unique = train_unique[train_unique[:, 0] != train_unique[:, 1]]
     train_graph = torch.cat((train_unique.t(), train_unique.flip(1).t()), dim=1)
     train_graph = torch.unique(train_graph.t().contiguous(), dim=0).t().contiguous()
     graphs = []
     for fold_id, fold in enumerate(folds):
-        holdout = canonicalize_edges(_validate_edge_index(fold, num_nodes, f"fold {fold_id} positives"))
+        holdout = _unique_undirected_positives(fold, num_nodes, f"fold {fold_id} positives")
         holdout_codes = _canonical_codes(holdout.t().contiguous(), num_nodes)
         graph_canonical = canonicalize_edges(train_graph)
         keep = ~torch.isin(_edge_codes(graph_canonical.t().contiguous(), num_nodes), holdout_codes)
@@ -333,15 +350,17 @@ def run_full_graph_lp(
     if str(cfg.task.protocol_version) != PROTOCOL_VERSION:
         raise ValueError("unexpected LP protocol version")
     seed = int(cfg.seed)
-    seed_split = validate_lp_split(data.edge_split, data.num_nodes)
+    allow_conflicts = bool(cfg.task.get("allow_official_split_conflicts", False))
+    seed_split = validate_lp_split(data.edge_split, data.num_nodes, allow_official_conflicts=allow_conflicts)
     train_pos = edge_dict_to_index(data.edge_split.train).cpu()
     folds = deterministic_train_folds(train_pos, num_nodes=data.num_nodes)
     fold_graphs = build_fold_message_graphs(train_pos, folds, num_nodes=data.num_nodes)
-    validation_graph = train_only_physical_graph(data.edge_split, data.num_nodes)
+    validation_graph = train_only_physical_graph(
+        data.edge_split, data.num_nodes, allow_official_conflicts=allow_conflicts,
+    )
     # The fixed loader graph is checked against Train positives; no held-out positive may be present.
     audit_loaded_message_graph(data, validation_graph, data.num_nodes)
-    train_unique = canonicalize_edges(train_pos)
-    num_unique = int(train_unique.size(0))
+    num_unique = sum(int(fold.size(1)) for fold in folds)
     fold_counts = [int(fold.size(1)) for fold in folds]
     if sum(fold_counts) != num_unique:
         raise RuntimeError("fold edge counts do not sum to unique Train positives")
@@ -461,8 +480,15 @@ def run_full_graph_lp(
         "split_audit": seed_split, "fingerprints": copy.deepcopy(fingerprint_record),
         "training_source_commit": source_commit, "train_negative_ratio": int(cfg.task.num_train_neg),
         "train_negative_filter_scope": "all known positive Train/Validation/Test edges are used only to reject false-negative candidates; Test negative candidate lists and Test rankings are not accessed",
-        "validation_message_graph": "full unique Train-positive physical graph; no Validation/Test positives",
-        "fold_message_graph": "Train positives excluding current supervision fold and reverse directions",
+        "validation_message_graph": "full unique Train-positive physical graph; official Train/Validation/Test overlaps are retained when present",
+        "fold_message_graph": "Train positives excluding current supervision fold and reverse directions; official partition overlaps are retained",
+        "protocol_deviation": (
+            "Official lp-edge-split.pt used unchanged despite self-loop positives and cross-partition positive overlap; "
+            "Validation positives overlapping Train may appear in message passing and training supervision. "
+            "Train self-loop positives remain in decoder supervision but, following repository preprocessing, are absent from message passing."
+            if seed_split["protocol_conflict"] else "none"
+        ),
+        "official_split_conflicts_accepted_as_is": bool(seed_split["protocol_conflict"]),
         "model_semantic_knn": "global node-attribute V7B.1 K=8; no label-derived candidates",
         "test_evaluation": False, "test_metrics": "not_evaluated", "checkpoint_reload_verified": False,
         "optimizer": "Adam", "lr": float(cfg.task.lr), "weight_decay": float(cfg.task.weight_decay),
@@ -506,4 +532,6 @@ def run_full_graph_lp(
         "v7b_fingerprint": fingerprint_record.get("v7b_fingerprint", ""),
         "fold_seed": FOLD_SEED, "fold_count": FOLD_COUNT, "source_commit": source_commit,
         "train_negative_filter_scope": metadata["train_negative_filter_scope"],
+        "split_protocol_deviation": metadata["protocol_deviation"],
+        "split_conflict_summary": seed_split["positive_partition_overlap_counts"],
     }

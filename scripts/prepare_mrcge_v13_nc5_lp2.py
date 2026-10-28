@@ -101,8 +101,8 @@ def _load_feature_graph(dataset: str, phase: str) -> tuple[np.ndarray, np.ndarra
         from src.data.graph_utils import edge_dict_to_index
         edge_split = _normalize_split_dict(raw)
         num_nodes = int(features.size(0))
-        audit = validate_lp_split(edge_split, num_nodes)
-        physical = train_only_physical_graph(edge_split, num_nodes)
+        audit = validate_lp_split(edge_split, num_nodes, allow_official_conflicts=True)
+        physical = train_only_physical_graph(edge_split, num_nodes, allow_official_conflicts=True)
         audit["train_only_graph_source"] = "official lp-edge-split.pt train positives only"
         attrs = {"num_nodes": num_nodes, "raw_edges": int(edge_dict_to_index(edge_split.train).size(1)),
                  "text_source": str(feature_path), "visual_source": str(feature_path), "source": "mmgraph",
@@ -350,27 +350,44 @@ def main() -> None:
             }
             print(f"BLOCKED lp/{dataset}: {exc}", flush=True)
             continue
-    if args.phase == "lp" and lp_blockers:
+    if args.phase == "lp":
+        audits = {}
+        for dataset in datasets:
+            record = phase_records.get(dataset)
+            if record is None:
+                continue
+            audits[dataset] = {
+                "split_path": record["split"]["path"],
+                "split_sha256": record["split"]["sha256"],
+                "audit": record["split"]["audit"],
+            }
+        has_conflicts = any(item["audit"].get("protocol_conflict") for item in audits.values())
         payload["prepared_phases"][args.phase] = {
             "completed_utc": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
-            "datasets": list(datasets), "complete": False,
-            "blockers": sorted(lp_blockers), "reason": "official positive edge split conflicts with the frozen disjoint-undirected-split/Train-only protocol",
+            "datasets": list(datasets), "complete": len(phase_records) == len(datasets),
+            "protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is",
+            "official_split_conflicts_accepted_as_is": has_conflicts,
+            "blockers": sorted(lp_blockers),
+            "reason": "official split files were used unchanged; overlap/self-loop effects are documented as a protocol deviation",
         }
         json_write(DATA_DIR / "lp_split_preflight_audit.json", {
-            "protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1",
-            "status": "blocked_official_split_conflict", "test_metrics": "not_evaluated",
-            "datasets": lp_blockers,
-            "remediation": "No split was modified. Obtain an explicitly authorized, reviewed official split before LP training; do not run the LP phase against this file.",
+            "protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is",
+            "status": "official_split_as_is_conflicts_accepted" if has_conflicts else "official_split_as_is_no_conflicts",
+            "test_metrics": "not_evaluated", "split_files_modified": False,
+            "datasets": audits,
+            "interpretation": (
+                "Validation/Test positives overlapping Train positives are retained as supplied. Validation can therefore "
+                "score edges seen during Train supervision or Train message passing; results are not leakage-safe and are "
+                "reported as official-split-as-is protocol-deviation results. Self-loop positives remain in edge supervision "
+                "and are omitted from message passing by the repository's standard graph preprocessing."
+                if has_conflicts else "No split conflicts were detected."
+            ),
         })
     else:
         payload["prepared_phases"][args.phase] = {
             "completed_utc": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
             "datasets": list(datasets), "complete": True,
         }
-    if args.phase == "lp" and not lp_blockers:
-        audit_path = DATA_DIR / "lp_split_preflight_audit.json"
-        if audit_path.is_file():
-            audit_path.unlink()
     json_write(data_file, payload)
     if lp_blockers:
         raise SystemExit(2)

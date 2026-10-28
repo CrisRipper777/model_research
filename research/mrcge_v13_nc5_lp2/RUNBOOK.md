@@ -7,7 +7,7 @@ Environment: `yhf_env`
 Branch: `exp/mrcge_v13_nc5_lp2_fullgraph`
 Physical GPU default: 1 (normal ownership, memory, and utilization guard enabled)
 
-The first submission adds tools only. No formal NC or LP training is included in this code submission. Run each command from the repository root. Use `conda activate yhf_env` first, or prefix commands with `conda run --no-capture-output -n yhf_env`.
+Run each command from the repository root. Use `conda activate yhf_env` first, or prefix commands with `conda run --no-capture-output -n yhf_env`.
 
 ## 1. Prepare NC splits and semantic caches
 
@@ -37,7 +37,7 @@ Optional interim collection (still `partial` until LP finishes):
 python scripts/collect_mrcge_v13_nc5_lp2.py --finalize
 ```
 
-## 3. LP protocol preflight is currently blocked
+## 3. Prepare LP using the official split files unchanged
 
 Run this after NC preparation (it can be run before NC training if cache preparation is desired):
 
@@ -45,7 +45,7 @@ Run this after NC preparation (it can be run before NC training if cache prepara
 python scripts/prepare_mrcge_v13_nc5_lp2.py --phase lp
 ```
 
-This validates the two existing official `lp-edge-split.pt` files before any LP cache build. The current official files fail the required disjoint-undirected-positive contract and contain positive self-loops. The command records both datasets' counts and file hashes in `data/lp_split_preflight_audit.json`, marks the LP preparation phase incomplete, and exits with code 2. It intentionally does not build LP semantic caches.
+This validates the two existing official `lp-edge-split.pt` files and builds/reuses the V7B.1 caches from global features and the Train-only graph. The official split files remain unchanged. The accepted protocol is named `mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is`.
 
 Current read-only audit:
 
@@ -54,15 +54,15 @@ Current read-only audit:
 | sports-copurchase | 356,202 / 45,557 / 37,413 | 26 / 3 / 5 | 8,264 / 6,621 / 2,035 |
 | cloth-copurchase | 951,271 / 121,323 / 97,456 | 38 / 7 / 6 | 21,043 / 17,360 / 5,169 |
 
-Counts use raw positive rows; overlap counts compare canonical undirected endpoint pairs, and self-loops are tabulated separately. No official split was modified. Do not run the LP command below against these files. LP remains locked until an explicitly authorized, reviewed official split is supplied and passes the same validation. Do not deduplicate, redistribute, or remove positives silently.
+Counts use raw positive rows; overlap counts compare canonical undirected endpoint pairs, and self-loops are tabulated separately. Train/Validation/Test positive overlaps are retained and can make Validation metrics optimistic because some Validation edges also occur in Train supervision or the Train message graph. These results are protocol-deviation results, not leakage-safe LP estimates. Train self-loops remain in decoder supervision and are removed from propagation by the repository's standard graph preprocessing.
 
-## 4. LP worker command (currently refuses before launch)
+## 4. Run the six LP cells
 
 ```bash
 python scripts/run_mrcge_v13_nc5_lp2.py --phase lp --datasets sports-copurchase cloth-copurchase --seeds 42 43 44 --physical-gpu 1
 ```
 
-Even after the six-cell NC gate passes, the LP runner also requires a successful LP preparation record. With the current official splits it refuses before launching a worker. If a reviewed split is later approved, rerun preparation first; only then can this command run the independent Full-Graph Three-Fold Edge-Holdout protocol. It does not run the existing sampled LP Trainer and does not evaluate Test metrics.
+The runner starts cells sequentially after checking the six new NC checkpoints and the prepared split/cache fingerprints. It does not call the existing sampled LP Trainer and does not evaluate Test metrics. Results include the split-overlap counts and explicit protocol-deviation text.
 
 ## 5. Collect final artifacts
 
@@ -74,8 +74,7 @@ The collector only verifies and summarizes files; it never starts training. Unti
 
 ## Before starting either training phase
 
-- Confirm the intended GPU1 owner processes are stable; the runner does not support a guard bypass.
-- Check that `prepare --phase nc` and `prepare --phase lp` completed and `research/mrcge_v13_nc5_lp2/data/fingerprints.json` records both phases before their respective runs. The current LP phase is deliberately incomplete because both existing official splits conflict with the protocol.
+- Check that `prepare --phase nc` and `prepare --phase lp` completed and `research/mrcge_v13_nc5_lp2/data/fingerprints.json` records both phases before their respective runs.
 - Do not alter `src/models/mrcge_v13.py`, the official LP splits, prepared caches, or NC seed42 splits between preparation and training. The runner checks hashes before use.
 - LP is intentionally a different optimization protocol from sampled LP. Treat its results as a separate Full-Graph Three-Fold evaluation.
 - Checkpoint files remain in `outputs/`; never add them to Git.

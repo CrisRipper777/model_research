@@ -29,7 +29,7 @@ if str(ROOT) not in sys.path:
 from scripts import complete_mrcge_v13_stage_ablation_3seed as guard_impl  # noqa: E402
 from scripts.mrcge_v13_nc5_lp2_utils import (  # noqa: E402
     BASE_SHA, DATA_DIR, HISTORICAL_NC_DATASETS, LP_DATASETS, NC_DATASETS,
-    NEW_NC_DATASETS, OUTPUT, PROTOCOL_LP, SEEDS, build_config, config_snapshot,
+    NEW_NC_DATASETS, OUTPUT, PROTOCOL_LP, PROTOCOL_NC, SEEDS, build_config, config_snapshot,
     current_commit, csv_read, csv_write, json_write, loaded_lp_split_path, mask_test_labels,
     now_utc, sha256_file,
 )
@@ -60,7 +60,8 @@ LP_FIELDS = [
     "train_graph_fingerprint", "feature_fingerprint", "semantic_cache_path",
     "semantic_cache_sha256", "candidate_fingerprint", "v7b_fingerprint",
     "fold_seed", "fold_count", "test_evaluation", "test_metrics", "checkpoint_reload_verified",
-    "source_commit", "wall_seconds", "peak_memory_bytes", "gpu_name", "attempt_dir", "error",
+    "split_protocol_deviation", "split_conflict_summary", "source_commit", "wall_seconds",
+    "peak_memory_bytes", "gpu_name", "attempt_dir", "error",
 ]
 
 
@@ -100,11 +101,17 @@ def _next_attempt(phase: str, dataset: str, seed: int) -> tuple[int, Path]:
     return attempt, _run_path(phase, dataset, seed, attempt)
 
 
-def _upsert_attempt_csv(path: Path, row: dict[str, Any], fields: list[str]) -> None:
+def _upsert_attempt_csv(path: Path, row: dict[str, Any], fields: list[str], *, replace_failed: bool = False) -> None:
     rows = csv_read(path)
     key = (row.get("dataset"), str(row.get("seed")), str(row.get("attempt")))
-    if any((old.get("dataset"), old.get("seed"), old.get("attempt")) == key for old in rows):
-        raise RuntimeError(f"immutable run record already exists: {key}")
+    matches = [index for index, old in enumerate(rows)
+               if (old.get("dataset"), old.get("seed"), old.get("attempt")) == key]
+    if matches:
+        if len(matches) != 1 or not replace_failed or rows[matches[0]].get("status") == "complete":
+            raise RuntimeError(f"immutable run record already exists: {key}")
+        rows[matches[0]] = row
+        csv_write(path, rows, fields)
+        return
     csv_write(path, [*rows, row], fields)
 
 
@@ -128,19 +135,28 @@ def _reset_cuda_peak_memory_stats(device: torch.device) -> None:
 
 def _guarded_child(
     *, phase: str, dataset: str, seed: int, physical_gpu: int,
-    baseline_pids: set[int], attempt: int, attempt_dir: Path,
+    baseline_pids: set[int], attempt: int, attempt_dir: Path, recover: bool = False,
 ) -> tuple[int, str | None]:
     unit = f"{phase}/{dataset}/seed{seed}"
     before = guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="before_launch", required_free_mib=8192)
-    if attempt_dir.exists():
-        raise FileExistsError(f"refusing to reuse existing attempt directory {attempt_dir}")
-    attempt_dir.mkdir(parents=True)
-    json_write(attempt_dir / "attempt_started.json", {
-        "phase": phase, "dataset": dataset, "seed": seed, "attempt": attempt,
-        "started_utc": now_utc(), "source_commit": current_commit(),
-        "base_sha": BASE_SHA, "test_evaluation": False,
-        "gpu_guard_before_launch": before, "gpu_guard_bypassed": False,
-    })
+    if recover:
+        if phase != "nc" or not attempt_dir.is_dir():
+            raise ValueError("recovery is available only for an existing NC attempt directory")
+        json_write(attempt_dir / "recovery_started.json", {
+            "phase": phase, "dataset": dataset, "seed": seed, "attempt": attempt,
+            "started_utc": now_utc(), "recovery_source_commit": current_commit(),
+            "gpu_guard_before_recovery": before, "training_restarted": False,
+        })
+    else:
+        if attempt_dir.exists():
+            raise FileExistsError(f"refusing to reuse existing attempt directory {attempt_dir}")
+        attempt_dir.mkdir(parents=True)
+        json_write(attempt_dir / "attempt_started.json", {
+            "phase": phase, "dataset": dataset, "seed": seed, "attempt": attempt,
+            "started_utc": now_utc(), "source_commit": current_commit(),
+            "base_sha": BASE_SHA, "test_evaluation": False,
+            "gpu_guard_before_launch": before, "gpu_guard_bypassed": False,
+        })
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(physical_gpu)
     env["MRCGE_NC5_LP2_WORKER"] = "1"
@@ -150,7 +166,9 @@ def _guarded_child(
         "--dataset", dataset, "--seed", str(seed), "--attempt", str(attempt),
         "--attempt-dir", str(attempt_dir), "--physical-gpu", str(physical_gpu),
     ]
-    log_path = attempt_dir / "launcher.log"
+    if recover:
+        command.append("--recover-existing-attempt")
+    log_path = attempt_dir / ("recovery.log" if recover else "launcher.log")
     guard_error = None
     with log_path.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
@@ -170,10 +188,12 @@ def _guarded_child(
     rc = process.returncode if process.returncode is not None else -1
     try:
         after = guard_impl.v13.guard_gpu(physical_gpu, baseline_pids, set(), phase="after_run", required_free_mib=8192)
-        json_write(attempt_dir / "gpu_resource.json", {"before": before, "after": after, "guard_bypassed": False})
+        resource_path = attempt_dir / ("recovery_gpu_resource.json" if recover else "gpu_resource.json")
+        json_write(resource_path, {"before": before, "after": after, "guard_bypassed": False})
     except Exception as exc:
         guard_error = guard_error or f"after-run guard: {exc!r}"
-        json_write(attempt_dir / "gpu_resource.json", {
+        resource_path = attempt_dir / ("recovery_gpu_resource.json" if recover else "gpu_resource.json")
+        json_write(resource_path, {
             "before": before, "after": None, "after_guard_error": repr(exc), "guard_bypassed": False,
         })
     return rc, guard_error
@@ -185,8 +205,7 @@ def _verify_prepared_phase(phase: str, datasets: list[str]) -> dict[str, Any]:
     if phase == "lp" and prep.get("blockers"):
         audit = DATA_DIR / "lp_split_preflight_audit.json"
         raise RuntimeError(
-            f"LP execution is locked by official split conflicts for {prep['blockers']}; "
-            f"see {audit}; no split repair or training was attempted"
+            f"LP preparation is incomplete for {prep['blockers']}; see {audit}; rerun preparation and review its errors"
         )
     if not prep.get("complete") or any(name not in payload.get("datasets", {}) for name in datasets):
         command = f"python scripts/prepare_mrcge_v13_nc5_lp2.py --phase {phase}"
@@ -247,7 +266,10 @@ def _verify_nc_gate() -> None:
         raise RuntimeError(f"LP is locked until all six new NC cells and checkpoint hashes pass; missing {missing}")
 
 
-def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physical_gpu: int) -> dict[str, Any]:
+def _nc_worker(
+    dataset: str, seed: int, attempt: int, attempt_dir: Path, physical_gpu: int,
+    *, recover_existing_attempt: bool = False,
+) -> dict[str, Any]:
     if os.environ.get("MRCGE_NC5_LP2_WORKER") != "1" or os.environ.get("CUDA_VISIBLE_DEVICES") != str(physical_gpu):
         raise RuntimeError("NC worker must be started by the isolated GPU guard")
     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
@@ -281,7 +303,8 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         "training_source_commit": current_commit(), "test_evaluation": False,
         "test_labels_masked": True, "protocol_version": cfg.task.protocol_version,
     }
-    (attempt_dir / "config_snapshot.yaml").write_text(config_snapshot(cfg), encoding="utf-8")
+    if not recover_existing_attempt:
+        (attempt_dir / "config_snapshot.yaml").write_text(config_snapshot(cfg), encoding="utf-8")
     data = load_mag_data(cfg, "nc", seed)
     actual_split = Path(data.info["nc_split_path"]).resolve()
     if actual_split != split_path or sha256_file(actual_split) != prepared["split"]["sha256"]:
@@ -296,14 +319,19 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     logger = logging.getLogger(f"nc5.{dataset}.{seed}.{attempt}")
     logger.handlers.clear(); logger.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
-    file_handler = logging.FileHandler(attempt_dir / "train.log", encoding="utf-8")
+    file_handler = logging.FileHandler(
+        attempt_dir / ("recovery_validation.log" if recover_existing_attempt else "train.log"), encoding="utf-8",
+    )
     stream_handler = logging.StreamHandler(sys.stdout)
     for handler in (file_handler, stream_handler):
         handler.setFormatter(formatter); logger.addHandler(handler)
     started = time.perf_counter()
     try:
-        from src.tasks.nc import run_nc
-        run_nc(cfg, safe, device, logger)
+        if not recover_existing_attempt:
+            from src.tasks.nc import run_nc
+            run_nc(cfg, safe, device, logger)
+        elif not Path(cfg.task.run_metrics_path).is_file():
+            raise FileNotFoundError(f"cannot recover without completed run metrics: {cfg.task.run_metrics_path}")
         guard_impl.v13.guard_gpu(physical_gpu, baseline, {os.getpid()}, phase="worker_after_train")
         packed = json.loads(Path(cfg.task.run_metrics_path).read_text(encoding="utf-8"))
         if packed.get("protocol_version") != PROTOCOL_NC or packed.get("run_seeds") != [seed]:
@@ -334,8 +362,11 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         with torch.no_grad():
             z = infer_all_embeddings(model, safe, device, True, int(cfg.task.inference_batch_size), "full")
             val_ids = safe.val_idx.to(device)
-            y_val = safe.y[val_ids]
-            logits = classifier(z[val_ids])
+            y_val = safe.y.to(device)[val_ids]
+            # Full-graph inference intentionally returns CPU embeddings to keep the
+            # graph output bounded; move only the selected Validation rows back to
+            # the classifier device for strict checkpoint re-evaluation.
+            logits = classifier(z[val_ids.cpu()].to(device))
             measured = {
                 "val_acc": float((logits.argmax(dim=1) == y_val).float().mean().item()),
                 "val_macro_f1": float(f1_score(y_val.cpu().numpy(), logits.argmax(dim=1).cpu().numpy(), average="macro", zero_division=0)),
@@ -364,11 +395,12 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         with torch.no_grad():
             f1_z = infer_all_embeddings(f1_model, safe, device, True, int(cfg.task.inference_batch_size), "full")
             f1_ids = safe.val_idx.to(device)
-            f1_logits = f1_head(f1_z[f1_ids])
+            f1_y_val = safe.y.to(device)[f1_ids]
+            f1_logits = f1_head(f1_z[f1_ids.cpu()].to(device))
             f1_measured = {
-                "val_acc": float((f1_logits.argmax(dim=1) == safe.y[f1_ids]).float().mean().item()),
-                "val_macro_f1": float(f1_score(safe.y[f1_ids].cpu().numpy(), f1_logits.argmax(dim=1).cpu().numpy(), average="macro", zero_division=0)),
-                "val_ce": float(nn.functional.cross_entropy(f1_logits, safe.y[f1_ids]).item()),
+                "val_acc": float((f1_logits.argmax(dim=1) == f1_y_val).float().mean().item()),
+                "val_macro_f1": float(f1_score(f1_y_val.cpu().numpy(), f1_logits.argmax(dim=1).cpu().numpy(), average="macro", zero_division=0)),
+                "val_ce": float(nn.functional.cross_entropy(f1_logits, f1_y_val).item()),
             }
         f1_saved = f1_payload["metrics"]
         for key in ("val_acc", "val_macro_f1", "val_ce"):
@@ -389,16 +421,26 @@ def _nc_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
             "semantic_cache_path": cache["cache_path_abs"], "semantic_cache_sha256": prepared["semantic_cache_sha256"],
             "candidate_fingerprint": cache["candidate_fingerprint"], "v7b_fingerprint": cache["v7b_fingerprint"],
             "test_evaluation": False, "test_labels_masked": True, "checkpoint_reload_verified": True,
-            "source_commit": current_commit(), "wall_seconds": time.perf_counter() - started,
-            "peak_memory_bytes": int(torch.cuda.max_memory_reserved(device)),
+            "source_commit": run_meta.get("study_provenance", {}).get("training_source_commit", current_commit()),
+            "wall_seconds": float(run_meta.get("training_wall_seconds", time.perf_counter() - started)),
+            "peak_memory_bytes": int(run_meta.get("cuda_peak_reserved_bytes") or torch.cuda.max_memory_reserved(device)),
             "gpu_name": torch.cuda.get_device_name(device), "attempt_dir": str(attempt_dir.resolve()), "error": "",
         }
         json_write(attempt_dir / "worker_result.json", row)
-        json_write(attempt_dir / "status.json", {"status": "complete", "completed_utc": now_utc(), "run": row})
+        status_path = attempt_dir / "status.json"
+        if recover_existing_attempt and status_path.is_file():
+            json_write(attempt_dir / "pre_recovery_status.json", json.loads(status_path.read_text(encoding="utf-8")))
+        json_write(status_path, {
+            "status": "complete", "completed_utc": now_utc(), "run": row,
+            "recovered_existing_checkpoints": recover_existing_attempt,
+            "training_restarted": False if recover_existing_attempt else None,
+        })
         return row
     except Exception as exc:
-        json_write(attempt_dir / "status.json", {"status": "failed", "failed_utc": now_utc(), "error": repr(exc),
-                                                   "traceback": traceback.format_exc(), "test_evaluation": False})
+        status_path = attempt_dir / ("recovery_status.json" if recover_existing_attempt else "status.json")
+        json_write(status_path, {"status": "failed", "failed_utc": now_utc(), "error": repr(exc),
+                                 "traceback": traceback.format_exc(), "test_evaluation": False,
+                                 "training_restarted": False if recover_existing_attempt else None})
         raise
     finally:
         for handler in list(logger.handlers):
@@ -432,8 +474,8 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
     loaded_split_path = loaded_lp_split_path(data.info)
     if loaded_split_path is None or sha256_file(loaded_split_path) != prepared["split"]["sha256"]:
         raise RuntimeError("LP loader did not use the preverified official lp-edge-split.pt")
-    split_audit = validate_lp_split(data.edge_split, data.num_nodes)
-    train_graph = train_only_physical_graph(data.edge_split, data.num_nodes)
+    split_audit = validate_lp_split(data.edge_split, data.num_nodes, allow_official_conflicts=True)
+    train_graph = train_only_physical_graph(data.edge_split, data.num_nodes, allow_official_conflicts=True)
     graph_audit = audit_loaded_message_graph(data, train_graph, data.num_nodes)
     config_text = config_snapshot(cfg)
     cfg_sha = hashlib.sha256(config_text.encode()).hexdigest()
@@ -452,6 +494,7 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         "train_graph_fingerprint": prepared["physical_edge_fingerprint"],
         "train_graph_edge_index_sha256": __import__("scripts.mrcge_v13_nc5_lp2_utils", fromlist=["tensor_sha256"]).tensor_sha256(train_graph),
         "split_audit": split_audit, "loaded_train_graph_audit": graph_audit,
+        "protocol_deviation": "official split accepted unchanged; partition overlaps and self-loop handling are recorded",
         "text_dim": int(data.x_t.size(1)), "visual_dim": int(data.x_i.size(1)),
         "feature_order": "global x[:, :512] Text; x[:, 512:1024] Visual",
         "semantic_candidate_source": "global node attributes only; train-only physical graph passed for provenance/overlap statistics",
@@ -467,7 +510,11 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
         "loss": "BCEWithLogitsLoss", "balance_aux_weight": 1.0, "train_negative_ratio": 1,
         "model_semantic_knn_k": 8, "experts": 4, "top_k": 2,
         "evaluate_test": False, "test_metrics": "not_evaluated",
-        "protocol_difference": "Full-Graph Three-Fold Edge-Holdout; not the sampled unified_sampled_lp_v1 protocol",
+        "protocol_difference": (
+            "Full-Graph Three-Fold Edge-Holdout using official lp-edge-split.pt unchanged; "
+            "partition overlaps/self-loops are accepted and reported as a protocol deviation; "
+            "not the sampled unified_sampled_lp_v1 protocol"
+        ),
     })
     logger = logging.getLogger(f"lp2.{dataset}.{seed}.{attempt}")
     logger.handlers.clear(); logger.setLevel(logging.INFO)
@@ -512,10 +559,90 @@ def _lp_worker(dataset: str, seed: int, attempt: int, attempt_dir: Path, physica
 def _worker_main(args) -> None:
     attempt_dir = Path(args.attempt_dir).resolve()
     if args.phase == "nc":
-        row = _nc_worker(args.dataset, args.seed, args.attempt, attempt_dir, args.physical_gpu)
+        row = _nc_worker(
+            args.dataset, args.seed, args.attempt, attempt_dir, args.physical_gpu,
+            recover_existing_attempt=bool(args.recover_existing_attempt),
+        )
     else:
         row = _lp_worker(args.dataset, args.seed, args.attempt, attempt_dir, args.physical_gpu)
     print(f"COMPLETE {args.phase}/{args.dataset}/seed{args.seed}: {row.get('val_acc', row.get('val_mrr'))}", flush=True)
+
+
+def _recoverable_nc_attempt(dataset: str, seed: int, prepared: dict[str, Any]) -> tuple[int, Path] | None:
+    parent = OUTPUT / "nc" / dataset / f"seed_{seed}"
+    attempts: list[tuple[int, Path]] = []
+    if not parent.is_dir():
+        return None
+    for path in parent.glob("attempt_*"):
+        try:
+            number = int(path.name.removeprefix("attempt_"))
+        except ValueError:
+            continue
+        attempts.append((number, path))
+    for number, path in sorted(attempts, reverse=True):
+        metrics_path = path / "run_metrics.json"
+        accuracy_path, f1_path = path / "best_accuracy.pt", path / "best_f1.pt"
+        if not (metrics_path.is_file() and accuracy_path.is_file() and f1_path.is_file()):
+            continue
+        try:
+            packed = json.loads(metrics_path.read_text(encoding="utf-8"))
+            if packed.get("protocol_version") != PROTOCOL_NC or packed.get("run_seeds") != [seed]:
+                continue
+            metadata = packed["runs"][0]["metadata"]
+            provenance = metadata.get("study_provenance", {})
+            if (provenance.get("dataset") != dataset or int(provenance.get("seed", -1)) != seed
+                    or provenance.get("test_evaluation") is not False
+                    or provenance.get("test_labels_masked") is not True
+                    or provenance.get("split_sha256") != prepared.get("split", {}).get("sha256")
+                    or provenance.get("feature_fingerprint") != prepared.get("feature_fingerprint")
+                    or provenance.get("semantic_cache_sha256") != prepared.get("semantic_cache_sha256")):
+                continue
+            if metadata.get("dual_checkpoint_selection", {}).get("best_accuracy", {}).get("epoch") is None:
+                continue
+        except (KeyError, TypeError, ValueError, json.JSONDecodeError):
+            continue
+        return number, path
+    return None
+
+
+def recover_finished_nc(datasets: list[str], seeds: list[int], physical_gpu: int) -> None:
+    """Strictly reload completed NC checkpoints left unrecorded by a post-training error."""
+    if set(datasets) - set(NEW_NC_DATASETS) or set(seeds) - set(SEEDS):
+        raise ValueError("recovery supports only the configured Toys/Reddit-S seeds 42/43/44")
+    fingerprints = _verify_prepared_phase("nc", datasets)
+    snapshot, baseline_pids = _capture_gpu_baseline(physical_gpu)
+    json_write(OUTPUT / "gpu_baselines" / f"nc_recovery_{now_utc().replace(':', '').replace('-', '')}.json", {
+        "snapshot": snapshot, "baseline_pids": sorted(baseline_pids), "physical_gpu": physical_gpu,
+        "guard_enabled": True, "training_restarted": False,
+    })
+    results = DATA_DIR / "nc_new_runs.csv"
+    for dataset in datasets:
+        for seed in seeds:
+            if _completed_cell(results, dataset, seed):
+                print(f"SKIP already complete nc/{dataset}/seed{seed}", flush=True)
+                continue
+            candidate = _recoverable_nc_attempt(dataset, seed, fingerprints["datasets"][dataset])
+            if candidate is None:
+                print(f"NO RECOVERABLE CHECKPOINT nc/{dataset}/seed{seed}; no training launched", flush=True)
+                continue
+            attempt, attempt_dir = candidate
+            print(f"RECOVER nc/{dataset}/seed{seed}/attempt{attempt:02d} gpu={physical_gpu} guard=enabled; training_restarted=false", flush=True)
+            try:
+                code, guard_error = _guarded_child(
+                    phase="nc", dataset=dataset, seed=seed, physical_gpu=physical_gpu,
+                    baseline_pids=baseline_pids, attempt=attempt, attempt_dir=attempt_dir, recover=True,
+                )
+            except Exception as exc:
+                code, guard_error = 125, repr(exc)
+            result_path = attempt_dir / "worker_result.json"
+            if code == 0 and result_path.is_file():
+                row = json.loads(result_path.read_text(encoding="utf-8"))
+                if guard_error:
+                    row["error"] = f"checkpoint recovery completed; {guard_error}"
+                _upsert_attempt_csv(results, row, NC_FIELDS, replace_failed=True)
+                print(f"RECOVERED nc/{dataset}/seed{seed}: strict checkpoint reload passed", flush=True)
+            else:
+                print(f"RECOVERY FAILED nc/{dataset}/seed{seed}: {guard_error or f'worker exit code {code}'}", flush=True)
 
 
 def run_phase(phase: str, datasets: list[str], seeds: list[int], physical_gpu: int) -> None:
@@ -593,6 +720,9 @@ def main() -> None:
     parser.add_argument("--seeds", nargs="+", type=int, default=[42, 43, 44])
     parser.add_argument("--physical-gpu", type=int, default=1)
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument("--recover-existing-attempt", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument("--recover-finished-nc", action="store_true",
+                        help="strictly validate saved checkpoints from completed NC attempts without retraining")
     parser.add_argument("--dataset", choices=(*NEW_NC_DATASETS, *LP_DATASETS), help=argparse.SUPPRESS)
     parser.add_argument("--seed", type=int, choices=SEEDS, help=argparse.SUPPRESS)
     parser.add_argument("--attempt", type=int, help=argparse.SUPPRESS)
@@ -607,7 +737,12 @@ def main() -> None:
         default = NEW_NC_DATASETS if args.phase == "nc" else LP_DATASETS
         if datasets == ["all"]:
             datasets = list(default)
-        run_phase(args.phase, datasets, list(args.seeds), args.physical_gpu)
+        if args.recover_finished_nc:
+            if args.phase != "nc":
+                parser.error("--recover-finished-nc is available only with --phase nc")
+            recover_finished_nc(datasets, list(args.seeds), args.physical_gpu)
+        else:
+            run_phase(args.phase, datasets, list(args.seeds), args.physical_gpu)
 
 
 if __name__ == "__main__":

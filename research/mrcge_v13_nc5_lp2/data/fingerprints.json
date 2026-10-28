@@ -817,6 +817,243 @@
       "v7b_fingerprint": "b151bba6e2d46714e2a26e5da936f1a50b60ab29048fef1a319c95387fca76f7",
       "visual_dim": 768
     },
+    "cloth-copurchase": {
+      "cache_contains_labels": false,
+      "cache_metadata": {
+        "cache_contains_labels": false,
+        "cache_fingerprint": "9837af1aed437929fac69d69a74e3df368fd5b97cecc3fa6e7505fe4a19d16eb",
+        "candidate_fingerprint": "a2a92abad4e249e0ea2bf4cd16edfc72f6de16f8dd80342e5ea0b12cfa9cc6a7",
+        "candidate_nonphysical_ratio": 0.9129832319882071,
+        "candidate_phase_label_access": false,
+        "candidate_physical_overlap_count": 129866,
+        "candidate_physical_overlap_ratio": 0.0870167680117929,
+        "candidate_sources": [
+          "text_knn",
+          "visual_knn"
+        ],
+        "construction_seconds": 142.90419877972454,
+        "covered_node_count": 125839,
+        "dataset": "cloth-copurchase",
+        "degree_quantiles": {
+          "0": 8.0,
+          "10": 16.0,
+          "100": 3160.0,
+          "25": 18.0,
+          "50": 21.0,
+          "75": 27.0,
+          "90": 33.0,
+          "99": 50.0
+        },
+        "directed_candidate_edge_count": 2984850,
+        "feature_fingerprint": "476391ae9a23d797db89abe86a47a417c98373dafd9c2f4e6d430f4b7a6ed8dc",
+        "feature_identity": {
+          "dataset": "cloth-copurchase",
+          "num_nodes": 125839,
+          "text": {
+            "array_sha256": "00bcbc76193c94359aa4ae4968a05a4e4b4448de700726effbc88972500761c3",
+            "file_bytes": 515437297,
+            "file_sha256": "625fe7cb157d1814edaef66e253991ff6ad6c98ec33846b7270a46b949f58233",
+            "identifier": "/hdd1/DataInHere/YHF/data/cloth-copurchase/clip_feat.pt"
+          },
+          "text_dim": 512,
+          "visual": {
+            "array_sha256": "0f069d25c61e6c397dec2d926b5415a15763336321d0cbdd61353b33695c4b10",
+            "file_bytes": 515437297,
+            "file_sha256": "625fe7cb157d1814edaef66e253991ff6ad6c98ec33846b7270a46b949f58233",
+            "identifier": "/hdd1/DataInHere/YHF/data/cloth-copurchase/clip_feat.pt"
+          },
+          "visual_dim": 512
+        },
+        "index_provenance": {
+          "faiss_version": "1.15.1",
+          "random_seed": 2026,
+          "text": {
+            "batch_size": 4096,
+            "dimension": 512,
+            "exact": false,
+            "faiss_version": "1.15.1",
+            "index_type": "IndexIVFFlat",
+            "k": 8,
+            "nlist": 709,
+            "nprobe": 54,
+            "thread_count": 8,
+            "training_iterations": 20,
+            "training_seed": 2026
+          },
+          "thread_count": 8,
+          "visual": {
+            "batch_size": 4096,
+            "dimension": 512,
+            "exact": false,
+            "faiss_version": "1.15.1",
+            "index_type": "IndexIVFFlat",
+            "k": 8,
+            "nlist": 709,
+            "nprobe": 54,
+            "thread_count": 8,
+            "training_iterations": 20,
+            "training_seed": 2026
+          }
+        },
+        "isolated_node_count": 0,
+        "num_nodes": 125839,
+        "physical_edge_count": 811339,
+        "physical_edge_fingerprint": "de11976a71fbc0432a7679ced66f739b4266ad30453830902c86a1af713e1ea1",
+        "retrieval_recall_sample": {
+          "text": {
+            "recall_at_k_mean": 0.99755859375,
+            "recall_at_k_min": 0.875,
+            "sample_count": 256,
+            "sample_seed": 2026
+          },
+          "visual": {
+            "recall_at_k_mean": 0.9912109375,
+            "recall_at_k_min": 0.875,
+            "sample_count": 256,
+            "sample_seed": 2026
+          }
+        },
+        "rule_version": "psce_mag_v7a_mean_center_cosine_union_sym_v1",
+        "schema_version": 1,
+        "similarity_quantiles": {
+          "text": {
+            "0": 0.3142904043197632,
+            "10": 0.6323404312133789,
+            "100": 1.000000238418579,
+            "25": 0.701793909072876,
+            "50": 0.7850748300552368,
+            "75": 0.8732259273529053,
+            "90": 0.9384830594062805,
+            "99": 0.9999998807907104
+          },
+          "visual": {
+            "0": 0.2841602861881256,
+            "10": 0.588006854057312,
+            "100": 1.000000238418579,
+            "25": 0.673710286617279,
+            "50": 0.7727181315422058,
+            "75": 0.8664313554763794,
+            "90": 0.9804810285568237,
+            "99": 1.0
+          }
+        },
+        "source_counts": {
+          "both": 63508,
+          "text_count_0_1_2": {
+            "0": 743403,
+            "1": 491332,
+            "2": 257690
+          },
+          "text_only": 685514,
+          "text_proposals_before_symmetrization": 1006712,
+          "visual_count_0_1_2": {
+            "0": 685514,
+            "1": 607110,
+            "2": 199801
+          },
+          "visual_only": 743403,
+          "visual_proposals_before_symmetrization": 1006712
+        },
+        "symmetrization": "union_then_canonical_deduplicate_then_add_reverse",
+        "text_dim": 512,
+        "text_normalization": {
+          "feature_mean_l2": 0.62730473279953,
+          "nonzero_centered_rows": 125839,
+          "zero_centered_rows": 0
+        },
+        "text_undirected_edge_count": 749022,
+        "text_visual_overlap_count": 63508,
+        "text_visual_overlap_jaccard": 0.042553562155552206,
+        "top_k": 8,
+        "undirected_candidate_edge_count": 1492425,
+        "v7a_candidate_fingerprint": "a2a92abad4e249e0ea2bf4cd16edfc72f6de16f8dd80342e5ea0b12cfa9cc6a7",
+        "v7b_fingerprint": "dd8fb2b427c8ad029c01541434654bd88e8f8a61e7c027dfa5848ba22f54b990",
+        "v7b_rule_version": "psce_mag_v7b_source_flags_relative_edges_v1",
+        "visual_dim": 512,
+        "visual_normalization": {
+          "feature_mean_l2": 0.7878439426422119,
+          "nonzero_centered_rows": 125839,
+          "zero_centered_rows": 0
+        },
+        "visual_undirected_edge_count": 806911
+      },
+      "cache_origin": "built_v7b1",
+      "candidate_fingerprint": "a2a92abad4e249e0ea2bf4cd16edfc72f6de16f8dd80342e5ea0b12cfa9cc6a7",
+      "candidate_phase_label_access": false,
+      "dataset": "cloth-copurchase",
+      "feature_file_sha256_text": "625fe7cb157d1814edaef66e253991ff6ad6c98ec33846b7270a46b949f58233",
+      "feature_file_sha256_visual": "625fe7cb157d1814edaef66e253991ff6ad6c98ec33846b7270a46b949f58233",
+      "feature_fingerprint": "476391ae9a23d797db89abe86a47a417c98373dafd9c2f4e6d430f4b7a6ed8dc",
+      "feature_source_text": "/hdd1/DataInHere/YHF/data/cloth-copurchase/clip_feat.pt",
+      "feature_source_visual": "/hdd1/DataInHere/YHF/data/cloth-copurchase/clip_feat.pt",
+      "input_dim": 1024,
+      "lp_train_graph_fingerprint": "de11976a71fbc0432a7679ced66f739b4266ad30453830902c86a1af713e1ea1",
+      "num_nodes": 125839,
+      "phase": "lp",
+      "physical_edge_count_directed": 1622678,
+      "physical_edge_count_undirected_unique": 811339,
+      "physical_edge_fingerprint": "de11976a71fbc0432a7679ced66f739b4266ad30453830902c86a1af713e1ea1",
+      "semantic_cache_bytes": 83688492,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_nc5_lp2/semantic_cache/lp_cloth-copurchase_de11976a71fb/cloth-copurchase_476391ae9a23_a2a92abad4e2_v7b.pt",
+      "semantic_cache_sha256": "c7cfb784498190512cdad4a352f76bd0a3f611f3c8fdfc881bddb9d10d0beb15",
+      "semantic_edges_directed": 2984850,
+      "semantic_edges_undirected_unique": 1492425,
+      "semantic_knn_k": 8,
+      "semantic_relation_source": "global node attributes only; candidate builder sees Train-positive graph only for overlap/provenance statistics",
+      "source": "mmgraph",
+      "split": {
+        "audit": {
+          "conflicts": [
+            "self-loop positives={'train': 38, 'valid': 7, 'test': 6}",
+            "undirected positive partitions overlap={'train_valid': 21043, 'train_test': 17360, 'valid_test': 5169}"
+          ],
+          "duplicate_positive_count_within_partition": {
+            "test": 2097,
+            "train": 139894,
+            "valid": 3146
+          },
+          "leakage_safe_partition_claim": false,
+          "num_nodes": 125839,
+          "official_split_conflicts_accepted_as_is": true,
+          "positive_counts_raw": {
+            "test": 97456,
+            "train": 951271,
+            "valid": 121323
+          },
+          "positive_counts_undirected_unique": {
+            "test": 95359,
+            "train": 811377,
+            "valid": 118177
+          },
+          "positive_partition_overlap_counts": {
+            "train_test": 17360,
+            "train_valid": 21043,
+            "valid_test": 5169
+          },
+          "protocol_conflict": true,
+          "self_loop_positive_counts": {
+            "test": 6,
+            "train": 38,
+            "valid": 7
+          },
+          "test_negative_candidates_read": false,
+          "train_only_graph_source": "official lp-edge-split.pt train positives only",
+          "validation_negative_evaluation_only": true,
+          "validation_negative_shape": [
+            121323,
+            150
+          ]
+        },
+        "official": true,
+        "path": "/hdd1/DataInHere/YHF/data/cloth-copurchase/lp-edge-split.pt",
+        "sha256": "b0a0866c3595b1c4e676db7805b91ccd283ebdda71a4038f37ac9b6593964697",
+        "split_fingerprint": "b0a0866c3595b1c4e676db7805b91ccd283ebdda71a4038f37ac9b6593964697"
+      },
+      "text_dim": 512,
+      "v7b_fingerprint": "dd8fb2b427c8ad029c01541434654bd88e8f8a61e7c027dfa5848ba22f54b990",
+      "validation_test_edges_used_for_semantics": false,
+      "visual_dim": 512
+    },
     "ele-fashion": {
       "cache_contains_labels": false,
       "cache_metadata": {
@@ -1024,21 +1261,257 @@
       "text_dim": 512,
       "v7b_fingerprint": "b20a39387d411dace61f4ce59e3c4cd1a70f44a597517ef30fff05c2ef09e144",
       "visual_dim": 512
+    },
+    "sports-copurchase": {
+      "cache_contains_labels": false,
+      "cache_metadata": {
+        "cache_contains_labels": false,
+        "cache_fingerprint": "254283b60c3143179195b12817c11ba68b5ec9f61ea936c27b8350b3e3823de0",
+        "candidate_fingerprint": "75afebbb3a0f83c3d74a5ec1b1377990675e3fdb6601bb6d0723d9a3a80d291d",
+        "candidate_nonphysical_ratio": 0.8799921956161955,
+        "candidate_phase_label_access": false,
+        "candidate_physical_overlap_count": 70119,
+        "candidate_physical_overlap_ratio": 0.12000780438380454,
+        "candidate_sources": [
+          "text_knn",
+          "visual_knn"
+        ],
+        "construction_seconds": 23.07288631796837,
+        "covered_node_count": 50250,
+        "dataset": "sports-copurchase",
+        "degree_quantiles": {
+          "0": 8.0,
+          "10": 16.0,
+          "100": 657.0,
+          "25": 18.0,
+          "50": 21.0,
+          "75": 26.0,
+          "90": 32.0,
+          "99": 48.0
+        },
+        "directed_candidate_edge_count": 1168574,
+        "feature_fingerprint": "7f59fcfc674ce86c8fdc601aeabba2fd95068f615f58e6f23166e2de48ca5580",
+        "feature_identity": {
+          "dataset": "sports-copurchase",
+          "num_nodes": 50250,
+          "text": {
+            "array_sha256": "1175e20978fa672710eac1f368cf363a12dfcd387fffbf43b34fee55c7c1fcd4",
+            "file_bytes": 205824753,
+            "file_sha256": "b2cb0c0184c5de2b092d67cc44abca9f264223aa23ac4ef05816d661f9510f01",
+            "identifier": "/hdd1/DataInHere/YHF/data/sports-copurchase/clip_feat.pt"
+          },
+          "text_dim": 512,
+          "visual": {
+            "array_sha256": "5ce18061d44ff7c77bf441b5b14c0111491c478674cb80cf1fc45638673c056c",
+            "file_bytes": 205824753,
+            "file_sha256": "b2cb0c0184c5de2b092d67cc44abca9f264223aa23ac4ef05816d661f9510f01",
+            "identifier": "/hdd1/DataInHere/YHF/data/sports-copurchase/clip_feat.pt"
+          },
+          "visual_dim": 512
+        },
+        "index_provenance": {
+          "faiss_version": "1.15.1",
+          "random_seed": 2026,
+          "text": {
+            "batch_size": 4096,
+            "dimension": 512,
+            "exact": false,
+            "faiss_version": "1.15.1",
+            "index_type": "IndexIVFFlat",
+            "k": 8,
+            "nlist": 448,
+            "nprobe": 43,
+            "thread_count": 8,
+            "training_iterations": 20,
+            "training_seed": 2026
+          },
+          "thread_count": 8,
+          "visual": {
+            "batch_size": 4096,
+            "dimension": 512,
+            "exact": false,
+            "faiss_version": "1.15.1",
+            "index_type": "IndexIVFFlat",
+            "k": 8,
+            "nlist": 448,
+            "nprobe": 43,
+            "thread_count": 8,
+            "training_iterations": 20,
+            "training_seed": 2026
+          }
+        },
+        "isolated_node_count": 0,
+        "num_nodes": 50250,
+        "physical_edge_count": 301848,
+        "physical_edge_fingerprint": "6abb070a2fe1d5b17de66f520034c6f25d0a3ade2ada95853d93ad17a9963079",
+        "retrieval_recall_sample": {
+          "text": {
+            "recall_at_k_mean": 0.99462890625,
+            "recall_at_k_min": 0.75,
+            "sample_count": 256,
+            "sample_seed": 2026
+          },
+          "visual": {
+            "recall_at_k_mean": 0.9912109375,
+            "recall_at_k_min": 0.625,
+            "sample_count": 256,
+            "sample_seed": 2026
+          }
+        },
+        "rule_version": "psce_mag_v7a_mean_center_cosine_union_sym_v1",
+        "schema_version": 1,
+        "similarity_quantiles": {
+          "text": {
+            "0": 0.2577274441719055,
+            "10": 0.5113349556922913,
+            "100": 1.000000238418579,
+            "25": 0.5872515439987183,
+            "50": 0.6838963031768799,
+            "75": 0.792320966720581,
+            "90": 0.8948928117752075,
+            "99": 0.9987697601318359
+          },
+          "visual": {
+            "0": 0.2702098488807678,
+            "10": 0.46689873933792114,
+            "100": 1.000000238418579,
+            "25": 0.5427848100662231,
+            "50": 0.6446170806884766,
+            "75": 0.7689677476882935,
+            "90": 0.8800187110900879,
+            "99": 1.0
+          }
+        },
+        "source_counts": {
+          "both": 33632,
+          "text_count_0_1_2": {
+            "0": 287216,
+            "1": 192142,
+            "2": 104929
+          },
+          "text_only": 263439,
+          "text_proposals_before_symmetrization": 402000,
+          "visual_count_0_1_2": {
+            "0": 263439,
+            "1": 239696,
+            "2": 81152
+          },
+          "visual_only": 287216,
+          "visual_proposals_before_symmetrization": 402000
+        },
+        "symmetrization": "union_then_canonical_deduplicate_then_add_reverse",
+        "text_dim": 512,
+        "text_normalization": {
+          "feature_mean_l2": 0.6597626805305481,
+          "nonzero_centered_rows": 50250,
+          "zero_centered_rows": 0
+        },
+        "text_undirected_edge_count": 297071,
+        "text_visual_overlap_count": 33632,
+        "text_visual_overlap_jaccard": 0.05756075353379418,
+        "top_k": 8,
+        "undirected_candidate_edge_count": 584287,
+        "v7a_candidate_fingerprint": "75afebbb3a0f83c3d74a5ec1b1377990675e3fdb6601bb6d0723d9a3a80d291d",
+        "v7b_fingerprint": "98c004e272a6afc18d641b70eedb08603d4d1cfaea4c4b4b264ed9e4e351ad34",
+        "v7b_rule_version": "psce_mag_v7b_source_flags_relative_edges_v1",
+        "visual_dim": 512,
+        "visual_normalization": {
+          "feature_mean_l2": 0.7677929401397705,
+          "nonzero_centered_rows": 50250,
+          "zero_centered_rows": 0
+        },
+        "visual_undirected_edge_count": 320848
+      },
+      "cache_origin": "built_v7b1",
+      "candidate_fingerprint": "75afebbb3a0f83c3d74a5ec1b1377990675e3fdb6601bb6d0723d9a3a80d291d",
+      "candidate_phase_label_access": false,
+      "dataset": "sports-copurchase",
+      "feature_file_sha256_text": "b2cb0c0184c5de2b092d67cc44abca9f264223aa23ac4ef05816d661f9510f01",
+      "feature_file_sha256_visual": "b2cb0c0184c5de2b092d67cc44abca9f264223aa23ac4ef05816d661f9510f01",
+      "feature_fingerprint": "7f59fcfc674ce86c8fdc601aeabba2fd95068f615f58e6f23166e2de48ca5580",
+      "feature_source_text": "/hdd1/DataInHere/YHF/data/sports-copurchase/clip_feat.pt",
+      "feature_source_visual": "/hdd1/DataInHere/YHF/data/sports-copurchase/clip_feat.pt",
+      "input_dim": 1024,
+      "lp_train_graph_fingerprint": "6abb070a2fe1d5b17de66f520034c6f25d0a3ade2ada95853d93ad17a9963079",
+      "num_nodes": 50250,
+      "phase": "lp",
+      "physical_edge_count_directed": 603696,
+      "physical_edge_count_undirected_unique": 301848,
+      "physical_edge_fingerprint": "6abb070a2fe1d5b17de66f520034c6f25d0a3ade2ada95853d93ad17a9963079",
+      "semantic_cache_bytes": 32839094,
+      "semantic_cache_path": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_nc5_lp2/semantic_cache/lp_sports-copurchase_6abb070a2fe1/sports-copurchase_7f59fcfc674c_75afebbb3a0f_v7b.pt",
+      "semantic_cache_sha256": "b4e95f507d37135927536ece28cbbdd3178eef0f7638430046ffe78172f6405d",
+      "semantic_edges_directed": 1168574,
+      "semantic_edges_undirected_unique": 584287,
+      "semantic_knn_k": 8,
+      "semantic_relation_source": "global node attributes only; candidate builder sees Train-positive graph only for overlap/provenance statistics",
+      "source": "mmgraph",
+      "split": {
+        "audit": {
+          "conflicts": [
+            "self-loop positives={'train': 26, 'valid': 3, 'test': 5}",
+            "undirected positive partitions overlap={'train_valid': 8264, 'train_test': 6621, 'valid_test': 2035}"
+          ],
+          "duplicate_positive_count_within_partition": {
+            "test": 863,
+            "train": 54328,
+            "valid": 1238
+          },
+          "leakage_safe_partition_claim": false,
+          "num_nodes": 50250,
+          "official_split_conflicts_accepted_as_is": true,
+          "positive_counts_raw": {
+            "test": 37413,
+            "train": 356202,
+            "valid": 45557
+          },
+          "positive_counts_undirected_unique": {
+            "test": 36550,
+            "train": 301874,
+            "valid": 44319
+          },
+          "positive_partition_overlap_counts": {
+            "train_test": 6621,
+            "train_valid": 8264,
+            "valid_test": 2035
+          },
+          "protocol_conflict": true,
+          "self_loop_positive_counts": {
+            "test": 5,
+            "train": 26,
+            "valid": 3
+          },
+          "test_negative_candidates_read": false,
+          "train_only_graph_source": "official lp-edge-split.pt train positives only",
+          "validation_negative_evaluation_only": true,
+          "validation_negative_shape": [
+            45557,
+            150
+          ]
+        },
+        "official": true,
+        "path": "/hdd1/DataInHere/YHF/data/sports-copurchase/lp-edge-split.pt",
+        "sha256": "6f5ffeb99f1aca5ea05671c6a86e5ee01a33a3673b6c3f0a24c6d482f4fa710a",
+        "split_fingerprint": "6f5ffeb99f1aca5ea05671c6a86e5ee01a33a3673b6c3f0a24c6d482f4fa710a"
+      },
+      "text_dim": 512,
+      "v7b_fingerprint": "98c004e272a6afc18d641b70eedb08603d4d1cfaea4c4b4b264ed9e4e351ad34",
+      "validation_test_edges_used_for_semantics": false,
+      "visual_dim": 512
     }
   },
   "prepared_phases": {
     "lp": {
-      "blockers": [
-        "cloth-copurchase",
-        "sports-copurchase"
-      ],
-      "complete": false,
-      "completed_utc": "2026-10-27T18:04:42.150469+00:00",
+      "blockers": [],
+      "complete": true,
+      "completed_utc": "2026-10-28T02:25:20.801053+00:00",
       "datasets": [
         "sports-copurchase",
         "cloth-copurchase"
       ],
-      "reason": "official positive edge split conflicts with the frozen disjoint-undirected-split/Train-only protocol"
+      "official_split_conflicts_accepted_as_is": true,
+      "protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is",
+      "reason": "official split files were used unchanged; overlap/self-loop effects are documented as a protocol deviation"
     },
     "nc": {
       "complete": true,

@@ -52,6 +52,7 @@ def _synthetic_split() -> EdgeSplit:
 def test_nc_fixed_seed42_path_does_not_follow_training_seed():
     cfg42 = build_config("Toys", "nc", 42)
     cfg44 = build_config("Toys", "nc", 44)
+    assert nc5_runner.PROTOCOL_NC == cfg42.task.protocol_version
     assert cfg42.dataset.nc_split_path == cfg44.dataset.nc_split_path
     assert "seed42" in cfg42.dataset.nc_split_path
     assert cfg42.dataset.auto_generate_splits is False
@@ -186,6 +187,33 @@ def test_lp_split_conflict_carries_auditable_self_loop_and_overlap_counts():
     assert caught.value.audit["test_negative_candidates_read"] is False
 
 
+def test_official_lp_split_conflicts_can_be_accepted_without_rewriting_split():
+    split = _synthetic_split()
+    split.train = _edge_dict([(0, 0), (0, 1), (1, 0), (2, 3), (4, 5)])
+    split.valid = _edge_dict([(1, 0)], negatives=torch.tensor([[5, 6]]))
+    audit = validate_lp_split(split, 8, allow_official_conflicts=True)
+    assert audit["protocol_conflict"] is True
+    assert audit["official_split_conflicts_accepted_as_is"] is True
+    assert audit["leakage_safe_partition_claim"] is False
+    assert audit["positive_partition_overlap_counts"]["train_valid"] == 1
+
+    original_train = copy.deepcopy(split.train)
+    physical = train_only_physical_graph(split, 8, allow_official_conflicts=True)
+    assert split.train["source_node"].equal(original_train["source_node"])
+    assert split.train["target_node"].equal(original_train["target_node"])
+    assert set(map(tuple, physical.t().tolist())) == {
+        (0, 1), (1, 0), (2, 3), (3, 2), (4, 5), (5, 4),
+    }
+    folds = deterministic_train_folds(
+        torch.stack((split.train["source_node"], split.train["target_node"])), num_nodes=8,
+    )
+    assert sum(fold.size(1) for fold in folds) == 4  # unique undirected pairs, including the self-loop
+    graphs = build_fold_message_graphs(
+        torch.stack((split.train["source_node"], split.train["target_node"])), folds, num_nodes=8,
+    )
+    assert all(not bool((graph[0] == graph[1]).any()) for graph in graphs)
+
+
 def test_train_negative_sampling_filters_known_positive_edges():
     split = _synthetic_split()
     known = _build_forbidden_edge_keys(split, num_nodes=8, undirected=True)
@@ -257,6 +285,8 @@ def math_isclose(a: float, b: float) -> bool:
 def test_lp_protocol_fixed_and_test_disabled():
     cfg = build_config("sports-copurchase", "lp", 44)
     assert cfg.task.protocol_version == PROTOCOL_VERSION
+    assert "official_split_as_is" in cfg.task.protocol_version
+    assert cfg.task.allow_official_split_conflicts is True
     assert cfg.task.evaluate_test is False
     assert cfg.task.training_mode == "full_graph_three_fold_edge_holdout"
     assert cfg.task.optimizer == "adam"

@@ -5,23 +5,24 @@
 - The formal encoder is `src/models/mrcge_v13.py`; it declares `supports_link_prediction=False`, requires a global V7B.1 semantic cache and global node order, and consumes one global feature matrix plus the corresponding full physical edge index. `src/tasks/lp.py` uses `LinkNeighborLoader` sampled-subgraph IDs and also evaluates Test by default. Directly changing the capability flag would therefore be unsafe.
 - The added LP adapter is independent. It does not change `mrcge_v13.py`, the model factory, the NC Trainer, the existing sampled LP Trainer, or any prior experiment runner/result.
 - MM-Graph `clip_feat.pt` is split by the existing loader as Text in columns 0:512 and Visual in columns 512:1024. Preparation and the LP worker both assert exact tensor equality with the loader's modality views.
-- The LP official split is read from each configured `lp-edge-split.pt`. Train/Validation/Test positive partitions are compared after canonicalizing undirected edges. The Train graph is rebuilt only from Train positives and compared with the loader graph. Both directions, duplicate edges, invalid IDs, self-loops, fold masking, and held-out positive overlap have explicit checks.
-- LP KNN preparation is wired to the existing V7B.1 builder with global features and a Train-only graph for provenance/overlap statistics. However, preparation validates the official split before invoking that builder. The current official split files fail validation, so no LP semantic cache was built or marked prepared. If a reviewed split later passes, the resulting semantic candidates are fixed across folds and seeds. LP Train negative rejection uses the existing repository sampler; known positive edges, including Validation/Test positives, serve only as rejection filters.
+- The LP official split is read from each configured `lp-edge-split.pt` and is never rewritten. The audit reports raw counts, undirected duplicates, self-loops, and cross-partition overlaps. The Train graph is rebuilt only from Train positives and compared with the loader graph. Under the user's direction, the current self-loops and overlaps are accepted under protocol `mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is`.
+- This acceptance is a material protocol deviation. Validation positives that overlap Train may be included in training supervision and/or Train message passing, so Validation metrics are not leakage-safe estimates. Train self-loop positives remain decoder supervision; the repository's usual graph preprocessing excludes self-loops from propagation. Both behaviors are stated in per-run metadata and `data/lp_split_preflight_audit.json`.
+- LP KNN preparation uses the existing V7B.1 builder with global features and a Train-only graph for provenance/overlap statistics. Candidate construction uses no LP edge labels. LP Train negative rejection uses the existing repository sampler; known positive edges, including Validation/Test positives, serve only as rejection filters.
 - The detach-leaf path is tested against direct mean BCE + one auxiliary loss on a synthetic graph. Per-batch summed BCE is divided by the fold's total supervised count. Decoder gradients accumulate at the leaf, then pass through the real encoder output; the Balance Auxiliary Loss is backpropagated once.
 - Validation reuses the existing fixed candidates, MRR/Hits definitions, and pessimistic `>=` tie ranking. The LP adapter has no Test evaluation call. Its Checkpoint includes encoder/projection/decoder state and model/config/cache/split/Train-graph provenance; a fresh module load with `strict=True` must reproduce Validation metrics.
 
 ## Current implementation checks
 
 - Baseline was clean at `4bb7253ac9dffeca57686771c139002d6e84a19f`; the requested branch was created from that exact commit.
-- Both fixed seed42 NC splits and both official LP split files are present. NC preparation passed for all five datasets. The preparation script never silently replaces a split. A read-only audit found that both current LP splits conflict with the required undirected positive-partition disjointness and contain positive self-loops:
+- Both fixed seed42 NC splits and both official LP split files are present. NC preparation passed for all five datasets. A read-only audit found that the current LP files contain positive self-loops and undirected cross-partition overlap:
 
   | Dataset | Train / Valid / Test raw positives | Self-loops by partition | Undirected overlap Train-Valid / Train-Test / Valid-Test |
   |---|---:|---:|---:|
   | sports-copurchase | 356,202 / 45,557 / 37,413 | 26 / 3 / 5 | 8,264 / 6,621 / 2,035 |
   | cloth-copurchase | 951,271 / 121,323 / 97,456 | 38 / 7 / 6 | 21,043 / 17,360 / 5,169 |
 
-  The audit canonicalizes positives as undirected endpoint pairs. `prepare --phase lp` records the audit, skips cache construction, and exits 2. No split was repaired, and no LP worker was started.
-- Historical Movies/Grocery/ele-fashion NC records are imported as `reused_historical`, with no retraining path for those datasets. The LP command gates on all six new NC cells and their checkpoint SHA256s.
+- The audit canonicalizes positives as undirected endpoint pairs. The official files remain byte-for-byte unchanged; LP preparation records the conflict audit and builds the Train-graph semantic caches.
+- Historical Movies/Grocery/ele-fashion NC records are imported as `reused_historical`. Toys/Reddit-S seeds 42/43/44 were trained on the fixed seed42 split. When the outer runner raised after training, all six existing checkpoints were recovered by strict reloading without retraining; the LP command gates on their checkpoint SHA256s.
 - CPU tests are synthetic only. The V1.3 smoke test uses the actual frozen Full encoder, actual V7B.1 cache builder/loader, global forward/backward, and strict state reload on a 12-node graph. It does not load a formal trainable dataset or perform an official experiment.
 - GPU execution is isolated in a per-cell worker with the existing V1.3 ownership/memory/utilization guard. No bypass flag exists. The collector does not launch a worker.
 
@@ -38,8 +39,9 @@
 9. **Sampled LP distinction:** yes. The protocol is named `mrcge_v13_full_graph_edge_holdout_lp_v1` and is documented as a distinct optimization protocol.
 10. **Test evaluation:** disabled in NC and LP configs/workers. NC Test targets are masked to `-100`; LP adapter only evaluates the fixed Validation split. Test metric output is `not_evaluated`.
 11. **Formal training launched by implementation:** no. Only CPU unit/synthetic tests and data-integrity preparation/preflight are allowed in this phase.
-12. **Executable commands:** supplied in `RUNBOOK.md`. NC preparation is verified. The LP preparation command is executable but currently returns code 2 with a recorded protocol blocker; the LP training command refuses to launch until that gate is resolved.
+12. **LP official split deviation:** both official files are used unchanged. The audit and each run record preserve split hashes and disclose validation overlap with Train. No claim of leakage-safe Validation results is made.
+13. **Executable commands:** supplied in `RUNBOOK.md`. NC preparation and all six new NC checkpoint reloads are verified. LP preparation builds the two Train-graph caches; LP workers use the official split as-is and keep Test evaluation disabled.
 
-The authoritative machine-readable blocker is `data/lp_split_preflight_audit.json`. The current LP results are intentionally absent; the implementation must not be interpreted as completed LP evaluation.
+The authoritative machine-readable split audit is `data/lp_split_preflight_audit.json`. It reports overlap/self-loop counts and the accepted protocol deviation. LP results, when present, remain Validation-only and must not be interpreted as leakage-safe test performance.
 
 No architecture search, hyperparameter search, sampled/full protocol substitution, split regeneration, or Test evaluation is part of this implementation stage.
