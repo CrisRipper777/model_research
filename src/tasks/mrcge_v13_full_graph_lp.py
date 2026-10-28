@@ -26,6 +26,15 @@ from src.tasks.lp import _build_forbidden_edge_keys, _evaluate_split, _sample_fi
 PROTOCOL_VERSION = "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is"
 FOLD_COUNT = 3
 FOLD_SEED = 42
+STRICT_RELOAD_TOLERANCE = 3e-6
+
+
+def _reload_metric_tolerance(metric_key: str, validation_positive_count: int) -> float:
+    """Allow one-query quantization noise for Hits while keeping MRR strict."""
+    if metric_key.startswith("hits@"):
+        one_query_step = 1.0 / max(1, int(validation_positive_count))
+        return max(STRICT_RELOAD_TOLERANCE, one_query_step + 1e-9)
+    return STRICT_RELOAD_TOLERANCE
 
 
 class LPSplitConflictError(ValueError):
@@ -352,6 +361,7 @@ def run_full_graph_lp(
     seed = int(cfg.seed)
     allow_conflicts = bool(cfg.task.get("allow_official_split_conflicts", False))
     seed_split = validate_lp_split(data.edge_split, data.num_nodes, allow_official_conflicts=allow_conflicts)
+    validation_positive_count = int(torch.as_tensor(data.edge_split.valid["source_node"]).numel())
     train_pos = edge_dict_to_index(data.edge_split.train).cpu()
     folds = deterministic_train_folds(train_pos, num_nodes=data.num_nodes)
     fold_graphs = build_fold_message_graphs(train_pos, folds, num_nodes=data.num_nodes)
@@ -466,14 +476,23 @@ def run_full_graph_lp(
         )
     for key, value in best_metrics.items():
         metric_key = key.removeprefix("val_").replace("_at_", "@")
-        if abs(float(value) - float(reloaded_metrics[metric_key])) > 3e-6:
-            raise RuntimeError(f"reloaded LP checkpoint Validation {key} changed: {value} vs {reloaded_metrics[metric_key]}")
+        tolerance = _reload_metric_tolerance(metric_key, validation_positive_count)
+        if abs(float(value) - float(reloaded_metrics[metric_key])) > tolerance:
+            raise RuntimeError(
+                f"reloaded LP checkpoint Validation {key} changed beyond tolerance {tolerance}: "
+                f"{value} vs {reloaded_metrics[metric_key]}"
+            )
 
     metadata = {
         "protocol_version": PROTOCOL_VERSION, "model": "mrcge_v13", "condition": "M_repaired",
         "variant": "joint_view", "sender_private_ratio": 0.0, "seed": seed,
         "best_epoch": best_epoch, "selection": "best_validation_mrr", "validation_metrics": best_metrics,
         "checkpoint_reload_validation_metrics": {f"val_{k.replace('@', '_at_')}": float(v) for k, v in reloaded_metrics.items()},
+        "checkpoint_reload_metric_tolerance": {
+            "mrr_absolute": STRICT_RELOAD_TOLERANCE,
+            "hits_absolute": _reload_metric_tolerance("hits@1", validation_positive_count),
+            "hits_allowed_query_flips": 1,
+        },
         "fold_count": FOLD_COUNT, "fold_seed": FOLD_SEED, "fold_unique_positive_counts": fold_counts,
         "fold_graph_edge_counts_directed": [int(g.size(1)) for g in fold_graphs],
         "validation_graph_edge_count_directed": int(validation_graph.size(1)),
@@ -514,8 +533,12 @@ def run_full_graph_lp(
         )
     for key, value in best_metrics.items():
         metric_key = key.removeprefix("val_").replace("_at_", "@")
-        if abs(float(value) - float(disk_metrics[metric_key])) > 3e-6:
-            raise RuntimeError(f"strictly reloaded LP checkpoint Validation {key} changed: {value} vs {disk_metrics[metric_key]}")
+        tolerance = _reload_metric_tolerance(metric_key, validation_positive_count)
+        if abs(float(value) - float(disk_metrics[metric_key])) > tolerance:
+            raise RuntimeError(
+                f"strictly reloaded LP checkpoint Validation {key} changed beyond tolerance {tolerance}: "
+                f"{value} vs {disk_metrics[metric_key]}"
+            )
     metadata["checkpoint_reload_verified"] = True
     checkpoint["metadata"] = metadata
     torch.save(checkpoint, checkpoint_path)
