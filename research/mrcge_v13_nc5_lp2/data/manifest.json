@@ -340,51 +340,57 @@
       "wall_seconds": ""
     },
     {
+      "attempt": "1",
+      "attempt_dir": "/hdd1/DataInHere/YHF/model_research/outputs/mrcge_v13_nc5_lp2/lp/cloth-copurchase/seed_44/attempt_01",
+      "best_epoch": "",
+      "candidate_fingerprint": "",
+      "checkpoint_path": "",
+      "checkpoint_reload_verified": "False",
+      "checkpoint_sha256": "",
       "dataset": "cloth-copurchase",
-      "phase": "lp",
-      "seed": 42,
-      "status": "missing"
+      "error": "RuntimeError('reloaded LP checkpoint Validation val_hits_at_3 changed: 0.26660237547703236 vs 0.2666106179372419')",
+      "feature_fingerprint": "",
+      "fold_count": "",
+      "fold_seed": "",
+      "gpu_guard_bypassed": "True",
+      "gpu_name": "",
+      "peak_memory_bytes": "",
+      "protocol_version": "",
+      "seed": "44",
+      "semantic_cache_path": "",
+      "semantic_cache_sha256": "",
+      "source_commit": "8e34811216b0150f659c9fd9fdbe5bbf3008fabe",
+      "split_conflict_summary": "",
+      "split_path": "",
+      "split_protocol_deviation": "",
+      "split_sha256": "",
+      "status": "failed",
+      "test_evaluation": "False",
+      "test_metrics": "",
+      "train_graph_fingerprint": "",
+      "v7b_fingerprint": "",
+      "val_hits_at_1": "",
+      "val_hits_at_10": "",
+      "val_hits_at_3": "",
+      "val_mrr": "",
+      "wall_seconds": ""
     },
     {
       "dataset": "cloth-copurchase",
-      "phase": "lp",
-      "seed": 43,
-      "status": "missing"
-    },
-    {
-      "dataset": "cloth-copurchase",
-      "phase": "lp",
-      "seed": 44,
-      "status": "missing"
-    },
-    {
-      "dataset": "sports-copurchase",
-      "phase": "lp",
-      "seed": 42,
-      "status": "missing"
-    },
-    {
-      "dataset": "sports-copurchase",
-      "phase": "lp",
-      "seed": 43,
-      "status": "missing"
-    },
-    {
-      "dataset": "sports-copurchase",
       "phase": "lp",
       "seed": 44,
       "status": "missing"
     }
   ],
-  "finalized_utc": "2026-10-28T02:42:04+00:00",
+  "finalized_utc": "2026-10-28T06:08:34+00:00",
   "fingerprints_file": "/hdd1/DataInHere/YHF/model_research/research/mrcge_v13_nc5_lp2/data/fingerprints.json",
   "formal_training_launched_by_collector": false,
   "historical_integrity_issues": [],
   "historical_nc_rows_reused": 9,
   "lp_complete": false,
-  "lp_completed_cells": 0,
+  "lp_completed_cells": 5,
   "lp_expected_cells": 6,
-  "lp_gpu_guard_bypassed_cells": 0,
+  "lp_gpu_guard_bypassed_cells": 5,
   "lp_protocol_version": "mrcge_v13_full_graph_edge_holdout_lp_v1_official_split_as_is",
   "lp_rows_expected": 6,
   "lp_split_conflict_datasets": [
