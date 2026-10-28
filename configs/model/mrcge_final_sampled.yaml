@@ -1,0 +1,8 @@
+# Sampled LP adapter config. Hydra loads every frozen mrcge_final encoder
+# value first; this file changes only the model import path and fixed context fanout.
+defaults:
+  - mrcge_final
+  - _self_
+
+name: mrcge_final_sampled
+semantic_context_physical_fanout: [1, 1, 1]

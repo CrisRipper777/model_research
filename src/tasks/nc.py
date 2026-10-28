@@ -105,12 +105,27 @@ def _training_class_weights(
     return weights
 
 
-def _resolve_nc_eval_labels(data: MAGData, *, include_test: bool = True) -> list[int]:
+def _resolve_nc_eval_labels(
+    data: MAGData,
+    *,
+    include_test: bool = True,
+    fixed_labels: list[int] | tuple[int, ...] | str | None = None,
+) -> list[int]:
     """Use one stable Macro-F1 label set across the supervised task splits."""
     if data.y is None:
         raise ValueError("NC data must contain labels")
     if data.num_classes is None:
         raise ValueError("NC data must define num_classes")
+    if fixed_labels is not None:
+        if isinstance(fixed_labels, str):
+            if fixed_labels.strip().lower() != "all_classes":
+                raise ValueError("task.macro_f1_labels string value must be 'all_classes'")
+            labels = list(range(int(data.num_classes)))
+        else:
+            labels = sorted({int(value) for value in fixed_labels})
+        if not labels or labels[0] < 0 or labels[-1] >= int(data.num_classes):
+            raise ValueError("task.macro_f1_labels must contain valid configured class IDs")
+        return labels
     split_indices = [idx for idx in (data.train_idx, data.val_idx) if idx is not None]
     if include_test and data.test_idx is not None:
         split_indices.append(data.test_idx)
@@ -884,7 +899,9 @@ def run_nc(
         raise ValueError("NC data must contain y/train_idx/val_idx/test_idx")
     _resolve_training_mode(cfg)
     eval_labels = _resolve_nc_eval_labels(
-        data, include_test=bool(cfg.task.get("evaluate_test", True))
+        data,
+        include_test=bool(cfg.task.get("evaluate_test", True)),
+        fixed_labels=cfg.task.get("macro_f1_labels"),
     )
 
     run_results = []

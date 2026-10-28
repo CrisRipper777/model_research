@@ -472,7 +472,20 @@ def _run_single_lp(
             "PSCE-MAG V7A is full-graph NC only: global semantic candidate IDs are "
             "not mapped into LP sampled-subgraph node IDs"
         )
+    if bool(getattr(model, "requires_v7b_semantic_cache", False)):
+        cache_path = cfg.model.get("semantic_cache_path")
+        if not cache_path:
+            raise ValueError("MR-CGE Final sampled LP requires model.semantic_cache_path")
+        model.load_semantic_cache(
+            str(cache_path),
+            expected_dataset=str(cfg.dataset.name),
+            expected_feature_fingerprint=cfg.model.get("semantic_feature_fingerprint"),
+            expected_candidate_fingerprint=cfg.model.get("semantic_candidate_fingerprint"),
+            expected_v7b_fingerprint=cfg.model.get("semantic_v7b_fingerprint"),
+        )
     model = model.to(device)
+    if hasattr(model, "bind_lp_graph"):
+        model.bind_lp_graph(data.x, data.edge_index)
     proj_dim = int(cfg.task.decoder.get("proj_dim", 0) or 0)
     projection = nn.Linear(model.out_dim, proj_dim).to(device) if proj_dim > 0 else None
     predictor_in_dim = proj_dim if projection is not None else model.out_dim
@@ -608,6 +621,11 @@ def _run_single_lp(
                         num_nodes=int(batch.x.size(0)),
                     )
                     removed_edges += old_edge_count - int(batch.edge_index.size(1))
+                if hasattr(model, "prepare_sampled_lp_batch"):
+                    model.prepare_sampled_lp_batch(
+                        batch,
+                        sample_seed=neighbor_seed + int(step),
+                    )
                 batch = batch.to(device)
                 if hasattr(model, "_batch_n_id"):
                     model._batch_n_id = batch.n_id
@@ -640,7 +658,9 @@ def _run_single_lp(
             optimizer.step()
             total_loss += float(loss.detach().item()) * int(labels.numel())
             total_examples += int(labels.numel())
-            if hasattr(model, "_batch_n_id"):
+            if hasattr(model, "clear_sampled_lp_context"):
+                model.clear_sampled_lp_context()
+            elif hasattr(model, "_batch_n_id"):
                 model._batch_n_id = None
 
         train_loss = total_loss / max(total_examples, 1)

@@ -1,0 +1,40 @@
+name: lp
+protocol_version: unified_sampled_lp_v1
+training_mode: sampled
+optimizer: adam
+scheduler: null
+lr: 1.0e-3
+weight_decay: 1.0e-5
+epochs: 150
+patience: 10
+early_stop_min_epoch: 20
+early_stop_min_delta: 1.0e-4
+grad_clip: 1.0
+batch_size: 2048
+num_neighbors: [5, 5, 5]
+subgraph_type: bidirectional
+num_train_neg: 1
+positive_edge_mask_backend: global_eid
+loader_num_workers: 4
+loader_prefetch_factor: 2
+torch_threads: 8
+negative_seed_offset: 10000
+shuffle_seed_offset: 20000
+neighbor_seed_offset: 30000
+inference_mode: full
+inference_batch_size: 4096
+eval_preload_node_emb: true
+eval_every: 2
+max_train_batches: null
+train_pos_per_epoch: null
+eval_edge_batch_size: 512
+evaluate_test: false # Final Test is run once by the post-checkpoint evaluator.
+loss:
+  aux_weight: 1.0
+decoder:
+  name: mlp
+  hidden_dim: 256
+  num_layers: 3
+  dropout: 0.02
+  proj_dim: 128
+save_ckpt_path: null

@@ -1,0 +1,29 @@
+name: nc
+protocol_version: unified_full_graph_nc_v1
+training_mode: full_graph
+optimizer: adamw
+lr: 1.0e-3
+weight_decay: 1.0e-4
+epochs: 300
+patience: 30
+early_stop_min_epoch: 30
+early_stop_min_delta: 1.0e-4
+grad_clip: 1.0
+batch_size: 1024
+num_neighbors: 15
+inference_mode: full
+inference_batch_size: 4096
+eval_every: 1
+max_train_batches: null
+scheduler: null
+scheduler_warmup_epochs: 10
+scheduler_min_lr: 1.0e-5
+evaluate_test: false # Final Test is run once by the post-checkpoint evaluator.
+macro_f1_labels: all_classes # Fixed from configured num_classes, never inferred from Test labels.
+record_extended_validation: false
+save_ckpt_path: null
+run_metrics_path: null
+loss:
+  aux_weight: 1.0
+  unimodal_weight: 0.3
+  class_balanced_main_ce: false
