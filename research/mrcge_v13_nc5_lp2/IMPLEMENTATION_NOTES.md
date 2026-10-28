@@ -2,7 +2,7 @@
 
 ## Final LP completion (2026-10-28)
 
-- All six LP cells are complete: sports-copurchase and cloth-copurchase, seeds 42/43/44. `data/lp_summary.csv` contains per-dataset mean and sample SD; `data/lp_runs.csv` retains attempt history and the selected successful attempt for each cell.
+- The full NC5/LP2 campaign is complete. The consolidated results are in `REPORT.md`; all six LP cells are complete: sports-copurchase and cloth-copurchase, seeds 42/43/44. `data/lp_summary.csv` contains per-dataset mean and sample SD; `data/lp_runs.csv` retains attempt history and the selected successful attempt for each cell.
 - The missing cloth-copurchase seed44 run completed as attempt 2. Its Best-Validation-MRR checkpoint is epoch 130 (Validation MRR 0.267675, Hits@1 0.150614, Hits@3 0.287481, Hits@10 0.510719); strict checkpoint reload passed, Test was not evaluated, and the checkpoint remains under `outputs/`.
 - The reload check keeps the original strict MRR tolerance. For discrete Hits@k only, it allows a one-query-count difference (`1 / number_of_validation_queries`), which explains the earlier failure and does not change training, model selection, or reported metrics.
 - The collector reports `status=complete`, 6/6 LP cells, `protocol_audit.status=pass`, no audit issues, and `test_metrics=not_evaluated`. Earlier failed/interrupted attempts remain in the run ledger as history; they are not selected as results.

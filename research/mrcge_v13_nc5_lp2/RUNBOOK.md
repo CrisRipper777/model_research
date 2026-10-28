@@ -70,7 +70,7 @@ The runner starts cells sequentially after checking the six new NC checkpoints a
 python scripts/collect_mrcge_v13_nc5_lp2.py --finalize
 ```
 
-The collector only verifies and summarizes files; it never starts training. Until all expected NC and LP cells pass checkpoint, fingerprint, and protocol checks, it records `status=partial`, preserves failures, and leaves missing seed values absent. After formal runs, ask Codex to review the generated CSVs and prepare the core scientific report before submitting the second-stage results.
+The collector only verifies and summarizes files; it never starts training. Until all expected NC and LP cells pass checkpoint, fingerprint, and protocol checks, it records `status=partial`, preserves failures, and leaves missing seed values absent. The current campaign is complete; `REPORT.md` and the finalized CSV/JSON artifacts contain the second-stage results. Earlier failed or interrupted attempts remain in the ledgers as history.
 
 ## Before starting either training phase
 
