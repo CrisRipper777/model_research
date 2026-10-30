@@ -10,6 +10,7 @@ and are all enabled in the final benchmark.
 from __future__ import annotations
 
 import math
+import warnings
 from contextlib import contextmanager
 from typing import Any
 
@@ -27,6 +28,17 @@ from src.models.psce_mag_v7a import (
     chunked_weighted_spmm,
 )
 from src.models.rmcge_v2 import build_modality_knn_operators
+
+
+# PyTorch's non-reentrant checkpoint recomputation still enters the deprecated
+# torch.cpu.amp.autocast context internally. Filter only that upstream warning;
+# checkpointing, gradients, and unrelated warnings remain unchanged.
+warnings.filterwarnings(
+    "ignore",
+    category=FutureWarning,
+    message=r"`torch\.cpu\.amp\.autocast\(args\.\.\.\)` is deprecated\.",
+    module=r"torch\.utils\.checkpoint",
+)
 
 
 CONDITIONS = ("S_repaired", "F_sinit", "M_repaired", "M_anchor")
